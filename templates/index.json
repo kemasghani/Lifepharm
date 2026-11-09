@@ -302,7 +302,7 @@
         "content": "",
         "text_alignment": "start",
         "items_per_row": 6,
-        "background": "#ffffff",
+        "background": "",
         "background_gradient": "",
         "text_color": "",
         "heading_color": "",
@@ -349,7 +349,7 @@
         "liquid_NfNDAi": {
           "type": "liquid",
           "settings": {
-            "liquid": "<h2>Better Health <span style=\"color: #FF8F00\">Starts Here</span></h2>\n<style>\nh2 {text-align: center; padding-bottom: 16px;\nline-height: 1.4!important;}\n</style>"
+            "liquid": "<h2>Better Health <em>Starts Here</em></h2>"
           }
         },
         "richtext_nKEwyF": {
@@ -408,9 +408,9 @@
         "link_text": "Shop all",
         "background": "",
         "background_gradient": "",
-        "text_color": "#181818",
+        "text_color": "",
         "heading_color": "",
-        "heading_gradient": "linear-gradient(172deg, rgba(252, 184, 0, 1) 7%, rgba(255, 143, 0, 1) 18%, rgba(255, 143, 0, 1) 49%, rgba(252, 184, 0, 1) 83%)",
+        "heading_gradient": "",
         "product_card_background": "",
         "product_card_text_color": ""
       }
@@ -505,7 +505,7 @@
           "type": "liquid",
           "disabled": true,
           "settings": {
-            "liquid": "<h2>Unsure Where to <span style=\"color: #FF8F00\">Begin?</span></h2>\n<style>\nh2 {text-align: center;}\n</style>"
+            "liquid": "<h2>Unsure Where to <em>Begin?</em></h2>"
           }
         },
         "richtext_P7yapz": {
@@ -552,7 +552,7 @@
         "liquid_EEHxxN": {
           "type": "liquid",
           "settings": {
-            "liquid": "<h2>Hear it from <span style=\"color: #FF8F00\">Our Customers</span></h2>\n<style>\nh2 {text-align: center;}\n</style>"
+            "liquid": "<h2>Hear it from <em>Our Customers</em></h2>"
           }
         }
       },
@@ -813,7 +813,7 @@
         "liquid_AwGcGX": {
           "type": "liquid",
           "settings": {
-            "liquid": "<h2>Cellnergy <span style=\"color: #FF8F00\">Power Cream</span></h2>\n<style>\nh2 {text-align: center;}\n</style>"
+            "liquid": "<h2>Cellnergy <em>Power Cream</em></h2>"
           }
         },
         "richtext_YpqUXt": {
@@ -999,7 +999,7 @@
         "liquid_gHP9YW": {
           "type": "liquid",
           "settings": {
-            "liquid": "<h2><span style=\"color: #181818\">From Our Instagram</span><span style=\"color: #FF8F00\"></span></h2>\n<style>\nh2 {text-align: center; padding-bottom: 16px;\nline-height: 1.3!important;}\n</style>"
+            "liquid": "<h2><span>From Our Instagram</span><em></em></h2>"
           }
         },
         "liquid_eMxpEh": {
@@ -1021,7 +1021,7 @@
         "text_position": "center",
         "background": "rgba(0,0,0,0)",
         "background_gradient": "",
-        "text_color": "#ff8f00"
+        "text_color": ""
       }
     },
     "17370759278c56fc7f": {

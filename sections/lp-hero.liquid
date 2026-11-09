@@ -56,10 +56,6 @@
       <div class="lp-hero__frame">
         {%- if hero_video != blank -%}
           {{ hero_video | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, controls: false, image_size: '1600x', class: 'lp-hero__video' }}
-        {%- elsif film_asset != blank -%}
-          <video class="lp-hero__video" muted loop playsinline preload="none" data-lp-lazy {% if section.settings.image != blank %}poster="{{ section.settings.image | image_url: width: 1600 }}"{% endif %}>
-            <source data-src="{{ film_asset | asset_url }}" type="video/mp4">
-          </video>
         {%- elsif section.settings.image != blank -%}
           {%- if section.settings.mobile_image != blank -%}
             {{ section.settings.mobile_image | image_url: width: 1000 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '100vw', widths: '500,750,1000', class: 'lp-hero__img sm:hidden' }}
@@ -69,6 +65,11 @@
           {%- endif -%}
         {%- else -%}
           {{ 'lifestyle-1' | placeholder_svg_tag: 'lp-hero__img lp-hero__placeholder' }}
+        {%- endif -%}
+        {%- if hero_video == blank and film_asset != blank -%}
+          <video class="lp-hero__video lp-hero__film" muted loop playsinline preload="none" aria-hidden="true" data-lp-lazy>
+            <source data-src="{{ film_asset | asset_url }}" type="video/mp4">
+          </video>
         {%- endif -%}
       </div>
 
@@ -111,6 +112,9 @@
 .lp-hero__frame { position: relative; border-radius: var(--lp-radius-lg); overflow: hidden; aspect-ratio: 4 / 4.4; background: #fff; box-shadow: var(--lp-shadow-3); }
 @media (min-width: 700px) { .lp-hero__frame { aspect-ratio: 5 / 4.6; } }
 .lp-hero__img, .lp-hero__video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.lp-hero__img { object-position: 50% 55%; }
+.lp-hero__film { position: absolute; inset: 0; opacity: 0; transition: opacity 1.2s var(--lp-ease); }
+.lp-hero__film.is-playing { opacity: 1; }
 .lp-hero__float { position: absolute; display: inline-flex; align-items: center; gap: .6rem; padding: .7rem 1rem .7rem .7rem; border-radius: 999px; background: rgb(255 255 255 / .86); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: var(--lp-shadow-2); font-size: .8125rem; font-weight: 600; animation: lp-float 6s ease-in-out infinite; }
 .lp-hero__float-icon { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: rgb(var(--lp-ink)); color: rgb(var(--lp-amber)); }
 .lp-hero__float--1 { left: -1rem; bottom: 12%; }

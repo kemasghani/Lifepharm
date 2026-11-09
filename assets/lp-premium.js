@@ -74,7 +74,7 @@
   onScroll();
 
   const prepImage = (img) => {
-    if (img.dataset.lpImg || img.complete) return;
+    if (img.dataset.lpImg || img.complete || img.fetchPriority === "high") return;
     img.dataset.lpImg = '1';
     img.classList.add('lp-img-loading');
     const done = () => {
@@ -159,6 +159,7 @@
     const io = new IntersectionObserver(([entry]) => {
       if (!entry.isIntersecting) return;
       video.querySelectorAll('source[data-src]').forEach((s) => { s.src = s.dataset.src; });
+      video.addEventListener('playing', () => video.classList.add('is-playing'), { once: true });
       video.load();
       video.play().catch(() => {});
       io.disconnect();

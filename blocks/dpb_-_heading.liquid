@@ -1,0 +1,921 @@
+{%- comment -%}
+{
+  "pack_name": "Heading block",
+  "pack_author": "Design Packs",
+  "license": "© Design Packs. All rights reserved. This code is protected by copyright law and may not be reproduced, distributed, or used without explicit permission from the author. Shopify complies with the Digital Millennium Copyright Act (DMCA) and responds to claims of copyright infringement using DMCA procedures, which could result in the termination of your Shopify account.",
+}
+{%- endcomment -%}
+
+{% comment %} Security Code - hides section when app uninstalled {% endcomment %}
+{%- unless content_for_header contains 'design_packs_file.js' -%}
+  {%- if request.design_mode -%}
+    <div class="dsgn-pck__no-app-warning">
+      <div class="dsgn-pck__no-app-warning-background">
+      </div>
+      <div class="dsgn-pck__no-app-warning-text dsgn-pck__rte">
+        <p><strong>WARNING!</strong> This premium section will not display properly without an active subscription for <a href="https://apps.shopify.com/design-packs" target="_blank" rel="noopener nofollow">Design Packs</a>. If you need any support please email <a href="mailto:info@design-packs.com" target="_blank" rel="noopener">info@design-packs.com</a> with your questions.</p>
+      </div>
+    </div>
+  {%- endif -%}
+  {%- break -%}
+{%- endunless -%}
+
+{%- assign section_id = section.id | replace: '+', '' | replace: '=', '' -%}
+{%- assign block_index = section.blocks | find_index: 'id', block.id | plus: 1 -%}
+
+{%- assign block_horizontal_setting = block.settings.horizontal_alignment | default: 'default' -%}
+
+{%- capture css_styles -%}
+  <style data-dp-css="blocks/_dpb_-_heading.liquid">
+
+    [id*=preview-block] .dsgn-pck__inner-block-container {
+      container-type: normal !important;
+    }
+
+    .dsgn-pck__block-id-{{ block.id }} {
+      width: {{ block.settings.base_width }}%;
+      max-width: {{ block.settings.max_width | remove: 'px' }}px;
+      display: flex;
+      {%- if section.settings.text_alignment == 'center' and block.settings.horizontal_alignment == 'default' -%}
+        margin: 0 auto;
+      {%- elsif section.settings.text_alignment == 'right' and block.settings.horizontal_alignment == 'default'  -%}
+        margin: 0 0 0 auto;
+      {%- endif -%}
+      {%- if block.settings.horizontal_alignment == 'left' -%}
+        align-self: flex-start;
+        margin-left: 0;
+        margin-right: auto;
+        --block-horizontal-alignment: flex-start;
+      {%- elsif block.settings.horizontal_alignment == 'right' -%}
+        align-self: flex-end;
+        margin-left: auto;
+        margin-right: 0;
+        --block-horizontal-alignment: flex-end;
+      {%- elsif block.settings.horizontal_alignment == 'center' -%}
+        align-self: center;
+        margin-left: auto;
+        margin-right: auto;
+        --block-horizontal-alignment: center;
+      {%- endif -%}
+      --section-horizontal-alignment: {%- if section.settings.text_alignment == 'center' -%}center{%- elsif section.settings.text_alignment == 'right' -%}flex-end{%- endif -%};
+      align-self: var(--block-horizontal-alignment, var(--section-horizontal-alignment));
+    }
+
+    .dsgn-pck__block-id-{{ block.id }} > .dsgn-pck__inner-block-container {
+      container-type: inline-size;
+      container-name: dp-heading-container;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    {%- if block.settings.enable_custom_font != blank -%}
+      {{ block.settings.custom_font | font_face: font_display: 'swap' }}
+      {{ block.settings.custom_font | font_modify: 'weight', 'bolder' | font_face: font_display: 'swap' }}
+      {{ block.settings.custom_font | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}
+      {{ block.settings.custom_font | font_modify: 'style', 'italic' | font_modify: 'weight', 'bolder' | font_face: font_display: 'swap' }}
+      .dsgn-pck__block-id-{{ block.id }} {
+        --custom-font: {{ block.settings.custom_font.family }}, {{ block.settings.custom_font.fallback_families }};
+        --custom-font-weight: {{ block.settings.custom_font.weight }};
+        --custom-font-style: {{ block.settings.custom_font.style }};
+      }
+    {% endif %}
+
+    {%- if block.settings.highlight_enable_custom_font != blank -%}
+      {{ block.settings.highlight_custom_font | font_face: font_display: 'swap' }}
+      {{ block.settings.highlight_custom_font | font_modify: 'weight', 'bolder' | font_face: font_display: 'swap' }}
+      {{ block.settings.highlight_custom_font | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}
+      {{ block.settings.highlight_custom_font | font_modify: 'style', 'italic' | font_modify: 'weight', 'bolder' | font_face: font_display: 'swap' }}
+      .dsgn-pck__block-id-{{ block.id }} {
+        --highlight-custom-font: {{ block.settings.highlight_custom_font.family }}, {{ block.settings.highlight_custom_font.fallback_families }};
+        --highlight-custom-font-weight: {{ block.settings.highlight_custom_font.weight }};
+        --highlight-custom-font-style: {{ block.settings.highlight_custom_font.style }};
+      }
+    {% endif %}
+
+    {%- assign highlight_background_text_color_alpha = block.settings.highlight_background_color | color_extract: 'alpha' | default: 0 -%}
+    {%- assign highlight_text_color_alpha = block.settings.highlight_text_color | color_extract: 'alpha' | default: 0 -%}
+    {%- assign block_heading_alpha = block.settings.block_heading_color | color_extract: 'alpha' | default: 0 -%}
+    .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__heading {
+      margin: 0;
+      line-height: var(--dp-g-heading-line-height, var(--dp-heading-line-height, calc(3px + 2ex + 3px)));
+      color: var(--dp-heading-color, inherit);
+      {%- if block_heading_alpha != 0 -%}
+        --block-text-color: {{ block.settings.block_heading_color | default: 'inherit' }};
+        color: {{ block.settings.block_heading_color | default: 'inherit' }};
+      {%- endif -%}
+      {%- if block.settings.block_heading_size != blank and block.settings.enable_custom_heading_size == true -%}
+        --block-text-size: {{ block.settings.block_heading_size }};
+        font-size: calc({{ block.settings.block_heading_size }} * {{ section.settings.text_size | default: 100 | times: 0.01 }});
+      {%- else -%}
+        font-size: calc(var(--dp-g-heading-size, var(--dp-heading-size, 35px)) * {{ section.settings.text_size | default: 100 | times: 0.01 }});
+      {%- endif -%}
+      {%- if block.settings.enable_custom_font != blank -%}
+      font-family: var(--custom-font) !important;
+      font-weight: var(--custom-font-weight) !important;
+      font-style: var(--custom-font-style) !important;
+      {%- elsif section.settings.override_theme_font != blank -%}
+      font-family: var(--heading-font);
+      font-weight: var(--heading-font-weight);
+      font-style: var(--heading-font-style);
+      {%- endif -%}
+      {%- if block.settings.text_alignment != 'default' -%}
+        text-align: {{ block.settings.text_alignment }};
+      {%- else -%}
+        text-align: var(--block-text-alignment, var(--section-text-alignment));
+      {%- endif -%}
+      {%- if block.settings.enable_custom_text_style -%}
+        {%- if block.settings.text_style == 'italic' -%}
+          --block-text-font-style: italic;
+          --block-text-font-weight: normal;
+          font-style: italic;
+        {%- elsif block.settings.text_style == 'bold' -%}
+          --block-text-font-style: normal;
+          --block-text-font-weight: bold;
+          font-weight: bold;
+        {%- elsif block.settings.text_style == 'bold_italic' -%}
+          --block-text-font-style: italic;
+          --block-text-font-weight: bold;
+          font-weight: bold;
+          font-style: italic;
+        {%- endif -%}
+        {%- if block.settings.text_transform != 'default' -%}
+          --block-text-text-transform: {{ block.settings.text_transform }};
+          text-transform: {{ block.settings.text_transform }};
+        {%- endif -%}
+        {%- if block.settings.letter_spacing != blank -%}
+          --block-text-letter-spacing: {{ block.settings.letter_spacing }};
+          letter-spacing: {{ block.settings.letter_spacing }};
+        {%- endif -%}
+        {%- if block.settings.line_height != blank -%}
+          --block-text-line-height: {{ block.settings.line_height }};
+          line-height: {{ block.settings.line_height }};
+        {%- endif -%}
+      {%- endif -%}
+    }
+
+    {%- if block.settings.enable_highlighted_text -%}
+      .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__fancy {
+        position: relative;
+        {%- if block.settings.highlight_heading_size != blank or block.settings.block_heading_size != blank -%}
+          --block-text-size: {{ block.settings.block_heading_size }};
+          font-size: calc({{ block.settings.highlight_heading_size | default: block.settings.block_heading_size }} * {{ section.settings.text_size | default: 100 | times: 0.01 }});
+        {%- else -%}
+          font-size: calc(var(--dp-g-heading-size, var(--dp-heading-size, 35px)) * {{ section.settings.text_size | default: 100 | times: 0.01 }});
+        {%- endif -%}
+        {%- if block.settings.highlight_enable_custom_font -%}
+        font-family: var(--highlight-custom-font);
+        font-weight: var(--highlight-custom-font-weight);
+        font-style: var(--highlight-custom-font-style);
+        {%- elsif section.settings.override_theme_font != blank -%}
+        font-family: var(--heading-font);
+        font-weight: var(--heading-font-weight);
+        font-style: var(--heading-font-style);
+        {%- endif -%}
+        {%- unless block.settings.enable_rough_notation -%}
+          background-color: {%- if highlight_background_text_color_alpha != 0 -%}
+            {{ block.settings.highlight_background_color }}
+          {%- endif -%};
+          {%- if highlight_background_text_color_alpha != 0 -%}
+            padding: 0 0.2em;
+            display: inline-block;
+          {%- endif -%}
+        {%- endunless -%}
+        color: {%- if highlight_text_color_alpha != 0 -%}
+          {{ block.settings.highlight_text_color }}
+        {%- endif -%};
+      }
+
+      {%- if block.settings.custom_highlight_css != blank -%}
+        {%- assign custom_block_declarations = block.settings.custom_highlight_css | split: '}' -%}
+        {%- for declaration in custom_block_declarations -%}
+          {%- if declaration contains '{' -%}
+            .dsgn-pck__block-id-{{ block.id }} {{ declaration }} }
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+
+    {%- endif -%}
+
+    /* Custom CSS */
+    {%- if block.settings.enable_custom_css == true and block.settings.custom_css != blank -%}
+      {%- assign custom_css_rules = block.settings.custom_css | strip | split: '}' -%}
+      {%- for rule in custom_css_rules -%}
+        {%- assign clean_rule = rule | strip -%}
+        {%- if clean_rule contains '{' and clean_rule != blank -%}
+          {%- assign rule_parts = clean_rule | split: '{' -%}
+          {%- if rule_parts.size >= 2 -%}
+            {%- assign selector_part = rule_parts[0] | strip -%}
+            {%- assign css_part = rule_parts[1] | strip -%}
+            {%- if css_part != blank -%}
+              {%- if selector_part == blank -%}
+                #DP--{{ block.id }} { {{ css_part }} }
+              {%- else -%}
+                #DP--{{ block.id }} {{ selector_part }} { {{ css_part }} }
+              {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+
+    /* Small context - small container and mobile */
+    {%- capture small_context -%}
+
+    .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__heading {
+      {%- if block.settings.mobile_block_heading_size != blank -%}
+        --block-mobile-text-size: {{ block.settings.mobile_block_heading_size }};
+        font-size: calc({{ block.settings.mobile_block_heading_size }} * {{ section.settings.text_size | default: 100 | times: 0.01 }});
+      {%- elsif block.settings.block_heading_size != blank -%}
+        font-size: {{ block.settings.block_heading_size | remove: 'px' | round: 0 | at_least: 12 }}px;
+      {%- endif -%}
+    }
+
+    {%- if block.settings.enable_highlighted_text -%}
+      .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__fancy {
+        {%- if block.settings.highlight_mobile_heading_size != blank -%}
+          --block-mobile-text-size: {{ block.settings.highlight_mobile_heading_size }};
+          font-size: calc({{ block.settings.highlight_mobile_heading_size }} * {{ section.settings.text_size | default: 100 | times: 0.01 }});
+        {%- elsif block.settings.mobile_block_heading_size != blank -%}
+          font-size: {{ block.settings.mobile_block_heading_size | remove: 'px' | round: 0 | at_least: 12 }}px;
+        {%- elsif block.settings.highlight_heading_size != blank -%}
+          font-size: {{ block.settings.highlight_heading_size | remove: 'px' | round: 0 | at_least: 12 }}px;
+        {%- endif -%}
+      }
+    {%- endif -%}
+
+    /* Mobile & narrow custom CSS */
+    {%- if block.settings.enable_custom_css == true and block.settings.mobile_css != blank -%}
+      {%- assign mobile_css_rules = block.settings.mobile_css | strip | split: '}' -%}
+      {%- for rule in mobile_css_rules -%}
+        {%- assign clean_rule = rule | strip -%}
+        {%- if clean_rule contains '{' and clean_rule != blank -%}
+          {%- assign rule_parts = clean_rule | split: '{' -%}
+          {%- if rule_parts.size >= 2 -%}
+            {%- assign selector_part = rule_parts[0] | strip -%}
+            {%- assign css_part = rule_parts[1] | strip -%}
+            {%- if css_part != blank -%}
+              {%- if selector_part == blank -%}
+                #DP--{{ block.id }} { {{ css_part }} }
+              {%- else -%}
+                #DP--{{ block.id }} {{ selector_part }} { {{ css_part }} }
+              {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+    {%- endcapture -%}
+
+    @supports (container-type: inline-size) {
+      @container dp-heading-container (max-width: 300px) {
+        {{ small_context }}
+      }
+    }
+
+    @media (max-width: 767px) {
+      {{ small_context }}
+    }
+
+    {%- if block.settings.hidden_on == 'mobile' -%}
+      @media (max-width: 767px) {
+        .dsgn-pck__block-id-{{ block.id }} {
+          display: none;
+        }
+      }
+    {%- endif -%}
+
+    {%- if block.settings.hidden_on == 'desktop' -%}
+      @media (min-width: 768px) {
+        .dsgn-pck__block-id-{{ block.id }} {
+          display: none;
+        }
+      }
+    {%- endif -%}
+
+  </style>
+{%- endcapture -%}
+
+{%- capture opening_span -%}<span class="dsgn-pck__fancy" data-block-id="{{ block.id }}">{%- endcapture -%}
+{%- assign closing_span = '</span>' -%}
+
+{%- if block.settings.enable_highlighted_text and block.settings.enable_rough_notation -%}
+  {%- if block.settings.annotation_type == 'bracket' -%}
+    {%- assign bracket_value = block.settings.bracket_side | default: 'left' -%}
+    {%- if bracket_value == 'top-bottom' -%}
+      {%- assign brackets_array = 'top,bottom' -%}
+    {%- elsif bracket_value == 'left-right' -%}
+      {%- assign brackets_array = 'left,right' -%}
+    {%- else -%}
+      {%- assign brackets_array = bracket_value -%}
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- capture js_scripts -%}
+    <script src="https://cdn.shopify.com/s/files/1/0577/7673/4361/files/rough-notation.iife.js?v=1768286781" defer></script>
+    <script type="module" defer>
+      class DesignPackHeading extends HTMLElement {
+        constructor() {
+          super();
+          this.section = this.closest('#DP--{{ section_id }}');
+          this.intersectionObserver = null;
+          this.onIntersect = this.onIntersect.bind(this);
+          this.annotation = null;
+          this.hasInitialized = false;
+        }
+
+        connectedCallback() {
+          this.parentBlock = this.closest('[class*="dsgn-pck__block-id-"]');
+          const blockId = this.dataset.blockId;
+          this.fancyElement = this.querySelector('.dsgn-pck__fancy[data-block-id="' + blockId + '"]');
+
+          if (this.parentBlock && this.fancyElement) {
+            this.initRoughNotation();
+          }
+
+          this.onSectionLoad = this.onSectionLoad.bind(this);
+          window.addEventListener('shopify:section:load', this.onSectionLoad);
+        }
+
+        initRoughNotation() {
+          if (typeof RoughNotation === 'undefined') {
+            setTimeout(() => this.initRoughNotation(), 100);
+            return;
+          }
+
+          this.cleanup();
+
+          const annotationType = this.dataset.annotationType;
+          const annotationDuration = parseInt(this.dataset.annotationDuration) || 800;
+          const config = {
+            type: annotationType,
+            color: this.dataset.annotationColor,
+            strokeWidth: parseInt(this.dataset.annotationStrokeWidth) || 2,
+            padding: parseInt(this.dataset.annotationPadding) || 5,
+            animate: annotationDuration !== 0,
+            animationDuration: annotationDuration
+          };
+
+          if (annotationType === 'bracket' && this.dataset.annotationBrackets) {
+            config.brackets = this.dataset.annotationBrackets.split(',');
+          }
+
+          this.annotation = RoughNotation.annotate(this.fancyElement, config);
+
+          if (!this.intersectionObserver) {
+            this.intersectionObserver = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                this.onIntersect(entry);
+              });
+            }, { threshold: [0, 0.1, 0.5, 1] });
+          }
+
+          if (this.parentBlock) {
+            this.intersectionObserver.observe(this.parentBlock);
+          }
+        }
+
+        cleanup() {
+          if (this.annotation) {
+            this.annotation.remove();
+            this.annotation = null;
+          }
+        }
+
+        disconnectedCallback() {
+          this.cleanup();
+          if (this.intersectionObserver && this.parentBlock) {
+            this.intersectionObserver.unobserve(this.parentBlock);
+            this.intersectionObserver.disconnect();
+          }
+          window.removeEventListener('shopify:section:load', this.onSectionLoad);
+        }
+
+        onSectionLoad(event) {
+          const sectionId = this.section ? this.section.id.replace('DP--', '') : null;
+          if (sectionId && event.detail.sectionId === sectionId) {
+            this.hasInitialized = false;
+            this.initRoughNotation();
+          }
+        }
+
+        onIntersect(entry) {
+          if (entry.isIntersecting) {
+            if (!this.hasInitialized) {
+              if (this.annotation) {
+                const delay = parseInt(this.dataset.annotationDelay) || 0;
+                setTimeout(() => {
+                  this.annotation.show();
+                }, delay);
+              }
+              this.hasInitialized = true;
+            }
+          }
+        }
+      }
+
+      if (!customElements.get('dp-heading')) {
+        customElements.define('dp-heading', DesignPackHeading);
+      }
+    </script>
+  {%- endcapture -%}
+{%- endif -%}
+
+<div id="DP--{{ block.id }}" class="DP--{{ block.id }} dsgn-pck__block dsgn-pck__block-id-{{ block.id }} dsgn-pck__block--{{ block.type }} dsgn-pck__block--{{ block.index }} dsgn-pck__block--heading" {{ block.shopify_attributes }} {% if section.settings.animation != blank %}style="--dsgn-pck-animate: {{ block_index }};"{% endif %}>
+  {{ css_styles }}
+  {%- if block.settings.enable_highlighted_text and block.settings.enable_rough_notation -%}
+    <dp-heading
+      class="dsgn-pck__inner-block-container"
+      data-block-id="{{ block.id }}"
+      data-annotation-type="{{ block.settings.annotation_type }}"
+      data-annotation-color="{{ block.settings.annotation_color }}"
+      data-annotation-stroke-width="{{ block.settings.annotation_stroke_width | default: 2 }}"
+      data-annotation-padding="{{ block.settings.annotation_padding | default: 5 }}"
+      data-annotation-duration="{{ block.settings.annotation_duration | default: 800 }}"
+      data-annotation-delay="{{ block.settings.annotation_delay | default: 0 }}"
+      {%- if block.settings.annotation_type == 'bracket' -%}
+      data-annotation-brackets="{{ brackets_array }}"
+      {%- endif -%}
+    >
+  {%- else -%}
+    <div class="dsgn-pck__inner-block-container">
+  {%- endif -%}
+    {%- if block.settings.title != blank -%}
+      <{{- block.settings.heading_level }} class="dsgn-pck__heading">
+        {{ block.settings.title | replace: '[', opening_span | replace: ']', closing_span }}
+      </{{- block.settings.heading_level -}}>
+    {%- endif -%}
+  {%- if block.settings.enable_highlighted_text and block.settings.enable_rough_notation -%}
+    </dp-heading>
+  {%- else -%}
+    </div>
+  {%- endif -%}
+  {%- if block.settings.enable_highlighted_text and block.settings.enable_rough_notation -%}
+    {{ js_scripts }}
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Heading 🎒",
+  "tag": null,
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Heading",
+      "default": "Attention-grabbing headline"
+    },
+    {
+      "type": "color",
+      "id": "block_heading_color",
+      "label": "Color"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_custom_heading_size",
+      "label": "Enable custom heading size",
+      "default": false
+    },
+    {
+      "visible_if": "{{ block.settings.enable_custom_heading_size }}",
+      "type": "text",
+      "id": "block_heading_size",
+      "label": "Heading size",
+      "info": "Leave empty to default to base size of 35px."
+    },
+    {
+      "visible_if": "{{ block.settings.enable_custom_heading_size }}",
+      "type": "text",
+      "id": "mobile_block_heading_size",
+      "label": "📱 Mobile & narrow display heading size",
+      "info": "Leave empty to match custom heading size."
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_custom_text_style",
+      "label": "Enable custom text style",
+      "default": false
+    },
+    {
+      "visible_if": "{{ block.settings.enable_custom_text_style }}",
+      "type": "select",
+      "id": "text_style",
+      "label": "Text style",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "Default"
+        },
+        {
+          "value": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": "italic",
+          "label": "Italic"
+        },
+        {
+          "value": "bold",
+          "label": "Bold"
+        },
+        {
+          "value": "bold_italic",
+          "label": "Bold italic"
+        }
+      ]
+    },
+    {
+      "visible_if": "{{ block.settings.enable_custom_text_style }}",
+      "type": "select",
+      "id": "text_transform",
+      "label": "Text transform",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "Default"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "uppercase",
+          "label": "Uppercase"
+        },
+        {
+          "value": "lowercase",
+          "label": "Lowercase"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize"
+        }
+      ]
+    },
+    {
+      "visible_if": "{{ block.settings.enable_custom_text_style }}",
+      "type": "text",
+      "id": "letter_spacing",
+      "label": "Letter spacing"
+    },
+    {
+      "visible_if": "{{ block.settings.enable_custom_text_style }}",
+      "type": "text",
+      "id": "line_height",
+      "label": "Line height"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_custom_font",
+      "label": "Enable custom font",
+      "default": false
+    },
+    {
+      "visible_if": "{{ block.settings.enable_custom_font }}",
+      "type": "font_picker",
+      "id": "custom_font",
+      "label": "Custom font",
+      "default": "abel_n4"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_highlighted_text",
+      "label": "Enable highlighted text",
+      "default": false,
+      "info": "Use square brackets [] around text that you would like to highlight."
+    },
+    {
+      "visible_if": "{{ block.settings.enable_highlighted_text }}",
+      "type": "color",
+      "id": "highlight_text_color",
+      "label": "Highlighted text",
+      "default": "#FFFFFF"
+    },
+    {
+      "visible_if": "{{ block.settings.enable_highlighted_text and block.settings.enable_rough_notation == false }}",
+      "type": "color",
+      "id": "highlight_background_color",
+      "label": "Highlighted text background",
+      "default": "#000000"
+    },
+    {
+      "visible_if": "{{ block.settings.enable_highlighted_text }}",
+      "type": "text",
+      "id": "highlight_heading_size",
+      "label": "Highlighted text size",
+      "placeholder": "eg. 40px",
+      "info": "Set custom size for text in square brackets."
+    },
+    {
+      "visible_if": "{{ block.settings.enable_highlighted_text }}",
+      "type": "text",
+      "id": "highlight_mobile_heading_size",
+      "label": "📱 Mobile & narrow display highlighted text size",
+      "placeholder": "eg. 40px",
+    },
+    {
+      "visible_if": "{{ block.settings.enable_highlighted_text }}",
+      "type": "checkbox",
+      "id": "highlight_enable_custom_font",
+      "label": "Enable custom font on highlighted text",
+      "default": false
+    },
+    {
+      "visible_if": "{{ block.settings.enable_highlighted_text and block.settings.highlight_enable_custom_font }}",
+      "type": "font_picker",
+      "id": "highlight_custom_font",
+      "label": "Highlighted text custom font",
+      "default": "abel_n4"
+    },
+    {
+      "visible_if": "{{ block.settings.enable_highlighted_text }}",
+      "type": "html",
+      "id": "custom_highlight_css",
+      "label": "Highlighted text CSS",
+      "info": "Target the text in the square brackets with the class .dsgn-pck__fancy"
+    },
+    {
+      "visible_if": "{{ block.settings.enable_highlighted_text }}",
+      "type": "checkbox",
+      "id": "enable_rough_notation",
+      "label": "Enable hand-drawn annotation",
+      "default": false,
+      "info": "Add hand-drawn style annotations to highlighted text"
+    },
+    {
+      "visible_if": "{{ block.settings.enable_highlighted_text and block.settings.enable_rough_notation }}",
+      "type": "select",
+      "id": "annotation_type",
+      "label": "Annotation style",
+      "default": "underline",
+      "options": [
+        {
+          "value": "underline",
+          "label": "Underline"
+        },
+        {
+          "value": "box",
+          "label": "Box"
+        },
+        {
+          "value": "circle",
+          "label": "Circle"
+        },
+        {
+          "value": "highlight",
+          "label": "Highlight"
+        },
+        {
+          "value": "strike-through",
+          "label": "Strike-through"
+        },
+        {
+          "value": "crossed-off",
+          "label": "Crossed-off"
+        },
+        {
+          "value": "bracket",
+          "label": "Brackets"
+        }
+      ]
+    },
+    {
+      "visible_if": "{{ block.settings.enable_highlighted_text and block.settings.enable_rough_notation and block.settings.annotation_type == 'bracket' }}",
+      "type": "select",
+      "id": "bracket_side",
+      "label": "Bracket sides",
+      "default": "left-right",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        },
+        {
+          "value": "top-bottom",
+          "label": "Top and bottom"
+        },
+        {
+          "value": "left-right",
+          "label": "Left and right"
+        }
+      ]
+    },
+    {
+      "visible_if": "{{ block.settings.enable_highlighted_text and block.settings.enable_rough_notation }}",
+      "type": "color",
+      "id": "annotation_color",
+      "label": "Annotation color",
+      "default": "#000000"
+    },
+    {
+      "visible_if": "{{ block.settings.enable_highlighted_text and block.settings.enable_rough_notation }}",
+      "type": "range",
+      "id": "annotation_stroke_width",
+      "label": "Stroke width",
+      "min": 1,
+      "max": 10,
+      "default": 2,
+      "unit": "px"
+    },
+    {
+      "visible_if": "{{ block.settings.enable_highlighted_text and block.settings.enable_rough_notation }}",
+      "type": "range",
+      "id": "annotation_duration",
+      "label": "Animation duration",
+      "min": 0,
+      "max": 3000,
+      "step": 100,
+      "default": 800,
+      "unit": "ms",
+      "info": "Set to 0 to disable animation"
+    },
+    {
+      "visible_if": "{{ block.settings.enable_highlighted_text and block.settings.enable_rough_notation }}",
+      "type": "range",
+      "id": "annotation_delay",
+      "label": "Animation delay",
+      "min": 0,
+      "max": 3000,
+      "step": 100,
+      "default": 0,
+      "unit": "ms"
+    },
+    {
+      "visible_if": "{{ block.settings.enable_highlighted_text and block.settings.enable_rough_notation }}",
+      "type": "range",
+      "id": "annotation_padding",
+      "label": "Annotation padding",
+      "min": 0,
+      "max": 20,
+      "default": 5,
+      "unit": "px",
+      "info": "Space between text and annotation"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "default": "default",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "default",
+          "label": "Default"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "🖼 Layout"
+    },
+    {
+      "type": "range",
+      "id": "base_width",
+      "label": "Size",
+      "min": 50,
+      "max": 100,
+      "default": 100,
+      "unit": "%",
+      "info": "Size is based on the width of the container. [Learn more]( https://design-packs.gitbook.io/docs/fundamentals/block-settings/size-controls-for-image-and-video-blocks)"
+    },
+    {
+      "type": "text",
+      "id": "max_width",
+      "label": "Maximum width",
+      "placeholder": "eg. 1200px",
+      "info": "Sets width constraint for content."
+    },
+    {
+      "visible_if": "{{ block.settings.base_width < 100 or block.settings.max_width != blank }}",
+      "type": "select",
+      "id": "horizontal_alignment",
+      "label": "Horizontal alignment",
+      "default": "default",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "default",
+          "label": "Default"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "hidden_on",
+      "label": "Hidden on",
+      "default": "none",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "desktop",
+          "label": "Desktop"
+        },
+        {
+          "value": "mobile",
+          "label": "Mobile"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_level",
+      "label": "Heading level",
+      "options": [
+        {
+          "value": "h1",
+          "label": "h1"
+        },
+        {
+          "value": "h2",
+          "label": "h2"
+        },
+        {
+          "value": "h3",
+          "label": "h3"
+        },
+        {
+          "value": "h4",
+          "label": "h4"
+        },
+        {
+          "value": "h5",
+          "label": "h5"
+        },
+        {
+          "value": "h6",
+          "label": "h6"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_custom_css",
+      "label": "Enable custom CSS",
+      "default": false
+    },
+    {
+      "visible_if": "{{ block.settings.enable_custom_css == true }}",
+      "type": "liquid",
+      "id": "custom_css",
+      "label": "Custom CSS"
+    },
+    {
+      "visible_if": "{{ block.settings.enable_custom_css == true }}",
+      "type": "liquid",
+      "id": "mobile_css",
+      "label": "Mobile & narrow custom CSS",
+      "info": "Applied on small screens or in tight spaces."
+    },
+    {
+      "type": "paragraph",
+      "content": "Open [Design Packs](/admin/apps/design-packs-1/dashboard) to add/update new sections and blocks."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Heading 🎒",
+      "category": "* Design Packs: Basic"
+    }
+  ],
+}
+{% endschema %}

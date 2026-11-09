@@ -1,0 +1,1192 @@
+{%- comment -%}
+{
+  "pack_name": "Collapsible content block",
+  "pack_author": "Design Packs",
+  "license": "© Design Packs. All rights reserved. This code is protected by copyright law and may not be reproduced, distributed, or used without explicit permission from the author. Shopify complies with the Digital Millennium Copyright Act (DMCA) and responds to claims of copyright infringement using DMCA procedures, which could result in the termination of your Shopify account.",
+}
+{%- endcomment -%}
+
+{% comment %} Security Code - hides section when app uninstalled {% endcomment %}
+{%- unless content_for_header contains 'design_packs_file.js' -%}
+  {%- if request.design_mode -%}
+    <div class="dsgn-pck__no-app-warning">
+      <div class="dsgn-pck__no-app-warning-background">
+      </div>
+      <div class="dsgn-pck__no-app-warning-text dsgn-pck__rte">
+        <p><strong>WARNING!</strong> This premium section will not display properly without an active subscription for <a href="https://apps.shopify.com/design-packs" target="_blank" rel="noopener nofollow">Design Packs</a>. If you need any support please email <a href="mailto:info@design-packs.com" target="_blank" rel="noopener">info@design-packs.com</a> with your questions.</p>
+      </div>
+    </div>
+  {%- endif -%}
+  {%- break -%}
+{%- endunless -%}
+
+{%- comment -%} Assign: Preview section js fix {%- endcomment -%}
+{%- assign section_id = section.id | replace: '+', '' | replace: '=', '' -%}
+{%- assign block_index = section.blocks | find_index: 'id', block.id | plus: 1 -%}
+
+{%- assign enable_metafield_detect = block.settings.enabled_metafield_detect | default: section.settings.enable_metafield_detect | default: false -%}
+
+{%- assign block_text_color_alpha = block.settings.text_color | color_extract: 'alpha' | default: 0 -%}
+{%- assign block_border_color_alpha = block.settings.border_color | color_extract: 'alpha' | default: 0 -%}
+{%- assign heading_color_alpha = block.settings.heading_color | color_extract: 'alpha' | default: 0 -%}
+{%- assign heading_background_color_alpha = block.settings.heading_background_color | color_extract: 'alpha' | default: 0 -%}
+{%- assign content_color_alpha = block.settings.content_color | color_extract: 'alpha' | default: 0 -%}
+{%- assign content_background_color_alpha = block.settings.content_background_color | color_extract: 'alpha' | default: 0 -%}
+
+{%- liquid
+  if block.settings.padding_type == 'custom'
+    assign padding_array = block.settings.padding | split: ' '
+    assign block_padding_right = padding_array[2]
+  elsif block.settings.padding_type == 'range'
+    assign block_padding_right = block.settings.padding_right | append: 'px'
+  else
+    if block.settings.collapsible_style contains 'boxed'
+      assign block_padding_right = '25px'
+    else
+      assign block_padding_right = 0
+    endif
+  endif
+-%}
+{%- assign block_icon_color_alpha = block.settings.icon_color | color_extract: 'alpha' | default: 0 -%}
+
+{%- comment -%}Icons: Inline SVGs using currentColor{%- endcomment -%}
+{%- liquid
+  assign icon_rotates = false
+  if block.settings.icon_style == 'caret' or block.settings.icon_style == 'chevron' or block.settings.icon_style == 'arrow' or block.settings.icon_style == 'plus_x'
+    assign icon_rotates = true
+  endif
+-%}
+
+{%- capture closed_icon -%}
+  {%- case block.settings.icon_style -%}
+    {%- when 'plus_minus' -%}
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" fill="currentColor"/></svg>
+    {%- when 'plus_x' -%}
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" fill="currentColor"/></svg>
+    {%- when 'caret' -%}
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z" fill="currentColor"/></svg>
+    {%- when 'chevron' -%}
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    {%- when 'arrow' -%}
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    {%- when 'plus_minus_square' -%}
+      <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m21 3.998c0-.478-.379-1-1-1h-16c-.62 0-1 .519-1 1v16c0 .621.52 1 1 1h16c.478 0 1-.379 1-1zm-16.5.5h15v15h-15zm6.75 6.752h-3.5c-.414 0-.75.336-.75.75s.336.75.75.75h3.5v3.5c0 .414.336.75.75.75s.75-.336.75-.75v-3.5h3.5c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-3.5v-3.5c0-.414-.336-.75-.75-.75s-.75.336-.75.75z" fill-rule="nonzero" fill="currentColor"/></svg>
+    {%- when 'circle_plus_minus' -%}
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+  {%- endcase -%}
+{%- endcapture -%}
+
+{%- capture open_icon -%}
+  {%- case block.settings.icon_style -%}
+    {%- when 'plus_minus' -%}
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 10h24v4h-24z" fill="currentColor"/></svg>
+    {%- when 'plus_x' -%}
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg>
+    {%- when 'caret' -%}
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 16.67l2.829 2.83 9.175-9.339 9.167 9.339 2.829-2.83-11.996-12.17z" fill="currentColor"/></svg>
+    {%- when 'chevron' -%}
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 15 12 9 18 15"/></svg>
+    {%- when 'arrow' -%}
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+    {%- when 'plus_minus_square' -%}
+      <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m21 4c0-.478-.379-1-1-1h-16c-.62 0-1 .519-1 1v16c0 .621.52 1 1 1h16c.478 0 1-.379 1-1zm-16.5.5h15v15h-15zm11.75 6.752h-8.5c-.414 0-.75.336-.75.75s.336.75.75.75h8.5c.414 0 .75-.336.75-.75s-.336-.75-.75-.75z" fill-rule="nonzero" fill="currentColor"/></svg>
+    {%- when 'circle_plus_minus' -%}
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+  {%- endcase -%}
+{%- endcapture -%}
+
+{%- assign block_horizontal_setting = block.settings.horizontal_alignment | default: 'default' -%}
+
+{%- capture css_styles -%}
+<style data-dp-css="blocks/_dpb_-_collapsible_content.liquid">
+
+  [id*=preview-block] .dsgn-pck__accordion {
+    container-type: normal !important;
+  }
+
+  .dsgn-pck__block-id-{{ block.id }} {
+    width: {{ block.settings.base_width }}%;
+    max-width: {{ block.settings.max_width | remove: 'px' }}px;
+    display: flex;
+    {%- if block.settings.horizontal_alignment == 'left' -%}
+      align-self: flex-start;
+      margin-left: 0;
+      margin-right: auto;
+      --block-horizontal-alignment: flex-start;
+    {%- elsif block.settings.horizontal_alignment == 'right' -%}
+      align-self: flex-end;
+      margin-left: auto;
+      margin-right: 0;
+      --block-horizontal-alignment: flex-end;
+    {%- elsif block.settings.horizontal_alignment == 'center' -%}
+      align-self: center;
+      margin-left: auto;
+      margin-right: auto;
+      --block-horizontal-alignment: center;
+    {%- endif -%}
+    {% if block_text_color_alpha != 0 %}
+      --dp-heading-color: {{ block.settings.text_color }};
+      --dp-text-color: {{ block.settings.text_color }};
+      color: {{ block.settings.text_color }};
+    {% endif %}
+    --section-horizontal-alignment: {%- if section.settings.text_alignment == 'center' -%}center{%- elsif section.settings.text_alignment == 'right' -%}flex-end{%- endif -%};
+    align-self: var(--block-horizontal-alignment, var(--section-horizontal-alignment));
+  }
+
+  .dsgn-pck__block-id-{{ block.id }} dp-collapsible-content {
+    display: block;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__accordion {
+    container-type: inline-size;
+    container-name: dp-collapsible-content-container;
+    background-color: {{ block.settings.background_solid }};
+    background-image: {{ block.settings.background_color }};
+  }
+
+  .dsgn-pck__block.dsgn-pck__block--collapsible_style-lined + .dsgn-pck__block.dsgn-pck__block--collapsible_style-lined .dsgn-pck__accordion {
+    border-top: 0;
+  }
+
+  .dsgn-pck__block.dsgn-pck__block--collapsible_style-lined + .dsgn-pck__block.dsgn-pck__block--collapsible_style-lined {
+    margin-top: 0;
+  }
+
+  {%- if block.settings.collapsible_style == 'lined' -%}
+
+    .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__accordion {
+      border-top: {{ block.settings.border_style }} {{ block.settings.border_width }}px;
+      border-bottom: {{ block.settings.border_style }} {{ block.settings.border_width }}px;
+      {%- if block_border_color_alpha != 0 -%}
+        border-color: {{ block.settings.border_color }};
+      {%- elsif block_text_color_alpha != 0 -%}
+        border-color: {{ block.settings.text_color }};
+      {%- else -%}
+        border-color: {{ section.settings.text_color }};
+      {%- endif -%}
+    }
+  {%- elsif block.settings.collapsible_style == 'boxed_header' -%}
+
+    .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__question {
+      border: {{ block.settings.border_style }} {{ block.settings.border_width }}px;
+      border-radius: {{ block.settings.border_radius }}px;
+      {%- if block_border_color_alpha != 0 -%}
+        border-color: {{ block.settings.border_color }};
+      {%- elsif block_text_color_alpha != 0 -%}
+        border-color: {{ block.settings.text_color }};
+      {%- else -%}
+        border-color: {{ section.settings.text_color }};
+      {%- endif -%}
+      overflow: hidden;
+    }
+  {%- elsif block.settings.collapsible_style == 'boxed_full' -%}
+
+    .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__accordion {
+      border: {{ block.settings.border_style }} {{ block.settings.border_width }}px;
+      border-radius: {{ block.settings.border_radius }}px;
+      {%- if block_border_color_alpha != 0 -%}
+        border-color: {{ block.settings.border_color }};
+      {%- elsif block_text_color_alpha != 0 -%}
+        border-color: {{ block.settings.text_color }};
+      {%- else -%}
+        border-color: {{ section.settings.text_color }};
+      {%- endif -%}
+      overflow: hidden;
+    }
+  {%- endif -%}
+
+  .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__question {
+    position: relative;
+    cursor: pointer;
+    display: block;
+    {% if block.settings.padding_type == 'range' %}
+      padding: {{ block.settings.padding_top }}px {{ block.settings.padding_right }}px {{ block.settings.padding_bottom }}px {{ block.settings.padding_left }}px;
+      {%- if block.settings.text_alignment == 'right' -%}
+        padding-right: calc({{ block.settings.padding_right }}px + 25px);
+      {%- endif -%}
+    {% elsif block.settings.padding_type == 'custom' %}
+      padding: {{ block.settings.padding }};
+      padding-right: calc({{ block_padding_right}} + 25px);
+    {% else %}
+      {%- if block.settings.collapsible_style contains 'boxed' -%}
+        padding: 15px 25px;
+      {%- elsif section.settings.text_alignment == 'left' or block.settings.text_alignment == 'left' -%}
+        padding: 10px 25px 10px 0;
+      {%- else -%}
+        padding: 10px 25px 10px 25px;
+      {%- endif -%}
+    {% endif %}
+    color: {{ section.settings.text_color }};
+    {%- if heading_color_alpha != 0 -%}
+      color: {{ block.settings.heading_color }};
+    {%- endif -%}
+    {%- if heading_background_color_alpha != 0 -%}
+      background-color: {{ block.settings.heading_background_color }};
+    {%- endif -%}
+  }
+
+  .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__question-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__heading-icon {
+    max-width: {{ block.settings.heading_icon_size }}px;
+    flex: 0 0 {{ block.settings.heading_icon_size }}px;
+  }
+
+  .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__heading-icon__wrapper {
+    position: relative;
+    height: auto;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+  }
+
+  .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__heading-icon__wrapper svg {
+    width: 100%;
+  }
+
+  .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__heading-icon__wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__heading-icon--circle .dsgn-pck__heading-icon__wrapper {
+    border-radius: 50%;
+  }
+
+  .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__heading-icon--rounded .dsgn-pck__heading-icon__wrapper {
+    border-radius: 5px;
+  }
+
+  .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__heading-icon--original .dsgn-pck__heading-icon__wrapper {
+    aspect-ratio: auto;
+  }
+
+  .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__heading-icon--original .dsgn-pck__heading-icon__wrapper img {
+    object-fit: contain;
+  }
+
+  .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__small-heading {
+    margin: 0;
+    color: var(--dp-heading-color);
+    {%- if heading_color_alpha != 0 -%}
+      color: {{ block.settings.heading_color }};
+    {%- endif -%}
+    font-size: calc(var(--dp-g-small-heading-size, var(--dp-small-heading-size, 24px)) * {{ section.settings.text_size | default: 100 | times: 0.008 }});
+    {%- if section.settings.override_theme_font != blank -%}
+      font-family: var(--heading-font);
+      font-weight: var(--heading-font-weight);
+      font-style: var(--heading-font-style);
+    {%- endif -%}
+    {%- if block.settings.text_alignment != 'default' -%}
+      text-align: {{ block.settings.text_alignment }};
+    {%- else -%}
+      text-align: var(--block-text-alignment, var(--section-text-alignment));
+    {%- endif -%}
+  }
+
+  .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__question::-webkit-details-marker {
+    display: none;
+  }
+
+  .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: {{ block_padding_right }};
+    height: {{ block.settings.icon_size }}px;
+    width: {{ block.settings.icon_size }}px;
+    display: flex;
+    {%- if block_icon_color_alpha != 0 -%}
+      color: {{ block.settings.icon_color }};
+    {%- elsif heading_color_alpha != 0 -%}
+      color: {{ block.settings.heading_color }};
+    {%- elsif block_text_color_alpha != 0 -%}
+      color: {{ block.settings.text_color }};
+    {%- endif -%}
+    align-items: center;
+    justify-content: center;
+    {%- if block.settings.animate_icon and icon_rotates -%}
+      transition: transform 0.3s ease;
+    {%- endif -%}
+  }
+
+  .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__icon-closed,
+  .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__icon-open {
+    display: block;
+    width: 100%;
+  }
+
+  .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__icon-open {
+    display: none;
+  }
+
+  {%- if block.settings.animate_icon and icon_rotates -%}
+    .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__icon-open {
+      display: none !important;
+    }
+
+    .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__accordion[open] > .dsgn-pck__question .dsgn-pck__icon {
+      transform: translateY(-50%) rotate({% if block.settings.icon_style == 'arrow' %}90deg{% elsif block.settings.icon_style == 'plus_x' %}45deg{% else %}180deg{% endif %});
+    }
+  {%- else -%}
+    .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__accordion[open] > .dsgn-pck__question .dsgn-pck__icon-closed {
+      display: none;
+    }
+
+    .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__accordion[open] > .dsgn-pck__question .dsgn-pck__icon-open {
+      display: flex;
+    }
+  {%- endif -%}
+
+  .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__answer {
+    margin-bottom: 0;
+    {%- if content_background_color_alpha != 0 -%}
+      background-color: {{ block.settings.content_background_color }};
+    {%- endif -%}
+    {%- if block.settings.animate_content -%}
+      overflow: hidden;
+      content-visibility: visible;
+      transition: max-height 0.3s ease, opacity 0.3s ease 0.1s;
+      max-height: 0;
+      opacity: 0;
+    {%- endif -%}
+  }
+
+  .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__inner-answer {
+    font-size: calc(var(--dp-g-body-size, var(--dp-body-size, 18px)) * {{ section.settings.text_size | default: 100 | times: 0.01 }});
+    {%- if content_color_alpha != 0 -%}
+      color: {{ block.settings.content_color }};
+    {%- endif -%}
+    {%- if block.settings.text_alignment != 'default' -%}
+      text-align: {{ block.settings.text_alignment }};
+    {%- else -%}
+      text-align: var(--block-text-alignment, var(--section-text-alignment));
+    {%- endif -%}
+    {% if block.settings.content_padding_type == 'range' %}
+      padding: {{ block.settings.content_padding_top }}px {{ block.settings.content_padding_right }}px {{ block.settings.content_padding_bottom }}px {{ block.settings.content_padding_left }}px;
+    {% elsif block.settings.content_padding_type == 'custom' %}
+      padding: {{ block.settings.content_padding }};
+    {% else %}
+      {%- if block.settings.collapsible_style == 'boxed_full' -%}
+        padding: 0px 25px 15px 25px;
+      {%- elsif block.settings.collapsible_style == 'boxed_header' -%}
+        padding: 25px;
+      {%- else -%}
+        padding: 10px 0;
+      {%- endif -%}
+    {% endif %}
+  }
+
+  .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__rte p,  .dsgn-pck__block-id-{{ block.id }} .dsgn-pck__rte ul {
+    color: var(--dp-text-color);
+    {%- if content_color_alpha != 0 -%}
+      color: {{ block.settings.content_color }};
+    {%- endif -%}
+  }
+
+  /* Custom CSS */
+  {%- if block.settings.enable_custom_css == true and block.settings.custom_css != blank -%}
+    {%- assign custom_css_rules = block.settings.custom_css | strip | split: '}' -%}
+    {%- for rule in custom_css_rules -%}
+      {%- assign clean_rule = rule | strip -%}
+      {%- if clean_rule contains '{' and clean_rule != blank -%}
+        {%- assign rule_parts = clean_rule | split: '{' -%}
+        {%- if rule_parts.size >= 2 -%}
+          {%- assign selector_part = rule_parts[0] | strip -%}
+          {%- assign css_part = rule_parts[1] | strip -%}
+          {%- if css_part != blank -%}
+            {%- if selector_part == blank -%}
+              #DP--{{ block.id }} { {{ css_part }} }
+            {%- else -%}
+              #DP--{{ block.id }} {{ selector_part }} { {{ css_part }} }
+            {%- endif -%}
+          {%- endif -%}
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+
+  /* Small context - small container and mobile */
+  {%- capture small_context -%}
+    /* Mobile & narrow custom CSS */
+    {%- if block.settings.enable_custom_css == true and block.settings.mobile_css != blank -%}
+      {%- assign mobile_css_rules = block.settings.mobile_css | strip | split: '}' -%}
+      {%- for rule in mobile_css_rules -%}
+        {%- assign clean_rule = rule | strip -%}
+        {%- if clean_rule contains '{' and clean_rule != blank -%}
+          {%- assign rule_parts = clean_rule | split: '{' -%}
+          {%- if rule_parts.size >= 2 -%}
+            {%- assign selector_part = rule_parts[0] | strip -%}
+            {%- assign css_part = rule_parts[1] | strip -%}
+            {%- if css_part != blank -%}
+              {%- if selector_part == blank -%}
+                #DP--{{ block.id }} { {{ css_part }} }
+              {%- else -%}
+                #DP--{{ block.id }} {{ selector_part }} { {{ css_part }} }
+              {%- endif -%}
+            {%- endif -%}
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+  {%- endcapture -%}
+
+  @supports (container-type: inline-size) {
+    @container dp-collapsible-content-container (max-width: 300px) {
+      {{ small_context }}
+    }
+  }
+
+  @media (max-width: 767px) {
+    {{ small_context }}
+  }
+
+  /* Hide or show on mobile and desktop */
+  {%- if block.settings.hidden_on == 'mobile' -%}
+    @media (max-width: 767px) {
+      .dsgn-pck__block-id-{{ block.id }} {
+        display: none;
+      }
+    }
+  {%- endif -%}
+
+  {%- if block.settings.hidden_on == 'desktop' -%}
+    @media (min-width: 768px) {
+      .dsgn-pck__block-id-{{ block.id }} {
+        display: none;
+      }
+    }
+  {%- endif -%}
+
+</style>
+{%- endcapture -%}
+
+{%- capture js_scripts -%}
+  <script type="module" defer>
+    if (!customElements.get('dp-collapsible-content')) {
+      class DPCollapsibleContent extends HTMLElement {
+        constructor() {
+          super();
+          this.isAnimating = false;
+          this.handleClick = this.handleClick.bind(this);
+        }
+
+        connectedCallback() {
+          this.details = this.querySelector('.dsgn-pck__accordion');
+          this.summary = this.querySelector('.dsgn-pck__question');
+          this.answer = this.querySelector('.dsgn-pck__answer');
+          this.animate = this.dataset.animate === 'true';
+          this.duration = parseInt(this.dataset.duration) || 300;
+
+          if (!this.details || !this.summary || !this.answer) return;
+
+          if (this.animate && this.details.open) {
+            this.answer.style.maxHeight = this.answer.scrollHeight + 'px';
+            this.answer.style.opacity = '1';
+          }
+
+          this.summary.addEventListener('click', this.handleClick);
+        }
+
+        disconnectedCallback() {
+          if (this.summary) {
+            this.summary.removeEventListener('click', this.handleClick);
+          }
+        }
+
+        handleClick(e) {
+          if (!this.animate) return;
+
+          e.preventDefault();
+          if (this.isAnimating) return;
+          this.isAnimating = true;
+
+          if (this.details.open) {
+            this.close();
+          } else {
+            this.open();
+          }
+        }
+
+        open() {
+          this.details.open = true;
+          this.answer.style.maxHeight = '0';
+          this.answer.style.opacity = '0';
+          this.answer.offsetHeight;
+          this.answer.style.maxHeight = this.answer.scrollHeight + 'px';
+          this.answer.style.opacity = '1';
+          this.answer.setAttribute('aria-hidden', 'false');
+          setTimeout(() => {
+            this.answer.style.maxHeight = 'none';
+            this.isAnimating = false;
+          }, this.duration);
+        }
+
+        close() {
+          this.answer.style.maxHeight = this.answer.scrollHeight + 'px';
+          this.answer.style.opacity = '1';
+          this.answer.style.transition = 'max-height 0.3s ease, opacity 0.15s ease';
+          this.answer.offsetHeight;
+          this.answer.style.maxHeight = '0';
+          this.answer.style.opacity = '0';
+          this.answer.setAttribute('aria-hidden', 'true');
+          setTimeout(() => {
+            this.details.open = false;
+            this.answer.style.transition = '';
+            this.isAnimating = false;
+          }, this.duration);
+        }
+      }
+
+      customElements.define('dp-collapsible-content', DPCollapsibleContent);
+    }
+  </script>
+{%- endcapture -%}
+
+{% if block.settings.text == blank and block.blocks.size == 0 %}
+  {% break %}
+{% endif %}
+
+<div id="DP--{{ block.id }}" class="DP--{{ block.id }} dsgn-pck__block dsgn-pck__block-id-{{ block.id }} dsgn-pck__block--collapsible_content dsgn-pck__block--{{ block.type }} dsgn-pck__block--{{ block.index }} dsgn-pck__block--collapsible_style-{{ block.settings.collapsible_style }} dsgn-pck__justify-{%- if block.settings.horizontal_alignment != 'default' -%}{{ block.settings.horizontal_alignment }}{%- else -%}{{ section.settings.text_alignment }}{%- endif -%}" {{ block.shopify_attributes }} {% if section.settings.animation != blank %}style="--dsgn-pck-animate: {{ block_index }};"{% endif %}>
+  {{ css_styles }}
+  <dp-collapsible-content data-animate="{{ block.settings.animate_content }}" data-duration="300">
+    <details class="dsgn-pck__accordion dsgn-pck__icon-style-{{ block.settings.icon_style }}" {%- if block.settings.show_open == true -%} open {%- endif -%}>
+      <summary class="dsgn-pck__question">
+        <span class="dsgn-pck__question-content">
+          {%- if block.settings.heading_icon != blank -%}
+            <span class="dsgn-pck__heading-icon dsgn-pck__heading-icon--{{ block.settings.heading_icon_crop }}">
+              <span class="dsgn-pck__heading-icon__wrapper">
+                <svg viewBox="0 0 1000 1000"></svg>
+                {%- assign icon_widths = '40,60,80,100,120,150' -%}
+                {{ block.settings.heading_icon | image_url: width: block.settings.heading_icon.width | image_tag: loading: 'lazy', widths: icon_widths }}
+              </span>
+            </span>
+          {%- endif -%}
+          <h3 class="dsgn-pck__small-heading">{{ block.settings.title }}</h3>
+        </span>
+        <span class="dsgn-pck__icon" aria-hidden="true">
+          <span class="dsgn-pck__icon-closed">{{ closed_icon }}</span>
+          <span class="dsgn-pck__icon-open">{{ open_icon }}</span>
+        </span>
+      </summary>
+      <div class="dsgn-pck__answer" {%- if block.settings.animate_content %} aria-hidden="{% if block.settings.show_open %}false{% else %}true{% endif %}"{% endif -%}>
+        <div class="dsgn-pck__inner-answer dsgn-pck__text dsgn-pck__rte">
+          {{ block.settings.text }}
+          {%- content_for 'blocks' -%}
+        </div>
+      </div>
+    </details>
+  </dp-collapsible-content>
+  {{ js_scripts }}
+</div>
+
+{% schema %}
+  {
+    "name": "Collapsible content 🎒",
+    "tag": null,
+    "settings": [
+      {
+        "type": "inline_richtext",
+        "id": "title",
+        "label": "Heading",
+        "default": "Shipping information"
+      },
+      {
+        "type": "image_picker",
+        "id": "heading_icon",
+        "label": "Heading icon"
+      },
+      {
+        "visible_if": "{{ block.settings.heading_icon != blank }}",
+        "type": "range",
+        "id": "heading_icon_size",
+        "label": "Icon size",
+        "min": 20,
+        "max": 100,
+        "step": 2,
+        "default": 40,
+        "unit": "px"
+      },
+      {
+        "visible_if": "{{ block.settings.heading_icon != blank }}",
+        "type": "select",
+        "id": "heading_icon_crop",
+        "label": "Icon crop",
+        "default": "square",
+        "options": [
+          {
+            "value": "circle",
+            "label": "Circle"
+          },
+          {
+            "value": "rounded",
+            "label": "Rounded"
+          },
+          {
+            "value": "square",
+            "label": "Square"
+          },
+          {
+            "value": "original",
+            "label": "Original"
+          }
+        ]
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Collapsed content",
+        "default": "<p>Lorem ipsum dolor.</p>",
+        "info": "Use blocks for more complex content like images, videos, and more."
+      },
+      {
+        "type": "select",
+        "id": "collapsible_style",
+        "label": "Style",
+        "options": [
+          {
+            "value": "lined",
+            "label": "Lined"
+          },
+          {
+            "value": "boxed_header",
+            "label": "Boxed header"
+          },
+          {
+            "value": "boxed_full",
+            "label": "Boxed full"
+          }
+        ],
+        "default": "lined"
+      },
+      {
+        "type": "checkbox",
+        "id": "animate_content",
+        "label": "Animate open/close",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_open",
+        "label": "Show open by default",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Toggle icon"
+      },
+      {
+        "type": "select",
+        "id": "icon_style",
+        "label": "Style",
+        "options": [
+          {
+            "value": "plus_minus",
+            "label": "Plus and minus"
+          },
+          {
+            "value": "plus_minus_square",
+            "label": "Plus and minus square"
+          },
+          {
+            "value": "circle_plus_minus",
+            "label": "Plus and minus circle"
+          },
+          {
+            "value": "caret",
+            "label": "Caret"
+          },
+          {
+            "value": "chevron",
+            "label": "Chevron"
+          },
+          {
+            "value": "arrow",
+            "label": "Arrow"
+          },
+          {
+            "value": "plus_x",
+            "label": "Plus to X"
+          }
+        ],
+        "default": "plus_minus_square"
+      },
+      {
+        "type": "color",
+        "id": "icon_color",
+        "label": "Color",
+        "alpha": true
+      },
+      {
+        "type": "range",
+        "id": "icon_size",
+        "label": "Size",
+        "min": 10,
+        "max": 40,
+        "step": 1,
+        "unit": "px",
+        "default": 20
+      },
+      {
+        "type": "checkbox",
+        "id": "animate_icon",
+        "label": "Animate icon rotation",
+        "default": false,
+        "visible_if": "{{ block.settings.icon_style == 'caret' or block.settings.icon_style == 'chevron' or block.settings.icon_style == 'arrow' or block.settings.icon_style == 'plus_x' }}"
+      },
+      {
+        "type": "header",
+        "content": "✏️ Text appearance"
+      },
+      {
+        "type": "select",
+        "id": "text_alignment",
+        "label": "Text alignment",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          },
+          {
+            "value": "default",
+            "label": "Default"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "🎨 Design"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text",
+        "alpha": true
+      },
+      {
+        "type": "color",
+        "id": "background_solid",
+        "label": "Background",
+        "alpha": true
+      },
+      {
+        "type": "select",
+        "id": "border_style",
+        "label": "Border style",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "solid",
+            "label": "Solid"
+          },
+          {
+            "value": "dashed",
+            "label": "Dashed"
+          },
+          {
+            "value": "dotted",
+            "label": "Dotted"
+          },
+          {
+            "value": "double",
+            "label": "Double"
+          },
+          {
+            "value": "groove",
+            "label": "Groove"
+          },
+          {
+            "value": "ridge",
+            "label": "Ridge"
+          },
+          {
+            "value": "inset",
+            "label": "Inset"
+          },
+          {
+            "value": "outset",
+            "label": "Outset"
+          }
+        ],
+        "default": "solid"
+      },
+      {
+        "type": "range",
+        "id": "border_width",
+        "min": 0,
+        "max": 10,
+        "step": 0.5,
+        "unit": "px",
+        "label": "Border width",
+        "default": 1,
+      },
+      {
+        "visible_if": "{{ block.settings.border_width > 0 }}",
+        "type": "color",
+        "id": "border_color",
+        "label": "Border color",
+        "alpha": true,
+      },
+      {
+        "type": "range",
+        "id": "border_radius",
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "label": "Border radius",
+        "default": 5,
+        "visible_if": "{{ block.settings.collapsible_style contains 'boxed' }}"
+      },
+      {
+        "type": "checkbox",
+        "id": "view_additional_style_settings",
+        "label": "View additional design settings",
+        "default": false
+      },
+      {
+        "visible_if": "{{ block.settings.view_additional_style_settings == true }}",
+        "type": "header",
+        "content": "Header design"
+      },
+      {
+        "visible_if": "{{ block.settings.view_additional_style_settings == true }}",
+        "type": "color",
+        "id": "heading_color",
+        "label": "Heading",
+        "alpha": true
+      },
+      {
+        "visible_if": "{{ block.settings.view_additional_style_settings == true }}",
+        "type": "color",
+        "id": "heading_background_color",
+        "label": "Header background",
+        "alpha": true
+      },
+      {
+        "visible_if": "{{ block.settings.view_additional_style_settings == true }}",
+        "type": "select",
+        "id": "padding_type",
+        "label": "Header padding",
+        "options": [
+          {
+            "value": "auto",
+            "label": "Auto"
+          },
+          {
+            "value": "range",
+            "label": "Range"
+          },
+          {
+            "value": "custom",
+            "label": "Custom"
+          }
+        ],
+        "default": "auto"
+      },
+      {
+        "visible_if": "{{ block.settings.view_additional_style_settings == true and block.settings.padding_type == 'custom' }}",
+        "type": "text",
+        "id": "padding",
+        "label": "Custom padding",
+        "default": "10px 20px 30px 40px",
+        "info": "Enter padding in the format: top right bottom left. Example: 10px 20px 30px 40px [Learn more](https://developer.mozilla.org/en-US/docs/Web/CSS/padding)"
+      },
+      {
+        "visible_if": "{{ block.settings.view_additional_style_settings == true and block.settings.padding_type == 'range' }}",
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 20
+      },
+      {
+        "visible_if": "{{ block.settings.view_additional_style_settings == true and block.settings.padding_type == 'range' }}",
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 20
+      },
+      {
+        "visible_if": "{{ block.settings.view_additional_style_settings == true and block.settings.padding_type == 'range' }}",
+        "type": "range",
+        "id": "padding_left",
+        "label": "Padding left",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 20
+      },
+      {
+        "visible_if": "{{ block.settings.view_additional_style_settings == true and block.settings.padding_type == 'range' }}",
+        "type": "range",
+        "id": "padding_right",
+        "label": "Padding right",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 20
+      },
+      {
+        "visible_if": "{{ block.settings.view_additional_style_settings == true }}",
+        "type": "header",
+        "content": "Content design"
+      },
+      {
+        "visible_if": "{{ block.settings.view_additional_style_settings == true }}",
+        "type": "color",
+        "id": "content_color",
+        "label": "Content",
+        "alpha": true
+      },
+      {
+        "visible_if": "{{ block.settings.view_additional_style_settings == true }}",
+        "type": "color",
+        "id": "content_background_color",
+        "label": "Content background",
+        "alpha": true
+      },
+      {
+        "visible_if": "{{ block.settings.view_additional_style_settings == true }}",
+        "type": "select",
+        "id": "content_padding_type",
+        "label": "Content padding",
+        "options": [
+          {
+            "value": "auto",
+            "label": "Auto"
+          },
+          {
+            "value": "range",
+            "label": "Range"
+          },
+          {
+            "value": "custom",
+            "label": "Custom"
+          }
+        ],
+        "default": "auto"
+      },
+      {
+        "visible_if": "{{ block.settings.view_additional_style_settings == true and block.settings.content_padding_type == 'custom' }}",
+        "type": "text",
+        "id": "content_padding",
+        "label": "Custom padding",
+        "default": "10px 20px 30px 40px",
+        "info": "Enter padding in the format: top right bottom left. Example: 10px 20px 30px 40px [Learn more](https://developer.mozilla.org/en-US/docs/Web/CSS/padding)"
+      },
+      {
+        "visible_if": "{{ block.settings.view_additional_style_settings == true and block.settings.content_padding_type == 'range' }}",
+        "type": "range",
+        "id": "content_padding_top",
+        "label": "Padding top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 10
+      },
+      {
+        "visible_if": "{{ block.settings.view_additional_style_settings == true and block.settings.content_padding_type == 'range' }}",
+        "type": "range",
+        "id": "content_padding_bottom",
+        "label": "Padding bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 10
+      },
+      {
+        "visible_if": "{{ block.settings.view_additional_style_settings == true and block.settings.content_padding_type == 'range' }}",
+        "type": "range",
+        "id": "content_padding_left",
+        "label": "Padding left",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 0
+      },
+      {
+        "visible_if": "{{ block.settings.view_additional_style_settings == true and block.settings.content_padding_type == 'range' }}",
+        "type": "range",
+        "id": "content_padding_right",
+        "label": "Padding right",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 0
+      },
+      {
+        "type": "header",
+        "content": "🖼 Layout"
+      },
+      {
+        "type": "range",
+        "id": "base_width",
+        "label": "Size",
+        "min": 10,
+        "max": 100,
+        "default": 100,
+        "unit": "%",
+        "info": "Size is based on the width of the container. [Learn more]( https://design-packs.gitbook.io/docs/fundamentals/block-settings/size-controls-for-image-and-video-blocks)"
+      },
+      {
+        "type": "text",
+        "id": "max_width",
+        "label": "Maximum width",
+        "placeholder": "eg. 400px",
+        "info": "Sets width constraint for content."
+      },
+      {
+        "visible_if": "{{ block.settings.base_width < 100 or block.settings.max_width != blank }}",
+        "type": "select",
+        "id": "horizontal_alignment",
+        "label": "Horizontal alignment",
+        "default": "default",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          },
+          {
+            "value": "default",
+            "label": "Default"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "hidden_on",
+        "label": "Hidden on",
+        "default": "none",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "desktop",
+            "label": "Desktop"
+          },
+          {
+            "value": "mobile",
+            "label": "Mobile"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_custom_css",
+        "label": "Enable custom CSS",
+        "default": false
+      },
+      {
+        "visible_if": "{{ block.settings.enable_custom_css == true }}",
+        "type": "liquid",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      },
+      {
+        "visible_if": "{{ block.settings.enable_custom_css == true }}",
+        "type": "liquid",
+        "id": "mobile_css",
+        "label": "Mobile & narrow custom CSS",
+        "info": "Applied on small screens or in tight spaces."
+      },
+      {
+        "type": "paragraph",
+        "content": "Open [Design Packs](/admin/apps/design-packs-1/dashboard) to add/update new sections and blocks."
+      }
+    ],
+    "blocks": [
+      {
+        "type": "@theme"
+      },
+      {
+        "type": "@app"
+      },
+      {
+        "type": "dpb_-_heading"
+      },
+      {
+        "type": "dpb_-_button-group"
+      },
+      {
+        "type": "dpb_-_inset_image"
+      },
+      {
+        "type": "dpb_-_video"
+      },
+      {
+        "type": "dpb_-_icons"
+      },
+      {
+        "type": "dpb_-_text"
+      },
+      {
+        "type": "dpb_-_divider"
+      },
+      {
+        "type": "dpb_-_spacer"
+      },
+      {
+        "type": "_dpb_-_columns"
+      },
+      {
+        "type": "_dpb_-_group"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collapsible content 🎒",
+        "category": "* Design Packs: Interactive"
+      }
+    ],
+  }
+{% endschema %}

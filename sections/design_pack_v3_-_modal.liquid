@@ -1,0 +1,1168 @@
+{%- comment -%}
+{
+  "pack_name": "Popup modal",
+  "pack_author": "Design Packs",
+  "license": "© Design Packs. All rights reserved. This code is protected by copyright law and may not be reproduced, distributed, or used without explicit permission from the author. Shopify complies with the Digital Millennium Copyright Act (DMCA) and responds to claims of copyright infringement using DMCA procedures, which could result in the termination of your Shopify account.",
+}
+{%- endcomment -%}
+
+{% comment %} Security Code - hides section when app uninstalled {% endcomment %}
+{%- unless content_for_header contains 'design_packs_file.js' -%}
+  {%- if request.design_mode -%}
+    <div class="dsgn-pck__no-app-warning">
+      <div class="dsgn-pck__no-app-warning-background">
+      </div>
+      <div class="dsgn-pck__no-app-warning-text dsgn-pck__rte">
+        <p><strong>WARNING!</strong> This section or template will not display properly without the <a href="https://apps.shopify.com/design-packs" target="_blank" rel="noopener nofollow">Design Packs</a> app installed. Please email <a href="mailto:info@design-packs.com" target="_blank" rel="noopener">info@design-packs.com</a> with any questions.</p>
+      </div>
+    </div>
+  {%- endif -%}
+  {%- break -%}
+{%- endunless -%}
+
+{%- comment -%} Assign: Preview section js fix {%- endcomment -%}
+{%- assign section_id = section.id | replace: '+', '' | replace: '=', '' -%}
+
+{%- comment -%} Assign: detect if dynamic metadata content is present in section {%- endcomment -%}
+{%- assign enable_metafield_detect = section.settings.enable_metafield_detect | default: false -%}
+
+
+{%- comment -%} Layout: has user entered measurement value into max-width field? {%- endcomment -%}
+{%- if section.settings.max_width contains 'px' or section.settings.max_width contains '%' -%}
+  {%- assign max_width = section.settings.max_width -%}
+{%- else -%}
+  {%- assign max_width = section.settings.max_width | append: 'px' -%}
+{%- endif -%}
+
+{%- comment -%} Text: custom font_picker values {%- endcomment -%}
+{%- capture font_settings_list -%}
+{{ section.settings.main_font | font_face: font_display: 'swap' }}~
+{{ section.settings.main_font | font_modify: 'weight', 'bolder' | font_face: font_display: 'swap' }}~
+{{ section.settings.main_font | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}~
+{{ section.settings.main_font | font_modify: 'style', 'italic' | font_modify: 'weight', 'bolder' | font_face: font_display: 'swap' }}~
+{{ section.settings.heading_font | font_face: font_display: 'swap' }}~
+{{ section.settings.heading_font | font_modify: 'weight', 'bolder' | font_face: font_display: 'swap' }}~
+{{ section.settings.heading_font | font_modify: 'style', 'italic' | font_face: font_display: 'swap' }}~
+{{ section.settings.heading_font | font_modify: 'style', 'italic' | font_modify: 'weight', 'bolder' | font_face: font_display: 'swap' }}
+{%- endcapture -%}
+{%- assign font_array = font_settings_list | split: '~' -%}
+
+{%- comment -%} CSS {%- endcomment -%}
+<style>
+{%- if section.settings.override_theme_font != blank -%}
+  {%- for font in font_array -%}
+    {%- unless font contains 'error' -%}{{ font }}{%- endunless -%}
+  {%- endfor -%}
+  .DP--{{ section_id }} {
+    --main-font: {{ section.settings.main_font.family }}, {{ section.settings.main_font.fallback_families }};
+    --main-font-weight: {{ section.settings.main_font.weight }};
+    --main-font-style: {{ section.settings.main_font.style }};
+    --heading-font: {{ section.settings.heading_font.family }}, {{ section.settings.heading_font.fallback_families }};
+    --heading-font-weight: {{ section.settings.heading_font.weight }};
+    --heading-font-style: {{ section.settings.heading_font.style }};
+  }
+{%- endif -%}
+
+#shopify-section-{{ section.id }} {
+  background-color: transparent;
+}
+
+{% if request.design_mode %}
+.DP__fixed-position {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 2000;
+}
+{% endif %}
+
+.DP--{{ section_id }} {
+  z-index: 2000;
+}
+
+.DP--{{ section_id }} .dsgn-pck__overlay {
+  display: none;
+  {%- if section.settings.testing_mode == true and request.design_mode == true -%}
+    display: flex;
+  {%- endif -%}
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  pointer-events: all;
+}
+
+.DP--{{ section_id }} .dsgn-pck__overlay-background {
+  content: '';
+  display: block;
+  position: absolute;
+  inset: 0;
+  background: {{ section.settings.overlay_color }};
+}
+
+.DP--{{ section_id }} .dsgn-pck__modal {
+  position: relative;
+  margin: auto;
+  width: {{ section.settings.base_width }}%;
+  max-width: {{ max_width }};
+  pointer-events: auto;
+  overflow: auto;
+  max-height: 94vh;
+  border-radius: {{ section.settings.border_radius }}px;
+  border: {{ section.settings.border_style }} {{ section.settings.border_width }}px {{ section.settings.border_color }};
+  {% if section.settings.enable_box_shadow %}
+    box-shadow:
+      {% case section.settings.card_box_shadow_intensity %}
+        {% when 'subtle' %} 0 1px 4px 0 {{ section.settings.card_box_shadow_color }}33;
+        {% when 'medium' %} 0 2px 8px 0 {{ section.settings.card_box_shadow_color }}55;
+        {% when 'strong' %} 0 4px 16px 0 {{ section.settings.card_box_shadow_color }}88;
+        {% when 'custom' %} {{ section.settings.card_box_shadow_custom_value }};
+        {% else %} none;
+      {% endcase %}
+  {% else %}
+    box-shadow: none;
+  {% endif %}
+}
+
+.DP--{{ section_id }} .dsgn-pck__close-modal {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: none;
+  border: none;
+  padding: 20px;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.DP--{{ section_id }} .dsgn-pck__close-modal svg path {
+  fill: {{ section.settings.close_button_color }};
+}
+
+.DP--{{ section_id }} .dsgn-pck__content {
+  {%- if section.settings.padding_type == 'custom_padding' -%}
+    padding: {{ section.settings.padding }};
+  {%- elsif section.settings.padding_type == 'padding_range_sliders' -%}
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
+  {%- elsif section.settings.padding_type == 'none' -%}
+    padding: 0;
+  {%- endif -%}
+  background-color: {{ section.settings.background_solid }};
+  background: {{ section.settings.background_color }};
+  {%- if section.settings.override_theme_font != blank -%}
+  font-family: var(--main-font);
+  font-weight: var(--main-font-weight);
+  font-style: var(--main-font-style);
+  {%- endif -%}
+  color: {{ section.settings.text_color }};
+}
+
+.DP--{{ section_id }} .dsgn-pck__inner-content {
+  z-index: 2;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.DP--{{ section_id }} .dsgn-pck__split {
+  flex: 1 1 100%;
+  max-width: 100%;
+}
+
+:focus-visible {
+  box-shadow: 0 0 0 3px rgba(21, 156, 228, 0.4);
+}
+
+{% comment %} Block styling {% endcomment %}
+.DP--{{ section_id }} .dsgn-pck__block .dsgn-pck__small-heading {
+  font-size: calc(var(--dp-g-small-heading-size, var(--dp-small-heading-size, 24px)) * {{ section.settings.text_size | times: 0.01 }});
+  {%- if section.settings.override_theme_font != blank -%}
+    font-family: var(--heading-font);
+    font-weight: var(--heading-font-weight);
+    font-style: var(--heading-font-style);
+  {%- endif -%}
+}
+
+.DP--{{ section_id }} .dsgn-pck__rte p,
+.DP--{{ section_id }} .dsgn-pck__rte ul {
+  line-height: var(--dp-g-body-line-height, var(--dp-body-line-height, calc(3px + 2.5ex + 3px)));
+  color: {{ section.settings.text_color }};
+  font-size: calc(var(--dp-g-body-size, var(--dp-body-size, 18px)) * {{ section.settings.text_size | times: 0.01 }});
+  {%- if section.settings.override_theme_font != blank -%}
+  font-family: var(--main-font);
+  font-weight: var(--main-font-weight);
+  font-style: var(--main-font-style);
+  {%- endif -%}
+}
+
+.DP--{{ section_id }} .dsgn-pck__small-text p,
+.DP--{{ section_id }} .dsgn-pck__small-text ul {
+  font-size: calc(var(--dp-g-body-size, var(--dp-body-size, 18px)) * {{ section.settings.text_size | times: 0.008 }});
+}
+
+{%- if section.settings.text_alignment == 'center' -%}
+  .DP--{{ section_id }} .dsgn-pck__rte ul {
+    display: table;
+    margin: 0 auto;
+    text-align: left;
+  }
+{%- elsif section.settings.text_alignment == 'right' -%}
+  .DP--{{ section_id }} .dsgn-pck__rte ul {
+    display: table;
+    margin-left: auto;
+    text-align: left;
+  }
+{%- endif -%}
+
+.DP--{{ section_id }} .dsgn-pck__block {
+  color: {{ section.settings.text_color }};
+}
+
+.DP--{{ section_id }} .dsgn-pck__block + .dsgn-pck__block {
+  margin-top: 15px;
+}
+{% comment %} End block styling {% endcomment %}
+
+
+/* Animation */
+{%- if section.settings.animation != 'none' -%}
+  #DP--{{ section_id }}.dsgn-pck__animation-applied [style*="--dsgn-pck-animate"] {
+    animation-name: dsgn-pck__animation--{{ section.settings.animation }};
+  }
+{%- else -%}
+  .DP--{{ section_id }} [style*="--dsgn-pck-animate"] {
+    opacity: 1;
+  }
+{% endif %}
+
+{%- if section.settings.custom_css != blank -%}
+  {%- assign custom_section_declarations = section.settings.custom_css | split: '}' -%}
+  {%- for declaration in custom_section_declarations -%}
+    {%- if declaration contains '{' -%}
+      #DP--{{ section_id }} {{ declaration }} }
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+
+  .DP--{{ section_id }} .dsgn-pck__close-modal {
+    padding: 10px;
+  }
+
+  .DP--{{ section_id }} .dsgn-pck__inner-content {
+    flex-wrap: wrap;
+  }
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+
+  .DP--{{ section_id }} .dsgn-pck__sizer {
+    padding-top: {{ section.settings.inner_padding | divided_by: 2 }}px;
+    padding-bottom: {{ section.settings.inner_padding | divided_by: 2 }}px;
+  }
+
+  {%- if section.settings.mobile_custom_css != blank -%}
+    {%- assign mobile_custom_declarations = section.settings.mobile_custom_css | split: '}' -%}
+    {%- for declaration in mobile_custom_declarations -%}
+      {%- if declaration contains '{' -%}
+        #DP--{{ section_id }} {{ declaration }} }
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+}
+</style>
+
+{%- comment -%} HTML {%- endcomment -%}
+<section id="DP--{{ section_id }}" class="DP--{{ section_id }} dsgn-pck__section {{ section.settings.custom_classes }}">
+  <div
+    class="dsgn-pck__background dsgn-pck__overlay dsgn-pck__overlay--{{ section_id }}" role="dialog" aria-modal="true"
+    aria-live="assertive" aria-labelledby="modal-title"
+  >
+    <div class="dsgn-pck__overlay-background"></div>
+    <div class="dsgn-pck__sizer dsgn-pck__modal">
+      <button class="dsgn-pck__close-modal" aria-label="Close">
+        <svg viewBox="0 0 20 20" style="width: 20px; height: 20px;"><path d="M16.707 4.707a1 1 0 0 0-1.414-1.414l-5.293 5.293-5.293-5.293a1 1 0 0 0-1.414 1.414l5.293 5.293-5.293 5.293a1 1 0 1 0 1.414 1.414l5.293-5.293 5.293 5.293a1 1 0 0 0 1.414-1.414l-5.293-5.293 5.293-5.293Z"></path></svg>
+      </button>
+      <div class="dsgn-pck__content dsgn-pck__flex">
+        <div class="dsgn-pck__inner-content dsgn-pck__relative dsgn-pck__text-alignment-{{ section.settings.text_alignment }}">
+          {% content_for 'blocks' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Modal popup",
+  "class": "DP__modal-popup DP__fixed-position",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "testing_mode",
+      "label": "Enable testing mode",
+      "default": false,
+      "info": "Show popup for editing content"
+    },
+    {
+      "type": "select",
+      "id": "modal_action",
+      "label": "Modal action",
+      "options": [
+        {
+          "value": "option_1",
+          "label": "Link trigger"
+        },
+        {
+          "value": "option_2",
+          "label": "Timed appear"
+        }
+      ],
+      "default": "option_2",
+      "info": "Controls how modal should behave."
+    },
+    {
+      "visible_if": "{{ section.settings.modal_action == 'option_1' }}",
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Link trigger",
+      "placeholder": "#show-modal",
+      "info": "No spaces, only dashes, lowercase. Trigger modal to open from link. eg. #more-details [Learn more](https://design-packs.gitbook.io/docs/fundamentals/section-settings/how-to-use-the-link-trigger-for-showing-extra-information-in-a-modal-popup)"
+    },
+    {
+      "visible_if": "{{ section.settings.modal_action == 'option_2' }}",
+      "type": "range",
+      "id": "popup_delay",
+      "min": 0,
+      "max": 30,
+      "unit": "sec",
+      "label": "Delay until popup appears",
+      "default": 3
+    },
+    {
+      "visible_if": "{{ section.settings.modal_action == 'option_2' }}",
+      "type": "select",
+      "id": "popup_dismiss_days",
+      "label": "Days until popup is displayed again after being closed.",
+      "default": "1",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 day"
+        },
+        {
+          "value": "2",
+          "label": "2 days"
+        },
+        {
+          "value": "7",
+          "label": "7 days"
+        },
+        {
+          "value": "14",
+          "label": "14 days"
+        },
+        {
+          "value": "30",
+          "label": "30 days"
+        },
+        {
+          "value": "90",
+          "label": "90 days"
+        },
+        {
+          "value": "365",
+          "label": "365 days"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "✏️ Text appearance"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text size",
+      "min": 80,
+      "max": 150,
+      "step": 5,
+      "default": 115,
+      "unit": "%"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "default": "center",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "🎨 Design"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#283144"
+    },
+    {
+      "type": "color",
+      "id": "close_button_color",
+      "label": "Close button",
+      "default": "#283144"
+    },
+    {
+      "type": "color",
+      "id": "background_solid",
+      "label": "Modal background",
+      "alpha": true,
+      "default": "#ffffff"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color",
+      "label": "Modal background gradient",
+      "info": "Background gradient replaces background where possible."
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay background",
+      "alpha": true,
+      "default": "rgba(0, 0, 0, 0.8)"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Rounded corners",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_box_shadow",
+      "label": "Box shadow",
+      "default": false
+    },
+    {
+      "visible_if": "{{ section.settings.enable_box_shadow }}",
+      "type": "select",
+      "id": "card_box_shadow_intensity",
+      "label": "Intensity",
+      "options": [
+        { "value": "subtle", "label": "Subtle" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "strong", "label": "Strong" },
+        { "value": "custom", "label": "Custom" }
+      ],
+      "default": "subtle",
+      "info": "How strong the shadow appears."
+    },
+    {
+      "visible_if": "{{ section.settings.enable_box_shadow and section.settings.card_box_shadow_intensity != 'custom' }}",
+      "type": "color",
+      "id": "card_box_shadow_color",
+      "label": "Shadow color",
+      "default": "#000000"
+    },
+    {
+      "visible_if": "{{ section.settings.enable_box_shadow and section.settings.card_box_shadow_intensity == 'custom' }}",
+      "type": "text",
+      "id": "card_box_shadow_custom_value",
+      "label": "Custom value",
+      "info": "Enter a custom value for the box shadow. Example: 0 1px 4px 0 rgba(0, 0, 0, 0.33)",
+      "default": "0 1px 4px 0 rgba(0, 0, 0, 0.33)"
+    },
+    {
+      "type": "select",
+      "id": "border_style",
+      "label": "Border style",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "solid",
+          "label": "Solid"
+        },
+        {
+          "value": "dashed",
+          "label": "Dashed"
+        },
+        {
+          "value": "dotted",
+          "label": "Dotted"
+        },
+        {
+          "value": "double",
+          "label": "Double"
+        },
+        {
+          "value": "groove",
+          "label": "Groove"
+        },
+        {
+          "value": "ridge",
+          "label": "Ridge"
+        },
+        {
+          "value": "inset",
+          "label": "Inset"
+        },
+        {
+          "value": "outset",
+          "label": "Outset"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "min": 0,
+      "max": 10,
+      "step": 0.5,
+      "unit": "px",
+      "label": "Border width",
+      "default": 1,
+      "visible_if": "{{ section.settings.border_style != 'none' }}"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#000000",
+      "alpha": true,
+      "visible_if": "{{ section.settings.border_style != 'none' }}"
+    },
+    {
+      "visible_if": "{{ false }}",
+      "type": "select",
+      "id": "animation",
+      "label": "Animation",
+      "default": "none",
+      "options": [
+        {
+          "value": "fade-in",
+          "label": "Fade-in"
+        },
+        {
+          "value": "fade-in-left",
+          "label": "Fade-in left"
+        },
+        {
+          "value": "fade-in-right",
+          "label": "Fade-in right"
+        },
+        {
+          "value": "fade-in-up",
+          "label": "Fade-in up"
+        },
+        {
+          "value": "fade-in-down",
+          "label": "Fade-in down"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "🖼 Layout"
+    },
+    {
+      "type": "range",
+      "id": "base_width",
+      "label": "Size",
+      "min": 60,
+      "max": 100,
+      "step": 5,
+      "default": 80,
+      "unit": "%"
+    },
+    {
+      "type": "text",
+      "id": "max_width",
+      "label": "Maximum width",
+      "placeholder": "eg. 1200px",
+      "info": "Sets width constraint for modal."
+    },
+    {
+      "type": "select",
+      "id": "padding_type",
+      "label": "Padding",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "padding_range_sliders",
+          "label": "Range"
+        },
+        {
+          "value": "custom_padding",
+          "label": "Custom"
+        }
+      ],
+      "default": "padding_range_sliders"
+    },
+    {
+      "visible_if": "{{ section.settings.padding_type == 'custom_padding' }}",
+      "type": "text",
+      "id": "padding",
+      "label": "Custom padding",
+      "default": "0px 0px 0px 0px",
+      "info": "Enter padding in the format: top right bottom left. Example: 10px 20px 30px 40px [Learn more](https://developer.mozilla.org/en-US/docs/Web/CSS/padding)"
+    },
+    {
+      "visible_if": "{{ section.settings.padding_type == 'padding_range_sliders' }}",
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "visible_if": "{{ section.settings.padding_type == 'padding_range_sliders' }}",
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "visible_if": "{{ section.settings.padding_type == 'padding_range_sliders' }}",
+      "type": "range",
+      "id": "padding_left",
+      "label": "Padding left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "visible_if": "{{ section.settings.padding_type == 'padding_range_sliders' }}",
+      "type": "range",
+      "id": "padding_right",
+      "label": "Padding right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "🚨 Advanced"
+    },
+    {
+      "type": "liquid",
+      "id": "custom_css",
+      "label": "CSS"
+    },
+    {
+      "type": "liquid",
+      "id": "mobile_custom_css",
+      "label": "Mobile CSS",
+      "info": "Applied on screens less than 480px."
+    },
+    {
+      "type": "checkbox",
+      "id": "override_theme_font",
+      "label": "Override default theme font",
+      "default": false
+    },
+    {
+      "visible_if": "{{ section.settings.override_theme_font == true }}",
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "Heading",
+      "default": "serif"
+    },
+    {
+      "visible_if": "{{ section.settings.override_theme_font == true }}",
+      "type": "font_picker",
+      "id": "main_font",
+      "label": "Text",
+      "default": "sans-serif"
+    },
+    {
+      "visible_if": "{{ false }}",
+      "type": "select",
+      "id": "custom_style",
+      "label": "Custom style*",
+      "info": "* Custom styles section is required. [Learn more](https://design-packs.gitbook.io/docs/fundamentals/settings/apply-global-styles-setting)",
+      "options": [
+        {
+          "value": "section",
+          "label": "Default section settings"
+          },
+        {
+          "value": "scheme",
+          "label": "Apply scheme"
+        },
+        {
+          "value": "global",
+          "label": "Inherit global style"
+        }
+      ],
+      "default": "global"
+    },
+    {
+      "visible_if": "{{ section.settings.custom_style == 'scheme' }}",
+      "type": "text",
+      "id": "style_scheme",
+      "label": "Style scheme name"
+    },
+    {
+      "type": "text",
+      "id": "custom_classes",
+      "label": "Custom classes",
+      "placeholder": "my-custom-class my-custom-class--2",
+      "info": "Add your own CSS classes to section. Eg. my-custom-class my-custom-class--2 [Learn more](https://design-packs.gitbook.io/docs/fundamentals/settings/custom-classes-setting)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
+    },
+    {
+      "type": "dpb_-_heading"
+    },
+    {
+      "type": "dpb_-_button-group"
+    },
+    {
+      "type": "dpb_-_inset_image"
+    },
+    {
+      "type": "dpb_-_video"
+    },
+    {
+      "type": "dpb_-_icons"
+    },
+    {
+      "type": "dpb_-_text"
+    },
+    {
+      "type": "dpb_-_divider"
+    },
+    {
+      "type": "dpb_-_spacer"
+    },
+    {
+      "type": "_dpb_-_columns"
+    },
+    {
+      "type": "_dpb_-_group"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Modal popup 🎒",
+      "category": "* Design Packs: Overlays",
+      "settings": {
+        "testing_mode": true,
+        "modal_action": "option_1",
+        "anchor_id": "#more-details",
+        "popup_delay": 3,
+        "popup_dismiss_days": "1",
+        "text_size": 115,
+        "text_alignment": "left",
+        "background_solid": "#ffffff",
+        "overlay_color": "#000000cf",
+        "border_radius": 4,
+        "enable_box_shadow": false,
+        "card_box_shadow_intensity": "strong",
+        "card_box_shadow_color": "rgba(0,0,0,0)",
+        "card_box_shadow_custom_value": "0 1px 4px 0 rgba(0, 0, 0, 0.33)",
+        "border_style": "none",
+        "border_width": 8,
+        "border_color": "rgba(0,0,0,0)",
+        "animation": "none",
+        "base_width": 80,
+        "padding_type": "custom_padding",
+        "padding": "0px 0px 0px 0px",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_left": 20,
+        "padding_right": 20,
+        "override_theme_font": false,
+        "heading_font": "serif",
+        "main_font": "sans-serif"
+      },
+      "blocks": [
+        {
+          "type": "_dpb_-_columns",
+          "name": "Columns 🎒",
+          "settings": {
+            "gap": 18,
+            "row_gap": 0,
+            "vertical_on_mobile": true,
+            "hidden_on": "none",
+            "enable_custom_css": false
+          },
+          "blocks": [
+            {
+              "type": "_dpb_sub_-_columns-column",
+              "settings": {
+                "column_width": "half",
+                "padding_type": "custom",
+                "padding": "0px 0px 0px 0px",
+                "padding_top": 20,
+                "padding_bottom": 20,
+                "padding_left": 20,
+                "padding_right": 20,
+                "horizontal_alignment": "default",
+                "vertical_alignment": "default",
+                "border_radius": 0,
+                "enable_box_shadow": false,
+                "card_box_shadow_intensity": "subtle",
+                "card_box_shadow_color": "#000000",
+                "card_box_shadow_custom_value": "0 1px 4px 0 rgba(0, 0, 0, 0.33)",
+                "border_style": "none",
+                "border_width": 1,
+                "border_color": "#000000",
+                "enable_custom_css": false
+              },
+              "blocks": [
+                {
+                  "type": "dpb_-_inset_image",
+                  "name": "Image 🎒",
+                  "settings": {
+                    "image_crop": "none",
+                    "external_link": false,
+                    "base_width": 100,
+                    "horizontal_alignment": "default",
+                    "hidden_on": "none",
+                    "enable_custom_css": false
+                  }
+                }
+              ]
+            },
+            {
+              "type": "_dpb_sub_-_columns-column",
+              "settings": {
+                "column_width": "half",
+                "padding_type": "custom",
+                "padding": "30px",
+                "padding_top": 20,
+                "padding_bottom": 20,
+                "padding_left": 20,
+                "padding_right": 20,
+                "horizontal_alignment": "default",
+                "vertical_alignment": "middle",
+                "border_radius": 0,
+                "enable_box_shadow": false,
+                "card_box_shadow_intensity": "subtle",
+                "card_box_shadow_color": "#000000",
+                "card_box_shadow_custom_value": "0 1px 4px 0 rgba(0, 0, 0, 0.33)",
+                "border_style": "none",
+                "border_width": 1,
+                "border_color": "#000000",
+                "enable_custom_css": false
+              },
+              "blocks": [
+                {
+                  "type": "dpb_-_heading",
+                  "name": "Heading 🎒",
+                  "settings": {
+                    "title": "More Details",
+                    "enable_custom_heading_size": false,
+                    "enable_custom_font": false,
+                    "custom_font": "abel_n4",
+                    "enable_highlighted_text": false,
+                    "highlight_text_color": "#ffffff",
+                    "highlight_background_color": "#000000",
+                    "highlight_enable_custom_font": false,
+                    "highlight_custom_font": "abel_n4",
+                    "text_alignment": "default",
+                    "base_width": 100,
+                    "horizontal_alignment": "default",
+                    "hidden_on": "none",
+                    "heading_level": "h2",
+                    "enable_custom_css": false
+                  }
+                },
+                {
+                  "type": "dpb_-_text",
+                  "settings": {
+                    "text": "<p>Add additional content in the modal to help give context to the page or product.</p>",
+                    "enable_custom_text_size": false,
+                    "block_text_size": "30px",
+                    "enable_custom_font": false,
+                    "custom_font": "abel_n4",
+                    "enable_highlighted_text": false,
+                    "highlight_text_color": "#ffffff",
+                    "highlight_background_color": "#000000",
+                    "highlight_enable_custom_font": false,
+                    "highlight_custom_font": "abel_n4",
+                    "block_alignment": "default",
+                    "base_width": 100,
+                    "horizontal_alignment": "default",
+                    "hidden_on": "none",
+                    "enable_custom_css": false
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{%- comment -%} JSON Settings {%- endcomment -%}
+<script type="application/json" data-dsgn-pck="{{ section_id }}">
+  {
+    "id": {{ section_id | json }},
+    "animation": {{ section.settings.animation | json }},
+    "popup_delay": {{ section.settings.popup_delay | times: 1000 | json }},
+    "popup_dismiss_days": {{ section.settings.popup_dismiss_days | json }},
+    "anchor_id": {{ section.settings.anchor_id | json }},
+    "modal_action": {{ section.settings.modal_action | json }}
+  }
+</script>
+
+{%- comment -%} JavaScript {%- endcomment -%}
+<script data-dsgn-pck-js="{{ section_id }}" type="module" defer>
+(function(){
+
+  const designPack = {
+    settings: {},
+    animateSection: function(entries, observer){
+      // Target the first entry available.
+      let observedSection = entries[0];
+      if (observedSection.isIntersecting) {
+        observedSection.target.classList.add('dsgn-pck__animation-applied');
+      }
+    },
+    attachEventListener(openButtons, closeButtons, overlay) {
+      openButtons.forEach(button => {
+        button.addEventListener('click', designPack.modal.callOpen)
+      });
+      closeButtons.forEach(button => {
+        button.addEventListener('click', designPack.modal.callClose)
+      });
+      overlay.addEventListener('click', designPack.handleOverlayClick)
+      window.addEventListener('keydown', designPack.callIfEscPress)
+    },
+    modal: {
+      callOpen: () => {
+        designPack.modal.opener = document.activeElement
+        designPack.openModal()
+      },
+      callClose: () => {
+        designPack.closeModal(designPack.modal.opener)
+      },
+      handleOverlayClick: (event) => {
+        if(event.target.className === 'dsgn-pck__overlay-background'){
+          designPack.closeModal(designPack.modal.opener)
+        }
+      }
+    },
+    handleOverlayClick: (event) => {
+      if(event.target.classList && event.target.classList.contains('dsgn-pck__overlay-background')){
+        designPack.closeModal(designPack.opener)
+      }
+    },
+    setVisible(visible) {
+      const display = visible? 'flex' : 'none'
+      document.querySelector(`.dsgn-pck__overlay--${designPack.settings.id}`).style.display = display
+    },
+    callIfEscPress(event){
+      if(event.key === 'Escape') {
+        designPack.modal.callClose()
+      }
+    },
+    setFocus() {
+      const firstFocusable = document.querySelectorAll('.dsgn-pck__modal button, .dsgn-pck__modal input, .dsgn-pck__modal textarea, .dsgn-pck__modal select, .dsgn-pck__modal a[href]')[0];
+      if (firstFocusable) {
+        firstFocusable.focus();
+      }
+    },
+    trapFocus(modal) {
+      const focusableElements = modal.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+
+      if (focusableElements.length === 0) return;
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      const handleTabKey = (e) => {
+        if (e.key !== 'Tab') return;
+
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement.focus();
+          }
+        } else {
+          if (document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement.focus();
+          }
+        }
+      };
+
+      modal.addEventListener('keydown', handleTabKey);
+      designPack.currentTrapHandler = handleTabKey;
+    },
+    removeFocusTrap(modal) {
+      if (designPack.currentTrapHandler) {
+        modal.removeEventListener('keydown', designPack.currentTrapHandler);
+        designPack.currentTrapHandler = null;
+      }
+    },
+    openModal: function(){
+      designPack.setVisible(true);
+      designPack.setFocus();
+
+      const modal = section.querySelector('.dsgn-pck__modal');
+      if (modal) {
+        designPack.trapFocus(modal);
+      }
+
+      {% comment %} Comparison Slider {% endcomment %}
+      const comparisonSliderBlocks = section.querySelectorAll('.dsgn-pck__comparison-slider-block');
+      if (typeof comparisonSliderBlocks !== 'undefined' && comparisonSliderBlocks !== null){
+        comparisonSliderBlocks.forEach(comparisonSliderBlock => {
+          designPack.enableComparisonSliderBlock(comparisonSliderBlock);
+        });
+      }
+    },
+    closeModal: function(opener){
+      const modal = section.querySelector('.dsgn-pck__modal');
+      if (modal) {
+        designPack.removeFocusTrap(modal);
+      }
+
+      designPack.setVisible(false);
+      localStorage.setItem(`popup${designPack.settings.id}Shown`, Date.now().toString());
+      if (opener && typeof opener.focus === 'function') {
+        opener.focus();
+      }
+    },
+    load: function(section){
+
+      if (this.settings.animation !== 'none'){
+        const options = {
+          root: null,
+          rootMargin: '0px',
+          threshold: [0, 0.25, 0.5, 0.75, 1]
+        };
+        // Construct Intersection Observer.
+        const observer = new IntersectionObserver( this.animateSection, options );
+        // Observe if element is present.
+        if (section) {
+          observer.observe(section);
+        }
+      }
+
+      /* Modal */
+      let openButtons;
+      var closeButtons = section.querySelectorAll('.dsgn-pck__close-modal');
+      var overlay = section.querySelector('.dsgn-pck__overlay');
+      closeButtons.forEach(button => {
+        button.addEventListener('click', designPack.modal.callClose)
+      });
+      overlay.addEventListener('click', designPack.handleOverlayClick)
+      window.addEventListener('keydown', designPack.callIfEscPress)
+      if (designPack.settings.modal_action == 'option_1') {
+        document.addEventListener('click', function(e) {
+          if(e.target.closest('a') !== null){
+            if (!e.target.closest('a').matches(`a[href="${designPack.settings.anchor_id}"]`)) {
+              return;
+            }
+            // Initialize modal
+            designPack.modal.callOpen();
+          }
+        });
+      }
+
+
+      if (designPack.settings.modal_action == 'option_2'){
+        const popupShown = localStorage.getItem(`popup${designPack.settings.id}Shown`);
+        if (!popupShown) {
+          // Popup has not been shown before
+          setTimeout(function(){
+            designPack.modal.callOpen();
+          }, this.settings.popup_delay);
+        } else {
+          // Popup has been shown before, check if enough days have passed
+          const daysPassed = Math.floor((Date.now() - parseInt(popupShown)) / (24 * 60 * 60 * 1000));
+          const daysToHide = this.settings.popup_dismiss_days; // Number of days to hide the popup
+          if (daysPassed >= daysToHide){
+            setTimeout(function(){
+              designPack.modal.callOpen();
+            }, this.settings.popup_delay);
+          }
+        }
+      }
+
+    },
+    unload: function(section){
+      section.classList.remove('dsgn-pck__animation-applied')
+    }
+  }
+
+  window.addEventListener('shopify:section:unload', function (e) {
+    const settings = document.querySelector(`[data-dsgn-pck="${e.detail.sectionId}"]`);
+    const sectionId = e.detail.sectionId;
+    const section = document.querySelector(`#DP--${e.detail.sectionId}`);
+    if (sectionId == designPack.settings.id){
+      designPack.unload(section);
+    }
+  });
+
+  designPack.settings = JSON.parse(document.querySelector('[data-dsgn-pck="{{ section_id }}"]').innerHTML);
+  const sectionId = {{ section_id | json }};
+  const section = document.querySelector(`#DP--${sectionId}`);
+
+  if (sectionId == designPack.settings.id){
+    designPack.load(section);
+  }
+})()
+</script>

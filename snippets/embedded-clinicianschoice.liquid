@@ -1,0 +1,61 @@
+{% comment %} FrontrowMD — Clinicians Choice Embedded Badge {% endcomment %}
+{% comment %} Best practice: Place below your 5 star reviews or near your description section {% endcomment %}
+
+<div id="frontrow-badge">
+  {% if request.path contains '/products/laminine' %}
+    <script async type="text/javascript" src="https://app.thefrontrowhealth.com/api/widgets/script?presentation_type=quant&product_id=6085"></script>
+    <iframe class="iframe-frontrow" id="iframe-frontrow-quant" title="FrontrowMD Clinicians' Choice Badge" frameborder="0" src="https://app.thefrontrowhealth.com/api/widgets?presentation_type=quant&product_id=6085"></iframe>
+    
+  {% elsif request.path contains '/products/omega' %}
+    <script async type="text/javascript" src="https://app.thefrontrowhealth.com/api/widgets/script?presentation_type=quant&product_id=6086"></script>
+    <iframe class="iframe-frontrow" id="iframe-frontrow-quant" title="FrontrowMD Clinicians' Choice Badge" frameborder="0" src="https://app.thefrontrowhealth.com/api/widgets?presentation_type=quant&product_id=6086"></iframe>
+  
+  {% elsif request.path contains '/products/digestive' %}
+    <script async type="text/javascript" src="https://app.thefrontrowhealth.com/api/widgets/script?presentation_type=quant&product_id=6087"></script>
+    <iframe class="iframe-frontrow" id="iframe-frontrow-quant" title="FrontrowMD Clinicians' Choice Badge" frameborder="0" src="https://app.thefrontrowhealth.com/api/widgets?presentation_type=quant&product_id=6087"></iframe>
+  
+  {% elsif request.path contains '/products/immune' %}
+    <script async type="text/javascript" src="https://app.thefrontrowhealth.com/api/widgets/script?presentation_type=quant&product_id=6088"></script>
+    <iframe class="iframe-frontrow" id="iframe-frontrow-quant" title="FrontrowMD Clinicians' Choice Badge" frameborder="0" src="https://app.thefrontrowhealth.com/api/widgets?presentation_type=quant&product_id=6088"></iframe>
+  
+  {% elsif request.path contains '/products/omnia' %}
+    <script async type="text/javascript" src="https://app.thefrontrowhealth.com/api/widgets/script?presentation_type=quant&product_id=6089"></script>
+    <iframe class="iframe-frontrow" id="iframe-frontrow-quant" title="FrontrowMD Clinicians' Choice Badge" frameborder="0" src="https://app.thefrontrowhealth.com/api/widgets?presentation_type=quant&product_id=6089"></iframe>
+  
+  {% elsif request.path contains '/products/refive' %}
+    <script async type="text/javascript" src="https://app.thefrontrowhealth.com/api/widgets/script?presentation_type=quant&product_id=6090"></script>
+    <iframe class="iframe-frontrow" id="iframe-frontrow-quant" title="FrontrowMD Clinicians' Choice Badge" frameborder="0" src="https://app.thefrontrowhealth.com/api/widgets?presentation_type=quant&product_id=6090"></iframe>
+  
+  {% elsif request.path contains '/products/extrim-shape' %}
+    <script async type="text/javascript" src="https://app.thefrontrowhealth.com/api/widgets/script?presentation_type=quant&product_id=6091"></script>
+    <iframe class="iframe-frontrow" id="iframe-frontrow-quant" title="FrontrowMD Clinicians' Choice Badge" frameborder="0" src="https://app.thefrontrowhealth.com/api/widgets?presentation_type=quant&product_id=6091"></iframe>
+  
+  {% elsif request.path contains '/products/lamiderm-apex-smart-serum' %}
+    <script async type="text/javascript" src="https://app.thefrontrowhealth.com/api/widgets/script?presentation_type=quant&product_id=6092"></script>
+    <iframe class="iframe-frontrow" id="iframe-frontrow-quant" title="FrontrowMD Clinicians' Choice Badge" frameborder="0" src="https://app.thefrontrowhealth.com/api/widgets?presentation_type=quant&product_id=6092"></iframe>
+  
+  {% elsif request.path contains '/products/cellnergy-wellness' %}
+    <script async type="text/javascript" src="https://app.thefrontrowhealth.com/api/widgets/script?presentation_type=quant&product_id=6093"></script>
+    <iframe class="iframe-frontrow" id="iframe-frontrow-quant" title="FrontrowMD Clinicians' Choice Badge" frameborder="0" src="https://app.thefrontrowhealth.com/api/widgets?presentation_type=quant&product_id=6093"></iframe>
+  
+  {% elsif request.path contains '/products/cellnergy-power-cream' %}
+    <script async type="text/javascript" src="https://app.thefrontrowhealth.com/api/widgets/script?presentation_type=quant&product_id=6094"></script>
+    <iframe class="iframe-frontrow" id="iframe-frontrow-quant" title="FrontrowMD Clinicians' Choice Badge" frameborder="0" src="https://app.thefrontrowhealth.com/api/widgets?presentation_type=quant&product_id=6094"></iframe>
+  
+  {% elsif request.path contains '/products/cellnergy-footcharge' %}
+    <script async type="text/javascript" src="https://app.thefrontrowhealth.com/api/widgets/script?presentation_type=quant&product_id=6095"></script>
+    <iframe class="iframe-frontrow" id="iframe-frontrow-quant" title="FrontrowMD Clinicians' Choice Badge" frameborder="0" src="https://app.thefrontrowhealth.com/api/widgets?presentation_type=quant&product_id=6095"></iframe>
+  
+  {% elsif request.path contains '/products/cellnergy-hydration-system' %}
+    <script async type="text/javascript" src="https://app.thefrontrowhealth.com/api/widgets/script?presentation_type=quant&product_id=6096"></script>
+    <iframe class="iframe-frontrow" id="iframe-frontrow-quant" title="FrontrowMD Clinicians' Choice Badge" frameborder="0" src="https://app.thefrontrowhealth.com/api/widgets?presentation_type=quant&product_id=6096"></iframe>
+  
+  {% else %}
+    <style> #frontrow-badge {display: none !important;} </style>
+  {% endif %}
+</div>
+
+<style>
+  #iframe-frontrow-quant {height: 0px;}
+  #frontrow-badge{position:relative;display:flex;}.iframe-frontrow{width:100%;margin:0}.iframe-modal-frontrow{display:none;position:fixed;z-index:99999999;left:0;top:0;right:0;bottom:0;width:100%;height:100%;overflow:hidden}
+</style>

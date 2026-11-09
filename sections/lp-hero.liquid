@@ -1,0 +1,161 @@
+{%- liquid
+  assign hero_video = section.settings.video
+  assign film_asset = section.settings.film_asset | strip
+-%}
+
+<section class="lp-hero lp-hero--{{ section.settings.layout }}" style="--lp-hero-min: {{ section.settings.min_height }}svh;">
+  <div class="lp-hero__glow" aria-hidden="true"></div>
+  <div class="container lp-hero__grid">
+    <div class="lp-hero__copy">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="lp-eyebrow lp-hero__eyebrow" data-lp-reveal>{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <h1 class="h0 lp-hero__title" data-lp-reveal style="--lp-i: 1">{{ section.settings.heading }}</h1>
+      {%- endif -%}
+
+      {%- if section.settings.text != blank -%}
+        <div class="lp-hero__text" data-lp-reveal style="--lp-i: 2">{{ section.settings.text }}</div>
+      {%- endif -%}
+
+      <div class="lp-hero__actions" data-lp-reveal style="--lp-i: 3">
+        {%- if section.settings.button_label != blank -%}
+          <a href="{{ section.settings.button_url | default: routes.all_products_collection_url }}" class="button button--xl lp-hero__cta">
+            <span>{{ section.settings.button_label | escape }}</span>
+            {% render 'lp-icon', name: 'arrow', size: 18 %}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.secondary_label != blank -%}
+          <a href="{{ section.settings.secondary_url }}" class="button button--xl button--outline lp-hero__cta-2">{{ section.settings.secondary_label | escape }}</a>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.rating_text != blank -%}
+        <div class="lp-hero__rating" data-lp-reveal style="--lp-i: 4">
+          <span class="lp-hero__stars" aria-hidden="true">
+            {%- for i in (1..5) -%}{% render 'lp-icon', name: 'star', size: 16 %}{%- endfor -%}
+          </span>
+          <span>{{ section.settings.rating_text }}</span>
+        </div>
+      {%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <ul class="lp-hero__chips" role="list" data-lp-reveal style="--lp-i: 5">
+          {%- for block in section.blocks -%}
+            <li class="lp-hero__chip" {{ block.shopify_attributes }}>
+              {% render 'lp-icon', name: block.settings.icon, size: 18 %}
+              <span>{{ block.settings.text | escape }}</span>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+
+    <div class="lp-hero__media lp-media" data-lp-reveal style="--lp-i: 2">
+      <div class="lp-hero__frame">
+        {%- if hero_video != blank -%}
+          {{ hero_video | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, controls: false, image_size: '1600x', class: 'lp-hero__video' }}
+        {%- elsif film_asset != blank -%}
+          <video class="lp-hero__video" muted loop playsinline preload="none" data-lp-lazy {% if section.settings.image != blank %}poster="{{ section.settings.image | image_url: width: 1600 }}"{% endif %}>
+            <source data-src="{{ film_asset | asset_url }}" type="video/mp4">
+          </video>
+        {%- elsif section.settings.image != blank -%}
+          {%- if section.settings.mobile_image != blank -%}
+            {{ section.settings.mobile_image | image_url: width: 1000 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '100vw', widths: '500,750,1000', class: 'lp-hero__img sm:hidden' }}
+            {{ section.settings.image | image_url: width: 1800 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 1000px) 55vw, 100vw', widths: '800,1200,1500,1800', class: 'lp-hero__img sm-max:hidden' }}
+          {%- else -%}
+            {{ section.settings.image | image_url: width: 1800 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 1000px) 55vw, 100vw', widths: '600,900,1200,1500,1800', class: 'lp-hero__img' }}
+          {%- endif -%}
+        {%- else -%}
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'lp-hero__img lp-hero__placeholder' }}
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.float_1 != blank -%}
+        <div class="lp-hero__float lp-hero__float--1">
+          <span class="lp-hero__float-icon">{% render 'lp-icon', name: 'shield', size: 18 %}</span>
+          <span>{{ section.settings.float_1 | escape }}</span>
+        </div>
+      {%- endif -%}
+      {%- if section.settings.float_2 != blank -%}
+        <div class="lp-hero__float lp-hero__float--2">
+          <span class="lp-hero__float-icon">{% render 'lp-icon', name: 'flask', size: 18 %}</span>
+          <span>{{ section.settings.float_2 | escape }}</span>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+.lp-hero { position: relative; overflow: hidden; padding-block: clamp(2rem, 5vw, 4.5rem) clamp(3rem, 6vw, 5.5rem); background: rgb(var(--lp-ivory)); }
+.lp-hero__glow { position: absolute; inset: -20% -10% auto auto; width: 70vw; aspect-ratio: 1; background: radial-gradient(closest-side, rgb(var(--lp-amber) / .16), transparent 70%); filter: blur(10px); pointer-events: none; animation: lp-glow 14s ease-in-out infinite alternate; }
+@keyframes lp-glow { to { transform: translate(-6%, 8%) scale(1.08); } }
+.lp-hero__grid { position: relative; display: grid; gap: clamp(2rem, 4vw, 4rem); align-items: center; min-height: min(var(--lp-hero-min), 860px); }
+@media (min-width: 1000px) { .lp-hero__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); } .lp-hero--media-left .lp-hero__media { order: -1; } }
+.lp-hero__copy { display: grid; gap: 1.25rem; justify-items: start; max-width: 38rem; }
+.lp-hero__title { font-size: clamp(2.5rem, 5.6vw, 5rem); letter-spacing: -.035em; line-height: 1.02; }
+.lp-hero__title em { font-style: italic; color: rgb(var(--lp-amber-deep)); }
+.lp-hero__text { font-size: clamp(1rem, 1.3vw, 1.1875rem); line-height: 1.65; color: rgb(var(--lp-ink) / .72); max-width: 32rem; }
+.lp-hero__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-block-start: .5rem; }
+.lp-hero__cta svg { transition: transform var(--lp-dur-2) var(--lp-ease); }
+@media (hover: hover) { .lp-hero__cta:hover svg { transform: translateX(4px); } }
+.lp-hero__rating { display: inline-flex; align-items: center; gap: .625rem; font-size: .875rem; color: rgb(var(--lp-ink) / .75); }
+.lp-hero__stars { display: inline-flex; gap: 1px; color: rgb(var(--lp-amber)); }
+.lp-hero__stars svg { fill: currentColor; }
+.lp-hero__chips { display: flex; flex-wrap: wrap; gap: .5rem; margin: .5rem 0 0; padding: 0; list-style: none; }
+.lp-hero__chip { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem .8rem; border-radius: 999px; background: #fff; box-shadow: 0 0 0 1px var(--lp-hairline); font-size: .8125rem; font-weight: 500; }
+.lp-hero__chip svg { color: rgb(var(--lp-sage)); }
+.lp-hero__media { position: relative; }
+.lp-hero__frame { position: relative; border-radius: var(--lp-radius-lg); overflow: hidden; aspect-ratio: 4 / 4.4; background: #fff; box-shadow: var(--lp-shadow-3); }
+@media (min-width: 700px) { .lp-hero__frame { aspect-ratio: 5 / 4.6; } }
+.lp-hero__img, .lp-hero__video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.lp-hero__float { position: absolute; display: inline-flex; align-items: center; gap: .6rem; padding: .7rem 1rem .7rem .7rem; border-radius: 999px; background: rgb(255 255 255 / .86); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: var(--lp-shadow-2); font-size: .8125rem; font-weight: 600; animation: lp-float 6s ease-in-out infinite; }
+.lp-hero__float-icon { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: rgb(var(--lp-ink)); color: rgb(var(--lp-amber)); }
+.lp-hero__float--1 { left: -1rem; bottom: 12%; }
+.lp-hero__float--2 { right: -.75rem; top: 10%; animation-delay: -3s; }
+@media (max-width: 699px) { .lp-hero__float--1 { left: .75rem; } .lp-hero__float--2 { right: .75rem; } }
+@keyframes lp-float { 50% { transform: translateY(-8px); } }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "LP · Premium hero",
+  "class": "shopify-section--lp-hero",
+  "tag": "div",
+  "settings": [
+    { "type": "select", "id": "layout", "label": "Layout", "options": [ { "value": "media-right", "label": "Media right" }, { "value": "media-left", "label": "Media left" } ], "default": "media-right" },
+    { "type": "range", "id": "min_height", "label": "Minimum height", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 75 },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Regenerative wellness" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "info": "Use italic for the amber accent word.", "default": "Activate your body's <em>natural renewal</em>" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Science-led nutritionals and skincare powered by fertilised avian egg extract.</p>" },
+    { "type": "text", "id": "button_label", "label": "Primary button label", "default": "Shop bestsellers" },
+    { "type": "url", "id": "button_url", "label": "Primary button link" },
+    { "type": "text", "id": "secondary_label", "label": "Secondary button label", "default": "Explore the science" },
+    { "type": "url", "id": "secondary_url", "label": "Secondary button link" },
+    { "type": "inline_richtext", "id": "rating_text", "label": "Rating line", "default": "<strong>978+</strong> verified Laminine reviews" },
+    { "type": "header", "content": "Media" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "image_picker", "id": "mobile_image", "label": "Mobile image" },
+    { "type": "video", "id": "video", "label": "Video (Shopify hosted)" },
+    { "type": "text", "id": "film_asset", "label": "Brand film asset filename", "info": "Theme asset file, for example lp-brand-film.mp4. Lazy-loaded with the image as poster." },
+    { "type": "text", "id": "float_1", "label": "Floating badge 1", "default": "60-day guarantee" },
+    { "type": "text", "id": "float_2", "label": "Floating badge 2", "default": "Clinically studied" }
+  ],
+  "blocks": [
+    {
+      "type": "chip",
+      "name": "Trust chip",
+      "limit": 4,
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "options": [ { "value": "shield", "label": "Shield" }, { "value": "flag", "label": "Flag" }, { "value": "flask", "label": "Flask" }, { "value": "badge", "label": "Badge" }, { "value": "truck", "label": "Truck" }, { "value": "leaf", "label": "Leaf" }, { "value": "lock", "label": "Lock" }, { "value": "heart", "label": "Heart" } ], "default": "shield" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Made in the USA" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "LP · Premium hero", "blocks": [ { "type": "chip", "settings": { "icon": "flag", "text": "Made in the USA" } }, { "type": "chip", "settings": { "icon": "badge", "text": "NSF tested" } } ] }
+  ]
+}
+{% endschema %}

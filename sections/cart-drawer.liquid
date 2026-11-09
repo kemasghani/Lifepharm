@@ -201,6 +201,10 @@
           {%- render 'button', type: 'submit', content: checkout_label, icon: 'picto-lock', name: 'checkout', size: 'xl' -%}
         {%- endif -%}
       </form>
+      <p class="lp-drawer-trust">
+        <span>{% render 'lp-icon', name: 'shield', size: 14 %}{{ 'lp.trust.guarantee' | t }}</span>
+        <span>{% render 'lp-icon', name: 'lock', size: 14 %}{{ 'lp.trust.secure' | t }}</span>
+      </p>
     </div>
   {%- endif -%}
 </cart-drawer>

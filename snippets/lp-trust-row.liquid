@@ -1,0 +1,12 @@
+{% doc %}
+  Renders the LifePharm reassurance grid shown under the product buy buttons.
+
+  @example
+  {% render 'lp-trust-row' %}
+{% enddoc %}
+<ul class="lp-trust-row" role="list">
+  <li class="lp-trust-row__item">{% render 'lp-icon', name: 'shield', size: 20 %}<span>{{ 'lp.trust.guarantee' | t }}</span></li>
+  <li class="lp-trust-row__item">{% render 'lp-icon', name: 'truck', size: 20 %}<span>{{ 'lp.trust.shipping' | t }}</span></li>
+  <li class="lp-trust-row__item">{% render 'lp-icon', name: 'badge', size: 20 %}<span>{{ 'lp.trust.tested' | t }}</span></li>
+  <li class="lp-trust-row__item">{% render 'lp-icon', name: 'lock', size: 20 %}<span>{{ 'lp.trust.secure' | t }}</span></li>
+</ul>

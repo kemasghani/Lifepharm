@@ -1,0 +1,97 @@
+<section class="lp-science">
+  <div class="container lp-science__grid">
+    <div class="lp-science__media lp-media" data-lp-reveal>
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 1400 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 45vw, 100vw', widths: '600,900,1200,1400', class: 'lp-science__img', style: section.settings.image_position }}
+      {%- else -%}
+        {{ 'image' | placeholder_svg_tag: 'lp-science__img' }}
+      {%- endif -%}
+      <div class="lp-science__orbit" aria-hidden="true"><span></span><span></span><span></span></div>
+    </div>
+
+    <div class="lp-science__copy">
+      {%- if section.settings.eyebrow != blank -%}<p class="lp-eyebrow" data-lp-reveal>{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="h1 lp-science__title" data-lp-reveal style="--lp-i: 1">{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.text != blank -%}<div class="prose lp-science__text" data-lp-reveal style="--lp-i: 2">{{ section.settings.text }}</div>{%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <dl class="lp-science__stats">
+          {%- for block in section.blocks -%}
+            {%- assign value = block.settings.value | strip -%}
+            {%- assign numeric = value | remove: ',' | remove: '.' -%}
+            {%- assign numeric_check = numeric | plus: 0 | append: '' -%}
+            <div class="lp-stat" data-lp-reveal style="--lp-i: {{ forloop.index | plus: 2 }}" {{ block.shopify_attributes }}>
+              <dt class="lp-stat__value">
+                {%- if numeric_check == numeric and numeric != '' -%}
+                  <span data-lp-count="{{ value | remove: ',' }}">{{ value }}</span>
+                {%- else -%}
+                  <span>{{ value | escape }}</span>
+                {%- endif -%}
+                {%- if block.settings.suffix != blank -%}<span class="lp-stat__suffix">{{ block.settings.suffix | escape }}</span>{%- endif -%}
+              </dt>
+              <dd class="lp-stat__label">{{ block.settings.label | escape }}</dd>
+            </div>
+          {%- endfor -%}
+        </dl>
+      {%- endif -%}
+
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_url }}" class="button button--lg button--outline" data-lp-reveal>{{ section.settings.button_label | escape }}</a>
+      {%- endif -%}
+      {%- if section.settings.disclaimer != blank -%}<p class="lp-science__disclaimer">{{ section.settings.disclaimer | escape }}</p>{%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+.lp-science { padding-block: var(--lp-section-gap); background: linear-gradient(180deg, rgb(var(--lp-ivory)), rgb(var(--lp-sand) / .8)); }
+.lp-science__grid { display: grid; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+@media (min-width: 1000px) { .lp-science__grid { grid-template-columns: minmax(0, .95fr) minmax(0, 1fr); } }
+.lp-science__media { position: relative; border-radius: var(--lp-radius-lg); overflow: hidden; aspect-ratio: 4 / 4.2; box-shadow: var(--lp-shadow-3); background: #fff; }
+.lp-science__img { width: 100%; height: 100%; object-fit: cover; }
+.lp-science__orbit { position: absolute; inset: 0; pointer-events: none; }
+.lp-science__orbit span { position: absolute; left: 50%; top: 50%; width: 60%; aspect-ratio: 1; border: 1px solid rgb(255 255 255 / .55); border-radius: 50%; transform: translate(-50%, -50%); animation: lp-orbit 8s var(--lp-ease-in-out) infinite; }
+.lp-science__orbit span:nth-child(2) { width: 80%; animation-delay: -2.6s; }
+.lp-science__orbit span:nth-child(3) { width: 100%; animation-delay: -5.2s; }
+@keyframes lp-orbit { 0% { opacity: 0; transform: translate(-50%, -50%) scale(.8); } 40% { opacity: .9; } 100% { opacity: 0; transform: translate(-50%, -50%) scale(1.15); } }
+.lp-science__copy { display: grid; gap: 1.25rem; justify-items: start; }
+.lp-science__title { letter-spacing: -.03em; }
+.lp-science__title em { color: rgb(var(--lp-amber-deep)); }
+.lp-science__text { color: rgb(var(--lp-ink) / .74); max-width: 36rem; }
+.lp-science__stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; width: 100%; margin: .5rem 0; }
+.lp-stat { padding: 1.25rem; border-radius: var(--lp-radius); background: rgb(255 255 255 / .75); box-shadow: 0 0 0 1px var(--lp-hairline); }
+.lp-stat__value { font-family: var(--heading-font-family); font-size: clamp(2rem, 3.4vw, 2.75rem); line-height: 1; letter-spacing: -.03em; color: rgb(var(--lp-ink)); font-variant-numeric: tabular-nums; }
+.lp-stat__suffix { color: rgb(var(--lp-amber-deep)); margin-inline-start: .1em; }
+.lp-stat__label { margin: .5rem 0 0; font-size: .8125rem; line-height: 1.4; color: rgb(var(--lp-ink) / .68); }
+.lp-science__disclaimer { margin: 0; font-size: .75rem; line-height: 1.5; color: rgb(var(--lp-ink) / .55); max-width: 36rem; }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "LP · Science story",
+  "tag": "div",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "select", "id": "image_position", "label": "Image focus", "options": [ { "value": "object-position: 20% 50%", "label": "Left" }, { "value": "object-position: 50% 50%", "label": "Center" }, { "value": "object-position: 80% 50%", "label": "Right" } ], "default": "object-position: 50% 50%" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The science" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Powered by nature's <em>growth factors</em>" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Share how your products work.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "View published studies" },
+    { "type": "url", "id": "button_url", "label": "Button link" },
+    { "type": "text", "id": "disclaimer", "label": "Disclaimer" }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "limit": 4,
+      "settings": [
+        { "type": "text", "id": "value", "label": "Value", "info": "Numbers animate when scrolled into view.", "default": "60" },
+        { "type": "text", "id": "suffix", "label": "Suffix", "default": "days" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Money-back guarantee" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "LP · Science story", "blocks": [ { "type": "stat" } ] } ]
+}
+{% endschema %}

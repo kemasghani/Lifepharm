@@ -1,0 +1,59 @@
+<section class="lp-guarantee">
+  <div class="container">
+    <div class="lp-guarantee__card" data-lp-reveal>
+      <div class="lp-guarantee__seal" aria-hidden="true">
+        <svg viewBox="0 0 120 120" class="lp-guarantee__ring"><defs><path id="lp-seal-{{ section.id }}" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0"/></defs><text><textPath href="#lp-seal-{{ section.id }}">{{ section.settings.seal_text | escape }}</textPath></text></svg>
+        <span class="lp-guarantee__seal-core">{{ section.settings.seal_value | escape }}</span>
+      </div>
+      <div class="lp-guarantee__copy">
+        {%- if section.settings.heading != blank -%}<h2 class="h1 lp-guarantee__title">{{ section.settings.heading }}</h2>{%- endif -%}
+        {%- if section.settings.text != blank -%}<div class="lp-guarantee__text">{{ section.settings.text }}</div>{%- endif -%}
+        <div class="lp-guarantee__actions">
+          {%- if section.settings.button_label != blank -%}
+            <a href="{{ section.settings.button_url | default: routes.all_products_collection_url }}" class="button button--xl button--secondary">
+              <span>{{ section.settings.button_label | escape }}</span>{% render 'lp-icon', name: 'arrow', size: 18 %}
+            </a>
+          {%- endif -%}
+          {%- if section.settings.link_label != blank -%}
+            <a href="{{ section.settings.link_url }}" class="lp-guarantee__link">{{ section.settings.link_label | escape }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+.lp-guarantee { padding-block: var(--lp-section-gap); }
+.lp-guarantee__card { position: relative; overflow: hidden; display: grid; gap: 2rem; align-items: center; padding: clamp(2rem, 5vw, 4.5rem); border-radius: var(--lp-radius-lg); background: rgb(var(--lp-ink)); color: rgb(var(--lp-sand)); box-shadow: var(--lp-shadow-3); }
+.lp-guarantee__card::before { content: ""; position: absolute; inset: auto -20% -60% auto; width: 70%; aspect-ratio: 1; background: radial-gradient(closest-side, rgb(var(--lp-amber) / .35), transparent 70%); pointer-events: none; }
+@media (min-width: 1000px) { .lp-guarantee__card { grid-template-columns: auto minmax(0, 1fr); gap: 4rem; } }
+.lp-guarantee__seal { position: relative; width: 150px; aspect-ratio: 1; display: grid; place-items: center; }
+.lp-guarantee__ring { position: absolute; inset: 0; width: 100%; height: 100%; animation: lp-spin 24s linear infinite; fill: rgb(var(--lp-amber)); font-size: 10.5px; letter-spacing: .32em; text-transform: uppercase; font-weight: 600; }
+@keyframes lp-spin { to { transform: rotate(360deg); } }
+.lp-guarantee__seal-core { display: grid; place-items: center; width: 92px; aspect-ratio: 1; border-radius: 50%; background: rgb(var(--lp-amber)); color: rgb(var(--lp-ink)); font-family: var(--heading-font-family); font-size: 2.25rem; letter-spacing: -.03em; box-shadow: 0 0 0 8px rgb(var(--lp-amber) / .15); }
+.lp-guarantee__copy { position: relative; display: grid; gap: 1rem; justify-items: start; }
+.lp-guarantee__title { color: #fff; letter-spacing: -.03em; max-width: 18ch; }
+.lp-guarantee__title em { color: rgb(var(--lp-amber)); }
+.lp-guarantee__text { max-width: 40rem; color: rgb(var(--lp-sand) / .78); line-height: 1.65; }
+.lp-guarantee__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem; margin-block-start: .5rem; }
+.lp-guarantee__link { color: rgb(var(--lp-sand)); font-weight: 500; text-underline-offset: 4px; }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "LP · Guarantee CTA",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "seal_value", "label": "Seal value", "default": "60" },
+    { "type": "text", "id": "seal_text", "label": "Seal ring text", "default": "Day guarantee · Risk free · Day guarantee · Risk free ·" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Try it for 60 days. <em>Risk free.</em>" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>If you're not completely satisfied, we'll make it right.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Start your journey" },
+    { "type": "url", "id": "button_url", "label": "Button link" },
+    { "type": "text", "id": "link_label", "label": "Secondary link label", "default": "Read our refund policy" },
+    { "type": "url", "id": "link_url", "label": "Secondary link" }
+  ],
+  "presets": [ { "name": "LP · Guarantee CTA" } ]
+}
+{% endschema %}

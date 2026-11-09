@@ -1,0 +1,90 @@
+<section class="lp-goals">
+  <div class="container">
+    <div class="lp-goals__head" data-lp-reveal>
+      {%- if section.settings.eyebrow != blank -%}<p class="lp-eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="h1 lp-goals__title">{{ section.settings.heading }}</h2>{%- endif -%}
+    </div>
+
+    <div class="lp-goals__grid">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign c = block.settings.collection
+          assign img = block.settings.image | default: c.featured_image
+          assign is_product_shot = false
+          if img == blank and c.products.size > 0
+            assign img = c.products.first.featured_image
+            assign is_product_shot = true
+          endif
+          assign title = block.settings.title | default: c.title
+          assign url = c.url | default: routes.all_products_collection_url
+        -%}
+        <a href="{{ url }}" class="lp-goal lp-media" data-lp-reveal style="--lp-i: {{ forloop.index0 }}" {{ block.shopify_attributes }}>
+          <div class="lp-goal__media{% if is_product_shot %} lp-goal__media--product{% endif %}">
+            {%- if img != blank -%}
+              {{ img | image_url: width: 1200 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 33vw, 85vw', widths: '400,600,800,1000,1200', class: 'lp-goal__img' }}
+            {%- else -%}
+              {{ 'collection-1' | placeholder_svg_tag: 'lp-goal__img' }}
+            {%- endif -%}
+          </div>
+          <div class="lp-goal__body">
+            <h3 class="h4 lp-goal__title">{{ title | escape }}</h3>
+            {%- if block.settings.text != blank -%}<p class="lp-goal__text">{{ block.settings.text | escape }}</p>{%- endif -%}
+            <span class="lp-goal__cta">
+              {{ block.settings.cta | default: section.settings.cta | escape }}
+              {% render 'lp-icon', name: 'arrow', size: 16 %}
+            </span>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+.lp-goals { padding-block: var(--lp-section-gap); }
+.lp-goals__head { display: grid; gap: .75rem; justify-items: center; text-align: center; margin-block-end: clamp(2rem, 4vw, 3.5rem); }
+.lp-goals__title { letter-spacing: -.03em; max-width: 20ch; }
+.lp-goals__title em { color: rgb(var(--lp-amber-deep)); }
+.lp-goals__grid { display: grid; grid-auto-flow: column; grid-auto-columns: 82%; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-block-end: .5rem; scrollbar-width: none; }
+.lp-goals__grid::-webkit-scrollbar { display: none; }
+@media (min-width: 700px) { .lp-goals__grid { grid-auto-columns: 46%; } }
+@media (min-width: 1000px) { .lp-goals__grid { grid-auto-flow: row; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; overflow: visible; } }
+.lp-goal { position: relative; display: grid; border-radius: var(--lp-radius-lg); overflow: hidden; background: #fff; box-shadow: 0 0 0 1px var(--lp-hairline); scroll-snap-align: start; text-decoration: none; color: inherit; transition: box-shadow var(--lp-dur-3) var(--lp-ease), transform var(--lp-dur-3) var(--lp-ease); }
+@media (hover: hover) { .lp-goal:hover { transform: translateY(-6px); box-shadow: var(--lp-shadow-2); } .lp-goal:hover .lp-goal__img { transform: scale(1.05); } .lp-goal:hover .lp-goal__cta svg { transform: translateX(4px); } }
+.lp-goal__media { aspect-ratio: 4 / 3.2; overflow: hidden; background: rgb(var(--lp-sand)); }
+.lp-goal__img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.1s var(--lp-ease); }
+.lp-goal__media--product { background: radial-gradient(70% 70% at 50% 55%, #fff, rgb(var(--lp-sand))); }
+.lp-goal__media--product .lp-goal__img { object-fit: contain; padding: 8%; mix-blend-mode: multiply; }
+.lp-goal__body { display: grid; gap: .5rem; padding: 1.25rem 1.375rem 1.5rem; }
+.lp-goal__title { letter-spacing: -.02em; }
+.lp-goal__text { margin: 0; font-size: .9375rem; color: rgb(var(--lp-ink) / .68); line-height: 1.55; }
+.lp-goal__cta { display: inline-flex; align-items: center; gap: .4rem; margin-block-start: .25rem; font-size: .875rem; font-weight: 600; color: rgb(var(--lp-amber-deep)); }
+.lp-goal__cta svg { transition: transform var(--lp-dur-2) var(--lp-ease); }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "LP · Shop by goal",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Shop by goal" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Find the right support for <em>you</em>" },
+    { "type": "text", "id": "cta", "label": "Default link label", "default": "Explore" }
+  ],
+  "blocks": [
+    {
+      "type": "goal",
+      "name": "Goal",
+      "limit": 6,
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "image_picker", "id": "image", "label": "Image override" },
+        { "type": "text", "id": "title", "label": "Title override" },
+        { "type": "text", "id": "text", "label": "Description" },
+        { "type": "text", "id": "cta", "label": "Link label override" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "LP · Shop by goal", "blocks": [ { "type": "goal" }, { "type": "goal" }, { "type": "goal" } ] } ]
+}
+{% endschema %}

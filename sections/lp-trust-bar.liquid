@@ -1,0 +1,55 @@
+<section class="lp-trust lp-trust--{{ section.settings.style }}">
+  <div class="container">
+    <ul class="lp-trust__list" role="list">
+      {%- for block in section.blocks -%}
+        <li class="lp-trust__item" data-lp-reveal style="--lp-i: {{ forloop.index0 }}" {{ block.shopify_attributes }}>
+          <span class="lp-trust__icon">{% render 'lp-icon', name: block.settings.icon, size: 22 %}</span>
+          <span class="lp-trust__copy">
+            <strong class="lp-trust__title">{{ block.settings.title | escape }}</strong>
+            {%- if block.settings.text != blank -%}
+              <span class="lp-trust__text">{{ block.settings.text | escape }}</span>
+            {%- endif -%}
+          </span>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% stylesheet %}
+.lp-trust { padding-block: clamp(1.25rem, 2.5vw, 2rem); border-block: 1px solid var(--lp-hairline); background: #fff; }
+.lp-trust--ink { background: rgb(var(--lp-ink)); color: rgb(var(--lp-sand)); border-color: transparent; }
+.lp-trust__list { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(220px, 1fr); gap: 1rem; margin: 0; padding: 0; list-style: none; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.lp-trust__list::-webkit-scrollbar { display: none; }
+.lp-trust__item { display: flex; align-items: center; gap: .875rem; scroll-snap-align: start; }
+@media (min-width: 1000px) { .lp-trust__list { grid-auto-flow: row; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); overflow: visible; } .lp-trust__item + .lp-trust__item { border-inline-start: 1px solid var(--lp-hairline); padding-inline-start: 1.25rem; } }
+.lp-trust__icon { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: rgb(var(--lp-sand)); color: rgb(var(--lp-amber-deep)); }
+.lp-trust--ink .lp-trust__icon { background: rgb(255 255 255 / .08); color: rgb(var(--lp-amber)); }
+.lp-trust__copy { display: grid; gap: .125rem; }
+.lp-trust__title { font-size: .9375rem; font-weight: 600; line-height: 1.25; }
+.lp-trust__text { font-size: .8125rem; opacity: .7; line-height: 1.35; }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "LP · Trust bar",
+  "tag": "div",
+  "settings": [
+    { "type": "select", "id": "style", "label": "Style", "options": [ { "value": "light", "label": "Light" }, { "value": "ink", "label": "Ink" } ], "default": "light" }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Trust item",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "options": [ { "value": "shield", "label": "Shield" }, { "value": "flag", "label": "Flag" }, { "value": "flask", "label": "Flask" }, { "value": "badge", "label": "Badge" }, { "value": "truck", "label": "Truck" }, { "value": "leaf", "label": "Leaf" }, { "value": "lock", "label": "Lock" }, { "value": "refresh", "label": "Refresh" }, { "value": "chat", "label": "Chat" } ], "default": "shield" },
+        { "type": "text", "id": "title", "label": "Title", "default": "60-day guarantee" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Love it or your money back" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "LP · Trust bar", "blocks": [ { "type": "item" }, { "type": "item", "settings": { "icon": "flag", "title": "Made in the USA", "text": "GMP-grade manufacturing" } }, { "type": "item", "settings": { "icon": "badge", "title": "Fully NSF tested", "text": "Independently verified" } }, { "type": "item", "settings": { "icon": "truck", "title": "Free UK delivery", "text": "On orders over £150" } } ] }
+  ]
+}
+{% endschema %}

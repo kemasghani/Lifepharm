@@ -9,7 +9,7 @@
       {%- for block in section.blocks -%}
         {%- liquid
           assign c = block.settings.collection
-          assign img = block.settings.image | default: c.featured_image
+          assign img = block.settings.image | default: c.image
           assign is_product_shot = false
           if img == blank and c.products.size > 0
             assign img = c.products.first.featured_image

@@ -521,8 +521,8 @@
             "size": "lg",
             "text": "<a onclick=\"GorgiasChat.open();\">Chat with our team</a>",
             "url": "",
-            "background": "#ff8f00",
-            "text_color": "#ffffff"
+            "background": "#e8890c",
+            "text_color": "#15171b"
           }
         }
       },
@@ -1199,7 +1199,8 @@
             "collection": "nutritionals",
             "title": "Nutritionals",
             "text": "Daily foundations for energy, immunity, digestion and recovery.",
-            "cta": "Shop nutritionals"
+            "cta": "Shop nutritionals",
+            "image": "shopify://shop_images/Supplements-Orange-bg_web.jpg"
           }
         },
         "g2": {
@@ -1208,7 +1209,8 @@
             "collection": "skin-health",
             "title": "Skin health",
             "text": "Growth-factor skincare for visibly smoother, firmer-looking skin.",
-            "cta": "Shop skin health"
+            "cta": "Shop skin health",
+            "image": "shopify://shop_images/Skincare-Blue-bg_web.jpg"
           }
         },
         "g3": {
@@ -1217,7 +1219,8 @@
             "collection": "frequency-regeneration",
             "title": "Frequency regeneration",
             "text": "Advanced Cellnergy technology for whole-body wellbeing.",
-            "cta": "Discover Cellnergy"
+            "cta": "Discover Cellnergy",
+            "image": "shopify://shop_images/test_sqaure_08a86950-61d0-4e60-8977-5156471baea5.jpg"
           }
         }
       },
@@ -1266,8 +1269,8 @@
         "s3"
       ],
       "settings": {
-        "image": "shopify://shop_images/home_page_lifepharm_web_quality.jpg",
-        "image_position": "object-position: 20% 50%",
+        "image": "shopify://shop_images/5.jpg",
+        "image_position": "object-position: 50% 50%",
         "eyebrow": "The science",
         "heading": "Powered by nature's <em>growth factors</em>",
         "text": "<p>Your body is constantly working to repair itself, but as we age that process slows down. Our fertilised avian egg extract is harvested at peak activity and delivers growth factors, cellular factors and amino acids — the building blocks your body uses to renew.*</p>",
@@ -1280,7 +1283,7 @@
       "type": "lp-guarantee",
       "settings": {
         "seal_value": "60",
-        "seal_text": "Day guarantee · Risk free · Day guarantee · Risk free ·",
+        "seal_text": "60-day guarantee · risk free · ",
         "heading": "Try it for 60 days. <em>Risk free.</em>",
         "text": "<p>We're confident in what we make. If you're not completely satisfied, contact our team within 60 days for a full refund.</p>",
         "button_label": "Shop the range",

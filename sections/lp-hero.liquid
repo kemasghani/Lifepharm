@@ -93,7 +93,7 @@
 .lp-hero { position: relative; overflow: hidden; padding-block: clamp(2rem, 5vw, 4.5rem) clamp(3rem, 6vw, 5.5rem); background: rgb(var(--lp-ivory)); }
 .lp-hero__glow { position: absolute; inset: -20% -10% auto auto; width: 70vw; aspect-ratio: 1; background: radial-gradient(closest-side, rgb(var(--lp-amber) / .16), transparent 70%); filter: blur(10px); pointer-events: none; animation: lp-glow 14s ease-in-out infinite alternate; }
 @keyframes lp-glow { to { transform: translate(-6%, 8%) scale(1.08); } }
-.lp-hero__grid { position: relative; display: grid; gap: clamp(2rem, 4vw, 4rem); align-items: center; min-height: min(var(--lp-hero-min), 860px); }
+.lp-hero__grid { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(2rem, 4vw, 4rem); align-items: center; min-height: min(var(--lp-hero-min), 860px); }
 @media (min-width: 1000px) { .lp-hero__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); } .lp-hero--media-left .lp-hero__media { order: -1; } }
 .lp-hero__copy { display: grid; gap: 1.25rem; justify-items: start; max-width: 38rem; }
 .lp-hero__title { font-size: clamp(2.5rem, 5.6vw, 5rem); letter-spacing: -.035em; line-height: 1.02; }

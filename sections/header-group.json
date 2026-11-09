@@ -1,1 +1,262 @@
-{"type":"header","name":"Header group","sections":{"custom_liquid_9TAm6Y":{"type":"custom-liquid","custom_css":[".exigo-modal {z-index: 100000000000 !important;}"],"settings":{"full_width":true,"remove_vertical_spacing":true,"remove_horizontal_spacing":true,"liquid":"<script>\nconsole.log(\"{{shop.permanent_domain}}\")\n      var countryCode = '{{localization.country.iso_code}}';\n      var cultureCode = '{{ localization.language.iso_code }}';\n      var currencyCode = '{{ localization.country.currency.iso_code }}';\n      var isCustomer = {{ customer.has_account | default: false}};\n      var customerId = {{ customer.id | default: 0 }};\n      var exigoCustomerTypeId = {{ customer.metafields.Exigo.CustomerTypeId | default: 0 }};\n      var exigoId = {{ customer.metafields.Exigo.CustomerId | default: 0 }};\n      var _referral = \"{{ customer.metafields.Exigo.Referral | default: \"CorpOrphan\" }}\";\n      var exigoWebalias = '{{ customer.metafields.Exigo.Webalias | default: \"\" }}';\n      var pointAccountId = {{ customer.metafields.Exigo.PointAccountId | default: 1 }};\nvar Exigo = {\n    Settings: {\n        ShopUrl: \"{{ shop.permanent_domain}}\",\n        ApiUrl: \"https:\/\/lpshopify.azurewebsites.net\",\n        BackofficeUrl: \"https:\/\/mylifepharmoffice.com\",\n        SilentLoginUrl: \"\/account\/silentlogin?token=\",\n        StorePublicUrl: \"{{ shop.url}}\",\n        CheckoutUrl: \"\",\/\/\"https:\/\/localhost:44348\",\n        DebugCheckoutUrl: \"https:\/\/localhost:44348\",\n        DebugApiUrl: \"https:\/\/localhost:44341\",\n        ReferralCookieName: \"refId\",\n        LoginCookie: \"ExigoSilentLogin\",\n        SyncCookie: \"ExigoCustomerSyncing\",\n        ReferralParameter: \"ref\",\n        DefaultWebalias: \"retaildirect\",\n        EnableEnrollerSearch: true,\n        RetailCustomerType: 1,\n        HasParty: false,\n        AffiliatePoints: {\n            UseAffiliatePoints: true,\n        },\n        Enrollment: {\n            Enable: true,\n            ForceEnrollmentFlow: true\n        }\n    },\n    Actions: {\n        SetEnrollerSearch: function () {\n            setEnrollerSearch();\n        },\n        AddReferralToUrl: function () {\n            addReferralToUrl();\n        },\n        SearchForEnroller: function (query) {\n            searchForEnroller(query);\n        },\n        Checkout: {\n            GetProductPrices: function (priceType, sku) {\n                getProductPrices(priceType, sku);\n            },\n            CalculateCart: function (priceType, cartType) {\n                calculateCart(priceType, cartType);\n            }\n        },\n        AffiliatePoints: {\n            GetPoints: function (callback) {\n                getPoints(callback);\n            },\n            SpendPoints: function (value) {\n                addPointsToCart(value);\n            },\n            GetEligibleRewards: function (callback) {\n                getEligibleRewards(callback);\n            },\n            GetAllEligibleRewards: function (callback) {\n                getAllEligibleRewards(callback);\n            },\n            GetAllAffiliateRewards: function (callback) {\n                getAllAffiliateRewards(callback);\n            },\n            CreateAffiliateReward: function (callback, id) {\n                createAffiliateReward(callback, id);\n            }\n        }\n    },\n    Initialize: function () {\n        initialize();\n    }\n}\n<\/script>\n\n<script src=\"https:\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/1.9.1\/jquery.min.js\"><\/script>\n<script src=\"https:\/\/lpshopify.azurewebsites.net\/staticfiles\/exigoscript.js?v=2\"><\/script>","background":"","background_gradient":"","text_color":""}},"announcement-bar":{"type":"announcement-bar","blocks":{"message_ATBdQg":{"type":"message","settings":{"text":"FREE SHIPPING ON ALL NEW & EXISTING SUBSCRIPTIONS UNTIL FEBRUARY 28TH!","url":""}}},"block_order":["message_ATBdQg"],"disabled":true,"settings":{"enable_sticky":false,"show_on_homepage_only":false,"navigation_mode":"arrows","autoplay":true,"cycle_speed":5,"scrolling_speed":14,"text_size":"text-base","background":"#ff8f00","background_gradient":"","text_color":"#ffffff"}},"176964516604b6b434":{"type":"apps","blocks":{"teqnavi_lifepharm_referral_banner_KtLytF":{"type":"shopify:\/\/apps\/teqnavi-lifepharm\/blocks\/referral-banner\/019bc71e-c7cd-732d-b07b-3ca8ead35448","settings":{"show_banner":true,"hide_on_enrollment":false,"hide_on_logged_in":false,"display_condition":"always","change_link_display":"always","allow_change_when_logged_in":false,"title":"You are enrolling with","no_referral_message":"Are you referred by someone?","default_webalias":"retaildirect","background_color":"#ff8f00","text_color":"#ffffff","padding":10,"spacing":8,"referral_desktop_align":"left","title_size":16,"enroller_size":16,"show_announcements":true,"announcement_messages":"","announcement_rotation_seconds":5,"announcement_mobile_layout":"above","debug_logging":false}}},"block_order":["teqnavi_lifepharm_referral_banner_KtLytF"],"custom_css":["h3 {font-family: \"Lato\" !important;}",".referral-banner {margin-bottom: 0rem !important;}",".referral-banner__announcement-message {white-space: inherit !important;}",".referral-banner__cell--center {font-family: \"Lato\"; font-size: 16px;}"],"settings":{"full_width":true,"remove_vertical_spacing":true,"remove_horizontal_spacing":false,"background":"#ff8f00","background_gradient":"","text_color":""}},"header":{"type":"header","blocks":{"mega_menu_QPEDce":{"type":"mega_menu","settings":{"menu_item":"Shop","layout":"horizontal","submenu_style":"bold_heading","image_1":"shopify:\/\/shop_images\/5.jpg","image_heading_1":"Shop All","image_link_1":"shopify:\/\/collections\/all","image_text_color_1":"#181818","image_heading_2":"Skin Health","image_link_2":"shopify:\/\/collections\/nutritionals","image_text_color_2":"#181818","image_heading_3":"Cellnergy Wellness","image_link_3":"shopify:\/\/products\/cellnergy-wellness","image_text_color_3":"#181818","product":"","product_card_background":"#ffffff","product_card_text_color":"#181818","promo_content_layout":"grid","stretch_promo":false,"drawer_link_image":"show"}},"mega_menu_KhV7EY":{"type":"mega_menu","settings":{"menu_item":"","layout":"horizontal","submenu_style":"bold_heading","image_heading_1":"","image_link_1":"","image_text_color_1":"#ffffff","image_heading_2":"","image_link_2":"","image_text_color_2":"#ffffff","image_heading_3":"","image_link_3":"","image_text_color_3":"#ffffff","product":"","product_card_background":"","product_card_text_color":"","promo_content_layout":"grid","stretch_promo":false,"drawer_link_image":"hide"}},"mega_menu_PTDXDA":{"type":"mega_menu","settings":{"menu_item":"","layout":"horizontal","submenu_style":"bold_heading","image_heading_1":"","image_link_1":"","image_text_color_1":"#ffffff","image_heading_2":"","image_link_2":"","image_text_color_2":"#ffffff","image_heading_3":"","image_link_3":"","image_text_color_3":"#ffffff","product":"","product_card_background":"","product_card_text_color":"","promo_content_layout":"grid","stretch_promo":false,"drawer_link_image":"hide"}},"mega_menu_r8r8mV":{"type":"mega_menu","disabled":true,"settings":{"menu_item":"","layout":"horizontal","submenu_style":"bold_heading","image_heading_1":"","image_link_1":"","image_text_color_1":"#ffffff","image_heading_2":"","image_link_2":"","image_text_color_2":"#ffffff","image_heading_3":"","image_link_3":"","image_text_color_3":"#ffffff","product":"","product_card_background":"","product_card_text_color":"","promo_content_layout":"grid","stretch_promo":false,"drawer_link_image":"hide"}},"mega_menu_8qzwaD":{"type":"mega_menu","disabled":true,"settings":{"menu_item":"Shopping","layout":"horizontal_center","submenu_style":"bold_heading","image_1":"shopify:\/\/shop_images\/test_sqaure_08a86950-61d0-4e60-8977-5156471baea5.jpg","image_heading_1":"Nutritionals","image_link_1":"shopify:\/\/collections\/nutritionals","image_text_color_1":"#ffffff","image_2":"shopify:\/\/shop_images\/test_square_3.jpg","image_heading_2":"Skin Health","image_link_2":"shopify:\/\/collections\/skin-health","image_text_color_2":"#ffffff","image_3":"shopify:\/\/shop_images\/test_sqaure_2.jpg","image_heading_3":"Cellnergy","image_link_3":"shopify:\/\/collections\/frequency-regeneration","image_text_color_3":"#ffffff","product":"","product_card_background":"","product_card_text_color":"","promo_content_layout":"grid","stretch_promo":false,"drawer_link_image":"hide"}}},"block_order":["mega_menu_QPEDce","mega_menu_KhV7EY","mega_menu_PTDXDA","mega_menu_r8r8mV","mega_menu_8qzwaD"],"custom_css":[".bold {font-weight: lighter; text-transform: uppercase; font-size: 14px; margin: 3px auto;}"],"settings":{"enable_sticky":true,"hide_on_scroll":false,"logo":"{{shop.brand.logo}}","logo_max_width":200,"logo_mobile_max_width":150,"menu":"main-menu","sidebar_menu":"","secondary_menu":"","customer_account_menu":"customer-account-main-menu","menu_open_trigger":"hover","opening_from":"bottom","layout":"logo_left_navigation_inline","show_social_media":true,"show_locale_selector":false,"show_country_selector":false,"show_country_flag":false,"show_country_name":false,"transparent_header_text_color":"#181818","reduce_padding":true,"background_opacity":100,"background_blur_radius":0}}},"order":["custom_liquid_9TAm6Y","announcement-bar","176964516604b6b434","header"]}
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "custom_liquid_9TAm6Y": {
+      "type": "custom-liquid",
+      "custom_css": [
+        ".exigo-modal {z-index: 100000000000 !important;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": true,
+        "remove_horizontal_spacing": true,
+        "liquid": "<script>\nconsole.log(\"{{shop.permanent_domain}}\")\n      var countryCode = '{{localization.country.iso_code}}';\n      var cultureCode = '{{ localization.language.iso_code }}';\n      var currencyCode = '{{ localization.country.currency.iso_code }}';\n      var isCustomer = {{ customer.has_account | default: false}};\n      var customerId = {{ customer.id | default: 0 }};\n      var exigoCustomerTypeId = {{ customer.metafields.Exigo.CustomerTypeId | default: 0 }};\n      var exigoId = {{ customer.metafields.Exigo.CustomerId | default: 0 }};\n      var _referral = \"{{ customer.metafields.Exigo.Referral | default: \"CorpOrphan\" }}\";\n      var exigoWebalias = '{{ customer.metafields.Exigo.Webalias | default: \"\" }}';\n      var pointAccountId = {{ customer.metafields.Exigo.PointAccountId | default: 1 }};\nvar Exigo = {\n    Settings: {\n        ShopUrl: \"{{ shop.permanent_domain}}\",\n        ApiUrl: \"https://lpshopify.azurewebsites.net\",\n        BackofficeUrl: \"https://mylifepharmoffice.com\",\n        SilentLoginUrl: \"/account/silentlogin?token=\",\n        StorePublicUrl: \"{{ shop.url}}\",\n        CheckoutUrl: \"\",//\"https://localhost:44348\",\n        DebugCheckoutUrl: \"https://localhost:44348\",\n        DebugApiUrl: \"https://localhost:44341\",\n        ReferralCookieName: \"refId\",\n        LoginCookie: \"ExigoSilentLogin\",\n        SyncCookie: \"ExigoCustomerSyncing\",\n        ReferralParameter: \"ref\",\n        DefaultWebalias: \"retaildirect\",\n        EnableEnrollerSearch: true,\n        RetailCustomerType: 1,\n        HasParty: false,\n        AffiliatePoints: {\n            UseAffiliatePoints: true,\n        },\n        Enrollment: {\n            Enable: true,\n            ForceEnrollmentFlow: true\n        }\n    },\n    Actions: {\n        SetEnrollerSearch: function () {\n            setEnrollerSearch();\n        },\n        AddReferralToUrl: function () {\n            addReferralToUrl();\n        },\n        SearchForEnroller: function (query) {\n            searchForEnroller(query);\n        },\n        Checkout: {\n            GetProductPrices: function (priceType, sku) {\n                getProductPrices(priceType, sku);\n            },\n            CalculateCart: function (priceType, cartType) {\n                calculateCart(priceType, cartType);\n            }\n        },\n        AffiliatePoints: {\n            GetPoints: function (callback) {\n                getPoints(callback);\n            },\n            SpendPoints: function (value) {\n                addPointsToCart(value);\n            },\n            GetEligibleRewards: function (callback) {\n                getEligibleRewards(callback);\n            },\n            GetAllEligibleRewards: function (callback) {\n                getAllEligibleRewards(callback);\n            },\n            GetAllAffiliateRewards: function (callback) {\n                getAllAffiliateRewards(callback);\n            },\n            CreateAffiliateReward: function (callback, id) {\n                createAffiliateReward(callback, id);\n            }\n        }\n    },\n    Initialize: function () {\n        initialize();\n    }\n}\n</script>\n\n<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js\"></script>\n<script src=\"https://lpshopify.azurewebsites.net/staticfiles/exigoscript.js?v=2\"></script>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "message_ATBdQg": {
+          "type": "message",
+          "settings": {
+            "text": "FREE SHIPPING ON ALL NEW & EXISTING SUBSCRIPTIONS UNTIL FEBRUARY 28TH!",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "message_ATBdQg"
+      ],
+      "disabled": true,
+      "settings": {
+        "enable_sticky": false,
+        "show_on_homepage_only": false,
+        "navigation_mode": "arrows",
+        "autoplay": true,
+        "cycle_speed": 5,
+        "scrolling_speed": 14,
+        "text_size": "text-base",
+        "background": "#15171b",
+        "background_gradient": "",
+        "text_color": "#f3efe7"
+      }
+    },
+    "176964516604b6b434": {
+      "type": "apps",
+      "blocks": {
+        "teqnavi_lifepharm_referral_banner_KtLytF": {
+          "type": "shopify://apps/teqnavi-lifepharm/blocks/referral-banner/019bc71e-c7cd-732d-b07b-3ca8ead35448",
+          "settings": {
+            "show_banner": true,
+            "hide_on_enrollment": false,
+            "hide_on_logged_in": false,
+            "display_condition": "always",
+            "change_link_display": "always",
+            "allow_change_when_logged_in": false,
+            "title": "You are enrolling with",
+            "no_referral_message": "Are you referred by someone?",
+            "default_webalias": "retaildirect",
+            "background_color": "#ff8f00",
+            "text_color": "#ffffff",
+            "padding": 10,
+            "spacing": 8,
+            "referral_desktop_align": "left",
+            "title_size": 16,
+            "enroller_size": 16,
+            "show_announcements": true,
+            "announcement_messages": "",
+            "announcement_rotation_seconds": 5,
+            "announcement_mobile_layout": "above",
+            "debug_logging": false
+          }
+        }
+      },
+      "block_order": [
+        "teqnavi_lifepharm_referral_banner_KtLytF"
+      ],
+      "custom_css": [
+        "h3 {font-family: \"Lato\" !important;}",
+        ".referral-banner {margin-bottom: 0rem !important;}",
+        ".referral-banner__announcement-message {white-space: inherit !important;}",
+        ".referral-banner__cell--center {font-family: \"Lato\"; font-size: 16px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": true,
+        "remove_horizontal_spacing": false,
+        "background": "#15171b",
+        "background_gradient": "",
+        "text_color": "#f3efe7"
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "mega_menu_QPEDce": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_item": "Shop",
+            "layout": "horizontal",
+            "submenu_style": "bold_heading",
+            "image_1": "shopify://shop_images/5.jpg",
+            "image_heading_1": "Shop All",
+            "image_link_1": "shopify://collections/all",
+            "image_text_color_1": "#181818",
+            "image_heading_2": "Skin Health",
+            "image_link_2": "shopify://collections/nutritionals",
+            "image_text_color_2": "#181818",
+            "image_heading_3": "Cellnergy Wellness",
+            "image_link_3": "shopify://products/cellnergy-wellness",
+            "image_text_color_3": "#181818",
+            "product": "",
+            "product_card_background": "#ffffff",
+            "product_card_text_color": "#181818",
+            "promo_content_layout": "grid",
+            "stretch_promo": false,
+            "drawer_link_image": "show"
+          }
+        },
+        "mega_menu_KhV7EY": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_item": "",
+            "layout": "horizontal",
+            "submenu_style": "bold_heading",
+            "image_heading_1": "",
+            "image_link_1": "",
+            "image_text_color_1": "#ffffff",
+            "image_heading_2": "",
+            "image_link_2": "",
+            "image_text_color_2": "#ffffff",
+            "image_heading_3": "",
+            "image_link_3": "",
+            "image_text_color_3": "#ffffff",
+            "product": "",
+            "product_card_background": "",
+            "product_card_text_color": "",
+            "promo_content_layout": "grid",
+            "stretch_promo": false,
+            "drawer_link_image": "hide"
+          }
+        },
+        "mega_menu_PTDXDA": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_item": "",
+            "layout": "horizontal",
+            "submenu_style": "bold_heading",
+            "image_heading_1": "",
+            "image_link_1": "",
+            "image_text_color_1": "#ffffff",
+            "image_heading_2": "",
+            "image_link_2": "",
+            "image_text_color_2": "#ffffff",
+            "image_heading_3": "",
+            "image_link_3": "",
+            "image_text_color_3": "#ffffff",
+            "product": "",
+            "product_card_background": "",
+            "product_card_text_color": "",
+            "promo_content_layout": "grid",
+            "stretch_promo": false,
+            "drawer_link_image": "hide"
+          }
+        },
+        "mega_menu_r8r8mV": {
+          "type": "mega_menu",
+          "disabled": true,
+          "settings": {
+            "menu_item": "",
+            "layout": "horizontal",
+            "submenu_style": "bold_heading",
+            "image_heading_1": "",
+            "image_link_1": "",
+            "image_text_color_1": "#ffffff",
+            "image_heading_2": "",
+            "image_link_2": "",
+            "image_text_color_2": "#ffffff",
+            "image_heading_3": "",
+            "image_link_3": "",
+            "image_text_color_3": "#ffffff",
+            "product": "",
+            "product_card_background": "",
+            "product_card_text_color": "",
+            "promo_content_layout": "grid",
+            "stretch_promo": false,
+            "drawer_link_image": "hide"
+          }
+        },
+        "mega_menu_8qzwaD": {
+          "type": "mega_menu",
+          "disabled": true,
+          "settings": {
+            "menu_item": "Shopping",
+            "layout": "horizontal_center",
+            "submenu_style": "bold_heading",
+            "image_1": "shopify://shop_images/test_sqaure_08a86950-61d0-4e60-8977-5156471baea5.jpg",
+            "image_heading_1": "Nutritionals",
+            "image_link_1": "shopify://collections/nutritionals",
+            "image_text_color_1": "#ffffff",
+            "image_2": "shopify://shop_images/test_square_3.jpg",
+            "image_heading_2": "Skin Health",
+            "image_link_2": "shopify://collections/skin-health",
+            "image_text_color_2": "#ffffff",
+            "image_3": "shopify://shop_images/test_sqaure_2.jpg",
+            "image_heading_3": "Cellnergy",
+            "image_link_3": "shopify://collections/frequency-regeneration",
+            "image_text_color_3": "#ffffff",
+            "product": "",
+            "product_card_background": "",
+            "product_card_text_color": "",
+            "promo_content_layout": "grid",
+            "stretch_promo": false,
+            "drawer_link_image": "hide"
+          }
+        }
+      },
+      "block_order": [
+        "mega_menu_QPEDce",
+        "mega_menu_KhV7EY",
+        "mega_menu_PTDXDA",
+        "mega_menu_r8r8mV",
+        "mega_menu_8qzwaD"
+      ],
+      "custom_css": [
+        ".bold {font-weight: lighter; text-transform: uppercase; font-size: 14px; margin: 3px auto;}"
+      ],
+      "settings": {
+        "enable_sticky": true,
+        "hide_on_scroll": false,
+        "logo": "{{shop.brand.logo}}",
+        "logo_max_width": 200,
+        "logo_mobile_max_width": 150,
+        "menu": "main-menu",
+        "sidebar_menu": "",
+        "secondary_menu": "",
+        "customer_account_menu": "customer-account-main-menu",
+        "menu_open_trigger": "hover",
+        "opening_from": "bottom",
+        "layout": "logo_left_navigation_inline",
+        "show_social_media": true,
+        "show_locale_selector": false,
+        "show_country_selector": false,
+        "show_country_flag": false,
+        "show_country_name": false,
+        "transparent_header_text_color": "#181818",
+        "reduce_padding": true,
+        "background_opacity": 85,
+        "background_blur_radius": 16
+      }
+    }
+  },
+  "order": [
+    "custom_liquid_9TAm6Y",
+    "announcement-bar",
+    "176964516604b6b434",
+    "header"
+  ]
+}

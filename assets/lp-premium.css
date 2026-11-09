@@ -114,15 +114,12 @@ h2 span[style*="#FF8F00"] { color: rgb(var(--lp-amber-deep)) !important; font-st
 
 /* ---------- Announcement bar ---------- */
 .announcement-bar {
-  background: rgb(var(--lp-ink)) !important;
-  color: rgb(var(--lp-sand)) !important;
   font-size: .8125rem;
   letter-spacing: .02em;
 }
 .announcement-bar a { color: inherit; text-underline-offset: 3px; }
 
 /* ---------- Header ---------- */
-.header { --header-background-opacity: .82; --header-background-blur-radius: 18px; }
 .header__wrapper { border-bottom: 1px solid var(--lp-hairline); transition: box-shadow var(--lp-dur-2) var(--lp-ease), background var(--lp-dur-2) var(--lp-ease); }
 html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-ink) / .25); }
 .header__primary-nav-item > a, .header__link-list a {

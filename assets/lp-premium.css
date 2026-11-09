@@ -222,17 +222,6 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
   .navigation-drawer { border-radius: 0 var(--lp-radius-lg) var(--lp-radius-lg) 0; }
 }
 .cart-drawer .line-item { padding-block: 1rem; border-bottom: 1px solid var(--lp-hairline); }
-.free-shipping-bar progress, .free-shipping-bar .progress-bar, .cart-drawer progress {
-  height: 6px;
-  border-radius: 999px;
-  overflow: hidden;
-}
-.free-shipping-bar progress::-webkit-progress-value, .cart-drawer progress::-webkit-progress-value {
-  background: linear-gradient(90deg, rgb(var(--lp-amber)), rgb(var(--lp-amber-deep)));
-  border-radius: 999px;
-  transition: width var(--lp-dur-3) var(--lp-ease);
-}
-.free-shipping-bar progress::-moz-progress-bar { background: rgb(var(--lp-amber)); border-radius: 999px; }
 .lp-drawer-trust {
   display: flex;
   flex-wrap: wrap;
@@ -347,3 +336,14 @@ html:not(.lp-js) [data-lp-reveal] { opacity: 1; transform: none; }
 .lp-goals__title { text-align: center; }
 .button a { color: inherit; text-decoration: none; background: none; }
 .lp-hero__copy, .lp-hero__media, .lp-science__copy, .lp-science__media, .lp-guarantee__copy { min-width: 0; }
+
+/* Free-shipping progress (amber, the one place accent fills) */
+.free-shipping-bar .progress-bar { height: 6px; background: rgb(var(--lp-ink) / .1); }
+.free-shipping-bar .progress-bar::before { background: linear-gradient(90deg, rgb(var(--lp-amber)), rgb(var(--lp-amber-deep))); transition: transform var(--lp-dur-3) var(--lp-ease); }
+/* Checkout is the single primary action in the drawer */
+.cart-drawer .buy-buttons .button--secondary {
+  --button-background: 0 0 0 / 0;
+  --button-text-color: var(--lp-ink);
+  box-shadow: inset 0 0 0 1.5px rgb(var(--lp-ink) / .2);
+}
+@media (hover: hover) { .cart-drawer .buy-buttons .button--secondary:hover { box-shadow: inset 0 0 0 1.5px rgb(var(--lp-ink)); } }

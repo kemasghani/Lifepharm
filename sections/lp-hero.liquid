@@ -8,18 +8,18 @@
   <div class="container lp-hero__grid">
     <div class="lp-hero__copy">
       {%- if section.settings.eyebrow != blank -%}
-        <p class="lp-eyebrow lp-hero__eyebrow" data-lp-reveal>{{ section.settings.eyebrow | escape }}</p>
+        <p class="lp-eyebrow lp-hero__eyebrow">{{ section.settings.eyebrow | escape }}</p>
       {%- endif -%}
 
       {%- if section.settings.heading != blank -%}
-        <h1 class="h0 lp-hero__title" data-lp-reveal style="--lp-i: 1">{{ section.settings.heading }}</h1>
+        <h1 class="h0 lp-hero__title" style="--lp-i: 1">{{ section.settings.heading }}</h1>
       {%- endif -%}
 
       {%- if section.settings.text != blank -%}
-        <div class="lp-hero__text" data-lp-reveal style="--lp-i: 2">{{ section.settings.text }}</div>
+        <div class="lp-hero__text" style="--lp-i: 2">{{ section.settings.text }}</div>
       {%- endif -%}
 
-      <div class="lp-hero__actions" data-lp-reveal style="--lp-i: 3">
+      <div class="lp-hero__actions" style="--lp-i: 3">
         {%- if section.settings.button_label != blank -%}
           <a href="{{ section.settings.button_url | default: routes.all_products_collection_url }}" class="button button--xl lp-hero__cta">
             <span>{{ section.settings.button_label | escape }}</span>
@@ -32,7 +32,7 @@
       </div>
 
       {%- if section.settings.rating_text != blank -%}
-        <div class="lp-hero__rating" data-lp-reveal style="--lp-i: 4">
+        <div class="lp-hero__rating" style="--lp-i: 4">
           <span class="lp-hero__stars" aria-hidden="true">
             {%- for i in (1..5) -%}{% render 'lp-icon', name: 'star', size: 16 %}{%- endfor -%}
           </span>
@@ -41,7 +41,7 @@
       {%- endif -%}
 
       {%- if section.blocks.size > 0 -%}
-        <ul class="lp-hero__chips" role="list" data-lp-reveal style="--lp-i: 5">
+        <ul class="lp-hero__chips" role="list" style="--lp-i: 5">
           {%- for block in section.blocks -%}
             <li class="lp-hero__chip" {{ block.shopify_attributes }}>
               {% render 'lp-icon', name: block.settings.icon, size: 18 %}
@@ -52,7 +52,7 @@
       {%- endif -%}
     </div>
 
-    <div class="lp-hero__media lp-media" data-lp-reveal style="--lp-i: 2">
+    <div class="lp-hero__media lp-media" style="--lp-i: 2">
       <div class="lp-hero__frame">
         {%- if hero_video != blank -%}
           {{ hero_video | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, controls: false, image_size: '1600x', class: 'lp-hero__video' }}
@@ -121,6 +121,9 @@
 .lp-hero__float--2 { right: -.75rem; top: 10%; animation-delay: -3s; }
 @media (max-width: 699px) { .lp-hero__float--1 { left: .75rem; } .lp-hero__float--2 { right: .75rem; } }
 @keyframes lp-float { 50% { transform: translateY(-8px); } }
+.lp-hero__copy > *, .lp-hero__media { animation: lp-rise 900ms var(--lp-ease) both; animation-delay: calc(var(--lp-i, 0) * 70ms); }
+@keyframes lp-rise { from { transform: translateY(18px); } }
+@media (prefers-reduced-motion: reduce) { .lp-hero__copy > *, .lp-hero__media { animation: none; } }
 {% endstylesheet %}
 
 {% schema %}

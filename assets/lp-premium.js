@@ -154,7 +154,7 @@
     }).observe(main, { childList: true, subtree: true });
   }
 
-  document.querySelectorAll('video[data-lp-lazy]').forEach((video) => {
+  const startLazyVideos = () => document.querySelectorAll('video[data-lp-lazy]').forEach((video) => {
     if (reduceMotion) return;
     const io = new IntersectionObserver(([entry]) => {
       if (!entry.isIntersecting) return;
@@ -166,5 +166,8 @@
     }, { rootMargin: '200px' });
     io.observe(video);
   });
+  const whenIdle = (fn) => (window.requestIdleCallback ? requestIdleCallback(fn, { timeout: 2500 }) : setTimeout(fn, 1200));
+  if (document.readyState === 'complete') whenIdle(startLazyVideos);
+  else window.addEventListener('load', () => whenIdle(startLazyVideos), { once: true });
 
 })();

@@ -74,12 +74,6 @@
 .lp-hl__shade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgb(var(--lp-ink) / calc(var(--lp-hl-overlay) * .35)) 0%, rgb(var(--lp-ink) / calc(var(--lp-hl-overlay) * .55)) 45%, rgb(var(--lp-ink) / calc(var(--lp-hl-overlay) * 1.1)) 100%); }
 .lp-hl__content { display: grid; gap: clamp(1.5rem, 3vw, 2.5rem); padding: clamp(1.25rem, 3.5vw, 3rem); }
 .lp-hl__eyebrow { color: rgb(255 255 255 / .82); }
-@media (max-width: 699px) {
-  .lp-hl__frame { min-height: 0; padding-block-start: 14rem; }
-  .lp-hl__cards { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 80%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-inline: -1.25rem; padding-inline: 1.25rem; scroll-padding-inline: 1.25rem; }
-  .lp-hl__cards::-webkit-scrollbar { display: none; }
-  .lp-hl__card { scroll-snap-align: start; }
-}
 .lp-hl__title { color: #fff; max-width: 20ch; letter-spacing: -.03em; text-wrap: balance; }
 .lp-hl__cards { display: grid; grid-template-columns: minmax(0, 1fr); gap: .75rem; list-style: none; margin: 0; padding: 0; }
 @media (min-width: 700px) { .lp-hl__cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -89,6 +83,13 @@
 .lp-hl__card-title { font-family: var(--text-font-family); font-size: 1.0625rem; font-weight: 600; letter-spacing: -.01em; color: #fff; margin: 0; }
 .lp-hl__card-text { margin: 0; font-size: .9375rem; line-height: 1.55; color: rgb(255 255 255 / .82); }
 .lp-hl__disclaimer { margin-block-start: 1rem; font-size: .75rem; line-height: 1.5; color: rgb(var(--lp-muted)); max-width: 70ch; }
+@media (max-width: 699px) {
+  .lp-hl__frame { min-height: 0; padding-block-start: 14rem; }
+  .lp-hl__content { padding: 1.25rem; }
+  .lp-hl__cards { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 80%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-inline: -1.25rem; padding-inline: 1.25rem; scroll-padding-inline: 1.25rem; }
+  .lp-hl__cards::-webkit-scrollbar { display: none; }
+  .lp-hl__card { scroll-snap-align: start; }
+}
 {% endstylesheet %}
 
 {% schema %}

@@ -166,6 +166,18 @@
     }, { rootMargin: '200px' });
     io.observe(video);
   });
+
+  const watchUgc = () => document.querySelectorAll('tolstoy-stories').forEach((stories) => {
+    const item = stories.closest('.product-info__block-item');
+    const head = item && item.previousElementSibling && item.previousElementSibling.querySelector('.lp-pdp-subhead');
+    const ready = () => stories.childElementCount > 0 || (stories.shadowRoot && stories.shadowRoot.childElementCount > 0);
+    const reveal = () => { stories.classList.add('lp-ready'); if (head) head.classList.add('is-ready'); };
+    if (ready()) return reveal();
+    const mo = new MutationObserver(() => { if (ready()) { reveal(); mo.disconnect(); } });
+    mo.observe(stories, { childList: true, subtree: true });
+  });
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', watchUgc, { once: true });
+  else watchUgc();
   const whenIdle = (fn) => (window.requestIdleCallback ? requestIdleCallback(fn, { timeout: 2500 }) : setTimeout(fn, 1200));
   if (document.readyState === 'complete') whenIdle(startLazyVideos);
   else window.addEventListener('load', () => whenIdle(startLazyVideos), { once: true });

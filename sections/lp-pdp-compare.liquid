@@ -63,13 +63,6 @@
 .lp-cmp__table { position: relative; display: grid; padding: .5rem clamp(.75rem, 2vw, 1.5rem); border-radius: var(--lp-radius-lg); background: rgb(255 255 255 / .05); border: 1px solid rgb(255 255 255 / .1); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
 .lp-cmp__table::before { content: ""; position: absolute; top: .5rem; bottom: .5rem; right: calc(clamp(.75rem, 2vw, 1.5rem) + var(--lp-cmp-col)); width: var(--lp-cmp-col); border-radius: var(--lp-radius); background: rgb(var(--lp-amber) / .12); border: 1px solid rgb(var(--lp-amber) / .3); }
 .lp-cmp__table { --lp-cmp-col: clamp(96px, 18vw, 160px); }
-@media (max-width: 699px) {
-  .lp-cmp__table { --lp-cmp-col: 76px; padding-inline: .9rem; }
-  .lp-cmp__table::before { right: calc(.9rem + var(--lp-cmp-col)); }
-  .lp-cmp__feat { font-size: .875rem; }
-  .lp-cmp__them { font-size: .75rem; }
-  .lp-cmp__badge { padding: .3rem .55rem; font-size: .6875rem; letter-spacing: 0; }
-}
 .lp-cmp__row { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) var(--lp-cmp-col) var(--lp-cmp-col); align-items: center; min-height: 60px; border-bottom: 1px solid rgb(255 255 255 / .08); }
 .lp-cmp__row:last-child { border-bottom: 0; }
 .lp-cmp__row--head { min-height: 64px; }
@@ -79,6 +72,13 @@
 .lp-cmp__badge { display: inline-block; padding: .35rem .8rem; border-radius: 999px; border: 1px solid rgb(var(--lp-amber) / .6); color: #ffd9a3; font-weight: 600; font-size: .75rem; letter-spacing: .04em; }
 .lp-cmp__yes { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: rgb(var(--lp-amber)); color: rgb(var(--lp-ink)); }
 .lp-cmp__yes .lp-icon { stroke-width: 2.4; }
+@media (max-width: 699px) {
+  .lp-cmp__table { --lp-cmp-col: 76px; padding-inline: .9rem; }
+  .lp-cmp__table::before { right: calc(.9rem + var(--lp-cmp-col)); }
+  .lp-cmp__feat { font-size: .875rem; }
+  .lp-cmp__them { font-size: .75rem; }
+  .lp-cmp__badge { padding: .3rem .55rem; font-size: .6875rem; letter-spacing: 0; }
+}
 {% endstylesheet %}
 
 {% schema %}

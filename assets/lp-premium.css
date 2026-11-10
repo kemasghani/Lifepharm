@@ -229,8 +229,8 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
 @media (min-width: 1000px) {
   .shopify-section--main-product .product-gallery__media-list > .product-gallery__media:nth-child(n+8 of :not([hidden])) { display: none; }
 }
-.shopify-section--main-product .product-info__block-item:has(+ .product-info__block-item tolstoy-stories:not(:has(*))) { display: none; }
-.shopify-section--main-product .product-info__block-item:has(tolstoy-stories:not(:has(*))) { display: none; }
+.shopify-section--main-product .product-info__block-item:has(.lp-pdp-subhead:not(.is-ready)),
+.shopify-section--main-product .product-info__block-item:has(tolstoy-stories:not(.lp-ready)) { display: none; }
 .lp-pdp-subhead { margin: 0; font-size: .75rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgb(var(--lp-muted)); }
 .lp-pdp-proof { padding: 1rem 1.1rem; border-radius: var(--lp-radius-sm); background: rgb(var(--lp-sand) / .7); }
 

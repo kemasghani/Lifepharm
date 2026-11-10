@@ -23,23 +23,23 @@
         {%- if mf.value_1 != blank -%}
           <details class="lp-fx__item" open>
             <summary><span>{{ section.settings.q_who | replace: '[product]', product.title | escape }}</span><span class="lp-fx__plus" aria-hidden="true"></span></summary>
-            <div class="lp-fx__body"><p>{{ mf.value_1.value | escape }}</p></div>
+            <div class="lp-fx__body"><p>{{ mf.value_1.value | replace: ' — ', ', ' | replace: '—', ', ' | escape }}</p></div>
           </details>
         {%- endif -%}
         {%- if mf.value_2 != blank -%}
           <details class="lp-fx__item">
             <summary><span>{{ section.settings.q_how | replace: '[product]', product.title | escape }}</span><span class="lp-fx__plus" aria-hidden="true"></span></summary>
             <div class="lp-fx__body">
-              <p>{{ mf.value_2.value | escape }}</p>
-              {%- if mf.value_3 != blank -%}<p><strong>{{ mf.header_3.value | remove: ':' | strip | escape }}:</strong> {{ mf.value_3.value | escape }}</p>{%- endif -%}
-              {%- if mf.value_4 != blank -%}<p><strong>{{ mf.header_4.value | remove: ':' | strip | escape }}:</strong> {{ mf.value_4.value | escape }}</p>{%- endif -%}
+              <p>{{ mf.value_2.value | replace: ' — ', ', ' | replace: '—', ', ' | escape }}</p>
+              {%- if mf.value_3 != blank -%}<p><strong>{{ mf.header_3.value | remove: ':' | strip | escape }}:</strong> {{ mf.value_3.value | replace: ' — ', ', ' | replace: '—', ', ' | escape }}</p>{%- endif -%}
+              {%- if mf.value_4 != blank -%}<p><strong>{{ mf.header_4.value | remove: ':' | strip | escape }}:</strong> {{ mf.value_4.value | replace: ' — ', ', ' | replace: '—', ', ' | escape }}</p>{%- endif -%}
             </div>
           </details>
         {%- endif -%}
         {%- if mf.phase_1_content != blank -%}
           <details class="lp-fx__item">
             <summary><span>{{ section.settings.q_when | escape }}</span><span class="lp-fx__plus" aria-hidden="true"></span></summary>
-            <div class="lp-fx__body">{{ mf.phase_1_content | metafield_tag }}</div>
+            <div class="lp-fx__body">{{ mf.phase_1_content | metafield_tag | replace: ' — ', ', ' | replace: '—', ', ' }}</div>
           </details>
         {%- endif -%}
         {%- for block in section.blocks -%}

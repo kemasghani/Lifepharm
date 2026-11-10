@@ -14,7 +14,7 @@
   endif
   assign film = section.settings.film_asset | strip
   assign poster = section.settings.poster_asset | strip
-  assign desc_html = mf.product_description | metafield_tag
+  assign desc_html = mf.product_description | metafield_tag | replace: ' — ', ', ' | replace: '—', ', '
   assign desc_paras = desc_html | split: '</p>'
   assign concerns = mf.health_concern_filter.value
 -%}

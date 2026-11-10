@@ -35,7 +35,7 @@
                   {%- if p_label != blank -%}<span class="lp-tl__pill">{{ p_label | escape }}</span>{%- endif -%}
                   {%- if p_heading != blank -%}<h3 class="lp-tl__item-title">{{ p_heading | escape }}</h3>{%- endif -%}
                 </div>
-                <div class="lp-tl__item-text">{{ p_content | metafield_tag }}</div>
+                <div class="lp-tl__item-text">{{ p_content | metafield_tag | replace: ' — ', ', ' | replace: '—', ', ' }}</div>
               </li>
             {%- endif -%}
           {%- endfor -%}
@@ -50,8 +50,8 @@
             <span class="lp-tl__how-icon">{% render 'lp-icon', name: 'clock', size: 26 %}</span>
             <dl class="lp-tl__how-list">
               <div><dt>{{ use_h | remove: ':' | escape }}</dt><dd>{{ use_v | escape }}</dd></div>
-              {%- if mf.value_3 != blank -%}<div><dt>{{ mf.header_3.value | remove: ':' | strip | escape }}</dt><dd>{{ mf.value_3.value | escape }}</dd></div>{%- endif -%}
-              {%- if mf.value_4 != blank -%}<div><dt>{{ mf.header_4.value | remove: ':' | strip | escape }}</dt><dd>{{ mf.value_4.value | escape }}</dd></div>{%- endif -%}
+              {%- if mf.value_3 != blank -%}<div><dt>{{ mf.header_3.value | remove: ':' | strip | escape }}</dt><dd>{{ mf.value_3.value | replace: ' — ', ', ' | replace: '—', ', ' | escape }}</dd></div>{%- endif -%}
+              {%- if mf.value_4 != blank -%}<div><dt>{{ mf.header_4.value | remove: ':' | strip | escape }}</dt><dd>{{ mf.value_4.value | replace: ' — ', ', ' | replace: '—', ', ' | escape }}</dd></div>{%- endif -%}
             </dl>
           </div>
         {%- endif -%}

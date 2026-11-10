@@ -5,7 +5,7 @@
     assign visual = product.featured_media.preview_image
   endif
   assign heading = section.settings.heading | default: mf.header_7.value
-  assign ing_html = mf.text_ingredients | metafield_tag
+  assign ing_html = mf.text_ingredients | metafield_tag | replace: ' — ', ', ' | replace: '—', ', '
   assign ing_paras = ing_html | split: '<p'
 -%}
 
@@ -28,7 +28,7 @@
         {%- if mf.value_1 != blank -%}
           <p class="lp-fx__lede">
             {%- if mf.header_1 != blank -%}<strong>{{ mf.header_1.value | escape }}</strong> {% endif -%}
-            {{ mf.value_1.value | escape }}
+            {{ mf.value_1.value | replace: ' — ', ', ' | replace: '—', ', ' | escape }}
           </p>
         {%- endif -%}
 
@@ -57,14 +57,14 @@
           {%- if mf.ingredients != blank -%}
             <details class="lp-fx__item">
               <summary><span>{{ section.settings.full_list_label | escape }}</span><span class="lp-fx__plus" aria-hidden="true"></span></summary>
-              <div class="lp-fx__body">{{ mf.ingredients | metafield_tag }}</div>
+              <div class="lp-fx__body">{{ mf.ingredients | metafield_tag | replace: ' — ', ', ' | replace: '—', ', ' }}</div>
             </details>
           {%- endif -%}
 
           {%- if mf.studies != blank -%}
             <details class="lp-fx__item">
               <summary><span>{{ section.settings.studies_label | escape }}</span><span class="lp-fx__plus" aria-hidden="true"></span></summary>
-              <div class="lp-fx__body lp-fx__studies">{{ mf.studies | metafield_tag }}</div>
+              <div class="lp-fx__body lp-fx__studies">{{ mf.studies | metafield_tag | replace: ' — ', ', ' | replace: '—', ', ' }}</div>
             </details>
           {%- endif -%}
         </div>

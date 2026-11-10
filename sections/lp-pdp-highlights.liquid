@@ -6,7 +6,7 @@
   endif
   assign heading = section.settings.heading
   assign icons = 'sparkle,dna,heart,moon,leaf,bolt' | split: ','
-  assign benefits_html = mf.text_benefits | metafield_tag
+  assign benefits_html = mf.text_benefits | metafield_tag | replace: ' — ', ', ' | replace: '—', ', '
   assign benefit_items = benefits_html | split: '<li'
   assign show_disclaimer = false
   if benefits_html contains '*'

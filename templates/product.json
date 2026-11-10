@@ -107,7 +107,7 @@
           "type": "text",
           "disabled": true,
           "settings": {
-            "text": "{{ product.metafields.custom.product_description | metafield_tag }}"
+            "text": "{{ product.metafields.custom.product_description | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}"
           }
         },
         "description": {
@@ -135,7 +135,7 @@
             "icon": "none",
             "icon_width": 20,
             "title": "Benefits",
-            "content": "{{ product.metafields.custom.text_benefits | metafield_tag }}",
+            "content": "{{ product.metafields.custom.text_benefits | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}",
             "page": ""
           }
         },
@@ -145,7 +145,7 @@
             "icon": "none",
             "icon_width": 20,
             "title": "Ingredients",
-            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}",
+            "content": "{{ product.metafields.custom.ingredients | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}",
             "page": ""
           }
         },
@@ -156,7 +156,7 @@
             "icon": "none",
             "icon_width": 20,
             "title": "Studies",
-            "content": "{{ product.metafields.custom.studies | metafield_tag }}",
+            "content": "{{ product.metafields.custom.studies | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}",
             "page": ""
           }
         },
@@ -167,7 +167,7 @@
             "icon": "none",
             "icon_width": 20,
             "title": "Who is {{ product.title }} for?",
-            "content": "<p>{{ product.metafields.custom.value_1 | metafield_tag }}</p>",
+            "content": "<p>{{ product.metafields.custom.value_1 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>",
             "page": ""
           }
         },
@@ -177,7 +177,7 @@
             "icon": "none",
             "icon_width": 20,
             "title": "How to use",
-            "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>",
+            "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>",
             "page": ""
           }
         },
@@ -188,7 +188,7 @@
             "icon": "none",
             "icon_width": 20,
             "title": "Product Specification Manual",
-            "content": "{{ product.metafields.custom.cellnery_wellness_manual_warranty | metafield_tag }}",
+            "content": "{{ product.metafields.custom.cellnery_wellness_manual_warranty | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}",
             "page": ""
           }
         },
@@ -400,49 +400,49 @@
           "type": "item",
           "settings": {
             "title": "{{ product.metafields.custom.header_1.value }}",
-            "content": "<p>{{ product.metafields.custom.value_1 | metafield_tag }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_1 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
           }
         },
         "item_k39pAi": {
           "type": "item",
           "settings": {
             "title": "{{ product.metafields.custom.header_2.value }}",
-            "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
           }
         },
         "item_A7aCVj": {
           "type": "item",
           "settings": {
             "title": "{{ product.metafields.custom.header_3.value }}",
-            "content": "<p>{{ product.metafields.custom.value_3 | metafield_tag }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_3 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
           }
         },
         "item_jYbRAc": {
           "type": "item",
           "settings": {
             "title": "{{ product.metafields.custom.header_4.value }}",
-            "content": "<p>{{ product.metafields.custom.value_4 | metafield_tag }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_4 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
           }
         },
         "item_rjVDCn": {
           "type": "item",
           "settings": {
             "title": "{{ product.metafields.custom.header_5.value }}",
-            "content": "<p>{{ product.metafields.custom.value_5 | metafield_tag }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_5 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
           }
         },
         "item_rp6E3r": {
           "type": "item",
           "settings": {
             "title": "Ingredients",
-            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}"
+            "content": "{{ product.metafields.custom.ingredients | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}"
           }
         },
         "item_AYTreE": {
           "type": "item",
           "settings": {
             "title": "Scientific Studies",
-            "content": "{{ product.metafields.custom.studies | metafield_tag }}"
+            "content": "{{ product.metafields.custom.studies | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}"
           }
         }
       },
@@ -464,7 +464,7 @@
         "full_width": true,
         "subheading": "",
         "title": "{{ product.metafields.custom.header_6.value }}",
-        "content": "{{ product.metafields.custom.product_description | metafield_tag }}",
+        "content": "{{ product.metafields.custom.product_description | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}",
         "team_avatar_width": 100,
         "support_hours": "",
         "answer_time": "",
@@ -514,13 +514,13 @@
           "type": "values",
           "settings": {
             "product": "",
-            "value_1": "<p>{{ product.metafields.custom.value_1 | metafield_tag }}</p>",
-            "value_2": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>",
-            "value_3": "<p>{{ product.metafields.custom.value_3 | metafield_tag }}</p>",
-            "value_4": "<p>{{ product.metafields.custom.value_4 | metafield_tag }}</p>",
-            "value_5": "<p>{{ product.metafields.custom.value_5 | metafield_tag }}</p>",
-            "value_6": "<p>{{ product.metafields.custom.value_6 | metafield_tag }}</p>",
-            "value_7": "<p>{{ product.metafields.custom.tech_spec_text | metafield_tag }}</p>",
+            "value_1": "<p>{{ product.metafields.custom.value_1 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>",
+            "value_2": "<p>{{ product.metafields.custom.value_2 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>",
+            "value_3": "<p>{{ product.metafields.custom.value_3 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>",
+            "value_4": "<p>{{ product.metafields.custom.value_4 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>",
+            "value_5": "<p>{{ product.metafields.custom.value_5 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>",
+            "value_6": "<p>{{ product.metafields.custom.value_6 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>",
+            "value_7": "<p>{{ product.metafields.custom.tech_spec_text | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>",
             "value_8": "",
             "value_9": "",
             "value_10": "",
@@ -551,7 +551,7 @@
         "full_width": true,
         "subheading": "",
         "title": "{{ product.metafields.custom.header_6.value }}",
-        "content": "{{ product.metafields.custom.product_description | metafield_tag }}",
+        "content": "{{ product.metafields.custom.product_description | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}",
         "button_text": "",
         "button_url": "",
         "text_position": "start",
@@ -602,7 +602,7 @@
         "full_width": true,
         "subheading": "",
         "title": "{{ product.metafields.custom.heading_before_after.value }}",
-        "content": "{{ product.metafields.custom.content_before_after | metafield_tag }}",
+        "content": "{{ product.metafields.custom.content_before_after | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}",
         "before_image": "{{ product.metafields.custom.image_1_before_after.value }}",
         "after_image": "{{ product.metafields.custom.image_2_before_after.value }}",
         "expand_image": false,
@@ -634,7 +634,7 @@
             "icon_width": 48,
             "subheading": "",
             "title": "Get the Benefit",
-            "content": "{{ product.metafields.custom.text_benefits | metafield_tag }}",
+            "content": "{{ product.metafields.custom.text_benefits | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}",
             "link_text": "",
             "link_url": "",
             "background": "#f9f9f9",
@@ -656,7 +656,7 @@
             "icon_width": 48,
             "subheading": "",
             "title": "{{ product.metafields.custom.header_7.value }}",
-            "content": "{{ product.metafields.custom.text_ingredients | metafield_tag }}",
+            "content": "{{ product.metafields.custom.text_ingredients | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}",
             "link_text": "",
             "link_url": "",
             "background": "#f9f9f9",
@@ -693,7 +693,7 @@
             "navigation_label": "{{ product.metafields.custom.phase_1_nav_label.value }}",
             "subheading": "{{ product.metafields.custom.phase_1_sub_heading.value }}",
             "title": "{{ product.metafields.custom.phase_1_heading.value }}",
-            "content": "{{ product.metafields.custom.phase_1_content | metafield_tag }}"
+            "content": "{{ product.metafields.custom.phase_1_content | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}"
           }
         },
         "slide_VVAtmd": {
@@ -703,7 +703,7 @@
             "navigation_label": "{{ product.metafields.custom.phase_2_nav_label.value }}",
             "subheading": "{{ product.metafields.custom.phase_2_sub_heading.value }}",
             "title": "{{ product.metafields.custom.phase_2_heading.value }}",
-            "content": "{{ product.metafields.custom.phase_2_content | metafield_tag }}"
+            "content": "{{ product.metafields.custom.phase_2_content | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}"
           }
         },
         "slide_gheRD3": {
@@ -713,7 +713,7 @@
             "navigation_label": "{{ product.metafields.custom.phase_3_nav_label.value }}",
             "subheading": "{{ product.metafields.custom.phase_3_sub_heading.value }}",
             "title": "{{ product.metafields.custom.phase_3_heading.value }}",
-            "content": "{{ product.metafields.custom.phase_3_content | metafield_tag }}"
+            "content": "{{ product.metafields.custom.phase_3_content | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}"
           }
         }
       },
@@ -742,7 +742,7 @@
           "disabled": true,
           "settings": {
             "title": "{{ product.metafields.custom.header_1.value }}",
-            "content": "<p>{{ product.metafields.custom.value_1 | metafield_tag }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_1 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
           }
         },
         "item_bUCdd8": {
@@ -750,7 +750,7 @@
           "disabled": true,
           "settings": {
             "title": "{{ product.metafields.custom.header_2.value }}",
-            "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
           }
         },
         "item_nCDBHn": {
@@ -758,7 +758,7 @@
           "disabled": true,
           "settings": {
             "title": "{{ product.metafields.custom.header_3.value }}",
-            "content": "<p>{{ product.metafields.custom.value_3 | metafield_tag }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_3 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
           }
         },
         "item_89mDbk": {
@@ -766,7 +766,7 @@
           "disabled": true,
           "settings": {
             "title": "{{ product.metafields.custom.header_4.value }}",
-            "content": "<p>{{ product.metafields.custom.value_4 | metafield_tag }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_4 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
           }
         },
         "item_GkamQw": {
@@ -774,21 +774,21 @@
           "disabled": true,
           "settings": {
             "title": "{{ product.metafields.custom.header_5.value }}",
-            "content": "<p>{{ product.metafields.custom.value_5 | metafield_tag }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_5 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
           }
         },
         "item_dGiG9D": {
           "type": "item",
           "settings": {
             "title": "Full List of Ingredients",
-            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}"
+            "content": "{{ product.metafields.custom.ingredients | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}"
           }
         },
         "item_GKixzh": {
           "type": "item",
           "settings": {
             "title": "Scientific Studies",
-            "content": "{{ product.metafields.custom.studies | metafield_tag }}"
+            "content": "{{ product.metafields.custom.studies | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}"
           }
         }
       },
@@ -882,7 +882,7 @@
           "disabled": true,
           "settings": {
             "title": "{{ product.metafields.custom.header_1.value }}",
-            "content": "<p>{{ product.metafields.custom.value_1 | metafield_tag }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_1 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
           }
         },
         "item_F8Bjwm": {
@@ -890,7 +890,7 @@
           "disabled": true,
           "settings": {
             "title": "{{ product.metafields.custom.header_2.value }}",
-            "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
           }
         },
         "item_apWUnJ": {
@@ -906,7 +906,7 @@
           "disabled": true,
           "settings": {
             "title": "{{ product.metafields.custom.header_3.value }}",
-            "content": "<p>{{ product.metafields.custom.value_3 | metafield_tag }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_3 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
           }
         },
         "item_AyRJw3": {
@@ -914,7 +914,7 @@
           "disabled": true,
           "settings": {
             "title": "{{ product.metafields.custom.header_4.value }}",
-            "content": "<p>{{ product.metafields.custom.value_4 | metafield_tag }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_4 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
           }
         },
         "item_BcYpi6": {
@@ -922,21 +922,21 @@
           "disabled": true,
           "settings": {
             "title": "{{ product.metafields.custom.header_5.value }}",
-            "content": "<p>{{ product.metafields.custom.value_5 | metafield_tag }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_5 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
           }
         },
         "item_GWPzif": {
           "type": "item",
           "settings": {
             "title": "Full List of Ingredients",
-            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}"
+            "content": "{{ product.metafields.custom.ingredients | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}"
           }
         },
         "item_6YRbPr": {
           "type": "item",
           "settings": {
             "title": "Scientific Studies",
-            "content": "{{ product.metafields.custom.studies | metafield_tag }}"
+            "content": "{{ product.metafields.custom.studies | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}"
           }
         }
       },
@@ -1129,7 +1129,7 @@
           "type": "tab",
           "settings": {
             "title": "Tab 2",
-            "content": "{{ product.metafields.custom.studies | metafield_tag }}",
+            "content": "{{ product.metafields.custom.studies | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}",
             "page": ""
           }
         },

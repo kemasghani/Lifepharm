@@ -521,19 +521,6 @@
         "accordion_text_color": ""
       }
     },
-    "custom_liquid_XMpJDx": {
-      "type": "custom-liquid",
-      "settings": {
-        "full_width": true,
-        "remove_vertical_spacing": false,
-        "remove_horizontal_spacing": false,
-        "liquid": "",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      },
-      "disabled": true
-    },
     "feature_chart_eKhRpt": {
       "type": "feature-chart",
       "blocks": {
@@ -669,38 +656,6 @@
         "after_text_color": "#ffffff",
         "drag_cursor_background": "#ffffff",
         "drag_cursor_color": "#b06200"
-      }
-    },
-    "scrolling_text_bihmkB": {
-      "type": "scrolling-text",
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "text": "Feeling young • Joint Pain • Sleep • Stress",
-        "text_size": "medium",
-        "text_style": "fill",
-        "scrolling_mode": "auto",
-        "scrolling_speed": 10,
-        "background": "#f9f9f9",
-        "background_gradient": "linear-gradient(168deg, rgba(255, 143, 0, 1) 10%, rgba(252, 184, 0, 1) 65%, rgba(255, 255, 255, 1) 100%)",
-        "text_color": "#ffffff",
-        "text_gradient": ""
-      }
-    },
-    "scrolling_text_GKpgyU": {
-      "type": "scrolling-text",
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "text": "Making optimal well-being attainable for all.",
-        "text_size": "medium",
-        "text_style": "fill",
-        "scrolling_mode": "auto",
-        "scrolling_speed": 10,
-        "background": "rgba(0,0,0,0)",
-        "background_gradient": "",
-        "text_color": "#ffffff",
-        "text_gradient": "linear-gradient(144deg, rgba(255, 228, 49, 1), rgba(249, 32, 32, 1) 100%)"
       }
     },
     "media_with_text_UCaJMK": {
@@ -1359,11 +1314,8 @@
     "lp_pdp_faq",
     "1717692639facd14b3",
     "faq_3eWR6f",
-    "custom_liquid_XMpJDx",
     "feature_chart_eKhRpt",
     "scrolling_text_gnHJtw",
-    "scrolling_text_bihmkB",
-    "scrolling_text_GKpgyU",
     "media_with_text_UCaJMK",
     "timeline_rPwewV",
     "faq_XwdKmx",

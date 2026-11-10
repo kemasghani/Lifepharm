@@ -221,8 +221,24 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
 .shopify-section--main-product .product-gallery__media img { mix-blend-mode: multiply; }
 @media (min-width: 1000px) { .shopify-section--main-product .product { column-gap: clamp(2.5rem, 4vw, 5rem); } }
 .shopify-section--main-product .product-info__title { font-size: clamp(2.1rem, 3.4vw, 3.25rem); letter-spacing: -.035em; }
-.lp-pdp-summary { font-size: 1.0625rem; line-height: 1.55; color: rgb(var(--lp-muted)); max-width: 44ch; }
+.lp-pdp-summary { display: grid; gap: .5rem; max-width: 46ch; }
 .lp-pdp-summary p { margin: 0; }
+.lp-pdp-summary__lead { font-size: 1.0625rem; line-height: 1.5; color: rgb(var(--lp-ink)); }
+.lp-pdp-summary__meta { font-size: .875rem; line-height: 1.55; color: rgb(var(--lp-muted)); }
+.lp-pdp-summary__meta span { font-weight: 600; color: rgb(var(--lp-ink)); }
+@media (min-width: 1000px) {
+  .shopify-section--main-product .product-gallery__media-list > .product-gallery__media:nth-child(n+8 of :not([hidden])) { display: none; }
+}
+.shopify-section--main-product .product-info__block-item:has(+ .product-info__block-item tolstoy-stories:not(:has(*))) { display: none; }
+.shopify-section--main-product .product-info__block-item:has(tolstoy-stories:not(:has(*))) { display: none; }
+.lp-pdp-subhead { margin: 0; font-size: .75rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgb(var(--lp-muted)); }
+.lp-pdp-proof { padding: 1rem 1.1rem; border-radius: var(--lp-radius-sm); background: rgb(var(--lp-sand) / .7); }
+
+/* Stamped reviews: align with theme typography */
+#stamped-main-widget { max-width: var(--container-max-width, 1600px); margin-inline: auto; font-family: var(--text-font-family) !important; }
+#stamped-main-widget .stamped-header-title, #stamped-main-widget .stamped-summary-caption-1 { font-family: var(--heading-font-family) !important; font-size: clamp(1.75rem, 3vw, 2.5rem) !important; letter-spacing: -.02em; color: rgb(var(--lp-ink)); text-align: start; }
+#stamped-main-widget .stamped-summary, #stamped-main-widget .stamped-review { border-color: var(--lp-hairline) !important; border-radius: var(--lp-radius); }
+#stamped-main-widget .stamped-button { border-radius: 999px !important; }
 .lp-pdp-eyebrow { display: inline-flex; align-items: center; gap: .5rem; font-size: .75rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgb(var(--lp-amber-deep)); }
 .lp-pdp-eyebrow::before { content: ""; width: 18px; height: 1.5px; background: currentColor; }
 .shopify-section--main-product .product-info__accordion .accordion__toggle { font-size: 1rem; font-weight: 600; }

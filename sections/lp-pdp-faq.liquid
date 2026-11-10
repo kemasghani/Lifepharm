@@ -11,7 +11,7 @@
         {%- if section.settings.text != blank -%}<div class="lp-faq__text">{{ section.settings.text }}</div>{%- endif -%}
         <div class="lp-faq__actions">
           {%- if faq_url != blank and section.settings.button_label != blank -%}
-            <a href="{{ faq_url }}" class="button button--secondary">{{ section.settings.button_label | escape }}</a>
+            <a href="{{ faq_url }}" class="button">{{ section.settings.button_label | escape }}</a>
           {%- endif -%}
           {%- if section.settings.contact_label != blank -%}
             <a href="{{ section.settings.contact_url | default: '/pages/contact' }}" class="lp-faq__link">{{ section.settings.contact_label | escape }}</a>

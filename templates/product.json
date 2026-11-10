@@ -206,7 +206,8 @@
           "type": "text",
           "settings": {
             "text": "<p>Hear from a customer using {{ product.title }}</p>"
-          }
+          },
+          "disabled": true
         },
         "tolstoy_shoppable_video_ugc_stories_block_hnKrMy": {
           "type": "shopify://apps/tolstoy-ads-image-video/blocks/stories-block/06fa8282-42ff-403e-b67c-1936776aed11",
@@ -290,7 +291,13 @@
         "lp_summary": {
           "type": "liquid",
           "settings": {
-            "liquid": "{%- assign lp_s = product.metafields.custom.product_short_summary.value -%}{%- if lp_s != blank -%}<div class=\"lp-pdp-summary\"><p>{{ lp_s | escape }}{%- if product.metafields.custom.value_1 != blank %} {{ product.metafields.custom.header_1.value | default: 'Supports' | remove: ':' | strip | escape }}: {{ product.metafields.custom.value_1.value | strip | escape }}{%- endif -%}</p></div>{%- endif -%}"
+            "liquid": "{%- liquid\n  assign lp_mf = product.metafields.custom\n  assign lp_s = lp_mf.product_short_summary.value | strip\n-%}{%- if lp_s != blank -%}<div class=\"lp-pdp-summary\"><p class=\"lp-pdp-summary__lead\">{{ lp_s | escape }}</p>{%- if lp_mf.value_1 != blank -%}<p class=\"lp-pdp-summary__meta\"><span>{{ 'Ideal for' }}</span> {{ lp_mf.value_1.value | strip | escape }}</p>{%- endif -%}</div>{%- endif -%}"
+          }
+        },
+        "lp_ugc_title": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<p class=\"lp-pdp-subhead\">Hear from customers using {{ product.title | escape }}</p>"
           }
         }
       },
@@ -302,7 +309,6 @@
         "separator",
         "stamped_product_reviews_ugc_star_rating_badge_8VPpGa",
         "lp_summary",
-        "liquid_Nwwi64",
         "variant_picker",
         "payment_terms",
         "skio_plan_picker_LDUFdF",
@@ -317,7 +323,9 @@
         "collapsible_text_KbRjKK",
         "collapsible_text_PDdyLw",
         "collapsible_text_XwdWte",
+        "liquid_Nwwi64",
         "text_qkxir3",
+        "lp_ugc_title",
         "tolstoy_shoppable_video_ugc_stories_block_hnKrMy",
         "offer_KHjNfD",
         "associated_products_mWz6hB",
@@ -341,7 +349,7 @@
         "desktop_media_width": 55,
         "desktop_media_layout": "grid_highlight",
         "mobile_media_size": "expanded",
-        "mobile_carousel_control": "floating_dots",
+        "mobile_carousel_control": "free_scroll",
         "enable_video_autoplay": false,
         "enable_video_looping": true,
         "enable_image_zoom": false,

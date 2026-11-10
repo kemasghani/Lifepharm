@@ -207,6 +207,104 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', tidyDashes, { once: true });
   else tidyDashes();
 
+
+  const initReferralNudge = () => {
+    const panel = document.querySelector('[data-lp-ref]');
+    const tab = document.querySelector('[data-lp-ref-tab]');
+    if (!panel || !tab) return;
+    const KEY = 'lp-ref-dismissed';
+    const TTL = 14 * 24 * 60 * 60 * 1000;
+    const store = {
+      get() { try { return Number(localStorage.getItem(KEY)) || 0; } catch (e) { return 0; } },
+      set() { try { localStorage.setItem(KEY, String(Date.now())); } catch (e) { /* storage unavailable */ } }
+    };
+    const video = panel.querySelector('video');
+    const tabLabel = tab.querySelector('[data-lp-ref-tab-label]');
+    const appButton = () => document.querySelector('.referral-banner__name--clickable');
+    const referrerName = () => {
+      const title = document.querySelector('.referral-banner__title');
+      const button = appButton();
+      if (!button || !title || getComputedStyle(title).display === 'none') return '';
+      return button.textContent.trim();
+    };
+    let open = false;
+    let timer = 0;
+
+    const showTab = () => {
+      const name = referrerName();
+      tabLabel.textContent = name ? `With ${name}` : 'Referred?';
+      tab.setAttribute('aria-label', name ? `You are shopping with ${name}. Change referrer` : 'Were you referred by someone?');
+      tab.hidden = false;
+      requestAnimationFrame(() => tab.classList.add('is-shown'));
+    };
+    const hideTab = () => { tab.classList.remove('is-shown'); };
+
+    const playArt = () => {
+      if (!video || reduceMotion) return;
+      const source = video.querySelector('source[data-src]');
+      if (source) { source.src = source.dataset.src; source.removeAttribute('data-src'); video.load(); }
+      video.currentTime = 0;
+      const attempt = video.play();
+      if (attempt && attempt.catch) attempt.catch(() => {});
+    };
+
+    const openPanel = () => {
+      if (open || !appButton()) return;
+      open = true;
+      clearTimeout(timer);
+      hideTab();
+      panel.hidden = false;
+      requestAnimationFrame(() => requestAnimationFrame(() => { panel.classList.add('is-open'); playArt(); }));
+    };
+    const closePanel = (remember) => {
+      if (!open) return;
+      open = false;
+      panel.classList.remove('is-open');
+      if (remember) store.set();
+      setTimeout(() => { if (!open) panel.hidden = true; }, 600);
+      showTab();
+    };
+
+    panel.addEventListener('click', (event) => {
+      if (event.target.closest('[data-lp-ref-close]')) closePanel(true);
+      if (event.target.closest('[data-lp-ref-open]')) {
+        const button = appButton();
+        closePanel(true);
+        if (button) button.click();
+      }
+    });
+    panel.addEventListener('keydown', (event) => { if (event.key === 'Escape') closePanel(true); });
+    tab.addEventListener('click', () => {
+      if (referrerName()) { const button = appButton(); if (button) button.click(); return; }
+      openPanel();
+    });
+
+    const start = () => {
+      if (referrerName()) { showTab(); return; }
+      if (Date.now() - store.get() < TTL) { showTab(); return; }
+      const trigger = () => { window.removeEventListener('scroll', onScroll); openPanel(); };
+      const onScroll = () => { if (window.scrollY > window.innerHeight * 0.35) trigger(); };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      timer = setTimeout(trigger, 6000);
+    };
+
+    let tries = 0;
+    const waitForApp = () => {
+      if (appButton()) { start(); return; }
+      if (++tries < 40) setTimeout(waitForApp, 250);
+    };
+    waitForApp();
+
+    const banner = () => document.querySelector('.referral-banner');
+    const watch = new MutationObserver(() => {
+      if (referrerName()) { if (open) closePanel(true); else if (!tab.hidden) showTab(); }
+    });
+    const attach = () => { const b = banner(); if (b) watch.observe(b, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ['style'] }); };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', attach, { once: true }); else attach();
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initReferralNudge, { once: true });
+  else initReferralNudge();
+
   const whenIdle = (fn) => (window.requestIdleCallback ? requestIdleCallback(fn, { timeout: 2500 }) : setTimeout(fn, 1200));
   if (document.readyState === 'complete') whenIdle(startLazyVideos);
   else window.addEventListener('load', () => whenIdle(startLazyVideos), { once: true });

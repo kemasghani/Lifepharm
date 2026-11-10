@@ -72,8 +72,8 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
       @font-face { font-family: "Metropolis"; src: url({{ 'metropolis-semibold.woff2' | asset_url }}) format("woff2"); font-weight: 500 699; font-style: normal; font-display: swap; }
       @font-face { font-family: "Metropolis"; src: url({{ 'metropolis-extrabold.woff2' | asset_url }}) format("woff2"); font-weight: 700 900; font-style: normal; font-display: swap; }
     </style>
-    <link rel="preload" href="{{ 'metropolis-light.woff2' | asset_url }}" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="{{ 'metropolis-regular.woff2' | asset_url }}" as="font" type="font/woff2" crossorigin>
+    {{ 'metropolis-light.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+    {{ 'metropolis-regular.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
     {{- 'lp-premium.css' | asset_url | stylesheet_tag: preload: true }}
     <script>document.documentElement.classList.add('lp-js')</script>
     <script src="{{ 'lp-premium.js' | asset_url }}" defer></script>
@@ -248,6 +248,7 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
         {%- sections 'footer-group' -%}
       {%- endif -%}
     </main>
+    {% render 'lp-referral-nudge' %}
     <!-- Stamped -->
     <script>function myInit(){ StampedFn.init({ apiKey: '9ad7ae72-fc06-4606-9d55-3fe5a0e312d5', sId: '301382' }); }</script>
 <script async onload="myInit()" type="text/javascript" src="https://cdn1.stamped.io/files/widget.min.js"></script>

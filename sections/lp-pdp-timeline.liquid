@@ -47,12 +47,11 @@
         -%}
         {%- if use_v != blank -%}
           <div class="lp-tl__how">
-            <span class="lp-tl__how-icon">{% render 'lp-icon', name: 'clock', size: 26 %}</span>
-            <dl class="lp-tl__how-list">
-              <div><dt>{{ use_h | remove: ':' | escape }}</dt><dd>{{ use_v | escape }}</dd></div>
-              {%- if mf.value_3 != blank -%}<div><dt>{{ mf.header_3.value | remove: ':' | strip | escape }}</dt><dd>{{ mf.value_3.value | replace: ' — ', ', ' | replace: '—', ', ' | escape }}</dd></div>{%- endif -%}
-              {%- if mf.value_4 != blank -%}<div><dt>{{ mf.header_4.value | remove: ':' | strip | escape }}</dt><dd>{{ mf.value_4.value | replace: ' — ', ', ' | replace: '—', ', ' | escape }}</dd></div>{%- endif -%}
-            </dl>
+            <ul class="lp-tl__how-list" role="list">
+              <li class="lp-tl__step"><span class="lp-tl__step-icon">{% render 'lp-icon', name: 'pill', size: 22 %}</span><div><p class="lp-tl__step-title">{{ use_h | remove: ':' | escape }}</p><p class="lp-tl__step-text">{{ use_v | escape }}</p></div></li>
+              {%- if mf.value_3 != blank -%}<li class="lp-tl__step"><span class="lp-tl__step-icon">{% render 'lp-icon', name: 'clock', size: 22 %}</span><div><p class="lp-tl__step-title">{{ mf.header_3.value | remove: ':' | strip | escape }}</p><p class="lp-tl__step-text">{{ mf.value_3.value | replace: ' — ', ', ' | replace: '—', ', ' | escape }}</p></div></li>{%- endif -%}
+              {%- if mf.value_4 != blank -%}<li class="lp-tl__step"><span class="lp-tl__step-icon">{% render 'lp-icon', name: 'bulb', size: 22 %}</span><div><p class="lp-tl__step-title">{{ mf.header_4.value | remove: ':' | strip | escape }}</p><p class="lp-tl__step-text">{{ mf.value_4.value | replace: ' - ', ', ' | replace: ' — ', ', ' | replace: '—', ', ' | escape }}</p></div></li>{%- endif -%}
+            </ul>
           </div>
         {%- endif -%}
       </div>
@@ -101,11 +100,13 @@
 .lp-tl__item-title { margin: 0; font-family: var(--text-font-family); font-size: 1.0625rem; font-weight: 500; letter-spacing: -.01em; }
 .lp-tl__item-text { color: rgb(var(--lp-muted)); line-height: 1.65; font-size: .95rem; max-width: 52ch; }
 .lp-tl__item-text p { margin: 0; }
-.lp-tl__how { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1.1rem; padding: 1.5rem; border-radius: var(--lp-radius); background: rgb(var(--lp-sand)); }
-.lp-tl__how-icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: #fff; color: rgb(var(--lp-amber-deep)); box-shadow: var(--lp-shadow-1); }
-.lp-tl__how-list { display: grid; gap: .85rem; margin: 0; }
-.lp-tl__how-list dt { font-weight: 600; font-size: .9rem; }
-.lp-tl__how-list dd { margin: .15rem 0 0; color: rgb(var(--lp-muted)); font-size: .9rem; line-height: 1.55; }
+.lp-tl__how { display: block; padding: 1.5rem; border-radius: var(--lp-radius); background: rgb(var(--lp-sand)); }
+.lp-tl__how-list { display: grid; gap: 1.1rem; margin: 0; padding: 0; list-style: none; }
+.lp-tl__step { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: .9rem; align-items: start; }
+.lp-tl__step + .lp-tl__step { padding-block-start: 1.1rem; border-top: 1px solid rgb(var(--lp-ink) / .08); }
+.lp-tl__step-icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: #fff; color: rgb(var(--lp-amber-deep)); box-shadow: var(--lp-shadow-1); }
+.lp-tl__step-title { margin: .55rem 0 0; font-weight: 600; font-size: .95rem; }
+.lp-tl__step-text { margin: .2rem 0 0; color: rgb(var(--lp-muted)); font-size: .9rem; line-height: 1.55; }
 .lp-tl__media { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(.6rem, 1.2vw, 1rem); }
 @media (min-width: 1000px) { .lp-tl__media { position: sticky; top: calc(var(--sticky-area-height, 80px) + 2rem); } }
 .lp-tl__tile { position: relative; overflow: hidden; border-radius: var(--lp-radius-lg); background: rgb(var(--lp-sand)); }

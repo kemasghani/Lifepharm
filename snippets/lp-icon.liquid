@@ -1,7 +1,7 @@
 {% doc %}
   Renders a line icon from the LifePharm premium icon set.
 
-  @param {string} name - Icon name: shield, flag, flask, badge, truck, leaf, star, lock, chat, refresh, heart, sparkle, arrow, dna, moon, bolt, drop, check, clock, cell
+  @param {string} name - Icon name: pill, bulb, calendar, shield, flag, flask, badge, truck, leaf, star, lock, chat, refresh, heart, sparkle, arrow, dna, moon, bolt, drop, check, clock, cell
   @param {number} [size] - Pixel size, defaults to 24
 
   @example
@@ -10,6 +10,12 @@
 {%- assign size = size | default: 24 -%}
 <svg class="lp-icon lp-icon--{{ name }}" width="{{ size }}" height="{{ size }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
   {%- case name -%}
+    {%- when 'pill' -%}
+      <path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/>
+    {%- when 'bulb' -%}
+      <path d="M9 18h6M10 22h4"/><path d="M15.1 14c.2-1 .7-1.7 1.4-2.5A5.5 5.5 0 1 0 7.5 11.5c.7.8 1.2 1.5 1.4 2.5"/>
+    {%- when 'calendar' -%}
+      <rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M8 3v4M16 3v4M3.5 10h17"/>
     {%- when 'dna' -%}
       <path d="M7 3c0 6 10 6 10 12s-10 6-10 6"/><path d="M17 3c0 6-10 6-10 12"/><path d="M8.5 7h7M8.5 17h7M10 12h4"/>
     {%- when 'moon' -%}

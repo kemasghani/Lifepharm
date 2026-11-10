@@ -317,6 +317,53 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initMobileMenu, { once: true });
   else initMobileMenu();
 
+
+  const initProductTabs = () => document.querySelectorAll('[data-lp-tabs]').forEach((root) => {
+    const tabs = [...root.querySelectorAll('[data-lp-tab]')];
+    const cards = [...root.querySelectorAll('[data-collections]')];
+    const grid = root.querySelector('[data-lp-tab-panel]');
+    const select = (tab) => {
+      const key = tab.dataset.lpTab;
+      tabs.forEach((t) => t.setAttribute('aria-selected', String(t === tab)));
+      cards.forEach((card) => { card.hidden = key !== 'all' && !card.dataset.collections.split(' ').includes(key); });
+      if (grid) grid.scrollTo({ left: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    };
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => select(tab));
+      tab.addEventListener('keydown', (event) => {
+        if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+        const next = tabs[(index + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length];
+        next.focus(); select(next);
+      });
+    });
+    root.addEventListener('click', async (event) => {
+      const button = event.target.closest('[data-lp-add]');
+      if (!button || button.classList.contains('is-loading')) return;
+      button.classList.add('is-loading');
+      button.setAttribute('aria-busy', 'true');
+      try {
+        const response = await fetch(`${window.Shopify?.routes?.root || '/'}cart/add.js`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({ items: [{ id: Number(button.dataset.lpAdd), quantity: 1 }] })
+        });
+        const added = await response.json();
+        if (!response.ok) throw new Error(added.description || 'Could not add to cart');
+        const cart = await (await fetch(`${window.Shopify?.routes?.root || '/'}cart.js`)).json();
+        document.documentElement.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
+        button.dispatchEvent(new CustomEvent('variant:add', { bubbles: true, detail: { items: added.items || [added], cart } }));
+        document.documentElement.dispatchEvent(new CustomEvent('cart:change', { bubbles: true, detail: { baseEvent: 'variant:add', cart } }));
+      } catch (error) {
+        window.location.href = button.closest('[data-collections]').querySelector('a[href]').href;
+      } finally {
+        button.classList.remove('is-loading');
+        button.removeAttribute('aria-busy');
+      }
+    });
+  });
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initProductTabs, { once: true });
+  else initProductTabs();
+
   const initReferralNudge = () => {
     const panel = document.querySelector('[data-lp-ref]');
     const tab = document.querySelector('[data-lp-ref-tab]');

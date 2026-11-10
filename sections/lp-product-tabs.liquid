@@ -1,0 +1,135 @@
+{%- liquid
+  assign source = section.settings.collection
+  if source == blank
+    assign source = collections['all']
+  endif
+-%}
+
+<section class="lp-pt" data-lp-tabs>
+  <div class="container">
+    <header class="lp-pt__head">
+      {%- if section.settings.heading != blank -%}<h2 class="h1 lp-pt__title">{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.blocks.size > 0 -%}
+        <div class="lp-pt__tabs" role="tablist" aria-label="{{ section.settings.heading | strip_html | escape }}">
+          <button type="button" role="tab" class="lp-pt__tab" aria-selected="true" data-lp-tab="all">{{ section.settings.all_label | escape }}</button>
+          {%- for block in section.blocks -%}
+            {%- if block.settings.collection != blank -%}
+              <button type="button" role="tab" class="lp-pt__tab" aria-selected="false" data-lp-tab="{{ block.settings.collection.handle }}" {{ block.shopify_attributes }}>{{ block.settings.label | default: block.settings.collection.title | escape }}</button>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </header>
+
+    <ul class="lp-pt__grid" role="list" data-lp-tab-panel aria-live="polite">
+      {%- for product in source.products limit: section.settings.limit -%}
+        {%- liquid
+          assign variant = product.selected_or_first_available_variant
+          assign handles = product.collections | map: 'handle' | join: ' '
+          assign summary = product.metafields.custom.product_short_summary.value | default: product.description | strip_html | truncatewords: 16
+        -%}
+        <li class="lp-pt__card" data-collections="{{ handles }}">
+          <a class="lp-pt__media" href="{{ product.url }}" tabindex="-1" aria-hidden="true">
+            {%- if product.featured_media -%}
+              {{ product.featured_media | image_url: width: 600 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 22vw, 60vw', widths: '300,400,500,600', alt: '' }}
+            {%- endif -%}
+          </a>
+          <div class="lp-pt__body">
+            {%- if product.metafields.reviews.rating.value != blank -%}
+              {%- assign r_value = product.metafields.reviews.rating.value.rating | round: 1 -%}
+              <p class="lp-pt__rating">
+                <span class="lp-pt__star" aria-hidden="true">★</span>
+                <span>{{ r_value }} / {{ product.metafields.reviews.rating.value.scale_max | round: 1 }}</span>
+                {%- if product.metafields.reviews.rating_count.value > 0 -%}<span class="lp-pt__count">· {{ product.metafields.reviews.rating_count.value }} reviews</span>{%- endif -%}
+              </p>
+            {%- endif -%}
+            <h3 class="lp-pt__name"><a href="{{ product.url }}">{{ product.title | escape }}</a></h3>
+            {%- if summary != blank -%}<p class="lp-pt__text">{{ summary }}</p>{%- endif -%}
+            <p class="lp-pt__price">
+              <span>{{ variant.price | money }}</span>
+              {%- if variant.compare_at_price > variant.price -%}<s>{{ variant.compare_at_price | money }}</s>{%- endif -%}
+            </p>
+            {%- if variant.available -%}
+              <button type="button" class="button lp-pt__add" data-lp-add="{{ variant.id }}">
+                <span class="lp-pt__add-label">{{ section.settings.add_label | escape }}</span>
+                <span class="lp-pt__spinner" aria-hidden="true"></span>
+              </button>
+            {%- else -%}
+              <button type="button" class="button lp-pt__add" disabled>{{ 'product.general.sold_out_button' | t }}</button>
+            {%- endif -%}
+          </div>
+        </li>
+      {%- endfor -%}
+    </ul>
+
+    {%- if section.settings.view_all_label != blank -%}
+      <div class="lp-pt__foot"><a class="button button--outline" href="{{ source.url }}">{{ section.settings.view_all_label | escape }}</a></div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% stylesheet %}
+.lp-pt { padding-block: var(--lp-section-gap); }
+.lp-pt__head { display: grid; justify-items: center; gap: 1.5rem; margin-block-end: clamp(1.75rem, 3vw, 2.5rem); text-align: center; }
+.lp-pt__title { max-width: 16ch; }
+.lp-pt__tabs { display: flex; gap: .5rem; max-width: 100%; overflow-x: auto; scrollbar-width: none; padding: 2px; }
+.lp-pt__tabs::-webkit-scrollbar { display: none; }
+.lp-pt .lp-pt__tab { flex: none; min-height: 40px; padding: 0 1rem; border: 0; border-radius: 2px; background: #f2f2f2; color: rgb(var(--lp-ink)); font: inherit; font-size: .875rem; font-weight: 600; white-space: nowrap; cursor: pointer; transition: background-color 160ms ease-out, color 160ms ease-out; }
+.lp-pt .lp-pt__tab:hover { background: #e8e8e8; }
+.lp-pt .lp-pt__tab[aria-selected="true"] { background: #1f1e20; color: #fff; }
+.lp-pt__grid { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 62%); gap: .75rem; margin: 0 calc(-1 * var(--container-gutter, 1rem)); padding: 0 var(--container-gutter, 1rem) .5rem; list-style: none; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--container-gutter, 1rem); scrollbar-width: none; }
+.lp-pt__grid::-webkit-scrollbar { display: none; }
+@media (min-width: 700px) { .lp-pt__grid { grid-auto-columns: minmax(0, 38%); } }
+@media (min-width: 1000px) { .lp-pt__grid { grid-auto-flow: row; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-columns: auto; gap: 1.25rem; margin: 0; padding: 0; overflow: visible; } }
+.lp-pt__card { display: flex; flex-direction: column; scroll-snap-align: start; border: 1px solid #ececec; border-radius: 4px; background: #fff; overflow: hidden; transition: box-shadow 200ms ease-out, border-color 200ms ease-out; }
+.lp-pt__card[hidden] { display: none; }
+.lp-pt__card:hover { border-color: #dedede; box-shadow: 0 14px 32px -20px rgb(var(--lp-ink) / .45); }
+.lp-pt__media { display: grid; place-items: center; aspect-ratio: 1; padding: 1rem; background: #f6f6f6; }
+.lp-pt__media img { width: 82%; height: 100%; object-fit: contain; transition: transform 500ms cubic-bezier(.16, 1, .3, 1); }
+@media (hover: hover) { .lp-pt__card:hover .lp-pt__media img { transform: scale(1.03); } }
+.lp-pt__body { display: flex; flex: 1; flex-direction: column; align-items: center; gap: .4rem; padding: 1rem 1rem 1.1rem; text-align: center; }
+.lp-pt__rating { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .3rem; margin: 0; font-size: .75rem; color: rgb(var(--lp-muted)); }
+.lp-pt__star { color: rgb(var(--lp-amber)); font-size: .875rem; }
+.lp-pt__name { margin: 0; font-size: 1rem; }
+.lp-pt__name a { color: inherit; text-decoration: none; }
+.lp-pt__name a::after { content: ""; position: absolute; inset: 0; }
+.lp-pt__card { position: relative; }
+.lp-pt__text { display: -webkit-box; margin: 0; overflow: hidden; -webkit-line-clamp: 3; -webkit-box-orient: vertical; font-size: .8125rem; line-height: 1.5; color: rgb(var(--lp-muted)); }
+.lp-pt__price { display: flex; align-items: baseline; gap: .4rem; margin: .25rem 0 .5rem; margin-block-start: auto; padding-block-start: .5rem; font-weight: 700; }
+.lp-pt__price s { color: rgb(var(--lp-muted)); font-weight: 400; font-size: .875rem; }
+.lp-pt .lp-pt__add { position: relative; z-index: 1; width: 100%; min-height: 44px; font-size: .9375rem; }
+.lp-pt__spinner { position: absolute; inset: 0; margin: auto; width: 18px; height: 18px; border: 2px solid rgb(31 30 32 / .25); border-top-color: #1f1e20; border-radius: 50%; opacity: 0; }
+.lp-pt__add.is-loading .lp-pt__add-label { opacity: 0; }
+.lp-pt__add.is-loading .lp-pt__spinner { opacity: 1; animation: lp-pt-spin 700ms linear infinite; }
+@keyframes lp-pt-spin { to { transform: rotate(360deg); } }
+.lp-pt__foot { display: flex; justify-content: center; margin-block-start: clamp(1.5rem, 3vw, 2.5rem); }
+@media (prefers-reduced-motion: reduce) { .lp-pt__add.is-loading .lp-pt__spinner { animation-duration: 1.6s; } }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "LP · Product tabs",
+  "tag": "div",
+  "class": "lp-home-section",
+  "settings": [
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Better health starts here" },
+    { "type": "collection", "id": "collection", "label": "Products from", "info": "Defaults to all products" },
+    { "type": "range", "id": "limit", "label": "Products", "min": 4, "max": 16, "step": 1, "default": 12 },
+    { "type": "text", "id": "all_label", "label": "First tab label", "default": "Shop all" },
+    { "type": "text", "id": "add_label", "label": "Add to cart label", "default": "Add to cart" },
+    { "type": "text", "id": "view_all_label", "label": "View all label", "default": "View all products" }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "limit": 6,
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "text", "id": "label", "label": "Label" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "LP · Product tabs" } ]
+}
+{% endschema %}

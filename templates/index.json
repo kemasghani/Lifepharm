@@ -233,54 +233,48 @@
       "disabled": true
     },
     "logo_list_cGNNLB": {
-      "type": "logo-list",
+      "type": "lp-press",
       "blocks": {
         "logo_7a7nxn": {
           "type": "logo",
           "settings": {
             "logo": "shopify://shop_images/americanhealthjournal_copy.jpg",
-            "logo_width": 140,
-            "link": ""
+            "name": "American Health Journal"
           }
         },
         "logo_D78Maw": {
           "type": "logo",
           "settings": {
             "logo": "shopify://shop_images/AP.png",
-            "logo_width": 140,
-            "link": ""
+            "name": "AP"
           }
         },
         "logo_G6HqmD": {
           "type": "logo",
           "settings": {
             "logo": "shopify://shop_images/today_in_science.png",
-            "logo_width": 140,
-            "link": ""
+            "name": "Today in Science"
           }
         },
         "logo_ijzfbF": {
           "type": "logo",
           "settings": {
             "logo": "shopify://shop_images/US_Healthcare_Journal.png",
-            "logo_width": 140,
-            "link": ""
+            "name": "US Healthcare Journal"
           }
         },
         "logo_xGn64W": {
           "type": "logo",
           "settings": {
             "logo": "shopify://shop_images/24_7_business_reporter.png",
-            "logo_width": 140,
-            "link": ""
+            "name": "24/7 Business Reporter"
           }
         },
         "logo_mAqXqc": {
           "type": "logo",
           "settings": {
             "logo": "shopify://shop_images/stem_news_today.png",
-            "logo_width": 140,
-            "link": ""
+            "name": "Stem News Today"
           }
         }
       },
@@ -292,23 +286,8 @@
         "logo_xGn64W",
         "logo_mAqXqc"
       ],
-      "custom_css": [
-        "{margin-top: -40px;}"
-      ],
       "settings": {
-        "full_width": true,
-        "stack_mobile": true,
-        "title": "",
-        "content": "",
-        "text_alignment": "start",
-        "items_per_row": 6,
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "logo_item_background": "#ffffff",
-        "logo_item_border": ""
+        "label": "As featured in"
       }
     },
     "image_with_text_overlay_gD4YMa": {
@@ -375,45 +354,6 @@
         "text_color": ""
       },
       "disabled": true
-    },
-    "featured-collection": {
-      "type": "featured-collection",
-      "custom_css": [
-        ".product-card__image {border-radius: 6px !important;}"
-      ],
-      "settings": {
-        "collection": "all",
-        "products": [
-          "laminine",
-          "omega",
-          "digestive",
-          "immune",
-          "extrim-shape",
-          "lamiderm-apex-smart-serum",
-          "omnia",
-          "cellnergy-wellness",
-          "cellnergy-power-cream",
-          "refive"
-        ],
-        "full_width": true,
-        "stack_products": false,
-        "show_progress_bar": true,
-        "products_count": 10,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 4,
-        "subheading": "Bestsellers",
-        "title": "Better health starts here",
-        "content": "<p>Explore our range of regenerative health products.</p>",
-        "link_url": "shopify://collections/all",
-        "link_text": "Shop all",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
-      }
     },
     "collection-list": {
       "type": "collection-list",
@@ -984,85 +924,6 @@
         "text_gradient": "linear-gradient(157deg, rgba(255, 143, 0, 1) 22%, rgba(227, 79, 79, 1) 56%, rgba(252, 184, 0, 1) 82%)"
       }
     },
-    "rich_text_6YfenC": {
-      "disabled": true,
-      "type": "rich-text",
-      "blocks": {
-        "image_GEY3wr": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/thin_light_grey_line.png",
-            "width_mode": "custom",
-            "max_width": 1000,
-            "mobile_max_width": 300
-          }
-        },
-        "liquid_gHP9YW": {
-          "type": "liquid",
-          "settings": {
-            "liquid": "<h2><span>From Our Instagram</span><em></em></h2>"
-          }
-        },
-        "liquid_eMxpEh": {
-          "type": "liquid",
-          "settings": {
-            "liquid": "<a  href=\"https://www.instagram.com/lifepharm\" class=\"tap-area\" target=\"_blank\" rel=\"noreferrer noopener\" aria-label=\"Follow on Instagram\"><svg role=\"presentation\" focusable=\"false\" width=\"27\" height=\"27\" class=\"icon icon-instagram\" viewBox=\"0 0 24 24\">\n        <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M12 2.4c-2.607 0-2.934.011-3.958.058-1.022.046-1.72.209-2.33.446a4.705 4.705 0 0 0-1.7 1.107 4.706 4.706 0 0 0-1.108 1.7c-.237.611-.4 1.31-.446 2.331C2.41 9.066 2.4 9.392 2.4 12c0 2.607.011 2.934.058 3.958.046 1.022.209 1.72.446 2.33a4.706 4.706 0 0 0 1.107 1.7c.534.535 1.07.863 1.7 1.108.611.237 1.309.4 2.33.446 1.025.047 1.352.058 3.959.058s2.934-.011 3.958-.058c1.022-.046 1.72-.209 2.33-.446a4.706 4.706 0 0 0 1.7-1.107 4.706 4.706 0 0 0 1.108-1.7c.237-.611.4-1.31.446-2.33.047-1.025.058-1.352.058-3.959s-.011-2.934-.058-3.958c-.047-1.022-.209-1.72-.446-2.33a4.706 4.706 0 0 0-1.107-1.7 4.705 4.705 0 0 0-1.7-1.108c-.611-.237-1.31-.4-2.331-.446C14.934 2.41 14.608 2.4 12 2.4Zm0 1.73c2.563 0 2.867.01 3.88.056.935.042 1.443.199 1.782.33.448.174.768.382 1.104.718.336.336.544.656.718 1.104.131.338.287.847.33 1.783.046 1.012.056 1.316.056 3.879 0 2.563-.01 2.867-.056 3.88-.043.935-.199 1.444-.33 1.782a2.974 2.974 0 0 1-.719 1.104 2.974 2.974 0 0 1-1.103.718c-.339.131-.847.288-1.783.33-1.012.046-1.316.056-3.88.056-2.563 0-2.866-.01-3.878-.056-.936-.042-1.445-.199-1.783-.33a2.974 2.974 0 0 1-1.104-.718 2.974 2.974 0 0 1-.718-1.104c-.131-.338-.288-.847-.33-1.783-.047-1.012-.056-1.316-.056-3.879 0-2.563.01-2.867.056-3.88.042-.935.199-1.443.33-1.782.174-.448.382-.768.718-1.104a2.974 2.974 0 0 1 1.104-.718c.338-.131.847-.288 1.783-.33C9.133 4.14 9.437 4.13 12 4.13Zm0 11.07a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4Zm0-8.13a4.93 4.93 0 1 0 0 9.86 4.93 4.93 0 0 0 0-9.86Zm6.276-.194a1.152 1.152 0 1 1-2.304 0 1.152 1.152 0 0 1 2.304 0Z\" fill=\"currentColor\"></path>\n      </svg></a>"
-          }
-        }
-      },
-      "block_order": [
-        "image_GEY3wr",
-        "liquid_gHP9YW",
-        "liquid_eMxpEh"
-      ],
-      "custom_css": [],
-      "settings": {
-        "full_width": true,
-        "content_width": "small",
-        "text_position": "center",
-        "background": "rgba(0,0,0,0)",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
-    "17370759278c56fc7f": {
-      "disabled": true,
-      "type": "apps",
-      "blocks": {
-        "instafeed_app_block_NV8EyH": {
-          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
-          "settings": {
-            "title": "",
-            "title_color": "",
-            "title_size_v2": 0,
-            "alignment": "center",
-            "instafeed_margin_top": 0,
-            "instafeed_margin_bottom": 0,
-            "instafeed_margin_sides": 0,
-            "show_instagram_link": false,
-            "link_alignment": "left",
-            "link_color": "#000000",
-            "background_color": "",
-            "feed_id": "",
-            "html_area": ""
-          }
-        }
-      },
-      "block_order": [
-        "instafeed_app_block_NV8EyH"
-      ],
-      "custom_css": [
-        "{margin-top: -20px;}"
-      ],
-      "settings": {
-        "full_width": true,
-        "remove_vertical_spacing": false,
-        "remove_horizontal_spacing": false,
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
     "apps_Vzt3yd": {
       "type": "apps",
       "blocks": {
@@ -1189,7 +1050,8 @@
       ],
       "settings": {
         "style": "light"
-      }
+      },
+      "disabled": true
     },
     "lp_goals": {
       "type": "lp-shop-by-goal",
@@ -1231,8 +1093,8 @@
         "g3"
       ],
       "settings": {
-        "eyebrow": "Shop by goal",
-        "heading": "Find the right support for <em>you</em>",
+        "eyebrow": "",
+        "heading": "Shop by category",
         "cta": "Explore"
       }
     },
@@ -1285,30 +1147,101 @@
       "settings": {
         "seal_value": "60",
         "seal_text": "60-day guarantee · risk free · ",
-        "heading": "Try it for 60 days. <em>Risk free.</em>",
-        "text": "<p>We're confident in what we make. If you're not completely satisfied, contact our team within 60 days for a full refund.</p>",
+        "heading": "Try it risk free for 60 days",
+        "text": "<p>We stand behind every product we make. If it isn't right for you, let us know within 60 days of delivery and we'll refund you in full.</p>",
         "button_label": "Shop the range",
         "button_url": "shopify://collections/all",
         "link_label": "Read our refund policy",
         "link_url": "/policies/refund-policy"
       }
+    },
+    "lp_tabs": {
+      "type": "lp-product-tabs",
+      "blocks": {
+        "tab_nutri": {
+          "type": "tab",
+          "settings": {
+            "collection": "nutritionals",
+            "label": "Nutritional"
+          }
+        },
+        "tab_skin": {
+          "type": "tab",
+          "settings": {
+            "collection": "skin-health",
+            "label": "Skin Health"
+          }
+        },
+        "tab_freq": {
+          "type": "tab",
+          "settings": {
+            "collection": "frequency-regeneration",
+            "label": "Frequency"
+          }
+        }
+      },
+      "block_order": [
+        "tab_nutri",
+        "tab_skin",
+        "tab_freq"
+      ],
+      "settings": {
+        "heading": "Better health starts here",
+        "collection": "all",
+        "limit": 12,
+        "all_label": "Shop all",
+        "add_label": "Add to cart",
+        "view_all_label": "View all products"
+      }
+    },
+    "lp_system": {
+      "type": "lp-system",
+      "blocks": {
+        "p1": {
+          "type": "point",
+          "settings": {
+            "text": "Backed by clinical studies, not just marketing claims"
+          }
+        },
+        "p2": {
+          "type": "point",
+          "settings": {
+            "text": "Made in the USA and fully NSF tested"
+          }
+        },
+        "p3": {
+          "type": "point",
+          "settings": {
+            "text": "Every order backed by a 60-day money-back guarantee"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "settings": {
+        "heading": "A full system, not just a supplement",
+        "text": "<p>From nutritionals to skin health to frequency regeneration, our products work together to support your whole body, not just one symptom.</p>",
+        "button_label": "Shop with confidence",
+        "button_url": "shopify://collections/all"
+      }
     }
   },
   "order": [
     "lp_hero",
-    "lp_trust",
-    "featured-collection",
     "logo_list_cGNNLB",
     "lp_goals",
+    "lp_tabs",
     "lp_science",
-    "image_with_text_overlay_gD4YMa",
+    "lp_system",
     "rich_text_arFn6i",
     "17175461316e8d66c7",
     "rich_text_Jhh874",
+    "image_with_text_overlay_gD4YMa",
     "lp_guarantee",
     "image_with_text_overlay_BGEPpd",
-    "rich_text_6YfenC",
-    "17370759278c56fc7f",
     "slideshow",
     "slideshow_tUMgGa",
     "rich_text_TpzwKg",
@@ -1319,6 +1252,7 @@
     "faq",
     "hot_spots_YdjbNz",
     "scrolling_text_VQhdjB",
-    "apps_Vzt3yd"
+    "apps_Vzt3yd",
+    "lp_trust"
   ]
 }

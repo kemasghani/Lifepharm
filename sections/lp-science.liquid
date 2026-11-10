@@ -10,9 +10,9 @@
     </div>
 
     <div class="lp-science__copy">
-      {%- if section.settings.eyebrow != blank -%}<p class="lp-eyebrow" data-lp-reveal>{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
-      {%- if section.settings.heading != blank -%}<h2 class="h1 lp-science__title" data-lp-reveal style="--lp-i: 1">{{ section.settings.heading }}</h2>{%- endif -%}
-      {%- if section.settings.text != blank -%}<div class="prose lp-science__text" data-lp-reveal style="--lp-i: 2">{{ section.settings.text }}</div>{%- endif -%}
+      {%- if section.settings.eyebrow != blank -%}<p class="lp-eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="h1 lp-science__title">{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.text != blank -%}<div class="prose lp-science__text">{{ section.settings.text }}</div>{%- endif -%}
 
       {%- if section.blocks.size > 0 -%}
         <dl class="lp-science__stats">
@@ -20,7 +20,7 @@
             {%- assign value = block.settings.value | strip -%}
             {%- assign numeric = value | remove: ',' | remove: '.' -%}
             {%- assign numeric_check = numeric | plus: 0 | append: '' -%}
-            <div class="lp-stat" data-lp-reveal style="--lp-i: {{ forloop.index | plus: 2 }}" {{ block.shopify_attributes }}>
+            <div class="lp-stat" {{ block.shopify_attributes }}>
               <dt class="lp-stat__value">
                 {%- if numeric_check == numeric and numeric != '' -%}
                   <span data-lp-count="{{ value | remove: ',' }}">{{ value }}</span>
@@ -36,7 +36,7 @@
       {%- endif -%}
 
       {%- if section.settings.button_label != blank -%}
-        <a href="{{ section.settings.button_url }}" class="button button--lg button--outline" data-lp-reveal>{{ section.settings.button_label | escape }}</a>
+        <a href="{{ section.settings.button_url }}" class="button button--lg button--outline">{{ section.settings.button_label | escape }}</a>
       {%- endif -%}
       {%- if section.settings.disclaimer != blank -%}<p class="lp-science__disclaimer">{{ section.settings.disclaimer | escape }}</p>{%- endif -%}
     </div>

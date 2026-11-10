@@ -1,0 +1,66 @@
+<section class="lp-sys">
+  <div class="container">
+    <div class="lp-sys__grid">
+      <div class="lp-sys__copy">
+        {%- if section.settings.heading != blank -%}<h2 class="h1 lp-sys__title">{{ section.settings.heading }}</h2>{%- endif -%}
+        {%- if section.settings.text != blank -%}<div class="lp-sys__text">{{ section.settings.text }}</div>{%- endif -%}
+        {%- if section.blocks.size > 0 -%}
+          <ul class="lp-sys__list" role="list">
+            {%- for block in section.blocks -%}
+              <li class="lp-sys__item" {{ block.shopify_attributes }}>
+                <span class="lp-sys__dot" aria-hidden="true"></span>
+                <span>{{ block.settings.text | escape }}</span>
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+        {%- if section.settings.button_label != blank -%}
+          <a class="button lp-sys__cta" href="{{ section.settings.button_url | default: routes.all_products_collection_url }}">{{ section.settings.button_label | escape }}</a>
+        {%- endif -%}
+      </div>
+      <div class="lp-sys__media" data-lp-reveal>
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 45vw, 100vw', widths: '480,720,960,1200', alt: section.settings.image.alt | default: '' }}
+        {%- else -%}
+          <img src="{{ 'lp-system-digestive.webp' | asset_url }}" alt="" width="960" height="1200" loading="lazy" decoding="async">
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+.lp-sys { padding-block: var(--lp-section-gap); background: #f0f0ee; }
+.lp-sys__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(1.75rem, 4vw, 4rem); align-items: center; }
+@media (min-width: 1000px) { .lp-sys__grid { grid-template-columns: minmax(0, 1fr) minmax(0, .9fr); } }
+.lp-sys__copy { display: grid; gap: 1.25rem; justify-items: start; }
+.lp-sys__title { max-width: 14ch; }
+.lp-sys__text { max-width: 46ch; color: rgb(var(--lp-muted)); line-height: 1.65; }
+.lp-sys__text p { margin: 0; }
+.lp-sys__list { display: grid; gap: .85rem; margin: .25rem 0; padding: 0; list-style: none; }
+.lp-sys__item { display: grid; grid-template-columns: 14px minmax(0, 1fr); gap: .75rem; align-items: start; font-weight: 600; line-height: 1.45; }
+.lp-sys__dot { width: 12px; height: 12px; margin-block-start: .3rem; border-radius: 50%; background: rgb(var(--lp-amber)); box-shadow: 0 0 0 4px rgb(var(--lp-amber) / .18); }
+.lp-sys .lp-sys__cta { min-width: min(100%, 280px); margin-block-start: .5rem; }
+.lp-sys__media { overflow: hidden; border-radius: 4px; aspect-ratio: 4 / 5; background: #dfe7dc; }
+.lp-sys__media img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 999px) { .lp-sys .lp-sys__cta { width: 100%; } .lp-sys__media { aspect-ratio: 4 / 4.2; } }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "LP · Full system",
+  "tag": "div",
+  "class": "lp-home-section",
+  "settings": [
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "A full system, not just a supplement" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>From nutritionals to skin health to frequency regeneration, our products work together to support your whole body, not just one symptom.</p>" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop with confidence" },
+    { "type": "url", "id": "button_url", "label": "Button link" }
+  ],
+  "blocks": [
+    { "type": "point", "name": "Point", "limit": 5, "settings": [ { "type": "text", "id": "text", "label": "Text" } ] }
+  ],
+  "presets": [ { "name": "LP · Full system", "blocks": [ { "type": "point" }, { "type": "point" }, { "type": "point" } ] } ]
+}
+{% endschema %}

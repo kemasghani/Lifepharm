@@ -40,7 +40,7 @@ body { font-feature-settings: "ss01", "cv11"; }
   --text-font-family: var(--lp-sans);
 }
 body { font-family: var(--lp-sans); font-optical-sizing: auto; }
-.h0, .h1, .h2, .h3, h1, h2, h3 { font-weight: 350; letter-spacing: -.02em; line-height: 1.1; text-wrap: balance; }
+:is(.h0, .h1, .h2, .h3, h1, h2, h3):not(#lp-none) { font-weight: 350; letter-spacing: -.02em; line-height: 1.1; text-wrap: balance; }
 .h4, .h5, .h6, h4, h5, h6 { letter-spacing: -.01em; line-height: 1.2; text-wrap: balance; }
 p, .prose p { text-wrap: pretty; }
 .prose { line-height: 1.7; }
@@ -231,7 +231,7 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
 .shopify-section--main-product .product-gallery__media { background: rgb(var(--lp-sand)); border-radius: var(--lp-radius-lg); }
 .shopify-section--main-product .product-gallery__media img { mix-blend-mode: multiply; }
 @media (min-width: 1000px) { .shopify-section--main-product .product { column-gap: clamp(2.5rem, 4vw, 5rem); } }
-.shopify-section--main-product .product-info__title { font-size: clamp(2.1rem, 3.4vw, 3.25rem); letter-spacing: -.035em; }
+.shopify-section--main-product .product-info__title { font-size: clamp(2.1rem, 3.4vw, 3.25rem); letter-spacing: -.02em; }
 .lp-pdp-summary { display: grid; gap: .5rem; max-width: 46ch; }
 .lp-pdp-summary p { margin: 0; }
 .lp-pdp-summary__lead { font-size: 1.0625rem; line-height: 1.5; color: rgb(var(--lp-ink)); }

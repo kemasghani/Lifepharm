@@ -196,6 +196,17 @@
   });
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', watchUgc, { once: true });
   else watchUgc();
+
+  const tidyDashes = () => document.querySelectorAll('.metafield-rich_text_field, .metafield-multi_line_text_field').forEach((root) => {
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    let node;
+    while ((node = walker.nextNode())) {
+      if (node.nodeValue.includes('\u2014')) node.nodeValue = node.nodeValue.replace(/\s*\u2014\s*/g, ', ');
+    }
+  });
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', tidyDashes, { once: true });
+  else tidyDashes();
+
   const whenIdle = (fn) => (window.requestIdleCallback ? requestIdleCallback(fn, { timeout: 2500 }) : setTimeout(fn, 1200));
   if (document.readyState === 'complete') whenIdle(startLazyVideos);
   else window.addEventListener('load', () => whenIdle(startLazyVideos), { once: true });

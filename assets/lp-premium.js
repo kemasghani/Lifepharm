@@ -394,15 +394,16 @@
 
 
   const initStickyOffset = () => {
-    const bar = document.querySelector('product-quick-add');
-    if (!bar) return;
+    const host = document.querySelector('product-quick-add')?.closest('product-rerender') || document.querySelector('product-quick-add')?.parentElement;
+    if (!host) return;
     const root = document.documentElement;
     const sync = () => {
-      const on = bar.classList.contains('is-visible');
+      const bar = host.querySelector('product-quick-add');
+      const on = !!bar && bar.classList.contains('is-visible');
       if (on) root.style.setProperty('--lp-sticky-h', `${Math.round(bar.getBoundingClientRect().height) + 10}px`);
       root.classList.toggle('lp-sticky-on', on);
     };
-    new MutationObserver(sync).observe(bar, { attributes: true, attributeFilter: ['class'] });
+    new MutationObserver(sync).observe(host, { subtree: true, childList: true, attributes: true, attributeFilter: ['class'] });
     window.addEventListener('resize', sync, { passive: true });
     sync();
   };

@@ -39,7 +39,7 @@
           {%- else -%}
             {%- for raw in benefit_items offset: 1 limit: 4 -%}
               {%- liquid
-                assign item = raw | prepend: '<li'
+                assign item = raw | prepend: '<li' | split: '</li>' | first
                 assign card_title = ''
                 if item contains '<strong>'
                   assign card_title = item | split: '<strong>' | last | split: '</strong>' | first | strip_html | remove: ':' | strip

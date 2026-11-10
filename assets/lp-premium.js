@@ -218,6 +218,10 @@
     const duration = reduceMotion ? 0 : 420;
     let active = null;
     let lastFocus = null;
+    let viaKeyboard = false;
+    document.addEventListener('keydown', () => { viaKeyboard = true; }, true);
+    document.addEventListener('pointerdown', () => { viaKeyboard = false; }, true);
+    const moveFocus = (el) => { if (el && viaKeyboard) el.focus({ preventScroll: true }); };
 
     const headerBottom = () => {
       const header = toggle.closest('.shopify-section--header, header, store-header') || toggle;
@@ -236,8 +240,7 @@
       if (previous) {
         previous.classList.remove('is-active');
         setTimeout(() => { if (active !== previous) { previous.hidden = true; previous.inert = true; } }, duration);
-        const opener = root.querySelector(`[data-lp-menu-open="${previous.dataset.lpMenuPanel}"]`);
-        if (opener) opener.focus({ preventScroll: true });
+        moveFocus(root.querySelector(`[data-lp-menu-open="${previous.dataset.lpMenuPanel}"]`));
       }
     };
     const showPanel = (key) => {
@@ -251,8 +254,7 @@
         menu.classList.add('is-sub');
         root.inert = true;
         active = panel;
-        const back = panel.querySelector('[data-lp-menu-back]');
-        if (back) back.focus({ preventScroll: true });
+        moveFocus(panel.querySelector('[data-lp-menu-back]'));
       }));
     };
 

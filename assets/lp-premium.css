@@ -31,14 +31,16 @@ html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-fo
 /* ---------- Typography (LifePharm Quick Style Guide 2024: Metropolis Light/ExtraBold; Black 90% text) ---------- */
 :root:root {
   --lp-sans: "Metropolis", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-  --heading-font-family: var(--lp-sans);
-  --heading-font-weight: 300;
+  --lp-serif: "Playfair Display", "Times New Roman", Georgia, serif;
+  --heading-font-family: var(--lp-serif);
+  --heading-font-weight: 400;
   --heading-font-style: normal;
   --heading-letter-spacing: -.02em;
   --text-font-family: var(--lp-sans);
 }
 body { font-family: var(--lp-sans); color: rgb(var(--lp-ink)); }
-:is(.h0, .h1, .h2, .h3, h1, h2, h3):not(#lp-none) { font-weight: 300; letter-spacing: -.02em; line-height: 1.1 !important; text-wrap: balance; }
+:is(.h0, .h1, .h2, h1, h2):not(#lp-none) { font-family: var(--lp-serif); font-weight: 400; text-transform: uppercase; letter-spacing: -.005em; line-height: 1.06 !important; text-wrap: balance; font-variant-numeric: lining-nums; }
+:is(.h3, h3):not(#lp-none) { font-family: var(--lp-sans); font-weight: 600; letter-spacing: -.01em; line-height: 1.2 !important; text-wrap: balance; }
 .prose h4:not(#lp-none) { font-family: var(--lp-sans) !important; }
 .h4, .h5, .h6, h4, h5, h6 { letter-spacing: -.01em; line-height: 1.2; text-wrap: balance; }
 p, .prose p { text-wrap: pretty; }
@@ -248,7 +250,7 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
 #stamped-main-widget { max-width: var(--container-max-width, 1600px); margin-inline: auto; font-family: var(--text-font-family) !important; }
 #stamped-main-widget .stamped-header-title, #stamped-main-widget .stamped-summary-caption-1 { font-family: var(--heading-font-family) !important; font-size: clamp(1.75rem, 3vw, 2.5rem) !important; letter-spacing: -.02em; color: rgb(var(--lp-ink)); text-align: start; }
 #stamped-main-widget .stamped-summary, #stamped-main-widget .stamped-review { border-color: var(--lp-hairline) !important; border-radius: var(--lp-radius); }
-#stamped-main-widget .stamped-button { border-radius: 999px !important; }
+#stamped-main-widget .stamped-button { border-radius: 4px !important; }
 .lp-pdp-eyebrow { display: inline-flex; align-items: center; gap: .5rem; font-size: .75rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgb(var(--lp-amber-deep)); }
 .lp-pdp-eyebrow::before { content: ""; width: 18px; height: 1.5px; background: currentColor; }
 .shopify-section--main-product .product-info__accordion .accordion__toggle { font-size: 1rem; font-weight: 600; }
@@ -283,7 +285,7 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
 
 /* Floating add-to-cart pill */
 .product-quick-add { background: rgb(var(--lp-ivory) / .86); -webkit-backdrop-filter: blur(18px) saturate(160%); backdrop-filter: blur(18px) saturate(160%); border-top: 1px solid var(--lp-hairline); padding: .75rem 1rem calc(.75rem + env(safe-area-inset-bottom)); }
-.product-quick-add .button { border-radius: 999px; --button-background-secondary: var(--lp-amber); --button-text-secondary: 31 30 32; }
+.product-quick-add .button { border-radius: 4px; --button-background-secondary: var(--lp-amber); --button-text-secondary: 31 30 32; }
 @media screen and (min-width: 700px) {
   .product-quick-add, .product-quick-add:not(:lang(ar), :lang(he)) { right: auto; left: 50%; width: auto; min-width: 30rem; max-width: calc(100vw - 2rem); padding: .5rem .5rem .5rem .6rem; border: 1px solid var(--lp-hairline); border-radius: 999px; box-shadow: var(--lp-shadow-3); transform: translate(-50%, 16px); bottom: 1.25rem; }
   .product-quick-add.is-visible { transform: translate(-50%, 0); }

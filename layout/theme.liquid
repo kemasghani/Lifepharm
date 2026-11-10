@@ -67,12 +67,13 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
     {{- 'theme.css' | asset_url | stylesheet_tag: preload: true -}}
     {{- 'custom.css' | asset_url | stylesheet_tag: preload: true }}
     <style>
+      @font-face { font-family: "Playfair Display"; src: url({{ 'playfair-display-regular.woff2' | asset_url }}) format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
       @font-face { font-family: "Metropolis"; src: url({{ 'metropolis-light.woff2' | asset_url }}) format("woff2"); font-weight: 100 349; font-style: normal; font-display: swap; }
       @font-face { font-family: "Metropolis"; src: url({{ 'metropolis-regular.woff2' | asset_url }}) format("woff2"); font-weight: 350 499; font-style: normal; font-display: swap; }
       @font-face { font-family: "Metropolis"; src: url({{ 'metropolis-semibold.woff2' | asset_url }}) format("woff2"); font-weight: 500 699; font-style: normal; font-display: swap; }
       @font-face { font-family: "Metropolis"; src: url({{ 'metropolis-extrabold.woff2' | asset_url }}) format("woff2"); font-weight: 700 900; font-style: normal; font-display: swap; }
     </style>
-    {{ 'metropolis-light.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+    {{ 'playfair-display-regular.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
     {{ 'metropolis-regular.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
     {{- 'lp-premium.css' | asset_url | stylesheet_tag: preload: true }}
     <script>document.documentElement.classList.add('lp-js')</script>

@@ -594,7 +594,7 @@ position: relative;
       .group-container--selected .skio-radio__container { color: var(--lp-ink); }
       .skio-price { flex: none; margin: 0 0 0 auto; gap: 8px; font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums; }
       .skio-price s { font-size: 14px; font-weight: 400; color: #8a8d93; opacity: 1; }
-      .savings.bubble { top: -12px; right: 16px; padding: 5px 10px; border: 0; border-radius: 999px; background: var(--lp-amber); color: #1f1e20; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; line-height: 1; box-shadow: 0 4px 12px -4px rgba(176,98,0,.5); }
+      .savings.bubble { top: -12px; right: 16px; padding: 5px 10px; border: 0; border-radius: 2px; background: var(--lp-amber); color: #1f1e20; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; line-height: 1; box-shadow: 0 4px 12px -4px rgba(176,98,0,.5); }
       .group-content { gap: 14px; padding-left: 34px; }
       .group-content-additional { font-size: 14px; line-height: 1.5; color: var(--lp-ink); font-weight: 400; }
       .group-content-additional ul { display: grid; gap: 6px; }

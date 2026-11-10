@@ -178,6 +178,15 @@
     const discounted = a > 0 && b > a + 0.001;
     was.hidden = !discounted;
     if (tag) { tag.hidden = !discounted; if (discounted) tag.textContent = 'Save ' + Math.round((1 - a / b) * 100) + '%'; }
+    const sticky = document.querySelector('[data-lp-sticky-price]');
+    if (sticky && a > 0 && sticky.textContent.trim() !== now.textContent.trim()) sticky.textContent = now.textContent.trim();
+    const unit = document.querySelector('[data-lp-sticky-unit]');
+    if (unit && a > 0) {
+      const count = Number(unit.dataset.count) || 0;
+      const symbol = (now.textContent.trim().match(/^[^0-9]*/) || [''])[0];
+      const text = count ? ` ${symbol}${(a / count).toFixed(2)} / ${unit.dataset.unit}` : '';
+      if (unit.textContent !== text) unit.textContent = text;
+    }
   });
   const priceRoot = document.querySelector('.shopify-section--main-product');
   if (priceRoot) {

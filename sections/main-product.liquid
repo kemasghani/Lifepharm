@@ -66,9 +66,29 @@
       <product-quick-add form="{{ product_form_id }}" class="product-quick-add">
         {%- assign button_label = 'product.general.add_to_cart_button' | t -%}
 
-        <buy-buttons template="{{ product.template_suffix }}" form="{{ product_form_id }}" class="sm:hidden">
-          {%- render 'button', type: 'submit', content: button_label, form: product_form_id, background: buy_buttons_block.settings.atc_button_background, text_color: buy_buttons_block.settings.atc_button_text_color, secondary: true, stretch: true, size: 'lg' -%}
-        </buy-buttons>
+        {%- liquid
+          assign lp_sv = product.selected_or_first_available_variant
+          assign lp_count = 0
+          assign lp_unit = ''
+          assign lp_title_down = lp_sv.title | downcase
+          assign lp_first = lp_sv.title | split: ' ' | first | plus: 0
+          if lp_first > 1
+            if lp_title_down contains 'count' or lp_title_down contains 'capsule' or lp_title_down contains 'softgel'
+              assign lp_count = lp_first
+              assign lp_unit = 'capsule'
+            endif
+          endif
+        -%}
+        <div class="lp-sticky sm:hidden">
+          <div class="lp-sticky__info" aria-hidden="true">
+            {%- unless product.has_only_default_variant -%}<span class="lp-sticky__variant">{{ lp_sv.title | escape }}</span>{%- endunless -%}
+            <span class="lp-sticky__price"><strong data-lp-sticky-price>{{ lp_sv.price | money }}</strong>{%- if lp_count > 0 -%}<span class="lp-sticky__unit" data-lp-sticky-unit data-count="{{ lp_count }}" data-unit="{{ lp_unit }}"> {{ lp_sv.price | divided_by: lp_count | money }} / {{ lp_unit }}</span>{%- endif -%}</span>
+            <span class="lp-sticky__note">60-day money-back guarantee</span>
+          </div>
+          <buy-buttons template="{{ product.template_suffix }}" form="{{ product_form_id }}">
+            {%- render 'button', type: 'submit', content: button_label, form: product_form_id, background: buy_buttons_block.settings.atc_button_background, text_color: buy_buttons_block.settings.atc_button_text_color, secondary: true, stretch: true, size: 'lg' -%}
+          </buy-buttons>
+        </div>
 
         {%- assign image = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
 

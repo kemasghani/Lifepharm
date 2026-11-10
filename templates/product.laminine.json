@@ -1299,7 +1299,27 @@
         "q_who": "Who is [product] for?",
         "q_how": "How do I take [product]?",
         "q_when": "When will I notice a difference?"
-      }
+      },
+      "blocks": {
+        "faq_guarantee": {
+          "type": "item",
+          "settings": {
+            "question": "What if it doesn't work for me?",
+            "answer": "<p>Every LifePharm product comes with a 60-day money-back guarantee. If you're not satisfied, contact us within 60 days of delivery for a full refund.</p>"
+          }
+        },
+        "faq_shipping": {
+          "type": "item",
+          "settings": {
+            "question": "Do you offer free delivery?",
+            "answer": "<p>Yes. UK orders over £150 ship free.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_guarantee",
+        "faq_shipping"
+      ]
     }
   },
   "order": [

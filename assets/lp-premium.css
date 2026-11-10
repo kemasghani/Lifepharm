@@ -231,7 +231,7 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
 
 /* Floating add-to-cart pill */
 .product-quick-add { background: rgb(var(--lp-ivory) / .86); -webkit-backdrop-filter: blur(18px) saturate(160%); backdrop-filter: blur(18px) saturate(160%); border-top: 1px solid var(--lp-hairline); padding: .75rem 1rem calc(.75rem + env(safe-area-inset-bottom)); }
-.product-quick-add .button { border-radius: 999px; }
+.product-quick-add .button { border-radius: 999px; --button-background-secondary: var(--lp-ink); --button-text-secondary: 255 255 255; }
 @media screen and (min-width: 700px) {
   .product-quick-add, .product-quick-add:not(:lang(ar), :lang(he)) { right: auto; left: 50%; width: auto; min-width: 30rem; max-width: calc(100vw - 2rem); padding: .5rem .5rem .5rem .6rem; border: 1px solid var(--lp-hairline); border-radius: 999px; box-shadow: var(--lp-shadow-3); transform: translate(-50%, 16px); bottom: 1.25rem; }
   .product-quick-add.is-visible { transform: translate(-50%, 0); }

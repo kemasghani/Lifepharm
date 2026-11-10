@@ -16,7 +16,7 @@
 
       <div class="lp-cmp__table" role="table" aria-label="{{ section.settings.prefix | escape }} {{ product.title | escape }}" data-lp-reveal style="--lp-i: 1">
         <div class="lp-cmp__row lp-cmp__row--head" role="row">
-          <span role="columnheader" class="lp-cmp__feat"><span class="visually-hidden">{{ section.settings.feature_label | escape }}</span></span>
+          <span role="columnheader" class="lp-cmp__feat"><span class="sr-only">{{ section.settings.feature_label | escape }}</span></span>
           <span role="columnheader" class="lp-cmp__us"><span class="lp-cmp__badge">{{ product.title | escape }}</span></span>
           <span role="columnheader" class="lp-cmp__them">{{ section.settings.other_label | escape }}</span>
         </div>
@@ -24,7 +24,7 @@
           {%- for block in section.blocks -%}
             <div class="lp-cmp__row" role="row" {{ block.shopify_attributes }}>
               <span role="cell" class="lp-cmp__feat">{{ block.settings.feature | escape }}</span>
-              <span role="cell" class="lp-cmp__us"><span class="lp-cmp__yes">{% render 'lp-icon', name: 'check', size: 16 %}<span class="visually-hidden">Yes</span></span></span>
+              <span role="cell" class="lp-cmp__us"><span class="lp-cmp__yes">{% render 'lp-icon', name: 'check', size: 16 %}<span class="sr-only">Yes</span></span></span>
               <span role="cell" class="lp-cmp__them">{{ block.settings.other | default: section.settings.other_value | escape }}</span>
             </div>
           {%- endfor -%}
@@ -32,14 +32,14 @@
           {%- for cert in certs limit: 7 -%}
             <div class="lp-cmp__row" role="row">
               <span role="cell" class="lp-cmp__feat">{{ cert | strip | escape }}</span>
-              <span role="cell" class="lp-cmp__us"><span class="lp-cmp__yes">{% render 'lp-icon', name: 'check', size: 16 %}<span class="visually-hidden">Yes</span></span></span>
+              <span role="cell" class="lp-cmp__us"><span class="lp-cmp__yes">{% render 'lp-icon', name: 'check', size: 16 %}<span class="sr-only">Yes</span></span></span>
               <span role="cell" class="lp-cmp__them">{{ section.settings.other_value | escape }}</span>
             </div>
           {%- endfor -%}
           {%- if section.settings.guarantee_row != blank -%}
             <div class="lp-cmp__row" role="row">
               <span role="cell" class="lp-cmp__feat">{{ section.settings.guarantee_row | escape }}</span>
-              <span role="cell" class="lp-cmp__us"><span class="lp-cmp__yes">{% render 'lp-icon', name: 'check', size: 16 %}<span class="visually-hidden">Yes</span></span></span>
+              <span role="cell" class="lp-cmp__us"><span class="lp-cmp__yes">{% render 'lp-icon', name: 'check', size: 16 %}<span class="sr-only">Yes</span></span></span>
               <span role="cell" class="lp-cmp__them">{{ section.settings.other_value | escape }}</span>
             </div>
           {%- endif -%}

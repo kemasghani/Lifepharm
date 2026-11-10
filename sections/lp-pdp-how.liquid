@@ -31,9 +31,9 @@
       <div class="lp-how__card">
         <div class="lp-how__copy">
           {%- if section.settings.eyebrow != blank -%}<p class="lp-eyebrow lp-how__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
-          {%- if heading != blank -%}<h2 class="h2 lp-how__title" data-lp-reveal>{{ heading }}</h2>{%- endif -%}
+          {%- if heading != blank -%}<h2 class="h2 lp-how__title">{{ heading }}</h2>{%- endif -%}
 
-          <div class="lp-how__text" data-lp-reveal style="--lp-i: 1">
+          <div class="lp-how__text">
             {%- if section.settings.text != blank -%}
               {{ section.settings.text }}
             {%- else -%}
@@ -42,7 +42,7 @@
           </div>
 
           {%- if concerns != blank -%}
-            <div class="lp-how__supports" data-lp-reveal style="--lp-i: 2">
+            <div class="lp-how__supports">
               <span class="lp-how__supports-label">{{ section.settings.supports_label | escape }}</span>
               <ul class="lp-how__chips" role="list">
                 {%- for c in concerns -%}<li class="lp-how__chip">{{ c | escape }}</li>{%- endfor -%}

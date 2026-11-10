@@ -10,11 +10,11 @@
     <div class="lp-cmp__grid">
       <div class="lp-cmp__intro">
         {%- if section.settings.eyebrow != blank -%}<p class="lp-eyebrow lp-cmp__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
-        <h2 class="h1 lp-cmp__title" data-lp-reveal>{{ section.settings.prefix | escape }} <em>{{ heading }}</em> {{ section.settings.suffix | escape }}</h2>
-        {%- if section.settings.text != blank -%}<div class="lp-cmp__text" data-lp-reveal style="--lp-i: 1">{{ section.settings.text }}</div>{%- endif -%}
+        <h2 class="h1 lp-cmp__title">{{ section.settings.prefix | escape }} <em>{{ heading }}</em> {{ section.settings.suffix | escape }}</h2>
+        {%- if section.settings.text != blank -%}<div class="lp-cmp__text">{{ section.settings.text }}</div>{%- endif -%}
       </div>
 
-      <div class="lp-cmp__table" role="table" aria-label="{{ section.settings.prefix | escape }} {{ product.title | escape }}" data-lp-reveal style="--lp-i: 1">
+      <div class="lp-cmp__table" role="table" aria-label="{{ section.settings.prefix | escape }} {{ product.title | escape }}">
         <div class="lp-cmp__row lp-cmp__row--head" role="row">
           <span role="columnheader" class="lp-cmp__feat"><span class="sr-only">{{ section.settings.feature_label | escape }}</span></span>
           <span role="columnheader" class="lp-cmp__us"><span class="lp-cmp__badge">{{ product.title | split: ' ' | first | escape }}</span></span>

@@ -13,7 +13,7 @@
 <section class="lp-fx" id="lp-formula">
   <div class="container">
     <div class="lp-fx__grid">
-      <div class="lp-fx__visual" aria-hidden="true">
+      <div class="lp-fx__visual" aria-hidden="true" data-lp-reveal>
         <div class="lp-fx__ring"></div>
         <div class="lp-fx__ring lp-fx__ring--inner"></div>
         <div class="lp-fx__glow"></div>
@@ -24,9 +24,9 @@
 
       <div class="lp-fx__copy">
         {%- if section.settings.eyebrow != blank -%}<p class="lp-eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
-        {%- if heading != blank -%}<h2 class="h1 lp-fx__title" data-lp-reveal>{{ heading }}</h2>{%- endif -%}
+        {%- if heading != blank -%}<h2 class="h1 lp-fx__title">{{ heading }}</h2>{%- endif -%}
         {%- if mf.value_1 != blank -%}
-          <p class="lp-fx__lede" data-lp-reveal style="--lp-i: 1">
+          <p class="lp-fx__lede">
             {%- if mf.header_1 != blank -%}<strong>{{ mf.header_1.value | escape }}</strong> {% endif -%}
             {{ mf.value_1.value | escape }}
           </p>
@@ -79,13 +79,11 @@
 .lp-fx__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(2rem, 6vw, 6rem); align-items: center; }
 @media (min-width: 1000px) { .lp-fx__grid { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); } }
 .lp-fx__visual { position: relative; width: min(100%, 520px); aspect-ratio: 1; margin-inline: auto; display: grid; place-items: center; }
-.lp-fx__ring { position: absolute; inset: 0; border-radius: 50%; border: 1.5px dashed rgb(var(--lp-amber) / .45); animation: lp-fx-spin 60s linear infinite; }
-.lp-fx__ring--inner { inset: 9%; border: 1px solid rgb(var(--lp-ink) / .08); animation-duration: 90s; animation-direction: reverse; }
+.lp-fx__ring { position: absolute; inset: 0; border-radius: 50%; border: 1.5px dashed rgb(var(--lp-amber) / .45); }
+.lp-fx__ring--inner { inset: 9%; border: 1px solid rgb(var(--lp-ink) / .08); }
 .lp-fx__ring--inner::before { content: ""; position: absolute; top: -5px; left: 50%; width: 10px; height: 10px; margin-left: -5px; border-radius: 50%; background: rgb(var(--lp-amber)); box-shadow: 0 0 0 6px rgb(var(--lp-amber) / .15); }
 .lp-fx__glow { position: absolute; inset: 16%; border-radius: 50%; background: radial-gradient(closest-side, #fff 0%, rgb(var(--lp-sand)) 60%, rgb(var(--lp-amber) / .14) 100%); box-shadow: var(--lp-shadow-2); }
-.lp-fx__img { position: relative; width: 62%; height: auto; object-fit: contain; mix-blend-mode: multiply; filter: drop-shadow(0 30px 40px rgb(var(--lp-ink) / .18)); animation: lp-fx-float 7s var(--lp-ease-in-out) infinite alternate; }
-@keyframes lp-fx-spin { to { transform: rotate(360deg); } }
-@keyframes lp-fx-float { from { transform: translateY(-6px); } to { transform: translateY(8px); } }
+.lp-fx__img { position: relative; width: 62%; height: auto; object-fit: contain; mix-blend-mode: multiply; filter: drop-shadow(0 30px 40px rgb(var(--lp-ink) / .18)); }
 .lp-fx__copy { display: grid; gap: 1.1rem; align-content: start; }
 .lp-fx__title { letter-spacing: -.02em; text-wrap: balance; }
 .lp-fx__lede { margin: 0; color: rgb(var(--lp-muted)); line-height: 1.65; max-width: 52ch; }
@@ -93,7 +91,6 @@
 .lp-fx__acc { margin-block-start: .75rem; border-top: 1px solid var(--lp-hairline); }
 .lp-fx__studies p { padding: .55rem 0; margin: 0; border-bottom: 1px dashed var(--lp-hairline); }
 .lp-fx__studies a { color: rgb(var(--lp-amber-deep)); font-weight: 600; text-underline-offset: 3px; white-space: nowrap; }
-@media (prefers-reduced-motion: reduce) { .lp-fx__ring, .lp-fx__img { animation: none; } }
 {% endstylesheet %}
 
 {% schema %}

@@ -84,7 +84,7 @@
     img.addEventListener('load', done, { once: true });
     img.addEventListener('error', done, { once: true });
   };
-  const imageSelector = '.product-card__figure img, .lp-media img, .product-gallery img, .collection-card img, .blog-post-card img';
+  const imageSelector = '.product-card__figure img, .lp-media img, .collection-card img, .blog-post-card img';
   document.querySelectorAll(imageSelector).forEach(prepImage);
 
   const revealObserver = 'IntersectionObserver' in window && !reduceMotion

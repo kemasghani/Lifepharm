@@ -25,12 +25,12 @@
 
       <div class="lp-hl__content">
         {%- if section.settings.eyebrow != blank -%}<p class="lp-eyebrow lp-hl__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
-        {%- if heading != blank -%}<h2 class="h1 lp-hl__title" data-lp-reveal>{{ heading }}</h2>{%- endif -%}
+        {%- if heading != blank -%}<h2 class="h1 lp-hl__title">{{ heading }}</h2>{%- endif -%}
 
-        <ul class="lp-hl__cards" role="list">
+        <ul class="lp-hl__cards" role="list" data-lp-reveal>
           {%- if section.blocks.size > 0 -%}
             {%- for block in section.blocks -%}
-              <li class="lp-hl__card" data-lp-reveal style="--lp-i: {{ forloop.index0 }}" {{ block.shopify_attributes }}>
+              <li class="lp-hl__card" {{ block.shopify_attributes }}>
                 <span class="lp-hl__icon">{% render 'lp-icon', name: block.settings.icon, size: 30 %}</span>
                 {%- if block.settings.title != blank -%}<h3 class="lp-hl__card-title">{{ block.settings.title | escape }}</h3>{%- endif -%}
                 {%- if block.settings.text != blank -%}<p class="lp-hl__card-text">{{ block.settings.text | escape }}</p>{%- endif -%}
@@ -49,7 +49,7 @@
                 endif
                 assign icon_index = forloop.index0
               -%}
-              <li class="lp-hl__card" data-lp-reveal style="--lp-i: {{ forloop.index0 }}">
+              <li class="lp-hl__card">
                 <span class="lp-hl__icon">{% render 'lp-icon', name: icons[icon_index], size: 30 %}</span>
                 {%- if card_title != blank -%}<h3 class="lp-hl__card-title">{{ card_title }}</h3>{%- endif -%}
                 <p class="lp-hl__card-text">{{ card_text | truncatewords: 26 }}</p>

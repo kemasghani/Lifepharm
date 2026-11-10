@@ -12,8 +12,8 @@
   <div class="container">
     <header class="lp-tl__head">
       {%- if section.settings.eyebrow != blank -%}<p class="lp-eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
-      {%- if section.settings.heading != blank -%}<h2 class="h1 lp-tl__title" data-lp-reveal>{{ section.settings.heading }}</h2>{%- endif -%}
-      {%- if section.settings.subheading != blank -%}<p class="lp-tl__sub" data-lp-reveal style="--lp-i: 1">{{ section.settings.subheading | escape }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="h1 lp-tl__title">{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.subheading != blank -%}<p class="lp-tl__sub">{{ section.settings.subheading | escape }}</p>{%- endif -%}
     </header>
 
     <div class="lp-tl__grid">
@@ -29,7 +29,7 @@
               assign p_label = mf[label_key].value
             -%}
             {%- if p_content != blank -%}
-              <li class="lp-tl__item" data-lp-reveal style="--lp-i: {{ forloop.index0 }}">
+              <li class="lp-tl__item">
                 <span class="lp-tl__dot" aria-hidden="true"></span>
                 <div class="lp-tl__item-head">
                   {%- if p_label != blank -%}<span class="lp-tl__pill">{{ p_label | escape }}</span>{%- endif -%}
@@ -46,7 +46,7 @@
           assign use_v = mf.value_2.value | default: mf.how_to_use.value
         -%}
         {%- if use_v != blank -%}
-          <div class="lp-tl__how" data-lp-reveal>
+          <div class="lp-tl__how">
             <span class="lp-tl__how-icon">{% render 'lp-icon', name: 'clock', size: 26 %}</span>
             <dl class="lp-tl__how-list">
               <div><dt>{{ use_h | remove: ':' | escape }}</dt><dd>{{ use_v | escape }}</dd></div>

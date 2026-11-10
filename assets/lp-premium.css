@@ -44,7 +44,8 @@ p, .prose p { text-wrap: pretty; }
 }
 .text-subdued { color: rgb(var(--text-color) / .68); }
 .rich-text h2 span[style*="FF8F00"], .rich-text h2 span[style*="ff8f00"],
-h2 span[style*="#FF8F00"] { color: rgb(var(--lp-amber-deep)) !important; font-style: italic; }
+h2 span[style*="#FF8F00"] { color: rgb(var(--lp-amber-deep)) !important; font-style: normal; }
+:is(h1, h2, h3, h4, h5, h6, .h0, .h1, .h2, .h3, .h4, .h5, .h6, .heading) :is(em, i) { font-style: normal; font-family: inherit; font-weight: inherit; letter-spacing: inherit; }
 
 /* ---------- Focus & a11y ---------- */
 :focus-visible { outline: 2px solid rgb(var(--lp-amber)); outline-offset: 3px; border-radius: 6px; }

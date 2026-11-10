@@ -97,7 +97,7 @@
 @media (min-width: 1000px) { .lp-hero__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); } .lp-hero--media-left .lp-hero__media { order: -1; } }
 .lp-hero__copy { display: grid; gap: 1.25rem; justify-items: start; max-width: 38rem; }
 .lp-hero__title { font-size: clamp(2.5rem, 5.6vw, 5rem); letter-spacing: -.035em; line-height: 1.02; }
-.lp-hero__title em { font-style: italic; color: rgb(var(--lp-amber-deep)); }
+.lp-hero__title em { font-style: normal; color: rgb(var(--lp-amber-deep)); }
 .lp-hero__text { font-size: clamp(1rem, 1.3vw, 1.1875rem); line-height: 1.65; color: rgb(var(--lp-ink) / .72); max-width: 32rem; }
 .lp-hero__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-block-start: .5rem; }
 .lp-hero__cta svg { transition: transform var(--lp-dur-2) var(--lp-ease); }
@@ -135,7 +135,7 @@
     { "type": "select", "id": "layout", "label": "Layout", "options": [ { "value": "media-right", "label": "Media right" }, { "value": "media-left", "label": "Media left" } ], "default": "media-right" },
     { "type": "range", "id": "min_height", "label": "Minimum height", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 75 },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Regenerative wellness" },
-    { "type": "inline_richtext", "id": "heading", "label": "Heading", "info": "Use italic for the amber accent word.", "default": "Activate your body's <em>natural renewal</em>" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "info": "Italic formatting colors a word amber.", "default": "Activate your body's <em>natural renewal</em>" },
     { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Science-led nutritionals and skincare powered by fertilised avian egg extract.</p>" },
     { "type": "text", "id": "button_label", "label": "Primary button label", "default": "Shop bestsellers" },
     { "type": "url", "id": "button_url", "label": "Primary button link" },

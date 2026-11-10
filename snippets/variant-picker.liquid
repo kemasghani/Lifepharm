@@ -21,6 +21,7 @@ Supported variables
 {%- assign color_label_list = 'general.label.color' | t | replace: ', ', ',' | downcase | split: ',' -%}
 {%- assign size_label_list = 'general.label.size' | t | replace: ', ', ',' | downcase | split: ',' -%}
 {%- assign variant_image_options = block.settings.variant_image_options | replace: ', ', ',' | downcase | split: ',' -%}
+{%- assign lp_badge_lines = block.settings.lp_badges | newline_to_br | split: '<br />' -%}
 
 {%- unless product.has_only_default_variant -%}
   <variant-picker class="variant-picker" section-id="{{ section.id }}" handle="{{ product.handle }}" form-id="{{ form_id }}" {% if update_url %}update-url{% endif %}>
@@ -122,7 +123,7 @@ Supported variables
           </div>
         {%- else -%}
           <div {% unless block.settings.stack_blocks %}class="scroll-area bleed sm:unbleed"{% endunless %}>
-            <div class="variant-picker__option-values {% if block.settings.stack_blocks %}wrap{% else %}scroll-area bleed sm:unbleed{% endif %} {% if resolved_option_selector_style == 'swatch' and settings.color_swatch_style == 'rectangle' %}variant-picker__option-values--color gap-4{% else %}gap-2{% endif %}">
+            <div class="variant-picker__option-values {% if resolved_option_selector_style == 'lp_card' %}variant-picker__option-values--cards{% elsif block.settings.stack_blocks %}wrap{% else %}scroll-area bleed sm:unbleed{% endif %} {% if resolved_option_selector_style == 'swatch' and settings.color_swatch_style == 'rectangle' %}variant-picker__option-values--color gap-4{% else %}gap-2{% endif %}">
               {% liquid
                 assign name = form_id | append: '-option' | append: option.position
 
@@ -134,6 +135,19 @@ Supported variables
                       render 'option-value', type: 'swatch', form: form_id, option_value: option_value, param_name: name, option_position: option.position, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: update_url, id_prefix: forloop.index
                     when 'block'
                       render 'option-value', type: 'block', form: form_id, option_value: option_value, param_name: name, option_position: option.position, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: update_url, id_prefix: forloop.index
+                    when 'lp_card'
+                      assign lp_badge = ''
+                      assign lp_badge_tone = ''
+                      assign lp_value_key = option_value.name | downcase | strip
+                      for lp_line in lp_badge_lines
+                        assign lp_parts = lp_line | split: ':'
+                        assign lp_key = lp_parts.first | downcase | strip
+                        if lp_parts.size > 1 and lp_key == lp_value_key
+                          assign lp_badge = lp_parts.last | strip
+                          assign lp_badge_tone = forloop.index | modulo: 2
+                        endif
+                      endfor
+                      render 'option-value', type: 'lp_card', form: form_id, option_value: option_value, param_name: name, option_position: option.position, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: update_url, id_prefix: forloop.index, badge: lp_badge, badge_tone: lp_badge_tone
                     when 'block_swatch'
                       render 'option-value', type: 'block', form: form_id, option_value: option_value, param_name: name, option_position: option.position, show_swatch: true, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: update_url, id_prefix: forloop.index
                   endcase

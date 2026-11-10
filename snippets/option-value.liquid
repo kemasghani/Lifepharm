@@ -155,6 +155,42 @@ Color swatch specific parameters:
       </{{ option_value_tag }}>
     {%- endif -%}
 
+  {%- when 'lp_card' -%}
+    {%- liquid
+      assign card_image = variant.featured_media | default: variant.product.featured_media
+      assign name_words = label | split: ' '
+      assign unit_qty = name_words.first | remove: ',' | plus: 0
+      assign unit_word = name_words[1] | downcase | remove: '.' | strip
+      assign unit_label = ''
+      if unit_word == 'count' or unit_word == 'capsules' or unit_word == 'caps'
+        assign unit_label = 'capsule'
+      elsif unit_word == 'ml'
+        assign unit_label = 'ml'
+      elsif unit_word == 'tablets'
+        assign unit_label = 'tablet'
+      endif
+    -%}
+    <{{ option_value_tag }} class="lp-vcard {% if disabled %}is-disabled{% endif %} {% if selected and option_value_tag == 'a' %}is-selected{% endif %}" {{ attributes }}>
+      {%- if badge != blank -%}<span class="lp-vcard__badge{% if badge_tone == 0 %} lp-vcard__badge--amber{% endif %}">{{ badge | escape }}</span>{%- endif -%}
+      <span class="lp-vcard__media">
+        {%- if card_image != blank -%}
+          {{- card_image | image_url: width: 320 | image_tag: loading: 'lazy', sizes: '120px', widths: '160,240,320', alt: '' -}}
+        {%- endif -%}
+      </span>
+      <span class="lp-vcard__name">{{ label | escape }}</span>
+      {%- if variant != blank -%}
+        <span class="lp-vcard__meta">
+          {%- if unit_qty > 0 and unit_label != blank -%}
+            {%- assign unit_price = variant.price | times: 1.0 | divided_by: unit_qty | round -%}
+            {{ unit_price | money }} {{ 'per' }} {{ unit_label }}
+          {%- else -%}
+            {{ variant.price | money }}
+          {%- endif -%}
+        </span>
+      {%- endif -%}
+      {%- if disabled -%}<span class="lp-vcard__soldout">{{ 'product.general.sold_out_button' | t }}</span>{%- endif -%}
+    </{{ option_value_tag }}>
+
   {%- when 'block' -%}
     {%- assign white_label_list = 'general.label.white' | t | replace: ', ', ',' | downcase | split: ',' -%}
 

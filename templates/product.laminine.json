@@ -45,10 +45,11 @@
           "settings": {
             "hide_sold_out_variants": false,
             "stack_blocks": true,
-            "selector_style": "block",
+            "selector_style": "lp_card",
             "swatch_selector_style": "swatch",
             "variant_image_options": "",
-            "size_chart_page": ""
+            "size_chart_page": "",
+            "lp_badges": "Family Pack: Free bottle"
           }
         },
         "payment_terms": {
@@ -63,12 +64,12 @@
             "show_details": false,
             "show_without_subscription": false,
             "show_compare_price": true,
-            "legend_content": "Select subscription plan",
-            "show_legend": false,
+            "legend_content": "Purchase options",
+            "show_legend": true,
             "layout": "vertical",
             "dropdownPosition": "inside",
             "additional_frequency_label": "",
-            "start_onetime": true,
+            "start_onetime": false,
             "onetime_first": false,
             "group_border_radius": 16,
             "group_border_width": 1,
@@ -79,16 +80,16 @@
             "group_text_color": "#15171b",
             "group_selected_text_color": "#15171b",
             "show_radio_selector": true,
-            "onetime_title": "One-time",
+            "onetime_title": "One-time purchase",
             "subscription_title": "Subscribe & Save",
             "prepaid_title": "Prepaid",
             "discount_format": "percent",
             "discount_style": "bubble",
-            "discount_text": "Save up to [discount]",
+            "discount_text": "Save [discount]",
             "discount_color": "#e8890c",
             "discount_text_color": "#15171b",
             "additional_subscription_content": "<ul><li>You save [discount]</li><li>Skip, delay or cancel any time</li><li>Renew on your timeframe</li></ul>",
-            "selector_type": "button",
+            "selector_type": "dropdown",
             "button_plan_selector_width": 100,
             "default_subscription": "",
             "future_price_adjustments_text": "<small>Then [discount] off after the [order_count_ordinal] order</small>",
@@ -351,6 +352,12 @@
           "settings": {
             "liquid": "<p class=\"lp-pdp-subhead\">Hear from customers using {{ product.title | escape }}</p>"
           }
+        },
+        "lp_price": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{%- assign lp_v = product.selected_or_first_available_variant -%}{%- assign lp_base = lp_v.compare_at_price | default: lp_v.price -%}<div class=\"lp-pdp-price\" aria-live=\"polite\"><span class=\"lp-pdp-price__now price-item--regular\">{{ lp_v.price | money }}</span><s class=\"lp-pdp-price__was\" data-base=\"{{ lp_base | money_without_currency }}\" {% unless lp_v.compare_at_price > lp_v.price %}hidden{% endunless %}>{{ lp_base | money }}</s><span class=\"lp-pdp-price__tag\" hidden></span></div>"
+          }
         }
       },
       "block_order": [
@@ -361,6 +368,7 @@
         "stamped_product_reviews_ugc_star_rating_badge_8VPpGa",
         "lp_summary",
         "price",
+        "lp_price",
         "variant_picker",
         "payment_terms",
         "skio_plan_picker_dtViCX",

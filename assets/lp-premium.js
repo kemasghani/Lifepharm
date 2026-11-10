@@ -167,6 +167,24 @@
     io.observe(video);
   });
 
+
+  const syncPrice = () => document.querySelectorAll('.lp-pdp-price').forEach((box) => {
+    const now = box.querySelector('.lp-pdp-price__now');
+    const was = box.querySelector('.lp-pdp-price__was');
+    const tag = box.querySelector('.lp-pdp-price__tag');
+    if (!now || !was) return;
+    const toNum = (t) => parseFloat((t || '').replace(/[^0-9.,]/g, '').replace(/,(?=\d{3}\b)/g, '').replace(',', '.')) || 0;
+    const a = toNum(now.textContent), b = toNum(was.dataset.base || was.textContent);
+    const discounted = a > 0 && b > a + 0.001;
+    was.hidden = !discounted;
+    if (tag) { tag.hidden = !discounted; if (discounted) tag.textContent = 'Save ' + Math.round((1 - a / b) * 100) + '%'; }
+  });
+  const priceRoot = document.querySelector('.shopify-section--main-product');
+  if (priceRoot) {
+    let raf = 0;
+    new MutationObserver(() => { cancelAnimationFrame(raf); raf = requestAnimationFrame(syncPrice); }).observe(priceRoot, { childList: true, subtree: true, characterData: true });
+    syncPrice();
+  }
   const watchUgc = () => document.querySelectorAll('tolstoy-stories').forEach((stories) => {
     const item = stories.closest('.product-info__block-item');
     const head = item && item.previousElementSibling && item.previousElementSibling.querySelector('.lp-pdp-subhead');

@@ -287,7 +287,8 @@
           "type": "liquid",
           "settings": {
             "liquid": "{%- if product.type != blank -%}<p class=\"lp-pdp-eyebrow\">{{ product.type | escape }}</p>{%- endif -%}"
-          }
+          },
+          "disabled": true
         },
         "lp_summary": {
           "type": "liquid",

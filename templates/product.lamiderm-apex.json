@@ -394,7 +394,7 @@
         "enable_video_looping": true,
         "enable_image_zoom": false,
         "max_image_zoom_level": 2,
-        "background": "",
+        "background": "#fbf9f5",
         "background_gradient": "",
         "text_color": "",
         "input_background": "rgba(0,0,0,0)",
@@ -1241,20 +1241,15 @@
     "lp_pdp_highlights": {
       "type": "lp-pdp-highlights",
       "settings": {
-        "image": "",
         "overlay": 60,
         "eyebrow": "Why it works",
-        "heading": "",
         "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
       }
     },
     "lp_pdp_how": {
       "type": "lp-pdp-how",
       "settings": {
-        "image": "",
         "eyebrow": "How it works",
-        "heading": "",
-        "text": "",
         "supports_label": "Supports",
         "link_label": "Explore the formula",
         "film_asset": "lp-cell-film.mp4",
@@ -1273,9 +1268,7 @@
     "lp_pdp_formula": {
       "type": "lp-pdp-formula",
       "settings": {
-        "image": "",
         "eyebrow": "The formula",
-        "heading": "",
         "full_list_label": "Full ingredient list",
         "studies_label": "Scientific studies"
       }
@@ -1285,7 +1278,6 @@
       "settings": {
         "eyebrow": "A higher standard",
         "prefix": "How",
-        "heading": "",
         "suffix": "compares",
         "text": "<p>Held to standards many brands never publish, and backed by our 60-day money-back guarantee.</p>",
         "feature_label": "Feature",
@@ -1298,11 +1290,8 @@
       "type": "lp-pdp-faq",
       "settings": {
         "heading": "Questions? <em>We're here to help.</em>",
-        "text": "",
         "button_label": "View all FAQs",
-        "button_url": "",
         "contact_label": "Contact us",
-        "contact_url": "",
         "q_who": "Who is [product] for?",
         "q_how": "How do I take [product]?",
         "q_when": "When will I notice a difference?"

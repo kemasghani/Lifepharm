@@ -139,9 +139,9 @@
 .lp-menu.is-sub .lp-menu__panel--sub.is-active { transform: none; }
 .lp-menu__title { margin: .25rem 0 .25rem; font-size: 2rem; }
 .lp-menu__cats, .lp-menu__products, .lp-menu__links { display: grid; gap: .5rem; margin: 0; padding: 0; list-style: none; }
-.lp-menu__cat { display: grid; grid-template-columns: 72px minmax(0, 1fr) 20px; align-items: center; gap: 1rem; width: 100%; min-height: 96px; padding: .75rem 1rem .75rem .75rem; border: 0; border-radius: 4px; background: #f2f2f2; color: inherit; font: inherit; text-align: start; cursor: pointer; transition: background-color 160ms ease-out; }
-.lp-menu__cat:hover { background: #ebebeb; }
-.lp-menu__cat:active { background: #e4e4e4; }
+.lp-menu .lp-menu__cat { display: grid; grid-template-columns: 72px minmax(0, 1fr) 20px; align-items: center; gap: 1rem; width: 100%; min-height: 96px; padding: .75rem 1rem .75rem .75rem; border: 0; border-radius: 4px; background: #f2f2f2; color: inherit; font: inherit; text-align: start; cursor: pointer; transition: background-color 160ms ease-out; }
+.lp-menu .lp-menu__cat:hover { background: #ebebeb; }
+.lp-menu .lp-menu__cat:active { background: #e4e4e4; }
 .lp-menu__cat-media { width: 72px; height: 72px; overflow: hidden; border-radius: 2px; background: #e6e6e6; }
 .lp-menu__cat-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .lp-menu__cat-label { font-size: 1.0625rem; font-weight: 700; letter-spacing: -.005em; }
@@ -149,13 +149,13 @@
 .lp-menu__cta.button { width: 100%; min-height: 48px; margin-block-start: .5rem; font-size: 1.0625rem; font-weight: 700; }
 .lp-menu__links { gap: 0; margin-block-start: .5rem; }
 .lp-menu__link { display: flex; align-items: center; min-height: 44px; font-size: 1rem; font-weight: 700; color: inherit; text-decoration: none; }
-.lp-menu__back { display: inline-flex; align-items: center; gap: .35rem; align-self: flex-start; min-height: 44px; padding: 0 .5rem 0 0; border: 0; background: none; color: rgb(var(--lp-muted)); font: inherit; font-size: .875rem; font-weight: 600; cursor: pointer; }
+.lp-menu .lp-menu__back { display: inline-flex; align-items: center; gap: .35rem; align-self: flex-start; min-height: 44px; padding: 0 .5rem 0 0; border: 0; background: none; color: rgb(var(--lp-muted)); font: inherit; font-size: .875rem; font-weight: 600; cursor: pointer; }
 .lp-menu__back:hover { color: rgb(var(--lp-ink)); }
-.lp-menu__promo { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 96px; align-items: center; gap: .5rem; min-height: 132px; margin-inline: -1rem; margin-block-start: -1rem; padding: 1.25rem 0 1.25rem 1.25rem; overflow: hidden; background: radial-gradient(120% 140% at 85% 30%, #1d3f9a 0%, #0b2063 45%, #061338 100%); color: #fff; text-decoration: none; }
-.lp-menu__promo-copy { display: grid; gap: .5rem; }
+.lp-menu__promo { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 88px; align-items: stretch; gap: .75rem; margin-inline: -1rem; padding: 1.25rem 0 0 1.25rem; overflow: hidden; background: radial-gradient(120% 140% at 85% 30%, #1d3f9a 0%, #0b2063 45%, #061338 100%); color: #fff; text-decoration: none; }
+.lp-menu__promo-copy { display: grid; align-content: start; gap: .5rem; padding-block-end: 1.25rem; }
 .lp-menu__promo-title { font-family: var(--lp-serif); font-size: 1.625rem; line-height: 1.05; text-transform: uppercase; }
 .lp-menu__promo-text { font-size: .8125rem; line-height: 1.45; color: rgb(255 255 255 / .86); }
-.lp-menu__promo-img { align-self: end; width: 96px; height: auto; margin-block-end: -1.25rem; filter: drop-shadow(0 12px 18px rgb(0 0 0 / .45)); }
+.lp-menu__promo-img { align-self: end; width: 88px; height: auto; filter: drop-shadow(0 12px 18px rgb(0 0 0 / .45)); }
 .lp-menu__product { display: grid; grid-template-columns: 64px minmax(0, 1fr) 20px; align-items: center; gap: 1rem; min-height: 88px; padding: .625rem 1rem .625rem .625rem; border: 1px solid #ececec; border-radius: 4px; color: inherit; text-decoration: none; transition: border-color 160ms ease-out, box-shadow 160ms ease-out; }
 .lp-menu__product:hover { border-color: #dcdcdc; box-shadow: 0 6px 18px -12px rgb(var(--lp-ink) / .4); }
 .lp-menu__product-media { position: relative; width: 64px; height: 64px; }

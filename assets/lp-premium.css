@@ -97,7 +97,7 @@ h2 span[style*="#FF8F00"] { color: rgb(var(--lp-amber-deep)) !important; font-st
   .button:not([disabled]):hover { box-shadow: 0 1px 0 rgb(255 255 255 / .14) inset, 0 14px 32px -12px rgb(var(--lp-amber-deep) / .6); }
 }
 .button:not([disabled]):active { transform: translateY(1px) scale(.99); }
-.button--outline { box-shadow: inset 0 0 0 1.5px; }
+.button--outline { --button-outline-color: var(--lp-ink); color: rgb(var(--lp-ink)); box-shadow: inset 0 0 0 1.5px rgb(var(--lp-ink)); }
 .button--secondary { --button-outline-color: var(--lp-amber); }
 .button[disabled], .button[aria-disabled="true"] { opacity: .5; cursor: not-allowed; }
 

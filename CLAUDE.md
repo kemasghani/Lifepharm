@@ -76,11 +76,7 @@ Source: Dropbox "Branding Resources" > `LifePharm-QuickStyleGuide-2024.pdf`. Fon
 
 ## 5. Key components
 
-- `snippets/lp-referral-nudge.liquid` + `initReferralNudge` in `assets/lp-premium.js`:
-  - The **"Were you referred by someone?" slide-in from the left** replaces the Teqnavi referral announcement bar. The bar is visually hidden; the app still runs.
-  - The CTA clicks the app's own `.referral-banner__name--clickable` button, so enroller attribution (Exigo) stays inside the app. **Never remove the app block** in `sections/header-group.json`.
-  - Shows after 6s or 35% scroll, at most once per 14 days.
-  - A left-edge tab ("Referred?" / "With {name}") reopens it.
+- Referral UI: **none in the theme**. The Teqnavi referral app section in `sections/header-group.json` is disabled. The owner will auto-detect referrals from the referral link on the server. Do not add referral prompts or bars.
 - PDP sections: `sections/lp-pdp-*.liquid`. They are metafield-driven (`product.metafields.custom.*`).
 - Size cards: `snippets/option-value.liquid` (`lp_card`). The grid is fixed at 3 columns.
 - Design tokens and global overrides: `assets/lp-premium.css`.

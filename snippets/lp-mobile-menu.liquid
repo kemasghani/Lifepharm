@@ -57,7 +57,6 @@
             <li><a href="{{ link.url }}" class="lp-menu__link">{{ link.title | escape }}</a></li>
           {%- endif -%}
         {%- endfor -%}
-        <li class="lp-menu__ref" hidden><button type="button" class="lp-menu__link lp-menu__link--btn" data-lp-menu-ref>Were you referred by someone?</button></li>
         <li><a href="{{ routes.search_url }}" class="lp-menu__link" aria-controls="search-drawer">{{ 'header.general.search' | t }}</a></li>
         {%- if shop.customer_accounts_enabled -%}
           <li><a href="{{ routes.account_url }}" class="lp-menu__link">{{ 'header.general.account' | t }}</a></li>
@@ -150,7 +149,6 @@
 .lp-menu__chev { color: rgb(var(--lp-ink)); }
 .lp-menu__cta.button { width: 100%; min-height: 48px; margin-block-start: .5rem; font-size: 1.0625rem; font-weight: 700; }
 .lp-menu__links { gap: 0; margin-block-start: .5rem; }
-.lp-menu .lp-menu__link--btn { width: 100%; padding: 0; border: 0; background: none; font: inherit; font-size: 1rem; font-weight: 700; text-align: start; color: rgb(var(--lp-amber-deep)); cursor: pointer; }
 .lp-menu__link { display: flex; align-items: center; min-height: 44px; font-size: 1rem; font-weight: 700; color: inherit; text-decoration: none; }
 .lp-menu .lp-menu__back { display: inline-flex; align-items: center; gap: .35rem; align-self: flex-start; min-height: 44px; padding: 0 .5rem 0 0; border: 0; background: none; color: rgb(var(--lp-muted)); font: inherit; font-size: .875rem; font-weight: 600; cursor: pointer; }
 .lp-menu__back:hover { color: rgb(var(--lp-ink)); }

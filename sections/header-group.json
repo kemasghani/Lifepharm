@@ -46,6 +46,7 @@
     },
     "176964516604b6b434": {
       "type": "apps",
+      "disabled": true,
       "blocks": {
         "teqnavi_lifepharm_referral_banner_KtLytF": {
           "type": "shopify://apps/teqnavi-lifepharm/blocks/referral-banner/019bc71e-c7cd-732d-b07b-3ca8ead35448",

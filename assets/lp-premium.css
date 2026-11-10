@@ -447,5 +447,4 @@ html:not(.lp-js) [data-lp-reveal] { opacity: 1; transform: none; }
 @media (hover: hover) { .cart-drawer .buy-buttons .button--secondary:hover { box-shadow: inset 0 0 0 1.5px rgb(var(--lp-ink)); } }
 
 html.lp-menu-open { overflow: hidden; overscroll-behavior: none; }
-html.lp-menu-open .lp-ref, html.lp-menu-open .lp-ref-tab { visibility: hidden; }
 .lp-stat__value { font-variant-numeric: lining-nums; }

@@ -80,3 +80,10 @@ Source: Dropbox "Branding Resources" > `LifePharm-QuickStyleGuide-2024.pdf`. Fon
 - PDP sections: `sections/lp-pdp-*.liquid`. They are metafield-driven (`product.metafields.custom.*`).
 - Size cards: `snippets/option-value.liquid` (`lp_card`). The grid is fixed at 3 columns.
 - Design tokens and global overrides: `assets/lp-premium.css`.
+
+## 6. Exigo integration knowledge
+
+- `docs/exigo-api/` is the full crawl of the Exigo Web Services API docs (https://api.exigo.com/3.0/, version v2025.11.7.6). It covers all 294 operations, including 42 that are in the WSDL but not in the docs menu, plus 792 types, 43 enums and the company-specific lookup fields.
+- **Always read it before writing Exigo integration code.** Start with `docs/exigo-api/README.md` for transports, auth and the index, then the category file in `operations/`, then `types.md` and `enums.md`. Do not guess field names, REST routes or enum values from memory.
+- Company-specific values (warehouses, ship methods, price types, etc.) need LifePharm's Exigo API credentials (see `company-lists.md`).
+- Refresh with `python3 docs/exigo-api/tools/crawl.py && python3 docs/exigo-api/tools/parse.py && python3 docs/exigo-api/tools/gen.py`.

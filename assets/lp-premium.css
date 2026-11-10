@@ -448,3 +448,4 @@ html:not(.lp-js) [data-lp-reveal] { opacity: 1; transform: none; }
 
 html.lp-menu-open, html.lp-menu-open body { overflow: hidden; }
 html.lp-menu-open .lp-ref, html.lp-menu-open .lp-ref-tab { visibility: hidden; }
+.lp-stat__value { font-variant-numeric: lining-nums; }

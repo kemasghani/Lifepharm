@@ -23,7 +23,7 @@
         "message_ATBdQg": {
           "type": "message",
           "settings": {
-            "text": "FREE SHIPPING ON ALL NEW & EXISTING SUBSCRIPTIONS UNTIL FEBRUARY 28TH!",
+            "text": "Free UK delivery on orders over £150",
             "url": ""
           }
         }
@@ -31,7 +31,6 @@
       "block_order": [
         "message_ATBdQg"
       ],
-      "disabled": true,
       "settings": {
         "enable_sticky": false,
         "show_on_homepage_only": false,
@@ -39,10 +38,10 @@
         "autoplay": true,
         "cycle_speed": 5,
         "scrolling_speed": 14,
-        "text_size": "text-base",
-        "background": "#414042",
+        "text_size": "text-xs",
+        "background": "#f18a00",
         "background_gradient": "",
-        "text_color": "#f3efe7"
+        "text_color": "#1f1e20"
       }
     },
     "176964516604b6b434": {
@@ -235,6 +234,9 @@
         "logo_max_width": 200,
         "logo_mobile_max_width": 150,
         "menu": "main-menu",
+        "lp_menu_image_1": "shopify://shop_images/Supplements-Orange-bg_web.jpg",
+        "lp_menu_image_2": "shopify://shop_images/Skincare-Blue-bg_web.jpg",
+        "lp_menu_image_3": "shopify://shop_images/test_sqaure_08a86950-61d0-4e60-8977-5156471baea5.jpg",
         "sidebar_menu": "",
         "secondary_menu": "",
         "customer_account_menu": "customer-account-main-menu",

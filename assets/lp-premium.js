@@ -208,6 +208,115 @@
   else tidyDashes();
 
 
+
+  const initMobileMenu = () => {
+    const menu = document.querySelector('[data-lp-menu]');
+    const toggle = document.querySelector('[data-lp-menu-toggle]');
+    if (!menu || !toggle) return;
+    const root = menu.querySelector('[data-lp-menu-panel="root"]');
+    const desktop = window.matchMedia('(min-width: 1000px)');
+    const duration = reduceMotion ? 0 : 420;
+    let active = null;
+    let lastFocus = null;
+
+    const headerBottom = () => {
+      const header = toggle.closest('.shopify-section--header, header, store-header') || toggle;
+      return Math.max(0, Math.round(header.getBoundingClientRect().bottom));
+    };
+    const focusables = () => {
+      const panel = active || root;
+      return [toggle, ...panel.querySelectorAll('a[href], button:not([disabled])')].filter((el) => el.offsetParent !== null || el === toggle);
+    };
+
+    const showRoot = () => {
+      menu.classList.remove('is-sub');
+      root.inert = false;
+      const previous = active;
+      active = null;
+      if (previous) {
+        previous.classList.remove('is-active');
+        setTimeout(() => { if (active !== previous) { previous.hidden = true; previous.inert = true; } }, duration);
+        const opener = root.querySelector(`[data-lp-menu-open="${previous.dataset.lpMenuPanel}"]`);
+        if (opener) opener.focus({ preventScroll: true });
+      }
+    };
+    const showPanel = (key) => {
+      const panel = menu.querySelector(`[data-lp-menu-panel="${key}"]`);
+      if (!panel) return;
+      panel.hidden = false;
+      panel.inert = false;
+      panel.scrollTop = 0;
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        panel.classList.add('is-active');
+        menu.classList.add('is-sub');
+        root.inert = true;
+        active = panel;
+        const back = panel.querySelector('[data-lp-menu-back]');
+        if (back) back.focus({ preventScroll: true });
+      }));
+    };
+
+    const open = () => {
+      lastFocus = document.activeElement;
+      menu.style.setProperty('--lp-menu-top', `${headerBottom()}px`);
+      menu.hidden = false;
+      toggle.setAttribute('aria-expanded', 'true');
+      document.documentElement.classList.add('lp-menu-open');
+      requestAnimationFrame(() => requestAnimationFrame(() => menu.classList.add('is-open')));
+      document.addEventListener('keydown', onKey);
+    };
+    const close = (restoreFocus = true) => {
+      if (menu.hidden) return;
+      menu.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.documentElement.classList.remove('lp-menu-open');
+      document.removeEventListener('keydown', onKey);
+      setTimeout(() => {
+        if (toggle.getAttribute('aria-expanded') === 'true') return;
+        menu.hidden = true;
+        menu.classList.remove('is-sub');
+        menu.querySelectorAll('.lp-menu__panel--sub').forEach((p) => { p.hidden = true; p.classList.remove('is-active'); });
+        root.inert = false;
+        active = null;
+      }, reduceMotion ? 0 : 360);
+      if (restoreFocus && lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+    };
+    const onKey = (event) => {
+      if (event.key === 'Escape') {
+        if (active) showRoot(); else close();
+        return;
+      }
+      if (event.key !== 'Tab') return;
+      const items = focusables();
+      if (!items.length) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+      else if (!menu.contains(document.activeElement) && document.activeElement !== toggle) { event.preventDefault(); first.focus(); }
+    };
+
+    toggle.addEventListener('click', (event) => {
+      event.preventDefault();
+      if (toggle.getAttribute('aria-expanded') === 'true') close(); else open();
+    });
+    menu.addEventListener('click', (event) => {
+      const opener = event.target.closest('[data-lp-menu-open]');
+      if (opener) { showPanel(opener.dataset.lpMenuOpen); return; }
+      if (event.target.closest('[data-lp-menu-back]')) { showRoot(); return; }
+      const link = event.target.closest('a[href]');
+      if (link) {
+        if (link.getAttribute('aria-controls') === 'search-drawer') { close(false); return; }
+        close(false);
+      }
+    });
+    const onDesktop = () => { if (desktop.matches) close(false); };
+    if (desktop.addEventListener) desktop.addEventListener('change', onDesktop);
+    window.addEventListener('pageshow', () => close(false));
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initMobileMenu, { once: true });
+  else initMobileMenu();
+
   const initReferralNudge = () => {
     const panel = document.querySelector('[data-lp-ref]');
     const tab = document.querySelector('[data-lp-ref-tab]');

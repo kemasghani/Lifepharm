@@ -86,15 +86,10 @@ the underlying logic of the menu.
 
       <div class="header__main-nav">
         <div class="header__icon-list">
-          <button type="button" class="tap-area {% if section.settings.layout != 'drawer' %}lg:hidden{% endif %}" aria-controls="header-sidebar-menu">
+          <button type="button" class="tap-area lg:hidden" aria-controls="lp-menu" aria-expanded="false" data-lp-menu-toggle>
             <span class="sr-only">{{ 'header.general.menu' | t }}</span>
-            {%- render 'icon' with 'hamburger' -%}
+            <span class="lp-burger" aria-hidden="true"><i></i><i></i><i></i></span>
           </button>
-
-          <a href="{{ routes.search_url }}" class="tap-area sm:hidden" aria-controls="search-drawer">
-            <span class="sr-only">{{ 'header.general.search' | t }}</span>
-            {%- render 'icon' with 'search' -%}
-          </a>
 
           {%- if section.settings.layout != 'drawer' and section.settings.menu.links.size > 0 -%}
             <nav class="header__link-list {% if section.settings.layout == 'logo_left_navigation_center' %}justify-center{% endif %} wrap" role="navigation">
@@ -263,7 +258,7 @@ the underlying logic of the menu.
           
           {%- if shop.customer_accounts_enabled -%}
             <li>
-              <shopify-account class="hidden sm:block" menu="{{ section.settings.customer_account_menu }}">
+              <shopify-account class="block" menu="{{ section.settings.customer_account_menu }}">
                 <div slot="signed-out-avatar" class="tap-area">
                   <span class="sr-only">{{ 'header.general.login' | t }}</span>
                   {%- render 'icon' with 'account' -%}
@@ -298,26 +293,8 @@ the underlying logic of the menu.
 {%- endcomment -%}
 
 {%- assign main_menu = section.settings.sidebar_menu | default: section.settings.menu -%}
-{%- assign secondary_menu = section.settings.secondary_menu -%}
-
-{%- if main_menu.links.size > 0 or secondary_menu.links.size > 0 -%}
-  <navigation-drawer mobile-opening="{{ section.settings.opening_from }}" open-from="left" id="header-sidebar-menu" class="navigation-drawer drawer {% if section.settings.layout != 'drawer' %}lg:hidden{% endif %}" {% if request.design_mode %}handle-section-events{% endif %}>
-    <button is="close-button" aria-label="{{ 'general.accessibility.close' | t | escape }}" {%- if section.settings.opening_from == 'bottom' -%}class="sm-max:hidden"{%- endif -%}>
-      {%- render 'icon' with 'close', width: 19, height: 19 -%}
-    </button>
-
-    {%- render 'navigation-panel',
-      is_mega_menu: false,
-      main_menu: main_menu,
-      secondary_menu: secondary_menu,
-      mobile_opening: section.settings.opening_from,
-      layout: section.settings.layout,
-      show_social_media: section.settings.show_social_media,
-      show_country_selector: section.settings.show_country_selector,
-      show_country_name: section.settings.show_country_name,
-      show_country_flag: section.settings.show_country_flag,
-      show_locale_selector: section.settings.show_locale_selector -%}
-  </navigation-drawer>
+{%- if main_menu.links.size > 0 -%}
+  {%- render 'lp-mobile-menu', menu: main_menu, settings: section.settings -%}
 {%- endif -%}
 
 <script>
@@ -387,6 +364,22 @@ the underlying logic of the menu.
       "id": "sidebar_menu",
       "label": "Drawer menu"
     },
+    {
+      "type": "header",
+      "content": "Mobile menu"
+    },
+    { "type": "text", "id": "lp_menu_heading", "label": "Heading", "default": "Shop by category" },
+    { "type": "image_picker", "id": "lp_menu_image_1", "label": "Category 1 image" },
+    { "type": "image_picker", "id": "lp_menu_image_2", "label": "Category 2 image" },
+    { "type": "image_picker", "id": "lp_menu_image_3", "label": "Category 3 image" },
+    { "type": "image_picker", "id": "lp_menu_image_4", "label": "Category 4 image" },
+    { "type": "text", "id": "lp_menu_all_label", "label": "Shop all label", "default": "Shop all" },
+    { "type": "text", "id": "lp_menu_cat_prefix", "label": "Category heading prefix", "default": "Shop" },
+    { "type": "text", "id": "lp_menu_back_label", "label": "Back label", "default": "All categories" },
+    { "type": "text", "id": "lp_promo_heading", "label": "Promo heading", "default": "Try it risk free for 60 days" },
+    { "type": "textarea", "id": "lp_promo_text", "label": "Promo text", "default": "We stand behind every product we make. If it isn't right for you, send it back within 60 days for a full refund." },
+    { "type": "url", "id": "lp_promo_link", "label": "Promo link" },
+    { "type": "image_picker", "id": "lp_promo_image", "label": "Promo image", "info": "Transparent PNG works best" },
     {
       "type": "link_list",
       "id": "secondary_menu",

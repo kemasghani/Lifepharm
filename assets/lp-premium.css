@@ -126,8 +126,11 @@ h2 span[style*="#FF8F00"] { color: rgb(var(--lp-amber-deep)) !important; font-st
 
 /* ---------- Announcement bar ---------- */
 .announcement-bar {
-  font-size: .8125rem;
-  letter-spacing: .02em;
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding-block: .55rem;
 }
 .announcement-bar a { color: inherit; text-underline-offset: 3px; }
 
@@ -442,3 +445,6 @@ html:not(.lp-js) [data-lp-reveal] { opacity: 1; transform: none; }
   box-shadow: inset 0 0 0 1.5px rgb(var(--lp-ink) / .2);
 }
 @media (hover: hover) { .cart-drawer .buy-buttons .button--secondary:hover { box-shadow: inset 0 0 0 1.5px rgb(var(--lp-ink)); } }
+
+html.lp-menu-open, html.lp-menu-open body { overflow: hidden; }
+html.lp-menu-open .lp-ref, html.lp-menu-open .lp-ref-tab { visibility: hidden; }

@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -15,8 +24,8 @@
         },
         "separator": {
           "type": "separator",
-          "settings": {},
-          "disabled": true
+          "disabled": true,
+          "settings": {}
         },
         "stamped_product_reviews_ugc_star_rating_badge_8VPpGa": {
           "type": "shopify://apps/stamped-reviews/blocks/star-rating-badge/a103faaf-2125-4b0e-89fa-de5149736723",
@@ -46,10 +55,10 @@
             "hide_sold_out_variants": false,
             "stack_blocks": true,
             "selector_style": "lp_card",
+            "lp_badges": "Family Pack: Free bottle",
             "swatch_selector_style": "swatch",
             "variant_image_options": "",
-            "size_chart_page": "",
-            "lp_badges": "Family Pack: Free bottle"
+            "size_chart_page": ""
           }
         },
         "payment_terms": {
@@ -74,11 +83,11 @@
             "group_border_radius": 16,
             "group_border_width": 1,
             "group_border_color": "#d9d4ca",
-            "group_border_selected_color": "#414042",
+            "group_border_selected_color": "#15171b",
             "group_background_color": "#ffffff",
             "selected_group_background_color": "#fbf6ee",
-            "group_text_color": "#414042",
-            "group_selected_text_color": "#414042",
+            "group_text_color": "#15171b",
+            "group_selected_text_color": "#15171b",
             "show_radio_selector": true,
             "onetime_title": "One-time purchase",
             "subscription_title": "Subscribe & Save",
@@ -86,8 +95,8 @@
             "discount_format": "percent",
             "discount_style": "bubble",
             "discount_text": "Save [discount]",
-            "discount_color": "#f18a00",
-            "discount_text_color": "#414042",
+            "discount_color": "#e8890c",
+            "discount_text_color": "#15171b",
             "additional_subscription_content": "<ul><li>Save [discount] on your subscription</li><li>Skip, delay or cancel any time</li><li>Delivered on your schedule</li></ul>",
             "selector_type": "dropdown",
             "button_plan_selector_width": 100,
@@ -108,14 +117,14 @@
         },
         "quantity_selector": {
           "type": "quantity_selector",
-          "settings": {},
-          "disabled": true
+          "disabled": true,
+          "settings": {}
         },
         "text_VjR6WU": {
           "type": "text",
           "disabled": true,
           "settings": {
-            "text": "{{ product.metafields.custom.product_description | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}"
+            "text": "{{ product.metafields.custom.product_description | metafield_tag }}"
           }
         },
         "description": {
@@ -143,7 +152,7 @@
             "icon": "none",
             "icon_width": 20,
             "title": "Benefits",
-            "content": "{{ product.metafields.custom.text_benefits | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}",
+            "content": "{{ product.metafields.custom.text_benefits | metafield_tag }}",
             "page": ""
           }
         },
@@ -153,7 +162,7 @@
             "icon": "none",
             "icon_width": 20,
             "title": "Ingredients",
-            "content": "{{ product.metafields.custom.ingredients | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}",
+            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}",
             "page": ""
           }
         },
@@ -164,7 +173,7 @@
             "icon": "none",
             "icon_width": 20,
             "title": "Studies",
-            "content": "{{ product.metafields.custom.studies | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}",
+            "content": "{{ product.metafields.custom.studies | metafield_tag }}",
             "page": ""
           }
         },
@@ -175,7 +184,7 @@
             "icon": "none",
             "icon_width": 20,
             "title": "Who is {{ product.title }} for?",
-            "content": "<p>{{ product.metafields.custom.value_1 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>",
+            "content": "<p>{{ product.metafields.custom.value_1 | metafield_tag }}</p>",
             "page": ""
           }
         },
@@ -185,7 +194,7 @@
             "icon": "none",
             "icon_width": 20,
             "title": "How to use",
-            "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>",
+            "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>",
             "page": ""
           }
         },
@@ -196,7 +205,7 @@
             "icon": "none",
             "icon_width": 20,
             "title": "Product Specification Manual",
-            "content": "{{ product.metafields.custom.cellnery_wellness_manual_warranty | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}",
+            "content": "{{ product.metafields.custom.cellnery_wellness_manual_warranty | metafield_tag }}",
             "page": ""
           }
         },
@@ -213,19 +222,20 @@
         },
         "text_iAVtf7": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "<p>Hear from a customer using {{ product.title }}</p>"
-          },
-          "disabled": true
+          }
         },
         "tolstoy_shoppable_video_ugc_stories_block_hnKrMy": {
-          "type": "shopify://apps/tolstoy-ads-image-video/blocks/stories-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "type": "shopify://apps/tolstoy/blocks/stories-block/06fa8282-42ff-403e-b67c-1936776aed11",
           "settings": {
             "publishId": "3ew6rhswme0cg"
           }
         },
         "offer_KHjNfD": {
           "type": "offer",
+          "disabled": true,
           "settings": {
             "text_alignment": "start",
             "icon_position": "aligned",
@@ -236,8 +246,7 @@
             "content": "<p>Try it, and if it doesn't work, its on us! Our hassle-free return policy offers a 100% money back guarantee within 60 days of delivery.</p>",
             "background": "#f9f9f9",
             "text_color": "#181818"
-          },
-          "disabled": true
+          }
         },
         "associated_products_mWz6hB": {
           "type": "associated_products",
@@ -338,10 +347,10 @@
         },
         "lp_eyebrow": {
           "type": "liquid",
+          "disabled": true,
           "settings": {
             "liquid": "{%- if product.type != blank -%}<p class=\"lp-pdp-eyebrow\">{{ product.type | escape }}</p>{%- endif -%}"
-          },
-          "disabled": true
+          }
         },
         "lp_summary": {
           "type": "liquid",
@@ -431,7 +440,7 @@
       "type": "apps",
       "blocks": {
         "tolstoy_shoppable_video_ugc_stories_block_8FqwYJ": {
-          "type": "shopify://apps/tolstoy-ads-image-video/blocks/stories-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "type": "shopify://apps/tolstoy/blocks/stories-block/06fa8282-42ff-403e-b67c-1936776aed11",
           "settings": {
             "publishId": "3ew6rhswme0cg"
           }
@@ -457,49 +466,49 @@
           "type": "item",
           "settings": {
             "title": "{{ product.metafields.custom.header_1.value }}",
-            "content": "<p>{{ product.metafields.custom.value_1 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_1 | metafield_tag }}</p>"
           }
         },
         "item_k39pAi": {
           "type": "item",
           "settings": {
             "title": "{{ product.metafields.custom.header_2.value }}",
-            "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>"
           }
         },
         "item_A7aCVj": {
           "type": "item",
           "settings": {
             "title": "{{ product.metafields.custom.header_3.value }}",
-            "content": "<p>{{ product.metafields.custom.value_3 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_3 | metafield_tag }}</p>"
           }
         },
         "item_jYbRAc": {
           "type": "item",
           "settings": {
             "title": "{{ product.metafields.custom.header_4.value }}",
-            "content": "<p>{{ product.metafields.custom.value_4 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_4 | metafield_tag }}</p>"
           }
         },
         "item_rjVDCn": {
           "type": "item",
           "settings": {
             "title": "{{ product.metafields.custom.header_5.value }}",
-            "content": "<p>{{ product.metafields.custom.value_5 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_5 | metafield_tag }}</p>"
           }
         },
         "item_rp6E3r": {
           "type": "item",
           "settings": {
             "title": "Ingredients",
-            "content": "{{ product.metafields.custom.ingredients | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}"
+            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}"
           }
         },
         "item_AYTreE": {
           "type": "item",
           "settings": {
             "title": "Scientific Studies",
-            "content": "{{ product.metafields.custom.studies | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}"
+            "content": "{{ product.metafields.custom.studies | metafield_tag }}"
           }
         }
       },
@@ -521,7 +530,7 @@
         "full_width": true,
         "subheading": "",
         "title": "{{ product.metafields.custom.header_6.value }}",
-        "content": "{{ product.metafields.custom.product_description | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}",
+        "content": "{{ product.metafields.custom.product_description | metafield_tag }}",
         "team_avatar_width": 100,
         "support_hours": "",
         "answer_time": "",
@@ -571,13 +580,13 @@
           "type": "values",
           "settings": {
             "product": "",
-            "value_1": "<p>{{ product.metafields.custom.value_1 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>",
-            "value_2": "<p>{{ product.metafields.custom.value_2 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>",
-            "value_3": "<p>{{ product.metafields.custom.value_3 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>",
-            "value_4": "<p>{{ product.metafields.custom.value_4 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>",
-            "value_5": "<p>{{ product.metafields.custom.value_5 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>",
-            "value_6": "<p>{{ product.metafields.custom.value_6 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>",
-            "value_7": "<p>{{ product.metafields.custom.tech_spec_text | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>",
+            "value_1": "<p>{{ product.metafields.custom.value_1 | metafield_tag }}</p>",
+            "value_2": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>",
+            "value_3": "<p>{{ product.metafields.custom.value_3 | metafield_tag }}</p>",
+            "value_4": "<p>{{ product.metafields.custom.value_4 | metafield_tag }}</p>",
+            "value_5": "<p>{{ product.metafields.custom.value_5 | metafield_tag }}</p>",
+            "value_6": "<p>{{ product.metafields.custom.value_6 | metafield_tag }}</p>",
+            "value_7": "<p>{{ product.metafields.custom.tech_spec_text | metafield_tag }}</p>",
             "value_8": "",
             "value_9": "",
             "value_10": "",
@@ -600,6 +609,7 @@
         "headings_DfxDEN",
         "values_JYMQEF"
       ],
+      "disabled": true,
       "custom_css": [
         ".section-stack__intro {flex: 1 0 530px; max-width: 750px; width: auto;}",
         ".section-stack__main {flex: 1 1 450px; min-width: 350px; width: auto;}"
@@ -608,7 +618,7 @@
         "full_width": true,
         "subheading": "",
         "title": "{{ product.metafields.custom.header_6.value }}",
-        "content": "{{ product.metafields.custom.product_description | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}",
+        "content": "{{ product.metafields.custom.product_description | metafield_tag }}",
         "button_text": "",
         "button_url": "",
         "text_position": "start",
@@ -628,11 +638,11 @@
         "chart_background": "#f9f9f9",
         "chart_text_color": "",
         "chart_true_false_color": ""
-      },
-      "disabled": true
+      }
     },
     "scrolling_text_gnHJtw": {
       "type": "scrolling-text",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "text": "60 Day Money Back Guarantee",
@@ -644,8 +654,7 @@
         "background_gradient": "linear-gradient(168deg, rgba(255, 143, 0, 1) 10%, rgba(255, 162, 44, 1) 53%, rgba(248, 189, 113, 1) 94%)",
         "text_color": "#ffffff",
         "text_gradient": ""
-      },
-      "disabled": true
+      }
     },
     "before_after_image_ieK6Jg": {
       "type": "before-after-image",
@@ -658,7 +667,7 @@
         "full_width": true,
         "subheading": "",
         "title": "{{ product.metafields.custom.heading_before_after.value }}",
-        "content": "{{ product.metafields.custom.content_before_after | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}",
+        "content": "{{ product.metafields.custom.content_before_after | metafield_tag }}",
         "before_image": "{{ product.metafields.custom.image_1_before_after.value }}",
         "after_image": "{{ product.metafields.custom.image_2_before_after.value }}",
         "expand_image": false,
@@ -669,7 +678,7 @@
         "drag_initial_position": 60,
         "background": "#f3efe7",
         "background_gradient": "",
-        "text_color": "#414042",
+        "text_color": "#15171b",
         "before_text_color": "#ffffff",
         "after_text_color": "#ffffff",
         "drag_cursor_background": "#ffffff",
@@ -690,7 +699,7 @@
             "icon_width": 48,
             "subheading": "",
             "title": "Get the Benefit",
-            "content": "{{ product.metafields.custom.text_benefits | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}",
+            "content": "{{ product.metafields.custom.text_benefits | metafield_tag }}",
             "link_text": "",
             "link_url": "",
             "background": "#f9f9f9",
@@ -712,7 +721,7 @@
             "icon_width": 48,
             "subheading": "",
             "title": "{{ product.metafields.custom.header_7.value }}",
-            "content": "{{ product.metafields.custom.text_ingredients | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}",
+            "content": "{{ product.metafields.custom.text_ingredients | metafield_tag }}",
             "link_text": "",
             "link_url": "",
             "background": "#f9f9f9",
@@ -728,6 +737,7 @@
         "image_8DzHRG",
         "image_4PHNF4"
       ],
+      "disabled": true,
       "custom_css": [
         ".prose ul,.prose ol {row-gap: 1.4em;}",
         ".prose ul,.list-disc {list-style: square;}"
@@ -736,8 +746,7 @@
         "full_width": false,
         "alternate_media_position": false,
         "spacing": "none"
-      },
-      "disabled": true
+      }
     },
     "timeline_rPwewV": {
       "type": "timeline",
@@ -749,7 +758,7 @@
             "navigation_label": "{{ product.metafields.custom.phase_1_nav_label.value }}",
             "subheading": "{{ product.metafields.custom.phase_1_sub_heading.value }}",
             "title": "{{ product.metafields.custom.phase_1_heading.value }}",
-            "content": "{{ product.metafields.custom.phase_1_content | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}"
+            "content": "{{ product.metafields.custom.phase_1_content | metafield_tag }}"
           }
         },
         "slide_VVAtmd": {
@@ -759,7 +768,7 @@
             "navigation_label": "{{ product.metafields.custom.phase_2_nav_label.value }}",
             "subheading": "{{ product.metafields.custom.phase_2_sub_heading.value }}",
             "title": "{{ product.metafields.custom.phase_2_heading.value }}",
-            "content": "{{ product.metafields.custom.phase_2_content | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}"
+            "content": "{{ product.metafields.custom.phase_2_content | metafield_tag }}"
           }
         },
         "slide_gheRD3": {
@@ -769,7 +778,7 @@
             "navigation_label": "{{ product.metafields.custom.phase_3_nav_label.value }}",
             "subheading": "{{ product.metafields.custom.phase_3_sub_heading.value }}",
             "title": "{{ product.metafields.custom.phase_3_heading.value }}",
-            "content": "{{ product.metafields.custom.phase_3_content | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}"
+            "content": "{{ product.metafields.custom.phase_3_content | metafield_tag }}"
           }
         }
       },
@@ -778,6 +787,7 @@
         "slide_VVAtmd",
         "slide_gheRD3"
       ],
+      "disabled": true,
       "custom_css": [
         ".subheading {font-weight: 700; color: #ff8f00 !important; margin-top: 10px !important; font-style: italic; font-size: large;}",
         ".timeline__nav-item[aria-current=\"true\"]:before {border-color: #ff8f00; background-color: #ff8f00;}"
@@ -787,8 +797,7 @@
         "background": "#f9f9f9",
         "background_gradient": "linear-gradient(167deg, rgba(249, 249, 249, 1) 28%, rgba(255, 255, 255, 1) 45%, rgba(255, 255, 255, 1) 70%)",
         "text_color": "rgba(0,0,0,0)"
-      },
-      "disabled": true
+      }
     },
     "faq_XwdKmx": {
       "type": "faq",
@@ -798,7 +807,7 @@
           "disabled": true,
           "settings": {
             "title": "{{ product.metafields.custom.header_1.value }}",
-            "content": "<p>{{ product.metafields.custom.value_1 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_1 | metafield_tag }}</p>"
           }
         },
         "item_bUCdd8": {
@@ -806,7 +815,7 @@
           "disabled": true,
           "settings": {
             "title": "{{ product.metafields.custom.header_2.value }}",
-            "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>"
           }
         },
         "item_nCDBHn": {
@@ -814,7 +823,7 @@
           "disabled": true,
           "settings": {
             "title": "{{ product.metafields.custom.header_3.value }}",
-            "content": "<p>{{ product.metafields.custom.value_3 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_3 | metafield_tag }}</p>"
           }
         },
         "item_89mDbk": {
@@ -822,7 +831,7 @@
           "disabled": true,
           "settings": {
             "title": "{{ product.metafields.custom.header_4.value }}",
-            "content": "<p>{{ product.metafields.custom.value_4 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_4 | metafield_tag }}</p>"
           }
         },
         "item_GkamQw": {
@@ -830,21 +839,21 @@
           "disabled": true,
           "settings": {
             "title": "{{ product.metafields.custom.header_5.value }}",
-            "content": "<p>{{ product.metafields.custom.value_5 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_5 | metafield_tag }}</p>"
           }
         },
         "item_dGiG9D": {
           "type": "item",
           "settings": {
             "title": "Full List of Ingredients",
-            "content": "{{ product.metafields.custom.ingredients | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}"
+            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}"
           }
         },
         "item_GKixzh": {
           "type": "item",
           "settings": {
             "title": "Scientific Studies",
-            "content": "{{ product.metafields.custom.studies | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}"
+            "content": "{{ product.metafields.custom.studies | metafield_tag }}"
           }
         }
       },
@@ -857,6 +866,7 @@
         "item_dGiG9D",
         "item_GKixzh"
       ],
+      "disabled": true,
       "custom_css": [
         "{margin-bottom: -25px !important;}",
         ".prose ul,.prose ol {row-gap: 1.4em;}",
@@ -882,8 +892,7 @@
         "button_text_color": "",
         "accordion_background": "#f9f9f9",
         "accordion_text_color": ""
-      },
-      "disabled": true
+      }
     },
     "rich_text_Pcf7H6": {
       "type": "rich-text",
@@ -920,6 +929,7 @@
         "richtext_PAhje7",
         "button_Nnw4Mw"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "content_width": "small",
@@ -927,8 +937,7 @@
         "background": "#ffffff",
         "background_gradient": "",
         "text_color": ""
-      },
-      "disabled": true
+      }
     },
     "faq_R6AxTY": {
       "type": "faq",
@@ -938,7 +947,7 @@
           "disabled": true,
           "settings": {
             "title": "{{ product.metafields.custom.header_1.value }}",
-            "content": "<p>{{ product.metafields.custom.value_1 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_1 | metafield_tag }}</p>"
           }
         },
         "item_F8Bjwm": {
@@ -946,7 +955,7 @@
           "disabled": true,
           "settings": {
             "title": "{{ product.metafields.custom.header_2.value }}",
-            "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>"
           }
         },
         "item_apWUnJ": {
@@ -962,7 +971,7 @@
           "disabled": true,
           "settings": {
             "title": "{{ product.metafields.custom.header_3.value }}",
-            "content": "<p>{{ product.metafields.custom.value_3 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_3 | metafield_tag }}</p>"
           }
         },
         "item_AyRJw3": {
@@ -970,7 +979,7 @@
           "disabled": true,
           "settings": {
             "title": "{{ product.metafields.custom.header_4.value }}",
-            "content": "<p>{{ product.metafields.custom.value_4 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_4 | metafield_tag }}</p>"
           }
         },
         "item_BcYpi6": {
@@ -978,21 +987,21 @@
           "disabled": true,
           "settings": {
             "title": "{{ product.metafields.custom.header_5.value }}",
-            "content": "<p>{{ product.metafields.custom.value_5 | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}</p>"
+            "content": "<p>{{ product.metafields.custom.value_5 | metafield_tag }}</p>"
           }
         },
         "item_GWPzif": {
           "type": "item",
           "settings": {
             "title": "Full List of Ingredients",
-            "content": "{{ product.metafields.custom.ingredients | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}"
+            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}"
           }
         },
         "item_6YRbPr": {
           "type": "item",
           "settings": {
             "title": "Scientific Studies",
-            "content": "{{ product.metafields.custom.studies | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}"
+            "content": "{{ product.metafields.custom.studies | metafield_tag }}"
           }
         }
       },
@@ -1185,7 +1194,7 @@
           "type": "tab",
           "settings": {
             "title": "Tab 2",
-            "content": "{{ product.metafields.custom.studies | metafield_tag | replace: ' \u2014 ', ', ' | replace: '\u2014', ', ' }}",
+            "content": "{{ product.metafields.custom.studies | metafield_tag }}",
             "page": ""
           }
         },
@@ -1221,12 +1230,6 @@
     },
     "lp_pdp_highlights": {
       "type": "lp-pdp-highlights",
-      "settings": {
-        "overlay": 60,
-        "eyebrow": "Why it works",
-        "heading": "Support your body’s own renewal, every day.",
-        "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
-      },
       "blocks": {
         "card_1": {
           "type": "card",
@@ -1266,7 +1269,13 @@
         "card_2",
         "card_3",
         "card_4"
-      ]
+      ],
+      "settings": {
+        "overlay": 60,
+        "eyebrow": "Why it works",
+        "heading": "Support your body’s own renewal, every day.",
+        "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
+      }
     },
     "lp_pdp_how": {
       "type": "lp-pdp-how",
@@ -1310,14 +1319,6 @@
     },
     "lp_pdp_faq": {
       "type": "lp-pdp-faq",
-      "settings": {
-        "heading": "Still deciding? Start here.",
-        "button_label": "View all FAQs",
-        "contact_label": "Contact us",
-        "q_who": "Who is [product] for?",
-        "q_how": "How do I take [product]?",
-        "q_when": "When will I notice a difference?"
-      },
       "blocks": {
         "faq_guarantee": {
           "type": "item",
@@ -1337,7 +1338,15 @@
       "block_order": [
         "faq_guarantee",
         "faq_shipping"
-      ]
+      ],
+      "settings": {
+        "heading": "Still deciding? Start here.",
+        "button_label": "View all FAQs",
+        "contact_label": "Contact us",
+        "q_who": "Who is [product] for?",
+        "q_how": "How do I take [product]?",
+        "q_when": "When will I notice a difference?"
+      }
     }
   },
   "order": [

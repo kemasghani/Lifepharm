@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "slideshow": {
@@ -218,6 +227,7 @@
         "image_BkgnGx",
         "image_gBxq7C"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "allow_transparent_header": false,
@@ -229,8 +239,7 @@
         "cycle_speed": 6,
         "background": "rgba(0,0,0,0)",
         "background_gradient": ""
-      },
-      "disabled": true
+      }
     },
     "logo_list_cGNNLB": {
       "type": "lp-press",
@@ -342,6 +351,7 @@
         "liquid_NfNDAi",
         "richtext_nKEwyF"
       ],
+      "disabled": true,
       "custom_css": [
         "{margin-bottom: -15px;}"
       ],
@@ -352,8 +362,7 @@
         "background": "",
         "background_gradient": "",
         "text_color": ""
-      },
-      "disabled": true
+      }
     },
     "collection-list": {
       "type": "collection-list",
@@ -515,7 +524,7 @@
       "type": "apps",
       "blocks": {
         "tolstoy_shoppable_video_ugc_carousel_block_pzP3CD": {
-          "type": "shopify://apps/tolstoy-ads-image-video/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "type": "shopify://apps/tolstoy/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
           "settings": {
             "publishId": "frv9afb0xww6h"
           }
@@ -1048,10 +1057,10 @@
         "t3",
         "t4"
       ],
+      "disabled": true,
       "settings": {
         "style": "light"
-      },
-      "disabled": true
+      }
     },
     "lp_goals": {
       "type": "lp-shop-by-goal",
@@ -1060,30 +1069,30 @@
           "type": "goal",
           "settings": {
             "collection": "nutritionals",
+            "image": "shopify://shop_images/Supplements-Orange-bg_web.jpg",
             "title": "Nutritionals",
             "text": "Daily foundations for energy, immunity, digestion and recovery.",
-            "cta": "Shop nutritionals",
-            "image": "shopify://shop_images/Supplements-Orange-bg_web.jpg"
+            "cta": "Shop nutritionals"
           }
         },
         "g2": {
           "type": "goal",
           "settings": {
             "collection": "skin-health",
+            "image": "shopify://shop_images/Skincare-Blue-bg_web.jpg",
             "title": "Skin health",
             "text": "Growth-factor skincare for visibly smoother, firmer-looking skin.",
-            "cta": "Shop skin health",
-            "image": "shopify://shop_images/Skincare-Blue-bg_web.jpg"
+            "cta": "Shop skin health"
           }
         },
         "g3": {
           "type": "goal",
           "settings": {
             "collection": "frequency-regeneration",
+            "image": "shopify://shop_images/test_sqaure_08a86950-61d0-4e60-8977-5156471baea5.jpg",
             "title": "Frequency regeneration",
             "text": "Advanced Cellnergy technology for whole-body wellbeing.",
-            "cta": "Discover Cellnergy",
-            "image": "shopify://shop_images/test_sqaure_08a86950-61d0-4e60-8977-5156471baea5.jpg"
+            "cta": "Discover Cellnergy"
           }
         }
       },

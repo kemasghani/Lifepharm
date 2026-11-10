@@ -100,7 +100,8 @@
         },
         "quantity_selector": {
           "type": "quantity_selector",
-          "settings": {}
+          "settings": {},
+          "disabled": true
         },
         "text_VjR6WU": {
           "type": "text",

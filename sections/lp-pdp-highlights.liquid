@@ -4,7 +4,7 @@
   if bg_image == blank and product.media.size > 2
     assign bg_image = product.media[2].preview_image
   endif
-  assign heading = section.settings.heading | default: mf.header_6.value
+  assign heading = section.settings.heading
   assign icons = 'sparkle,dna,heart,moon,leaf,bolt' | split: ','
   assign benefits_html = mf.text_benefits | metafield_tag
   assign benefit_items = benefits_html | split: '<li'
@@ -102,7 +102,7 @@
     { "type": "image_picker", "id": "image", "label": "Background image", "info": "Defaults to the product's benefits image" },
     { "type": "range", "id": "overlay", "label": "Image darkness", "min": 20, "max": 90, "step": 5, "unit": "%", "default": 60 },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
-    { "type": "inline_richtext", "id": "heading", "label": "Heading", "info": "Defaults to the product's headline metafield" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Feel the difference, <em>from the inside out.</em>" },
     { "type": "text", "id": "disclaimer", "label": "Disclaimer", "default": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease." }
   ],
   "blocks": [

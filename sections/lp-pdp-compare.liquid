@@ -17,7 +17,7 @@
       <div class="lp-cmp__table" role="table" aria-label="{{ section.settings.prefix | escape }} {{ product.title | escape }}" data-lp-reveal style="--lp-i: 1">
         <div class="lp-cmp__row lp-cmp__row--head" role="row">
           <span role="columnheader" class="lp-cmp__feat"><span class="sr-only">{{ section.settings.feature_label | escape }}</span></span>
-          <span role="columnheader" class="lp-cmp__us"><span class="lp-cmp__badge">{{ product.title | escape }}</span></span>
+          <span role="columnheader" class="lp-cmp__us"><span class="lp-cmp__badge">{{ product.title | split: ' ' | first | escape }}</span></span>
           <span role="columnheader" class="lp-cmp__them">{{ section.settings.other_label | escape }}</span>
         </div>
         {%- if section.blocks.size > 0 -%}

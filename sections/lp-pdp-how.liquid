@@ -4,7 +4,14 @@
   if side_image == blank
     assign side_image = product.featured_media.preview_image
   endif
-  assign heading = section.settings.heading | default: mf.header_6.value
+  assign heading = section.settings.heading
+  if heading == blank
+    assign heading = mf.header_6.value | strip
+    assign heading_up = heading | upcase
+    if heading == heading_up
+      assign heading = heading | downcase | capitalize
+    endif
+  endif
   assign film = section.settings.film_asset | strip
   assign poster = section.settings.poster_asset | strip
   assign desc_html = mf.product_description | metafield_tag

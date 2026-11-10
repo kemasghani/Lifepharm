@@ -83,7 +83,7 @@
           <div class="lp-sticky__info" aria-hidden="true">
             {%- unless product.has_only_default_variant -%}<span class="lp-sticky__variant">{{ lp_sv.title | escape }}</span>{%- endunless -%}
             <span class="lp-sticky__price"><strong data-lp-sticky-price>{{ lp_sv.price | money }}</strong>{%- if lp_count > 0 -%}<span class="lp-sticky__unit" data-lp-sticky-unit data-count="{{ lp_count }}" data-unit="{{ lp_unit }}"> {{ lp_sv.price | divided_by: lp_count | money }} / {{ lp_unit }}</span>{%- endif -%}</span>
-            <span class="lp-sticky__note">60-day money-back guarantee</span>
+            <span class="lp-sticky__note">60-day guarantee</span>
           </div>
           <buy-buttons template="{{ product.template_suffix }}" form="{{ product_form_id }}">
             {%- render 'button', type: 'submit', content: button_label, form: product_form_id, background: buy_buttons_block.settings.atc_button_background, text_color: buy_buttons_block.settings.atc_button_text_color, secondary: true, stretch: true, size: 'lg' -%}

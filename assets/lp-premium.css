@@ -456,3 +456,5 @@ html:not(.lp-js) [data-lp-reveal] { opacity: 1; transform: none; }
 
 html.lp-menu-open { overflow: hidden; overscroll-behavior: none; }
 .lp-stat__value { font-variant-numeric: lining-nums; }
+@media (max-width: 699px) { html:has(product-quick-add.is-visible) iframe#chat-button { bottom: calc(96px + env(safe-area-inset-bottom)) !important; transition: bottom 300ms cubic-bezier(.16, 1, .3, 1); } }
+.lp-sticky__note { white-space: nowrap; }

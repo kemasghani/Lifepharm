@@ -66,6 +66,9 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
 
     {{- 'theme.css' | asset_url | stylesheet_tag: preload: true -}}
     {{- 'custom.css' | asset_url | stylesheet_tag: preload: true }}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:opsz,wght@14..32,300..700&display=swap">
     {{- 'lp-premium.css' | asset_url | stylesheet_tag: preload: true }}
     <script>document.documentElement.classList.add('lp-js')</script>
     <script src="{{ 'lp-premium.js' | asset_url }}" defer></script>

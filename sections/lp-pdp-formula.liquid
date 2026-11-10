@@ -75,7 +75,7 @@
 {%- endif -%}
 
 {% stylesheet %}
-.lp-fx { padding-block: var(--lp-section-gap); background: linear-gradient(180deg, rgb(var(--lp-ivory)), rgb(var(--lp-sand) / .6)); }
+.lp-fx { overflow-x: clip; padding-block: var(--lp-section-gap); background: linear-gradient(180deg, rgb(var(--lp-ivory)), rgb(var(--lp-sand) / .6)); }
 .lp-fx__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(2rem, 6vw, 6rem); align-items: center; }
 @media (min-width: 1000px) { .lp-fx__grid { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); } }
 .lp-fx__visual { position: relative; width: min(100%, 520px); aspect-ratio: 1; margin-inline: auto; display: grid; place-items: center; }

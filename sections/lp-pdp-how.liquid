@@ -1,0 +1,142 @@
+{%- liquid
+  assign mf = product.metafields.custom
+  assign side_image = section.settings.image | default: mf.image_ingredients.value
+  if side_image == blank
+    assign side_image = product.featured_media.preview_image
+  endif
+  assign heading = section.settings.heading | default: mf.header_6.value
+  assign film = section.settings.film_asset | strip
+  assign poster = section.settings.poster_asset | strip
+  assign desc_html = mf.product_description | metafield_tag
+  assign desc_paras = desc_html | split: '</p>'
+  assign concerns = mf.health_concern_filter.value
+-%}
+
+<section class="lp-how">
+  <div class="container">
+    <div class="lp-how__grid">
+      <div class="lp-how__aside" data-lp-reveal>
+        {%- if side_image != blank -%}
+          {{ side_image | image_url: width: 1200 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 33vw, 100vw', widths: '400,600,800,1000,1200', class: 'lp-how__aside-img', alt: product.title }}
+        {%- endif -%}
+      </div>
+
+      <div class="lp-how__card">
+        <div class="lp-how__copy">
+          {%- if section.settings.eyebrow != blank -%}<p class="lp-eyebrow lp-how__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+          {%- if heading != blank -%}<h2 class="h2 lp-how__title" data-lp-reveal>{{ heading }}</h2>{%- endif -%}
+
+          <div class="lp-how__text" data-lp-reveal style="--lp-i: 1">
+            {%- if section.settings.text != blank -%}
+              {{ section.settings.text }}
+            {%- else -%}
+              {{ desc_paras | first | append: '</p>' }}
+            {%- endif -%}
+          </div>
+
+          {%- if concerns != blank -%}
+            <div class="lp-how__supports" data-lp-reveal style="--lp-i: 2">
+              <span class="lp-how__supports-label">{{ section.settings.supports_label | escape }}</span>
+              <ul class="lp-how__chips" role="list">
+                {%- for c in concerns -%}<li class="lp-how__chip">{{ c | escape }}</li>{%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.link_label != blank -%}
+            <a href="#lp-formula" class="lp-how__link">{{ section.settings.link_label | escape }} {% render 'lp-icon', name: 'arrow', size: 16 %}</a>
+          {%- endif -%}
+        </div>
+
+        <div class="lp-how__visual" aria-hidden="true">
+          <div class="lp-how__orb">
+            {%- if poster != blank -%}
+              <img class="lp-how__poster" src="{{ poster | asset_url }}" alt="" width="800" height="800" loading="lazy" decoding="async">
+            {%- endif -%}
+            {%- if film != blank -%}
+              <video class="lp-how__film" muted loop playsinline preload="none" data-lp-lazy>
+                <source data-src="{{ film | asset_url }}" type="video/mp4">
+              </video>
+            {%- endif -%}
+          </div>
+          {%- for block in section.blocks limit: 3 -%}
+            <div class="lp-how__callout lp-how__callout--{{ forloop.index }}" {{ block.shopify_attributes }}>
+              <span class="lp-how__callout-line"></span>
+              <strong>{{ block.settings.title | escape }}</strong>
+              {%- if block.settings.text != blank -%}<span>{{ block.settings.text | escape }}</span>{%- endif -%}
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+.lp-how { padding-block: clamp(1rem, 2vw, 1.5rem) var(--lp-section-gap); }
+.lp-how__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(.75rem, 1.5vw, 1.25rem); }
+@media (min-width: 1000px) { .lp-how__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr); } }
+.lp-how__aside { position: relative; overflow: hidden; border-radius: var(--lp-radius-lg); background: rgb(var(--lp-sand)); min-height: 320px; }
+.lp-how__aside-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.lp-how__card { position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; align-items: center; padding: clamp(1.75rem, 4vw, 3.5rem); border-radius: var(--lp-radius-lg); background: rgb(var(--lp-ink)); color: rgb(var(--lp-sand)); }
+@media (min-width: 760px) { .lp-how__card { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); } }
+.lp-how__copy { position: relative; z-index: 1; display: grid; gap: 1.1rem; justify-items: start; }
+.lp-how__eyebrow { color: rgb(var(--lp-amber)); }
+.lp-how__title { color: #fff; letter-spacing: -.025em; text-wrap: balance; }
+.lp-how__text { color: rgb(var(--lp-sand) / .78); line-height: 1.65; font-size: .975rem; max-width: 46ch; }
+.lp-how__text p { margin: 0; }
+.lp-how__supports { display: grid; gap: .6rem; }
+.lp-how__supports-label { font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: rgb(var(--lp-sand) / .55); }
+.lp-how__chips { display: flex; flex-wrap: wrap; gap: .4rem; list-style: none; margin: 0; padding: 0; }
+.lp-how__chip { padding: .4rem .85rem; border-radius: 999px; border: 1px solid rgb(var(--lp-amber) / .45); color: #ffd9a3; font-size: .8125rem; font-weight: 500; }
+.lp-how__link { display: inline-flex; align-items: center; gap: .4rem; color: #fff; font-weight: 600; font-size: .9375rem; text-decoration: underline; text-underline-offset: 5px; text-decoration-color: rgb(var(--lp-amber)); }
+.lp-how__link .lp-icon { transition: transform var(--lp-dur-2) var(--lp-ease); }
+.lp-how__link:hover .lp-icon { transform: translateX(4px); }
+.lp-how__visual { position: relative; display: grid; place-items: center; min-height: 300px; }
+.lp-how__orb { position: relative; width: min(100%, 460px); aspect-ratio: 1; border-radius: 50%; overflow: hidden; background: #15171b; -webkit-mask-image: radial-gradient(closest-side, #000 82%, transparent 100%); mask-image: radial-gradient(closest-side, #000 82%, transparent 100%); }
+.lp-how__poster, .lp-how__film { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.lp-how__film { opacity: 0; transition: opacity 1s var(--lp-ease); }
+.lp-how__film.is-playing { opacity: 1; }
+.lp-how__callout { position: absolute; display: grid; gap: .15rem; max-width: 190px; font-size: .8125rem; line-height: 1.45; color: rgb(var(--lp-sand) / .7); }
+.lp-how__callout strong { color: #fff; font-size: .875rem; font-weight: 600; }
+.lp-how__callout-line { display: block; width: 56px; height: 1px; margin-block-end: .5rem; background: linear-gradient(90deg, rgb(var(--lp-amber)), transparent); }
+.lp-how__callout--1 { top: 6%; right: 0; }
+.lp-how__callout--2 { bottom: 10%; left: 0; }
+.lp-how__callout--3 { bottom: 4%; right: 2%; }
+@media (max-width: 759px) {
+  .lp-how__visual { display: grid; gap: 1rem; }
+  .lp-how__callout { position: static; max-width: none; }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "LP · PDP how it works",
+  "tag": "div",
+  "class": "lp-pdp-section",
+  "settings": [
+    { "type": "paragraph", "content": "Heading, text and 'Supports' chips are filled from the product's metafields. Fill a field to override." },
+    { "type": "image_picker", "id": "image", "label": "Side image", "info": "Defaults to the product's ingredients image" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "How it works" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "text", "id": "supports_label", "label": "Supports label", "default": "Supports" },
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "Explore the formula" },
+    { "type": "text", "id": "film_asset", "label": "Animation file (theme asset)", "default": "lp-cell-film.mp4" },
+    { "type": "text", "id": "poster_asset", "label": "Animation poster (theme asset)", "default": "lp-cell-film-poster.jpg" }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "name": "Callout",
+      "limit": 3,
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "text", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "LP · PDP how it works" } ],
+  "enabled_on": { "templates": ["product"] }
+}
+{% endschema %}

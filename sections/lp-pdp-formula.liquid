@@ -1,0 +1,115 @@
+{%- liquid
+  assign mf = product.metafields.custom
+  assign visual = section.settings.image
+  if visual == blank
+    assign visual = product.featured_media.preview_image
+  endif
+  assign heading = section.settings.heading | default: mf.header_7.value
+  assign ing_html = mf.text_ingredients | metafield_tag
+  assign ing_paras = ing_html | split: '<p'
+-%}
+
+{%- if mf.text_ingredients != blank or mf.ingredients != blank -%}
+<section class="lp-fx" id="lp-formula">
+  <div class="container">
+    <div class="lp-fx__grid">
+      <div class="lp-fx__visual" aria-hidden="true">
+        <div class="lp-fx__ring"></div>
+        <div class="lp-fx__ring lp-fx__ring--inner"></div>
+        <div class="lp-fx__glow"></div>
+        {%- if visual != blank -%}
+          {{ visual | image_url: width: 1000 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 40vw, 80vw', widths: '400,600,800,1000', class: 'lp-fx__img', alt: '' }}
+        {%- endif -%}
+      </div>
+
+      <div class="lp-fx__copy">
+        {%- if section.settings.eyebrow != blank -%}<p class="lp-eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+        {%- if heading != blank -%}<h2 class="h1 lp-fx__title" data-lp-reveal>{{ heading }}</h2>{%- endif -%}
+        {%- if mf.value_1 != blank -%}
+          <p class="lp-fx__lede" data-lp-reveal style="--lp-i: 1">
+            {%- if mf.header_1 != blank -%}<strong>{{ mf.header_1.value | escape }}</strong> {% endif -%}
+            {{ mf.value_1.value | escape }}
+          </p>
+        {%- endif -%}
+
+        <div class="lp-fx__acc">
+          {%- for raw in ing_paras offset: 1 -%}
+            {%- liquid
+              assign para = raw | prepend: '<p'
+              assign plain = para | strip_html | strip
+              if plain == blank
+                continue
+              endif
+              if para contains '<strong>'
+                assign a_title = para | split: '<strong>' | last | split: '</strong>' | first | strip_html | strip | remove: ' -' | remove: ' –' | strip
+                assign a_body = para | split: '</strong>' | last | strip_html | strip | remove_first: '- ' | remove_first: '– '
+              else
+                assign a_title = plain | truncatewords: 5
+                assign a_body = plain
+              endif
+            -%}
+            <details class="lp-fx__item" {% if forloop.first %}open{% endif %}>
+              <summary><span>{{ a_title | downcase | capitalize | escape }}</span><span class="lp-fx__plus" aria-hidden="true"></span></summary>
+              <div class="lp-fx__body"><p>{{ a_body | escape }}</p></div>
+            </details>
+          {%- endfor -%}
+
+          {%- if mf.ingredients != blank -%}
+            <details class="lp-fx__item">
+              <summary><span>{{ section.settings.full_list_label | escape }}</span><span class="lp-fx__plus" aria-hidden="true"></span></summary>
+              <div class="lp-fx__body">{{ mf.ingredients | metafield_tag }}</div>
+            </details>
+          {%- endif -%}
+
+          {%- if mf.studies != blank -%}
+            <details class="lp-fx__item">
+              <summary><span>{{ section.settings.studies_label | escape }}</span><span class="lp-fx__plus" aria-hidden="true"></span></summary>
+              <div class="lp-fx__body lp-fx__studies">{{ mf.studies | metafield_tag }}</div>
+            </details>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{%- endif -%}
+
+{% stylesheet %}
+.lp-fx { padding-block: var(--lp-section-gap); background: linear-gradient(180deg, rgb(var(--lp-ivory)), rgb(var(--lp-sand) / .6)); }
+.lp-fx__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(2rem, 6vw, 6rem); align-items: center; }
+@media (min-width: 1000px) { .lp-fx__grid { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); } }
+.lp-fx__visual { position: relative; width: min(100%, 520px); aspect-ratio: 1; margin-inline: auto; display: grid; place-items: center; }
+.lp-fx__ring { position: absolute; inset: 0; border-radius: 50%; border: 1.5px dashed rgb(var(--lp-amber) / .45); animation: lp-fx-spin 60s linear infinite; }
+.lp-fx__ring--inner { inset: 9%; border: 1px solid rgb(var(--lp-ink) / .08); animation-duration: 90s; animation-direction: reverse; }
+.lp-fx__ring--inner::before { content: ""; position: absolute; top: -5px; left: 50%; width: 10px; height: 10px; margin-left: -5px; border-radius: 50%; background: rgb(var(--lp-amber)); box-shadow: 0 0 0 6px rgb(var(--lp-amber) / .15); }
+.lp-fx__glow { position: absolute; inset: 16%; border-radius: 50%; background: radial-gradient(closest-side, #fff 0%, rgb(var(--lp-sand)) 60%, rgb(var(--lp-amber) / .14) 100%); box-shadow: var(--lp-shadow-2); }
+.lp-fx__img { position: relative; width: 62%; height: auto; object-fit: contain; mix-blend-mode: multiply; filter: drop-shadow(0 30px 40px rgb(var(--lp-ink) / .18)); animation: lp-fx-float 7s var(--lp-ease-in-out) infinite alternate; }
+@keyframes lp-fx-spin { to { transform: rotate(360deg); } }
+@keyframes lp-fx-float { from { transform: translateY(-6px); } to { transform: translateY(8px); } }
+.lp-fx__copy { display: grid; gap: 1.1rem; align-content: start; }
+.lp-fx__title { letter-spacing: -.03em; text-wrap: balance; }
+.lp-fx__lede { margin: 0; color: rgb(var(--lp-muted)); line-height: 1.65; max-width: 52ch; }
+.lp-fx__lede strong { color: rgb(var(--lp-ink)); }
+.lp-fx__acc { margin-block-start: .75rem; border-top: 1px solid var(--lp-hairline); }
+.lp-fx__studies p { padding: .55rem 0; margin: 0; border-bottom: 1px dashed var(--lp-hairline); }
+.lp-fx__studies a { color: rgb(var(--lp-amber-deep)); font-weight: 600; text-underline-offset: 3px; white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) { .lp-fx__ring, .lp-fx__img { animation: none; } }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "LP · PDP formula",
+  "tag": "div",
+  "class": "lp-pdp-section",
+  "settings": [
+    { "type": "paragraph", "content": "Ingredients, full list and studies come from the product's metafields." },
+    { "type": "image_picker", "id": "image", "label": "Visual", "info": "Defaults to the product's featured image" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The formula" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading" },
+    { "type": "text", "id": "full_list_label", "label": "Full list label", "default": "Full ingredient list" },
+    { "type": "text", "id": "studies_label", "label": "Studies label", "default": "Scientific studies" }
+  ],
+  "presets": [ { "name": "LP · PDP formula" } ],
+  "enabled_on": { "templates": ["product"] }
+}
+{% endschema %}

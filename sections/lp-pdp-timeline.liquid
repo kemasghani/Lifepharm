@@ -1,0 +1,134 @@
+{%- liquid
+  assign mf = product.metafields.custom
+  assign phases = '1,2,3' | split: ','
+  assign has_phase = false
+  if mf.phase_1_content != blank
+    assign has_phase = true
+  endif
+-%}
+
+{%- if has_phase -%}
+<section class="lp-tl">
+  <div class="container">
+    <header class="lp-tl__head">
+      {%- if section.settings.eyebrow != blank -%}<p class="lp-eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="h1 lp-tl__title" data-lp-reveal>{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.subheading != blank -%}<p class="lp-tl__sub" data-lp-reveal style="--lp-i: 1">{{ section.settings.subheading | escape }}</p>{%- endif -%}
+    </header>
+
+    <div class="lp-tl__grid">
+      <div class="lp-tl__col">
+        <ol class="lp-tl__list" role="list">
+          {%- for n in phases -%}
+            {%- liquid
+              assign content_key = 'phase_' | append: n | append: '_content'
+              assign heading_key = 'phase_' | append: n | append: '_heading'
+              assign label_key = 'phase_' | append: n | append: '_nav_label'
+              assign p_content = mf[content_key]
+              assign p_heading = mf[heading_key].value | split: '<p' | first | strip_html | strip
+              assign p_label = mf[label_key].value
+            -%}
+            {%- if p_content != blank -%}
+              <li class="lp-tl__item" data-lp-reveal style="--lp-i: {{ forloop.index0 }}">
+                <span class="lp-tl__dot" aria-hidden="true"></span>
+                <div class="lp-tl__item-head">
+                  {%- if p_label != blank -%}<span class="lp-tl__pill">{{ p_label | escape }}</span>{%- endif -%}
+                  {%- if p_heading != blank -%}<h3 class="lp-tl__item-title">{{ p_heading | escape }}</h3>{%- endif -%}
+                </div>
+                <div class="lp-tl__item-text">{{ p_content | metafield_tag }}</div>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ol>
+
+        {%- liquid
+          assign use_h = mf.header_2.value | default: section.settings.how_title
+          assign use_v = mf.value_2.value | default: mf.how_to_use.value
+        -%}
+        {%- if use_v != blank -%}
+          <div class="lp-tl__how" data-lp-reveal>
+            <span class="lp-tl__how-icon">{% render 'lp-icon', name: 'clock', size: 26 %}</span>
+            <dl class="lp-tl__how-list">
+              <div><dt>{{ use_h | remove: ':' | escape }}</dt><dd>{{ use_v | escape }}</dd></div>
+              {%- if mf.value_3 != blank -%}<div><dt>{{ mf.header_3.value | remove: ':' | strip | escape }}</dt><dd>{{ mf.value_3.value | escape }}</dd></div>{%- endif -%}
+              {%- if mf.value_4 != blank -%}<div><dt>{{ mf.header_4.value | remove: ':' | strip | escape }}</dt><dd>{{ mf.value_4.value | escape }}</dd></div>{%- endif -%}
+            </dl>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="lp-tl__media" aria-hidden="true">
+        {%- for n in phases -%}
+          {%- liquid
+            assign image_key = 'phase_' | append: n | append: '_image'
+            assign p_image = mf[image_key].value
+            if p_image == blank
+              assign media_index = forloop.index | plus: 2
+              assign p_image = product.media[media_index].preview_image
+            endif
+          -%}
+          {%- if p_image != blank -%}
+            <div class="lp-tl__tile lp-tl__tile--{{ forloop.index }}" data-lp-reveal style="--lp-i: {{ forloop.index0 }}">
+              {{ p_image | image_url: width: 1200 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 40vw, 100vw', widths: '400,600,800,1000,1200', alt: '' }}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+{%- endif -%}
+
+{% stylesheet %}
+.lp-tl { padding-block: var(--lp-section-gap); }
+.lp-tl__head { display: grid; justify-items: center; gap: .9rem; text-align: center; margin-block-end: clamp(2.5rem, 5vw, 4.5rem); }
+.lp-tl__title { max-width: 18ch; letter-spacing: -.03em; text-wrap: balance; text-align: center; }
+.lp-tl__sub { color: rgb(var(--lp-muted)); margin: 0; }
+.lp-tl__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+@media (min-width: 1000px) { .lp-tl__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); } }
+.lp-tl__col { display: grid; gap: 2rem; }
+.lp-tl__list { position: relative; display: grid; gap: 2.25rem; list-style: none; margin: 0; padding: 0 0 0 2rem; }
+.lp-tl__list::before { content: ""; position: absolute; left: 5px; top: 10px; bottom: 10px; width: 2px; border-radius: 2px; background: rgb(var(--lp-ink) / .1); }
+.lp-tl__list::after { content: ""; position: absolute; left: 5px; top: 10px; bottom: 10px; width: 2px; border-radius: 2px; background: linear-gradient(rgb(var(--lp-amber)), rgb(var(--lp-amber-deep))); transform-origin: top; transform: scaleY(1); }
+@supports (animation-timeline: view()) {
+  .lp-tl__list::after { animation: lp-tl-fill linear both; animation-timeline: view(); animation-range: entry 20% cover 60%; }
+  @keyframes lp-tl-fill { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+}
+.lp-tl__item { position: relative; display: grid; gap: .7rem; }
+.lp-tl__dot { position: absolute; left: calc(-2rem + 0px); top: 6px; width: 12px; height: 12px; border-radius: 50%; background: rgb(var(--lp-ivory)); box-shadow: 0 0 0 2px rgb(var(--lp-amber)), 0 0 0 6px rgb(var(--lp-amber) / .14); z-index: 1; }
+.lp-tl__item-head { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem; }
+.lp-tl__pill { display: inline-flex; padding: .3rem .8rem; border-radius: 999px; background: rgb(var(--lp-ink)); color: #fff; font-size: .75rem; font-weight: 600; letter-spacing: .02em; }
+.lp-tl__item-title { margin: 0; font-family: var(--text-font-family); font-size: 1.0625rem; font-weight: 600; letter-spacing: -.01em; }
+.lp-tl__item-text { color: rgb(var(--lp-muted)); line-height: 1.65; font-size: .95rem; max-width: 52ch; }
+.lp-tl__item-text p { margin: 0; }
+.lp-tl__how { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1.1rem; padding: 1.5rem; border-radius: var(--lp-radius); background: rgb(var(--lp-sand)); }
+.lp-tl__how-icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: #fff; color: rgb(var(--lp-amber-deep)); box-shadow: var(--lp-shadow-1); }
+.lp-tl__how-list { display: grid; gap: .85rem; margin: 0; }
+.lp-tl__how-list dt { font-weight: 600; font-size: .9rem; }
+.lp-tl__how-list dd { margin: .15rem 0 0; color: rgb(var(--lp-muted)); font-size: .9rem; line-height: 1.55; }
+.lp-tl__media { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(.6rem, 1.2vw, 1rem); }
+@media (min-width: 1000px) { .lp-tl__media { position: sticky; top: calc(var(--sticky-area-height, 80px) + 2rem); } }
+.lp-tl__tile { position: relative; overflow: hidden; border-radius: var(--lp-radius-lg); background: rgb(var(--lp-sand)); }
+.lp-tl__tile img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1.6s var(--lp-ease); }
+.lp-tl__tile:hover img { transform: scale(1.04); }
+.lp-tl__tile--1 { grid-column: 1 / -1; aspect-ratio: 16 / 10; }
+.lp-tl__tile--2 { aspect-ratio: 1; }
+.lp-tl__tile--3 { aspect-ratio: 1; border-radius: 50%; }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "LP · PDP results timeline",
+  "tag": "div",
+  "class": "lp-pdp-section",
+  "settings": [
+    { "type": "paragraph", "content": "Phases, images and the How to use card come from the product's timeline metafields (phase 1–3)." },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Your journey" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Benefits that <em>build over time</em>" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Consistency is everything. Here's what to expect." },
+    { "type": "text", "id": "how_title", "label": "How to use fallback title", "default": "How to use" }
+  ],
+  "presets": [ { "name": "LP · PDP results timeline" } ],
+  "enabled_on": { "templates": ["product"] }
+}
+{% endschema %}

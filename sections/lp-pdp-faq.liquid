@@ -1,0 +1,98 @@
+{%- liquid
+  assign mf = product.metafields.custom
+  assign faq_url = section.settings.button_url | default: mf.faq_url.value
+-%}
+
+<section class="lp-faq">
+  <div class="container">
+    <div class="lp-faq__grid">
+      <div class="lp-faq__intro">
+        {%- if section.settings.heading != blank -%}<h2 class="h1 lp-faq__title" data-lp-reveal>{{ section.settings.heading }}</h2>{%- endif -%}
+        {%- if section.settings.text != blank -%}<div class="lp-faq__text">{{ section.settings.text }}</div>{%- endif -%}
+        <div class="lp-faq__actions">
+          {%- if faq_url != blank and section.settings.button_label != blank -%}
+            <a href="{{ faq_url }}" class="button button--secondary">{{ section.settings.button_label | escape }}</a>
+          {%- endif -%}
+          {%- if section.settings.contact_label != blank -%}
+            <a href="{{ section.settings.contact_url | default: '/pages/contact' }}" class="lp-faq__link">{{ section.settings.contact_label | escape }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div class="lp-faq__list">
+        {%- if mf.value_1 != blank -%}
+          <details class="lp-fx__item" open>
+            <summary><span>{{ section.settings.q_who | replace: '[product]', product.title | escape }}</span><span class="lp-fx__plus" aria-hidden="true"></span></summary>
+            <div class="lp-fx__body"><p>{{ mf.value_1.value | escape }}</p></div>
+          </details>
+        {%- endif -%}
+        {%- if mf.value_2 != blank -%}
+          <details class="lp-fx__item">
+            <summary><span>{{ section.settings.q_how | replace: '[product]', product.title | escape }}</span><span class="lp-fx__plus" aria-hidden="true"></span></summary>
+            <div class="lp-fx__body">
+              <p>{{ mf.value_2.value | escape }}</p>
+              {%- if mf.value_3 != blank -%}<p><strong>{{ mf.header_3.value | remove: ':' | strip | escape }}:</strong> {{ mf.value_3.value | escape }}</p>{%- endif -%}
+              {%- if mf.value_4 != blank -%}<p><strong>{{ mf.header_4.value | remove: ':' | strip | escape }}:</strong> {{ mf.value_4.value | escape }}</p>{%- endif -%}
+            </div>
+          </details>
+        {%- endif -%}
+        {%- if mf.phase_1_content != blank -%}
+          <details class="lp-fx__item">
+            <summary><span>{{ section.settings.q_when | escape }}</span><span class="lp-fx__plus" aria-hidden="true"></span></summary>
+            <div class="lp-fx__body">{{ mf.phase_1_content | metafield_tag }}</div>
+          </details>
+        {%- endif -%}
+        {%- for block in section.blocks -%}
+          <details class="lp-fx__item" {{ block.shopify_attributes }}>
+            <summary><span>{{ block.settings.question | escape }}</span><span class="lp-fx__plus" aria-hidden="true"></span></summary>
+            <div class="lp-fx__body">{{ block.settings.answer }}</div>
+          </details>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+.lp-faq { padding-block: var(--lp-section-gap); }
+.lp-faq__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+@media (min-width: 1000px) { .lp-faq__grid { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); } .lp-faq__intro { position: sticky; top: calc(var(--sticky-area-height, 80px) + 2rem); } }
+.lp-faq__intro { display: grid; gap: 1rem; justify-items: start; }
+.lp-faq__title { letter-spacing: -.03em; max-width: 14ch; text-wrap: balance; }
+.lp-faq__text { color: rgb(var(--lp-muted)); line-height: 1.65; }
+.lp-faq__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem; margin-block-start: .5rem; }
+.lp-faq__link { font-weight: 600; text-underline-offset: 4px; }
+.lp-faq__list { border-top: 1px solid var(--lp-hairline); }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "LP · PDP FAQ",
+  "tag": "div",
+  "class": "lp-pdp-section",
+  "settings": [
+    { "type": "paragraph", "content": "The first answers come from the product's metafields. Use [product] in a question to insert the product name." },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Questions? <em>We're here to help.</em>" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "View all FAQs" },
+    { "type": "url", "id": "button_url", "label": "Button link", "info": "Defaults to the product's FAQ link" },
+    { "type": "text", "id": "contact_label", "label": "Contact link label", "default": "Contact us" },
+    { "type": "url", "id": "contact_url", "label": "Contact link" },
+    { "type": "text", "id": "q_who", "label": "Question: who is it for", "default": "Who is [product] for?" },
+    { "type": "text", "id": "q_how", "label": "Question: how to use", "default": "How do I take [product]?" },
+    { "type": "text", "id": "q_when", "label": "Question: when will I feel it", "default": "When will I notice a difference?" }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question" },
+        { "type": "richtext", "id": "answer", "label": "Answer" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "LP · PDP FAQ" } ],
+  "enabled_on": { "templates": ["product"] }
+}
+{% endschema %}

@@ -22,7 +22,8 @@
         },
         "separator": {
           "type": "separator",
-          "settings": {}
+          "settings": {},
+          "disabled": true
         },
         "stamped_product_reviews_ugc_star_rating_badge_8VPpGa": {
           "type": "shopify://apps/stamped-reviews/blocks/star-rating-badge/a103faaf-2125-4b0e-89fa-de5149736723",
@@ -119,29 +120,26 @@
         },
         "collapsible_text_XwdWte": {
           "type": "collapsible_text",
-          "disabled": true,
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "title": "LifePharm Guarantee",
+            "title": "60-day money-back guarantee",
             "content": "<p>All of our products come with a 60-Day Money-Back Guarantee. </p><p>Try it, and if it doesn’t work, it's on us! Our hassle-free return policy offers a 100% money-back guarantee within 60 days of delivery.</p>",
             "page": ""
           }
         },
         "collapsible_text_DKpjzh": {
           "type": "collapsible_text",
-          "disabled": true,
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "title": "The Benefit",
+            "title": "Benefits",
             "content": "{{ product.metafields.custom.text_benefits | metafield_tag }}",
             "page": ""
           }
         },
         "collapsible_text_KbRjKK": {
           "type": "collapsible_text",
-          "disabled": true,
           "settings": {
             "icon": "none",
             "icon_width": 20,
@@ -174,11 +172,10 @@
         },
         "collapsible_text_PDdyLw": {
           "type": "collapsible_text",
-          "disabled": true,
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "title": "How to Use",
+            "title": "How to use",
             "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>",
             "page": ""
           }
@@ -229,7 +226,8 @@
             "content": "<p>Try it, and if it doesn't work, its on us! Our hassle-free return policy offers a 100% money back guarantee within 60 days of delivery.</p>",
             "background": "#f9f9f9",
             "text_color": "#181818"
-          }
+          },
+          "disabled": true
         },
         "associated_products_mWz6hB": {
           "type": "associated_products",
@@ -327,14 +325,28 @@
             "background": "#eaf2ed",
             "text_color": "#00a341"
           }
+        },
+        "lp_eyebrow": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{%- if product.type != blank -%}<p class=\"lp-pdp-eyebrow\">{{ product.type | escape }}</p>{%- endif -%}"
+          }
+        },
+        "lp_summary": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{%- assign lp_s = product.metafields.custom.product_short_summary.value -%}{%- if lp_s != blank -%}<div class=\"lp-pdp-summary\"><p>{{ lp_s | escape }}{%- if product.metafields.custom.value_1 != blank %} {{ product.metafields.custom.header_1.value | default: 'Supports' | remove: ':' | strip | escape }}: {{ product.metafields.custom.value_1.value | strip | escape }}{%- endif -%}</p></div>{%- endif -%}"
+          }
         }
       },
       "block_order": [
+        "lp_eyebrow",
         "title",
         "badges",
         "price",
         "separator",
         "stamped_product_reviews_ugc_star_rating_badge_8VPpGa",
+        "lp_summary",
         "liquid_4FciyW",
         "variant_picker",
         "payment_terms",
@@ -342,14 +354,14 @@
         "quantity_selector",
         "text_VjR6WU",
         "description",
-        "collapsible_text_XwdWte",
-        "collapsible_text_DKpjzh",
-        "collapsible_text_KbRjKK",
         "collapsible_text_QcYtDR",
         "collapsible_text_PR3cy8",
-        "collapsible_text_PDdyLw",
         "collapsible_text_kaarby",
         "buy_buttons",
+        "collapsible_text_DKpjzh",
+        "collapsible_text_KbRjKK",
+        "collapsible_text_PDdyLw",
+        "collapsible_text_XwdWte",
         "text_zKnHjQ",
         "tolstoy_shoppable_video_ugc_stories_block_hnKrMy",
         "offer_KHjNfD",
@@ -373,16 +385,16 @@
       ],
       "settings": {
         "full_width": true,
-        "show_fixed_add_to_cart": false,
-        "desktop_media_width": 50,
-        "desktop_media_layout": "carousel_thumbnails_bottom",
+        "show_fixed_add_to_cart": true,
+        "desktop_media_width": 55,
+        "desktop_media_layout": "grid_highlight",
         "mobile_media_size": "expanded",
         "mobile_carousel_control": "floating_dots",
         "enable_video_autoplay": false,
         "enable_video_looping": true,
         "enable_image_zoom": false,
         "max_image_zoom_level": 2,
-        "background": "#ffffff",
+        "background": "",
         "background_gradient": "",
         "text_color": "",
         "input_background": "rgba(0,0,0,0)",
@@ -511,7 +523,8 @@
         "background": "",
         "background_gradient": "",
         "text_color": ""
-      }
+      },
+      "disabled": true
     },
     "feature_chart_eKhRpt": {
       "type": "feature-chart",
@@ -602,7 +615,8 @@
         "chart_background": "#f9f9f9",
         "chart_text_color": "",
         "chart_true_false_color": ""
-      }
+      },
+      "disabled": true
     },
     "scrolling_text_gnHJtw": {
       "type": "scrolling-text",
@@ -617,7 +631,8 @@
         "background_gradient": "linear-gradient(168deg, rgba(255, 143, 0, 1) 10%, rgba(255, 162, 44, 1) 53%, rgba(248, 189, 113, 1) 94%)",
         "text_color": "#ffffff",
         "text_gradient": ""
-      }
+      },
+      "disabled": true
     },
     "before_after_image_ieK6Jg": {
       "type": "before-after-image",
@@ -639,13 +654,13 @@
         "before_text": "Before",
         "after_text": "After",
         "drag_initial_position": 60,
-        "background": "#f9f9f9",
+        "background": "#f3efe7",
         "background_gradient": "",
-        "text_color": "#181818",
+        "text_color": "#15171b",
         "before_text_color": "#ffffff",
         "after_text_color": "#ffffff",
         "drag_cursor_background": "#ffffff",
-        "drag_cursor_color": "#ff8f00"
+        "drag_cursor_color": "#b06200"
       }
     },
     "scrolling_text_bihmkB": {
@@ -740,7 +755,8 @@
         "full_width": false,
         "alternate_media_position": false,
         "spacing": "none"
-      }
+      },
+      "disabled": true
     },
     "timeline_rPwewV": {
       "type": "timeline",
@@ -790,7 +806,8 @@
         "background": "#f9f9f9",
         "background_gradient": "linear-gradient(167deg, rgba(249, 249, 249, 1) 28%, rgba(255, 255, 255, 1) 45%, rgba(255, 255, 255, 1) 70%)",
         "text_color": "rgba(0,0,0,0)"
-      }
+      },
+      "disabled": true
     },
     "faq_XwdKmx": {
       "type": "faq",
@@ -884,7 +901,8 @@
         "button_text_color": "",
         "accordion_background": "#f9f9f9",
         "accordion_text_color": ""
-      }
+      },
+      "disabled": true
     },
     "rich_text_Pcf7H6": {
       "type": "rich-text",
@@ -928,7 +946,8 @@
         "background": "#ffffff",
         "background_gradient": "",
         "text_color": ""
-      }
+      },
+      "disabled": true
     },
     "faq_R6AxTY": {
       "type": "faq",
@@ -1218,16 +1237,93 @@
         "heading_color": "",
         "heading_gradient": ""
       }
+    },
+    "lp_pdp_highlights": {
+      "type": "lp-pdp-highlights",
+      "settings": {
+        "image": "",
+        "overlay": 60,
+        "eyebrow": "Why it works",
+        "heading": "",
+        "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
+      }
+    },
+    "lp_pdp_how": {
+      "type": "lp-pdp-how",
+      "settings": {
+        "image": "",
+        "eyebrow": "How it works",
+        "heading": "",
+        "text": "",
+        "supports_label": "Supports",
+        "link_label": "Explore the formula",
+        "film_asset": "lp-cell-film.mp4",
+        "poster_asset": "lp-cell-film-poster.jpg"
+      }
+    },
+    "lp_pdp_timeline": {
+      "type": "lp-pdp-timeline",
+      "settings": {
+        "eyebrow": "Your journey",
+        "heading": "Benefits that <em>build over time</em>",
+        "subheading": "Consistency is everything. Here's what to expect.",
+        "how_title": "How to use"
+      }
+    },
+    "lp_pdp_formula": {
+      "type": "lp-pdp-formula",
+      "settings": {
+        "image": "",
+        "eyebrow": "The formula",
+        "heading": "",
+        "full_list_label": "Full ingredient list",
+        "studies_label": "Scientific studies"
+      }
+    },
+    "lp_pdp_compare": {
+      "type": "lp-pdp-compare",
+      "settings": {
+        "eyebrow": "A higher standard",
+        "prefix": "How",
+        "heading": "",
+        "suffix": "compares",
+        "text": "<p>Held to standards many brands never publish, and backed by our 60-day money-back guarantee.</p>",
+        "feature_label": "Feature",
+        "other_label": "Typical brands",
+        "other_value": "Not always",
+        "guarantee_row": "60-day money-back guarantee"
+      }
+    },
+    "lp_pdp_faq": {
+      "type": "lp-pdp-faq",
+      "settings": {
+        "heading": "Questions? <em>We're here to help.</em>",
+        "text": "",
+        "button_label": "View all FAQs",
+        "button_url": "",
+        "contact_label": "Contact us",
+        "contact_url": "",
+        "q_who": "Who is [product] for?",
+        "q_how": "How do I take [product]?",
+        "q_when": "When will I notice a difference?"
+      }
     }
   },
   "order": [
     "main",
+    "lp_pdp_highlights",
+    "lp_pdp_how",
+    "lp_pdp_timeline",
+    "before_after_image_ieK6Jg",
+    "lp_pdp_formula",
+    "lp_pdp_compare",
+    "17128952497cac699c",
+    "lp_pdp_faq",
     "1717692639facd14b3",
     "faq_3eWR6f",
     "custom_liquid_XMpJDx",
     "feature_chart_eKhRpt",
     "scrolling_text_gnHJtw",
-    "before_after_image_ieK6Jg",
     "scrolling_text_bihmkB",
     "scrolling_text_GKpgyU",
     "media_with_text_UCaJMK",
@@ -1237,7 +1333,6 @@
     "faq_R6AxTY",
     "images_with_text_scrolling_AqDYAM",
     "related-products",
-    "17128952497cac699c",
     "custom_html_rD7gEb",
     "1712987483b4ce0d98",
     "tabs_WnLmDB"

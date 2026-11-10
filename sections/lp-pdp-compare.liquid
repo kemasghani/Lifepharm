@@ -1,0 +1,107 @@
+{%- liquid
+  assign mf = product.metafields.custom
+  assign certs = mf.value_5.value | split: ','
+  assign heading = section.settings.heading | default: product.title
+-%}
+
+{%- if certs.size > 0 or section.blocks.size > 0 -%}
+<section class="lp-cmp">
+  <div class="container">
+    <div class="lp-cmp__grid">
+      <div class="lp-cmp__intro">
+        {%- if section.settings.eyebrow != blank -%}<p class="lp-eyebrow lp-cmp__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+        <h2 class="h1 lp-cmp__title" data-lp-reveal>{{ section.settings.prefix | escape }} <em>{{ heading }}</em> {{ section.settings.suffix | escape }}</h2>
+        {%- if section.settings.text != blank -%}<div class="lp-cmp__text" data-lp-reveal style="--lp-i: 1">{{ section.settings.text }}</div>{%- endif -%}
+      </div>
+
+      <div class="lp-cmp__table" role="table" aria-label="{{ section.settings.prefix | escape }} {{ product.title | escape }}" data-lp-reveal style="--lp-i: 1">
+        <div class="lp-cmp__row lp-cmp__row--head" role="row">
+          <span role="columnheader" class="lp-cmp__feat"><span class="visually-hidden">{{ section.settings.feature_label | escape }}</span></span>
+          <span role="columnheader" class="lp-cmp__us"><span class="lp-cmp__badge">{{ product.title | escape }}</span></span>
+          <span role="columnheader" class="lp-cmp__them">{{ section.settings.other_label | escape }}</span>
+        </div>
+        {%- if section.blocks.size > 0 -%}
+          {%- for block in section.blocks -%}
+            <div class="lp-cmp__row" role="row" {{ block.shopify_attributes }}>
+              <span role="cell" class="lp-cmp__feat">{{ block.settings.feature | escape }}</span>
+              <span role="cell" class="lp-cmp__us"><span class="lp-cmp__yes">{% render 'lp-icon', name: 'check', size: 16 %}<span class="visually-hidden">Yes</span></span></span>
+              <span role="cell" class="lp-cmp__them">{{ block.settings.other | default: section.settings.other_value | escape }}</span>
+            </div>
+          {%- endfor -%}
+        {%- else -%}
+          {%- for cert in certs limit: 7 -%}
+            <div class="lp-cmp__row" role="row">
+              <span role="cell" class="lp-cmp__feat">{{ cert | strip | escape }}</span>
+              <span role="cell" class="lp-cmp__us"><span class="lp-cmp__yes">{% render 'lp-icon', name: 'check', size: 16 %}<span class="visually-hidden">Yes</span></span></span>
+              <span role="cell" class="lp-cmp__them">{{ section.settings.other_value | escape }}</span>
+            </div>
+          {%- endfor -%}
+          {%- if section.settings.guarantee_row != blank -%}
+            <div class="lp-cmp__row" role="row">
+              <span role="cell" class="lp-cmp__feat">{{ section.settings.guarantee_row | escape }}</span>
+              <span role="cell" class="lp-cmp__us"><span class="lp-cmp__yes">{% render 'lp-icon', name: 'check', size: 16 %}<span class="visually-hidden">Yes</span></span></span>
+              <span role="cell" class="lp-cmp__them">{{ section.settings.other_value | escape }}</span>
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+{%- endif -%}
+
+{% stylesheet %}
+.lp-cmp { position: relative; overflow: hidden; padding-block: var(--lp-section-gap); background: rgb(var(--lp-ink)); color: rgb(var(--lp-sand)); }
+.lp-cmp::before { content: ""; position: absolute; width: 60vw; aspect-ratio: 1; left: -20vw; bottom: -40vw; background: radial-gradient(closest-side, rgb(var(--lp-amber) / .22), transparent 70%); pointer-events: none; }
+.lp-cmp__grid { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+@media (min-width: 1000px) { .lp-cmp__grid { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); } }
+.lp-cmp__intro { display: grid; gap: 1rem; }
+.lp-cmp__eyebrow { color: rgb(var(--lp-amber)); }
+.lp-cmp__title { color: #fff; letter-spacing: -.03em; text-wrap: balance; }
+.lp-cmp__title em { color: rgb(var(--lp-amber)); }
+.lp-cmp__text { color: rgb(var(--lp-sand) / .72); line-height: 1.65; max-width: 44ch; }
+.lp-cmp__table { position: relative; display: grid; padding: .5rem clamp(.75rem, 2vw, 1.5rem); border-radius: var(--lp-radius-lg); background: rgb(255 255 255 / .05); border: 1px solid rgb(255 255 255 / .1); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
+.lp-cmp__table::before { content: ""; position: absolute; top: .5rem; bottom: .5rem; right: calc(clamp(.75rem, 2vw, 1.5rem) + var(--lp-cmp-col)); width: var(--lp-cmp-col); border-radius: var(--lp-radius); background: rgb(var(--lp-amber) / .12); border: 1px solid rgb(var(--lp-amber) / .3); }
+.lp-cmp__table { --lp-cmp-col: clamp(96px, 18vw, 160px); }
+.lp-cmp__row { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) var(--lp-cmp-col) var(--lp-cmp-col); align-items: center; min-height: 60px; border-bottom: 1px solid rgb(255 255 255 / .08); }
+.lp-cmp__row:last-child { border-bottom: 0; }
+.lp-cmp__row--head { min-height: 64px; }
+.lp-cmp__feat { padding-inline-end: 1rem; font-size: .9375rem; color: #fff; }
+.lp-cmp__us, .lp-cmp__them { text-align: center; font-size: .8125rem; }
+.lp-cmp__them { color: rgb(var(--lp-sand) / .55); }
+.lp-cmp__badge { display: inline-block; padding: .35rem .8rem; border-radius: 999px; border: 1px solid rgb(var(--lp-amber) / .6); color: #ffd9a3; font-weight: 600; font-size: .75rem; letter-spacing: .04em; }
+.lp-cmp__yes { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: rgb(var(--lp-amber)); color: rgb(var(--lp-ink)); }
+.lp-cmp__yes .lp-icon { stroke-width: 2.4; }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "LP · PDP comparison",
+  "tag": "div",
+  "class": "lp-pdp-section",
+  "settings": [
+    { "type": "paragraph", "content": "Rows are built from the product's Certifications metafield. Add blocks to write custom rows instead." },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "A higher standard" },
+    { "type": "text", "id": "prefix", "label": "Heading before product name", "default": "How" },
+    { "type": "inline_richtext", "id": "heading", "label": "Product name override" },
+    { "type": "text", "id": "suffix", "label": "Heading after product name", "default": "compares" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Held to standards many brands never publish, and backed by our 60-day money-back guarantee.</p>" },
+    { "type": "text", "id": "feature_label", "label": "Feature column label", "default": "Feature" },
+    { "type": "text", "id": "other_label", "label": "Comparison column label", "default": "Typical brands" },
+    { "type": "text", "id": "other_value", "label": "Comparison value", "default": "Not always" },
+    { "type": "text", "id": "guarantee_row", "label": "Extra row", "default": "60-day money-back guarantee" }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Row",
+      "settings": [
+        { "type": "text", "id": "feature", "label": "Feature" },
+        { "type": "text", "id": "other", "label": "Comparison value" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "LP · PDP comparison" } ],
+  "enabled_on": { "templates": ["product"] }
+}
+{% endschema %}

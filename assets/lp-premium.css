@@ -216,6 +216,47 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
   -webkit-backdrop-filter: blur(16px);
 }
 
+/* ---------- PDP v2 (editorial buy box) ---------- */
+.shopify-section--main-product .product-gallery__media { background: rgb(var(--lp-sand)); border-radius: var(--lp-radius-lg); }
+.shopify-section--main-product .product-gallery__media img { mix-blend-mode: multiply; }
+@media (min-width: 1000px) { .shopify-section--main-product .product { column-gap: clamp(2.5rem, 4vw, 5rem); } }
+.shopify-section--main-product .product-info__title { font-size: clamp(2.1rem, 3.4vw, 3.25rem); letter-spacing: -.035em; }
+.lp-pdp-summary { font-size: 1.0625rem; line-height: 1.55; color: rgb(var(--lp-muted)); max-width: 44ch; }
+.lp-pdp-summary p { margin: 0; }
+.lp-pdp-eyebrow { display: inline-flex; align-items: center; gap: .5rem; font-size: .75rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgb(var(--lp-amber-deep)); }
+.lp-pdp-eyebrow::before { content: ""; width: 18px; height: 1.5px; background: currentColor; }
+.shopify-section--main-product .product-info__accordion .accordion__toggle { font-size: 1rem; font-weight: 600; }
+.shopify-section--main-product .product-info__block-item[data-block-type="buy-buttons"] { margin-block-start: .25rem; }
+.lp-pdp-guarantee { margin: .75rem 0 0; text-align: center; font-size: .8125rem; color: rgb(var(--lp-muted)); }
+
+/* Floating add-to-cart pill */
+.product-quick-add { background: rgb(var(--lp-ivory) / .86); -webkit-backdrop-filter: blur(18px) saturate(160%); backdrop-filter: blur(18px) saturate(160%); border-top: 1px solid var(--lp-hairline); padding: .75rem 1rem calc(.75rem + env(safe-area-inset-bottom)); }
+.product-quick-add .button { border-radius: 999px; }
+@media screen and (min-width: 700px) {
+  .product-quick-add, .product-quick-add:not(:lang(ar), :lang(he)) { right: auto; left: 50%; width: auto; min-width: 30rem; max-width: calc(100vw - 2rem); padding: .5rem .5rem .5rem .6rem; border: 1px solid var(--lp-hairline); border-radius: 999px; box-shadow: var(--lp-shadow-3); transform: translate(-50%, 16px); bottom: 1.25rem; }
+  .product-quick-add.is-visible { transform: translate(-50%, 0); }
+  .product-quick-add__variant { grid-template-columns: 48px minmax(0, 1fr) auto; column-gap: .9rem; }
+  .product-quick-add__variant img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; background: rgb(var(--lp-sand)); }
+  .product-quick-add__variant .bold { font-size: .9375rem; }
+  .product-quick-add__variant .price-list { font-size: .875rem; }
+  .product-quick-add .button { min-height: 46px; padding-inline: 1.6rem; }
+}
+
+/* Shared editorial accordion (PDP sections) */
+.lp-fx__item { border-bottom: 1px solid var(--lp-hairline); }
+.lp-fx__item summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.15rem 0; cursor: pointer; list-style: none; font-weight: 600; font-size: 1rem; }
+.lp-fx__item summary::-webkit-details-marker { display: none; }
+.lp-fx__item summary:hover { color: rgb(var(--lp-amber-deep)); }
+.lp-fx__plus { position: relative; flex: none; width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgb(var(--lp-ink) / .14); transition: background-color var(--lp-dur-2) var(--lp-ease); }
+.lp-fx__plus::before, .lp-fx__plus::after { content: ""; position: absolute; left: 50%; top: 50%; width: 10px; height: 1.5px; margin: -.75px 0 0 -5px; background: currentColor; transition: transform var(--lp-dur-2) var(--lp-ease); }
+.lp-fx__plus::after { transform: rotate(90deg); }
+.lp-fx__item[open] .lp-fx__plus { background: rgb(var(--lp-ink)); color: #fff; border-color: transparent; }
+.lp-fx__item[open] .lp-fx__plus::after { transform: rotate(0deg); }
+.lp-fx__body { padding: 0 0 1.25rem; color: rgb(var(--lp-muted)); line-height: 1.65; font-size: .95rem; max-width: 60ch; }
+.lp-fx__body p { margin: 0 0 .6rem; }
+.lp-fx__item[open] .lp-fx__body { animation: lp-acc-in var(--lp-dur-3) var(--lp-ease); }
+@keyframes lp-acc-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+
 /* ---------- Drawers & cart ---------- */
 @media (min-width: 700px) {
   .drawer { border-radius: var(--lp-radius-lg) 0 0 var(--lp-radius-lg); overflow: hidden; }

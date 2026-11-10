@@ -1,7 +1,7 @@
 {% doc %}
   Renders a line icon from the LifePharm premium icon set.
 
-  @param {string} name - Icon name: shield, flag, flask, badge, truck, leaf, star, lock, chat, refresh, heart, sparkle, arrow
+  @param {string} name - Icon name: shield, flag, flask, badge, truck, leaf, star, lock, chat, refresh, heart, sparkle, arrow, dna, moon, bolt, drop, check, clock, cell
   @param {number} [size] - Pixel size, defaults to 24
 
   @example
@@ -10,6 +10,20 @@
 {%- assign size = size | default: 24 -%}
 <svg class="lp-icon lp-icon--{{ name }}" width="{{ size }}" height="{{ size }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
   {%- case name -%}
+    {%- when 'dna' -%}
+      <path d="M7 3c0 6 10 6 10 12s-10 6-10 6"/><path d="M17 3c0 6-10 6-10 12"/><path d="M8.5 7h7M8.5 17h7M10 12h4"/>
+    {%- when 'moon' -%}
+      <path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>
+    {%- when 'bolt' -%}
+      <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/>
+    {%- when 'drop' -%}
+      <path d="M12 2.5s6.5 7 6.5 12a6.5 6.5 0 0 1-13 0c0-5 6.5-12 6.5-12z"/>
+    {%- when 'check' -%}
+      <path d="m5 12.5 4.5 4.5L19 7.5"/>
+    {%- when 'clock' -%}
+      <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+    {%- when 'cell' -%}
+      <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2"/><circle cx="6.5" cy="9" r=".6"/><circle cx="17" cy="15.5" r=".6"/><circle cx="15.5" cy="7.5" r=".6"/>
     {%- when 'shield' -%}
       <path d="M12 22s8-3.6 8-10V5l-8-3-8 3v7c0 6.4 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>
     {%- when 'flag' -%}

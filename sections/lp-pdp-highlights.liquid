@@ -1,0 +1,120 @@
+{%- liquid
+  assign mf = product.metafields.custom
+  assign bg_image = section.settings.image | default: mf.image_benefits.value
+  if bg_image == blank and product.media.size > 2
+    assign bg_image = product.media[2].preview_image
+  endif
+  assign heading = section.settings.heading | default: mf.header_6.value
+  assign icons = 'sparkle,dna,heart,moon,leaf,bolt' | split: ','
+  assign benefits_html = mf.text_benefits | metafield_tag
+  assign benefit_items = benefits_html | split: '<li'
+  assign show_disclaimer = false
+  if benefits_html contains '*'
+    assign show_disclaimer = true
+  endif
+-%}
+
+{%- if section.blocks.size > 0 or benefit_items.size > 1 -%}
+<section class="lp-hl" style="--lp-hl-overlay: {{ section.settings.overlay | divided_by: 100.0 }}">
+  <div class="container">
+    <div class="lp-hl__frame">
+      {%- if bg_image != blank -%}
+        {{ bg_image | image_url: width: 2400 | image_tag: loading: 'lazy', sizes: '(min-width: 1400px) 1340px, 100vw', widths: '800,1200,1600,2000,2400', class: 'lp-hl__bg', alt: '' }}
+      {%- endif -%}
+      <div class="lp-hl__shade" aria-hidden="true"></div>
+
+      <div class="lp-hl__content">
+        {%- if section.settings.eyebrow != blank -%}<p class="lp-eyebrow lp-hl__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+        {%- if heading != blank -%}<h2 class="h1 lp-hl__title" data-lp-reveal>{{ heading }}</h2>{%- endif -%}
+
+        <ul class="lp-hl__cards" role="list">
+          {%- if section.blocks.size > 0 -%}
+            {%- for block in section.blocks -%}
+              <li class="lp-hl__card" data-lp-reveal style="--lp-i: {{ forloop.index0 }}" {{ block.shopify_attributes }}>
+                <span class="lp-hl__icon">{% render 'lp-icon', name: block.settings.icon, size: 30 %}</span>
+                {%- if block.settings.title != blank -%}<h3 class="lp-hl__card-title">{{ block.settings.title | escape }}</h3>{%- endif -%}
+                {%- if block.settings.text != blank -%}<p class="lp-hl__card-text">{{ block.settings.text | escape }}</p>{%- endif -%}
+              </li>
+            {%- endfor -%}
+          {%- else -%}
+            {%- for raw in benefit_items offset: 1 limit: 4 -%}
+              {%- liquid
+                assign item = raw | prepend: '<li'
+                assign card_title = ''
+                if item contains '<strong>'
+                  assign card_title = item | split: '<strong>' | last | split: '</strong>' | first | strip_html | remove: ':' | strip
+                  assign card_text = item | split: '</strong>' | last | strip_html | remove_first: ':' | strip
+                else
+                  assign card_text = item | strip_html | strip
+                endif
+                assign icon_index = forloop.index0
+              -%}
+              <li class="lp-hl__card" data-lp-reveal style="--lp-i: {{ forloop.index0 }}">
+                <span class="lp-hl__icon">{% render 'lp-icon', name: icons[icon_index], size: 30 %}</span>
+                {%- if card_title != blank -%}<h3 class="lp-hl__card-title">{{ card_title }}</h3>{%- endif -%}
+                <p class="lp-hl__card-text">{{ card_text | truncatewords: 26 }}</p>
+              </li>
+            {%- endfor -%}
+          {%- endif -%}
+        </ul>
+      </div>
+    </div>
+    {%- if show_disclaimer and section.settings.disclaimer != blank -%}
+      <p class="lp-hl__disclaimer">{{ section.settings.disclaimer | escape }}</p>
+    {%- endif -%}
+  </div>
+</section>
+{%- endif -%}
+
+{% stylesheet %}
+.lp-hl { padding-block: var(--lp-section-gap) 0; }
+.lp-hl__frame { position: relative; isolation: isolate; overflow: hidden; border-radius: var(--lp-radius-lg); min-height: clamp(560px, 70vw, 760px); display: grid; align-items: end; background: rgb(var(--lp-ink)); color: #fff; }
+.lp-hl__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transform: scale(1.04); transition: transform 2.4s var(--lp-ease); }
+.lp-hl__frame:hover .lp-hl__bg { transform: scale(1.0); }
+.lp-hl__shade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgb(var(--lp-ink) / calc(var(--lp-hl-overlay) * .35)) 0%, rgb(var(--lp-ink) / calc(var(--lp-hl-overlay) * .55)) 45%, rgb(var(--lp-ink) / calc(var(--lp-hl-overlay) * 1.1)) 100%); }
+.lp-hl__content { display: grid; gap: clamp(1.5rem, 3vw, 2.5rem); padding: clamp(1.25rem, 3.5vw, 3rem); }
+.lp-hl__eyebrow { color: rgb(var(--lp-amber)); }
+.lp-hl__title { color: #fff; max-width: 20ch; letter-spacing: -.03em; text-wrap: balance; }
+.lp-hl__cards { display: grid; grid-template-columns: minmax(0, 1fr); gap: .75rem; list-style: none; margin: 0; padding: 0; }
+@media (min-width: 700px) { .lp-hl__cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { .lp-hl__cards { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; } }
+.lp-hl__card { display: grid; align-content: start; gap: .6rem; padding: 1.4rem 1.4rem 1.6rem; border-radius: var(--lp-radius); background: rgb(255 255 255 / .1); border: 1px solid rgb(255 255 255 / .16); -webkit-backdrop-filter: blur(18px) saturate(140%); backdrop-filter: blur(18px) saturate(140%); }
+.lp-hl__icon { display: inline-grid; place-items: center; width: 48px; height: 48px; margin-block-end: .5rem; border-radius: 50%; background: rgb(var(--lp-amber) / .16); color: #ffd9a3; }
+.lp-hl__card-title { font-family: var(--text-font-family); font-size: 1.0625rem; font-weight: 600; letter-spacing: -.01em; color: #fff; margin: 0; }
+.lp-hl__card-text { margin: 0; font-size: .9375rem; line-height: 1.55; color: rgb(255 255 255 / .82); }
+.lp-hl__disclaimer { margin-block-start: 1rem; font-size: .75rem; line-height: 1.5; color: rgb(var(--lp-muted)); max-width: 70ch; }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "LP · PDP highlights",
+  "tag": "div",
+  "class": "lp-pdp-section",
+  "settings": [
+    { "type": "paragraph", "content": "Cards are filled from the product's Benefits metafield. Add blocks to write custom cards instead." },
+    { "type": "image_picker", "id": "image", "label": "Background image", "info": "Defaults to the product's benefits image" },
+    { "type": "range", "id": "overlay", "label": "Image darkness", "min": 20, "max": 90, "step": 5, "unit": "%", "default": 60 },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "info": "Defaults to the product's headline metafield" },
+    { "type": "text", "id": "disclaimer", "label": "Disclaimer", "default": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease." }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "limit": 4,
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "default": "sparkle", "options": [
+          { "value": "sparkle", "label": "Sparkle" }, { "value": "dna", "label": "DNA" }, { "value": "heart", "label": "Heart" },
+          { "value": "moon", "label": "Moon" }, { "value": "leaf", "label": "Leaf" }, { "value": "bolt", "label": "Energy" },
+          { "value": "drop", "label": "Drop" }, { "value": "cell", "label": "Cell" }, { "value": "shield", "label": "Shield" }, { "value": "flask", "label": "Flask" }
+        ] },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "textarea", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "LP · PDP highlights" } ],
+  "enabled_on": { "templates": ["product"] }
+}
+{% endschema %}

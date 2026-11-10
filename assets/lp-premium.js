@@ -298,14 +298,26 @@
       else if (!menu.contains(document.activeElement) && document.activeElement !== toggle) { event.preventDefault(); first.focus(); }
     };
 
+    const refItem = menu.querySelector('.lp-menu__ref');
+    const refButton = () => document.querySelector('.referral-banner__name--clickable');
+    const syncRef = () => {
+      if (!refItem) return;
+      const title = document.querySelector('.referral-banner__title');
+      const btn = refButton();
+      if (!btn) { refItem.hidden = true; return; }
+      const referred = title && getComputedStyle(title).display !== 'none';
+      refItem.hidden = false;
+      refItem.querySelector('button').textContent = referred ? `Shopping with ${btn.textContent.trim()} · Change` : 'Were you referred by someone?';
+    };
     toggle.addEventListener('click', (event) => {
       event.preventDefault();
-      if (toggle.getAttribute('aria-expanded') === 'true') close(); else open();
+      if (toggle.getAttribute('aria-expanded') === 'true') close(); else { syncRef(); open(); }
     });
     menu.addEventListener('click', (event) => {
       const opener = event.target.closest('[data-lp-menu-open]');
       if (opener) { showPanel(opener.dataset.lpMenuOpen); return; }
       if (event.target.closest('[data-lp-menu-back]')) { showRoot(); return; }
+      if (event.target.closest('[data-lp-menu-ref]')) { close(false); const btn = refButton(); if (btn) setTimeout(() => btn.click(), 50); return; }
       const link = event.target.closest('a[href]');
       if (link) {
         if (link.getAttribute('aria-controls') === 'search-drawer') { close(false); return; }

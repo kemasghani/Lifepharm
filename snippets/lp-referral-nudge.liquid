@@ -66,8 +66,7 @@
   .lp-ref__card { grid-template-columns: 72px minmax(0, 1fr); gap: .85rem; padding: .875rem 1rem .875rem .875rem; transform: translateY(calc(100% + 24px)); }
   .lp-ref__art { width: 72px; border-radius: 12px; }
   .lp-ref__title { font-size: 1rem; }
-  .lp-ref-tab { left: 12px; bottom: calc(14px + env(safe-area-inset-bottom)); min-height: 40px; padding: .5rem .85rem; border-radius: 999px; transform: translateY(calc(100% + 24px)); }
-  .lp-ref-tab[data-template="product"] { bottom: calc(88px + env(safe-area-inset-bottom)); }
+  .lp-ref-tab { display: none !important; }
 }
 @media (prefers-reduced-motion: reduce) {
   .lp-ref__card, .lp-ref-tab { transform: none !important; transition: opacity 150ms linear; }

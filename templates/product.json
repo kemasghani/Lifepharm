@@ -1172,41 +1172,6 @@
         "heading_gradient": ""
       }
     },
-    "lp_pdp_highlights": {
-      "type": "lp-pdp-highlights",
-      "settings": {
-        "overlay": 60,
-        "eyebrow": "Why it works",
-        "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
-      }
-    },
-    "lp_pdp_how": {
-      "type": "lp-pdp-how",
-      "settings": {
-        "eyebrow": "How it works",
-        "supports_label": "Supports",
-        "link_label": "Explore the formula",
-        "film_asset": "lp-cell-film.mp4",
-        "poster_asset": "lp-cell-film-poster.jpg"
-      }
-    },
-    "lp_pdp_timeline": {
-      "type": "lp-pdp-timeline",
-      "settings": {
-        "eyebrow": "Your journey",
-        "heading": "Benefits that <em>build over time</em>",
-        "subheading": "Consistency is everything. Here's what to expect.",
-        "how_title": "How to use"
-      }
-    },
-    "lp_pdp_formula": {
-      "type": "lp-pdp-formula",
-      "settings": {
-        "eyebrow": "The formula",
-        "full_list_label": "Full ingredient list",
-        "studies_label": "Scientific studies"
-      }
-    },
     "lp_pdp_compare": {
       "type": "lp-pdp-compare",
       "settings": {
@@ -1236,10 +1201,6 @@
     "main",
     "lp_pdp_faq",
     "lp_pdp_compare",
-    "lp_pdp_formula",
-    "lp_pdp_timeline",
-    "lp_pdp_how",
-    "lp_pdp_highlights",
     "1717692639facd14b3",
     "faq_3eWR6f",
     "custom_liquid_XMpJDx",

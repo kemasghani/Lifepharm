@@ -1230,10 +1230,29 @@
         "heading_color": "",
         "heading_gradient": ""
       }
+    },
+    "lp_pdp_timeline": {
+      "type": "lp-pdp-timeline",
+      "settings": {
+        "eyebrow": "Your journey",
+        "heading": "Benefits that <em>build over time</em>",
+        "subheading": "Consistency is everything. Here's what to expect.",
+        "how_title": "How to use"
+      }
+    },
+    "lp_pdp_formula": {
+      "type": "lp-pdp-formula",
+      "settings": {
+        "eyebrow": "The formula",
+        "full_list_label": "Full ingredient list",
+        "studies_label": "Scientific studies"
+      }
     }
   },
   "order": [
     "main",
+    "lp_pdp_formula",
+    "lp_pdp_timeline",
     "1717692639facd14b3",
     "faq_3eWR6f",
     "custom_liquid_XMpJDx",

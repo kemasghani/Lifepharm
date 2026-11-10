@@ -456,5 +456,9 @@ html:not(.lp-js) [data-lp-reveal] { opacity: 1; transform: none; }
 
 html.lp-menu-open { overflow: hidden; overscroll-behavior: none; }
 .lp-stat__value { font-variant-numeric: lining-nums; }
-@media (max-width: 699px) { html:has(product-quick-add.is-visible) iframe#chat-button { bottom: calc(96px + env(safe-area-inset-bottom)) !important; transition: bottom 300ms cubic-bezier(.16, 1, .3, 1); } }
+@media (max-width: 699px) {
+  #gorgias-chat-container :is(iframe#chat-button, iframe#mount-floating-engagement-widget, [class*="messenger-button-iframe"]) { translate: 0 0; transition: translate 380ms cubic-bezier(.16, 1, .3, 1) !important; }
+  html.lp-sticky-on #gorgias-chat-container :is(iframe#chat-button, iframe#mount-floating-engagement-widget, [class*="messenger-button-iframe"]) { translate: 0 calc(-1 * var(--lp-sticky-h, 88px)) !important; }
+}
+@media (prefers-reduced-motion: reduce) { #gorgias-chat-container :is(iframe#chat-button, iframe#mount-floating-engagement-widget, [class*="messenger-button-iframe"]) { transition: none !important; } }
 .lp-sticky__note { white-space: nowrap; }

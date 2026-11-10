@@ -392,6 +392,23 @@
   else initProductTabs();
 
 
+
+  const initStickyOffset = () => {
+    const bar = document.querySelector('product-quick-add');
+    if (!bar) return;
+    const root = document.documentElement;
+    const sync = () => {
+      const on = bar.classList.contains('is-visible');
+      if (on) root.style.setProperty('--lp-sticky-h', `${Math.round(bar.getBoundingClientRect().height) + 10}px`);
+      root.classList.toggle('lp-sticky-on', on);
+    };
+    new MutationObserver(sync).observe(bar, { attributes: true, attributeFilter: ['class'] });
+    window.addEventListener('resize', sync, { passive: true });
+    sync();
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initStickyOffset, { once: true });
+  else initStickyOffset();
+
   const whenIdle = (fn) => (window.requestIdleCallback ? requestIdleCallback(fn, { timeout: 2500 }) : setTimeout(fn, 1200));
   if (document.readyState === 'complete') whenIdle(startLazyVideos);
   else window.addEventListener('load', () => whenIdle(startLazyVideos), { once: true });

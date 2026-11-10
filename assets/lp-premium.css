@@ -40,7 +40,8 @@ body { font-feature-settings: "ss01", "cv11"; }
   --text-font-family: var(--lp-sans);
 }
 body { font-family: var(--lp-sans); font-optical-sizing: auto; }
-:is(.h0, .h1, .h2, .h3, h1, h2, h3):not(#lp-none) { font-weight: 350; letter-spacing: -.02em; line-height: 1.1; text-wrap: balance; }
+:is(.h0, .h1, .h2, .h3, h1, h2, h3):not(#lp-none) { font-weight: 350; letter-spacing: -.02em; line-height: 1.1 !important; text-wrap: balance; }
+.prose h4:not(#lp-none) { font-family: var(--lp-sans) !important; }
 .h4, .h5, .h6, h4, h5, h6 { letter-spacing: -.01em; line-height: 1.2; text-wrap: balance; }
 p, .prose p { text-wrap: pretty; }
 .prose { line-height: 1.7; }

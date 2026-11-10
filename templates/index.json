@@ -985,6 +985,7 @@
       }
     },
     "rich_text_6YfenC": {
+      "disabled": true,
       "type": "rich-text",
       "blocks": {
         "image_GEY3wr": {
@@ -1025,6 +1026,7 @@
       }
     },
     "17370759278c56fc7f": {
+      "disabled": true,
       "type": "apps",
       "blocks": {
         "instafeed_app_block_NV8EyH": {
@@ -1132,14 +1134,13 @@
         "min_height": 75,
         "eyebrow": "Regenerative wellness",
         "heading": "Activate your body's <em>natural renewal</em>",
-        "text": "<p>Premium nutritionals and skincare powered by fertilised avian egg extract — rich in growth factors that support your body's own repair process.*</p>",
+        "text": "<p>Premium nutritionals and skincare powered by fertilised avian egg extract, rich in growth factors that support your body's own repair process.*</p>",
         "button_label": "Shop bestsellers",
         "button_url": "shopify://collections/all",
         "secondary_label": "Explore the science",
         "secondary_url": "shopify://pages/science",
         "rating_text": "<strong>978+</strong> verified Laminine reviews",
         "image": "shopify://shop_images/cellnergy_sqaure.jpg",
-        "film_asset": "lp-brand-film.mp4",
         "float_1": "60-day guarantee",
         "float_2": "Clinically studied"
       }
@@ -1273,7 +1274,7 @@
         "image_position": "object-position: 50% 50%",
         "eyebrow": "The science",
         "heading": "Powered by nature's <em>growth factors</em>",
-        "text": "<p>Your body is constantly working to repair itself, but as we age that process slows down. Our fertilised avian egg extract is harvested at peak activity and delivers growth factors, cellular factors and amino acids — the building blocks your body uses to renew.*</p>",
+        "text": "<p>Your body is constantly working to repair itself, but as we age that process slows down. Our fertilised avian egg extract is harvested at peak activity and delivers growth factors, cellular factors and amino acids: the building blocks your body uses to renew.*</p>",
         "button_label": "View published studies",
         "button_url": "shopify://pages/our-studies",
         "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent disease."

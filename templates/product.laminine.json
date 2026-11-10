@@ -88,7 +88,7 @@
             "discount_text": "Save [discount]",
             "discount_color": "#e8890c",
             "discount_text_color": "#15171b",
-            "additional_subscription_content": "<ul><li>You save [discount]</li><li>Skip, delay or cancel any time</li><li>Renew on your timeframe</li></ul>",
+            "additional_subscription_content": "<ul><li>Save [discount] on your subscription</li><li>Skip, delay or cancel any time</li><li>Delivered on your schedule</li></ul>",
             "selector_type": "dropdown",
             "button_plan_selector_width": 100,
             "default_subscription": "",
@@ -242,7 +242,7 @@
         "associated_products_mWz6hB": {
           "type": "associated_products",
           "settings": {
-            "title": "Goes well with",
+            "title": "Pairs well with",
             "stack_products": true,
             "products_count": 3,
             "background": "",
@@ -352,7 +352,7 @@
         "lp_ugc_title": {
           "type": "liquid",
           "settings": {
-            "liquid": "<p class=\"lp-pdp-subhead\">Hear from customers using {{ product.title | escape }}</p>"
+            "liquid": "<p class=\"lp-pdp-subhead\">How customers use {{ product.title | escape }}</p>"
           }
         },
         "lp_price": {
@@ -1224,7 +1224,7 @@
       "settings": {
         "overlay": 60,
         "eyebrow": "Why it works",
-        "heading": "Feel the difference of <em>true cellular renewal.</em>",
+        "heading": "Support your body’s own renewal, every day.",
         "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
       },
       "blocks": {
@@ -1233,7 +1233,7 @@
           "settings": {
             "icon": "dna",
             "title": "Supports telomere health",
-            "text": "Helps lengthen telomeres, the protective caps on your DNA, to support healthy aging at the source.*"
+            "text": "Supports healthy telomeres, the protective caps on your DNA, so you can age well at the source.*"
           }
         },
         "card_2": {
@@ -1241,7 +1241,7 @@
           "settings": {
             "icon": "sparkle",
             "title": "Activates your own stem cells",
-            "text": "Supports your body's stem cells to renew tissue across key systems, from joints to gut lining.*"
+            "text": "Helps your own stem cells renew tissue where it counts, from joints to gut lining.*"
           }
         },
         "card_3": {
@@ -1249,15 +1249,15 @@
           "settings": {
             "icon": "heart",
             "title": "Builds stress resilience",
-            "text": "Helps lower cortisol, supporting mood, immune response, metabolism and steady energy.*"
+            "text": "Helps keep cortisol in check, for steadier mood, energy and immune response.*"
           }
         },
         "card_4": {
           "type": "card",
           "settings": {
             "icon": "moon",
-            "title": "Deeper, restorative sleep",
-            "text": "Supports deeper sleep for mental clarity, emotional balance and whole-body repair.*"
+            "title": "Deeper, more restful sleep",
+            "text": "Wake up clearer and calmer, with sleep that gives your body time to repair.*"
           }
         }
       },
@@ -1273,7 +1273,7 @@
       "settings": {
         "eyebrow": "How it works",
         "supports_label": "Supports",
-        "link_label": "Explore the formula",
+        "link_label": "See what’s inside",
         "film_asset": "lp-cell-film.mp4",
         "poster_asset": "lp-cell-film-poster.jpg"
       }
@@ -1281,9 +1281,9 @@
     "lp_pdp_timeline": {
       "type": "lp-pdp-timeline",
       "settings": {
-        "eyebrow": "Your journey",
+        "eyebrow": "What to expect",
         "heading": "Benefits that <em>build over time</em>",
-        "subheading": "Consistency is everything. Here's what to expect.",
+        "subheading": "Take it daily and the benefits build. Here’s what to look for, and when.",
         "how_title": "How to use"
       }
     },
@@ -1311,7 +1311,7 @@
     "lp_pdp_faq": {
       "type": "lp-pdp-faq",
       "settings": {
-        "heading": "Questions? <em>We're here to help.</em>",
+        "heading": "Still deciding? Start here.",
         "button_label": "View all FAQs",
         "contact_label": "Contact us",
         "q_who": "Who is [product] for?",
@@ -1323,7 +1323,7 @@
           "type": "item",
           "settings": {
             "question": "What if it doesn't work for me?",
-            "answer": "<p>Every LifePharm product comes with a 60-day money-back guarantee. If you're not satisfied, contact us within 60 days of delivery for a full refund.</p>"
+            "answer": "<p>Then you don’t pay for it. Every LifePharm product comes with a 60-day money-back guarantee. Let us know within 60 days of delivery and we’ll refund you in full.</p>"
           }
         },
         "faq_shipping": {

@@ -44,55 +44,6 @@
         "text_color": "#1f1e20"
       }
     },
-    "176964516604b6b434": {
-      "type": "apps",
-      "disabled": true,
-      "blocks": {
-        "teqnavi_lifepharm_referral_banner_KtLytF": {
-          "type": "shopify://apps/teqnavi-lifepharm/blocks/referral-banner/019bc71e-c7cd-732d-b07b-3ca8ead35448",
-          "settings": {
-            "show_banner": true,
-            "hide_on_enrollment": false,
-            "hide_on_logged_in": false,
-            "display_condition": "always",
-            "change_link_display": "always",
-            "allow_change_when_logged_in": false,
-            "title": "You are enrolling with",
-            "no_referral_message": "Are you referred by someone?",
-            "default_webalias": "retaildirect",
-            "background_color": "#414042",
-            "text_color": "#f3efe7",
-            "padding": 10,
-            "spacing": 8,
-            "referral_desktop_align": "left",
-            "title_size": 16,
-            "enroller_size": 16,
-            "show_announcements": true,
-            "announcement_messages": "",
-            "announcement_rotation_seconds": 5,
-            "announcement_mobile_layout": "above",
-            "debug_logging": false
-          }
-        }
-      },
-      "block_order": [
-        "teqnavi_lifepharm_referral_banner_KtLytF"
-      ],
-      "custom_css": [
-        "h3 {font-family: \"Lato\" !important;}",
-        ".referral-banner {margin-bottom: 0rem !important;}",
-        ".referral-banner__announcement-message {white-space: inherit !important;}",
-        ".referral-banner__cell--center {font-family: \"Lato\"; font-size: 16px;}"
-      ],
-      "settings": {
-        "full_width": true,
-        "remove_vertical_spacing": true,
-        "remove_horizontal_spacing": false,
-        "background": "#414042",
-        "background_gradient": "",
-        "text_color": "#f3efe7"
-      }
-    },
     "header": {
       "type": "header",
       "blocks": {
@@ -259,7 +210,6 @@
   "order": [
     "custom_liquid_9TAm6Y",
     "announcement-bar",
-    "176964516604b6b434",
     "header"
   ]
 }

@@ -262,7 +262,7 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
 .lp-pdp-price__now { font-size: clamp(1.75rem, 2.4vw, 2.125rem); font-weight: 600; letter-spacing: -.02em; line-height: 1; color: rgb(var(--lp-ink)); }
 .lp-pdp-price__was { font-size: 1.125rem; color: rgb(var(--lp-muted) / .8); }
 .lp-pdp-price__tag { align-self: center; padding: .3rem .6rem; border-radius: 999px; background: rgb(var(--lp-amber) / .14); color: rgb(var(--lp-amber-deep)); font-size: .75rem; font-weight: 700; letter-spacing: .04em; }
-.variant-picker__option-values--cards { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: .65rem; padding-block-start: .9rem; }
+.variant-picker__option-values--cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .65rem; padding-block-start: .9rem; }
 .lp-vcard { position: relative; min-width: 0; display: grid; justify-items: center; align-content: start; gap: .2rem; padding: .9rem .6rem 1rem; border-radius: 16px; background: #fff; box-shadow: inset 0 0 0 1.5px rgb(var(--lp-stone)); text-align: center; cursor: pointer; transition: box-shadow var(--lp-dur-2) var(--lp-ease), background-color var(--lp-dur-2) var(--lp-ease), transform var(--lp-dur-1) var(--lp-ease); -webkit-tap-highlight-color: transparent; }
 @media (hover: hover) { .lp-vcard:hover { box-shadow: inset 0 0 0 1.5px #b9b2a6; } }
 .lp-vcard:active { transform: scale(.985); }

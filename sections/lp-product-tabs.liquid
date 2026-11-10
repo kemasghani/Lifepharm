@@ -21,6 +21,9 @@
       {%- endif -%}
     </header>
 
+    <div class="lp-pt__rail">
+    <button type="button" class="lp-pt__nav lp-pt__nav--prev" data-lp-rail="-1" aria-label="Previous products" disabled><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>
+    <button type="button" class="lp-pt__nav lp-pt__nav--next" data-lp-rail="1" aria-label="Next products"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
     <ul class="lp-pt__grid" role="list" data-lp-tab-panel aria-live="polite">
       {%- for product in source.products limit: section.settings.limit -%}
         {%- liquid
@@ -61,6 +64,7 @@
         </li>
       {%- endfor -%}
     </ul>
+    </div>
 
     {%- if section.settings.view_all_label != blank -%}
       <div class="lp-pt__foot"><a class="button button--outline" href="{{ source.url }}">{{ section.settings.view_all_label | escape }}</a></div>
@@ -80,7 +84,10 @@
 .lp-pt__grid { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 62%); gap: .75rem; margin: 0 calc(-1 * var(--container-gutter, 1rem)); padding: 0 var(--container-gutter, 1rem) .5rem; list-style: none; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--container-gutter, 1rem); scrollbar-width: none; }
 .lp-pt__grid::-webkit-scrollbar { display: none; }
 @media (min-width: 700px) { .lp-pt__grid { grid-auto-columns: minmax(0, 38%); } }
-@media (min-width: 1000px) { .lp-pt__grid { grid-auto-flow: row; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-columns: auto; gap: 1.25rem; margin: 0; padding: 0; overflow: visible; } }
+@media (min-width: 1000px) { .lp-pt__grid { grid-auto-columns: calc((100% - 3 * 1.25rem) / 4); gap: 1.25rem; margin: 0; padding: 0 0 .5rem; scroll-padding-inline: 0; } }
+.lp-pt__rail { position: relative; }
+.lp-pt__nav { display: none; }
+@media (min-width: 1000px) { .lp-pt__nav { position: absolute; top: 34%; z-index: 2; display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 50%; background: #fff; color: rgb(var(--lp-ink)); box-shadow: 0 6px 20px -8px rgb(var(--lp-ink) / .45); cursor: pointer; transition: opacity 160ms ease-out, transform 160ms ease-out; } .lp-pt__nav:hover { transform: scale(1.06); } .lp-pt__nav[disabled] { opacity: 0; pointer-events: none; } .lp-pt__nav--prev { left: -22px; } .lp-pt__nav--next { right: -22px; } }
 .lp-pt__card { display: flex; flex-direction: column; scroll-snap-align: start; border: 1px solid #ececec; border-radius: 4px; background: #fff; overflow: hidden; transition: box-shadow 200ms ease-out, border-color 200ms ease-out; }
 .lp-pt__card[hidden] { display: none; }
 .lp-pt__card:hover { border-color: #dedede; box-shadow: 0 14px 32px -20px rgb(var(--lp-ink) / .45); }

@@ -328,8 +328,20 @@
       cards.forEach((card) => { card.hidden = key !== 'all' && !card.dataset.collections.split(' ').includes(key); });
       if (grid) grid.scrollTo({ left: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
     };
+    const prev = root.querySelector('[data-lp-rail="-1"]');
+    const next = root.querySelector('[data-lp-rail="1"]');
+    const syncRail = () => {
+      if (!grid || !prev || !next) return;
+      const max = grid.scrollWidth - grid.clientWidth - 2;
+      prev.disabled = grid.scrollLeft <= 2;
+      next.disabled = grid.scrollLeft >= max;
+    };
+    [prev, next].forEach((btn) => btn && btn.addEventListener('click', () => {
+      grid.scrollBy({ left: Number(btn.dataset.lpRail) * grid.clientWidth * 0.9, behavior: reduceMotion ? 'auto' : 'smooth' });
+    }));
+    if (grid) { grid.addEventListener('scroll', syncRail, { passive: true }); window.addEventListener('resize', syncRail); syncRail(); }
     tabs.forEach((tab, index) => {
-      tab.addEventListener('click', () => select(tab));
+      tab.addEventListener('click', () => { select(tab); requestAnimationFrame(syncRail); });
       tab.addEventListener('keydown', (event) => {
         if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
         const next = tabs[(index + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length];
@@ -342,15 +354,19 @@
       button.classList.add('is-loading');
       button.setAttribute('aria-busy', 'true');
       try {
-        const response = await fetch(`${window.Shopify?.routes?.root || '/'}cart/add.js`, {
+        const routeRoot = window.Shopify?.routes?.root || '/';
+        const sections = [];
+        document.documentElement.dispatchEvent(new CustomEvent('cart:prepare-bundled-sections', { bubbles: true, detail: { sections } }));
+        const response = await fetch(`${routeRoot}cart/add.js`, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify({ items: [{ id: Number(button.dataset.lpAdd), quantity: 1 }] })
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
+          body: JSON.stringify({ items: [{ id: Number(button.dataset.lpAdd), quantity: 1 }], sections: sections.join(','), sections_url: window.location.pathname })
         });
         const added = await response.json();
         if (!response.ok) throw new Error(added.description || 'Could not add to cart');
-        const cart = await (await fetch(`${window.Shopify?.routes?.root || '/'}cart.js`)).json();
-        document.documentElement.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
+        if (window.themeVariables?.settings?.cartType === 'page') { window.location.href = `${routeRoot}cart`; return; }
+        const cart = await (await fetch(`${routeRoot}cart.js`)).json();
+        cart.sections = added.sections || {};
         button.dispatchEvent(new CustomEvent('variant:add', { bubbles: true, detail: { items: added.items || [added], cart } }));
         document.documentElement.dispatchEvent(new CustomEvent('cart:change', { bubbles: true, detail: { baseEvent: 'variant:add', cart } }));
       } catch (error) {

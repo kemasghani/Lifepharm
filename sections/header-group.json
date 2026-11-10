@@ -40,7 +40,7 @@
         "cycle_speed": 5,
         "scrolling_speed": 14,
         "text_size": "text-base",
-        "background": "#15171b",
+        "background": "#414042",
         "background_gradient": "",
         "text_color": "#f3efe7"
       }
@@ -60,7 +60,7 @@
             "title": "You are enrolling with",
             "no_referral_message": "Are you referred by someone?",
             "default_webalias": "retaildirect",
-            "background_color": "#15171b",
+            "background_color": "#414042",
             "text_color": "#f3efe7",
             "padding": 10,
             "spacing": 8,
@@ -88,7 +88,7 @@
         "full_width": true,
         "remove_vertical_spacing": true,
         "remove_horizontal_spacing": false,
-        "background": "#15171b",
+        "background": "#414042",
         "background_gradient": "",
         "text_color": "#f3efe7"
       }

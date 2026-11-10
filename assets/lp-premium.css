@@ -1,14 +1,14 @@
 /* LifePharm Premium Layer — Clinical Luxury design system on top of Impact */
 
 :root {
-  --lp-ink: 21 23 27;
+  --lp-ink: 65 64 66;
   --lp-ivory: 251 249 245;
   --lp-sand: 243 239 231;
   --lp-stone: 217 212 202;
-  --lp-amber: 232 137 12;
-  --lp-amber-deep: 176 98 0;
+  --lp-amber: 241 138 0;
+  --lp-amber-deep: 166 90 0;
   --lp-sage: 63 107 78;
-  --lp-muted: 92 96 104;
+  --lp-muted: 107 106 108;
   --lp-hairline: rgb(var(--lp-ink) / .08);
   --lp-radius-sm: 12px;
   --lp-radius: 20px;
@@ -26,30 +26,28 @@
 }
 
 html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
-body { font-feature-settings: "ss01", "cv11"; }
 ::selection { background: rgb(var(--lp-amber) / .22); color: rgb(var(--lp-ink)); }
 
-/* ---------- Typography (Seed-style: one sans family, light display weight, mono labels) ---------- */
+/* ---------- Typography (LifePharm Quick Style Guide 2024: Metropolis Light/ExtraBold; Black 90% text) ---------- */
 :root:root {
-  --lp-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-  --lp-mono: "DM Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --lp-sans: "Metropolis", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
   --heading-font-family: var(--lp-sans);
-  --heading-font-weight: 350;
+  --heading-font-weight: 300;
   --heading-font-style: normal;
   --heading-letter-spacing: -.02em;
   --text-font-family: var(--lp-sans);
 }
-body { font-family: var(--lp-sans); font-optical-sizing: auto; }
-:is(.h0, .h1, .h2, .h3, h1, h2, h3):not(#lp-none) { font-weight: 350; letter-spacing: -.02em; line-height: 1.1 !important; text-wrap: balance; }
+body { font-family: var(--lp-sans); color: rgb(var(--lp-ink)); }
+:is(.h0, .h1, .h2, .h3, h1, h2, h3):not(#lp-none) { font-weight: 300; letter-spacing: -.02em; line-height: 1.1 !important; text-wrap: balance; }
 .prose h4:not(#lp-none) { font-family: var(--lp-sans) !important; }
 .h4, .h5, .h6, h4, h5, h6 { letter-spacing: -.01em; line-height: 1.2; text-wrap: balance; }
 p, .prose p { text-wrap: pretty; }
 .prose { line-height: 1.7; }
 .subheading, .section-header .subheading, .lp-eyebrow {
-  font-family: var(--lp-mono);
-  font-size: .8125rem;
-  font-weight: 400;
-  letter-spacing: .02em;
+  font-family: var(--lp-sans);
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .1em;
   text-transform: uppercase;
   color: rgb(var(--lp-amber-deep));
 }

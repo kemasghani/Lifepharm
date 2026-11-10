@@ -576,7 +576,7 @@ position: relative;
     `,
     css`
       /* LifePharm premium skin */
-      :host { max-width: none; --lp-ink: #15171b; --lp-muted: #5c6068; --lp-stone: #d9d4ca; --lp-warm: #fbf6ee; --lp-amber: #e8890c; --lp-amber-deep: #b06200; }
+      :host { max-width: none; --lp-ink: #414042; --lp-muted: #6b6a6c; --lp-stone: #d9d4ca; --lp-warm: #fbf6ee; --lp-amber: #f18a00; --lp-amber-deep: #a65a00; }
       .skio-plan-picker { gap: .75rem; margin-bottom: 0; color: var(--lp-ink); font-size: 15px; }
       legend { padding: 0; margin: 0 0 .65rem; font-size: 15px; font-weight: 400; color: var(--lp-muted); }
       .group-container { border: 1.5px solid var(--lp-stone); border-radius: 16px; background: #fff; transition: border-color .25s cubic-bezier(.22,1,.36,1), background-color .25s cubic-bezier(.22,1,.36,1), box-shadow .25s cubic-bezier(.22,1,.36,1); }
@@ -594,7 +594,7 @@ position: relative;
       .group-container--selected .skio-radio__container { color: var(--lp-ink); }
       .skio-price { flex: none; margin: 0 0 0 auto; gap: 8px; font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums; }
       .skio-price s { font-size: 14px; font-weight: 400; color: #8a8d93; opacity: 1; }
-      .savings.bubble { top: -12px; right: 16px; padding: 5px 10px; border: 0; border-radius: 999px; background: var(--lp-amber); color: var(--lp-ink); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; line-height: 1; box-shadow: 0 4px 12px -4px rgba(176,98,0,.5); }
+      .savings.bubble { top: -12px; right: 16px; padding: 5px 10px; border: 0; border-radius: 999px; background: var(--lp-amber); color: #1f1e20; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; line-height: 1; box-shadow: 0 4px 12px -4px rgba(176,98,0,.5); }
       .group-content { gap: 14px; padding-left: 34px; }
       .group-content-additional { font-size: 14px; line-height: 1.5; color: var(--lp-ink); font-weight: 400; }
       .group-content-additional ul { display: grid; gap: 6px; }

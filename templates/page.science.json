@@ -353,46 +353,8 @@
     },
     "lp_sci_standard": {
       "type": "lp-sci-standard",
-      "blocks": {
-        "f1": {
-          "type": "fact",
-          "settings": {
-            "icon": "flask",
-            "title": "Clinically studied",
-            "text": "18+ clinical studies"
-          }
-        },
-        "f2": {
-          "type": "fact",
-          "settings": {
-            "icon": "shield",
-            "title": "Fully NSF tested",
-            "text": "Independent quality testing"
-          }
-        },
-        "f3": {
-          "type": "fact",
-          "settings": {
-            "icon": "flag",
-            "title": "Made in the USA",
-            "text": ""
-          }
-        },
-        "f4": {
-          "type": "fact",
-          "settings": {
-            "icon": "refresh",
-            "title": "60-day guarantee",
-            "text": "Your money back if it is not for you"
-          }
-        }
-      },
-      "block_order": [
-        "f1",
-        "f2",
-        "f3",
-        "f4"
-      ],
+      "blocks": {},
+      "block_order": [],
       "settings": {
         "eyebrow": "Our standard",
         "heading": "We don’t <em>cut corners</em>",

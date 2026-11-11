@@ -27,7 +27,9 @@
 {% stylesheet %}
 .lp-sci-sd { padding-block: 0 var(--lp-section-gap); background: rgb(var(--lp-ivory)); }
 .lp-sci-sd__panel { display: grid; gap: clamp(1.75rem, 4vw, 3.5rem); align-items: center; padding: clamp(1.75rem, 5vw, 4rem); border-radius: var(--lp-radius-lg); background: rgb(var(--lp-sand)); }
-@media (min-width: 1000px) { .lp-sci-sd__panel { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); } }
+@media (min-width: 1000px) { .lp-sci-sd__panel:has(.lp-sci-sd__facts) { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); } }
+.lp-sci-sd__panel:not(:has(.lp-sci-sd__facts)) { justify-items: center; text-align: center; }
+.lp-sci-sd__panel:not(:has(.lp-sci-sd__facts)) .lp-sci-sd__copy { justify-items: center; max-width: 44rem; }
 .lp-sci-sd__copy { display: grid; gap: 1rem; justify-items: start; }
 .lp-sci-sd__title { margin: 0; color: rgb(var(--lp-ink)); }
 .lp-sci-sd__title em { font-style: normal; color: rgb(var(--lp-amber-deep)); }

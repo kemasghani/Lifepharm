@@ -30,15 +30,15 @@ Source: Dropbox "Branding Resources" > `LifePharm-QuickStyleGuide-2024.pdf`. Fon
 | Token | Value | Use |
 |---|---|---|
 | `--lp-ink` | **#414042** (Black 90%) | text, dark surfaces |
-| `--lp-amber` | **#F18A00** (Pantone 144) | brand accent, **all primary CTA buttons**, badges, icons |
+| `--lp-amber` | **#FF8F00** (live-site orange, chosen by Letisha 2026-11-12; was Pantone 144 #F18A00) | brand accent, **all primary CTA buttons**, badges, icons |
 | `--lp-amber-deep` | #A65A00 | orange **text** only (AA contrast on light backgrounds) |
 | Logo grey | #888B8D (Pantone 423) | logo and illustration only, not body text |
 | `--lp-muted` | #6B6A6C | secondary text |
 | `--lp-ivory` / `--lp-sand` | #FBF9F5 / #F3EFE7 | backgrounds |
 
-- **Primary buttons are #F18A00 with #1F1E20 text** (7.5:1). Never use white text on #F18A00 (2.5:1). Do not bring back dark or "pale black" buttons.
+- **Primary buttons are #FF8F00 with #1F1E20 text** (7.3:1). Never use white text on #FF8F00 (2.3:1). Do not bring back dark or "pale black" buttons.
 - Product colours, for product-specific accents only:
-  - Laminine #F18A00
+  - Laminine #FF8F00
   - Omega+++ #E1251B
   - Digestive+++ #3DAE2B
   - Immune+++ #F2CD00

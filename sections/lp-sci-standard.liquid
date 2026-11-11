@@ -1,0 +1,76 @@
+<section class="lp-sci-sd" aria-labelledby="lp-sci-sd-{{ section.id }}">
+  <div class="container">
+    <div class="lp-sci-sd__panel">
+      <div class="lp-sci-sd__copy">
+        {%- if section.settings.eyebrow != blank -%}<p class="lp-eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+        <h2 id="lp-sci-sd-{{ section.id }}" class="h2 lp-sci-sd__title">{{ section.settings.heading }}</h2>
+        {%- if section.settings.text != blank -%}<div class="lp-sci-sd__text">{{ section.settings.text }}</div>{%- endif -%}
+        {%- if section.settings.button_label != blank -%}
+          <a class="button button--primary lp-sci-sd__btn" href="{{ section.settings.button_url | default: routes.all_products_collection_url }}">{{ section.settings.button_label | escape }}</a>
+        {%- endif -%}
+      </div>
+      {%- if section.blocks.size > 0 -%}
+        <ul class="lp-sci-sd__facts" role="list">
+          {%- for block in section.blocks -%}
+            <li class="lp-sci-sd__fact" {{ block.shopify_attributes }}>
+              <span class="lp-sci-sd__icon" aria-hidden="true">{% render 'lp-icon', name: block.settings.icon, size: 20 %}</span>
+              <span class="lp-sci-sd__fact-text"><strong>{{ block.settings.title | escape }}</strong>{%- if block.settings.text != blank -%}<span>{{ block.settings.text | escape }}</span>{%- endif -%}</span>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+    {%- if section.settings.disclaimer != blank -%}<p class="lp-sci-sd__disclaimer">{{ section.settings.disclaimer | escape }}</p>{%- endif -%}
+  </div>
+</section>
+
+{% stylesheet %}
+.lp-sci-sd { padding-block: 0 var(--lp-section-gap); background: rgb(var(--lp-ivory)); }
+.lp-sci-sd__panel { display: grid; gap: clamp(1.75rem, 4vw, 3.5rem); align-items: center; padding: clamp(1.75rem, 5vw, 4rem); border-radius: var(--lp-radius-lg); background: rgb(var(--lp-sand)); }
+@media (min-width: 1000px) { .lp-sci-sd__panel { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); } }
+.lp-sci-sd__copy { display: grid; gap: 1rem; justify-items: start; }
+.lp-sci-sd__title { margin: 0; color: rgb(var(--lp-ink)); }
+.lp-sci-sd__title em { font-style: normal; color: rgb(var(--lp-amber-deep)); }
+.lp-sci-sd__text { max-width: 48ch; font-size: 1.0625rem; line-height: 1.65; color: rgb(var(--lp-ink)); }
+.lp-sci-sd__text p { margin: 0; }
+.lp-sci-sd__btn { margin-top: .4rem; white-space: nowrap; }
+.lp-sci-sd__facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; margin: 0; padding: 0; list-style: none; }
+.lp-sci-sd__fact { display: grid; gap: .7rem; align-content: start; padding: 1.1rem; border-radius: var(--lp-radius); background: #fff; box-shadow: inset 0 0 0 1px var(--lp-hairline); }
+.lp-sci-sd__icon { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: rgb(var(--lp-amber) / .16); color: rgb(var(--lp-amber-deep)); }
+.lp-sci-sd__fact-text { display: grid; gap: .2rem; font-size: .875rem; line-height: 1.45; color: rgb(var(--lp-ink)); }
+.lp-sci-sd__fact-text strong { font-size: .9375rem; font-weight: 700; }
+.lp-sci-sd__disclaimer { max-width: 80ch; margin: 1.25rem 0 0; font-size: .75rem; line-height: 1.55; color: rgb(var(--lp-muted)); }
+@media (max-width: 499px) { .lp-sci-sd__facts { grid-template-columns: minmax(0, 1fr); } }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "LP · Science standard",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our standard" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "We don’t <em>cut corners</em>" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop nutritionals" },
+    { "type": "url", "id": "button_url", "label": "Button link" },
+    { "type": "textarea", "id": "disclaimer", "label": "Disclaimer" }
+  ],
+  "blocks": [
+    {
+      "type": "fact",
+      "name": "Fact",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "default": "shield", "options": [
+          { "value": "shield", "label": "Shield" }, { "value": "flag", "label": "Flag" }, { "value": "flask", "label": "Flask" },
+          { "value": "badge", "label": "Badge" }, { "value": "refresh", "label": "Refresh" }, { "value": "leaf", "label": "Leaf" }
+        ] },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "text", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [ { "name": "LP · Science standard" } ],
+  "enabled_on": { "templates": ["page"] }
+}
+{% endschema %}

@@ -1,1 +1,413 @@
-{"sections":{"main":{"type":"main-page","disabled":true,"custom_css":["h1 {text-align: left !important;}"],"settings":{"content_width":"100%"}},"image_with_text_overlay_HrG6nG":{"type":"image-with-text-overlay","blocks":{"liquid_7fEAm9":{"type":"liquid","settings":{"liquid":"<h1 style= \"text-align: left;\">Our<span style= \"color: #FF8F00;\"> Studies<\/span><\/h1>"}},"liquid_iXRzh9":{"type":"liquid","settings":{"liquid":"<p style= \"text-align: left;\">Science is at the heart of everything we do. Our commitment to regeneration is grounded in rigorous research, clinical studies, and evidence-based formulations. Here, you’ll find the science behind our products—peer-reviewed data, white papers, and research that validate how we support the body’s natural ability to renew, repair, and thrive.<\/span><\/p>"}},"button_F97WFn":{"type":"button","disabled":true,"settings":{"style":"fill","size":"sm","text":"Button text","url":"","background":"","text_color":""}},"richtext_UtCcDh":{"type":"richtext","disabled":true,"settings":{"content":"<p>Science is at the heart of everything we do. Our commitment to regeneration is grounded in rigorous research, clinical studies, and evidence-based formulations. Here, you’ll find the science behind our products—peer-reviewed data, white papers, and research that validate how we support the body’s natural ability to renew, repair, and thrive.<\/p>"}}},"block_order":["liquid_7fEAm9","liquid_iXRzh9","button_F97WFn","richtext_UtCcDh"],"custom_css":[".content-over-media > :not(img, video, iframe, svg, video-media, picture) {text-align: left !important;}","@media screen and (min-width: 700px) {.content-over-media > :not(img, video, iframe, svg, video-media, picture) {max-width: 600px; }}"],"name":"Image with text overlay","settings":{"full_width":true,"allow_transparent_header":false,"enable_parallax":false,"image_size":"md","image":"shopify:\/\/shop_images\/lifepharm_-_our_studies.jpg","mobile_text_position":"place-self-center text-center","desktop_text_position":"sm:place-self-center-start sm:text-start","text_color":"#181818","overlay_color":"#000000","overlay_opacity":0}},"design_pack_marquee_multitext_wrwQ8j":{"type":"design_pack_-_marquee_-_multitext","blocks":{"content_7YW8CU":{"type":"content","settings":{"text":"    18+ CLINICAL STUDIES       |"}},"content_W6AVd6":{"type":"content","settings":{"text":"    REGENERATION PATENT (SEPT 2020)       |"}},"content_z4tDAk":{"type":"content","settings":{"text":"    WINNER OF THE MONDE SELECTION GOLD AWARD       |"}},"content_BbezdK":{"type":"content","settings":{"text":"    RATED 5 STARS BY DERMATEST®       |"}}},"block_order":["content_7YW8CU","content_W6AVd6","content_z4tDAk","content_BbezdK"],"name":"Marquee - multi-text 🎒","settings":{"speed":25,"reverse_scrolling":false,"scrolling_pause":false,"image_size":"medium","text_size":60,"text_color":"#ffffff","background_solid":"","background_color":"#FF8F00","fade_edges":false,"inner_padding":20,"outer_margin":0,"custom_css":"{\n  font-weight: 600;\n}","mobile_custom_css":"","anchor_id":"","custom_classes":"","override_theme_font":false,"main_font":"system_ui_n4"}},"rich_text_iGi3QU":{"type":"rich-text","blocks":{"liquid_r6jAGj":{"type":"liquid","settings":{"liquid":"<h4 style=\"color: #FF8F00;\">CELLNERGY POWER CREAM<\/h4>"}},"richtext_K3Mm9j":{"type":"richtext","settings":{"content":"<ul><li><a href=\"https:\/\/www.omicsonline.org\/conference-proceedings\/dermatology-2017-scientifictracks-abstracts.digital\/files\/assets\/basic-html\/page-2.html?ref=retaildirect\" title=\"https:\/\/www.omicsonline.org\/conference-proceedings\/dermatology-2017-scientifictracks-abstracts.digital\/files\/assets\/basic-html\/page-2.html?ref=retaildirect\">LifePharm Egg Increases Proliferation of Skin Cells and Production of Collagen, Elastin, and Fibronectin<\/a><\/li><li><a href=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0885\/0128\/9269\/files\/CellnergyPowerCream-WhitePaper-DegenerativeDisorder.pdf?v=1758129082\" title=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0885\/0128\/9269\/files\/CellnergyPowerCream-WhitePaper-DegenerativeDisorder.pdf?v=1758129082\">Cellnergy Wellness Power Cream for Joint Degenerative Disorder<\/a><\/li><li><a href=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0885\/0128\/9269\/files\/CellnergyPowerCream-WhitePaper-Sleep-ENG.pdf?v=1758129079\" title=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0885\/0128\/9269\/files\/CellnergyPowerCream-WhitePaper-Sleep-ENG.pdf?v=1758129079\">Cellnergy Wellness Power Cream for Restful Sleep<\/a><\/li><li><a href=\"https:\/\/stemcellres.biomedcentral.com\/articles\/10.1186\/s13287-019-1462-z\" title=\"https:\/\/stemcellres.biomedcentral.com\/articles\/10.1186\/s13287-019-1462-z\">Bio-Active Growth Factor (FGF-2) Stimulates Stem Cell Activation<\/a><\/li><li><a href=\"https:\/\/pubmed.ncbi.nlm.nih.gov\/2000940\/\" title=\"https:\/\/pubmed.ncbi.nlm.nih.gov\/2000940\/\">Bio-Active Growth Factors Promote Production of Collagen<\/a><\/li><\/ul>"}}},"block_order":["liquid_r6jAGj","richtext_K3Mm9j"],"custom_css":["li::marker {color: #ff8f00 !important; font-size: 21px !important;}",".prose ul {list-style: unset; margin-left: 18px;}"],"name":"Rich text - CELLNERGY POWER CREAM","settings":{"full_width":false,"content_width":"medium","text_position":"start","background":"rgba(0,0,0,0)","background_gradient":"","text_color":""}},"rich_text_3Qjx7C":{"type":"rich-text","blocks":{"liquid_mGr69P":{"type":"liquid","settings":{"liquid":"<h4 style=\"color: #FF8F00;\">CELLNERGY WELLNESS DEVICE<\/h4>"}},"richtext_Tn6b4X":{"type":"richtext","settings":{"content":"<ul><li><a href=\"https:\/\/lifepharm.com\/media\/studies\/Cellnergy-AchillesHeel-Study-ENG.pdf?ref=retaildirect\" title=\"https:\/\/lifepharm.com\/media\/studies\/Cellnergy-AchillesHeel-Study-ENG.pdf?ref=retaildirect\">Cellnergy Wellness Treatments on Subject with Chronic Pain Due to Tendon Damage on the Achilles Heel<\/a><\/li><\/ul>"}}},"block_order":["liquid_mGr69P","richtext_Tn6b4X"],"custom_css":["li::marker {color: #ff8f00 !important; font-size: 21px !important;}",".prose ul {list-style: unset; margin-left: 18px;}"],"name":"Rich text - CELLNERGY WELLNESS DEVICE","settings":{"full_width":false,"content_width":"medium","text_position":"start","background":"","background_gradient":"","text_color":""}},"rich_text_Y3cgBe":{"type":"rich-text","blocks":{"liquid_4FyeCh":{"type":"liquid","settings":{"liquid":"<h4 style=\"color: #FF8F00;\">CELLNERGY FOOTCHARGE<\/h4>"}},"richtext_VKVy7k":{"type":"richtext","settings":{"content":"<ul><li><a href=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0790\/7665\/5396\/files\/2025-08-12-CellnergyFootCharge-WhitePaper-Technology-ENG-PL-V1.pdf?v=1778190362\" title=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0790\/7665\/5396\/files\/2025-08-12-CellnergyFootCharge-WhitePaper-Technology-ENG-PL-V1.pdf?v=1778190362\">CELLNERGY FOOTCHARGE: TRIPLE-ACTION TECHNOLOGY FOR PAIN RELIEF AND CELLULAR RENEWAL<\/a><\/li><li><a href=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0790\/7665\/5396\/files\/2025-08-26-CellnergyFootCharge-WhitePaper-Technical-ENG-PL-V1.pdf?v=1778190494\" title=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0790\/7665\/5396\/files\/2025-08-26-CellnergyFootCharge-WhitePaper-Technical-ENG-PL-V1.pdf?v=1778190494\">A MULTI-THERAPY FOOT STIMULATION SYSTEM FOR CIRCULATORY, NEUROMUSCULAR, AND CELLULAR SUPPORT<\/a><\/li><\/ul>"}}},"block_order":["liquid_4FyeCh","richtext_VKVy7k"],"custom_css":["li::marker {color: #ff8f00 !important; font-size: 21px !important;}",".prose ul {list-style: unset; margin-left: 18px;}"],"name":"Rich text - CELLNERGY FOOTCHARGE","settings":{"full_width":false,"content_width":"medium","text_position":"start","background":"","background_gradient":"","text_color":""}},"rich_text_b7Qbfz":{"type":"rich-text","blocks":{"liquid_dRTwpQ":{"type":"liquid","settings":{"liquid":"<h4 style=\"color: #FF8F00;\">DIGESTIVE+++<\/h4>"}},"richtext_8WULq9":{"type":"richtext","settings":{"content":"<ul><li><a href=\"https:\/\/www.lifepharm.com\/media\/studies\/2019-01-30-Digestive-WhitePaper-PL-V1.pdf?ref=retaildirect\" title=\"https:\/\/www.lifepharm.com\/media\/studies\/2019-01-30-Digestive-WhitePaper-PL-V1.pdf?ref=retaildirect\">Improved Short-Chain Fatty Acid Production with LAMININE and DIGESTIVE+++ Which Indicates Improved Colon Health<\/a><\/li><\/ul>"}}},"block_order":["liquid_dRTwpQ","richtext_8WULq9"],"custom_css":["li::marker {color: #ff8f00 !important; font-size: 21px !important;}",".prose ul {list-style: unset; margin-left: 18px;}"],"name":"Rich text - DIGESTIVE+++","settings":{"full_width":false,"content_width":"medium","text_position":"start","background":"","background_gradient":"","text_color":""}},"rich_text_rg7fzk":{"type":"rich-text","blocks":{"liquid_yb8tU4":{"type":"liquid","settings":{"liquid":"<h4 style=\"color: #FF8F00;\">IMMUNE+++<\/h4>"}},"richtext_z3zHFP":{"type":"richtext","settings":{"content":"<ul><li><a href=\"https:\/\/www.lifepharm.com\/media\/pdf\/ScienceArticles\/I-ACN-Study.pdf?ref=retaildirect\" title=\"https:\/\/www.lifepharm.com\/media\/pdf\/ScienceArticles\/I-ACN-Study.pdf?ref=retaildirect\">IMMUNE+++ Significantly Increased Several Types of White Blood Cell Counts<\/a><\/li><\/ul>"}}},"block_order":["liquid_yb8tU4","richtext_z3zHFP"],"custom_css":["li::marker {color: #ff8f00 !important; font-size: 21px !important;}",".prose ul {list-style: unset; margin-left: 18px;}"],"name":"Rich text - IMMUNE+++","settings":{"full_width":false,"content_width":"medium","text_position":"start","background":"","background_gradient":"","text_color":""}},"rich_text_ETRphG":{"type":"rich-text","blocks":{"liquid_Ca9ETD":{"type":"liquid","settings":{"liquid":"<h4 style=\"color: #FF8F00;\">LAMIDERM APEX<\/h4>"}},"richtext_Jtaapc":{"type":"richtext","settings":{"content":"<ul><li><a href=\"https:\/\/www.lifepharm.com\/media\/Studies\/2018-12-20-Lamiderm%20Study-WhitePaper-PL-V1.pdf?ref=retaildirect\" title=\"https:\/\/www.lifepharm.com\/media\/Studies\/2018-12-20-Lamiderm%20Study-WhitePaper-PL-V1.pdf?ref=retaildirect\">Dermatest GmbH LAMIDERM APEX Safety and Efficacy Study<\/a><\/li><li><a href=\"https:\/\/www.omicsonline.org\/conference-proceedings\/dermatology-2017-scientifictracks-abstracts.digital\/files\/assets\/basic-html\/page-1.html#\" title=\"https:\/\/www.omicsonline.org\/conference-proceedings\/dermatology-2017-scientifictracks-abstracts.digital\/files\/assets\/basic-html\/page-1.html#\">LifePharm Egg Increases Proliferation of Skin Cells and Production of Collagen, Elastin, and Fibronectin<\/a><\/li><li><a href=\"https:\/\/www.lifepharm.com\/media\/Studies\/Laminine%20and%20Lamiderm%20PDR%20article,%20word.pdf?ref=retaildirect\" title=\"https:\/\/www.lifepharm.com\/media\/Studies\/Laminine%20and%20Lamiderm%20PDR%20article,%20word.pdf?ref=retaildirect\">The Effects of Laminine and LAMIDERM APEX on Collagen and Elastin Levels, Physician’s Desk Reference (PDR.net, 2017)<\/a><\/li><\/ul>"}}},"block_order":["liquid_Ca9ETD","richtext_Jtaapc"],"custom_css":["li::marker {color: #ff8f00 !important; font-size: 21px !important;}",".prose ul {list-style: unset; margin-left: 18px;}"],"name":"Rich text - LAMIDERM APEX","settings":{"full_width":false,"content_width":"medium","text_position":"start","background":"","background_gradient":"","text_color":""}},"rich_text_86hN6P":{"type":"rich-text","blocks":{"liquid_gFAXri":{"type":"liquid","settings":{"liquid":"<h4 style=\"color: #FF8F00;\">LAMININE<\/h4>"}},"richtext_fCEghE":{"type":"richtext","settings":{"content":"<ul><li><a href=\"https:\/\/lifepharm.com\/media\/pdf\/laminine\/ENG-LaminineBloodSugar-Study.pdf?ref=retaildirect\" title=\"https:\/\/lifepharm.com\/media\/pdf\/laminine\/ENG-LaminineBloodSugar-Study.pdf?ref=retaildirect\">The Effects of LAMININE on Normal Blood Sugar Levels<\/a><\/li><li><a href=\"https:\/\/www.lifepharm.com\/Media\/Studies\/Laminine%20CRP%20Andujar,_%20LAMININE.pdf?ref=retaildirect\" title=\"https:\/\/www.lifepharm.com\/Media\/Studies\/Laminine%20CRP%20Andujar,_%20LAMININE.pdf?ref=retaildirect\">LAMININE Redudes CRP, an Inflammation Marker in Subjects with Joint Soreness and Stiffness<\/a><\/li><li><a href=\"https:\/\/www.lifepharm.com\/Media\/Studies\/18th%20European%20Diabetes%20Congress_%20Laminine.pdf?ref=retaildirect\" title=\"https:\/\/www.lifepharm.com\/Media\/Studies\/18th%20European%20Diabetes%20Congress_%20Laminine.pdf?ref=retaildirect\">LAMININE Supports Help Maintaining Blood Sugar in High-Normal Subjects<\/a><\/li><li><a href=\"https:\/\/www.lifepharm.com\/media\/Studies\/PDR%202018%20final-2.pdf?ref=retaildirect\" title=\"https:\/\/www.lifepharm.com\/media\/Studies\/PDR%202018%20final-2.pdf?ref=retaildirect\">The LAMININE and Telomere Connection, Physician’s Desk Reference Excerpt, 2018<\/a><\/li><li><a href=\"https:\/\/www.omicsonline.org\/conference-proceedings\/dermatology-2017-scientifictracks-abstracts.digital\/files\/assets\/basic-html\/page-2.html#\" title=\"https:\/\/www.omicsonline.org\/conference-proceedings\/dermatology-2017-scientifictracks-abstracts.digital\/files\/assets\/basic-html\/page-2.html#\">LifePharm Egg Increases Proliferation of Skin Cells and Production of Collagen, Elastin, and Fibronectin<\/a><\/li><li><a href=\"https:\/\/www.lifepharm.com\/Media\/Studies\/Hy,%20Laminine,%20blood%20sugar,%20abstract,%20preventive%20medicine%20journal_%20LAMININE.pdf?ref=retaildirect\" title=\"https:\/\/www.lifepharm.com\/Media\/Studies\/Hy,%20Laminine,%20blood%20sugar,%20abstract,%20preventive%20medicine%20journal_%20LAMININE.pdf?ref=retaildirect\">LAMININE Supplementation Helped Subjects Maintain Normal Blood Glucose as Measured by HA1-C<\/a><\/li><li><a href=\"https:\/\/lifepharm.com\/media\/pdf\/laminine\/ENG-LaminineCortisol-Study.pdf?ref=retaildirect\" title=\"https:\/\/lifepharm.com\/media\/pdf\/laminine\/ENG-LaminineCortisol-Study.pdf?ref=retaildirect\">LAMININE And Maintaining Normal Cortisol Levels in the Body, Physician’s Desk Reference, 2015<\/a><\/li><\/ul>"}}},"block_order":["liquid_gFAXri","richtext_fCEghE"],"custom_css":["li::marker {color: #ff8f00 !important; font-size: 21px !important;}",".prose ul {list-style: unset; margin-left: 18px;}"],"name":"Rich text - LAMININE","settings":{"full_width":false,"content_width":"medium","text_position":"start","background":"","background_gradient":"","text_color":""}},"rich_text_6AVMLP":{"type":"rich-text","blocks":{"liquid_wdPt3r":{"type":"liquid","settings":{"liquid":"<h4 style=\"color: #FF8F00;\">OMEGA+++<\/h4>"}},"richtext_JWnEmx":{"type":"richtext","settings":{"content":"<ul><li><a href=\"https:\/\/cdn.shopify.com\/s\/files\/1\/1909\/0145\/files\/ENG-OmegaCholesterol-Whitepaper.pdf?v=1680210163&ref=retaildirect\" title=\"https:\/\/cdn.shopify.com\/s\/files\/1\/1909\/0145\/files\/ENG-OmegaCholesterol-Whitepaper.pdf?v=1680210163&ref=retaildirect\">The Effects of LAMININE OMEGA+++ and LAMININE on Helping Maintain Healthy Cholesterol and Triglycerides, Physician’s Desk Reference<\/a><\/li><li><a href=\"https:\/\/lifepharm.com\/media\/pdf\/ScienceArticles\/LO-FertilityStudy-WhitePaper.pdf?ref=retaildirect\" title=\"https:\/\/lifepharm.com\/media\/pdf\/ScienceArticles\/LO-FertilityStudy-WhitePaper.pdf?ref=retaildirect\">Male Subjects with Low Sperm Activity and Infertility Showed Improved Spermatogram Results and 20% Enhanced Pregnancy Rate<\/a><\/li><\/ul>"}}},"block_order":["liquid_wdPt3r","richtext_JWnEmx"],"custom_css":["li::marker {color: #ff8f00 !important; font-size: 21px !important;}",".prose ul {list-style: unset; margin-left: 18px;}"],"name":"Rich text - OMEGA+++","settings":{"full_width":false,"content_width":"medium","text_position":"start","background":"","background_gradient":"","text_color":""}}},"order":["main","image_with_text_overlay_HrG6nG","design_pack_marquee_multitext_wrwQ8j","rich_text_iGi3QU","rich_text_3Qjx7C","rich_text_Y3cgBe","rich_text_b7Qbfz","rich_text_rg7fzk","rich_text_ETRphG","rich_text_86hN6P","rich_text_6AVMLP"]}
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "content_width": "80ch"
+      }
+    },
+    "lp_sci_hero": {
+      "type": "lp-sci-hero",
+      "blocks": {
+        "fact_1": {
+          "type": "fact",
+          "settings": {
+            "icon": "flask",
+            "value": "18+",
+            "label": "clinical studies"
+          }
+        },
+        "fact_2": {
+          "type": "fact",
+          "settings": {
+            "icon": "badge",
+            "value": "Patented",
+            "label": "regeneration technology, 2020"
+          }
+        },
+        "fact_3": {
+          "type": "fact",
+          "settings": {
+            "icon": "star",
+            "value": "Gold",
+            "label": "Monde Selection award"
+          }
+        },
+        "fact_4": {
+          "type": "fact",
+          "settings": {
+            "icon": "shield",
+            "value": "5 stars",
+            "label": "rated by Dermatest®"
+          }
+        }
+      },
+      "block_order": [
+        "fact_1",
+        "fact_2",
+        "fact_3",
+        "fact_4"
+      ],
+      "settings": {
+        "eyebrow": "Our science",
+        "heading": "Regeneration, <em>studied</em>",
+        "text": "<p>At LifePharm we research and develop products that are sustainable, ethical and of the highest quality. Here is how our fertilised avian egg extract works, with every published study in one place.</p>",
+        "image": "shopify://shop_images/science_lifepharm.jpg",
+        "image_alt": "LifePharm research",
+        "jump_label": "On this page",
+        "link_1_label": "See the studies",
+        "link_1_url": "#studies",
+        "link_2_label": "How it works",
+        "link_2_url": "#how-it-works"
+      }
+    },
+    "lp_sci_chapters": {
+      "type": "lp-sci-chapters",
+      "blocks": {
+        "ch_1": {
+          "type": "chapter",
+          "settings": {
+            "image": "shopify://shop_images/repair_your_cells.jpg",
+            "title": "Natural repair slows with age",
+            "text": "<p>Your body is always working to repair itself, but as we get older that process can slow down. LifePharm products help give it a natural boost, using fertilised avian eggs rich in growth factors, tiny messengers extracted at their peak activity.</p>"
+          }
+        },
+        "ch_2": {
+          "type": "chapter",
+          "settings": {
+            "image": "shopify://shop_images/fgf-2_science.jpg",
+            "title": "Growth factors send the signal",
+            "text": "<p>Growth factors in our egg extract, such as FGF-2, signal stem cells towards the areas of the body that need support. There, stem cells can help repair and renew tissue.</p>"
+          }
+        },
+        "ch_3": {
+          "type": "chapter",
+          "settings": {
+            "image": "shopify://shop_images/in_our_nature.jpg",
+            "title": "Building blocks for renewal",
+            "text": "<p>The extract also contains other cellular factors and amino acids, the building blocks of protein. Your body uses them to maintain tissue, renew cells and make hormones and neurotransmitters.</p>"
+          }
+        },
+        "ch_4": {
+          "type": "chapter",
+          "settings": {
+            "image": "shopify://shop_images/healthy_aging.jpg",
+            "title": "What the studies suggest",
+            "text": "<p>Research suggests this combination of growth factors, cellular factors and amino acids may help:*</p><ul><li>Support your body’s natural repair</li><li>Maintain healthy joints and cartilage</li><li>Support healthy ageing</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "ch_1",
+        "ch_2",
+        "ch_3",
+        "ch_4"
+      ],
+      "settings": {
+        "anchor": "how-it-works",
+        "eyebrow": "How it works",
+        "heading": "From egg to <em>renewal</em>",
+        "text": "<p>Four steps, from a single ingredient to the way your body renews itself.</p>"
+      }
+    },
+    "lp_sci_studies": {
+      "type": "lp-sci-studies",
+      "blocks": {
+        "study_01": {
+          "type": "study",
+          "settings": {
+            "title": "LifePharm Egg Increases Proliferation of Skin Cells and Production of Collagen, Elastin, and Fibronectin",
+            "url": "https://www.omicsonline.org/conference-proceedings/dermatology-2017-scientifictracks-abstracts.digital/files/assets/basic-html/page-2.html?ref=retaildirect",
+            "source": "Conference abstract",
+            "year": "",
+            "products": "Laminine, Lamiderm Apex, Cellnergy Power Cream"
+          }
+        },
+        "study_02": {
+          "type": "study",
+          "settings": {
+            "title": "The Effects of Laminine on Normal Blood Sugar Levels",
+            "url": "https://lifepharm.com/media/pdf/laminine/ENG-LaminineBloodSugar-Study.pdf?ref=retaildirect",
+            "source": "White paper",
+            "year": "",
+            "products": "Laminine"
+          }
+        },
+        "study_03": {
+          "type": "study",
+          "settings": {
+            "title": "Laminine Reduces CRP, an Inflammation Marker in Subjects with Joint Soreness and Stiffness",
+            "url": "https://www.lifepharm.com/Media/Studies/Laminine%20CRP%20Andujar,_%20LAMININE.pdf?ref=retaildirect",
+            "source": "White paper",
+            "year": "",
+            "products": "Laminine"
+          }
+        },
+        "study_04": {
+          "type": "study",
+          "settings": {
+            "title": "Laminine Helps Maintain Blood Sugar in High-Normal Subjects",
+            "url": "https://www.lifepharm.com/Media/Studies/18th%20European%20Diabetes%20Congress_%20Laminine.pdf?ref=retaildirect",
+            "source": "Conference abstract",
+            "year": "",
+            "products": "Laminine"
+          }
+        },
+        "study_05": {
+          "type": "study",
+          "settings": {
+            "title": "The Laminine and Telomere Connection",
+            "url": "https://www.lifepharm.com/media/Studies/PDR%202018%20final-2.pdf?ref=retaildirect",
+            "source": "PDR excerpt",
+            "year": "2018",
+            "products": "Laminine"
+          }
+        },
+        "study_06": {
+          "type": "study",
+          "settings": {
+            "title": "Laminine Supplementation Helped Subjects Maintain Normal Blood Glucose as Measured by HA1-C",
+            "url": "https://www.lifepharm.com/Media/Studies/Hy,%20Laminine,%20blood%20sugar,%20abstract,%20preventive%20medicine%20journal_%20LAMININE.pdf?ref=retaildirect",
+            "source": "White paper",
+            "year": "",
+            "products": "Laminine"
+          }
+        },
+        "study_07": {
+          "type": "study",
+          "settings": {
+            "title": "Laminine and Maintaining Normal Cortisol Levels in the Body",
+            "url": "https://lifepharm.com/media/pdf/laminine/ENG-LaminineCortisol-Study.pdf?ref=retaildirect",
+            "source": "PDR excerpt",
+            "year": "2015",
+            "products": "Laminine"
+          }
+        },
+        "study_08": {
+          "type": "study",
+          "settings": {
+            "title": "The Effects of Laminine Omega+++ and Laminine on Helping Maintain Healthy Cholesterol and Triglycerides",
+            "url": "https://cdn.shopify.com/s/files/1/1909/0145/files/ENG-OmegaCholesterol-Whitepaper.pdf?v=1680210163&ref=retaildirect",
+            "source": "PDR excerpt",
+            "year": "",
+            "products": "Omega+++"
+          }
+        },
+        "study_09": {
+          "type": "study",
+          "settings": {
+            "title": "Male Subjects with Low Sperm Activity and Infertility Showed Improved Spermatogram Results and 20% Enhanced Pregnancy Rate",
+            "url": "https://lifepharm.com/media/pdf/ScienceArticles/LO-FertilityStudy-WhitePaper.pdf?ref=retaildirect",
+            "source": "White paper",
+            "year": "",
+            "products": "Omega+++"
+          }
+        },
+        "study_10": {
+          "type": "study",
+          "settings": {
+            "title": "Improved Short-Chain Fatty Acid Production with Laminine and Digestive+++ Which Indicates Improved Colon Health",
+            "url": "https://www.lifepharm.com/media/studies/2019-01-30-Digestive-WhitePaper-PL-V1.pdf?ref=retaildirect",
+            "source": "White paper",
+            "year": "",
+            "products": "Digestive+++"
+          }
+        },
+        "study_11": {
+          "type": "study",
+          "settings": {
+            "title": "Immune+++ Significantly Increased Several Types of White Blood Cell Counts",
+            "url": "https://www.lifepharm.com/media/pdf/ScienceArticles/I-ACN-Study.pdf?ref=retaildirect",
+            "source": "White paper",
+            "year": "",
+            "products": "Immune+++"
+          }
+        },
+        "study_12": {
+          "type": "study",
+          "settings": {
+            "title": "Dermatest GmbH Lamiderm Apex Safety and Efficacy Study",
+            "url": "https://www.lifepharm.com/media/Studies/2018-12-20-Lamiderm%20Study-WhitePaper-PL-V1.pdf?ref=retaildirect",
+            "source": "Clinical study",
+            "year": "",
+            "products": "Lamiderm Apex"
+          }
+        },
+        "study_13": {
+          "type": "study",
+          "settings": {
+            "title": "The Effects of Laminine and Lamiderm Apex on Collagen and Elastin Levels",
+            "url": "https://www.lifepharm.com/media/Studies/Laminine%20and%20Lamiderm%20PDR%20article,%20word.pdf?ref=retaildirect",
+            "source": "PDR excerpt",
+            "year": "2017",
+            "products": "Lamiderm Apex"
+          }
+        },
+        "study_14": {
+          "type": "study",
+          "settings": {
+            "title": "Cellnergy Wellness Power Cream for Joint Degenerative Disorder",
+            "url": "https://cdn.shopify.com/s/files/1/0885/0128/9269/files/CellnergyPowerCream-WhitePaper-DegenerativeDisorder.pdf?v=1758129082",
+            "source": "White paper",
+            "year": "",
+            "products": "Cellnergy Power Cream"
+          }
+        },
+        "study_15": {
+          "type": "study",
+          "settings": {
+            "title": "Cellnergy Wellness Power Cream for Restful Sleep",
+            "url": "https://cdn.shopify.com/s/files/1/0885/0128/9269/files/CellnergyPowerCream-WhitePaper-Sleep-ENG.pdf?v=1758129079",
+            "source": "White paper",
+            "year": "",
+            "products": "Cellnergy Power Cream"
+          }
+        },
+        "study_16": {
+          "type": "study",
+          "settings": {
+            "title": "Bio-Active Growth Factor (FGF-2) Stimulates Stem Cell Activation",
+            "url": "https://stemcellres.biomedcentral.com/articles/10.1186/s13287-019-1462-z",
+            "source": "Journal article",
+            "year": "",
+            "products": "Cellnergy Power Cream"
+          }
+        },
+        "study_17": {
+          "type": "study",
+          "settings": {
+            "title": "Bio-Active Growth Factors Promote Production of Collagen",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/2000940/",
+            "source": "Journal article",
+            "year": "",
+            "products": "Cellnergy Power Cream"
+          }
+        },
+        "study_18": {
+          "type": "study",
+          "settings": {
+            "title": "Cellnergy Wellness Treatments on Subject with Chronic Pain Due to Tendon Damage on the Achilles Heel",
+            "url": "https://lifepharm.com/media/studies/Cellnergy-AchillesHeel-Study-ENG.pdf?ref=retaildirect",
+            "source": "White paper",
+            "year": "",
+            "products": "Cellnergy Wellness"
+          }
+        },
+        "study_19": {
+          "type": "study",
+          "settings": {
+            "title": "Cellnergy FootCharge: Triple-Action Technology for Pain Relief and Cellular Renewal",
+            "url": "https://cdn.shopify.com/s/files/1/0790/7665/5396/files/2025-08-12-CellnergyFootCharge-WhitePaper-Technology-ENG-PL-V1.pdf?v=1778190362",
+            "source": "White paper",
+            "year": "",
+            "products": "Cellnergy FootCharge"
+          }
+        },
+        "study_20": {
+          "type": "study",
+          "settings": {
+            "title": "A Multi-Therapy Foot Stimulation System for Circulatory, Neuromuscular, and Cellular Support",
+            "url": "https://cdn.shopify.com/s/files/1/0790/7665/5396/files/2025-08-26-CellnergyFootCharge-WhitePaper-Technical-ENG-PL-V1.pdf?v=1778190494",
+            "source": "White paper",
+            "year": "",
+            "products": "Cellnergy FootCharge"
+          }
+        }
+      },
+      "block_order": [
+        "study_01",
+        "study_02",
+        "study_03",
+        "study_04",
+        "study_05",
+        "study_06",
+        "study_07",
+        "study_08",
+        "study_09",
+        "study_10",
+        "study_11",
+        "study_12",
+        "study_13",
+        "study_14",
+        "study_15",
+        "study_16",
+        "study_17",
+        "study_18",
+        "study_19",
+        "study_20"
+      ],
+      "settings": {
+        "anchor": "studies",
+        "eyebrow": "Published studies",
+        "heading": "The research, <em>in full</em>",
+        "text": "<p>Every study and white paper published on our ingredients and products. Filter by product, then open the full paper.</p>",
+        "filters": "Laminine, Omega+++, Digestive+++, Immune+++, Lamiderm Apex, Cellnergy Power Cream, Cellnergy Wellness, Cellnergy FootCharge",
+        "filter_label": "Filter studies by product",
+        "all_label": "All studies",
+        "count_template": "Showing [shown] of [total] studies",
+        "products_label": "Products",
+        "read_label": "Read study",
+        "new_tab_label": "opens in a new tab"
+      }
+    },
+    "lp_sci_standard": {
+      "type": "lp-sci-standard",
+      "blocks": {
+        "f1": {
+          "type": "fact",
+          "settings": {
+            "icon": "flask",
+            "title": "Clinically studied",
+            "text": "18+ clinical studies"
+          }
+        },
+        "f2": {
+          "type": "fact",
+          "settings": {
+            "icon": "shield",
+            "title": "Fully NSF tested",
+            "text": "Independent quality testing"
+          }
+        },
+        "f3": {
+          "type": "fact",
+          "settings": {
+            "icon": "flag",
+            "title": "Made in the USA",
+            "text": ""
+          }
+        },
+        "f4": {
+          "type": "fact",
+          "settings": {
+            "icon": "refresh",
+            "title": "60-day guarantee",
+            "text": "Your money back if it is not for you"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4"
+      ],
+      "settings": {
+        "eyebrow": "Our standard",
+        "heading": "We don’t <em>cut corners</em>",
+        "text": "<p>Our research looks at the links between diet, health, metabolism and how cells work. We source only the finest ingredients and test every nutritional for safety and effectiveness.</p>",
+        "button_label": "Shop nutritionals",
+        "button_url": "shopify://collections/nutritionals",
+        "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. These products are not intended to diagnose, treat, cure or prevent any disease. Study links open the original paper or white paper."
+      }
+    }
+  },
+  "order": [
+    "main",
+    "lp_sci_hero",
+    "lp_sci_chapters",
+    "lp_sci_studies",
+    "lp_sci_standard"
+  ]
+}

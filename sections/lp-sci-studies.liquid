@@ -1,0 +1,157 @@
+{%- liquid
+  assign filter_names = section.settings.filters | split: ','
+  assign total = section.blocks.size
+-%}
+<section class="lp-sci-st" id="{{ section.settings.anchor | default: 'studies' | handleize }}" aria-labelledby="lp-sci-st-{{ section.id }}">
+  <div class="container">
+    <header class="lp-sci-st__head">
+      {%- if section.settings.eyebrow != blank -%}<p class="lp-eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      <h2 id="lp-sci-st-{{ section.id }}" class="h2 lp-sci-st__title">{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<div class="lp-sci-st__intro">{{ section.settings.text }}</div>{%- endif -%}
+    </header>
+
+    <lp-study-filter class="lp-sci-st__lib">
+      <div class="lp-sci-st__bar">
+        <div class="lp-sci-st__chips" role="group" aria-label="{{ section.settings.filter_label | escape }}">
+          <button type="button" class="lp-sci-st__chip" data-filter="all" aria-pressed="true">{{ section.settings.all_label | escape }} <span class="lp-sci-st__n">{{ total }}</span></button>
+          {%- for f in filter_names -%}
+            {%- assign fname = f | strip -%}
+            {%- assign fh = fname | handleize -%}
+            {%- assign n = 0 -%}
+            {%- for block in section.blocks -%}
+              {%- assign hay = block.settings.products | split: ',' -%}
+              {%- for p in hay -%}{%- assign ph = p | strip | handleize -%}{%- if ph == fh -%}{%- assign n = n | plus: 1 -%}{%- endif -%}{%- endfor -%}
+            {%- endfor -%}
+            {%- if n > 0 -%}
+              <button type="button" class="lp-sci-st__chip" data-filter="{{ fh }}" aria-pressed="false">{{ fname | escape }} <span class="lp-sci-st__n">{{ n }}</span></button>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+        <p class="lp-sci-st__count" aria-live="polite" data-template="{{ section.settings.count_template | escape }}">{{ section.settings.count_template | replace: '[shown]', total | replace: '[total]', total }}</p>
+      </div>
+
+      <ul class="lp-sci-st__grid" role="list">
+        {%- for block in section.blocks -%}
+          {%- assign prods = block.settings.products | split: ',' -%}
+          {%- capture handles -%}{%- for p in prods -%} {{ p | strip | handleize }}{%- endfor -%} {% endcapture -%}
+          <li class="lp-sci-st__card" data-products="{{ handles }}" {{ block.shopify_attributes }}>
+            <div class="lp-sci-st__meta">
+              <span class="lp-sci-st__source">{% render 'lp-icon', name: 'flask', size: 14 %}{{ block.settings.source | escape }}</span>
+              {%- if block.settings.year != blank -%}<span class="lp-sci-st__year">{{ block.settings.year | escape }}</span>{%- endif -%}
+            </div>
+            <h3 class="lp-sci-st__card-title">
+              <a href="{{ block.settings.url }}" target="_blank" rel="noopener" class="lp-sci-st__link">{{ block.settings.title | escape }}<span class="sr-only"> ({{ section.settings.new_tab_label | escape }})</span></a>
+            </h3>
+            <div class="lp-sci-st__foot">
+              <ul class="lp-sci-st__tags" role="list" aria-label="{{ section.settings.products_label | escape }}">
+                {%- for p in prods -%}<li class="lp-sci-st__tag">{{ p | strip | escape }}</li>{%- endfor -%}
+              </ul>
+              <span class="lp-sci-st__go" aria-hidden="true">{{ section.settings.read_label | escape }}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </lp-study-filter>
+  </div>
+</section>
+
+<script>
+  if (!customElements.get('lp-study-filter')) {
+    customElements.define('lp-study-filter', class extends HTMLElement {
+      connectedCallback() {
+        this.chips = [...this.querySelectorAll('[data-filter]')];
+        this.cards = [...this.querySelectorAll('[data-products]')];
+        this.count = this.querySelector('.lp-sci-st__count');
+        this.chips.forEach((c) => c.addEventListener('click', () => this.apply(c)));
+      }
+      apply(chip) {
+        const f = chip.dataset.filter;
+        this.chips.forEach((c) => c.setAttribute('aria-pressed', String(c === chip)));
+        let shown = 0;
+        this.cards.forEach((card) => {
+          const on = f === 'all' || (' ' + card.dataset.products + ' ').includes(' ' + f + ' ');
+          card.hidden = !on;
+          if (on) shown++;
+        });
+        const t = this.count.dataset.template || '';
+        this.count.textContent = t.replace('[shown]', shown).replace('[total]', this.cards.length);
+      }
+    });
+  }
+</script>
+
+{% stylesheet %}
+.lp-sci-st { padding-block: var(--lp-section-gap); background: rgb(var(--lp-ivory)); scroll-margin-top: calc(var(--sticky-area-height, 80px) + 16px); }
+.lp-sci-st__head { display: grid; gap: 1rem; max-width: 46rem; margin-bottom: clamp(1.5rem, 4vw, 2.5rem); }
+.lp-sci-st__title { margin: 0; color: rgb(var(--lp-ink)); }
+.lp-sci-st__title em { font-style: normal; color: rgb(var(--lp-amber-deep)); }
+.lp-sci-st__intro { font-size: 1.0625rem; line-height: 1.65; color: rgb(var(--lp-ink)); max-width: 54ch; }
+.lp-sci-st__intro p { margin: 0; }
+.lp-sci-st__bar { display: grid; gap: .9rem; margin-bottom: 1.5rem; }
+.lp-sci-st__chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+.lp-sci-st__chip { display: inline-flex; align-items: center; gap: .45rem; min-height: 44px; padding: 0 1rem; border: 1px solid rgb(var(--lp-ink) / .18); border-radius: 999px; background: #fff; color: rgb(var(--lp-ink)); font: inherit; font-size: .875rem; font-weight: 600; white-space: nowrap; cursor: pointer; transition: background-color 200ms ease-out, border-color 200ms ease-out, color 200ms ease-out; }
+.lp-sci-st__chip:hover { border-color: rgb(var(--lp-ink) / .45); }
+.lp-sci-st__chip[aria-pressed="true"] { background: rgb(var(--lp-ink)); border-color: rgb(var(--lp-ink)); color: #fff; }
+.lp-sci-st__chip:focus-visible { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 2px; }
+.lp-sci-st__n { display: inline-grid; place-items: center; min-width: 22px; height: 22px; padding: 0 .35rem; border-radius: 999px; background: rgb(var(--lp-sand)); color: rgb(var(--lp-ink)); font-size: .75rem; font-weight: 700; }
+.lp-sci-st__chip[aria-pressed="true"] .lp-sci-st__n { background: rgb(255 255 255 / .18); color: #fff; }
+.lp-sci-st__count { margin: 0; font-size: .875rem; color: rgb(var(--lp-muted)); }
+.lp-sci-st__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: .875rem; margin: 0; padding: 0; list-style: none; }
+@media (min-width: 750px) { .lp-sci-st__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1200px) { .lp-sci-st__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.lp-sci-st__card { position: relative; display: grid; grid-template-rows: auto 1fr auto; gap: .8rem; padding: 1.25rem 1.25rem 1.1rem; border-radius: var(--lp-radius); background: #fff; box-shadow: inset 0 0 0 1px var(--lp-hairline); transition: box-shadow 200ms ease-out; }
+.lp-sci-st__card[hidden] { display: none; }
+.lp-sci-st__card:hover { box-shadow: inset 0 0 0 1px rgb(var(--lp-ink) / .22), var(--lp-shadow-1); }
+.lp-sci-st__card:focus-within { box-shadow: inset 0 0 0 2px rgb(var(--lp-amber-deep)); }
+.lp-sci-st__meta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem; }
+.lp-sci-st__source { display: inline-flex; align-items: center; gap: .4rem; font-size: .6875rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgb(var(--lp-amber-deep)); }
+.lp-sci-st__year { font-size: .75rem; color: rgb(var(--lp-muted)); }
+.lp-sci-st__card-title { margin: 0; font-family: var(--lp-sans); font-size: 1rem; font-weight: 600; line-height: 1.4; letter-spacing: -.005em; text-transform: none; }
+.lp-sci-st__link { color: rgb(var(--lp-ink)); text-decoration: none; }
+.lp-sci-st__link::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.lp-sci-st__link:focus-visible { outline: none; }
+.lp-sci-st__foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .6rem; padding-top: .8rem; border-top: 1px solid var(--lp-hairline); }
+.lp-sci-st__tags { display: flex; flex-wrap: wrap; gap: .35rem; margin: 0; padding: 0; list-style: none; }
+.lp-sci-st__tag { padding: .2rem .55rem; border-radius: 999px; background: rgb(var(--lp-sand)); font-size: .75rem; font-weight: 600; color: rgb(var(--lp-ink)); }
+.lp-sci-st__go { display: inline-flex; align-items: center; gap: .3rem; font-size: .8125rem; font-weight: 600; color: rgb(var(--lp-ink)); white-space: nowrap; }
+.lp-sci-st__card:hover .lp-sci-st__go { text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 699px) {
+  .lp-sci-st__chips { flex-wrap: nowrap; overflow-x: auto; margin-inline: calc(-1 * var(--container-gutter, 1.25rem)); padding: 2px var(--container-gutter, 1.25rem); scrollbar-width: none; }
+  .lp-sci-st__chips::-webkit-scrollbar { display: none; }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "LP · Studies library",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Anchor ID", "default": "studies" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Published studies" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "The research, <em>in full</em>" },
+    { "type": "richtext", "id": "text", "label": "Intro" },
+    { "type": "text", "id": "filters", "label": "Filters (comma separated, in order)", "default": "Laminine, Omega+++, Digestive+++, Immune+++, Lamiderm Apex, Cellnergy Power Cream, Cellnergy Wellness, Cellnergy FootCharge" },
+    { "type": "text", "id": "filter_label", "label": "Filter group label (screen readers)", "default": "Filter studies by product" },
+    { "type": "text", "id": "all_label", "label": "All label", "default": "All studies" },
+    { "type": "text", "id": "count_template", "label": "Count text", "default": "Showing [shown] of [total] studies" },
+    { "type": "text", "id": "products_label", "label": "Products label (screen readers)", "default": "Products" },
+    { "type": "text", "id": "read_label", "label": "Read label", "default": "Read study" },
+    { "type": "text", "id": "new_tab_label", "label": "New tab hint (screen readers)", "default": "opens in a new tab" }
+  ],
+  "blocks": [
+    {
+      "type": "study",
+      "name": "Study",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "url", "id": "url", "label": "Link to study" },
+        { "type": "text", "id": "source", "label": "Source type", "default": "White paper" },
+        { "type": "text", "id": "year", "label": "Year" },
+        { "type": "text", "id": "products", "label": "Products (comma separated, must match a filter)" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "LP · Studies library" } ],
+  "enabled_on": { "templates": ["page"] }
+}
+{% endschema %}

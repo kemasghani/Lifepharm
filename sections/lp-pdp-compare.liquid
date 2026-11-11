@@ -59,9 +59,8 @@
 {% stylesheet %}
 /* Panel: LifePharm style-guide light grey (Pantone 423 #888B8D). Text is ink for contrast (4.8:1); white is used only at heading size (3.4:1, AA large). */
 .lp-cmp { --lp-cmp-bg: 136 139 141; --lp-cmp-fg: 31 30 32; position: relative; overflow: hidden; padding-block: var(--lp-section-gap); background: rgb(var(--lp-cmp-bg)); color: rgb(var(--lp-cmp-fg)); }
-.lp-cmp__grid { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
-@media (min-width: 1000px) { .lp-cmp__grid { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); } }
-.lp-cmp__intro { display: grid; gap: 1rem; }
+.lp-cmp__grid { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(1.75rem, 3.5vw, 3rem); }
+.lp-cmp__intro { display: grid; gap: 1rem; max-width: 48rem; }
 .lp-cmp .lp-cmp__eyebrow { color: rgb(var(--lp-cmp-fg)); }
 .lp-cmp__title { color: rgb(var(--lp-cmp-fg)); letter-spacing: -.02em; text-wrap: balance; }
 .lp-cmp__title em { color: #fff; }

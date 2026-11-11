@@ -133,7 +133,7 @@
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "title": "60-day money-back guarantee",
+            "title": "60-Day Money-Back Guarantee",
             "content": "<p>All of our products come with a 60-Day Money-Back Guarantee. </p><p>Try it, and if it doesn’t work, it's on us! Our hassle-free return policy offers a 100% money-back guarantee within 60 days of delivery.</p>",
             "page": ""
           }
@@ -185,7 +185,7 @@
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "title": "How to use",
+            "title": "How to Use",
             "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>",
             "page": ""
           }
@@ -1227,21 +1227,13 @@
         "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
       }
     },
-    "lp_pdp_how": {
-      "type": "lp-pdp-how",
-      "settings": {
-        "eyebrow": "How it works",
-        "supports_label": "Supports",
-        "link_label": "See what’s inside"
-      }
-    },
     "lp_pdp_timeline": {
       "type": "lp-pdp-timeline",
       "settings": {
         "eyebrow": "What to expect",
         "heading": "Benefits that <em>build over time</em>",
         "subheading": "Take it daily and the benefits build. Here’s what to look for, and when.",
-        "how_title": "How to use"
+        "how_title": "How to Use"
       }
     },
     "lp_pdp_formula": {
@@ -1262,7 +1254,7 @@
         "feature_label": "Feature",
         "other_label": "Typical brands",
         "other_value": "Not always",
-        "guarantee_row": "60-day money-back guarantee"
+        "guarantee_row": "60-Day Money-Back Guarantee"
       }
     },
     "lp_pdp_faq": {
@@ -1300,7 +1292,6 @@
   "order": [
     "main",
     "lp_pdp_highlights",
-    "lp_pdp_how",
     "lp_pdp_timeline",
     "before_after_image_ieK6Jg",
     "lp_pdp_formula",

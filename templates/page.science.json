@@ -22,24 +22,24 @@
           "type": "fact",
           "settings": {
             "icon": "badge",
-            "value": "2020",
-            "label": "regeneration patent"
+            "value": "Awarded the world’s first",
+            "label": "skin regeneration patent (Sept 2020)"
           }
         },
         "fact_3": {
           "type": "fact",
           "settings": {
             "icon": "star",
-            "value": "Gold",
-            "label": "Monde Selection award"
+            "value": "Monde Selection",
+            "label": "Gold Award"
           }
         },
         "fact_4": {
           "type": "fact",
           "settings": {
             "icon": "shield",
-            "value": "5 stars",
-            "label": "rated by Dermatest®"
+            "value": "Rated 5 stars",
+            "label": "by Dermatest®"
           }
         }
       },
@@ -50,18 +50,18 @@
         "fact_4"
       ],
       "settings": {
-        "eyebrow": "Our science",
-        "heading": "Regeneration, <em>studied</em>",
-        "text": "<p>At LifePharm we research and develop products that are sustainable, ethical and of the highest quality. Here is how our fertilised avian egg extract works, with every published study in one place.</p>",
-        "image": "shopify://shop_images/science_lifepharm.jpg",
-        "image_alt": "LifePharm research",
+        "eyebrow": "The Regeneration Company",
+        "heading": "Cellular Renewal Starts <em>Here</em>",
+        "text": "<p>Your body already knows how to repair itself. We give it what it needs to do that, backed by a U.S. patent, 20 years of research and a standard most supplement companies never bother to meet.</p>",
+        "image": "shopify://shop_images/lp-science-hero-dna.jpg",
+        "image_alt": "DNA helix made of capsules among green plants",
         "jump_label": "On this page",
-        "link_1_label": "See the studies",
-        "link_1_url": "#studies",
-        "link_2_label": "How it works",
-        "link_2_url": "#how-it-works",
-        "card_value": "20",
-        "card_label": "published studies and white papers"
+        "link_1_label": "Explore the science",
+        "link_1_url": "#how-it-works",
+        "link_2_label": "See the studies",
+        "link_2_url": "#studies",
+        "card_value": "",
+        "card_label": ""
       }
     },
     "lp_sci_chapters": {
@@ -365,11 +365,20 @@
         "button_url": "shopify://collections/nutritionals",
         "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. These products are not intended to diagnose, treat, cure or prevent any disease. Study links open the original paper or white paper."
       }
+    },
+    "lp_sci_intro": {
+      "type": "lp-sci-intro",
+      "settings": {
+        "heading": "LifePharm Empowers <em>Regeneration.</em>",
+        "text": "<p>Your body already knows how to repair itself. Every cell has the ability to repair, renew and regenerate. It just needs the right signal to do it.</p><p>That signal is FGF-2. Fibroblast Growth Factor-2 is a protein your body produces naturally. It tells your cells to get to work: repairing, building new tissue and supporting healthy ageing from the inside out. The problem is that as you get older, your body makes less of it.</p><p>LifePharm was built to change that. Every product we make is designed to support your body’s own regenerative ability, not replace it. We give your cells what they need. Your body does the rest.</p>",
+        "image": "shopify://shop_images/healthy_aging.jpg"
+      }
     }
   },
   "order": [
     "main",
     "lp_sci_hero",
+    "lp_sci_intro",
     "lp_sci_chapters",
     "lp_sci_studies",
     "lp_sci_standard"

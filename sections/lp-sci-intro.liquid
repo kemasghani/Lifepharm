@@ -1,0 +1,45 @@
+<section class="lp-sci-in" aria-labelledby="lp-sci-in-{{ section.id }}">
+  <div class="container">
+    <h2 id="lp-sci-in-{{ section.id }}" class="h1 lp-sci-in__title">{{ section.settings.heading }}</h2>
+    <div class="lp-sci-in__grid{% if section.settings.video == blank and section.settings.image == blank %} lp-sci-in__grid--solo{% endif %}">
+      <div class="lp-sci-in__text">{{ section.settings.text }}</div>
+      {%- if section.settings.video != blank -%}
+        <div class="lp-sci-in__media">
+          {{ section.settings.video | video_tag: image_size: '1200x', controls: true, preload: 'none', playsinline: true, class: 'lp-sci-in__video' }}
+        </div>
+      {%- elsif section.settings.image != blank -%}
+        <div class="lp-sci-in__media">
+          {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 44vw, 100vw', widths: '600,900,1200', class: 'lp-sci-in__img', alt: section.settings.image.alt | default: '' }}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+.lp-sci-in { padding-block: clamp(2.5rem, 6vw, 5rem) var(--lp-section-gap); background: #fff; }
+.lp-sci-in__title { margin: 0 0 clamp(1.5rem, 4vw, 3rem); text-align: center; color: #1f1e20; }
+.lp-sci-in__title em { font-style: normal; color: rgb(var(--lp-amber-deep)); }
+.lp-sci-in__grid { display: grid; gap: clamp(1.5rem, 4vw, 4.5rem); align-items: center; max-width: 72rem; margin-inline: auto; }
+@media (min-width: 1000px) { .lp-sci-in__grid { grid-template-columns: minmax(0, .85fr) minmax(0, 1fr); } .lp-sci-in__grid--solo { grid-template-columns: minmax(0, 1fr); max-width: 44rem; } }
+.lp-sci-in__text { font-size: 1.0625rem; line-height: 1.65; color: #1f1e20; }
+.lp-sci-in__text p { margin: 0 0 1.25rem; }
+.lp-sci-in__text p:last-child { margin-bottom: 0; }
+.lp-sci-in__media { position: relative; overflow: hidden; aspect-ratio: 5 / 3; border-radius: var(--lp-radius-lg); background: rgb(var(--lp-sand)); box-shadow: inset 0 0 0 1px var(--lp-hairline); }
+.lp-sci-in__video, .lp-sci-in__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "LP · Science intro",
+  "tag": "div",
+  "settings": [
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "LifePharm Empowers <em>Regeneration.</em>" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "video", "id": "video", "label": "Video", "info": "Shown beside the text. If empty, the image is used." },
+    { "type": "image_picker", "id": "image", "label": "Image (fallback)" }
+  ],
+  "presets": [ { "name": "LP · Science intro" } ],
+  "enabled_on": { "templates": ["page"] }
+}
+{% endschema %}

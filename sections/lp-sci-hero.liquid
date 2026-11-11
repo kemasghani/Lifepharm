@@ -1,79 +1,57 @@
+{%- comment -%} Science page top, after Dropbox "LifePharm_Science_Page-Desktop.jpg": full-bleed hero + orange proof band. {%- endcomment -%}
 <section class="lp-sci-hero" aria-labelledby="lp-sci-hero-{{ section.id }}">
-  <div class="container">
-    <div class="lp-sci-hero__grid">
+  <div class="lp-sci-hero__stage">
+    {%- if section.settings.image != blank -%}
+      {{ section.settings.image | image_url: width: 1800 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 1000px) 62vw, 100vw', widths: '600,900,1200,1500,1800', class: 'lp-sci-hero__img', alt: section.settings.image.alt | default: section.settings.image_alt }}
+    {%- endif -%}
+    <div class="container lp-sci-hero__inner">
       <div class="lp-sci-hero__copy">
-        {%- if section.settings.eyebrow != blank -%}<p class="lp-eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+        {%- if section.settings.eyebrow != blank -%}<p class="lp-sci-hero__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
         <h1 id="lp-sci-hero-{{ section.id }}" class="h0 lp-sci-hero__title">{{ section.settings.heading }}</h1>
         {%- if section.settings.text != blank -%}<div class="lp-sci-hero__text">{{ section.settings.text }}</div>{%- endif -%}
-
         <nav class="lp-sci-hero__jump" aria-label="{{ section.settings.jump_label | escape }}">
           {%- if section.settings.link_1_label != blank -%}<a class="button button--primary lp-sci-hero__btn" href="{{ section.settings.link_1_url }}">{{ section.settings.link_1_label | escape }}</a>{%- endif -%}
           {%- if section.settings.link_2_label != blank -%}<a class="lp-sci-hero__link" href="{{ section.settings.link_2_url }}">{{ section.settings.link_2_label | escape }}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>{%- endif -%}
         </nav>
       </div>
-
-      {%- if section.settings.image != blank -%}
-        <div class="lp-sci-hero__visual">
-          <div class="lp-sci-hero__media">
-            {{ section.settings.image | image_url: width: 1600 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 1000px) 46vw, 100vw', widths: '600,900,1200,1600', class: 'lp-sci-hero__img', alt: section.settings.image.alt | default: section.settings.image_alt }}
-          </div>
-          {%- if section.settings.card_value != blank -%}
-            <a class="lp-sci-hero__card" href="{{ section.settings.link_1_url }}">
-              <span class="lp-sci-hero__card-value">{{ section.settings.card_value | escape }}</span>
-              <span class="lp-sci-hero__card-label">{{ section.settings.card_label | escape }}</span>
-              <span class="lp-sci-hero__card-arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span>
-            </a>
-          {%- endif -%}
-        </div>
-      {%- endif -%}
     </div>
-
-    {%- if section.blocks.size > 0 -%}
-      <dl class="lp-sci-hero__stats">
-        {%- for block in section.blocks -%}
-          <div class="lp-sci-hero__stat" {{ block.shopify_attributes }}>
-            <dt class="lp-sci-hero__stat-label">{{ block.settings.label | escape }}</dt>
-            <dd class="lp-sci-hero__stat-value">{{ block.settings.value | escape }}</dd>
-          </div>
-        {%- endfor -%}
-      </dl>
-    {%- endif -%}
   </div>
+
+  {%- if section.blocks.size > 0 -%}
+    <div class="lp-sci-hero__band">
+      <ul class="container lp-sci-hero__facts" role="list">
+        {%- for block in section.blocks -%}
+          <li class="lp-sci-hero__fact" {{ block.shopify_attributes }}>{{ block.settings.value | escape }} {{ block.settings.label | escape }}</li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  {%- endif -%}
 </section>
 
 {% stylesheet %}
-.lp-sci-hero { padding-block: clamp(1.5rem, 4vw, 3.5rem) clamp(2.5rem, 5vw, 4.5rem); background: rgb(var(--lp-ivory)); }
-.lp-sci-hero__grid { display: grid; gap: clamp(1.75rem, 4vw, 4.5rem); align-items: center; }
-@media (min-width: 1000px) { .lp-sci-hero__grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); } }
-.lp-sci-hero__copy { display: grid; gap: 1.25rem; justify-items: start; }
-.lp-sci-hero .lp-sci-hero__title { margin: 0; font-size: clamp(2.5rem, 5.2vw, 4.75rem); overflow-wrap: normal; word-break: normal; hyphens: none; line-height: .98 !important; letter-spacing: -.015em; color: rgb(var(--lp-ink)); }
+.lp-sci-hero { background: rgb(var(--lp-ivory)); }
+.lp-sci-hero__stage { position: relative; overflow: hidden; display: grid; background: linear-gradient(180deg, #e3edec 0%, #f0f9f8 100%); }
+.lp-sci-hero__img { display: block; width: 100%; height: auto; aspect-ratio: 1160 / 780; object-fit: cover; object-position: center bottom; }
+.lp-sci-hero__inner { position: relative; padding-block: 1.75rem 2.25rem; }
+.lp-sci-hero__copy { display: grid; gap: 1rem; justify-items: start; max-width: 34rem; }
+.lp-sci-hero__eyebrow { margin: 0; font-size: clamp(.8125rem, 1.1vw, 1rem); font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: #1f1e20; }
+.lp-sci-hero .lp-sci-hero__title { margin: 0; max-width: 11ch; font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.04 !important; color: #1f1e20; overflow-wrap: normal; hyphens: none; }
 .lp-sci-hero__title em { font-style: normal; color: rgb(var(--lp-amber-deep)); }
-.lp-sci-hero__text { max-width: 46ch; font-size: clamp(1.0625rem, 1.3vw, 1.1875rem); line-height: 1.6; color: rgb(var(--lp-ink)); }
+.lp-sci-hero__text { max-width: 40ch; font-size: clamp(1rem, 1.2vw, 1.125rem); line-height: 1.6; color: #1f1e20; }
 .lp-sci-hero__text p { margin: 0; }
 .lp-sci-hero__jump { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.75rem; margin-top: .5rem; }
-.lp-sci-hero__btn { white-space: nowrap; }
-.lp-sci-hero__link { display: inline-flex; align-items: center; gap: .4rem; min-height: 44px; font-weight: 600; color: rgb(var(--lp-ink)); text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1.5px; }
-.lp-sci-hero__visual { position: relative; }
-.lp-sci-hero__media { position: relative; overflow: hidden; aspect-ratio: 4 / 3; border-radius: var(--lp-radius-lg); background: rgb(var(--lp-sand)); }
-@media (min-width: 1000px) { .lp-sci-hero__media { aspect-ratio: 1 / 1.08; } }
-.lp-sci-hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.lp-sci-hero__card { position: absolute; left: clamp(.75rem, 2vw, 1.5rem); bottom: clamp(.75rem, 2vw, 1.5rem); display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: .9rem; max-width: calc(100% - 1.5rem); padding: .8rem .9rem .8rem 1.1rem; border-radius: var(--lp-radius); background: rgb(255 255 255 / .96); box-shadow: var(--lp-shadow-2); color: rgb(var(--lp-ink)); text-decoration: none; }
-.lp-sci-hero__card-value { font-family: var(--lp-serif); font-size: 2.25rem; line-height: 1; color: rgb(var(--lp-ink)); }
-.lp-sci-hero__card-label { max-width: 15ch; font-size: .8125rem; font-weight: 600; line-height: 1.3; }
-.lp-sci-hero__card-arrow { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: rgb(var(--lp-amber)); color: #1f1e20; transition: transform 200ms ease-out; }
-@media (hover: hover) { .lp-sci-hero__card:hover .lp-sci-hero__card-arrow { transform: translateY(3px); } }
-.lp-sci-hero__stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: clamp(2rem, 5vw, 4rem) 0 0; border-top: 1px solid rgb(var(--lp-ink) / .16); }
-.lp-sci-hero__stat { display: flex; flex-direction: column-reverse; gap: .35rem; padding: 1.1rem 1rem 1.1rem 0; border-bottom: 1px solid rgb(var(--lp-ink) / .16); }
-.lp-sci-hero__stat:nth-child(even) { padding-left: 1rem; border-left: 1px solid rgb(var(--lp-ink) / .16); }
-.lp-sci-hero__stat-value { margin: 0; font-family: var(--lp-serif); font-size: clamp(1.75rem, 3.2vw, 2.75rem); line-height: 1.05; color: rgb(var(--lp-ink)); }
-.lp-sci-hero__stat-label { font-size: .8125rem; font-weight: 600; line-height: 1.35; color: rgb(var(--lp-muted)); }
+.lp-sci-hero .lp-sci-hero__btn { border-radius: 999px; text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; }
+.lp-sci-hero__link { display: inline-flex; align-items: center; gap: .4rem; min-height: 44px; font-weight: 600; color: #1f1e20; text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1.5px; }
+.lp-sci-hero__band { background: rgb(var(--lp-amber)); color: #1f1e20; }
+.lp-sci-hero__facts { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .35rem 0; margin: 0 auto; padding-block: .9rem; list-style: none; }
+.lp-sci-hero__fact { font-size: clamp(.8125rem, 1.25vw, 1.0625rem); font-weight: 800; letter-spacing: .03em; text-transform: uppercase; text-align: center; }
+.lp-sci-hero__fact + .lp-sci-hero__fact::before { content: ""; display: inline-block; width: 2px; height: .9em; margin-inline: clamp(.75rem, 2vw, 1.75rem); background: currentColor; vertical-align: -.08em; }
 @media (min-width: 1000px) {
-  .lp-sci-hero__stats { grid-template-columns: repeat(4, minmax(0, 1fr)); border-bottom: 1px solid rgb(var(--lp-ink) / .16); }
-  .lp-sci-hero__stat { padding: 1.5rem 1.5rem 1.5rem 0; border-bottom: 0; }
-  .lp-sci-hero__stat + .lp-sci-hero__stat { padding-left: 1.5rem; border-left: 1px solid rgb(var(--lp-ink) / .16); }
+  .lp-sci-hero__stage { min-height: clamp(480px, 40.6vw, 780px); align-items: center; }
+  .lp-sci-hero__img { position: absolute; right: 0; bottom: 0; width: 62%; height: 100%; aspect-ratio: auto; object-position: right bottom; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 22%); mask-image: linear-gradient(90deg, transparent 0, #000 22%); }
+  .lp-sci-hero__inner { padding-block: 4rem; }
 }
-@media (max-width: 999px) { .lp-sci-hero__visual { order: -1; } }
-@media (prefers-reduced-motion: reduce) { .lp-sci-hero__card-arrow { transition: none; } }
+@media (max-width: 699px) { .lp-sci-hero__fact { flex-basis: 100%; } .lp-sci-hero__fact + .lp-sci-hero__fact::before { display: none; } }
 {% endstylesheet %}
 
 {% schema %}
@@ -81,25 +59,25 @@
   "name": "LP · Science hero",
   "tag": "div",
   "settings": [
-    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our science" },
-    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Regeneration, <em>studied</em>" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The Regeneration Company" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Cellular Renewal Starts <em>Here</em>" },
     { "type": "richtext", "id": "text", "label": "Text" },
     { "type": "image_picker", "id": "image", "label": "Image" },
     { "type": "text", "id": "image_alt", "label": "Image alt text" },
-    { "type": "text", "id": "card_value", "label": "Floating card number", "default": "20" },
-    { "type": "text", "id": "card_label", "label": "Floating card label", "default": "published studies and white papers" },
+    { "type": "text", "id": "card_value", "label": "Unused (previous layout)" },
+    { "type": "text", "id": "card_label", "label": "Unused (previous layout)" },
     { "type": "text", "id": "jump_label", "label": "Jump links label (screen readers)", "default": "On this page" },
-    { "type": "text", "id": "link_1_label", "label": "Button label", "default": "See the studies" },
-    { "type": "text", "id": "link_1_url", "label": "Button link", "default": "#studies" },
-    { "type": "text", "id": "link_2_label", "label": "Link label", "default": "How it works" },
-    { "type": "text", "id": "link_2_url", "label": "Link URL", "default": "#how-it-works" }
+    { "type": "text", "id": "link_1_label", "label": "Button label", "default": "Explore the science" },
+    { "type": "text", "id": "link_1_url", "label": "Button link", "default": "#how-it-works" },
+    { "type": "text", "id": "link_2_label", "label": "Link label", "default": "See the studies" },
+    { "type": "text", "id": "link_2_url", "label": "Link URL", "default": "#studies" }
   ],
   "blocks": [
     {
       "type": "fact",
-      "name": "Fact",
+      "name": "Proof band item",
       "settings": [
-        { "type": "select", "id": "icon", "label": "Icon (not shown in this layout)", "default": "flask", "options": [
+        { "type": "select", "id": "icon", "label": "Icon (not shown)", "default": "flask", "options": [
           { "value": "flask", "label": "Flask" }, { "value": "badge", "label": "Badge" }, { "value": "star", "label": "Star" },
           { "value": "shield", "label": "Shield" }, { "value": "dna", "label": "DNA" }, { "value": "cell", "label": "Cell" }
         ] },

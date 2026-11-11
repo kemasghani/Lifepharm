@@ -1,6 +1,21 @@
 {%- liquid
   assign filter_names = section.settings.filters | split: ','
   assign total = section.blocks.size
+  comment
+    No "All studies" tab (Letisha: too long). The first product filter is open by default.
+  endcomment
+  assign first_filter = filter_names | first | strip | handleize
+  assign first_needle = ' ' | append: first_filter | append: ' '
+  assign first_count = 0
+  for block in section.blocks
+    assign hay = block.settings.products | split: ','
+    for p in hay
+      assign ph = p | strip | handleize
+      if ph == first_filter
+        assign first_count = first_count | plus: 1
+      endif
+    endfor
+  endfor
 -%}
 <section class="lp-sci-st" id="{{ section.settings.anchor | default: 'studies' | handleize }}" aria-labelledby="lp-sci-st-{{ section.id }}">
   <div class="container">
@@ -12,7 +27,6 @@
           {%- if section.settings.text != blank -%}<div class="lp-sci-st__intro">{{ section.settings.text }}</div>{%- endif -%}
         </header>
         <div class="lp-sci-st__chips" role="group" aria-label="{{ section.settings.filter_label | escape }}">
-          <button type="button" class="lp-sci-st__chip" data-filter="all" aria-pressed="true"><span>{{ section.settings.all_label | escape }}</span><span class="lp-sci-st__n">{{ total }}</span></button>
           {%- for f in filter_names -%}
             {%- assign fname = f | strip -%}
             {%- assign fh = fname | handleize -%}
@@ -22,20 +36,21 @@
               {%- for p in hay -%}{%- assign ph = p | strip | handleize -%}{%- if ph == fh -%}{%- assign n = n | plus: 1 -%}{%- endif -%}{%- endfor -%}
             {%- endfor -%}
             {%- if n > 0 -%}
-              <button type="button" class="lp-sci-st__chip" data-filter="{{ fh }}" aria-pressed="false"><span>{{ fname | escape }}</span><span class="lp-sci-st__n">{{ n }}</span></button>
+              <button type="button" class="lp-sci-st__chip" data-filter="{{ fh }}" aria-pressed="{% if fh == first_filter %}true{% else %}false{% endif %}"><span>{{ fname | escape }}</span><span class="lp-sci-st__n">{{ n }}</span></button>
             {%- endif -%}
           {%- endfor -%}
         </div>
       </div>
 
       <div class="lp-sci-st__main">
-        <p class="lp-sci-st__count" aria-live="polite" data-template="{{ section.settings.count_template | escape }}">{{ section.settings.count_template | replace: '[shown]', total | replace: '[total]', total }}</p>
+        <p class="lp-sci-st__count" aria-live="polite" data-template="{{ section.settings.count_template | escape }}">{{ section.settings.count_template | replace: '[shown]', first_count | replace: '[total]', total }}</p>
         <ol class="lp-sci-st__rows" role="list">
           {%- for block in section.blocks -%}
             {%- assign prods = block.settings.products | split: ',' -%}
             {%- assign handles = '' -%}
             {%- for p in prods -%}{%- assign ph = p | strip | handleize -%}{%- assign handles = handles | append: ' ' | append: ph -%}{%- endfor -%}
-            <li class="lp-sci-st__row" data-products="{{ handles }}" {{ block.shopify_attributes }}>
+            {%- assign row_hay = handles | append: ' ' -%}
+            <li class="lp-sci-st__row" data-products="{{ handles }}" {% unless row_hay contains first_needle %}hidden{% endunless %} {{ block.shopify_attributes }}>
               <div class="lp-sci-st__body">
                 <p class="lp-sci-st__meta"><span class="lp-sci-st__source">{{ block.settings.source | escape }}</span>{%- if block.settings.year != blank -%}<span class="lp-sci-st__year">{{ block.settings.year | escape }}</span>{%- endif -%}</p>
                 <h3 class="lp-sci-st__row-title">

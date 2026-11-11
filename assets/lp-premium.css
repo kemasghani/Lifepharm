@@ -377,7 +377,7 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
 /* ---------- Footer ---------- */
 .footer { border-top-left-radius: var(--lp-radius-lg); border-top-right-radius: var(--lp-radius-lg); }
 .footer a { transition: color var(--lp-dur-1) var(--lp-ease), opacity var(--lp-dur-1) var(--lp-ease); }
-/* Footer sits on style-guide grey #888B8D: near-black text (#0E0D0F, 5.65:1) at weight 500, nothing faded or orange */
+/* Footer sits on a light tint of the style-guide grey (#E2E3E4): near-black text, weight 500, nothing faded or orange */
 .footer { --text-color: 14 13 15; color: rgb(14 13 15); }
 .footer .link-faded, .footer .link-faded-reverse { opacity: 1; }
 .footer :is(a, p, li, small, .text-sm, .text-xs) { color: rgb(14 13 15); font-weight: 500; }
@@ -506,3 +506,7 @@ html.lp-menu-open { overflow: hidden; overscroll-behavior: none; }
 }
 @media (prefers-reduced-motion: reduce) { #gorgias-chat-container :is(iframe#chat-button, iframe#mount-floating-engagement-widget, [class*="messenger-button-iframe"]) { transition: none !important; } }
 .lp-sticky__note { white-space: nowrap; }
+
+/* Product pages: the six reassurance points live in the buy box, so the footer icon strip is hidden there */
+body:has(.shopify-section--main-product) .shopify-section--text-with-icons { display: none; }
+.lp-ba-caption { margin: 0 0 .9rem; font-family: var(--lp-serif); font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.25; color: rgb(var(--lp-ink)); text-wrap: balance; }

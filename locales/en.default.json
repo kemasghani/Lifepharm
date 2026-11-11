@@ -439,10 +439,12 @@
   },
   "lp": {
     "trust": {
-      "guarantee": "60-day money-back guarantee",
-      "shipping": "Free UK delivery over £150",
-      "tested": "Fully NSF tested",
-      "secure": "Secure, encrypted checkout"
+      "guarantee": "60-Day Money-Back Guarantee",
+      "shipping": "Free UK Delivery Over £150",
+      "tested": "Fully NSF Tested",
+      "made": "Made in the USA",
+      "studied": "Clinically Studied",
+      "secure": "Secure, Encrypted Checkout"
     }
   }
 }

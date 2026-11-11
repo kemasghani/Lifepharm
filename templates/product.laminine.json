@@ -681,6 +681,7 @@
         "expand_image": false,
         "text_position": "start",
         "before_after_text_position": "top",
+        "image_caption": "Thermal imaging reveals the powerful impact of LAMININE on your body, within minutes.",
         "before_text": "Before",
         "after_text": "After",
         "drag_initial_position": 60,

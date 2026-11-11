@@ -46,6 +46,7 @@ LIQUID
     {%- endif -%}
 
     <div class="section-stack__main">
+      {%- if section.settings.image_caption != blank -%}<p class="lp-ba-caption">{{ section.settings.image_caption | escape }}</p>{%- endif -%}
       <div {% render 'surface', class: 'before-after shadow', text_color: section.settings.before_text_color %}>
         <div {% render 'surface', class: 'before-after__before-image', text_color: section.settings.before_text_color %}>
           {%- capture sizes -%}(max-width: 999px) 100vw, {% if text_position == 'center' and section.settings.expand_image %}min({{ settings.page_width }}px, 100vw){% else %}1000px{% endif %}{%- endcapture -%}
@@ -238,6 +239,11 @@ LIQUID
       "type": "header",
       "content": "Colors",
       "info": "Gradient replaces solid colors when set."
+    },
+    {
+      "type": "text",
+      "id": "image_caption",
+      "label": "Caption above image"
     },
     {
       "type": "color",

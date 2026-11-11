@@ -31,13 +31,14 @@
 .lp-promo--light { background: rgb(var(--lp-sand)); }
 .lp-promo--amber { background: rgb(var(--lp-amber)); color: #1F1E20; }
 .lp-promo__copy { display: grid; gap: .6rem; justify-items: start; padding: clamp(1.25rem, 3vw, 2.25rem); }
-.lp-promo__tag { padding: .3rem .7rem; border-radius: 999px; background: rgb(var(--lp-amber)); color: #1F1E20; font-size: .625rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.lp-promo__tag { white-space: nowrap; padding: .3rem .7rem; border-radius: 999px; background: rgb(var(--lp-amber)); color: #1F1E20; font-size: .625rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
 .lp-promo--amber .lp-promo__tag { background: #1F1E20; color: #fff; }
 .lp-promo .lp-promo__title { font-size: clamp(1.5rem, 2.4vw, 2.25rem); line-height: 1.05; }
 .lp-promo__title em { font-style: normal; color: rgb(var(--lp-amber-deep)); }
 .lp-promo--dark .lp-promo__title em { color: rgb(var(--lp-amber)); }
+.lp-promo--amber .lp-promo__title em { color: inherit; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .12em; }
 .lp-promo__text { font-size: .9375rem; line-height: 1.5; opacity: .82; max-width: 22rem; }
-.lp-promo__cta { min-height: 44px; padding-inline: 1.25rem; font-size: .875rem; margin-block-start: .25rem; }
+.lp-promo__cta { min-height: 44px; padding-inline: 1.25rem; font-size: .875rem; margin-block-start: .25rem; white-space: nowrap; }
 .lp-promo--amber .lp-promo__cta { background: #1F1E20; color: #fff; }
 .lp-promo__cta svg { transition: transform var(--lp-dur-2) var(--lp-ease); }
 @media (hover: hover) { .lp-promo:hover .lp-promo__cta svg { transform: translateX(4px); } .lp-promo:hover .lp-promo__img { transform: scale(1.04); } }
@@ -46,6 +47,15 @@
 .lp-promo--dark .lp-promo__img { filter: drop-shadow(0 24px 30px rgb(0 0 0 / .35)); }
 .lp-promo--light .lp-promo__media, .lp-promo--amber .lp-promo__media { padding: 0; }
 .lp-promo--light .lp-promo__img, .lp-promo--amber .lp-promo__img { object-fit: cover; max-height: none; }
+@media (max-width: 699px) {
+  .lp-promo { grid-template-columns: 1fr; align-items: stretch; min-height: 0; }
+  .lp-promo__media { order: -1; height: 11.5rem; padding: 1.25rem 1.25rem 0; }
+  .lp-promo--light .lp-promo__media, .lp-promo--amber .lp-promo__media { padding: 0; }
+  .lp-promo__img { max-height: 100%; }
+  .lp-promo__copy { gap: .55rem; padding: 1.25rem 1.25rem 1.5rem; }
+  .lp-promo .lp-promo__title { font-size: 1.625rem; }
+  .lp-promo__text { font-size: .875rem; max-width: none; }
+}
 {% endstylesheet %}
 
 {% schema %}

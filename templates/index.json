@@ -200,9 +200,9 @@
           "type": "promo",
           "settings": {
             "style": "amber",
-            "tag": "Complete your routine",
-            "heading": "Pair it with Omega, Immune and Digestive",
-            "text": "The products customers add to Laminine most often.",
+            "tag": "Most added to Laminine",
+            "heading": "Complete your <em>routine</em>",
+            "text": "Omega+++, Immune+++ and Digestive+++ are the products customers pair with Laminine most often.",
             "button_label": "Shop nutritionals",
             "url": "shopify://collections/nutritionals",
             "image": "shopify://shop_images/Supplements-Orange-bg_web.jpg"

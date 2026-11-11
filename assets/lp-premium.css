@@ -265,6 +265,12 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
 .lp-ideal__item { display: grid; justify-items: center; align-content: start; gap: .4rem; width: 4.75rem; text-align: center; }
 .lp-ideal__icon { width: 44px; height: 44px; }
 .lp-ideal__text { font-size: .75rem; font-weight: 600; line-height: 1.25; color: rgb(var(--lp-ink)); text-transform: capitalize; }
+/* Mobile: one row that scrolls sideways, bleeding to the screen edge so the cut-off item hints there is more */
+@media (max-width: 699px) {
+  .lp-ideal__list { flex-wrap: nowrap; overflow-x: auto; gap: .5rem; margin-inline: calc(-1 * var(--container-gutter, 1.25rem)); padding-inline: var(--container-gutter, 1.25rem); scroll-padding-inline: var(--container-gutter, 1.25rem); scroll-snap-type: x proximity; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .lp-ideal__list::-webkit-scrollbar { display: none; }
+  .lp-ideal__item { flex: none; width: 5.25rem; scroll-snap-align: start; }
+}
 @media (min-width: 1000px) {
   .shopify-section--main-product .product-gallery__media-list > .product-gallery__media:nth-child(n+8 of :not([hidden])) { display: none; }
 }

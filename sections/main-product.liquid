@@ -79,39 +79,21 @@
             endif
           endif
         -%}
-        <div class="lp-sticky sm:hidden">
+        {%- assign image = lp_sv.featured_media | default: product.featured_media -%}
+        <div class="lp-sticky">
+          {%- if image != blank -%}
+            <variant-media widths="80,160" form="{{ product_form_id }}" class="lp-sticky__media hidden sm:block">
+              {{- image | image_url: width: image.width | image_tag: loading: 'lazy', sizes: '48px', widths: '80,160', alt: '' -}}
+            </variant-media>
+          {%- endif -%}
           <div class="lp-sticky__info" aria-hidden="true">
+            <span class="lp-sticky__title hidden sm:block">{{ product.title | escape }}</span>
             {%- unless product.has_only_default_variant -%}<span class="lp-sticky__variant">{{ lp_sv.title | escape }}</span>{%- endunless -%}
             <span class="lp-sticky__price"><strong data-lp-sticky-price>{{ lp_sv.price | money }}</strong>{%- if lp_count > 0 -%}<span class="lp-sticky__unit" data-lp-sticky-unit data-count="{{ lp_count }}" data-unit="{{ lp_unit }}"> {{ lp_sv.price | divided_by: lp_count | money }} / {{ lp_unit }}</span>{%- endif -%}</span>
             <span class="lp-sticky__note">60-day guarantee</span>
           </div>
           <buy-buttons template="{{ product.template_suffix }}" form="{{ product_form_id }}">
             {%- render 'button', type: 'submit', content: button_label, form: product_form_id, background: buy_buttons_block.settings.atc_button_background, text_color: buy_buttons_block.settings.atc_button_text_color, secondary: true, stretch: true, size: 'lg' -%}
-          </buy-buttons>
-        </div>
-
-        {%- assign image = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
-
-        <div class="product-quick-add__variant {% if image == blank %}no-image{% endif %} hidden sm:grid">
-          {%- if image != blank -%}
-            <variant-media widths="80,160" form="{{ product_form_id }}">
-              {{- image | image_url: width: image.width | image_tag: loading: 'lazy', sizes: '80px', widths: '80,160', class: 'rounded-xs' -}}
-            </variant-media>
-          {%- endif -%}
-
-          <div class="v-stack gap-0.5">
-            {%- assign vendor_block = section.blocks | where: 'type', 'vendor' -%}
-
-            {%- if vendor_block != blank -%}
-              {%- render 'vendor' with product.vendor, class: 'text-xs' -%}
-            {%- endif -%}
-
-            <a href="{{ product.url }}" class="bold truncate-text">{{ product.title }}</a>
-            {%- render 'price-list', product: product, variant: product.selected_or_first_available_variant, form_id: product_form_id -%}
-          </div>
-
-          <buy-buttons template="{{ product.template_suffix }}" form="{{ product_form_id }}" force-secondary-button>
-            {%- render 'button', type: 'submit', content: button_label, form: product_form_id, background: buy_buttons_block.settings.atc_button_background, text_color: buy_buttons_block.settings.atc_button_text_color, secondary: true -%}
           </buy-buttons>
         </div>
       </product-quick-add>

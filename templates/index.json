@@ -50,7 +50,7 @@
       "settings": {
         "product": "laminine",
         "image": "shopify://shop_images/laminine-hero-desktop.jpg",
-        "mobile_image": "shopify://shop_images/laminine-hero-mobile.jpg",
+        "mobile_image": "",
         "badge": "Best seller in the UK, US and Europe",
         "eyebrow": "Laminine",
         "heading": "Daily support for <em>energy</em> and healthy ageing",

@@ -29,11 +29,18 @@
         },
         "stamped_product_reviews_ugc_star_rating_badge_8VPpGa": {
           "type": "shopify://apps/stamped-reviews/blocks/star-rating-badge/a103faaf-2125-4b0e-89fa-de5149736723",
+          "disabled": true,
           "settings": {
             "use_metafields": false,
             "sku_tagtype": "handle",
             "is_featured_product": false,
             "featured_product_handle": ""
+          }
+        },
+        "lp_rating": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{%- liquid\n  assign lp_faces = \"lp-reviewer-1.jpg,lp-reviewer-2.jpg,lp-reviewer-3.jpg\" | split: \",\"\n-%}\n<div class=\"lp-rating-row\">\n  <a class=\"lp-rating-row__faces\" href=\"#shopify-product-reviews\" aria-hidden=\"true\" tabindex=\"-1\">\n    {%- for f in lp_faces -%}\n      {%- assign img = images[f] -%}\n      {%- if img != blank -%}{{ img | image_url: width: 96, height: 96, crop: \"center\" | image_tag: width: 32, height: 32, loading: \"eager\", alt: \"\" }}{%- endif -%}\n    {%- endfor -%}\n  </a>\n  <span class=\"stamped-product-reviews-badge stamped-main-badge\" data-id=\"{{ product.id }}\" data-product-sku=\"{{ product.handle }}\" data-product-title=\"{{ product.title | escape }}\" data-product-type=\"{{ product.type | escape }}\" style=\"display: block;\"></span>\n</div>"
           }
         },
         "liquid_qwAJrd": {
@@ -376,6 +383,7 @@
         "title",
         "badges",
         "separator",
+        "lp_rating",
         "stamped_product_reviews_ugc_star_rating_badge_8VPpGa",
         "lp_summary",
         "price",

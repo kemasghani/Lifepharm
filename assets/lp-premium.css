@@ -236,6 +236,16 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
 .shopify-section--main-product .product-gallery__media img { mix-blend-mode: multiply; }
 @media (min-width: 1000px) { .shopify-section--main-product .product { column-gap: clamp(2.5rem, 4vw, 5rem); } }
 .shopify-section--main-product .product-info__title { font-size: clamp(2.1rem, 3.4vw, 3.25rem); letter-spacing: -.02em; }
+/* Compact buy box rhythm (margins collapse, so the gap is the larger of the two values) */
+.shopify-section--main-product .product-info { --product-info-block-spacing: 1rem; }
+.shopify-section--main-product .product-info > .product-info__block-item:is([data-block-type="title"], [data-block-id="lp_eyebrow"], [data-block-id="lp_rating"], [data-block-type="@app"]:has(.stamped-product-reviews-badge)) { --product-info-block-spacing: .625rem; }
+.shopify-section--main-product .product-info > .product-info__block-item[data-block-id="lp_summary"] { --product-info-block-spacing: .875rem; }
+/* Rating row with real reviewer photos (Stamped review uploads, Files: lp-reviewer-*.jpg) */
+.lp-rating-row { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+.lp-rating-row__faces { display: inline-flex; flex-shrink: 0; }
+.lp-rating-row__faces img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 2px solid rgb(var(--lp-ivory)); box-shadow: 0 1px 3px rgb(var(--lp-ink) / .14); }
+.lp-rating-row__faces img + img { margin-inline-start: -10px; }
+.lp-rating-row .stamped-product-reviews-badge { margin: 0; }
 .lp-pdp-summary { display: grid; gap: .5rem; max-width: 46ch; }
 .lp-pdp-summary p { margin: 0; }
 .lp-pdp-summary__lead { font-size: 1.0625rem; line-height: 1.5; color: rgb(var(--lp-ink)); }
@@ -261,7 +271,7 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
 .lp-pdp-guarantee { margin: .75rem 0 0; text-align: center; font-size: .8125rem; color: rgb(var(--lp-muted)); }
 
 /* PDP purchase panel: price + size cards */
-.lp-pdp-price { display: flex; flex-wrap: wrap; align-items: baseline; gap: .65rem; padding-block-end: 1.1rem; border-bottom: 1px solid var(--lp-hairline); font-variant-numeric: tabular-nums; }
+.lp-pdp-price { display: flex; flex-wrap: wrap; align-items: baseline; gap: .65rem; padding-block-end: .9rem; border-bottom: 1px solid var(--lp-hairline); font-variant-numeric: tabular-nums; }
 .lp-pdp-price__now { font-size: clamp(1.75rem, 2.4vw, 2.125rem); font-weight: 600; letter-spacing: -.02em; line-height: 1; color: rgb(var(--lp-ink)); }
 .lp-pdp-price__was { font-size: 1.125rem; color: rgb(var(--lp-muted) / .8); }
 .lp-pdp-price__tag { align-self: center; padding: .3rem .6rem; border-radius: 999px; background: rgb(var(--lp-amber) / .14); color: rgb(var(--lp-amber-deep)); font-size: .75rem; font-weight: 700; letter-spacing: .04em; }

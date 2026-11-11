@@ -149,7 +149,7 @@
         "newsletter": {
           "type": "newsletter",
           "settings": {
-            "image": "shopify://shop_images/LifePharm_logo_web.png",
+            "image": "shopify://shop_images/LifePharm_logo_footer_ink.png",
             "image_width": 220,
             "heading_size": "h4",
             "title": "Sign up to hear about our latest offers and news",

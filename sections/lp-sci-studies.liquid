@@ -4,16 +4,15 @@
 -%}
 <section class="lp-sci-st" id="{{ section.settings.anchor | default: 'studies' | handleize }}" aria-labelledby="lp-sci-st-{{ section.id }}">
   <div class="container">
-    <header class="lp-sci-st__head">
-      {%- if section.settings.eyebrow != blank -%}<p class="lp-eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
-      <h2 id="lp-sci-st-{{ section.id }}" class="h2 lp-sci-st__title">{{ section.settings.heading }}</h2>
-      {%- if section.settings.text != blank -%}<div class="lp-sci-st__intro">{{ section.settings.text }}</div>{%- endif -%}
-    </header>
-
-    <lp-study-filter class="lp-sci-st__lib">
-      <div class="lp-sci-st__bar">
+    <lp-study-filter class="lp-sci-st__layout">
+      <div class="lp-sci-st__rail">
+        <header class="lp-sci-st__head">
+          {%- if section.settings.eyebrow != blank -%}<p class="lp-eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+          <h2 id="lp-sci-st-{{ section.id }}" class="h1 lp-sci-st__title">{{ section.settings.heading }}</h2>
+          {%- if section.settings.text != blank -%}<div class="lp-sci-st__intro">{{ section.settings.text }}</div>{%- endif -%}
+        </header>
         <div class="lp-sci-st__chips" role="group" aria-label="{{ section.settings.filter_label | escape }}">
-          <button type="button" class="lp-sci-st__chip" data-filter="all" aria-pressed="true">{{ section.settings.all_label | escape }} <span class="lp-sci-st__n">{{ total }}</span></button>
+          <button type="button" class="lp-sci-st__chip" data-filter="all" aria-pressed="true"><span>{{ section.settings.all_label | escape }}</span><span class="lp-sci-st__n">{{ total }}</span></button>
           {%- for f in filter_names -%}
             {%- assign fname = f | strip -%}
             {%- assign fh = fname | handleize -%}
@@ -23,35 +22,34 @@
               {%- for p in hay -%}{%- assign ph = p | strip | handleize -%}{%- if ph == fh -%}{%- assign n = n | plus: 1 -%}{%- endif -%}{%- endfor -%}
             {%- endfor -%}
             {%- if n > 0 -%}
-              <button type="button" class="lp-sci-st__chip" data-filter="{{ fh }}" aria-pressed="false">{{ fname | escape }} <span class="lp-sci-st__n">{{ n }}</span></button>
+              <button type="button" class="lp-sci-st__chip" data-filter="{{ fh }}" aria-pressed="false"><span>{{ fname | escape }}</span><span class="lp-sci-st__n">{{ n }}</span></button>
             {%- endif -%}
           {%- endfor -%}
         </div>
-        <p class="lp-sci-st__count" aria-live="polite" data-template="{{ section.settings.count_template | escape }}">{{ section.settings.count_template | replace: '[shown]', total | replace: '[total]', total }}</p>
       </div>
 
-      <ul class="lp-sci-st__grid" role="list">
-        {%- for block in section.blocks -%}
-          {%- assign prods = block.settings.products | split: ',' -%}
-          {%- assign handles = '' -%}
-          {%- for p in prods -%}{%- assign ph = p | strip | handleize -%}{%- assign handles = handles | append: ' ' | append: ph -%}{%- endfor -%}
-          <li class="lp-sci-st__card" data-products="{{ handles }}" {{ block.shopify_attributes }}>
-            <div class="lp-sci-st__meta">
-              <span class="lp-sci-st__source">{% render 'lp-icon', name: 'flask', size: 14 %}{{ block.settings.source | escape }}</span>
-              {%- if block.settings.year != blank -%}<span class="lp-sci-st__year">{{ block.settings.year | escape }}</span>{%- endif -%}
-            </div>
-            <h3 class="lp-sci-st__card-title">
-              <a href="{{ block.settings.url }}" target="_blank" rel="noopener" class="lp-sci-st__link">{{ block.settings.title | escape }}<span class="sr-only"> ({{ section.settings.new_tab_label | escape }})</span></a>
-            </h3>
-            <div class="lp-sci-st__foot">
-              <ul class="lp-sci-st__tags" role="list" aria-label="{{ section.settings.products_label | escape }}">
-                {%- for p in prods -%}<li class="lp-sci-st__tag">{{ p | strip | escape }}</li>{%- endfor -%}
-              </ul>
-              <span class="lp-sci-st__go" aria-hidden="true">{{ section.settings.read_label | escape }}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-            </div>
-          </li>
-        {%- endfor -%}
-      </ul>
+      <div class="lp-sci-st__main">
+        <p class="lp-sci-st__count" aria-live="polite" data-template="{{ section.settings.count_template | escape }}">{{ section.settings.count_template | replace: '[shown]', total | replace: '[total]', total }}</p>
+        <ol class="lp-sci-st__rows" role="list">
+          {%- for block in section.blocks -%}
+            {%- assign prods = block.settings.products | split: ',' -%}
+            {%- assign handles = '' -%}
+            {%- for p in prods -%}{%- assign ph = p | strip | handleize -%}{%- assign handles = handles | append: ' ' | append: ph -%}{%- endfor -%}
+            <li class="lp-sci-st__row" data-products="{{ handles }}" {{ block.shopify_attributes }}>
+              <div class="lp-sci-st__body">
+                <p class="lp-sci-st__meta"><span class="lp-sci-st__source">{{ block.settings.source | escape }}</span>{%- if block.settings.year != blank -%}<span class="lp-sci-st__year">{{ block.settings.year | escape }}</span>{%- endif -%}</p>
+                <h3 class="lp-sci-st__row-title">
+                  <a href="{{ block.settings.url }}" target="_blank" rel="noopener" class="lp-sci-st__link">{{ block.settings.title | escape }}<span class="sr-only"> ({{ section.settings.new_tab_label | escape }})</span></a>
+                </h3>
+                <ul class="lp-sci-st__tags" role="list" aria-label="{{ section.settings.products_label | escape }}">
+                  {%- for p in prods -%}<li class="lp-sci-st__tag">{{ p | strip | escape }}</li>{%- endfor -%}
+                </ul>
+              </div>
+              <span class="lp-sci-st__go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+            </li>
+          {%- endfor -%}
+        </ol>
+      </div>
     </lp-study-filter>
   </div>
 </section>
@@ -83,43 +81,53 @@
 
 {% stylesheet %}
 .lp-sci-st { padding-block: var(--lp-section-gap); background: rgb(var(--lp-ivory)); scroll-margin-top: calc(var(--sticky-area-height, 80px) + 16px); }
-.lp-sci-st__head { display: grid; gap: 1rem; max-width: 46rem; margin-bottom: clamp(1.5rem, 4vw, 2.5rem); }
+.lp-sci-st__layout { display: grid; gap: 1.5rem; }
+.lp-sci-st__rail { display: grid; gap: 1.5rem; min-width: 0; }
+.lp-sci-st__head { display: grid; gap: 1rem; }
 .lp-sci-st__title { margin: 0; color: rgb(var(--lp-ink)); }
 .lp-sci-st__title em { font-style: normal; color: rgb(var(--lp-amber-deep)); }
-.lp-sci-st__intro { font-size: 1.0625rem; line-height: 1.65; color: rgb(var(--lp-ink)); max-width: 54ch; }
+.lp-sci-st__intro { font-size: 1.0625rem; line-height: 1.65; color: rgb(var(--lp-ink)); max-width: 44ch; }
 .lp-sci-st__intro p { margin: 0; }
-.lp-sci-st__bar { display: grid; gap: .9rem; margin-bottom: 1.5rem; }
-.lp-sci-st__chips { display: flex; flex-wrap: wrap; gap: .5rem; }
-.lp-sci-st__chip { display: inline-flex; align-items: center; gap: .45rem; min-height: 44px; padding: 0 1rem; border: 1px solid rgb(var(--lp-ink) / .18); border-radius: 999px; background: #fff; color: rgb(var(--lp-ink)); font: inherit; font-size: .875rem; font-weight: 600; white-space: nowrap; cursor: pointer; transition: background-color 200ms ease-out, border-color 200ms ease-out, color 200ms ease-out; }
-.lp-sci-st__chip:hover { border-color: rgb(var(--lp-ink) / .45); }
+.lp-sci-st__chips { display: flex; gap: .5rem; overflow-x: auto; margin-inline: calc(-1 * var(--container-gutter, 1.25rem)); padding: 2px var(--container-gutter, 1.25rem); scrollbar-width: none; }
+.lp-sci-st__chips::-webkit-scrollbar { display: none; }
+.lp-sci-st__chip { display: inline-flex; align-items: center; justify-content: space-between; gap: .6rem; flex: none; min-height: 44px; padding: 0 1rem; border: 1px solid rgb(var(--lp-ink) / .18); border-radius: 999px; background: #fff; color: rgb(var(--lp-ink)); font: inherit; font-size: .875rem; font-weight: 600; white-space: nowrap; cursor: pointer; transition: background-color 200ms ease-out, border-color 200ms ease-out, color 200ms ease-out; }
+.lp-sci-st__chip:hover { border-color: rgb(var(--lp-ink) / .5); }
 .lp-sci-st__chip[aria-pressed="true"] { background: rgb(var(--lp-ink)); border-color: rgb(var(--lp-ink)); color: #fff; }
 .lp-sci-st__chip:focus-visible { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 2px; }
-.lp-sci-st__n { display: inline-grid; place-items: center; min-width: 22px; height: 22px; padding: 0 .35rem; border-radius: 999px; background: rgb(var(--lp-sand)); color: rgb(var(--lp-ink)); font-size: .75rem; font-weight: 700; }
-.lp-sci-st__chip[aria-pressed="true"] .lp-sci-st__n { background: rgb(255 255 255 / .18); color: #fff; }
-.lp-sci-st__count { margin: 0; font-size: .875rem; color: rgb(var(--lp-muted)); }
-.lp-sci-st__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: .875rem; margin: 0; padding: 0; list-style: none; }
-@media (min-width: 750px) { .lp-sci-st__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (min-width: 1200px) { .lp-sci-st__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-.lp-sci-st__card { position: relative; display: grid; grid-template-rows: auto 1fr auto; gap: .8rem; padding: 1.25rem 1.25rem 1.1rem; border-radius: var(--lp-radius); background: #fff; box-shadow: inset 0 0 0 1px var(--lp-hairline); transition: box-shadow 200ms ease-out; }
-.lp-sci-st__card[hidden] { display: none; }
-.lp-sci-st__card:hover { box-shadow: inset 0 0 0 1px rgb(var(--lp-ink) / .22), var(--lp-shadow-1); }
-.lp-sci-st__card:focus-within { box-shadow: inset 0 0 0 2px rgb(var(--lp-amber-deep)); }
-.lp-sci-st__meta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem; }
-.lp-sci-st__source { display: inline-flex; align-items: center; gap: .4rem; font-size: .6875rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgb(var(--lp-amber-deep)); }
-.lp-sci-st__year { font-size: .75rem; color: rgb(var(--lp-muted)); }
-.lp-sci-st__card-title { margin: 0; font-family: var(--lp-sans); font-size: 1rem; font-weight: 600; line-height: 1.4; letter-spacing: -.005em; text-transform: none; }
+.lp-sci-st__n { font-size: .75rem; font-weight: 700; font-variant-numeric: tabular-nums; color: rgb(var(--lp-muted)); }
+.lp-sci-st__chip[aria-pressed="true"] .lp-sci-st__n { color: #fff; }
+.lp-sci-st__main { min-width: 0; }
+.lp-sci-st__count { margin: 0 0 .75rem; font-size: .8125rem; font-weight: 600; color: rgb(var(--lp-muted)); }
+.lp-sci-st__rows { overflow: hidden; margin: 0; padding: 0 clamp(1rem, 2.5vw, 2rem); list-style: none; counter-reset: lp-study; border-radius: var(--lp-radius-lg); background: #fff; box-shadow: inset 0 0 0 1px var(--lp-hairline), var(--lp-shadow-1); }
+.lp-sci-st__row { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 1rem; margin-top: -1px; padding-block: 1.35rem; border-top: 1px solid var(--lp-hairline); counter-increment: lp-study; }
+.lp-sci-st__row[hidden] { display: none; }
+.lp-sci-st__body { display: grid; gap: .55rem; min-width: 0; }
+.lp-sci-st__meta { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .75rem; margin: 0; font-size: .6875rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgb(var(--lp-amber-deep)); }
+.lp-sci-st__meta::before { content: counter(lp-study, decimal-leading-zero); color: rgb(var(--lp-muted)); font-variant-numeric: tabular-nums; }
+.lp-sci-st__year { color: rgb(var(--lp-muted)); }
+.lp-sci-st__row-title { margin: 0; font-family: var(--lp-sans); font-size: clamp(1.0625rem, 1.5vw, 1.25rem); font-weight: 600; line-height: 1.35; letter-spacing: -.01em; text-transform: none; }
 .lp-sci-st__link { color: rgb(var(--lp-ink)); text-decoration: none; }
-.lp-sci-st__link::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.lp-sci-st__link::after { content: ""; position: absolute; inset: 0; }
 .lp-sci-st__link:focus-visible { outline: none; }
-.lp-sci-st__foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .6rem; padding-top: .8rem; border-top: 1px solid var(--lp-hairline); }
+.lp-sci-st__row:focus-within .lp-sci-st__go { box-shadow: inset 0 0 0 2px rgb(var(--lp-amber-deep)); }
+.lp-sci-st__row:focus-within .lp-sci-st__link { text-decoration: underline; text-underline-offset: 4px; }
 .lp-sci-st__tags { display: flex; flex-wrap: wrap; gap: .35rem; margin: 0; padding: 0; list-style: none; }
-.lp-sci-st__tag { padding: .2rem .55rem; border-radius: 999px; background: rgb(var(--lp-sand)); font-size: .75rem; font-weight: 600; color: rgb(var(--lp-ink)); }
-.lp-sci-st__go { display: inline-flex; align-items: center; gap: .3rem; font-size: .8125rem; font-weight: 600; color: rgb(var(--lp-ink)); white-space: nowrap; }
-.lp-sci-st__card:hover .lp-sci-st__go { text-decoration: underline; text-underline-offset: 3px; }
-@media (max-width: 699px) {
-  .lp-sci-st__chips { flex-wrap: nowrap; overflow-x: auto; margin-inline: calc(-1 * var(--container-gutter, 1.25rem)); padding: 2px var(--container-gutter, 1.25rem); scrollbar-width: none; }
-  .lp-sci-st__chips::-webkit-scrollbar { display: none; }
+.lp-sci-st__tag { padding: .2rem .6rem; border-radius: 999px; background: rgb(var(--lp-sand)); font-size: .75rem; font-weight: 600; color: rgb(var(--lp-ink)); }
+.lp-sci-st__go { display: grid; place-items: center; flex: none; width: 44px; height: 44px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgb(var(--lp-ink) / .2); color: rgb(var(--lp-ink)); transition: background-color 200ms ease-out, box-shadow 200ms ease-out; }
+@media (hover: hover) {
+  .lp-sci-st__row:hover .lp-sci-st__go { background: rgb(var(--lp-amber)); box-shadow: none; color: #1f1e20; }
+  .lp-sci-st__row:hover .lp-sci-st__link { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1.5px; }
 }
+@media (min-width: 1000px) {
+  .lp-sci-st__layout { grid-template-columns: minmax(0, 21rem) minmax(0, 1fr); gap: clamp(2.5rem, 5vw, 5rem); align-items: start; }
+  .lp-sci-st__rail { position: sticky; top: calc(var(--sticky-area-height, 80px) + 24px); gap: 1.75rem; }
+  .lp-sci-st__chips { flex-direction: column; gap: 0; overflow: visible; margin: 0; padding: 0; border-top: 1px solid rgb(var(--lp-ink) / .14); }
+  .lp-sci-st__chip { width: 100%; min-height: 46px; padding: 0 .9rem; border: 0; border-bottom: 1px solid rgb(var(--lp-ink) / .14); border-radius: 0; background: transparent; font-size: .9375rem; }
+  .lp-sci-st__chip:hover { background: rgb(var(--lp-sand)); }
+  .lp-sci-st__chip[aria-pressed="true"] { background: rgb(var(--lp-ink)); color: #fff; border-radius: 10px; border-bottom-color: transparent; }
+  .lp-sci-st__row { padding-block: 1.6rem; }
+}
+@media (prefers-reduced-motion: reduce) { .lp-sci-st__chip, .lp-sci-st__go { transition: none; } }
 {% endstylesheet %}
 
 {% schema %}

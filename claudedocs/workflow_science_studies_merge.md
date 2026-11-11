@@ -35,3 +35,16 @@ Date: 2026-11-12 · Request: Letisha ("combine the new science page with our stu
 
 ## Validation
 Theme check (no new errors), JSON valid, ≤25 sections per template, draft preview at 390 / 1440: no horizontal scroll, no JS errors, filter works, contrast checks.
+
+## V2: premium pass (2026-11-12, owner: "bikin lebih bagus dan premium lagi")
+
+Diagnosis of V1: correct content, but generic patterns (boxed fact chips, alternating image/text rows, card grid). Premium = editorial restraint, larger type, fewer boxes, one signature interaction per section.
+
+| Section | V1 | V2 |
+|---|---|---|
+| Hero | chips in boxes | Larger display headline, image with a floating "20 published studies" card, facts as an editorial stat band (Playfair numerals, hairline dividers) |
+| How it works | alternating rows | Scrollytelling: sticky image frame that crossfades per step (desktop), numbered timeline with large Playfair numerals; mobile keeps image per step. Text never dims or animates |
+| Studies | 3-col card grid | Research index: sticky filter rail (desktop) + numbered editorial rows in one white panel, arrow button fills amber on hover; mobile = scrollable chips + stacked rows |
+| Standard | centred panel | unchanged |
+
+Rules kept: style guide fonts/colours, AA contrast, 44px targets, no infinite motion, reduced-motion respected, works without JS.

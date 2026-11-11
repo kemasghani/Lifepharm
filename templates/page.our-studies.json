@@ -22,8 +22,8 @@
           "type": "fact",
           "settings": {
             "icon": "badge",
-            "value": "Patented",
-            "label": "regeneration technology, 2020"
+            "value": "2020",
+            "label": "regeneration patent"
           }
         },
         "fact_3": {
@@ -59,7 +59,9 @@
         "link_1_label": "See the studies",
         "link_1_url": "#studies",
         "link_2_label": "How it works",
-        "link_2_url": "#how-it-works"
+        "link_2_url": "#how-it-works",
+        "card_value": "20",
+        "card_label": "published studies and white papers"
       }
     },
     "lp_sci_chapters": {

@@ -245,7 +245,7 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
 .lp-rating-row__faces { display: inline-flex; flex-shrink: 0; }
 .lp-rating-row__faces img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 2px solid rgb(var(--lp-ivory)); box-shadow: 0 1px 3px rgb(var(--lp-ink) / .14); }
 .lp-rating-row__faces img + img { margin-inline-start: -10px; }
-.lp-rating-row .stamped-product-reviews-badge { margin: 0; line-height: 1; }
+.lp-rating-row .stamped-product-reviews-badge { display: flex !important; align-items: center; margin: 0; line-height: 1; }
 /* Stamped renders icon-font stars on a 25.6px text line; flatten to one centred 16px line */
 .lp-rating-row .stamped-badge, .lp-rating-row .stamped-starrating { display: inline-flex !important; align-items: center; gap: .45rem; line-height: 1 !important; }
 .lp-rating-row .stamped-starrating { gap: 1px; }

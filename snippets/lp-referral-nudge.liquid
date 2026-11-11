@@ -1,0 +1,75 @@
+{% doc %}
+  Slide-in prompt that asks visitors whether an IBO referred them.
+  It drives the Teqnavi referral app's own enroller search, so attribution logic stays in the app.
+
+  @example
+  {% render 'lp-referral-nudge' %}
+{% enddoc %}
+
+{%- unless request.design_mode -%}
+<aside class="lp-ref" data-lp-ref data-template="{{ template.name }}" hidden aria-labelledby="lp-ref-title">
+  <div class="lp-ref__card">
+    <button type="button" class="lp-ref__close" data-lp-ref-close aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="lp-ref__art" aria-hidden="true">
+      <video class="lp-ref__video" muted playsinline preload="none" poster="{{ 'lp-referral-poster.jpg' | asset_url }}" width="240" height="240">
+        <source data-src="{{ 'lp-referral-anim.mp4' | asset_url }}" type="video/mp4">
+      </video>
+    </div>
+    <div class="lp-ref__body">
+      <p class="lp-ref__title" id="lp-ref-title">Were you referred by someone?</p>
+      <p class="lp-ref__text">Add their name so they’re recognised for your order.</p>
+      <div class="lp-ref__actions">
+        <button type="button" class="button lp-ref__cta" data-lp-ref-open>Add my referrer</button>
+        <button type="button" class="lp-ref__skip" data-lp-ref-close>No, I found you myself</button>
+      </div>
+    </div>
+  </div>
+</aside>
+<button type="button" class="lp-ref-tab" data-lp-ref-tab data-template="{{ template.name }}" hidden>
+  <span class="lp-ref-tab__dot" aria-hidden="true"></span>
+  <span class="lp-ref-tab__label" data-lp-ref-tab-label>Referred?</span>
+</button>
+{%- endunless -%}
+
+{% stylesheet %}
+.shopify-section:has(.referral-banner) .section { padding: 0 !important; background: none !important; }
+.referral-banner { height: 0 !important; min-height: 0 !important; padding: 0 !important; background: none !important; overflow: visible !important; }
+.referral-banner__row { display: none !important; }
+
+.lp-ref { position: fixed; z-index: 2147483001; left: clamp(12px, 2vw, 24px); bottom: clamp(12px, 2vw, 24px); width: min(420px, calc(100vw - 24px)); pointer-events: none; }
+.lp-ref__card { position: relative; display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 1rem; align-items: center; padding: 1rem 1.25rem 1rem 1rem; border-radius: 20px; background: #fff; color: rgb(var(--lp-ink)); box-shadow: 0 0 0 1px rgb(var(--lp-ink) / .06), 0 24px 60px -20px rgb(var(--lp-ink) / .35); pointer-events: auto; transform: translateX(calc(-100% - 32px)); opacity: 0; transition: transform 560ms cubic-bezier(.16, 1, .3, 1), opacity 320ms ease-out; }
+.lp-ref.is-open .lp-ref__card { transform: none; opacity: 1; }
+.lp-ref__art { width: 96px; aspect-ratio: 1; border-radius: 14px; overflow: hidden; background: rgb(var(--lp-sand)); }
+.lp-ref__video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.lp-ref__body { display: grid; gap: .35rem; padding-inline-end: 1.25rem; }
+.lp-ref__title { margin: 0; font-size: 1.0625rem; font-weight: 600; line-height: 1.3; letter-spacing: -.01em; }
+.lp-ref__text { margin: 0; font-size: .875rem; line-height: 1.5; color: rgb(var(--lp-muted)); }
+.lp-ref__actions { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem 1rem; margin-block-start: .5rem; }
+.lp-ref__cta.button { min-height: 44px; padding-inline: 1.25rem; font-size: .9375rem; }
+.lp-ref__skip { min-height: 44px; padding: 0; border: 0; background: none; color: rgb(var(--lp-muted)); font: inherit; font-size: .8125rem; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.lp-ref__skip:hover { color: rgb(var(--lp-ink)); }
+.lp-ref__close { position: absolute; top: 6px; right: 6px; display: grid; place-items: center; width: 40px; height: 40px; border: 0; border-radius: 50%; background: none; color: rgb(var(--lp-muted)); cursor: pointer; transition: background-color 160ms ease-out, color 160ms ease-out; }
+.lp-ref__close:hover { background: rgb(var(--lp-sand)); color: rgb(var(--lp-ink)); }
+
+.lp-ref-tab { position: fixed; z-index: 60; left: 0; bottom: 22%; display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; padding: .65rem .9rem .65rem .75rem; border: 0; border-radius: 0 999px 999px 0; background: rgb(var(--lp-ink)); color: #fff; font: inherit; font-size: .8125rem; font-weight: 600; box-shadow: 0 10px 30px -12px rgb(var(--lp-ink) / .5); cursor: pointer; transform: translateX(-100%); transition: transform 420ms cubic-bezier(.16, 1, .3, 1), background-color 160ms ease-out; }
+.lp-ref-tab[hidden] { display: none; }
+.lp-ref-tab.is-shown { transform: none; }
+.lp-ref-tab:hover { background: rgb(var(--lp-ink) / .9); }
+.lp-ref-tab__dot { width: 8px; height: 8px; border-radius: 50%; background: rgb(var(--lp-amber)); box-shadow: 0 0 0 3px rgb(var(--lp-amber) / .25); }
+.lp-ref-tab__label { max-width: 16ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+@media (max-width: 699px) {
+  .lp-ref { left: 12px; right: 12px; width: auto; bottom: calc(12px + env(safe-area-inset-bottom)); }
+  .lp-ref[data-template="product"] { bottom: calc(88px + env(safe-area-inset-bottom)); }
+  .lp-ref__card { grid-template-columns: 72px minmax(0, 1fr); gap: .85rem; padding: .875rem 1rem .875rem .875rem; transform: translateY(calc(100% + 24px)); }
+  .lp-ref__art { width: 72px; border-radius: 12px; }
+  .lp-ref__title { font-size: 1rem; }
+  .lp-ref-tab { display: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lp-ref__card, .lp-ref-tab { transform: none !important; transition: opacity 150ms linear; }
+  .lp-ref-tab:not(.is-shown) { opacity: 0; }
+}
+{% endstylesheet %}

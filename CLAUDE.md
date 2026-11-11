@@ -76,7 +76,7 @@ Source: Dropbox "Branding Resources" > `LifePharm-QuickStyleGuide-2024.pdf`. Fon
 
 ## 5. Key components
 
-- Referral UI: **none in the theme**. The Teqnavi referral app section in `sections/header-group.json` is disabled. The owner will auto-detect referrals from the referral link on the server. Do not add referral prompts or bars.
+- Referral UI: **restored 2026-11-12 at the developer's request** (it had been removed on 2026-11-11). `snippets/lp-referral-nudge.liquid` slides in from the left, closes with X and minimises to a "Referred?" tab; it drives the Teqnavi referral app block in `sections/header-group.json`, whose own bar is collapsed by CSS. The HyperFrames animation is `assets/lp-referral-anim.mp4`. Keep attribution logic in the app.
 - PDP sections: `sections/lp-pdp-*.liquid`. They are metafield-driven (`product.metafields.custom.*`).
 - Size cards: `snippets/option-value.liquid` (`lp_card`). The grid is fixed at 3 columns.
 - Design tokens and global overrides: `assets/lp-premium.css`.

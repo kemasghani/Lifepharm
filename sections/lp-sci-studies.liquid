@@ -33,7 +33,8 @@
       <ul class="lp-sci-st__grid" role="list">
         {%- for block in section.blocks -%}
           {%- assign prods = block.settings.products | split: ',' -%}
-          {%- capture handles -%}{%- for p in prods -%} {{ p | strip | handleize }}{%- endfor -%} {% endcapture -%}
+          {%- assign handles = '' -%}
+          {%- for p in prods -%}{%- assign ph = p | strip | handleize -%}{%- assign handles = handles | append: ' ' | append: ph -%}{%- endfor -%}
           <li class="lp-sci-st__card" data-products="{{ handles }}" {{ block.shopify_attributes }}>
             <div class="lp-sci-st__meta">
               <span class="lp-sci-st__source">{% render 'lp-icon', name: 'flask', size: 14 %}{{ block.settings.source | escape }}</span>

@@ -347,7 +347,7 @@
         "lp_summary": {
           "type": "liquid",
           "settings": {
-            "liquid": "{%- liquid\n  assign lp_mf = product.metafields.custom\n  assign lp_s = lp_mf.product_short_summary.value | strip\n-%}{%- if lp_s != blank -%}<div class=\"lp-pdp-summary\"><p class=\"lp-pdp-summary__lead\">{{ lp_s | escape }}</p>{%- if lp_mf.value_1 != blank -%}<p class=\"lp-pdp-summary__meta\"><span>{{ 'Ideal for' }}</span> {{ lp_mf.value_1.value | strip | escape }}</p>{%- endif -%}</div>{%- endif -%}"
+            "liquid": "{% render 'lp-pdp-summary', product: product %}"
           }
         },
         "lp_ugc_title": {

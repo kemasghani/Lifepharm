@@ -1,0 +1,73 @@
+{%- comment -%}
+  PDP summary under the rating: short lead + "Ideal for" benefits.
+  Benefits come from metafield custom.value_1 (comma list). Each one gets the brand's orange circle icon
+  when a keyword matches (Files: lp-benefit-*.png, cut from Dropbox ICONS 2024). Long or sentence-like
+  values fall back to plain text.
+{%- endcomment -%}
+{%- liquid
+  assign lp_mf = product.metafields.custom
+  assign lp_s = lp_mf.product_short_summary.value | strip
+  assign lp_ideal = lp_mf.value_1.value | strip | remove: '.'
+  assign lp_terms = lp_ideal | replace: ', and ', ',' | replace: ' and ', ',' | replace: ' & ', ',' | split: ','
+  assign lp_as_icons = true
+  if lp_terms.size < 2 or lp_terms.size > 6
+    assign lp_as_icons = false
+  endif
+  for t in lp_terms
+    assign t_size = t | strip | size
+    if t_size > 30
+      assign lp_as_icons = false
+    endif
+  endfor
+-%}
+{%- if lp_s != blank -%}
+  <div class="lp-pdp-summary">
+    <p class="lp-pdp-summary__lead">{{ lp_s | escape }}</p>
+    {%- if lp_ideal != blank -%}
+      {%- if lp_as_icons -%}
+        <div class="lp-ideal">
+          <p class="lp-ideal__label">Ideal for</p>
+          <ul class="lp-ideal__list" role="list">
+            {%- for t in lp_terms -%}
+              {%- liquid
+                assign term = t | strip
+                assign k = term | downcase
+                assign icon = ''
+                if k contains 'aging' or k contains 'ageing'
+                  assign icon = 'healthy-aging'
+                elsif k contains 'joint' or k contains 'mobility'
+                  assign icon = 'joint'
+                elsif k contains 'sleep'
+                  assign icon = 'sleep'
+                elsif k contains 'stress' or k contains 'mood'
+                  assign icon = 'stress'
+                elsif k contains 'vitality' or k contains 'energy' or k contains 'stamina'
+                  assign icon = 'energy'
+                elsif k contains 'heart' or k contains 'cardio' or k contains 'cholesterol'
+                  assign icon = 'heart'
+                elsif k contains 'gut' or k contains 'digest'
+                  assign icon = 'gut'
+                elsif k contains 'skin' or k contains 'collagen'
+                  assign icon = 'skin'
+                elsif k contains 'weight'
+                  assign icon = 'weight'
+                elsif k contains 'cell' or k contains 'regenerat' or k contains 'immun'
+                  assign icon = 'regenerate'
+                endif
+                assign icon_file = 'lp-benefit-' | append: icon | append: '.png'
+              -%}
+              <li class="lp-ideal__item">
+                {%- if icon != '' and images[icon_file] != blank -%}
+                  {{ images[icon_file] | image_url: width: 192 | image_tag: width: 44, height: 44, widths: '96,144,192', sizes: '44px', loading: 'eager', alt: '', class: 'lp-ideal__icon' }}
+                {%- endif -%}
+                <span class="lp-ideal__text">{{ term | escape }}</span>
+              </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- else -%}
+        <p class="lp-pdp-summary__meta"><span>Ideal for</span> {{ lp_mf.value_1.value | strip | escape }}</p>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+{%- endif -%}

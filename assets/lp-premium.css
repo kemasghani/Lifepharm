@@ -253,11 +253,18 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
 .lp-rating-row .stamped-starrating { gap: 1px; }
 .lp-rating-row .stamped-starrating .stamped-fa { display: block; line-height: 1 !important; height: 1em; vertical-align: top; }
 .lp-rating-row .stamped-badge-caption { display: inline-block; line-height: 1 !important; vertical-align: top; }
-.lp-pdp-summary { display: grid; gap: .5rem; max-width: 46ch; }
+.lp-pdp-summary { display: grid; gap: .5rem; max-width: 34rem; }
 .lp-pdp-summary p { margin: 0; }
 .lp-pdp-summary__lead { font-size: 1.0625rem; line-height: 1.5; color: rgb(var(--lp-ink)); }
 .lp-pdp-summary__meta { font-size: .875rem; line-height: 1.55; color: rgb(var(--lp-muted)); }
 .lp-pdp-summary__meta span { font-weight: 600; color: rgb(var(--lp-ink)); }
+/* Ideal for: brand orange circle icons with a label each */
+.lp-ideal { display: grid; gap: .6rem; margin-top: .35rem; }
+.lp-ideal__label { margin: 0; font-size: .75rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgb(var(--lp-ink)); }
+.lp-ideal__list { display: flex; flex-wrap: wrap; gap: .75rem .5rem; margin: 0; padding: 0; list-style: none; }
+.lp-ideal__item { display: grid; justify-items: center; align-content: start; gap: .4rem; width: 4.75rem; text-align: center; }
+.lp-ideal__icon { width: 44px; height: 44px; }
+.lp-ideal__text { font-size: .75rem; font-weight: 600; line-height: 1.25; color: rgb(var(--lp-ink)); text-transform: capitalize; }
 @media (min-width: 1000px) {
   .shopify-section--main-product .product-gallery__media-list > .product-gallery__media:nth-child(n+8 of :not([hidden])) { display: none; }
 }

@@ -1,0 +1,79 @@
+{%- liquid
+  assign product = section.settings.product
+  assign from_price = 999999999
+  if product != blank
+    for variant in product.variants
+      assign alloc = variant.selling_plan_allocations | first
+      assign p = variant.price
+      if alloc != blank
+        assign p = alloc.price
+      endif
+      if p < from_price
+        assign from_price = p
+      endif
+    endfor
+  endif
+  assign cta_url = section.settings.button_url
+  if cta_url == blank and product != blank
+    assign cta_url = product.url
+  endif
+-%}
+
+<section class="lp-hcta" aria-labelledby="lp-hcta-title-{{ section.id }}">
+  <div class="container">
+    <div class="lp-hcta__panel">
+      <div class="lp-hcta__copy">
+        {%- if section.settings.eyebrow != blank -%}<p class="lp-eyebrow lp-hcta__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+        <h2 id="lp-hcta-title-{{ section.id }}" class="h1 lp-hcta__title">{{ section.settings.heading }}</h2>
+        {%- if product != blank -%}
+          {%- assign price_html = from_price | money | prepend: '<strong>' | append: '</strong>' -%}
+          <p class="lp-hcta__price">{{ section.settings.price_text | escape | replace: '[price]', price_html }}</p>
+        {%- endif -%}
+        <a href="{{ cta_url }}" class="button button--xl lp-hcta__cta">
+          <span>{{ section.settings.button_label | escape }}</span>
+          {% render 'lp-icon', name: 'arrow', size: 18 %}
+        </a>
+      </div>
+      <div class="lp-hcta__media" data-lp-reveal>
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 40vw, 80vw', widths: '450,700,900', class: 'lp-hcta__img' }}
+        {%- elsif product != blank -%}
+          {{ product.featured_image | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 40vw, 80vw', widths: '450,700,900', class: 'lp-hcta__img' }}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+.lp-hcta { padding-block: 0 var(--lp-section-gap); background: rgb(var(--lp-ivory)); }
+.lp-hcta__panel { position: relative; display: grid; gap: 1.5rem; align-items: center; overflow: hidden; padding: clamp(2rem, 5vw, 4rem); border-radius: var(--lp-radius-lg); background: radial-gradient(90% 120% at 100% 100%, rgb(var(--lp-amber) / .28), transparent 60%), rgb(var(--lp-ink)); color: #fff; }
+@media (min-width: 1000px) { .lp-hcta__panel { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); } }
+.lp-hcta__copy { display: grid; gap: 1rem; justify-items: start; }
+.lp-hcta__copy > * { margin: 0; }
+.lp-hcta__eyebrow { color: rgb(var(--lp-amber)); }
+.lp-hcta__title { color: #fff; }
+.lp-hcta__title em { font-style: normal; color: rgb(var(--lp-amber)); }
+.lp-hcta__price { color: rgb(255 255 255 / .8); line-height: 1.6; }
+.lp-hcta__price strong { color: #fff; }
+.lp-hcta__cta svg { transition: transform var(--lp-dur-2) var(--lp-ease); }
+@media (hover: hover) { .lp-hcta__cta:hover svg { transform: translateX(4px); } }
+.lp-hcta__media { justify-self: center; width: min(100%, 26rem); }
+.lp-hcta__img { display: block; width: 100%; height: auto; filter: drop-shadow(0 30px 40px rgb(0 0 0 / .35)); }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "LP Home final CTA",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Product" },
+    { "type": "image_picker", "id": "image", "label": "Image", "info": "Transparent PNG works best." },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Ready when you are" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Start your <em>Laminine</em> routine" },
+    { "type": "text", "id": "price_text", "label": "Price text", "info": "Use [price] for the lowest subscription price.", "default": "From [price] with Subscribe & Save. Backed by our 60-day money-back guarantee." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop Laminine" },
+    { "type": "url", "id": "button_url", "label": "Button link", "info": "Defaults to the product." }
+  ],
+  "presets": [{ "name": "LP Home final CTA" }]
+}
+{% endschema %}

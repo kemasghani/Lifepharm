@@ -1,0 +1,169 @@
+{%- liquid
+  assign product = section.settings.product
+  assign from_price = 999999999
+  assign one_off = 0
+  if product != blank
+    for variant in product.variants
+      assign alloc = variant.selling_plan_allocations | first
+      assign p = variant.price
+      if alloc != blank
+        assign p = alloc.price
+      endif
+      if p < from_price
+        assign from_price = p
+        assign one_off = variant.price
+      endif
+    endfor
+  endif
+  assign cta_url = section.settings.button_url
+  if cta_url == blank and product != blank
+    assign cta_url = product.url
+  endif
+-%}
+
+<section class="lp-hh" aria-labelledby="lp-hh-title-{{ section.id }}">
+  <div class="container lp-hh__grid">
+    <div class="lp-hh__media">
+      <div class="lp-hh__frame">
+        {%- if section.settings.image != blank -%}
+          {%- if section.settings.mobile_image != blank -%}
+            {{ section.settings.mobile_image | image_url: width: 1200 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '100vw', widths: '400,600,800,1000,1200', class: 'lp-hh__img lp-hh__img--mobile', alt: section.settings.image.alt }}
+          {%- endif -%}
+          {{ section.settings.image | image_url: width: 1800 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 1000px) 52vw, 100vw', widths: '600,900,1200,1500,1800', class: 'lp-hh__img lp-hh__img--desktop', alt: section.settings.image.alt }}
+        {%- elsif product != blank -%}
+          {{ product.featured_image | image_url: width: 1500 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 1000px) 52vw, 100vw', class: 'lp-hh__img' }}
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag: 'lp-hh__img' }}
+        {%- endif -%}
+        {%- if section.settings.badge != blank -%}
+          <p class="lp-hh__badge">{% render 'lp-icon', name: 'star', size: 16 %}<span>{{ section.settings.badge | escape }}</span></p>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="lp-hh__copy">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="lp-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      <h1 id="lp-hh-title-{{ section.id }}" class="h0 lp-hh__title">{{ section.settings.heading }}</h1>
+
+      {%- if section.settings.rating_text != blank -%}
+        <p class="lp-hh__rating">
+          <span class="lp-hh__stars" aria-hidden="true">{%- for i in (1..5) -%}{% render 'lp-icon', name: 'star', size: 16 %}{%- endfor -%}</span>
+          <span>{{ section.settings.rating_text }}</span>
+        </p>
+      {%- endif -%}
+
+      {%- if section.settings.text != blank -%}
+        <div class="lp-hh__text">{{ section.settings.text }}</div>
+      {%- endif -%}
+
+      <div class="lp-hh__buy">
+        {%- if product != blank -%}
+          <p class="lp-hh__price">
+            <span class="lp-hh__price-from">{{ section.settings.price_prefix | escape }}</span>
+            <strong>{{ from_price | money }}</strong>
+            {%- if one_off > from_price -%}
+              <s>{{ one_off | money }}</s>
+              <span class="lp-hh__save">{{ section.settings.save_label | escape }}</span>
+            {%- endif -%}
+          </p>
+        {%- endif -%}
+        <div class="lp-hh__actions">
+          <a href="{{ cta_url }}" class="button button--xl lp-hh__cta">
+            <span>{{ section.settings.button_label | escape }}</span>
+            {% render 'lp-icon', name: 'arrow', size: 18 %}
+          </a>
+          {%- if section.settings.link_label != blank -%}
+            <a href="{{ section.settings.link_url }}" class="lp-hh__link link">{{ section.settings.link_label | escape }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- if section.blocks.size > 0 -%}
+        <ul class="lp-hh__chips" role="list">
+          {%- for block in section.blocks -%}
+            <li class="lp-hh__chip" {{ block.shopify_attributes }}>
+              {% render 'lp-icon', name: block.settings.icon, size: 18 %}
+              <span>{{ block.settings.text | escape }}</span>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+.lp-hh { background: rgb(var(--lp-ivory)); padding-block: clamp(1rem, 2.5vw, 2.5rem) clamp(2.5rem, 5vw, 4.5rem); }
+.lp-hh__grid { display: grid; gap: 1.25rem; align-items: center; }
+@media (min-width: 1000px) { .lp-hh__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(2.5rem, 5vw, 5rem); } .lp-hh__media { order: 2; } }
+.lp-hh__frame { position: relative; border-radius: var(--lp-radius-lg); overflow: hidden; background: rgb(var(--lp-sand)); aspect-ratio: 16 / 10; }
+@media (min-width: 700px) { .lp-hh__frame { aspect-ratio: 6 / 5; } }
+.lp-hh__img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 58%; }
+.lp-hh__img--mobile { display: block; }
+.lp-hh__img--mobile + .lp-hh__img--desktop { display: none; }
+@media (min-width: 700px) { .lp-hh__img--mobile { display: none; } .lp-hh__img--mobile + .lp-hh__img--desktop { display: block; } }
+.lp-hh__badge { position: absolute; left: 1rem; top: 1rem; display: inline-flex; align-items: center; gap: .45rem; margin: 0; padding: .55rem .9rem; border-radius: 999px; background: rgb(var(--lp-ink)); color: #fff; font-size: .75rem; font-weight: 600; letter-spacing: .02em; }
+.lp-hh__badge svg { color: rgb(var(--lp-amber)); fill: currentColor; }
+.lp-hh__copy { display: grid; gap: .875rem; justify-items: start; max-width: 36rem; }
+.lp-hh__copy > * { margin: 0; }
+.lp-hh__title { font-size: clamp(2.125rem, 4.2vw, 3.75rem); }
+.lp-hh__title em { font-style: normal; color: rgb(var(--lp-amber-deep)); }
+.lp-hh__rating { display: inline-flex; align-items: center; gap: .6rem; font-size: .875rem; color: rgb(var(--lp-ink) / .8); }
+.lp-hh__stars { display: inline-flex; gap: 1px; color: rgb(var(--lp-amber)); }
+.lp-hh__stars svg { fill: currentColor; }
+.lp-hh__text { font-size: clamp(1rem, 1.15vw, 1.125rem); line-height: 1.6; color: rgb(var(--lp-ink) / .75); }
+.lp-hh__text p { margin: 0; }
+@media (max-width: 699px) { .lp-hh__text { display: none; } }
+.lp-hh__buy { display: grid; gap: .75rem; padding-block-start: .25rem; }
+.lp-hh__price { display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem; margin: 0; font-size: .9375rem; color: rgb(var(--lp-muted)); }
+.lp-hh__price strong { font-size: 1.5rem; font-weight: 700; color: rgb(var(--lp-ink)); }
+.lp-hh__save { padding: .2rem .55rem; border-radius: 999px; background: rgb(var(--lp-amber) / .16); color: rgb(var(--lp-amber-deep)); font-size: .75rem; font-weight: 700; }
+.lp-hh__actions { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.5rem; }
+.lp-hh__link { font-size: .9375rem; font-weight: 600; min-height: 44px; display: inline-flex; align-items: center; }
+.lp-hh__cta svg { transition: transform var(--lp-dur-2) var(--lp-ease); }
+@media (hover: hover) { .lp-hh__cta:hover svg { transform: translateX(4px); } }
+.lp-hh__chips { display: flex; flex-wrap: wrap; gap: .5rem; margin: .25rem 0 0; padding: 0; list-style: none; }
+.lp-hh__chip { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem .8rem; border-radius: 999px; background: #fff; box-shadow: 0 0 0 1px var(--lp-hairline); font-size: .8125rem; font-weight: 500; }
+.lp-hh__chip svg { color: rgb(var(--lp-amber-deep)); }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "LP Home hero",
+  "class": "shopify-section--lp-home-hero",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Hero product" },
+    { "type": "image_picker", "id": "image", "label": "Image (desktop)" },
+    { "type": "image_picker", "id": "mobile_image", "label": "Image (mobile)" },
+    { "type": "text", "id": "badge", "label": "Image badge", "default": "Our best seller" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Laminine" },
+    { "type": "text", "id": "heading", "label": "Heading", "info": "Wrap a word in <em> to colour it.", "default": "Daily support for <em>energy</em> and healthy ageing" },
+    { "type": "inline_richtext", "id": "rating_text", "label": "Rating text", "default": "<strong>978+</strong> verified reviews" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "text", "id": "price_prefix", "label": "Price prefix", "default": "From" },
+    { "type": "text", "id": "save_label", "label": "Saving label", "default": "Subscribe & save 25%" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop Laminine" },
+    { "type": "url", "id": "button_url", "label": "Button link", "info": "Defaults to the hero product." },
+    { "type": "text", "id": "link_label", "label": "Secondary link label" },
+    { "type": "url", "id": "link_url", "label": "Secondary link" }
+  ],
+  "blocks": [
+    {
+      "type": "chip",
+      "name": "Trust chip",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "default": "shield", "options": [
+          { "value": "shield", "label": "Shield" }, { "value": "badge", "label": "Badge" }, { "value": "flag", "label": "Flag" },
+          { "value": "truck", "label": "Truck" }, { "value": "flask", "label": "Flask" }, { "value": "leaf", "label": "Leaf" },
+          { "value": "refresh", "label": "Refresh" }, { "value": "check", "label": "Check" }
+        ] },
+        { "type": "text", "id": "text", "label": "Text", "default": "60-day money-back guarantee" }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [{ "name": "LP Home hero" }]
+}
+{% endschema %}

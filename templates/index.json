@@ -9,236 +9,59 @@
  */
 {
   "sections": {
-    "slideshow": {
-      "type": "slideshow",
+    "lp_home_hero": {
+      "type": "lp-home-hero",
       "blocks": {
-        "image_RihNVa": {
-          "type": "image",
+        "c1": {
+          "type": "chip",
           "settings": {
-            "image": "shopify://shop_images/3-2800X1000-CellnergyCreamBanner.jpg",
-            "mobile_image": "shopify://shop_images/3-1200x1600-CellnergyCreamBanner-Bg.jpg",
-            "content_max_width": 620,
-            "mobile_text_position": "place-self-start-center text-center",
-            "desktop_text_position": "sm:place-self-center-end sm:text-end",
-            "subheading": "Discover Relief & Rejuvenation",
-            "title": "Cellnergy Power<br> Cream",
-            "heading_tag": "h0",
-            "button_text": "Shop Now",
-            "button_link": "shopify://products/cellnergy-power-cream",
-            "text_color": "#ffffff",
-            "button_background": "#ffffff",
-            "button_text_color": "#181818",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
+            "icon": "shield",
+            "text": "60-day money-back guarantee"
           }
         },
-        "image_thNUBf": {
-          "type": "image",
-          "disabled": true,
+        "c2": {
+          "type": "chip",
           "settings": {
-            "image": "shopify://shop_images/Hero_Image_-_LifePharm_web_6bf5b8b1-8f77-4676-b350-35214801142d.png",
-            "content_max_width": 780,
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "subheading": "",
-            "title": "",
-            "heading_tag": "h0",
-            "button_text": "",
-            "button_link": "",
-            "text_color": "#ffffff",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
+            "icon": "badge",
+            "text": "Fully NSF tested"
           }
         },
-        "image_L3jUfh": {
-          "type": "image",
-          "disabled": true,
+        "c3": {
+          "type": "chip",
           "settings": {
-            "image": "shopify://shop_images/lifepharm_cellnergy.jpg",
-            "mobile_image": "shopify://shop_images/lifepharm_cellnergy_mobile_1.jpg",
-            "content_max_width": 780,
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "subheading": "",
-            "title": "",
-            "heading_tag": "h0",
-            "button_text": "",
-            "button_link": "shopify://collections/frequency-regeneration",
-            "text_color": "#ffffff",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
+            "icon": "flag",
+            "text": "Made in the USA"
+          }
+        },
+        "c4": {
+          "type": "chip",
+          "settings": {
+            "icon": "truck",
+            "text": "Free UK delivery over £150"
           }
         }
       },
       "block_order": [
-        "image_RihNVa",
-        "image_thNUBf",
-        "image_L3jUfh"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".subheading {font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; font-size: x-large;}"
+        "c1",
+        "c2",
+        "c3",
+        "c4"
       ],
       "settings": {
-        "full_width": true,
-        "allow_transparent_header": false,
-        "show_initial_transition": true,
-        "image_size": "auto",
-        "controls_type": "dots",
-        "transition_type": "fade_with_text",
-        "autoplay": true,
-        "cycle_speed": 6,
-        "background": "rgba(0,0,0,0)",
-        "background_gradient": ""
-      }
-    },
-    "slideshow_tUMgGa": {
-      "type": "slideshow",
-      "blocks": {
-        "image_46fLhQ": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/2026-09-14-Immune-Desktop.jpg",
-            "mobile_image": "shopify://shop_images/2026-09-14-Immune-Mobile.jpg",
-            "content_max_width": 780,
-            "mobile_text_position": "place-self-start-center text-center",
-            "desktop_text_position": "sm:place-self-center-end sm:text-end",
-            "subheading": "",
-            "title": "",
-            "heading_tag": "h0",
-            "button_text": "",
-            "button_link": "shopify://products/immune",
-            "text_color": "#ffffff",
-            "button_background": "#ffffff",
-            "button_text_color": "#181818",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
-          }
-        },
-        "image_kwc4jw": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/lifepharm_cellnergy_38d8a580-34e9-4616-ae70-37c6158e1b2d.jpg",
-            "mobile_image": "shopify://shop_images/lifepharm_cellnergy_mobile_1_25048f41-2ecf-40e7-9571-a9776df44d03.jpg",
-            "content_max_width": 780,
-            "mobile_text_position": "place-self-start-center text-center",
-            "desktop_text_position": "sm:place-self-center-end sm:text-end",
-            "subheading": "",
-            "title": "",
-            "heading_tag": "h0",
-            "button_text": "",
-            "button_link": "shopify://products/cellnergy-power-cream",
-            "text_color": "#ffffff",
-            "button_background": "#ffffff",
-            "button_text_color": "#181818",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
-          }
-        },
-        "image_nUE6EB": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/Omaga25_lifepharm_discount_2ed6b2a9-7d6a-4d67-8a19-5477407a9d61.jpg",
-            "mobile_image": "shopify://shop_images/Omaga25_lifepharm_discount.jpg",
-            "content_max_width": 780,
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "subheading": "",
-            "title": "",
-            "heading_tag": "h0",
-            "button_text": "",
-            "button_link": "shopify://products/omega",
-            "text_color": "#ffffff",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
-          }
-        },
-        "image_BkgnGx": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/Desktop_LifePharm_-_hero.jpg",
-            "mobile_image": "shopify://shop_images/Mobile_Lifepharm_-_hero.jpg",
-            "content_max_width": 620,
-            "mobile_text_position": "place-self-start-center text-center",
-            "desktop_text_position": "sm:place-self-center-end sm:text-end",
-            "subheading": "",
-            "title": "",
-            "heading_tag": "h0",
-            "button_text": "",
-            "button_link": "shopify://products/lamiderm-apex-smart-serum",
-            "text_color": "#ffffff",
-            "button_background": "#ffffff",
-            "button_text_color": "#181818",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
-          }
-        },
-        "image_gBxq7C": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/lifepharm_cellnergy.jpg",
-            "mobile_image": "shopify://shop_images/lifepharm_cellnergy_mobile_1.jpg",
-            "content_max_width": 780,
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "subheading": "",
-            "title": "",
-            "heading_tag": "h0",
-            "button_text": "",
-            "button_link": "shopify://collections/frequency-regeneration",
-            "text_color": "#ffffff",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_46fLhQ",
-        "image_kwc4jw",
-        "image_nUE6EB",
-        "image_BkgnGx",
-        "image_gBxq7C"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "allow_transparent_header": false,
-        "show_initial_transition": true,
-        "image_size": "auto",
-        "controls_type": "dots",
-        "transition_type": "fade_with_text",
-        "autoplay": true,
-        "cycle_speed": 6,
-        "background": "rgba(0,0,0,0)",
-        "background_gradient": ""
+        "product": "laminine",
+        "image": "shopify://shop_images/laminine-hero-desktop.jpg",
+        "mobile_image": "shopify://shop_images/laminine-hero-mobile.jpg",
+        "badge": "Best seller in the UK, US and Europe",
+        "eyebrow": "Laminine",
+        "heading": "Daily support for <em>energy</em> and healthy ageing",
+        "rating_text": "<strong>978+</strong> verified reviews",
+        "text": "<p>Fertilised avian egg extract with marine and plant protein: the growth factors and amino acids your body uses to renew itself.*</p>",
+        "price_prefix": "From",
+        "save_label": "Subscribe & save 25%",
+        "button_label": "Shop Laminine",
+        "button_url": "",
+        "link_label": "Compare sizes",
+        "link_url": "#lp-offer"
       }
     },
     "logo_list_cGNNLB": {
@@ -299,200 +122,66 @@
         "label": "As featured in"
       }
     },
-    "image_with_text_overlay_gD4YMa": {
-      "type": "image-with-text-overlay",
+    "lp_science": {
+      "type": "lp-science",
       "blocks": {
-        "heading_GqYDfK": {
-          "type": "heading",
+        "s1": {
+          "type": "stat",
           "settings": {
-            "text": "Our mission is to make optimal well-being inclusive for all.",
-            "heading_tag": "h2"
+            "value": "978",
+            "suffix": "+",
+            "label": "Verified Laminine reviews"
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "value": "60",
+            "suffix": "days",
+            "label": "Money-back guarantee"
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "value": "100",
+            "suffix": "%",
+            "label": "NSF-tested nutritionals"
           }
         }
       },
       "block_order": [
-        "heading_GqYDfK"
-      ],
-      "custom_css": [
-        ".content-over-media > :not(img, video, iframe, svg, video-media, picture) {text-align: center; padding: 46px;}",
-        ".h2,.prose h2:not(.h0, .h1, .h2, .h3, .h4, .h5, .h6) {font-size: var(--text-h3);}"
+        "s1",
+        "s2",
+        "s3"
       ],
       "settings": {
-        "full_width": true,
-        "allow_transparent_header": false,
-        "enable_parallax": false,
-        "image_size": "sm",
-        "image": "shopify://shop_images/home_page_lifepharm_web_quality.jpg",
-        "mobile_image": "shopify://shop_images/home_lifepharm_mobile.jpg",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center-end sm:text-end",
-        "text_color": "#181818",
-        "overlay_color": "#000000",
-        "overlay_opacity": 5
+        "image": "shopify://shop_images/2026-06-22-Laminine-ShopifyImages-03.jpg",
+        "image_position": "object-position: 50% 50%",
+        "eyebrow": "What's inside",
+        "heading": "Three natural ingredients, <em>one daily habit</em>",
+        "text": "<p>As we age, the body's natural renewal slows down. Laminine brings together egg bioactive growth factors, plant-based phyto protein and sustainable marine protein, delivering the building blocks your body uses to repair and renew.*</p>",
+        "button_label": "Shop Laminine",
+        "button_url": "shopify://products/laminine",
+        "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent disease."
       }
     },
-    "rich_text_TpzwKg": {
-      "type": "rich-text",
-      "blocks": {
-        "liquid_NfNDAi": {
-          "type": "liquid",
-          "settings": {
-            "liquid": "<h2>Better Health <em>Starts Here</em></h2>"
-          }
-        },
-        "richtext_nKEwyF": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>Explore our range of regenerative health products.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "liquid_NfNDAi",
-        "richtext_nKEwyF"
-      ],
-      "disabled": true,
-      "custom_css": [
-        "{margin-bottom: -15px;}"
-      ],
+    "lp_home_offer": {
+      "type": "lp-home-offer",
       "settings": {
-        "full_width": true,
-        "content_width": "small",
-        "text_position": "center",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
-    "collection-list": {
-      "type": "collection-list",
-      "blocks": {
-        "collection_rpjGDx": {
-          "type": "collection",
-          "settings": {
-            "collection": "nutritionals",
-            "image": "shopify://shop_images/Supplements-Orange-bg_web.jpg",
-            "subheading": "",
-            "title": "",
-            "url": "",
-            "heading_tag": "h3",
-            "text_position": "place-self-start-center text-center",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "collection_GXQaFq": {
-          "type": "collection",
-          "settings": {
-            "collection": "skin-health",
-            "image": "shopify://shop_images/Skincare-Blue-bg_web.jpg",
-            "subheading": "",
-            "title": "",
-            "url": "",
-            "heading_tag": "h3",
-            "text_position": "place-self-start-center text-center",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "collection_4Q9PaT": {
-          "type": "collection",
-          "settings": {
-            "collection": "frequency-regeneration",
-            "image": "shopify://shop_images/Cellnergy-Red-bg-01_new.jpg",
-            "subheading": "",
-            "title": "Wave Technology",
-            "url": "",
-            "heading_tag": "h3",
-            "text_position": "place-self-start-center text-center",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        }
-      },
-      "block_order": [
-        "collection_rpjGDx",
-        "collection_GXQaFq",
-        "collection_4Q9PaT"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".scroll-area {overflow: visible;}"
-      ],
-      "settings": {
-        "full_width": true,
-        "stack_collections": true,
-        "collections_per_row_mobile": "1",
-        "collections_per_row": 3,
-        "show_progress_bar": false,
-        "subheading": "",
-        "title": "",
-        "content": "",
-        "link_url": "",
-        "link_text": "",
-        "background": "#ffffff",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": ""
-      }
-    },
-    "image_with_text_overlay_BGEPpd": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "heading_dbLyjF": {
-          "type": "heading",
-          "settings": {
-            "text": "Unsure Where to Begin?",
-            "heading_tag": "h2"
-          }
-        },
-        "liquid_CtPHyq": {
-          "type": "liquid",
-          "disabled": true,
-          "settings": {
-            "liquid": "<h2>Unsure Where to <em>Begin?</em></h2>"
-          }
-        },
-        "richtext_P7yapz": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>We're here and ready to help with advice</p>"
-          }
-        },
-        "button_hVCnGK": {
-          "type": "button",
-          "settings": {
-            "style": "fill",
-            "size": "lg",
-            "text": "<a onclick=\"GorgiasChat.open();\">Chat with our team</a>",
-            "url": "",
-            "background": "#f18a00",
-            "text_color": "#414042"
-          }
-        }
-      },
-      "block_order": [
-        "heading_dbLyjF",
-        "liquid_CtPHyq",
-        "richtext_P7yapz",
-        "button_hVCnGK"
-      ],
-      "custom_css": [],
-      "settings": {
-        "full_width": true,
-        "allow_transparent_header": false,
-        "enable_parallax": false,
-        "image_size": "sm",
-        "image": "shopify://shop_images/home_page_2_lifepharm_copy.jpg",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center-start sm:text-start",
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 25
+        "product": "laminine",
+        "anchor": "lp-offer",
+        "eyebrow": "Choose your supply",
+        "heading": "Subscribe and <em>save 25%</em>",
+        "text": "<p>Pick a size, then choose a delivery every 4, 8, 12 or 26 weeks on the next page. Prefer a one-off order? You can choose that there too.</p>",
+        "best_label": "Best value",
+        "free_label": "Free UK delivery",
+        "free_delivery_threshold": 150,
+        "sub_label": "With Subscribe & Save",
+        "oneoff_label": "One-off purchase",
+        "unit_label": "per capsule",
+        "button_label": "Choose",
+        "footnote": "Every order is covered by our <strong>60-day money-back guarantee</strong>."
       }
     },
     "rich_text_arFn6i": {
@@ -501,7 +190,7 @@
         "liquid_EEHxxN": {
           "type": "liquid",
           "settings": {
-            "liquid": "<h2>Hear it from <em>Our Customers</em></h2>"
+            "liquid": "<p class=\"lp-eyebrow\">978+ verified reviews</p><h2>Hear it from <em>our customers</em></h2>"
           }
         }
       },
@@ -547,189 +236,301 @@
         "text_color": ""
       }
     },
-    "impact-text": {
-      "type": "impact-text",
+    "lp_home_pairs": {
+      "type": "lp-home-pairs",
       "blocks": {
-        "item_NBJdPe": {
-          "type": "item",
+        "p1": {
+          "type": "product",
           "settings": {
-            "title": "500k",
-            "subheading": "Worldwide IBOs",
-            "content": "",
-            "button_text": "",
-            "button_url": "",
-            "animate_impact_text": true,
-            "animate_impact_text_duration": 3
+            "product": "omega",
+            "text": "Omega-3 support for heart and circulation.",
+            "accent": "#E1251B"
           }
         },
-        "1664424181b38582d5-0": {
-          "type": "item",
+        "p2": {
+          "type": "product",
           "settings": {
-            "title": "160",
-            "subheading": "Million Pills Sold",
-            "content": "",
-            "button_text": "",
-            "button_url": "",
-            "animate_impact_text": true,
-            "animate_impact_text_duration": 2
+            "product": "immune",
+            "text": "Everyday support for your immune system.",
+            "accent": "#F2CD00"
           }
         },
-        "item_UFamrQ": {
-          "type": "item",
+        "p3": {
+          "type": "product",
           "settings": {
-            "title": "45",
-            "subheading": "Countries",
-            "content": "",
-            "button_text": "",
-            "button_url": "",
-            "animate_impact_text": true,
-            "animate_impact_text_duration": 3
+            "product": "digestive",
+            "text": "Probiotics, prebiotics and enzymes for digestion.",
+            "accent": "#3DAE2B"
           }
         }
       },
       "block_order": [
-        "item_NBJdPe",
-        "1664424181b38582d5-0",
-        "item_UFamrQ"
+        "p1",
+        "p2",
+        "p3"
       ],
-      "disabled": true,
       "settings": {
-        "full_width": true,
-        "stack_mobile": true,
-        "text_alignment": "center",
-        "impact_text_style": "fill",
-        "text_divider": "line",
-        "impact_text_size_ratio": 0.8,
-        "background": "#f9f9f9",
-        "background_gradient": "",
-        "heading_text_color": "#ff8f00",
-        "heading_gradient": "",
-        "text_color": "#181818",
-        "button_background": "#181818",
-        "button_text_color": ""
+        "eyebrow": "Complete your routine",
+        "heading": "Often bought <em>with Laminine</em>",
+        "text": "<p>These are the products our customers add to their Laminine order most often.</p>",
+        "price_prefix": "From"
       }
     },
-    "press": {
-      "type": "press",
-      "blocks": {
-        "16644243327ba53d2a-0": {
-          "type": "quote",
-          "settings": {
-            "logo_width": 100,
-            "author": "WICKY SUYANTO, CEO & FOUNDER",
-            "content": "This is a life worth living, because life is precious.”",
-            "show_rating": false,
-            "rating": 5
-          }
-        },
-        "16644243327ba53d2a-1": {
-          "type": "quote",
-          "disabled": true,
-          "settings": {
-            "logo_width": 100,
-            "author": "",
-            "content": "Or share content about your promotion, offers...",
-            "show_rating": false,
-            "rating": 4
-          }
-        }
-      },
-      "block_order": [
-        "16644243327ba53d2a-0",
-        "16644243327ba53d2a-1"
-      ],
-      "disabled": true,
+    "lp_guarantee": {
+      "type": "lp-guarantee",
       "settings": {
-        "full_width": true,
-        "content_size": "small",
-        "background": "#ffffff",
-        "background_gradient": "linear-gradient(145deg, rgba(255, 143, 0, 1) 16%, rgba(255, 143, 0, 1) 52%, rgba(255, 183, 74, 1) 87%)",
-        "text_color": "#ffffff",
-        "heading_color": "",
-        "heading_gradient": "",
-        "logo_item_background": "",
-        "logo_item_border": ""
+        "seal_value": "60",
+        "seal_text": "60-day guarantee · risk free · ",
+        "heading": "Try it risk free for 60 days",
+        "text": "<p>We stand behind every product we make. If it isn't right for you, let us know within 60 days of delivery and we'll refund you in full.</p>",
+        "button_label": "Shop Laminine",
+        "button_url": "shopify://products/laminine",
+        "link_label": "Read our refund policy",
+        "link_url": "/policies/refund-policy"
       }
     },
-    "testimonials_KC6J4p": {
-      "type": "testimonials",
+    "lp_home_faq": {
+      "type": "lp-home-faq",
       "blocks": {
-        "testimonial_rc3Eay": {
-          "type": "testimonial",
+        "q1": {
+          "type": "question",
           "settings": {
-            "image": "shopify://shop_images/Laminine_europe_30.jpg",
-            "round_avatar": true,
-            "show_rating": true,
-            "rating": 5,
-            "author": "Jon D",
-            "title": "LAMININE",
-            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.</p>"
+            "question": "What is in Laminine?",
+            "answer": "<p>Laminine combines fertilised avian egg extract with plant-based phyto protein and sustainable marine protein. Together they provide growth factors, cellular factors and amino acids.</p>"
           }
         },
-        "testimonial_LWwydw": {
-          "type": "testimonial",
+        "q2": {
+          "type": "question",
           "settings": {
-            "image": "shopify://shop_images/Lamiderm_small_15ml_2.jpg",
-            "round_avatar": true,
-            "show_rating": true,
-            "rating": 5,
-            "author": "Mary U.",
-            "title": "LAMIDERM APEX",
-            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.</p>"
+            "question": "How is quality checked?",
+            "answer": "<p>Laminine is made in the USA, and our nutritionals are fully NSF tested.</p>"
           }
         },
-        "testimonial_RDjgeG": {
-          "type": "testimonial",
+        "q3": {
+          "type": "question",
           "settings": {
-            "image": "shopify://shop_images/Omega_eu_30.jpg",
-            "round_avatar": true,
-            "show_rating": true,
-            "rating": 5,
-            "author": "Joshua A.",
-            "title": "OMEGA+++",
-            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.</p>"
+            "question": "How does Subscribe & Save work?",
+            "answer": "<p>Subscribers save 25% on every order. When you add Laminine to your basket, choose a delivery every 4, 8, 12 or 26 weeks.</p>"
           }
         },
-        "testimonial_yRW8Bq": {
-          "type": "testimonial",
-          "disabled": true,
+        "q4": {
+          "type": "question",
           "settings": {
-            "image": "shopify://shop_images/Cellnergy_front_a31822dd-fcdc-4649-a814-443d29c03061.jpg",
-            "round_avatar": true,
-            "show_rating": true,
-            "rating": 5,
-            "author": "",
-            "title": "Cellnergy Wellness Cream",
-            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.</p>"
+            "question": "What if it is not right for me?",
+            "answer": "<p>Every order is backed by our 60-day money-back guarantee. Let us know within 60 days of delivery and we will refund you in full.</p>"
+          }
+        },
+        "q5": {
+          "type": "question",
+          "settings": {
+            "question": "How much is UK delivery?",
+            "answer": "<p>Standard UK delivery is free on orders of £150 or more. Below that, it costs £7.95.</p>"
+          }
+        },
+        "q6": {
+          "type": "question",
+          "settings": {
+            "question": "Is Laminine right for me?",
+            "answer": "<p>If you are pregnant, nursing, taking medication or have a medical condition, please speak to your doctor before taking any supplement.</p>"
           }
         }
       },
       "block_order": [
-        "testimonial_rc3Eay",
-        "testimonial_LWwydw",
-        "testimonial_RDjgeG",
-        "testimonial_yRW8Bq"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".testimonial__image {width: 80px !important;}"
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6"
       ],
       "settings": {
-        "full_width": true,
-        "stack_testimonials": false,
-        "subheading": "",
-        "title": "",
-        "content": "",
-        "link_url": "shopify://pages/reviews-1772819824",
-        "link_text": "",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "testimonial_card_background": "#f9f9f9",
-        "testimonial_card_text_color": ""
+        "eyebrow": "Good to know",
+        "heading": "Questions, <em>answered</em>",
+        "help_heading": "Still unsure?",
+        "help_text": "Our team is happy to help you choose the right products.",
+        "help_label": "Chat with our team",
+        "help_url": "/pages/contact"
       }
+    },
+    "lp_home_cta": {
+      "type": "lp-home-cta",
+      "settings": {
+        "product": "laminine",
+        "image": "shopify://shop_images/laminine-duo-cutout.png",
+        "eyebrow": "Ready when you are",
+        "heading": "Start your <em>Laminine</em> routine",
+        "price_text": "From [price] with Subscribe & Save. Backed by our 60-day money-back guarantee.",
+        "button_label": "Shop Laminine",
+        "button_url": ""
+      }
+    },
+    "lp_hero": {
+      "type": "lp-hero",
+      "blocks": {
+        "chip_usa": {
+          "type": "chip",
+          "settings": {
+            "icon": "flag",
+            "text": "Made in the USA"
+          }
+        },
+        "chip_nsf": {
+          "type": "chip",
+          "settings": {
+            "icon": "badge",
+            "text": "Fully NSF tested"
+          }
+        },
+        "chip_study": {
+          "type": "chip",
+          "settings": {
+            "icon": "flask",
+            "text": "Clinically studied"
+          }
+        }
+      },
+      "block_order": [
+        "chip_usa",
+        "chip_nsf",
+        "chip_study"
+      ],
+      "settings": {
+        "layout": "media-right",
+        "min_height": 75,
+        "eyebrow": "",
+        "heading": "Activate your body's <em>natural renewal</em>",
+        "text": "<p>Premium nutritionals and skincare powered by fertilised avian egg extract, rich in growth factors that support your body's own repair process.*</p>",
+        "button_label": "Shop bestsellers",
+        "button_url": "shopify://collections/all",
+        "secondary_label": "Explore the science",
+        "secondary_url": "shopify://pages/science",
+        "rating_text": "<strong>978+</strong> verified Laminine reviews",
+        "image": "shopify://shop_images/cellnergy_sqaure.jpg",
+        "float_1": "60-day guarantee",
+        "float_2": "Clinically studied"
+      },
+      "disabled": true
+    },
+    "lp_goals": {
+      "type": "lp-shop-by-goal",
+      "blocks": {
+        "g1": {
+          "type": "goal",
+          "settings": {
+            "collection": "nutritionals",
+            "image": "shopify://shop_images/Supplements-Orange-bg_web.jpg",
+            "title": "Nutritionals",
+            "text": "Daily foundations for energy, immunity, digestion and recovery.",
+            "cta": "Shop nutritionals"
+          }
+        },
+        "g2": {
+          "type": "goal",
+          "settings": {
+            "collection": "skin-health",
+            "image": "shopify://shop_images/Skincare-Blue-bg_web.jpg",
+            "title": "Skin health",
+            "text": "Growth-factor skincare for visibly smoother, firmer-looking skin.",
+            "cta": "Shop skin health"
+          }
+        },
+        "g3": {
+          "type": "goal",
+          "settings": {
+            "collection": "frequency-regeneration",
+            "image": "shopify://shop_images/test_sqaure_08a86950-61d0-4e60-8977-5156471baea5.jpg",
+            "title": "Frequency regeneration",
+            "text": "Advanced Cellnergy technology for whole-body wellbeing.",
+            "cta": "Discover Cellnergy"
+          }
+        }
+      },
+      "block_order": [
+        "g1",
+        "g2",
+        "g3"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "Shop by category",
+        "cta": "Explore"
+      },
+      "disabled": true
+    },
+    "lp_tabs": {
+      "type": "lp-product-tabs",
+      "blocks": {
+        "tab_nutri": {
+          "type": "tab",
+          "settings": {
+            "collection": "nutritionals",
+            "label": "Nutritional"
+          }
+        },
+        "tab_skin": {
+          "type": "tab",
+          "settings": {
+            "collection": "skin-health",
+            "label": "Skin Health"
+          }
+        },
+        "tab_freq": {
+          "type": "tab",
+          "settings": {
+            "collection": "frequency-regeneration",
+            "label": "Frequency"
+          }
+        }
+      },
+      "block_order": [
+        "tab_nutri",
+        "tab_skin",
+        "tab_freq"
+      ],
+      "settings": {
+        "heading": "Better health starts here",
+        "collection": "all",
+        "limit": 12,
+        "all_label": "Shop all",
+        "add_label": "Add to cart",
+        "view_all_label": "View all products"
+      },
+      "disabled": true
+    },
+    "lp_system": {
+      "type": "lp-system",
+      "blocks": {
+        "p1": {
+          "type": "point",
+          "settings": {
+            "text": "Backed by clinical studies, not just marketing claims"
+          }
+        },
+        "p2": {
+          "type": "point",
+          "settings": {
+            "text": "Made in the USA and fully NSF tested"
+          }
+        },
+        "p3": {
+          "type": "point",
+          "settings": {
+            "text": "Every order backed by a 60-day money-back guarantee"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "settings": {
+        "heading": "A full system, not just a supplement",
+        "text": "<p>From nutritionals to skin health to frequency regeneration, our products work together to support your whole body, not just one symptom.</p>",
+        "button_label": "Shop with confidence",
+        "button_url": "shopify://collections/all"
+      },
+      "disabled": true
     },
     "rich_text_Jhh874": {
       "type": "rich-text",
@@ -802,466 +603,116 @@
         "background": "",
         "background_gradient": "",
         "text_color": ""
-      }
+      },
+      "disabled": true
     },
-    "faq": {
-      "type": "faq",
+    "image_with_text_overlay_gD4YMa": {
+      "type": "image-with-text-overlay",
       "blocks": {
-        "166442457738b23caf-0": {
-          "type": "item",
+        "heading_GqYDfK": {
+          "type": "heading",
           "settings": {
-            "title": "Do you ship overseas?",
-            "content": "<p>Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout. We run discounts and promotions all year, so stay tuned for exclusive deals.</p>"
-          }
-        },
-        "166442457738b23caf-1": {
-          "type": "item",
-          "settings": {
-            "title": "How long will it take to get my orders?",
-            "content": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.</p>"
-          }
-        },
-        "166442457738b23caf-2": {
-          "type": "item",
-          "settings": {
-            "title": "Any question?",
-            "content": "<p>You can contact us through our contact page! We will be happy to assist you.</p>"
+            "text": "Our mission is to make optimal well-being inclusive for all.",
+            "heading_tag": "h2"
           }
         }
       },
       "block_order": [
-        "166442457738b23caf-0",
-        "166442457738b23caf-1",
-        "166442457738b23caf-2"
+        "heading_GqYDfK"
       ],
-      "disabled": true,
+      "custom_css": [
+        ".content-over-media > :not(img, video, iframe, svg, video-media, picture) {text-align: center; padding: 46px;}",
+        ".h2,.prose h2:not(.h0, .h1, .h2, .h3, .h4, .h5, .h6) {font-size: var(--text-h3);}"
+      ],
       "settings": {
-        "full_width": false,
-        "subheading": "",
-        "title": "FAQ",
-        "content": "<p>Use this text to share information about your product or shipping policies.</p>",
-        "team_avatar": "shopify://shop_images/money_back_guarantee_lifepharm.png",
-        "team_avatar_width": 160,
-        "support_hours": "Our customer support is available Monday to Friday: 8am-8:30pm.",
-        "answer_time": "Average answer time: 24h",
-        "button_text": "",
-        "button_url": "shopify://pages/join-us-1772819828",
-        "text_position": "center",
-        "background": "#ffffff",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "button_background": "",
-        "button_text_color": "",
-        "accordion_background": "",
-        "accordion_text_color": ""
-      }
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "sm",
+        "image": "shopify://shop_images/home_page_lifepharm_web_quality.jpg",
+        "mobile_image": "shopify://shop_images/home_lifepharm_mobile.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center-end sm:text-end",
+        "text_color": "#181818",
+        "overlay_color": "#000000",
+        "overlay_opacity": 5
+      },
+      "disabled": true
     },
-    "hot_spots_YdjbNz": {
-      "type": "hot-spots",
+    "image_with_text_overlay_BGEPpd": {
+      "type": "image-with-text-overlay",
       "blocks": {
-        "item_YyXWdN": {
-          "type": "item",
+        "heading_dbLyjF": {
+          "type": "heading",
           "settings": {
-            "horizontal_position": 18,
-            "vertical_position": 75,
-            "horizontal_position_mobile": 24,
-            "vertical_position_mobile": 70,
-            "icon": "shopify://shop_images/Screenshot_2024-03-05_at_16.44.50.png",
-            "icon_width": 100,
-            "title": "Cellnergy Wellness",
-            "content": "<p><a href=\"/products/cellnergy-wellness\" title=\"CELLNERGY WELLNESS\">More info</a></p>"
+            "text": "Unsure Where to Begin?",
+            "heading_tag": "h2"
           }
         },
-        "item_LF7RAz": {
-          "type": "item",
+        "liquid_CtPHyq": {
+          "type": "liquid",
+          "disabled": true,
           "settings": {
-            "horizontal_position": 62,
-            "vertical_position": 19,
-            "horizontal_position_mobile": 62,
-            "vertical_position_mobile": 14,
-            "icon": "shopify://shop_images/Laminine_europe_120.jpg",
-            "icon_width": 100,
-            "title": "Lamimine",
-            "content": "<p><a href=\"/products/laminine\" title=\"LAMININE\">More info</a></p>"
+            "liquid": "<h2>Unsure Where to <em>Begin?</em></h2>"
+          }
+        },
+        "richtext_P7yapz": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>We're here and ready to help with advice</p>"
+          }
+        },
+        "button_hVCnGK": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "lg",
+            "text": "<a onclick=\"GorgiasChat.open();\">Chat with our team</a>",
+            "url": "",
+            "background": "#f18a00",
+            "text_color": "#414042"
           }
         }
       },
       "block_order": [
-        "item_YyXWdN",
-        "item_LF7RAz"
+        "heading_dbLyjF",
+        "liquid_CtPHyq",
+        "richtext_P7yapz",
+        "button_hVCnGK"
       ],
-      "disabled": true,
       "custom_css": [],
       "settings": {
         "full_width": true,
-        "image": "shopify://shop_images/Noodles_Homepage_UK.webp",
-        "title": "",
-        "content": "",
-        "button_text": "",
-        "button_url": "shopify://collections/nutritionals",
-        "desktop_text_position": "place-self-end-center text-center",
-        "image_background": "#f9f9f9",
-        "image_background_gradient": "",
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "sm",
+        "image": "shopify://shop_images/home_page_2_lifepharm_copy.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center-start sm:text-start",
+        "text_color": "#ffffff",
         "overlay_color": "#000000",
-        "overlay_opacity": 0,
-        "overlay_text_color": "#181818",
-        "overlay_button_background": "",
-        "overlay_button_text_color": "",
-        "hot_spot_dot_background": "#ff8f00",
-        "hot_spot_dot_text_color": "#181818",
-        "hot_spot_content_background": "#ffffff",
-        "hot_spot_content_text_color": "#181818",
-        "hot_spot_content_opacity": 92,
-        "hot_spot_content_blur_radius": 3
-      }
-    },
-    "scrolling_text_VQhdjB": {
-      "type": "scrolling-text",
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "text": "Our mission is to make optimal well-being inclusive for all.",
-        "text_size": "small",
-        "text_style": "fill",
-        "scrolling_mode": "auto",
-        "scrolling_speed": 14,
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "text_gradient": "linear-gradient(157deg, rgba(255, 143, 0, 1) 22%, rgba(227, 79, 79, 1) 56%, rgba(252, 184, 0, 1) 82%)"
-      }
-    },
-    "apps_Vzt3yd": {
-      "type": "apps",
-      "blocks": {
-        "instafeed_app_block_QzC834": {
-          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
-          "disabled": true,
-          "settings": {
-            "title": "",
-            "title_color": "#181818",
-            "title_size_v2": 0,
-            "alignment": "center",
-            "instafeed_margin_top": 0,
-            "instafeed_margin_bottom": 0,
-            "instafeed_margin_sides": 0,
-            "show_instagram_link": false,
-            "link_alignment": "left",
-            "link_color": "#000000",
-            "background_color": "",
-            "feed_id": "",
-            "html_area": "<style>\n.section-blends.section-full:has(#insta-feed) {\npadding-block-start: 0px !important;\n  padding-block-end: 0px !important;\n  padding-inline-start: inherit !important;\n  padding-inline-end: inherit !important;\n</style>"
-          }
-        }
+        "overlay_opacity": 25
       },
-      "block_order": [
-        "instafeed_app_block_QzC834"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "remove_vertical_spacing": true,
-        "remove_horizontal_spacing": true,
-        "background": "#ffffff",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
-    "lp_hero": {
-      "type": "lp-hero",
-      "blocks": {
-        "chip_usa": {
-          "type": "chip",
-          "settings": {
-            "icon": "flag",
-            "text": "Made in the USA"
-          }
-        },
-        "chip_nsf": {
-          "type": "chip",
-          "settings": {
-            "icon": "badge",
-            "text": "Fully NSF tested"
-          }
-        },
-        "chip_study": {
-          "type": "chip",
-          "settings": {
-            "icon": "flask",
-            "text": "Clinically studied"
-          }
-        }
-      },
-      "block_order": [
-        "chip_usa",
-        "chip_nsf",
-        "chip_study"
-      ],
-      "settings": {
-        "layout": "media-right",
-        "min_height": 75,
-        "eyebrow": "",
-        "heading": "Activate your body's <em>natural renewal</em>",
-        "text": "<p>Premium nutritionals and skincare powered by fertilised avian egg extract, rich in growth factors that support your body's own repair process.*</p>",
-        "button_label": "Shop bestsellers",
-        "button_url": "shopify://collections/all",
-        "secondary_label": "Explore the science",
-        "secondary_url": "shopify://pages/science",
-        "rating_text": "<strong>978+</strong> verified Laminine reviews",
-        "image": "shopify://shop_images/cellnergy_sqaure.jpg",
-        "float_1": "60-day guarantee",
-        "float_2": "Clinically studied"
-      }
-    },
-    "lp_trust": {
-      "type": "lp-trust-bar",
-      "blocks": {
-        "t1": {
-          "type": "item",
-          "settings": {
-            "icon": "shield",
-            "title": "60-day guarantee",
-            "text": "Love it or your money back"
-          }
-        },
-        "t2": {
-          "type": "item",
-          "settings": {
-            "icon": "flag",
-            "title": "Made in the USA",
-            "text": "Premium manufacturing standards"
-          }
-        },
-        "t3": {
-          "type": "item",
-          "settings": {
-            "icon": "badge",
-            "title": "Fully NSF tested",
-            "text": "Independently verified quality"
-          }
-        },
-        "t4": {
-          "type": "item",
-          "settings": {
-            "icon": "truck",
-            "title": "Free UK delivery",
-            "text": "On orders over £150"
-          }
-        }
-      },
-      "block_order": [
-        "t1",
-        "t2",
-        "t3",
-        "t4"
-      ],
-      "disabled": true,
-      "settings": {
-        "style": "light"
-      }
-    },
-    "lp_goals": {
-      "type": "lp-shop-by-goal",
-      "blocks": {
-        "g1": {
-          "type": "goal",
-          "settings": {
-            "collection": "nutritionals",
-            "image": "shopify://shop_images/Supplements-Orange-bg_web.jpg",
-            "title": "Nutritionals",
-            "text": "Daily foundations for energy, immunity, digestion and recovery.",
-            "cta": "Shop nutritionals"
-          }
-        },
-        "g2": {
-          "type": "goal",
-          "settings": {
-            "collection": "skin-health",
-            "image": "shopify://shop_images/Skincare-Blue-bg_web.jpg",
-            "title": "Skin health",
-            "text": "Growth-factor skincare for visibly smoother, firmer-looking skin.",
-            "cta": "Shop skin health"
-          }
-        },
-        "g3": {
-          "type": "goal",
-          "settings": {
-            "collection": "frequency-regeneration",
-            "image": "shopify://shop_images/test_sqaure_08a86950-61d0-4e60-8977-5156471baea5.jpg",
-            "title": "Frequency regeneration",
-            "text": "Advanced Cellnergy technology for whole-body wellbeing.",
-            "cta": "Discover Cellnergy"
-          }
-        }
-      },
-      "block_order": [
-        "g1",
-        "g2",
-        "g3"
-      ],
-      "settings": {
-        "eyebrow": "",
-        "heading": "Shop by category",
-        "cta": "Explore"
-      }
-    },
-    "lp_science": {
-      "type": "lp-science",
-      "blocks": {
-        "s1": {
-          "type": "stat",
-          "settings": {
-            "value": "978",
-            "suffix": "+",
-            "label": "Verified Laminine reviews"
-          }
-        },
-        "s2": {
-          "type": "stat",
-          "settings": {
-            "value": "60",
-            "suffix": "days",
-            "label": "Money-back guarantee"
-          }
-        },
-        "s3": {
-          "type": "stat",
-          "settings": {
-            "value": "100",
-            "suffix": "%",
-            "label": "NSF-tested nutritionals"
-          }
-        }
-      },
-      "block_order": [
-        "s1",
-        "s2",
-        "s3"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/5.jpg",
-        "image_position": "object-position: 50% 50%",
-        "eyebrow": "The science",
-        "heading": "Powered by nature's <em>growth factors</em>",
-        "text": "<p>Your body is constantly working to repair itself, but as we age that process slows down. Our fertilised avian egg extract is harvested at peak activity and delivers growth factors, cellular factors and amino acids: the building blocks your body uses to renew.*</p>",
-        "button_label": "View published studies",
-        "button_url": "shopify://pages/our-studies",
-        "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent disease."
-      }
-    },
-    "lp_guarantee": {
-      "type": "lp-guarantee",
-      "settings": {
-        "seal_value": "60",
-        "seal_text": "60-day guarantee · risk free · ",
-        "heading": "Try it risk free for 60 days",
-        "text": "<p>We stand behind every product we make. If it isn't right for you, let us know within 60 days of delivery and we'll refund you in full.</p>",
-        "button_label": "Shop the range",
-        "button_url": "shopify://collections/all",
-        "link_label": "Read our refund policy",
-        "link_url": "/policies/refund-policy"
-      }
-    },
-    "lp_tabs": {
-      "type": "lp-product-tabs",
-      "blocks": {
-        "tab_nutri": {
-          "type": "tab",
-          "settings": {
-            "collection": "nutritionals",
-            "label": "Nutritional"
-          }
-        },
-        "tab_skin": {
-          "type": "tab",
-          "settings": {
-            "collection": "skin-health",
-            "label": "Skin Health"
-          }
-        },
-        "tab_freq": {
-          "type": "tab",
-          "settings": {
-            "collection": "frequency-regeneration",
-            "label": "Frequency"
-          }
-        }
-      },
-      "block_order": [
-        "tab_nutri",
-        "tab_skin",
-        "tab_freq"
-      ],
-      "settings": {
-        "heading": "Better health starts here",
-        "collection": "all",
-        "limit": 12,
-        "all_label": "Shop all",
-        "add_label": "Add to cart",
-        "view_all_label": "View all products"
-      }
-    },
-    "lp_system": {
-      "type": "lp-system",
-      "blocks": {
-        "p1": {
-          "type": "point",
-          "settings": {
-            "text": "Backed by clinical studies, not just marketing claims"
-          }
-        },
-        "p2": {
-          "type": "point",
-          "settings": {
-            "text": "Made in the USA and fully NSF tested"
-          }
-        },
-        "p3": {
-          "type": "point",
-          "settings": {
-            "text": "Every order backed by a 60-day money-back guarantee"
-          }
-        }
-      },
-      "block_order": [
-        "p1",
-        "p2",
-        "p3"
-      ],
-      "settings": {
-        "heading": "A full system, not just a supplement",
-        "text": "<p>From nutritionals to skin health to frequency regeneration, our products work together to support your whole body, not just one symptom.</p>",
-        "button_label": "Shop with confidence",
-        "button_url": "shopify://collections/all"
-      }
+      "disabled": true
     }
   },
   "order": [
-    "lp_hero",
+    "lp_home_hero",
     "logo_list_cGNNLB",
-    "lp_goals",
-    "lp_tabs",
     "lp_science",
-    "lp_system",
+    "lp_home_offer",
     "rich_text_arFn6i",
     "17175461316e8d66c7",
+    "lp_home_pairs",
+    "lp_guarantee",
+    "lp_home_faq",
+    "lp_home_cta",
+    "lp_hero",
+    "lp_goals",
+    "lp_tabs",
+    "lp_system",
     "rich_text_Jhh874",
     "image_with_text_overlay_gD4YMa",
-    "lp_guarantee",
-    "image_with_text_overlay_BGEPpd",
-    "slideshow",
-    "slideshow_tUMgGa",
-    "rich_text_TpzwKg",
-    "collection-list",
-    "impact-text",
-    "press",
-    "testimonials_KC6J4p",
-    "faq",
-    "hot_spots_YdjbNz",
-    "scrolling_text_VQhdjB",
-    "apps_Vzt3yd",
-    "lp_trust"
+    "image_with_text_overlay_BGEPpd"
   ]
 }

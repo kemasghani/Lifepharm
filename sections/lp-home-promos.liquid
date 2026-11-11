@@ -51,7 +51,9 @@
   .lp-promo { grid-template-columns: 1fr; align-items: stretch; min-height: 0; }
   .lp-promo__media { order: -1; height: 11.5rem; padding: 1.25rem 1.25rem 0; }
   .lp-promo--light .lp-promo__media, .lp-promo--amber .lp-promo__media { padding: 0; }
-  .lp-promo__img { max-height: 100%; }
+  .lp-promo__media { overflow: hidden; }
+  .lp-promo__img { width: 100%; height: 11.5rem; max-height: none; }
+  .lp-promo--dark .lp-promo__img { height: 10.25rem; }
   .lp-promo__copy { gap: .55rem; padding: 1.25rem 1.25rem 1.5rem; }
   .lp-promo .lp-promo__title { font-size: 1.625rem; }
   .lp-promo__text { font-size: .875rem; max-width: none; }

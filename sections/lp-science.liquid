@@ -63,6 +63,7 @@
 .lp-stat__value { font-family: var(--heading-font-family); font-size: clamp(2rem, 3.4vw, 2.75rem); line-height: 1; letter-spacing: -.02em; color: rgb(var(--lp-ink)); font-variant-numeric: tabular-nums; }
 .lp-stat__suffix { color: rgb(var(--lp-amber-deep)); margin-inline-start: .1em; }
 .lp-stat__label { margin: .5rem 0 0; font-size: .8125rem; line-height: 1.4; color: rgb(var(--lp-ink) / .68); }
+@media (max-width: 699px) { .lp-science__stats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; } .lp-stat { padding: .875rem .75rem; } .lp-stat__value { font-size: 1.625rem; } .lp-stat__label { font-size: .71875rem; } }
 .lp-science__disclaimer { margin: 0; font-size: .75rem; line-height: 1.5; color: rgb(var(--lp-ink) / .55); max-width: 36rem; }
 {% endstylesheet %}
 

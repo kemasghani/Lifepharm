@@ -300,7 +300,8 @@
         "price_text": "From [price] with Subscribe & Save. Backed by our 60-day money-back guarantee.",
         "button_label": "Shop Laminine",
         "button_url": ""
-      }
+      },
+      "disabled": true
     },
     "rich_text_arFn6i": {
       "type": "rich-text",
@@ -789,11 +790,11 @@
     "lp_home_promos",
     "lp_tabs",
     "lp_science",
-    "lp_home_cta",
     "rich_text_arFn6i",
     "17175461316e8d66c7",
     "lp_guarantee",
     "lp_home_faq",
+    "lp_home_cta",
     "lp_home_offer",
     "lp_home_pairs",
     "lp_hero",

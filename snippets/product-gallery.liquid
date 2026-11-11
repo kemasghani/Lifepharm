@@ -193,7 +193,7 @@ only way to do it on Shopify right now.
   (() => {
     const formId = {{ product_form_id | json }};
     document.addEventListener('variant:change', (event) => {
-      if (!event.target || event.target.id !== formId) return;
+      if (!event.detail || event.detail.formId !== formId) return;
       const media = event.detail.variant && event.detail.variant.featured_media;
       const gallery = document.querySelector('product-gallery[form="' + formId + '"]');
       const list = gallery && gallery.querySelector('.product-gallery__media-list');

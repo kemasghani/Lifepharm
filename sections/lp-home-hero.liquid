@@ -99,6 +99,7 @@
 .lp-hh__img--mobile + .lp-hh__img--desktop { display: none; }
 @media (min-width: 700px) { .lp-hh__img--mobile { display: none; } .lp-hh__img--mobile + .lp-hh__img--desktop { display: block; } }
 .lp-hh__card { position: absolute; left: .75rem; bottom: .75rem; display: flex; align-items: center; gap: .75rem; padding: .5rem .6rem .5rem .5rem; border-radius: var(--lp-radius); background: rgb(255 255 255 / .94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: var(--lp-shadow-2); color: rgb(var(--lp-ink)); text-decoration: none; max-width: calc(100% - 1.5rem); }
+@media (max-width: 699px) { .lp-hh__card { position: relative; left: auto; bottom: auto; margin: -1.5rem .75rem 0; max-width: none; } }
 @media (min-width: 1000px) { .lp-hh__card { left: -1.75rem; bottom: 2rem; padding: .7rem .8rem .7rem .7rem; } }
 .lp-hh__card-media { flex: none; display: grid; place-items: center; width: 56px; height: 56px; border-radius: var(--lp-radius-sm); background: rgb(var(--lp-sand)); overflow: hidden; }
 @media (min-width: 700px) { .lp-hh__card-media { width: 76px; height: 76px; } }

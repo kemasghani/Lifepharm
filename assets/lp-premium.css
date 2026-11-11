@@ -508,5 +508,5 @@ html.lp-menu-open { overflow: hidden; overscroll-behavior: none; }
 .lp-sticky__note { white-space: nowrap; }
 
 /* Product pages: the six reassurance points live in the buy box, so the footer icon strip is hidden there */
-body:has(.shopify-section--main-product) .shopify-section--text-with-icons { display: none; }
+body:has(.shopify-section--main-product) .shopify-section--text-with-icons:not(#lp-none) { display: none !important; }
 .lp-ba-caption { margin: 0 0 .9rem; font-family: var(--lp-serif); font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.25; color: rgb(var(--lp-ink)); text-wrap: balance; }

@@ -271,7 +271,7 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
   .lp-ideal__list::-webkit-scrollbar { display: none; }
   /* 4.5 items per screen: the fifth is always cut in half, the standard cue that the row scrolls */
   .lp-ideal__item { flex: none; width: calc((100vw - var(--container-gutter, 1.25rem) - 4 * .5rem) / 4.5); min-width: 4.25rem; scroll-snap-align: start; }
-  .lp-ideal__text { font-size: .6875rem; overflow-wrap: anywhere; }
+  .lp-ideal__text { max-width: 3.9rem; font-size: .6875rem; }
 }
 @media (min-width: 1000px) {
   .shopify-section--main-product .product-gallery__media-list > .product-gallery__media:nth-child(n+8 of :not([hidden])) { display: none; }

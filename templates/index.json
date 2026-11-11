@@ -756,7 +756,7 @@
             "size": "lg",
             "text": "<a onclick=\"GorgiasChat.open();\">Chat with our team</a>",
             "url": "",
-            "background": "#f18a00",
+            "background": "#ff8f00",
             "text_color": "#414042"
           }
         }

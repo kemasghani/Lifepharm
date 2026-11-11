@@ -576,7 +576,7 @@ position: relative;
     `,
     css`
       /* LifePharm premium skin */
-      :host { max-width: none; --lp-ink: #414042; --lp-muted: #6b6a6c; --lp-stone: #d9d4ca; --lp-warm: #fbf6ee; --lp-amber: #f18a00; --lp-amber-deep: #a65a00; }
+      :host { max-width: none; --lp-ink: #414042; --lp-muted: #6b6a6c; --lp-stone: #d9d4ca; --lp-warm: #fbf6ee; --lp-amber: #ff8f00; --lp-amber-deep: #a65a00; }
       .skio-plan-picker { gap: .75rem; margin-bottom: 0; color: var(--lp-ink); font-size: 15px; }
       legend { padding: 0; margin: 0 0 .65rem; font-size: 15px; font-weight: 400; color: var(--lp-muted); }
       .group-container { border: 1.5px solid var(--lp-stone); border-radius: 16px; background: #fff; transition: border-color .25s cubic-bezier(.22,1,.36,1), background-color .25s cubic-bezier(.22,1,.36,1), box-shadow .25s cubic-bezier(.22,1,.36,1); }

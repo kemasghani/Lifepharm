@@ -7,19 +7,57 @@
   assign heading = section.settings.heading | default: mf.header_7.value
   assign ing_html = mf.text_ingredients | metafield_tag | replace: ' — ', ', ' | replace: '—', ', '
   assign ing_paras = ing_html | split: '<p'
+  assign sep = '|~|'
+  assign ing_titles = ''
+  assign ing_bodies = ''
+  for raw in ing_paras offset: 1
+    assign para = raw | prepend: '<p'
+    assign plain = para | strip_html | strip
+    if plain == blank
+      continue
+    endif
+    if para contains '<strong>'
+      assign a_title = para | split: '<strong>' | last | split: '</strong>' | first | strip_html | strip | remove: ' -' | remove: ' –' | strip
+      assign a_body = para | split: '</strong>' | last | strip_html | strip | remove_first: '- ' | remove_first: '– '
+    else
+      assign a_title = plain | truncatewords: 5
+      assign a_body = plain
+    endif
+    assign a_title = a_title | downcase | capitalize | remove: sep
+    assign ing_titles = ing_titles | append: sep | append: a_title
+    assign ing_bodies = ing_bodies | append: sep | append: a_body
+  endfor
+  assign ing_titles = ing_titles | remove_first: sep | split: sep
+  assign ing_bodies = ing_bodies | remove_first: sep | split: sep
+  assign angles = '-55,125,35,-145,90,-90' | split: ','
 -%}
 
 {%- if mf.text_ingredients != blank or mf.ingredients != blank -%}
 <section class="lp-fx" id="lp-formula">
   <div class="container">
     <div class="lp-fx__grid">
-      <div class="lp-fx__visual" aria-hidden="true" data-lp-reveal>
-        <div class="lp-fx__ring"></div>
-        <div class="lp-fx__ring lp-fx__ring--inner"></div>
-        <div class="lp-fx__glow"></div>
+      <div class="lp-fx__visual" data-lp-orbit>
+        <div class="lp-fx__ring" aria-hidden="true"></div>
+        <div class="lp-fx__ring lp-fx__ring--inner" aria-hidden="true"></div>
+        <div class="lp-fx__glow" aria-hidden="true"></div>
         {%- if visual != blank -%}
-          {{ visual | image_url: width: 1000 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 40vw, 80vw', widths: '400,600,800,1000', class: 'lp-fx__img', alt: '' }}
+          {{ visual | image_url: width: 1000 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 34vw, 70vw', widths: '400,600,800,1000', class: 'lp-fx__img', alt: '' }}
         {%- endif -%}
+        {%- for t in ing_titles limit: 6 -%}
+          {%- liquid
+            assign angle = angles[forloop.index0] | plus: 0
+            assign side = 'right'
+            if angle > 90 or angle < -90
+              assign side = 'left'
+            elsif angle == 90 or angle == -90
+              assign side = 'center'
+            endif
+          -%}
+          <button type="button" class="lp-fx__node lp-fx__node--{{ side }}" style="--a: {{ angle }}deg" data-lp-node="{{ forloop.index0 }}" aria-controls="lp-fx-{{ section.id }}-{{ forloop.index0 }}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}">
+            <span class="lp-fx__node-dot" aria-hidden="true">{% render 'lp-fx-icon', title: t %}</span>
+            <span class="lp-fx__node-label">{{ t | escape }}</span>
+          </button>
+        {%- endfor -%}
       </div>
 
       <div class="lp-fx__copy">
@@ -33,36 +71,22 @@
         {%- endif -%}
 
         <div class="lp-fx__acc">
-          {%- for raw in ing_paras offset: 1 -%}
-            {%- liquid
-              assign para = raw | prepend: '<p'
-              assign plain = para | strip_html | strip
-              if plain == blank
-                continue
-              endif
-              if para contains '<strong>'
-                assign a_title = para | split: '<strong>' | last | split: '</strong>' | first | strip_html | strip | remove: ' -' | remove: ' –' | strip
-                assign a_body = para | split: '</strong>' | last | strip_html | strip | remove_first: '- ' | remove_first: '– '
-              else
-                assign a_title = plain | truncatewords: 5
-                assign a_body = plain
-              endif
-            -%}
-            <details class="lp-fx__item" {% if forloop.first %}open{% endif %}>
-              <summary><span>{{ a_title | downcase | capitalize | escape }}</span><span class="lp-fx__plus" aria-hidden="true"></span></summary>
-              <div class="lp-fx__body"><p>{{ a_body | escape }}</p></div>
+          {%- for t in ing_titles -%}
+            <details class="lp-fx__item" id="lp-fx-{{ section.id }}-{{ forloop.index0 }}" name="lp-fx-{{ section.id }}" data-lp-acc="{{ forloop.index0 }}" {% if forloop.first %}open{% endif %}>
+              <summary><span class="lp-fx__sum"><span class="lp-fx__sum-icon" aria-hidden="true">{% render 'lp-fx-icon', title: t %}</span>{{ t | escape }}</span><span class="lp-fx__plus" aria-hidden="true"></span></summary>
+              <div class="lp-fx__body"><p>{{ ing_bodies[forloop.index0] | escape }}</p></div>
             </details>
           {%- endfor -%}
 
           {%- if mf.ingredients != blank -%}
-            <details class="lp-fx__item">
+            <details class="lp-fx__item" name="lp-fx-{{ section.id }}">
               <summary><span>{{ section.settings.full_list_label | escape }}</span><span class="lp-fx__plus" aria-hidden="true"></span></summary>
               <div class="lp-fx__body">{{ mf.ingredients | metafield_tag | replace: ' — ', ', ' | replace: '—', ', ' }}</div>
             </details>
           {%- endif -%}
 
           {%- if mf.studies != blank -%}
-            <details class="lp-fx__item">
+            <details class="lp-fx__item" name="lp-fx-{{ section.id }}">
               <summary><span>{{ section.settings.studies_label | escape }}</span><span class="lp-fx__plus" aria-hidden="true"></span></summary>
               <div class="lp-fx__body lp-fx__studies">{{ mf.studies | metafield_tag | replace: ' — ', ', ' | replace: '—', ', ' }}</div>
             </details>
@@ -78,12 +102,30 @@
 .lp-fx { overflow-x: clip; padding-block: var(--lp-section-gap); background: linear-gradient(180deg, rgb(var(--lp-ivory)), rgb(var(--lp-sand) / .6)); }
 .lp-fx__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(2rem, 6vw, 6rem); align-items: center; }
 @media (min-width: 1000px) { .lp-fx__grid { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); } }
-.lp-fx__visual { position: relative; width: min(100%, 520px); aspect-ratio: 1; margin-inline: auto; display: grid; place-items: center; }
-.lp-fx__ring { position: absolute; inset: 0; border-radius: 50%; border: 1.5px dashed rgb(var(--lp-amber) / .45); }
+.lp-fx__visual { position: relative; width: min(100%, 440px); aspect-ratio: 1; margin-inline: auto; display: grid; place-items: center; }
+.lp-fx__ring { position: absolute; inset: 0; border-radius: 50%; border: 1.5px dashed rgb(var(--lp-amber) / .45); pointer-events: none; }
 .lp-fx__ring--inner { inset: 9%; border: 1px solid rgb(var(--lp-ink) / .08); }
-.lp-fx__ring--inner::before { content: ""; position: absolute; top: -5px; left: 50%; width: 10px; height: 10px; margin-left: -5px; border-radius: 50%; background: rgb(var(--lp-amber)); box-shadow: 0 0 0 6px rgb(var(--lp-amber) / .15); }
-.lp-fx__glow { position: absolute; inset: 16%; border-radius: 50%; background: radial-gradient(closest-side, #fff 0%, rgb(var(--lp-sand)) 60%, rgb(var(--lp-amber) / .14) 100%); box-shadow: var(--lp-shadow-2); }
-.lp-fx__img { position: relative; width: 62%; height: auto; object-fit: contain; mix-blend-mode: multiply; filter: drop-shadow(0 30px 40px rgb(var(--lp-ink) / .18)); }
+.lp-fx__glow { position: absolute; inset: 16%; border-radius: 50%; background: radial-gradient(closest-side, #fff 0%, rgb(var(--lp-sand)) 60%, rgb(var(--lp-amber) / .14) 100%); box-shadow: var(--lp-shadow-2); pointer-events: none; }
+.lp-fx__img { position: relative; width: 58%; height: auto; object-fit: contain; mix-blend-mode: multiply; filter: drop-shadow(0 30px 40px rgb(var(--lp-ink) / .18)); pointer-events: none; }
+.lp-fx .lp-fx__node { position: absolute; z-index: 2; left: calc(50% + 50% * cos(var(--a))); top: calc(50% + 50% * sin(var(--a))); width: 44px; height: 44px; margin: -22px 0 0 -22px; padding: 0; border: 0; background: none; color: rgb(var(--lp-ink)); font: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.lp-fx__node-dot { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: #fff; color: rgb(var(--lp-amber-deep)); box-shadow: 0 0 0 1.5px rgb(var(--lp-amber)), var(--lp-shadow-1); transition: background-color 250ms ease-out, color 250ms ease-out, box-shadow 250ms ease-out, transform 300ms cubic-bezier(.16, 1, .3, 1); }
+.lp-fx__node-label { position: absolute; top: 50%; max-width: 10rem; padding: .4rem .75rem; border-radius: 999px; background: #fff; box-shadow: var(--lp-shadow-1); font-size: .8125rem; font-weight: 600; line-height: 1.25; text-align: left; white-space: nowrap; transform: translateY(-50%); transition: background-color 250ms ease-out, color 250ms ease-out; }
+.lp-fx__node--right .lp-fx__node-label { left: calc(100% + .5rem); }
+.lp-fx__node--left .lp-fx__node-label { right: calc(100% + .5rem); }
+.lp-fx__node--center .lp-fx__node-label { top: auto; bottom: calc(100% + .5rem); left: 50%; transform: translateX(-50%); }
+.lp-fx__node[aria-expanded="true"] .lp-fx__node-dot { background: rgb(var(--lp-amber)); color: #1f1e20; box-shadow: 0 0 0 1.5px rgb(var(--lp-amber)), 0 0 0 8px rgb(var(--lp-amber) / .2), var(--lp-shadow-1); transform: scale(1.08); }
+.lp-fx__node[aria-expanded="true"] .lp-fx__node-label { background: rgb(var(--lp-ink)); color: #fff; }
+@media (hover: hover) { .lp-fx__node:hover .lp-fx__node-dot { transform: scale(1.08); } }
+.lp-fx__node:focus-visible { outline: none; }
+.lp-fx__node:focus-visible .lp-fx__node-dot { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 3px; }
+.lp-fx__sum { display: inline-flex; align-items: center; gap: .75rem; }
+.lp-fx__sum-icon { display: grid; place-items: center; flex: none; width: 32px; height: 32px; border-radius: 50%; background: rgb(var(--lp-amber) / .14); color: rgb(var(--lp-amber-deep)); transition: background-color 250ms ease-out, color 250ms ease-out; }
+.lp-fx__item[open] .lp-fx__sum-icon { background: rgb(var(--lp-amber)); color: #1f1e20; }
+@media (max-width: 699px) {
+  .lp-fx__visual { width: min(100%, 320px); }
+  .lp-fx__node-label { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
+@media (prefers-reduced-motion: reduce) { .lp-fx__node-dot, .lp-fx__sum-icon { transition: none; } }
 .lp-fx__copy { display: grid; gap: 1.1rem; align-content: start; }
 .lp-fx__title { letter-spacing: -.02em; text-wrap: balance; }
 .lp-fx__lede { margin: 0; color: rgb(var(--lp-muted)); line-height: 1.65; max-width: 52ch; }

@@ -414,4 +414,97 @@
   if (document.readyState === 'complete') whenIdle(startLazyVideos);
   else window.addEventListener('load', () => whenIdle(startLazyVideos), { once: true });
 
+
+  const setStep = (root, i, focus) => {
+    const tabs = [...root.querySelectorAll('[data-lp-step]')];
+    if (!tabs[i]) return;
+    tabs.forEach((t, k) => {
+      const on = k === i;
+      t.setAttribute('aria-selected', on);
+      t.tabIndex = on ? 0 : -1;
+      t.classList.toggle('is-done', k < i);
+    });
+    root.querySelectorAll('[data-lp-step-panel]').forEach((p) => p.classList.toggle('is-active', Number(p.dataset.lpStepPanel) === i));
+    const list = root.querySelector('[role="tablist"]');
+    if (list) list.style.setProperty('--lp-tl-p', tabs.length > 1 ? i / (tabs.length - 1) : 0);
+    const media = root.closest('.lp-tl')?.querySelector('[data-lp-step-media]');
+    if (media) {
+      media.classList.add('is-synced');
+      media.querySelectorAll('[data-lp-step-tile]').forEach((t) => t.classList.toggle('is-active', Number(t.dataset.lpStepTile) === i));
+    }
+    if (focus) tabs[i].focus();
+  };
+  document.addEventListener('click', (e) => {
+    const tab = e.target.closest('[data-lp-step]');
+    if (tab) return setStep(tab.closest('[data-lp-steps]'), Number(tab.dataset.lpStep));
+    const next = e.target.closest('[data-lp-step-next]');
+    if (next) {
+      const root = next.closest('[data-lp-steps]');
+      const cur = Number(next.closest('[data-lp-step-panel]').dataset.lpStepPanel);
+      setStep(root, cur + 1, true);
+    }
+  });
+  document.addEventListener('keydown', (e) => {
+    const tab = e.target.closest && e.target.closest('[data-lp-step]');
+    if (!tab) return;
+    const root = tab.closest('[data-lp-steps]');
+    const n = root.querySelectorAll('[data-lp-step]').length;
+    const i = Number(tab.dataset.lpStep);
+    const map = { ArrowRight: (i + 1) % n, ArrowLeft: (i - 1 + n) % n, Home: 0, End: n - 1 };
+    if (!(e.key in map)) return;
+    e.preventDefault();
+    setStep(root, map[e.key], true);
+  });
+
+  const syncOrbit = (section) => {
+    const open = section.querySelector('details[data-lp-acc][open]');
+    const active = open ? open.dataset.lpAcc : null;
+    section.querySelectorAll('[data-lp-node]').forEach((n) => n.setAttribute('aria-expanded', n.dataset.lpNode === active));
+  };
+  document.addEventListener('click', (e) => {
+    const node = e.target.closest('[data-lp-node]');
+    if (!node) return;
+    const item = document.getElementById(node.getAttribute('aria-controls'));
+    if (!item) return;
+    item.open = true;
+    const section = node.closest('.lp-fx');
+    section.querySelectorAll('details[name="' + item.getAttribute('name') + '"]').forEach((d) => { if (d !== item) d.open = false; });
+    syncOrbit(section);
+    if (!window.matchMedia('(min-width: 1000px)').matches) {
+      const r = item.getBoundingClientRect();
+      if (r.top < 0 || r.top > window.innerHeight - 120) item.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
+    }
+  });
+  document.addEventListener('toggle', (e) => {
+    if (e.target.matches && e.target.matches('.lp-fx details')) syncOrbit(e.target.closest('.lp-fx'));
+  }, true);
+
+  const edgeTone = (frame, img) => {
+    try {
+      const c = document.createElement('canvas');
+      const w = (c.width = 32), h = (c.height = 32);
+      const ctx = c.getContext('2d', { willReadFrequently: true });
+      ctx.drawImage(img, 0, 0, w, h);
+      const d = ctx.getImageData(0, 0, w, h).data;
+      const px = [];
+      for (let k = 0; k < w; k++) [[k, 0], [k, h - 1], [0, k], [w - 1, k]].forEach(([x, y]) => { const o = (y * w + x) * 4; px.push([d[o], d[o + 1], d[o + 2]]); });
+      const avg = [0, 1, 2].map((ch) => px.reduce((a, p) => a + p[ch], 0) / px.length);
+      const spread = Math.max(...px.map((p) => Math.max(...p.map((v, ch) => Math.abs(v - avg[ch])))));
+      if (spread > 28) return;
+      const [r, g, b] = avg.map(Math.round);
+      const lin = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; };
+      const L = 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
+      frame.style.setProperty('--lp-how-bg', `rgb(${r} ${g} ${b})`);
+      frame.dataset.tone = (L + 0.05) / 0.063 >= 1.05 / (L + 0.05) ? 'light' : 'dark';
+    } catch (err) {}
+  };
+  const initEdgeBg = () => document.querySelectorAll('[data-lp-edge-bg]').forEach((frame) => {
+    const img = frame.querySelector('.lp-how__img');
+    if (!img || frame.dataset.tone) return;
+    if (img.complete && img.naturalWidth) edgeTone(frame, img);
+    else img.addEventListener('load', () => edgeTone(frame, img), { once: true });
+  });
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initEdgeBg, { once: true });
+  else initEdgeBg();
+  document.addEventListener('shopify:section:load', initEdgeBg);
 })();

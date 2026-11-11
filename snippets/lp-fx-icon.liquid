@@ -1,0 +1,25 @@
+{% doc %}
+  Picks an ingredient icon from the ingredient name.
+
+  @param {string} title - Ingredient name
+
+  @example
+  {% render 'lp-fx-icon', title: 'Marine protein' %}
+{% enddoc %}
+
+{%- liquid
+  assign t = title | downcase
+  assign icon = 'flask'
+  if t contains 'egg' or t contains 'growth' or t contains 'stem' or t contains 'cell'
+    assign icon = 'cell'
+  elsif t contains 'marine' or t contains 'fish' or t contains 'omega' or t contains 'algae' or t contains 'oil' or t contains 'sea'
+    assign icon = 'drop'
+  elsif t contains 'plant' or t contains 'phyto' or t contains 'herb' or t contains 'botan' or t contains 'leaf' or t contains 'extract'
+    assign icon = 'leaf'
+  elsif t contains 'vitamin' or t contains 'mineral' or t contains 'antioxid'
+    assign icon = 'sparkle'
+  elsif t contains 'peptide' or t contains 'protein' or t contains 'collagen' or t contains 'amino'
+    assign icon = 'dna'
+  endif
+  render 'lp-icon', name: icon, size: 18
+-%}

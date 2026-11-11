@@ -2,9 +2,17 @@
   assign mf = product.metafields.custom
   assign phases = '1,2,3' | split: ','
   assign has_phase = false
-  if mf.phase_1_content != blank
+  assign phase_count = 0
+  for n in phases
+    assign content_key = 'phase_' | append: n | append: '_content'
+    if mf[content_key] != blank
+      assign phase_count = phase_count | plus: 1
+    endif
+  endfor
+  if phase_count > 0
     assign has_phase = true
   endif
+  assign last_k = phase_count | minus: 1
 -%}
 
 {%- if has_phase -%}
@@ -18,28 +26,52 @@
 
     <div class="lp-tl__grid">
       <div class="lp-tl__col">
-        <ol class="lp-tl__list" role="list">
-          {%- for n in phases -%}
-            {%- liquid
-              assign content_key = 'phase_' | append: n | append: '_content'
-              assign heading_key = 'phase_' | append: n | append: '_heading'
-              assign label_key = 'phase_' | append: n | append: '_nav_label'
-              assign p_content = mf[content_key]
-              assign p_heading = mf[heading_key].value | split: '<p' | first | strip_html | strip
-              assign p_label = mf[label_key].value
-            -%}
-            {%- if p_content != blank -%}
-              <li class="lp-tl__item">
-                <span class="lp-tl__dot" aria-hidden="true"></span>
-                <div class="lp-tl__item-head">
-                  {%- if p_label != blank -%}<span class="lp-tl__pill">{{ p_label | escape }}</span>{%- endif -%}
-                  {%- if p_heading != blank -%}<h3 class="lp-tl__item-title">{{ p_heading | escape }}</h3>{%- endif -%}
-                </div>
+        <div class="lp-tl__steps" data-lp-steps>
+          <div class="lp-tl__tabs" role="tablist" aria-label="{{ section.settings.eyebrow | default: 'Results timeline' | escape }}" style="--lp-tl-n: {{ phase_count }}">
+            {%- assign k = 0 -%}
+            {%- for n in phases -%}
+              {%- liquid
+                assign content_key = 'phase_' | append: n | append: '_content'
+                assign heading_key = 'phase_' | append: n | append: '_heading'
+                assign label_key = 'phase_' | append: n | append: '_nav_label'
+                if mf[content_key] == blank
+                  continue
+                endif
+                assign p_heading = mf[heading_key].value | split: '<p' | first | strip_html | strip
+                assign p_label = mf[label_key].value | default: p_heading
+              -%}
+              <button type="button" role="tab" class="lp-tl__tab" id="lp-tl-tab-{{ section.id }}-{{ k }}" aria-controls="lp-tl-panel-{{ section.id }}-{{ k }}" aria-selected="{% if k == 0 %}true{% else %}false{% endif %}" {% if k != 0 %}tabindex="-1"{% endif %} data-lp-step="{{ k }}">
+                <span class="lp-tl__tab-dot" aria-hidden="true"></span>
+                <span class="lp-tl__tab-label">{{ p_label | escape }}</span>
+                {%- if p_heading != blank and p_heading != p_label -%}<span class="lp-tl__tab-title">{{ p_heading | downcase | capitalize | escape }}</span>{%- endif -%}
+              </button>
+              {%- assign k = k | plus: 1 -%}
+            {%- endfor -%}
+          </div>
+
+          <div class="lp-tl__panels">
+            {%- assign k = 0 -%}
+            {%- for n in phases -%}
+              {%- liquid
+                assign content_key = 'phase_' | append: n | append: '_content'
+                assign heading_key = 'phase_' | append: n | append: '_heading'
+                assign p_content = mf[content_key]
+                if p_content == blank
+                  continue
+                endif
+                assign p_heading = mf[heading_key].value | split: '<p' | first | strip_html | strip
+              -%}
+              <div class="lp-tl__panel{% if k == 0 %} is-active{% endif %}" role="tabpanel" id="lp-tl-panel-{{ section.id }}-{{ k }}" aria-labelledby="lp-tl-tab-{{ section.id }}-{{ k }}" tabindex="0" data-lp-step-panel="{{ k }}">
+                {%- if p_heading != blank -%}<h3 class="lp-tl__panel-title">{{ p_heading | downcase | capitalize | escape }}</h3>{%- endif -%}
                 <div class="lp-tl__item-text">{{ p_content | metafield_tag | replace: ' — ', ', ' | replace: '—', ', ' }}</div>
-              </li>
-            {%- endif -%}
-          {%- endfor -%}
-        </ol>
+                {%- unless k == last_k -%}
+                  <button type="button" class="lp-tl__next" data-lp-step-next>{{ section.settings.next_label | escape }}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+                {%- endunless -%}
+              </div>
+              {%- assign k = k | plus: 1 -%}
+            {%- endfor -%}
+          </div>
+        </div>
 
         {%- liquid
           assign use_h = mf.header_2.value | default: section.settings.how_title
@@ -56,7 +88,7 @@
         {%- endif -%}
       </div>
 
-      <div class="lp-tl__media" aria-hidden="true">
+      <div class="lp-tl__media" aria-hidden="true" data-lp-step-media>
         {%- for n in phases -%}
           {%- liquid
             assign image_key = 'phase_' | append: n | append: '_image'
@@ -67,7 +99,7 @@
             endif
           -%}
           {%- if p_image != blank -%}
-            <div class="lp-tl__tile lp-tl__tile--{{ forloop.index }}" data-lp-reveal style="--lp-i: {{ forloop.index0 }}">
+            <div class="lp-tl__tile lp-tl__tile--{{ forloop.index }}{% if forloop.first %} is-active{% endif %}" data-lp-step-tile="{{ forloop.index0 }}">
               {{ p_image | image_url: width: 1200 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 40vw, 100vw', widths: '400,600,800,1000,1200', alt: '' }}
             </div>
           {%- endif -%}
@@ -86,20 +118,35 @@
 .lp-tl__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
 @media (min-width: 1000px) { .lp-tl__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); } }
 .lp-tl__col { display: grid; gap: 2rem; }
-.lp-tl__list { position: relative; display: grid; gap: 2.25rem; list-style: none; margin: 0; padding: 0 0 0 2rem; }
-.lp-tl__list::before { content: ""; position: absolute; left: 5px; top: 10px; bottom: 10px; width: 2px; border-radius: 2px; background: rgb(var(--lp-ink) / .1); }
-.lp-tl__list::after { content: ""; position: absolute; left: 5px; top: 10px; bottom: 10px; width: 2px; border-radius: 2px; background: linear-gradient(rgb(var(--lp-amber)), rgb(var(--lp-amber-deep))); transform-origin: top; transform: scaleY(1); }
-@supports (animation-timeline: view()) {
-  .lp-tl__list::after { animation: lp-tl-fill linear both; animation-timeline: view(); animation-range: entry 20% cover 60%; }
-  @keyframes lp-tl-fill { from { transform: scaleY(0); } to { transform: scaleY(1); } }
-}
-.lp-tl__item { position: relative; display: grid; gap: .7rem; }
-.lp-tl__dot { position: absolute; left: calc(-2rem + 0px); top: 6px; width: 12px; height: 12px; border-radius: 50%; background: rgb(var(--lp-ivory)); box-shadow: 0 0 0 2px rgb(var(--lp-amber)), 0 0 0 6px rgb(var(--lp-amber) / .14); z-index: 1; }
-.lp-tl__item-head { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem; }
-.lp-tl__pill { display: inline-flex; padding: .3rem .8rem; border-radius: 999px; background: rgb(var(--lp-ink)); color: #fff; font-size: .75rem; font-weight: 600; letter-spacing: .02em; }
-.lp-tl__item-title { margin: 0; font-family: var(--text-font-family); font-size: 1.0625rem; font-weight: 500; letter-spacing: -.01em; }
-.lp-tl__item-text { color: rgb(var(--lp-muted)); line-height: 1.65; font-size: .95rem; max-width: 52ch; }
+.lp-tl__steps { display: grid; gap: 1.25rem; }
+.lp-tl__tabs { position: relative; display: grid; grid-template-columns: repeat(var(--lp-tl-n, 3), minmax(0, 1fr)); --lp-tl-p: 0; }
+.lp-tl__tabs::before, .lp-tl__tabs::after { content: ""; position: absolute; top: 21px; left: calc(50% / var(--lp-tl-n, 3)); height: 2px; border-radius: 2px; }
+.lp-tl__tabs::before { right: calc(50% / var(--lp-tl-n, 3)); background: rgb(var(--lp-ink) / .12); }
+.lp-tl__tabs::after { width: calc((100% - 100% / var(--lp-tl-n, 3)) * var(--lp-tl-p)); background: rgb(var(--lp-amber)); transition: width 450ms cubic-bezier(.16, 1, .3, 1); }
+.lp-tl .lp-tl__tab { position: relative; z-index: 1; display: grid; justify-items: center; align-content: start; gap: .45rem; min-height: 44px; padding: 0 .25rem .5rem; border: 0; background: none; color: rgb(var(--lp-muted)); font: inherit; text-align: center; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.lp-tl__tab-dot { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; }
+.lp-tl__tab-dot::before { content: ""; width: 14px; height: 14px; border-radius: 50%; background: rgb(var(--lp-ivory)); box-shadow: 0 0 0 2px rgb(var(--lp-ink) / .22); transition: background-color 250ms ease-out, box-shadow 250ms ease-out, transform 250ms cubic-bezier(.16, 1, .3, 1); }
+.lp-tl__tab.is-done .lp-tl__tab-dot::before { background: rgb(var(--lp-amber)); box-shadow: 0 0 0 2px rgb(var(--lp-amber)); }
+.lp-tl__tab[aria-selected="true"] .lp-tl__tab-dot::before { background: rgb(var(--lp-amber)); box-shadow: 0 0 0 2px rgb(var(--lp-amber)), 0 0 0 8px rgb(var(--lp-amber) / .18); transform: scale(1.15); }
+.lp-tl__tab-label { padding: .3rem .8rem; border-radius: 999px; border: 1px solid rgb(var(--lp-ink) / .14); font-size: .8125rem; font-weight: 600; line-height: 1.25; color: rgb(var(--lp-ink)); transition: background-color 200ms ease-out, color 200ms ease-out, border-color 200ms ease-out; }
+.lp-tl__tab:hover .lp-tl__tab-label { border-color: rgb(var(--lp-ink) / .4); }
+.lp-tl__tab[aria-selected="true"] .lp-tl__tab-label { border-color: rgb(var(--lp-ink)); background: rgb(var(--lp-ink)); color: #fff; }
+.lp-tl__tab-title { display: none; font-size: .875rem; line-height: 1.35; }
+.lp-tl__tab[aria-selected="true"] .lp-tl__tab-title { color: rgb(var(--lp-ink)); font-weight: 600; }
+.lp-tl__tab:focus-visible { outline: none; }
+.lp-tl__tab:focus-visible .lp-tl__tab-label { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 3px; }
+.lp-tl__panels { display: grid; }
+.lp-tl__panel { grid-area: 1 / 1; display: grid; align-content: start; gap: .75rem; padding: clamp(1.25rem, 2.5vw, 1.75rem); border-radius: var(--lp-radius); background: #fff; box-shadow: var(--lp-shadow-1); visibility: hidden; opacity: 0; transform: translateY(6px); transition: opacity 300ms ease-out, transform 300ms cubic-bezier(.16, 1, .3, 1), visibility 0s linear 300ms; }
+.lp-tl__panel.is-active { visibility: visible; opacity: 1; transform: none; transition-delay: 0s; }
+.lp-tl__panel:focus-visible { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 3px; }
+.lp-tl__panel-title { margin: 0; font-family: var(--text-font-family); font-size: 1.125rem; font-weight: 600; letter-spacing: -.01em; }
+.lp-tl__item-text { color: rgb(var(--lp-ink) / .82); line-height: 1.65; font-size: 1rem; max-width: 56ch; }
 .lp-tl__item-text p { margin: 0; }
+.lp-tl .lp-tl__next { justify-self: start; display: inline-flex; align-items: center; gap: .4rem; min-height: 44px; margin-block-start: .1rem; padding: 0; border: 0; background: none; color: rgb(var(--lp-amber-deep)); font: inherit; font-size: .9375rem; font-weight: 600; cursor: pointer; }
+.lp-tl__next svg { transition: transform 200ms ease-out; }
+.lp-tl__next:hover svg { transform: translateX(3px); }
+@media (min-width: 700px) { .lp-tl__tab-title { display: block; } .lp-tl__panel-title { display: none; } }
+@media (prefers-reduced-motion: reduce) { .lp-tl__panel, .lp-tl__tabs::after, .lp-tl__tab-dot::before { transition: none; } }
 .lp-tl__how { display: block; padding: 1.5rem; border-radius: var(--lp-radius); background: rgb(var(--lp-sand)); }
 .lp-tl__how-list { display: grid; gap: 1.1rem; margin: 0; padding: 0; list-style: none; }
 .lp-tl__step { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: .9rem; align-items: start; }
@@ -110,8 +157,10 @@
 .lp-tl__media { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(.6rem, 1.2vw, 1rem); }
 @media (min-width: 1000px) { .lp-tl__media { position: sticky; top: calc(var(--sticky-area-height, 80px) + 2rem); } }
 .lp-tl__tile { position: relative; overflow: hidden; border-radius: var(--lp-radius-lg); background: rgb(var(--lp-sand)); }
-.lp-tl__tile img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1.6s var(--lp-ease); }
-.lp-tl__tile:hover img { transform: scale(1.04); }
+.lp-tl__tile { transition: opacity 350ms ease-out, box-shadow 350ms ease-out; }
+.lp-tl__tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+[data-lp-step-media].is-synced .lp-tl__tile:not(.is-active) { opacity: .45; }
+[data-lp-step-media].is-synced .lp-tl__tile.is-active { box-shadow: 0 0 0 3px rgb(var(--lp-amber)); }
 .lp-tl__tile--1 { grid-column: 1 / -1; aspect-ratio: 16 / 10; }
 .lp-tl__tile--2 { aspect-ratio: 1; }
 .lp-tl__tile--3 { aspect-ratio: 1; border-radius: 50%; }
@@ -123,11 +172,12 @@
   "tag": "div",
   "class": "lp-pdp-section",
   "settings": [
-    { "type": "paragraph", "content": "Phases, images and the How to use card come from the product's timeline metafields (phase 1–3)." },
+    { "type": "paragraph", "content": "Phases, images and the How to use card come from the product's timeline metafields (phase 1 to 3)." },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "What to expect" },
     { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Benefits that <em>build over time</em>" },
     { "type": "text", "id": "subheading", "label": "Subheading", "default": "Take it daily and the benefits build. Here’s what to look for, and when." },
-    { "type": "text", "id": "how_title", "label": "How to use fallback title", "default": "How to use" }
+    { "type": "text", "id": "how_title", "label": "How to use fallback title", "default": "How to use" },
+    { "type": "text", "id": "next_label", "label": "Next step label", "default": "What comes next" }
   ],
   "presets": [ { "name": "LP · PDP results timeline" } ],
   "enabled_on": { "templates": ["product"] }

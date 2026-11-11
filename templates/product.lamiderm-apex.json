@@ -1222,7 +1222,6 @@
     "lp_pdp_highlights": {
       "type": "lp-pdp-highlights",
       "settings": {
-        "overlay": 60,
         "eyebrow": "Why it works",
         "heading": "Support that works with your body, not against it.",
         "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
@@ -1233,9 +1232,7 @@
       "settings": {
         "eyebrow": "How it works",
         "supports_label": "Supports",
-        "link_label": "See what’s inside",
-        "film_asset": "lp-cell-film.mp4",
-        "poster_asset": "lp-cell-film-poster.jpg"
+        "link_label": "See what’s inside"
       }
     },
     "lp_pdp_timeline": {

@@ -61,6 +61,9 @@ Supported variables
       %}
 
       <fieldset class="variant-picker__option">
+        {%- if resolved_option_selector_style == 'lp_card' -%}
+          <legend class="sr-only">{{ option.name }}: {{ option.selected_value }}</legend>
+        {%- else -%}
         <div class="variant-picker__option-info">
           <div class="h-stack gap-2">
             <legend class="text-subdued">{{ option.name }}:</legend>
@@ -83,6 +86,7 @@ Supported variables
             </x-drawer>
           {%- endif -%}
         </div>
+        {%- endif -%}
 
         {%- if resolved_option_selector_style == 'dropdown' -%}
           {%- capture popover_id -%}popover-variant-picker-{{ section.id }}-{{ product.id }}-{{ option.position }}{%- endcapture -%}

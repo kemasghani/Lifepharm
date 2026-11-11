@@ -187,3 +187,21 @@ only way to do it on Shopify right now.
     {%- endif -%}
   {%- endif -%}
 </product-gallery>
+
+{%- comment -%} Desktop grid layout: the theme only scrolls a carousel on variant change, so in the grid the variant image never comes forward. Bring the selected variant's image to the front (CSS order, DOM untouched). {%- endcomment -%}
+<script>
+  (() => {
+    const formId = {{ product_form_id | json }};
+    document.addEventListener('variant:change', (event) => {
+      if (!event.target || event.target.id !== formId) return;
+      const media = event.detail.variant && event.detail.variant.featured_media;
+      const gallery = document.querySelector('product-gallery[form="' + formId + '"]');
+      const list = gallery && gallery.querySelector('.product-gallery__media-list');
+      if (!list) return;
+      list.querySelectorAll('.lp-vm-first').forEach((el) => el.classList.remove('lp-vm-first'));
+      const target = media && list.querySelector('.product-gallery__media[data-media-id="' + media.id + '"]');
+      list.classList.toggle('lp-vm', Boolean(target));
+      if (target) target.classList.add('lp-vm-first');
+    }, true);
+  })();
+</script>

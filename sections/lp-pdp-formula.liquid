@@ -29,7 +29,14 @@
   endfor
   assign ing_titles = ing_titles | remove_first: sep | split: sep
   assign ing_bodies = ing_bodies | remove_first: sep | split: sep
-  assign angles = '-55,125,35,-145,90,-90' | split: ','
+  assign node_count = ing_titles.size | at_most: 6
+  assign node_step = 0
+  assign node_start = 0
+  if node_count > 1
+    assign node_gaps = node_count | minus: 1
+    assign node_step = 120 | divided_by: node_gaps
+    assign node_start = -60
+  endif
 -%}
 
 {%- if mf.text_ingredients != blank or mf.ingredients != blank -%}
@@ -45,15 +52,9 @@
         {%- endif -%}
         {%- for t in ing_titles limit: 6 -%}
           {%- liquid
-            assign angle = angles[forloop.index0] | plus: 0
-            assign side = 'right'
-            if angle > 90 or angle < -90
-              assign side = 'left'
-            elsif angle == 90 or angle == -90
-              assign side = 'center'
-            endif
+            assign angle = node_step | times: forloop.index0 | plus: node_start
           -%}
-          <button type="button" class="lp-fx__node lp-fx__node--{{ side }}" style="--a: {{ angle }}deg" data-lp-node="{{ forloop.index0 }}" aria-controls="lp-fx-{{ section.id }}-{{ forloop.index0 }}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}">
+          <button type="button" class="lp-fx__node" style="--a: {{ angle }}deg" data-lp-node="{{ forloop.index0 }}" aria-controls="lp-fx-{{ section.id }}-{{ forloop.index0 }}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}">
             <span class="lp-fx__node-dot" aria-hidden="true">{% render 'lp-fx-icon', title: t %}</span>
             <span class="lp-fx__node-label">{{ t | escape }}</span>
           </button>
@@ -102,7 +103,7 @@
 .lp-fx { overflow-x: clip; padding-block: var(--lp-section-gap); background: linear-gradient(180deg, rgb(var(--lp-ivory)), rgb(var(--lp-sand) / .6)); }
 .lp-fx__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(2rem, 6vw, 6rem); align-items: center; }
 @media (min-width: 1000px) { .lp-fx__grid { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); } }
-.lp-fx__visual { position: relative; width: min(100%, 440px); aspect-ratio: 1; margin-inline: auto; display: grid; place-items: center; }
+.lp-fx__visual { position: relative; width: min(100%, 420px); aspect-ratio: 1; margin-inline: auto; display: grid; place-items: center; }
 .lp-fx__ring { position: absolute; inset: 0; border-radius: 50%; border: 1.5px dashed rgb(var(--lp-amber) / .45); pointer-events: none; }
 .lp-fx__ring--inner { inset: 9%; border: 1px solid rgb(var(--lp-ink) / .08); }
 .lp-fx__glow { position: absolute; inset: 16%; border-radius: 50%; background: radial-gradient(closest-side, #fff 0%, rgb(var(--lp-sand)) 60%, rgb(var(--lp-amber) / .14) 100%); box-shadow: var(--lp-shadow-2); pointer-events: none; }
@@ -110,9 +111,7 @@
 .lp-fx .lp-fx__node { position: absolute; z-index: 2; left: calc(50% + 50% * cos(var(--a))); top: calc(50% + 50% * sin(var(--a))); width: 44px; height: 44px; margin: -22px 0 0 -22px; padding: 0; border: 0; background: none; color: rgb(var(--lp-ink)); font: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
 .lp-fx__node-dot { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: #fff; color: rgb(var(--lp-amber-deep)); box-shadow: 0 0 0 1.5px rgb(var(--lp-amber)), var(--lp-shadow-1); transition: background-color 250ms ease-out, color 250ms ease-out, box-shadow 250ms ease-out, transform 300ms cubic-bezier(.16, 1, .3, 1); }
 .lp-fx__node-label { position: absolute; top: 50%; padding: .4rem .75rem; border-radius: 999px; background: #fff; box-shadow: var(--lp-shadow-1); font-size: .8125rem; font-weight: 600; line-height: 1.25; text-align: left; white-space: nowrap; transform: translateY(-50%); transition: background-color 250ms ease-out, color 250ms ease-out; }
-.lp-fx__node--right .lp-fx__node-label { left: calc(100% + .5rem); }
-.lp-fx__node--left .lp-fx__node-label { right: calc(100% + .5rem); }
-.lp-fx__node--center .lp-fx__node-label { top: auto; bottom: calc(100% + .5rem); left: 50%; transform: translateX(-50%); }
+.lp-fx__node-label { left: calc(100% + .5rem); }
 .lp-fx__node[aria-expanded="true"] .lp-fx__node-dot { background: rgb(var(--lp-amber)); color: #1f1e20; box-shadow: 0 0 0 1.5px rgb(var(--lp-amber)), 0 0 0 8px rgb(var(--lp-amber) / .2), var(--lp-shadow-1); transform: scale(1.08); }
 .lp-fx__node[aria-expanded="true"] .lp-fx__node-label { background: rgb(var(--lp-ink)); color: #fff; }
 @media (hover: hover) { .lp-fx__node:hover .lp-fx__node-dot { transform: scale(1.08); } }
@@ -121,6 +120,7 @@
 .lp-fx__sum { display: inline-flex; align-items: center; gap: .75rem; }
 .lp-fx__sum-icon { display: grid; place-items: center; flex: none; width: 32px; height: 32px; border-radius: 50%; background: rgb(var(--lp-amber) / .14); color: rgb(var(--lp-amber-deep)); transition: background-color 250ms ease-out, color 250ms ease-out; }
 .lp-fx__item[open] .lp-fx__sum-icon { background: rgb(var(--lp-amber)); color: #1f1e20; }
+@media (min-width: 1000px) { .lp-fx__visual { width: min(68%, 420px); margin-inline: 0 auto; } }
 @media (max-width: 699px) {
   .lp-fx__visual { width: min(100%, 320px); }
   .lp-fx__node-label { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

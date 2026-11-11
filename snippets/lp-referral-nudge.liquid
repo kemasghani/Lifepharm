@@ -35,6 +35,7 @@
 
 {% stylesheet %}
 .shopify-section:has(.referral-banner) .section { padding: 0 !important; background: none !important; }
+div.referral-banner.referral-banner:not(#lp-none) { padding: 0 !important; }
 .referral-banner { height: 0 !important; min-height: 0 !important; padding: 0 !important; background: none !important; overflow: visible !important; }
 .referral-banner__row { display: none !important; }
 
@@ -61,8 +62,9 @@
 .lp-ref-tab__label { max-width: 16ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 @media (max-width: 699px) {
-  .lp-ref { left: 12px; right: 12px; width: auto; bottom: calc(12px + env(safe-area-inset-bottom)); }
-  .lp-ref[data-template="product"] { bottom: calc(88px + env(safe-area-inset-bottom)); }
+  /* sits above the chat launcher (bottom right, 72px) so the two never overlap */
+  .lp-ref { left: 12px; right: 12px; width: auto; bottom: calc(88px + env(safe-area-inset-bottom)); }
+  .lp-ref[data-template="product"] { bottom: calc(160px + env(safe-area-inset-bottom)); }
   .lp-ref__card { grid-template-columns: 72px minmax(0, 1fr); gap: .85rem; padding: .875rem 1rem .875rem .875rem; transform: translateY(calc(100% + 24px)); }
   .lp-ref__art { width: 72px; border-radius: 12px; }
   .lp-ref__title { font-size: 1rem; }

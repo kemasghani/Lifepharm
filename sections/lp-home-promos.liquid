@@ -1,0 +1,74 @@
+<section class="lp-promos">
+  <div class="container lp-promos__grid">
+    {%- for block in section.blocks -%}
+      <a href="{{ block.settings.url | default: routes.all_products_collection_url }}" class="lp-promo lp-promo--{{ block.settings.style }}" {{ block.shopify_attributes }}>
+        <span class="lp-promo__copy">
+          {%- if block.settings.tag != blank -%}<span class="lp-promo__tag">{{ block.settings.tag | escape }}</span>{%- endif -%}
+          <span class="h2 lp-promo__title">{{ block.settings.heading }}</span>
+          {%- if block.settings.text != blank -%}<span class="lp-promo__text">{{ block.settings.text | escape }}</span>{%- endif -%}
+          <span class="button lp-promo__cta">
+            {{- block.settings.button_label | escape -}}
+            {% render 'lp-icon', name: 'arrow', size: 16 %}
+          </span>
+        </span>
+        <span class="lp-promo__media" data-lp-reveal>
+          {%- if block.settings.image != blank -%}
+            {{ block.settings.image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '400,600,900', sizes: '(min-width: 1000px) 25vw, 50vw', class: 'lp-promo__img', alt: '' }}
+          {%- endif -%}
+        </span>
+      </a>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% stylesheet %}
+.lp-promos { padding-block: 0 var(--lp-section-gap); background: rgb(var(--lp-ivory)); }
+.lp-promos__grid { display: grid; gap: 1rem; }
+@media (min-width: 1000px) { .lp-promos__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; } }
+.lp-promo { position: relative; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); align-items: center; min-height: 15rem; overflow: hidden; border-radius: var(--lp-radius-lg); color: rgb(var(--lp-ink)); text-decoration: none; isolation: isolate; }
+@media (min-width: 700px) { .lp-promo { min-height: 18rem; } }
+.lp-promo--dark { background: radial-gradient(80% 120% at 100% 100%, rgb(var(--lp-amber) / .3), transparent 65%), rgb(var(--lp-ink)); color: #fff; }
+.lp-promo--light { background: rgb(var(--lp-sand)); }
+.lp-promo--amber { background: rgb(var(--lp-amber)); color: #1F1E20; }
+.lp-promo__copy { display: grid; gap: .6rem; justify-items: start; padding: clamp(1.25rem, 3vw, 2.25rem); }
+.lp-promo__tag { padding: .3rem .7rem; border-radius: 999px; background: rgb(var(--lp-amber)); color: #1F1E20; font-size: .625rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.lp-promo--amber .lp-promo__tag { background: #1F1E20; color: #fff; }
+.lp-promo .lp-promo__title { font-size: clamp(1.5rem, 2.4vw, 2.25rem); line-height: 1.05; }
+.lp-promo__title em { font-style: normal; color: rgb(var(--lp-amber-deep)); }
+.lp-promo--dark .lp-promo__title em { color: rgb(var(--lp-amber)); }
+.lp-promo__text { font-size: .9375rem; line-height: 1.5; opacity: .82; max-width: 22rem; }
+.lp-promo__cta { min-height: 44px; padding-inline: 1.25rem; font-size: .875rem; margin-block-start: .25rem; }
+.lp-promo--amber .lp-promo__cta { background: #1F1E20; color: #fff; }
+.lp-promo__cta svg { transition: transform var(--lp-dur-2) var(--lp-ease); }
+@media (hover: hover) { .lp-promo:hover .lp-promo__cta svg { transform: translateX(4px); } .lp-promo:hover .lp-promo__img { transform: scale(1.04); } }
+.lp-promo__media { align-self: stretch; display: grid; place-items: center; padding: 1rem 1rem 1rem 0; }
+.lp-promo__img { width: 100%; height: 100%; max-height: 16rem; object-fit: contain; transition: transform 900ms var(--lp-ease); }
+.lp-promo--dark .lp-promo__img { filter: drop-shadow(0 24px 30px rgb(0 0 0 / .35)); }
+.lp-promo--light .lp-promo__media, .lp-promo--amber .lp-promo__media { padding: 0; }
+.lp-promo--light .lp-promo__img, .lp-promo--amber .lp-promo__img { object-fit: cover; max-height: none; }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "LP Home promos",
+  "blocks": [
+    {
+      "type": "promo",
+      "name": "Promo card",
+      "settings": [
+        { "type": "select", "id": "style", "label": "Style", "default": "dark", "options": [
+          { "value": "dark", "label": "Dark" }, { "value": "light", "label": "Sand" }, { "value": "amber", "label": "Amber" }
+        ] },
+        { "type": "text", "id": "tag", "label": "Tag" },
+        { "type": "text", "id": "heading", "label": "Heading", "info": "Wrap a word in <em> to colour it.", "default": "Promo heading" },
+        { "type": "text", "id": "text", "label": "Text" },
+        { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop now" },
+        { "type": "url", "id": "url", "label": "Link" },
+        { "type": "image_picker", "id": "image", "label": "Image" }
+      ]
+    }
+  ],
+  "max_blocks": 2,
+  "presets": [{ "name": "LP Home promos" }]
+}
+{% endschema %}

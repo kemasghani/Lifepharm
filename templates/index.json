@@ -48,20 +48,20 @@
         "c4"
       ],
       "settings": {
+        "image": "shopify://shop_images/lp-home-hero-family.jpg",
+        "mobile_image": "shopify://shop_images/lp-home-hero-family-mobile.jpg",
+        "eyebrow": "Science-led wellbeing",
+        "heading": "Feel good at <em>every age</em>",
+        "rating_text": "<strong>978+</strong> verified Laminine reviews",
+        "text": "<p>Premium nutritionals and skincare made with fertilised avian egg extract, rich in growth factors that support your body's natural renewal.*</p>",
+        "button_label": "Shop best sellers",
+        "button_url": "shopify://collections/nutritionals",
+        "secondary_label": "Discover Laminine",
+        "secondary_url": "shopify://products/laminine",
         "product": "laminine",
-        "image": "shopify://shop_images/laminine-hero-desktop.jpg",
-        "mobile_image": "",
-        "badge": "Best seller in the UK, US and Europe",
-        "eyebrow": "Laminine",
-        "heading": "Daily support for <em>energy</em> and healthy ageing",
-        "rating_text": "<strong>978+</strong> verified reviews",
-        "text": "<p>Fertilised avian egg extract with marine and plant protein: the growth factors and amino acids your body uses to renew itself.*</p>",
-        "price_prefix": "From",
-        "save_label": "Subscribe & save 25%",
-        "button_label": "Shop Laminine",
-        "button_url": "",
-        "link_label": "Compare sizes",
-        "link_url": "#lp-offer"
+        "card_image": "shopify://shop_images/laminine-duo-cutout.png",
+        "card_label": "Our best seller",
+        "price_prefix": "From"
       }
     },
     "logo_list_cGNNLB": {
@@ -122,6 +122,130 @@
         "label": "As featured in"
       }
     },
+    "lp_home_cats": {
+      "type": "lp-home-cats",
+      "blocks": {
+        "k1": {
+          "type": "category",
+          "settings": {
+            "product": "laminine",
+            "image": "shopify://shop_images/2026-06-22-Laminine-ShopifyImages-05.jpg",
+            "title": "Laminine",
+            "caption": "Our best seller",
+            "badge": "Save 25%"
+          }
+        },
+        "k2": {
+          "type": "category",
+          "settings": {
+            "collection": "nutritionals",
+            "image": "shopify://shop_images/Supplements-Orange-bg_web.jpg",
+            "title": "Nutritionals"
+          }
+        },
+        "k3": {
+          "type": "category",
+          "settings": {
+            "collection": "skin-health",
+            "image": "shopify://shop_images/Skincare-Blue-bg_web.jpg",
+            "title": "Skin health"
+          }
+        },
+        "k4": {
+          "type": "category",
+          "settings": {
+            "collection": "frequency-regeneration",
+            "image": "shopify://shop_images/test_sqaure_08a86950-61d0-4e60-8977-5156471baea5.jpg",
+            "title": "Frequency"
+          }
+        },
+        "k5": {
+          "type": "category",
+          "settings": {
+            "collection": "all",
+            "image": "shopify://shop_images/5.jpg",
+            "title": "Shop all"
+          }
+        }
+      },
+      "block_order": [
+        "k1",
+        "k2",
+        "k3",
+        "k4",
+        "k5"
+      ],
+      "settings": {
+        "eyebrow": "Our range",
+        "heading": "Shop by <em>category</em>",
+        "count_label": "products"
+      }
+    },
+    "lp_home_promos": {
+      "type": "lp-home-promos",
+      "blocks": {
+        "pr1": {
+          "type": "promo",
+          "settings": {
+            "style": "dark",
+            "tag": "Subscribe & save",
+            "heading": "Save 25% on <em>Laminine</em>",
+            "text": "Our best seller, delivered every 4, 8, 12 or 26 weeks.",
+            "button_label": "Shop Laminine",
+            "url": "shopify://products/laminine",
+            "image": "shopify://shop_images/laminine-duo-cutout.png"
+          }
+        },
+        "pr2": {
+          "type": "promo",
+          "settings": {
+            "style": "amber",
+            "tag": "Complete your routine",
+            "heading": "Pair it with Omega, Immune and Digestive",
+            "text": "The products customers add to Laminine most often.",
+            "button_label": "Shop nutritionals",
+            "url": "shopify://collections/nutritionals",
+            "image": "shopify://shop_images/Supplements-Orange-bg_web.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "pr1",
+        "pr2"
+      ],
+      "settings": {}
+    },
+    "lp_tabs": {
+      "type": "lp-product-tabs",
+      "blocks": {
+        "tab_skin": {
+          "type": "tab",
+          "settings": {
+            "collection": "skin-health",
+            "label": "Skin Health"
+          }
+        },
+        "tab_freq": {
+          "type": "tab",
+          "settings": {
+            "collection": "frequency-regeneration",
+            "label": "Frequency"
+          }
+        }
+      },
+      "block_order": [
+        "tab_skin",
+        "tab_freq"
+      ],
+      "settings": {
+        "heading": "Our <em>best sellers</em>",
+        "collection": "nutritionals",
+        "limit": 8,
+        "all_label": "Best sellers",
+        "add_label": "Add to cart",
+        "view_all_label": "View all products"
+      }
+    },
     "lp_science": {
       "type": "lp-science",
       "blocks": {
@@ -156,32 +280,26 @@
         "s3"
       ],
       "settings": {
-        "image": "shopify://shop_images/2026-06-22-Laminine-ShopifyImages-03.jpg",
+        "image": "shopify://shop_images/5.jpg",
         "image_position": "object-position: 50% 50%",
-        "eyebrow": "What's inside",
-        "heading": "Three natural ingredients, <em>one daily habit</em>",
-        "text": "<p>As we age, the body's natural renewal slows down. Laminine brings together egg bioactive growth factors, plant-based phyto protein and sustainable marine protein, delivering the building blocks your body uses to repair and renew.*</p>",
-        "button_label": "Shop Laminine",
-        "button_url": "shopify://products/laminine",
+        "eyebrow": "The science",
+        "heading": "Powered by nature's <em>growth factors</em>",
+        "text": "<p>Your body is constantly working to repair itself, but as we age that process slows down. Our fertilised avian egg extract is harvested at peak activity and delivers growth factors, cellular factors and amino acids: the building blocks your body uses to renew.*</p>",
+        "button_label": "View published studies",
+        "button_url": "shopify://pages/our-studies",
         "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent disease."
       }
     },
-    "lp_home_offer": {
-      "type": "lp-home-offer",
+    "lp_home_cta": {
+      "type": "lp-home-cta",
       "settings": {
         "product": "laminine",
-        "anchor": "lp-offer",
-        "eyebrow": "Choose your supply",
-        "heading": "Subscribe and <em>save 25%</em>",
-        "text": "<p>Pick a size, then choose a delivery every 4, 8, 12 or 26 weeks on the next page. Prefer a one-off order? You can choose that there too.</p>",
-        "best_label": "Best value",
-        "free_label": "Free UK delivery",
-        "free_delivery_threshold": 150,
-        "sub_label": "With Subscribe & Save",
-        "oneoff_label": "One-off purchase",
-        "unit_label": "per capsule",
-        "button_label": "Choose",
-        "footnote": "Every order is covered by our <strong>60-day money-back guarantee</strong>."
+        "image": "shopify://shop_images/laminine-duo-cutout.png",
+        "eyebrow": "Our best seller",
+        "heading": "Meet <em>Laminine</em>, loved in the UK, US and Europe",
+        "price_text": "From [price] with Subscribe & Save. Backed by our 60-day money-back guarantee.",
+        "button_label": "Shop Laminine",
+        "button_url": ""
       }
     },
     "rich_text_arFn6i": {
@@ -236,6 +354,101 @@
         "text_color": ""
       }
     },
+    "lp_guarantee": {
+      "type": "lp-guarantee",
+      "settings": {
+        "seal_value": "60",
+        "seal_text": "60-day guarantee · risk free · ",
+        "heading": "Try it risk free for 60 days",
+        "text": "<p>We stand behind every product we make. If it isn't right for you, let us know within 60 days of delivery and we'll refund you in full.</p>",
+        "button_label": "Shop best sellers",
+        "button_url": "shopify://collections/nutritionals",
+        "link_label": "Read our refund policy",
+        "link_url": "/policies/refund-policy"
+      }
+    },
+    "lp_home_faq": {
+      "type": "lp-home-faq",
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Where should I start?",
+            "answer": "<p>Most customers start with Laminine, our best seller in the UK, US and Europe. Many then add Omega+++, Immune+++ or Digestive+++ to complete their routine.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "What makes LifePharm different?",
+            "answer": "<p>Our formulas are built around fertilised avian egg extract, a natural source of growth factors, cellular factors and amino acids. Our products are made in the USA and our nutritionals are fully NSF tested.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "How does Subscribe & Save work?",
+            "answer": "<p>Subscribers save 25% on every order. Choose a delivery every 4, 8, 12 or 26 weeks when you add a product to your basket.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "What if a product is not right for me?",
+            "answer": "<p>Every order is backed by our 60-day money-back guarantee. Let us know within 60 days of delivery and we will refund you in full.</p>"
+          }
+        },
+        "q5": {
+          "type": "question",
+          "settings": {
+            "question": "How much is UK delivery?",
+            "answer": "<p>Standard UK delivery is free on orders of £150 or more. Below that, it costs £7.95.</p>"
+          }
+        },
+        "q6": {
+          "type": "question",
+          "settings": {
+            "question": "Are your supplements right for me?",
+            "answer": "<p>If you are pregnant, nursing, taking medication or have a medical condition, please speak to your doctor before taking any supplement.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6"
+      ],
+      "settings": {
+        "eyebrow": "Good to know",
+        "heading": "Questions, <em>answered</em>",
+        "help_heading": "Still unsure?",
+        "help_text": "Our team is happy to help you choose the right products.",
+        "help_label": "Chat with our team",
+        "help_url": "/pages/contact"
+      }
+    },
+    "lp_home_offer": {
+      "type": "lp-home-offer",
+      "settings": {
+        "product": "laminine",
+        "anchor": "lp-offer",
+        "eyebrow": "Choose your supply",
+        "heading": "Subscribe and <em>save 25%</em>",
+        "text": "<p>Pick a size, then choose a delivery every 4, 8, 12 or 26 weeks on the next page. Prefer a one-off order? You can choose that there too.</p>",
+        "best_label": "Best value",
+        "free_label": "Free UK delivery",
+        "free_delivery_threshold": 150,
+        "sub_label": "With Subscribe & Save",
+        "oneoff_label": "One-off purchase",
+        "unit_label": "per capsule",
+        "button_label": "Choose",
+        "footnote": "Every order is covered by our <strong>60-day money-back guarantee</strong>."
+      },
+      "disabled": true
+    },
     "lp_home_pairs": {
       "type": "lp-home-pairs",
       "blocks": {
@@ -274,95 +487,8 @@
         "heading": "Often bought <em>with Laminine</em>",
         "text": "<p>These are the products our customers add to their Laminine order most often.</p>",
         "price_prefix": "From"
-      }
-    },
-    "lp_guarantee": {
-      "type": "lp-guarantee",
-      "settings": {
-        "seal_value": "60",
-        "seal_text": "60-day guarantee · risk free · ",
-        "heading": "Try it risk free for 60 days",
-        "text": "<p>We stand behind every product we make. If it isn't right for you, let us know within 60 days of delivery and we'll refund you in full.</p>",
-        "button_label": "Shop Laminine",
-        "button_url": "shopify://products/laminine",
-        "link_label": "Read our refund policy",
-        "link_url": "/policies/refund-policy"
-      }
-    },
-    "lp_home_faq": {
-      "type": "lp-home-faq",
-      "blocks": {
-        "q1": {
-          "type": "question",
-          "settings": {
-            "question": "What is in Laminine?",
-            "answer": "<p>Laminine combines fertilised avian egg extract with plant-based phyto protein and sustainable marine protein. Together they provide growth factors, cellular factors and amino acids.</p>"
-          }
-        },
-        "q2": {
-          "type": "question",
-          "settings": {
-            "question": "How is quality checked?",
-            "answer": "<p>Laminine is made in the USA, and our nutritionals are fully NSF tested.</p>"
-          }
-        },
-        "q3": {
-          "type": "question",
-          "settings": {
-            "question": "How does Subscribe & Save work?",
-            "answer": "<p>Subscribers save 25% on every order. When you add Laminine to your basket, choose a delivery every 4, 8, 12 or 26 weeks.</p>"
-          }
-        },
-        "q4": {
-          "type": "question",
-          "settings": {
-            "question": "What if it is not right for me?",
-            "answer": "<p>Every order is backed by our 60-day money-back guarantee. Let us know within 60 days of delivery and we will refund you in full.</p>"
-          }
-        },
-        "q5": {
-          "type": "question",
-          "settings": {
-            "question": "How much is UK delivery?",
-            "answer": "<p>Standard UK delivery is free on orders of £150 or more. Below that, it costs £7.95.</p>"
-          }
-        },
-        "q6": {
-          "type": "question",
-          "settings": {
-            "question": "Is Laminine right for me?",
-            "answer": "<p>If you are pregnant, nursing, taking medication or have a medical condition, please speak to your doctor before taking any supplement.</p>"
-          }
-        }
       },
-      "block_order": [
-        "q1",
-        "q2",
-        "q3",
-        "q4",
-        "q5",
-        "q6"
-      ],
-      "settings": {
-        "eyebrow": "Good to know",
-        "heading": "Questions, <em>answered</em>",
-        "help_heading": "Still unsure?",
-        "help_text": "Our team is happy to help you choose the right products.",
-        "help_label": "Chat with our team",
-        "help_url": "/pages/contact"
-      }
-    },
-    "lp_home_cta": {
-      "type": "lp-home-cta",
-      "settings": {
-        "product": "laminine",
-        "image": "shopify://shop_images/laminine-duo-cutout.png",
-        "eyebrow": "Ready when you are",
-        "heading": "Start your <em>Laminine</em> routine",
-        "price_text": "From [price] with Subscribe & Save. Backed by our 60-day money-back guarantee.",
-        "button_label": "Shop Laminine",
-        "button_url": ""
-      }
+      "disabled": true
     },
     "lp_hero": {
       "type": "lp-hero",
@@ -454,46 +580,6 @@
         "eyebrow": "",
         "heading": "Shop by category",
         "cta": "Explore"
-      },
-      "disabled": true
-    },
-    "lp_tabs": {
-      "type": "lp-product-tabs",
-      "blocks": {
-        "tab_nutri": {
-          "type": "tab",
-          "settings": {
-            "collection": "nutritionals",
-            "label": "Nutritional"
-          }
-        },
-        "tab_skin": {
-          "type": "tab",
-          "settings": {
-            "collection": "skin-health",
-            "label": "Skin Health"
-          }
-        },
-        "tab_freq": {
-          "type": "tab",
-          "settings": {
-            "collection": "frequency-regeneration",
-            "label": "Frequency"
-          }
-        }
-      },
-      "block_order": [
-        "tab_nutri",
-        "tab_skin",
-        "tab_freq"
-      ],
-      "settings": {
-        "heading": "Better health starts here",
-        "collection": "all",
-        "limit": 12,
-        "all_label": "Shop all",
-        "add_label": "Add to cart",
-        "view_all_label": "View all products"
       },
       "disabled": true
     },
@@ -699,17 +785,19 @@
   "order": [
     "lp_home_hero",
     "logo_list_cGNNLB",
+    "lp_home_cats",
+    "lp_home_promos",
+    "lp_tabs",
     "lp_science",
-    "lp_home_offer",
+    "lp_home_cta",
     "rich_text_arFn6i",
     "17175461316e8d66c7",
-    "lp_home_pairs",
     "lp_guarantee",
     "lp_home_faq",
-    "lp_home_cta",
+    "lp_home_offer",
+    "lp_home_pairs",
     "lp_hero",
     "lp_goals",
-    "lp_tabs",
     "lp_system",
     "rich_text_Jhh874",
     "image_with_text_overlay_gD4YMa",

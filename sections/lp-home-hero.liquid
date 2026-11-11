@@ -1,7 +1,6 @@
 {%- liquid
   assign product = section.settings.product
   assign from_price = 999999999
-  assign one_off = 0
   if product != blank
     for variant in product.variants
       assign alloc = variant.selling_plan_allocations | first
@@ -11,13 +10,8 @@
       endif
       if p < from_price
         assign from_price = p
-        assign one_off = variant.price
       endif
     endfor
-  endif
-  assign cta_url = section.settings.button_url
-  if cta_url == blank and product != blank
-    assign cta_url = product.url
   endif
 -%}
 
@@ -27,18 +21,28 @@
       <div class="lp-hh__frame">
         {%- if section.settings.image != blank -%}
           {%- if section.settings.mobile_image != blank -%}
-            {{ section.settings.mobile_image | image_url: width: 1200 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '100vw', widths: '400,600,800,1000,1200', class: 'lp-hh__img lp-hh__img--mobile', alt: section.settings.image.alt }}
+            {{ section.settings.mobile_image | image_url: width: 1400 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '100vw', widths: '400,600,800,1000,1400', class: 'lp-hh__img lp-hh__img--mobile' }}
           {%- endif -%}
-          {{ section.settings.image | image_url: width: 1800 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 1000px) 52vw, 100vw', widths: '600,900,1200,1500,1800', class: 'lp-hh__img lp-hh__img--desktop', alt: section.settings.image.alt }}
-        {%- elsif product != blank -%}
-          {{ product.featured_image | image_url: width: 1500 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 1000px) 52vw, 100vw', class: 'lp-hh__img' }}
+          {{ section.settings.image | image_url: width: 1400 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 1000px) 50vw, 100vw', widths: '600,800,1000,1200,1400', class: 'lp-hh__img lp-hh__img--desktop' }}
         {%- else -%}
-          {{ 'product-1' | placeholder_svg_tag: 'lp-hh__img' }}
-        {%- endif -%}
-        {%- if section.settings.badge != blank -%}
-          <p class="lp-hh__badge">{% render 'lp-icon', name: 'star', size: 16 %}<span>{{ section.settings.badge | escape }}</span></p>
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'lp-hh__img' }}
         {%- endif -%}
       </div>
+
+      {%- if product != blank -%}
+        <a href="{{ product.url }}" class="lp-hh__card">
+          <span class="lp-hh__card-media">
+            {%- assign card_img = section.settings.card_image | default: product.featured_image -%}
+            {{ card_img | image_url: width: 240 | image_tag: loading: 'eager', widths: '120,240', sizes: '80px', class: 'lp-hh__card-img', alt: '' }}
+          </span>
+          <span class="lp-hh__card-body">
+            <span class="lp-hh__card-label">{{ section.settings.card_label | escape }}</span>
+            <span class="lp-hh__card-name">{{ product.title | escape }}</span>
+            <span class="lp-hh__card-price">{{ section.settings.price_prefix | escape }} <strong>{{ from_price | money }}</strong></span>
+          </span>
+          <span class="lp-hh__card-go" aria-hidden="true">{% render 'lp-icon', name: 'arrow', size: 18 %}</span>
+        </a>
+      {%- endif -%}
     </div>
 
     <div class="lp-hh__copy">
@@ -69,28 +73,17 @@
         <div class="lp-hh__text">{{ section.settings.text }}</div>
       {%- endif -%}
 
-      <div class="lp-hh__buy">
-        {%- if product != blank -%}
-          <p class="lp-hh__price">
-            <span class="lp-hh__price-from">{{ section.settings.price_prefix | escape }}</span>
-            <strong>{{ from_price | money }}</strong>
-            {%- if one_off > from_price -%}
-              <s>{{ one_off | money }}</s>
-              <span class="lp-hh__save">{{ section.settings.save_label | escape }}</span>
-            {%- endif -%}
-          </p>
-        {%- endif -%}
-        <div class="lp-hh__actions">
-          <a href="{{ cta_url }}" class="button button--xl lp-hh__cta">
+      <div class="lp-hh__actions">
+        {%- if section.settings.button_label != blank -%}
+          <a href="{{ section.settings.button_url | default: routes.all_products_collection_url }}" class="button button--xl lp-hh__cta">
             <span>{{ section.settings.button_label | escape }}</span>
             {% render 'lp-icon', name: 'arrow', size: 18 %}
           </a>
-          {%- if section.settings.link_label != blank -%}
-            <a href="{{ section.settings.link_url }}" class="lp-hh__link link">{{ section.settings.link_label | escape }}</a>
-          {%- endif -%}
-        </div>
+        {%- endif -%}
+        {%- if section.settings.secondary_label != blank -%}
+          <a href="{{ section.settings.secondary_url }}" class="button button--xl button--outline">{{ section.settings.secondary_label | escape }}</a>
+        {%- endif -%}
       </div>
-
     </div>
   </div>
 </section>
@@ -98,58 +91,67 @@
 {% stylesheet %}
 .lp-hh { background: rgb(var(--lp-ivory)); padding-block: clamp(.75rem, 2vw, 2rem) clamp(2.5rem, 5vw, 4.5rem); }
 .lp-hh__grid { display: grid; gap: 1.25rem; align-items: center; }
-@media (min-width: 1000px) { .lp-hh__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(2.5rem, 5vw, 5rem); } .lp-hh__media { order: 2; } }
-.lp-hh__frame { position: relative; border-radius: var(--lp-radius-lg); overflow: hidden; background: rgb(var(--lp-sand)); aspect-ratio: 2 / 1; }
-@media (min-width: 700px) { .lp-hh__frame { aspect-ratio: 6 / 5; } }
-.lp-hh__img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 58%; }
-.lp-hh__img--mobile { display: block; }
+@media (min-width: 1000px) { .lp-hh__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2.5rem, 5vw, 5rem); } .lp-hh__media { order: 2; } }
+.lp-hh__media { position: relative; }
+.lp-hh__frame { border-radius: var(--lp-radius-lg); overflow: hidden; background: rgb(var(--lp-sand)); aspect-ratio: 2 / 1; }
+@media (min-width: 700px) { .lp-hh__frame { aspect-ratio: 5 / 4; } }
+.lp-hh__img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
 .lp-hh__img--mobile + .lp-hh__img--desktop { display: none; }
 @media (min-width: 700px) { .lp-hh__img--mobile { display: none; } .lp-hh__img--mobile + .lp-hh__img--desktop { display: block; } }
-.lp-hh__badge { position: absolute; left: 1rem; top: 1rem; display: inline-flex; align-items: center; gap: .45rem; margin: 0; padding: .55rem .9rem; border-radius: 999px; background: rgb(var(--lp-ink)); color: #fff; font-size: .75rem; font-weight: 600; letter-spacing: .02em; }
-.lp-hh__badge svg { color: rgb(var(--lp-amber)); fill: currentColor; }
+.lp-hh__card { position: absolute; left: .75rem; bottom: .75rem; display: flex; align-items: center; gap: .75rem; padding: .5rem .6rem .5rem .5rem; border-radius: var(--lp-radius); background: rgb(255 255 255 / .94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: var(--lp-shadow-2); color: rgb(var(--lp-ink)); text-decoration: none; max-width: calc(100% - 1.5rem); }
+@media (min-width: 1000px) { .lp-hh__card { left: -1.75rem; bottom: 2rem; padding: .7rem .8rem .7rem .7rem; } }
+.lp-hh__card-media { flex: none; display: grid; place-items: center; width: 56px; height: 56px; border-radius: var(--lp-radius-sm); background: rgb(var(--lp-sand)); overflow: hidden; }
+@media (min-width: 700px) { .lp-hh__card-media { width: 76px; height: 76px; } }
+.lp-hh__card-img { width: 88%; height: 88%; object-fit: contain; }
+.lp-hh__card-body { display: grid; gap: .1rem; min-width: 0; }
+.lp-hh__card-label { font-size: .625rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgb(var(--lp-amber-deep)); }
+.lp-hh__card-name { font-size: .9375rem; font-weight: 700; letter-spacing: .02em; }
+.lp-hh__card-price { font-size: .8125rem; color: rgb(var(--lp-muted)); }
+.lp-hh__card-price strong { color: rgb(var(--lp-ink)); }
+.lp-hh__card-go { flex: none; display: grid; place-items: center; width: 40px; height: 40px; margin-inline-start: .25rem; border-radius: 50%; background: rgb(var(--lp-amber)); color: #1F1E20; transition: transform var(--lp-dur-2) var(--lp-ease); }
+@media (hover: hover) { .lp-hh__card:hover .lp-hh__card-go { transform: translateX(3px); } }
 .lp-hh__copy { display: grid; gap: .875rem; justify-items: start; max-width: 36rem; }
 .lp-hh__copy > * { margin: 0; }
-.lp-hh h1.lp-hh__title { font-size: clamp(1.75rem, 3.3vw, 3.25rem); }
+.lp-hh h1.lp-hh__title { font-size: clamp(2rem, 3.6vw, 3.5rem); }
 .lp-hh__title em { font-style: normal; color: rgb(var(--lp-amber-deep)); }
 .lp-hh__rating { display: inline-flex; align-items: center; gap: .6rem; font-size: .875rem; color: rgb(var(--lp-ink) / .8); }
 .lp-hh__stars { display: inline-flex; gap: 1px; color: rgb(var(--lp-amber)); }
 .lp-hh__stars svg { fill: currentColor; }
-.lp-hh__text { font-size: clamp(1rem, 1.15vw, 1.125rem); line-height: 1.6; color: rgb(var(--lp-ink) / .75); }
-.lp-hh__text p { margin: 0; }
-@media (max-width: 699px) { .lp-hh__text { display: none; } }
-.lp-hh__buy { display: grid; gap: .75rem; padding-block-start: .25rem; }
-.lp-hh__price { display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem; margin: 0; font-size: .9375rem; color: rgb(var(--lp-muted)); }
-.lp-hh__price strong { font-size: 1.5rem; font-weight: 700; color: rgb(var(--lp-ink)); }
-.lp-hh__save { padding: .2rem .55rem; border-radius: 999px; background: rgb(var(--lp-amber) / .16); color: rgb(var(--lp-amber-deep)); font-size: .75rem; font-weight: 700; }
-.lp-hh__actions { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.5rem; }
-.lp-hh__link { font-size: .9375rem; font-weight: 600; min-height: 44px; display: inline-flex; align-items: center; }
-.lp-hh__cta svg { transition: transform var(--lp-dur-2) var(--lp-ease); }
-@media (hover: hover) { .lp-hh__cta:hover svg { transform: translateX(4px); } }
 .lp-hh__chips { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0; padding: 0; list-style: none; }
 .lp-hh__chip { display: inline-flex; align-items: center; gap: .35rem; padding: .35rem .7rem; border-radius: 999px; background: #fff; box-shadow: 0 0 0 1px var(--lp-hairline); font-size: .75rem; font-weight: 500; white-space: nowrap; }
-@media (max-width: 699px) { .lp-hh__copy { gap: .7rem; } .lp-hh__chip { padding: .3rem .6rem; font-size: .71875rem; } }
 .lp-hh__chip svg { color: rgb(var(--lp-amber-deep)); }
+.lp-hh__text { font-size: clamp(1rem, 1.15vw, 1.125rem); line-height: 1.6; color: rgb(var(--lp-ink) / .75); }
+.lp-hh__text p { margin: 0; }
+.lp-hh__actions { display: flex; flex-wrap: wrap; gap: .75rem; padding-block-start: .25rem; }
+.lp-hh__cta svg { transition: transform var(--lp-dur-2) var(--lp-ease); }
+@media (hover: hover) { .lp-hh__cta:hover svg { transform: translateX(4px); } }
+@media (max-width: 699px) {
+  .lp-hh__copy { gap: .7rem; }
+  .lp-hh__text { display: none; }
+  .lp-hh__chip { padding: .3rem .6rem; font-size: .71875rem; }
+  .lp-hh__actions .button { flex: 1 1 auto; padding-inline: 1.25rem; }
+}
 {% endstylesheet %}
 
 {% schema %}
 {
   "name": "LP Home hero",
-  "class": "shopify-section--lp-home-hero",
   "settings": [
-    { "type": "product", "id": "product", "label": "Hero product" },
     { "type": "image_picker", "id": "image", "label": "Image (desktop)" },
     { "type": "image_picker", "id": "mobile_image", "label": "Image (mobile)" },
-    { "type": "text", "id": "badge", "label": "Image badge", "default": "Our best seller" },
-    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Laminine" },
-    { "type": "text", "id": "heading", "label": "Heading", "info": "Wrap a word in <em> to colour it.", "default": "Daily support for <em>energy</em> and healthy ageing" },
-    { "type": "inline_richtext", "id": "rating_text", "label": "Rating text", "default": "<strong>978+</strong> verified reviews" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Heading", "info": "Wrap a word in <em> to colour it.", "default": "Feel good at <em>every age</em>" },
+    { "type": "inline_richtext", "id": "rating_text", "label": "Rating text" },
     { "type": "richtext", "id": "text", "label": "Text" },
-    { "type": "text", "id": "price_prefix", "label": "Price prefix", "default": "From" },
-    { "type": "text", "id": "save_label", "label": "Saving label", "default": "Subscribe & save 25%" },
-    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop Laminine" },
-    { "type": "url", "id": "button_url", "label": "Button link", "info": "Defaults to the hero product." },
-    { "type": "text", "id": "link_label", "label": "Secondary link label" },
-    { "type": "url", "id": "link_url", "label": "Secondary link" }
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop best sellers" },
+    { "type": "url", "id": "button_url", "label": "Button link" },
+    { "type": "text", "id": "secondary_label", "label": "Secondary button label" },
+    { "type": "url", "id": "secondary_url", "label": "Secondary button link" },
+    { "type": "header", "content": "Featured product card" },
+    { "type": "product", "id": "product", "label": "Product" },
+    { "type": "image_picker", "id": "card_image", "label": "Card image", "info": "Transparent PNG works best." },
+    { "type": "text", "id": "card_label", "label": "Card label", "default": "Our best seller" },
+    { "type": "text", "id": "price_prefix", "label": "Price prefix", "default": "From" }
   ],
   "blocks": [
     {

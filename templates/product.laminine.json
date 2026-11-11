@@ -1280,6 +1280,7 @@
       "type": "lp-pdp-how",
       "settings": {
         "eyebrow": "How it works",
+        "text": "<p>Laminine is made with fertilised avian egg extract, naturally rich in growth factors such as FGF-2. Taken daily, it helps support your body’s own renewal, from everyday energy to restful sleep.</p>",
         "supports_label": "Supports",
         "link_label": "See what’s inside"
       }

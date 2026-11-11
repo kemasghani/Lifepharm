@@ -61,17 +61,18 @@
 {% stylesheet %}
 .lp-how { padding-block: clamp(1rem, 2vw, 1.5rem) var(--lp-section-gap); }
 .lp-how__frame { --lp-how-bg: rgb(var(--lp-sand)); --lp-how-fg: 31 30 32; position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr); border-radius: var(--lp-radius-lg); background: var(--lp-how-bg); color: rgb(var(--lp-how-fg)); transition: background-color 400ms ease-out; }
-.lp-how__frame[data-tone="dark"] { --lp-how-fg: 255 255 255; }
+.lp-how__frame { --lp-how-chip-bg: rgb(255 255 255 / .28); }
+.lp-how__frame[data-tone="dark"] { --lp-how-fg: 255 255 255; --lp-how-chip-bg: rgb(255 255 255 / .12); }
 @media (min-width: 1000px) { .lp-how__frame { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); min-height: clamp(520px, 44vw, 660px); } .lp-how__frame--solo { grid-template-columns: minmax(0, 1fr); min-height: 0; } }
 .lp-how__copy { position: relative; z-index: 1; display: grid; align-content: center; justify-items: start; gap: 1.1rem; padding: clamp(1.75rem, 4.5vw, 4.5rem); }
-.lp-how .lp-how__eyebrow { color: rgb(var(--lp-how-fg) / .78); }
+.lp-how .lp-how__eyebrow { color: rgb(var(--lp-how-fg)); }
 .lp-how .lp-how__title { max-width: 16ch; color: rgb(var(--lp-how-fg)); letter-spacing: -.02em; text-wrap: balance; }
-.lp-how__text { max-width: 46ch; color: rgb(var(--lp-how-fg) / .88); font-size: 1rem; line-height: 1.65; }
+.lp-how__text { max-width: 44ch; color: rgb(var(--lp-how-fg)); font-size: 1.0625rem; font-weight: 500; line-height: 1.6; }
 .lp-how__text p { margin: 0; }
 .lp-how__supports { display: grid; gap: .6rem; }
-.lp-how__supports-label { font-size: .75rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgb(var(--lp-how-fg) / .78); }
+.lp-how__supports-label { font-size: .75rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgb(var(--lp-how-fg)); }
 .lp-how__chips { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0; padding: 0; list-style: none; }
-.lp-how__chip { padding: .4rem .85rem; border-radius: 999px; border: 1px solid rgb(var(--lp-how-fg) / .35); color: rgb(var(--lp-how-fg)); font-size: .8125rem; font-weight: 600; }
+.lp-how__chip { padding: .4rem .85rem; border-radius: 999px; border: 1px solid rgb(var(--lp-how-fg) / .6); background: var(--lp-how-chip-bg); color: rgb(var(--lp-how-fg)); font-size: .8125rem; font-weight: 600; }
 .lp-how__link { display: inline-flex; align-items: center; gap: .4rem; min-height: 44px; color: rgb(var(--lp-how-fg)); font-weight: 600; font-size: .9375rem; text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1.5px; }
 .lp-how__link svg { transition: transform 200ms ease-out; }
 .lp-how__link:hover svg { transform: translateX(4px); }

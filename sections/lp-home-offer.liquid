@@ -65,7 +65,7 @@
               </p>
               <a href="{{ variant.url }}" class="button {% if unit > 0 and unit == best_unit %}{% else %}button--outline {% endif %}lp-offer__cta">
                 {{- section.settings.button_label | escape -}}
-                <span class="visually-hidden">: {{ product.title | escape }}, {{ variant.title | escape }}</span>
+                <span class="sr-only">: {{ product.title | escape }}, {{ variant.title | escape }}</span>
               </a>
             </div>
           </li>

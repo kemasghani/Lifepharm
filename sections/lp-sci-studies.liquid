@@ -120,7 +120,7 @@
 }
 @media (min-width: 1000px) {
   .lp-sci-st__layout { grid-template-columns: minmax(0, 21rem) minmax(0, 1fr); gap: clamp(2.5rem, 5vw, 5rem); align-items: start; }
-  .lp-sci-st__rail { position: sticky; top: calc(var(--sticky-area-height, 80px) + 24px); gap: 1.75rem; }
+  .lp-sci-st__rail { position: sticky; top: calc(var(--sticky-area-height, 80px) + 24px); gap: 1.75rem; max-height: calc(100vh - var(--sticky-area-height, 80px) - 48px); overflow-y: auto; scrollbar-width: thin; }
   .lp-sci-st__chips { flex-direction: column; gap: 0; overflow: visible; margin: 0; padding: 0; border-top: 1px solid rgb(var(--lp-ink) / .14); }
   .lp-sci-st__chip { width: 100%; min-height: 46px; padding: 0 .9rem; border: 0; border-bottom: 1px solid rgb(var(--lp-ink) / .14); border-radius: 0; background: transparent; font-size: .9375rem; }
   .lp-sci-st__chip:hover { background: rgb(var(--lp-sand)); }

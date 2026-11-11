@@ -308,7 +308,7 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
   .lp-sticky__variant { font-size: .8125rem; }
   .lp-sticky__price strong { font-size: 1rem; }
   .lp-sticky buy-buttons { flex: none; }
-  .lp-sticky .button { width: auto; }
+  .lp-sticky .button { width: auto; min-height: 48px; padding-block: 0; padding-inline: 1.75rem; border-radius: 999px; font-size: 1rem; }
   .product-quick-add .button { min-height: 46px; padding-inline: 1.6rem; }
 }
 

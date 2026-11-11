@@ -364,6 +364,7 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
 .footer { border-top-left-radius: var(--lp-radius-lg); border-top-right-radius: var(--lp-radius-lg); }
 .footer a { transition: color var(--lp-dur-1) var(--lp-ease), opacity var(--lp-dur-1) var(--lp-ease); }
 /* Footer sits on style-guide grey #888B8D with ink text (4.8:1): no orange or faded text on it */
+.footer .link-faded, .footer .link-faded-reverse { opacity: 1; }
 @media (hover: hover) { .footer a:hover { color: inherit; text-decoration: underline; text-underline-offset: 3px; } }
 .footer .h6, .footer__block-title, .footer .heading { letter-spacing: .14em; text-transform: uppercase; font-family: var(--text-font-family); font-size: .75rem; font-weight: 800; }
 

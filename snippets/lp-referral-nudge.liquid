@@ -72,7 +72,10 @@ button.lp-ref-tab:focus-visible { outline: 2px solid rgb(var(--lp-amber-deep)); 
   .lp-ref__card { grid-template-columns: 72px minmax(0, 1fr); gap: .85rem; padding: .875rem 1rem .875rem .875rem; transform: translateY(calc(100% + 24px)); }
   .lp-ref__art { width: 72px; border-radius: 12px; }
   .lp-ref__title { font-size: 1rem; }
-  .lp-ref-tab { display: none !important; }
+  /* compact pill on the left edge, clear of the chat launcher (right) and the sticky add-to-cart (product pages) */
+  button.lp-ref-tab:not(#lp-none) { bottom: calc(96px + env(safe-area-inset-bottom)); min-height: 44px; padding: .55rem .9rem .55rem .7rem; font-size: .75rem; }
+  button.lp-ref-tab[data-template="product"]:not(#lp-none) { bottom: calc(150px + env(safe-area-inset-bottom)); }
+  html.lp-menu-open .lp-ref-tab:not(#lp-none) { visibility: hidden; pointer-events: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .lp-ref__card, .lp-ref-tab { transform: none !important; transition: opacity 150ms linear; }

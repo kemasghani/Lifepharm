@@ -334,7 +334,19 @@ Supported variables
           {%- endif -%}
 
         {%- when 'collapsible_text' -%}
-          {%- if block.settings.title != blank and block.settings.content != blank or block.settings.page.content != blank -%}
+          {%- liquid
+            assign lp_steps = ''
+            if block.settings.lp_how_steps
+              capture lp_steps
+                render 'lp-how-steps', product: product
+              endcapture
+              assign lp_steps = lp_steps | strip
+            endif
+          -%}
+          {%- if lp_steps != blank and block.settings.title != blank -%}
+            {%- assign icon = block.settings.custom_icon | default: block.settings.icon -%}
+            {%- render 'accordion', title: block.settings.title, content: lp_steps, icon: icon, icon_width: block.settings.icon_width, class: 'product-info__accordion', block: block -%}
+          {%- elsif block.settings.title != blank and block.settings.content != blank or block.settings.page.content != blank -%}
             {%- capture accordion_content -%}<div class="prose">{{ block.settings.page.content | default: block.settings.content }}</div>{%- endcapture -%}
 
             {%- assign icon = block.settings.custom_icon | default: block.settings.icon -%}

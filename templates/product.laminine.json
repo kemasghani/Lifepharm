@@ -202,7 +202,8 @@
             "icon_width": 20,
             "title": "How to Use",
             "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>",
-            "page": ""
+            "page": "",
+            "lp_how_steps": true
           }
         },
         "collapsible_text_kaarby": {
@@ -1290,8 +1291,7 @@
       "settings": {
         "eyebrow": "What to expect",
         "heading": "Benefits that <em>build over time</em>",
-        "subheading": "Take it daily and the benefits build. Here’s what to look for, and when.",
-        "how_title": "How to Use"
+        "subheading": "Take it daily and the benefits build. Here’s what to look for, and when."
       }
     },
     "lp_pdp_formula": {

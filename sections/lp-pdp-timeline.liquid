@@ -58,19 +58,6 @@
       {%- endfor -%}
     </ol>
 
-        {%- liquid
-          assign use_h = mf.header_2.value | default: section.settings.how_title
-          assign use_v = mf.value_2.value | default: mf.how_to_use.value
-        -%}
-        {%- if use_v != blank -%}
-          <div class="lp-tl__how">
-            <ul class="lp-tl__how-list" role="list">
-              <li class="lp-tl__step"><span class="lp-tl__step-icon">{% render 'lp-icon', name: 'pill', size: 22 %}</span><div><p class="lp-tl__step-title">{{ use_h | remove: ':' | escape }}</p><p class="lp-tl__step-text">{{ use_v | escape }}</p></div></li>
-              {%- if mf.value_3 != blank -%}<li class="lp-tl__step"><span class="lp-tl__step-icon">{% render 'lp-icon', name: 'clock', size: 22 %}</span><div><p class="lp-tl__step-title">{{ mf.header_3.value | remove: ':' | strip | escape }}</p><p class="lp-tl__step-text">{{ mf.value_3.value | replace: ' — ', ', ' | replace: '—', ', ' | escape }}</p></div></li>{%- endif -%}
-              {%- if mf.value_4 != blank -%}<li class="lp-tl__step"><span class="lp-tl__step-icon">{% render 'lp-icon', name: 'bulb', size: 22 %}</span><div><p class="lp-tl__step-title">{{ mf.header_4.value | remove: ':' | strip | escape }}</p><p class="lp-tl__step-text">{{ mf.value_4.value | replace: ' - ', ', ' | replace: ' — ', ', ' | replace: '—', ', ' | escape }}</p></div></li>{%- endif -%}
-            </ul>
-          </div>
-        {%- endif -%}
   </div>
 </section>
 {%- endif -%}
@@ -90,15 +77,7 @@
 .lp-tl__panel-title { margin: 0; font-family: var(--text-font-family); font-size: 1.125rem; font-weight: 600; letter-spacing: -.01em; text-transform: capitalize; }
 .lp-tl__item-text { color: rgb(var(--lp-ink)); line-height: 1.65; font-size: 1rem; }
 .lp-tl__item-text p { margin: 0; }
-.lp-tl__how { display: block; padding: 1.5rem; border-radius: var(--lp-radius); background: rgb(var(--lp-sand)); }
-.lp-tl__how-list { display: grid; gap: 1.1rem; margin: 0; padding: 0; list-style: none; }
-.lp-tl__step { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: .9rem; align-items: start; }
-.lp-tl__step + .lp-tl__step { padding-block-start: 1.1rem; border-top: 1px solid rgb(var(--lp-ink) / .08); }
-.lp-tl__step-icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: #fff; color: rgb(var(--lp-amber-deep)); box-shadow: var(--lp-shadow-1); }
-.lp-tl__step-title { margin: .55rem 0 0; font-weight: 600; font-size: .95rem; }
-.lp-tl__step-text { margin: .2rem 0 0; color: rgb(var(--lp-muted)); font-size: .9rem; line-height: 1.55; }
-@media (min-width: 1000px) { .lp-tl__how-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; } .lp-tl__step + .lp-tl__step { padding-block-start: 0; padding-inline-start: 1.5rem; border-top: 0; border-left: 1px solid rgb(var(--lp-ink) / .08); } }
-{% endstylesheet %}
+@media (min-width: 1000px) { {% endstylesheet %}
 
 {% schema %}
 {
@@ -106,11 +85,10 @@
   "tag": "div",
   "class": "lp-pdp-section",
   "settings": [
-    { "type": "paragraph", "content": "Phases, images and the How to use card come from the product's timeline metafields (phase 1 to 3)." },
+    { "type": "paragraph", "content": "Phases and images come from the product's timeline metafields (phase 1 to 3). How to Use lives in the buy-box accordion." },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "What to expect" },
     { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Benefits that <em>build over time</em>" },
     { "type": "text", "id": "subheading", "label": "Subheading", "default": "Take it daily and the benefits build. Here’s what to look for, and when." },
-    { "type": "text", "id": "how_title", "label": "How to use fallback title", "default": "How to Use" },
     { "type": "text", "id": "next_label", "label": "Next step label", "default": "What comes next" }
   ],
   "presets": [ { "name": "LP · PDP results timeline" } ],

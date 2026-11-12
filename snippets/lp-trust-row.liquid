@@ -7,9 +7,9 @@
   {% render 'lp-trust-row' %}
 {% enddoc %}
 {%- liquid
-  assign t_keys = 'guarantee|shipping|tested|made|studied|secure' | split: '|'
-  assign t_files = 'lp-badge-guarantee.svg||lp-badge-nsf.svg|lp-badge-usa.svg|lp-badge-clinical.svg|' | split: '|'
-  assign t_icons = 'shield|truck|badge|flag|flask|lock' | split: '|'
+  assign t_keys = 'guarantee|tested|made|studied|shipping|secure' | split: '|'
+  assign t_files = 'lp-badge-guarantee.svg|lp-badge-nsf.svg|lp-badge-usa.svg|lp-badge-clinical.svg||' | split: '|'
+  assign t_icons = 'shield|badge|flag|flask|truck|lock' | split: '|'
 -%}
 <ul class="lp-trust-row" role="list">
   {%- for key in t_keys -%}

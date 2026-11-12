@@ -1,14 +1,35 @@
 {% doc %}
-  Renders the LifePharm reassurance grid shown under the product buy buttons.
+  Renders the LifePharm reassurance block under the product buy buttons: the brand's four badge seals
+  (Files: icon-money-back.png, icon-made-in-usa.png, NSF_-_Lifepharm.png, clinically_studied_*.png),
+  then delivery and checkout reassurance as one quiet line. Falls back to line icons if a file is missing.
 
   @example
   {% render 'lp-trust-row' %}
 {% enddoc %}
-<ul class="lp-trust-row" role="list">
-  <li class="lp-trust-row__item">{% render 'lp-icon', name: 'shield', size: 20 %}<span>{{ 'lp.trust.guarantee' | t }}</span></li>
-  <li class="lp-trust-row__item">{% render 'lp-icon', name: 'truck', size: 20 %}<span>{{ 'lp.trust.shipping' | t }}</span></li>
-  <li class="lp-trust-row__item">{% render 'lp-icon', name: 'badge', size: 20 %}<span>{{ 'lp.trust.tested' | t }}</span></li>
-  <li class="lp-trust-row__item">{% render 'lp-icon', name: 'flag', size: 20 %}<span>{{ 'lp.trust.made' | t }}</span></li>
-  <li class="lp-trust-row__item">{% render 'lp-icon', name: 'flask', size: 20 %}<span>{{ 'lp.trust.studied' | t }}</span></li>
-  <li class="lp-trust-row__item">{% render 'lp-icon', name: 'lock', size: 20 %}<span>{{ 'lp.trust.secure' | t }}</span></li>
-</ul>
+{%- liquid
+  assign badge_files = 'icon-money-back.png|icon-made-in-usa.png|NSF_-_Lifepharm.png|clinically_studied_26999dde-6efc-4c76-98ea-113dcbbbcb69.png' | split: '|'
+  assign badge_keys = 'guarantee_short|made|tested|studied' | split: '|'
+  assign badge_icons = 'shield|flag|badge|flask' | split: '|'
+-%}
+<div class="lp-trust-row">
+  <ul class="lp-trust-row__badges" role="list">
+    {%- for file in badge_files -%}
+      {%- liquid
+        assign i = forloop.index0
+        assign label_key = 'lp.trust.' | append: badge_keys[i]
+      -%}
+      <li class="lp-trust-row__badge">
+        {%- if images[file] != blank -%}
+          {{ images[file] | image_url: width: 120 | image_tag: width: 56, height: 56, loading: 'lazy', alt: '', class: 'lp-trust-row__seal' }}
+        {%- else -%}
+          <span class="lp-trust-row__seal lp-trust-row__seal--icon">{% render 'lp-icon', name: badge_icons[i], size: 24 %}</span>
+        {%- endif -%}
+        <span class="lp-trust-row__label">{{ label_key | t }}</span>
+      </li>
+    {%- endfor -%}
+  </ul>
+  <ul class="lp-trust-row__meta" role="list">
+    <li>{% render 'lp-icon', name: 'truck', size: 18 %}<span>{{ 'lp.trust.shipping' | t }}</span></li>
+    <li>{% render 'lp-icon', name: 'lock', size: 18 %}<span>{{ 'lp.trust.secure' | t }}</span></li>
+  </ul>
+</div>

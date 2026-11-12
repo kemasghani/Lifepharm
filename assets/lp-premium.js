@@ -413,6 +413,8 @@
       get() { try { return Number(localStorage.getItem(KEY)) || 0; } catch (e) { return 0; } },
       set() { try { localStorage.setItem(KEY, String(Date.now())); } catch (e) { /* storage unavailable */ } }
     };
+    const OPT_OUT = 'lp-ref-optout';
+    const optedOut = () => { try { return localStorage.getItem(OPT_OUT) === '1'; } catch (e) { return false; } };
     const video = panel.querySelector('video');
     const tabLabel = tab.querySelector('[data-lp-ref-tab-label]');
     const appButton = () => document.querySelector('.referral-banner__name--clickable');
@@ -451,6 +453,14 @@
       panel.hidden = false;
       requestAnimationFrame(() => requestAnimationFrame(() => { panel.classList.add('is-open'); playArt(); }));
     };
+    const dismissForGood = () => {
+      try { localStorage.setItem(OPT_OUT, '1'); } catch (e) { /* storage unavailable */ }
+      open = false;
+      clearTimeout(timer);
+      panel.classList.remove('is-open');
+      hideTab();
+      setTimeout(() => { panel.hidden = true; tab.hidden = true; }, 600);
+    };
     const closePanel = (remember) => {
       if (!open) return;
       open = false;
@@ -461,6 +471,7 @@
     };
 
     panel.addEventListener('click', (event) => {
+      if (event.target.closest('[data-lp-ref-skip]')) { dismissForGood(); return; }
       if (event.target.closest('[data-lp-ref-close]')) closePanel(true);
       if (event.target.closest('[data-lp-ref-open]')) {
         const button = appButton();
@@ -475,6 +486,7 @@
     });
 
     const start = () => {
+      if (optedOut()) return;
       if (referrerName()) { showTab(); return; }
       if (Date.now() - store.get() < TTL) { showTab(); return; }
       const trigger = () => { window.removeEventListener('scroll', onScroll); openPanel(); };
@@ -492,6 +504,7 @@
 
     const banner = () => document.querySelector('.referral-banner');
     const watch = new MutationObserver(() => {
+      if (optedOut()) return;
       if (referrerName()) { if (open) closePanel(true); else if (!tab.hidden) showTab(); }
     });
     const attach = () => { const b = banner(); if (b) watch.observe(b, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ['style'] }); };

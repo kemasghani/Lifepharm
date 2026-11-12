@@ -489,6 +489,7 @@
       if (optedOut()) return;
       if (referrerName()) { showTab(); return; }
       if (Date.now() - store.get() < TTL) { showTab(); return; }
+      if (window.matchMedia('(max-width: 699px)').matches) { showTab(); return; }
       const trigger = () => { window.removeEventListener('scroll', onScroll); openPanel(); };
       const onScroll = () => { if (window.scrollY > window.innerHeight * 0.35) trigger(); };
       window.addEventListener('scroll', onScroll, { passive: true });

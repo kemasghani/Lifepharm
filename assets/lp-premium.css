@@ -411,16 +411,16 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
   display: flex;
   align-items: center;
   gap: .625rem;
-  padding: .625rem .875rem .625rem .625rem;
+  padding: .75rem .875rem;
   border-radius: var(--lp-radius-sm);
   background: rgb(var(--lp-sand) / .7);
   font-size: .8125rem;
   line-height: 1.3;
   font-weight: 500;
 }
-.lp-trust-row__icon { display: grid; flex: none; place-items: center; width: 34px; height: 34px; color: rgb(var(--lp-amber)); }
+.lp-trust-row__icon { display: grid; flex: none; place-items: center; width: 20px; height: 20px; color: rgb(var(--lp-amber)); }
 .lp-trust-row__icon svg { width: 20px; height: 20px; }
-.lp-trust-row__badge { display: block; width: 34px; height: 34px; object-fit: contain; }
+.lp-trust-row__badge { display: block; width: 20px; height: 20px; object-fit: contain; }
 
 /* =========================================================
    MOTION & LOADING SYSTEM

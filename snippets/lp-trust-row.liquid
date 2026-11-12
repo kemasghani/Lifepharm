@@ -1,31 +1,22 @@
 {% doc %}
-  Renders the LifePharm reassurance grid shown under the product buy buttons.
-  Guarantee, Made in the USA, NSF and Clinically Studied use the brand badges as SVG assets
-  (assets/lp-badge-*.svg, traced 1:1 from the brand artwork); delivery and checkout keep line icons.
+  Renders the LifePharm reassurance grid shown under the product buy buttons: six tiles,
+  one consistent line-icon style (lp-icon) in brand orange.
 
   @example
   {% render 'lp-trust-row' %}
 {% enddoc %}
 {%- liquid
   assign t_keys = 'guarantee|tested|made|studied|shipping|secure' | split: '|'
-  assign t_files = 'lp-badge-guarantee.svg|lp-badge-nsf.svg|lp-badge-usa.svg|lp-badge-clinical.svg||' | split: '|'
-  assign t_icons = 'shield|badge|flag|flask|truck|lock' | split: '|'
+  assign t_icons = 'shield|badge|flag-us|flask|truck|lock' | split: '|'
 -%}
 <ul class="lp-trust-row" role="list">
   {%- for key in t_keys -%}
     {%- liquid
       assign i = forloop.index0
-      assign file = t_files[i]
       assign label_key = 'lp.trust.' | append: key
     -%}
     <li class="lp-trust-row__item">
-      <span class="lp-trust-row__icon">
-        {%- if file != blank -%}
-          <img src="{{ file | asset_url }}" class="lp-trust-row__badge" width="20" height="20" alt="" loading="lazy" decoding="async">
-        {%- else -%}
-          {% render 'lp-icon', name: t_icons[i], size: 20 %}
-        {%- endif -%}
-      </span>
+      <span class="lp-trust-row__icon">{% render 'lp-icon', name: t_icons[i], size: 20 %}</span>
       <span>{{ label_key | t }}</span>
     </li>
   {%- endfor -%}

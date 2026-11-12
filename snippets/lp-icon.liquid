@@ -1,7 +1,7 @@
 {% doc %}
   Renders a line icon from the LifePharm premium icon set.
 
-  @param {string} name - Icon name: pill, bulb, calendar, shield, flag, flask, badge, truck, leaf, star, lock, chat, refresh, heart, sparkle, arrow, dna, moon, bolt, drop, check, clock, cell
+  @param {string} name - Icon name: pill, bulb, calendar, shield, flag, flag-us, flask, badge, truck, leaf, star, lock, chat, refresh, heart, sparkle, arrow, dna, moon, bolt, drop, check, clock, cell
   @param {number} [size] - Pixel size, defaults to 24
 
   @example
@@ -34,6 +34,8 @@
       <path d="M12 22s8-3.6 8-10V5l-8-3-8 3v7c0 6.4 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>
     {%- when 'flag' -%}
       <path d="M4 22V4"/><path d="M4 4h12l-2 4 2 4H4"/>
+    {%- when 'flag-us' -%}
+      <rect x="3" y="5" width="18" height="13" rx="1.5"/><path d="M3 10.5h18M3 14.5h18M11 5v5.5"/><path d="m7 6.6.5 1.1 1.2.1-.9.8.3 1.2L7 9.2l-1.1.6.3-1.2-.9-.8 1.2-.1z" fill="currentColor" stroke="none"/>
     {%- when 'flask' -%}
       <path d="M9 3h6"/><path d="M10 3v6L4.5 18.5A2 2 0 0 0 6.2 21.5h11.6a2 2 0 0 0 1.7-3L14 9V3"/><path d="M7.5 15h9"/>
     {%- when 'badge' -%}

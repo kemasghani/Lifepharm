@@ -1,13 +1,13 @@
 {% doc %}
   Renders the LifePharm reassurance grid shown under the product buy buttons: six tiles,
-  one consistent line-icon style (lp-icon) in brand orange; the first four are the brand badge motifs drawn as line icons.
+  one consistent line-icon style (lp-icon) in brand orange; the first four redraw the brand badges (rings included) as line icons, measured against the original artwork.
 
   @example
   {% render 'lp-trust-row' %}
 {% enddoc %}
 {%- liquid
   assign t_keys = 'guarantee|tested|made|studied|shipping|secure' | split: '|'
-  assign t_icons = 'trust-guarantee|trust-nsf|trust-usa|trust-flask|truck|lock' | split: '|'
+  assign t_icons = 'seal-guarantee|seal-nsf|seal-usa|seal-flask|truck|lock' | split: '|'
 -%}
 <ul class="lp-trust-row" role="list">
   {%- for key in t_keys -%}

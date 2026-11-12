@@ -530,3 +530,11 @@ body:has(.shopify-section--main-product) .shopify-section--text-with-icons:not(#
 @media (hover: hover) { .horizontal-product__cta .button.button--subdued:not(#lp-none):hover { background-color: rgb(var(--lp-amber)); color: #1f1e20; box-shadow: inset 0 0 0 1.5px rgb(var(--lp-amber)); } }
 .horizontal-product__cta .button.button--subdued:not(#lp-none):focus-visible { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 2px; }
 .horizontal-product__cta .button.button--subdued[disabled]:not(#lp-none) { box-shadow: inset 0 0 0 1.5px rgb(var(--lp-ink) / .25); color: rgb(var(--lp-muted)); }
+
+/* ---------- How to Use steps (buy-box accordion) ---------- */
+.product-info .lp-how-steps { display: grid; gap: .9rem; margin: 0; padding: 0; list-style: none; }
+.lp-how-steps__item { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: .75rem; align-items: start; }
+.lp-how-steps__item + .lp-how-steps__item { padding-block-start: .9rem; border-top: 1px solid rgb(var(--lp-ink) / .08); }
+.lp-how-steps__icon { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: rgb(var(--lp-sand)); color: rgb(var(--lp-amber-deep)); }
+.lp-how-steps__title { margin: .35rem 0 0; font-weight: 600; font-size: .9375rem; color: rgb(var(--lp-ink)); }
+.lp-how-steps__text { margin: .15rem 0 0; color: rgb(var(--lp-muted)); font-size: .9rem; line-height: 1.55; }

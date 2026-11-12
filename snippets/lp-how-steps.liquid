@@ -32,12 +32,3 @@
     {%- endif -%}
   </ul>
 {%- endif -%}
-
-{% stylesheet %}
-.lp-how-steps { display: grid; gap: .9rem; margin: 0; padding: 0; list-style: none; }
-.lp-how-steps__item { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: .75rem; align-items: start; }
-.lp-how-steps__item + .lp-how-steps__item { padding-block-start: .9rem; border-top: 1px solid rgb(var(--lp-ink) / .08); }
-.lp-how-steps__icon { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: rgb(var(--lp-sand)); color: rgb(var(--lp-amber-deep)); }
-.lp-how-steps__title { margin: .35rem 0 0; font-weight: 600; font-size: .9375rem; color: rgb(var(--lp-ink)); }
-.lp-how-steps__text { margin: .15rem 0 0; color: rgb(var(--lp-muted)); font-size: .9rem; line-height: 1.55; }
-{% endstylesheet %}

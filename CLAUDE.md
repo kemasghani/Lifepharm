@@ -19,20 +19,22 @@ Source: Dropbox "Branding Resources" > `LifePharm-QuickStyleGuide-2024.pdf`. Fon
 
 ### Typography
 - **Metropolis** is the only web font. It is self-hosted in `assets/metropolis-*.woff2` and loaded in `layout/theme.liquid`.
-  - Headings: Metropolis **Light (300)**, letter-spacing `-0.02em`, line-height `1.1`.
+  - Display headings (h1, h2): **Playfair Display, weight 400, title case** (first letter of each word). Never all caps. Product names stay as the brand writes them (LAMININE).
+  - Small headings (h3) and UI: Metropolis SemiBold (600).
   - Body: Metropolis Regular (400). Buttons and labels: SemiBold (600).
   - Eyebrows and small labels: Metropolis **ExtraBold (800)**, UPPERCASE, `letter-spacing .1em`.
-- The guide also lists Playfair Display Bold. It is **not used**: the site keeps one family, by the owner's choice.
+- Two families only: Playfair Display for display headings, Metropolis for everything else.
 - **No italics** in headings and no decorative or "weird" type styles. Accents use colour only.
 - Do not add Google Fonts or any other font family.
 
 ### Colour
 | Token | Value | Use |
 |---|---|---|
-| `--lp-ink` | **#414042** (Black 90%) | text, dark surfaces |
+| `--lp-ink` | **#414042** (Black 90%) | text. **Not for large panels**: the client finds dark panels too heavy |
+| Panel grey | **#E2E3E4** (light tint of Pantone 423) | footer, comparison section. Ink text on it |
 | `--lp-amber` | **#FF8F00** (live-site orange, chosen by Letisha 2026-11-12; was Pantone 144 #F18A00) | brand accent, **all primary CTA buttons**, badges, icons |
 | `--lp-amber-deep` | #A65A00 | orange **text** only (AA contrast on light backgrounds) |
-| Logo grey | #888B8D (Pantone 423) | logo and illustration only, not body text |
+| Logo grey | #888B8D (Pantone 423) | logo and illustration only. Too dark as a panel background (tried and rejected) |
 | `--lp-muted` | #6B6A6C | secondary text |
 | `--lp-ivory` / `--lp-sand` | #FBF9F5 / #F3EFE7 | backgrounds |
 
@@ -87,3 +89,32 @@ Source: Dropbox "Branding Resources" > `LifePharm-QuickStyleGuide-2024.pdf`. Fon
 - **Always read it before writing Exigo integration code.** Start with `docs/exigo-api/README.md` for transports, auth and the index, then the category file in `operations/`, then `types.md` and `enums.md`. Do not guess field names, REST routes or enum values from memory.
 - Company-specific values (warehouses, ship methods, price types, etc.) need LifePharm's Exigo API credentials (see `company-lists.md`).
 - Refresh with `python3 docs/exigo-api/tools/crawl.py && python3 docs/exigo-api/tools/parse.py && python3 docs/exigo-api/tools/gen.py`.
+
+## 7. Client design preferences (Letisha Suyanto, LifePharm)
+
+Collected from her reviews on 2026-11-12. Treat these as the brief for every new design. If a new request conflicts, ask.
+
+### Look
+- **Light and bright.** No dark panels. Grey surfaces are the light tint #E2E3E4; orange is the bright live-site orange #FF8F00.
+- **Titles in title case**, never full caps. That includes accordion titles ("How to Use", "60-Day Money-Back Guarantee"), ingredient names and menu headlines.
+- **Menu headlines**: larger than the links, title case, orange (use `--lp-amber-deep` so they stay readable).
+- **Use the brand's own orange circle icons** (Dropbox "ICONS 2024"; cut versions in Files as `lp-benefit-*.png`) wherever a list of benefits would otherwise be plain text that "gets lost".
+- **Follow her Dropbox designs** when one exists for a page. Ask for the source image or video if only the mockup is available.
+
+### Layout
+- **Image above its text.** Timelines and step content become columns of cards (image on top), not tabs beside a collage.
+- **Charts and tables take the full width**, with the title above them, not beside.
+- **Space repeated elements evenly** (for example icons around a product).
+- **Every image needs a title or caption** so customers know what they are looking at.
+- **Say it once.** Trust icons live in one place per page (the buy box on product pages); no second strip lower down. Remove sections that repeat another one.
+- **Keep long content short on screen.** No "All" tab that lists everything; open on the first category. For long timelines show all the icons and reveal the text on click.
+- **Related pages are merged** (Science + Our Studies are one page).
+- **Disclaimers**: centred, one line on desktop.
+- **Options update the visual.** Choosing a variant must change the main image.
+
+### Developer's own standards (same project)
+- Product pages are compact: tight gaps between buy-box elements.
+- Mobile: a row that does not fit scrolls sideways, and the next item is cut in half so it is clear there is more.
+- Things on one row are aligned on one axis; images are sharp on retina (serve 2x to 3x).
+- The sticky add-to-cart never sits on top of an open menu or under page content.
+- Real customer photos (from their own reviews) beside the rating; never invented.

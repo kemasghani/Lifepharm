@@ -1,6 +1,7 @@
 {% doc %}
-  Renders the product's How to Use, When to Take and Tip steps (custom metafields header_2/value_2,
-  header_3/value_3, header_4/value_4) as a compact list for the buy-box How to Use accordion.
+  Renders the product's How to Use, When to Take and Tip (custom metafields header_2/value_2,
+  header_3/value_3, header_4/value_4) for the buy-box How to Use accordion: the two instructions
+  as a small vertical stepper, the tip as a highlighted note.
 
   @param {product} product - The product whose metafields supply the steps
 
@@ -9,26 +10,40 @@
 {% enddoc %}
 {%- liquid
   assign mf = product.metafields.custom
-  assign use_h = mf.header_2.value | default: 'How to Use'
+  assign use_h = mf.header_2.value | default: 'How to Use' | remove: ':' | strip
+  if use_h == 'How to Use' or use_h == 'How to use' or use_h == 'How To Use'
+    assign use_h = 'Daily Use'
+  endif
   assign use_v = mf.value_2.value | default: mf.how_to_use.value
 -%}
 {%- if use_v != blank -%}
-  <ul class="lp-how-steps" role="list">
-    <li class="lp-how-steps__item">
-      <span class="lp-how-steps__icon">{% render 'lp-icon', name: 'pill', size: 20 %}</span>
-      <div><p class="lp-how-steps__title">{{ use_h | remove: ':' | strip | escape }}</p><p class="lp-how-steps__text">{{ use_v | replace: ' — ', ', ' | replace: '—', ', ' | escape }}</p></div>
-    </li>
-    {%- if mf.value_3 != blank -%}
-      <li class="lp-how-steps__item">
-        <span class="lp-how-steps__icon">{% render 'lp-icon', name: 'clock', size: 20 %}</span>
-        <div><p class="lp-how-steps__title">{{ mf.header_3.value | default: 'When to Take' | remove: ':' | strip | escape }}</p><p class="lp-how-steps__text">{{ mf.value_3.value | replace: ' — ', ', ' | replace: '—', ', ' | escape }}</p></div>
+  <div class="lp-howto">
+    <ol class="lp-howto__steps" role="list">
+      <li class="lp-howto__step">
+        <span class="lp-howto__marker">{% render 'lp-icon', name: 'pill', size: 18 %}</span>
+        <div class="lp-howto__body">
+          <p class="lp-howto__title">{{ use_h | escape }}</p>
+          <p class="lp-howto__text">{{ use_v | replace: ' — ', ', ' | replace: '—', ', ' | escape }}</p>
+        </div>
       </li>
-    {%- endif -%}
+      {%- if mf.value_3 != blank -%}
+        <li class="lp-howto__step">
+          <span class="lp-howto__marker">{% render 'lp-icon', name: 'clock', size: 18 %}</span>
+          <div class="lp-howto__body">
+            <p class="lp-howto__title">{{ mf.header_3.value | default: 'When to Take' | remove: ':' | strip | escape }}</p>
+            <p class="lp-howto__text">{{ mf.value_3.value | replace: ' — ', ', ' | replace: '—', ', ' | escape }}</p>
+          </div>
+        </li>
+      {%- endif -%}
+    </ol>
     {%- if mf.value_4 != blank -%}
-      <li class="lp-how-steps__item">
-        <span class="lp-how-steps__icon">{% render 'lp-icon', name: 'bulb', size: 20 %}</span>
-        <div><p class="lp-how-steps__title">{{ mf.header_4.value | default: 'Tip' | remove: ':' | strip | escape }}</p><p class="lp-how-steps__text">{{ mf.value_4.value | replace: ' - ', ', ' | replace: ' — ', ', ' | replace: '—', ', ' | escape }}</p></div>
-      </li>
+      <aside class="lp-howto__tip">
+        <span class="lp-howto__tip-icon">{% render 'lp-icon', name: 'bulb', size: 18 %}</span>
+        <div>
+          <p class="lp-howto__tip-label">{{ mf.header_4.value | default: 'Tip' | remove: ':' | strip | escape }}</p>
+          <p class="lp-howto__tip-text">{{ mf.value_4.value | replace: ' - ', ', ' | replace: ' — ', ', ' | replace: '—', ', ' | escape }}</p>
+        </div>
+      </aside>
     {%- endif -%}
-  </ul>
+  </div>
 {%- endif -%}

@@ -531,10 +531,17 @@ body:has(.shopify-section--main-product) .shopify-section--text-with-icons:not(#
 .horizontal-product__cta .button.button--subdued:not(#lp-none):focus-visible { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 2px; }
 .horizontal-product__cta .button.button--subdued[disabled]:not(#lp-none) { box-shadow: inset 0 0 0 1.5px rgb(var(--lp-ink) / .25); color: rgb(var(--lp-muted)); }
 
-/* ---------- How to Use steps (buy-box accordion) ---------- */
-.product-info .lp-how-steps { display: grid; gap: .9rem; margin: 0; padding: 0; list-style: none; }
-.lp-how-steps__item { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: .75rem; align-items: start; }
-.lp-how-steps__item + .lp-how-steps__item { padding-block-start: .9rem; border-top: 1px solid rgb(var(--lp-ink) / .08); }
-.lp-how-steps__icon { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: rgb(var(--lp-sand)); color: rgb(var(--lp-amber-deep)); }
-.lp-how-steps__title { margin: .35rem 0 0; font-weight: 600; font-size: .9375rem; color: rgb(var(--lp-ink)); }
-.lp-how-steps__text { margin: .15rem 0 0; color: rgb(var(--lp-muted)); font-size: .9rem; line-height: 1.55; }
+/* ---------- How to Use (buy-box accordion): stepper card + tip note ---------- */
+.lp-howto { display: grid; gap: .75rem; padding-block: .25rem .5rem; }
+.lp-howto__steps { margin: 0; padding: 1.1rem 1.15rem; list-style: none; border-radius: 16px; background: #fff; box-shadow: inset 0 0 0 1px rgb(var(--lp-ink) / .07), 0 10px 24px -18px rgb(var(--lp-ink) / .35); }
+.lp-howto__step { position: relative; display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: .9rem; align-items: start; }
+.lp-howto__step + .lp-howto__step { margin-block-start: 1.1rem; }
+.lp-howto__step:not(:last-child)::after { content: ""; position: absolute; left: 19.5px; top: 44px; bottom: -1.1rem; width: 1px; background: linear-gradient(rgb(var(--lp-amber) / .45), rgb(var(--lp-amber) / .12)); }
+.lp-howto__marker { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: rgb(var(--lp-amber) / .1); color: rgb(var(--lp-amber-deep)); box-shadow: inset 0 0 0 1px rgb(var(--lp-amber) / .28); }
+.lp-howto__body { padding-block-start: .1rem; }
+.lp-howto__title { margin: 0; font-size: .9375rem; font-weight: 600; line-height: 1.35; color: rgb(var(--lp-ink)); }
+.lp-howto__text { margin: .2rem 0 0; font-size: .9375rem; line-height: 1.6; color: rgb(var(--lp-muted)); text-wrap: pretty; }
+.lp-howto__tip { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: .75rem; align-items: start; padding: .95rem 1.1rem; border-radius: 14px; background: rgb(var(--lp-amber) / .09); }
+.lp-howto__tip-icon { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: #fff; color: rgb(var(--lp-amber-deep)); box-shadow: 0 4px 10px -6px rgb(var(--lp-amber-deep) / .5); }
+.lp-howto__tip-label { margin: .05rem 0 0; font-size: .6875rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgb(var(--lp-amber-deep)); }
+.lp-howto__tip-text { margin: .2rem 0 0; font-size: .9375rem; line-height: 1.55; color: rgb(var(--lp-ink)); text-wrap: pretty; }

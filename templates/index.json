@@ -155,7 +155,7 @@
           "type": "category",
           "settings": {
             "collection": "frequency-regeneration",
-            "image": "shopify://shop_images/test_sqaure_08a86950-61d0-4e60-8977-5156471baea5.jpg",
+            "image": "shopify://shop_images/lp-kive-power-cream-arch.jpg",
             "title": "Frequency"
           }
         },
@@ -187,25 +187,25 @@
         "pr1": {
           "type": "promo",
           "settings": {
-            "style": "dark",
+            "style": "light",
             "tag": "Subscribe & save",
             "heading": "Save 25% on <em>Laminine</em>",
             "text": "Our best seller, delivered every 4, 8, 12 or 26 weeks.",
             "button_label": "Shop Laminine",
             "url": "shopify://products/laminine",
-            "image": "shopify://shop_images/laminine-duo-cutout.png"
+            "image": "shopify://shop_images/lp-kive-laminine-duo-eggs.jpg"
           }
         },
         "pr2": {
           "type": "promo",
           "settings": {
-            "style": "amber",
+            "style": "light",
             "tag": "Most added to Laminine",
             "heading": "Complete your <em>routine</em>",
             "text": "Omega+++, Immune+++ and Digestive+++ are the products customers pair with Laminine most often.",
             "button_label": "Shop nutritionals",
             "url": "shopify://collections/nutritionals",
-            "image": "shopify://shop_images/Supplements-Orange-bg_web.jpg"
+            "image": "shopify://shop_images/lp-kive-laminine-omega-bedside.jpg"
           }
         }
       },
@@ -280,7 +280,8 @@
         "s3"
       ],
       "settings": {
-        "image": "shopify://shop_images/5.jpg",
+        "image": "shopify://shop_images/lp-kive-laminine-egg-flatlay.jpg",
+        "caption": "LAMININE, made with fertilised avian egg extract",
         "image_position": "object-position: 50% 50%",
         "eyebrow": "The science",
         "heading": "Powered by nature's <em>growth factors</em>",

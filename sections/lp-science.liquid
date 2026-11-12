@@ -1,13 +1,15 @@
 <section class="lp-science">
   <div class="container lp-science__grid">
-    <div class="lp-science__media lp-media" data-lp-reveal>
-      {%- if section.settings.image != blank -%}
-        {{ section.settings.image | image_url: width: 1400 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 45vw, 100vw', widths: '600,900,1200,1400', class: 'lp-science__img', style: section.settings.image_position }}
-      {%- else -%}
-        {{ 'image' | placeholder_svg_tag: 'lp-science__img' }}
-      {%- endif -%}
-      <div class="lp-science__orbit" aria-hidden="true"><span></span><span></span><span></span></div>
-    </div>
+    <figure class="lp-science__figure">
+      <div class="lp-science__media lp-media" data-lp-reveal>
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 45vw, 100vw', widths: '600,900,1200,1600', class: 'lp-science__img', style: section.settings.image_position }}
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag: 'lp-science__img' }}
+        {%- endif -%}
+      </div>
+      {%- if section.settings.caption != blank -%}<figcaption class="lp-science__caption">{{ section.settings.caption | escape }}</figcaption>{%- endif -%}
+    </figure>
 
     <div class="lp-science__copy">
       {%- if section.settings.eyebrow != blank -%}<p class="lp-eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
@@ -49,11 +51,8 @@
 @media (min-width: 1000px) { .lp-science__grid { grid-template-columns: minmax(0, .95fr) minmax(0, 1fr); } }
 .lp-science__media { position: relative; border-radius: var(--lp-radius-lg); overflow: hidden; aspect-ratio: 4 / 4.2; box-shadow: var(--lp-shadow-3); background: #fff; }
 .lp-science__img { width: 100%; height: 100%; object-fit: cover; }
-.lp-science__orbit { position: absolute; inset: 0; pointer-events: none; }
-.lp-science__orbit span { position: absolute; left: 50%; top: 50%; width: 60%; aspect-ratio: 1; border: 1px solid rgb(255 255 255 / .55); border-radius: 50%; transform: translate(-50%, -50%); animation: lp-orbit 8s var(--lp-ease-in-out) infinite; }
-.lp-science__orbit span:nth-child(2) { width: 80%; animation-delay: -2.6s; }
-.lp-science__orbit span:nth-child(3) { width: 100%; animation-delay: -5.2s; }
-@keyframes lp-orbit { 0% { opacity: 0; transform: translate(-50%, -50%) scale(.8); } 40% { opacity: .9; } 100% { opacity: 0; transform: translate(-50%, -50%) scale(1.15); } }
+.lp-science__figure { margin: 0; display: grid; gap: .75rem; }
+.lp-science__caption { font-size: .8125rem; line-height: 1.4; color: rgb(var(--lp-muted)); text-align: center; }
 .lp-science__copy { display: grid; gap: 1.25rem; justify-items: start; }
 .lp-science__title { letter-spacing: -.02em; }
 .lp-science__title em { color: rgb(var(--lp-amber-deep)); }
@@ -74,6 +73,7 @@
   "settings": [
     { "type": "image_picker", "id": "image", "label": "Image" },
     { "type": "select", "id": "image_position", "label": "Image focus", "options": [ { "value": "object-position: 20% 50%", "label": "Left" }, { "value": "object-position: 50% 50%", "label": "Center" }, { "value": "object-position: 80% 50%", "label": "Right" } ], "default": "object-position: 50% 50%" },
+    { "type": "text", "id": "caption", "label": "Image caption" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The science" },
     { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Powered by nature's <em>growth factors</em>" },
     { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Share how your products work.</p>" },

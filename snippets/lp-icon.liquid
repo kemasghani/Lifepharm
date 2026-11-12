@@ -1,7 +1,7 @@
 {% doc %}
   Renders a line icon from the LifePharm premium icon set.
 
-  @param {string} name - Icon name: pill, bulb, calendar, shield, flag, flag-us, flask, badge, truck, leaf, star, lock, chat, refresh, heart, sparkle, arrow, dna, moon, bolt, drop, check, clock, cell
+  @param {string} name - Icon name: pill, bulb, calendar, shield, flag, trust-guarantee, trust-nsf, trust-usa, trust-flask, flask, badge, truck, leaf, star, lock, chat, refresh, heart, sparkle, arrow, dna, moon, bolt, drop, check, clock, cell
   @param {number} [size] - Pixel size, defaults to 24
 
   @example
@@ -34,8 +34,14 @@
       <path d="M12 22s8-3.6 8-10V5l-8-3-8 3v7c0 6.4 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>
     {%- when 'flag' -%}
       <path d="M4 22V4"/><path d="M4 4h12l-2 4 2 4H4"/>
-    {%- when 'flag-us' -%}
-      <rect x="3" y="5" width="18" height="13" rx="1.5"/><path d="M3 10.5h18M3 14.5h18M11 5v5.5"/><path d="m7 6.6.5 1.1 1.2.1-.9.8.3 1.2L7 9.2l-1.1.6.3-1.2-.9-.8 1.2-.1z" fill="currentColor" stroke="none"/>
+    {%- when 'trust-guarantee' -%}
+      <circle cx="12" cy="9.4" r="3.7"/><path d="M5.93 14.14A7.7 7.7 0 0 1 4.53 7.54"/><path d="M5.33 5.55A7.7 7.7 0 0 1 18.67 5.55"/><path d="M19.47 7.54A7.7 7.7 0 0 1 18.07 14.14"/><path d="M2.93 8.64L4.53 7.54L5.73 9.04"/><path d="M16.57 13.04L18.07 14.14L19.77 13.54"/><path d="M5.4 15.9Q12 14.7 18.6 15.9V19.7Q12 18.5 5.4 19.7Z"/><path d="M5.4 16.9H2L3.5 18.8L2 20.7H6.5L5.4 19.7M18.6 16.9H22L20.5 18.8L22 20.7H17.5L18.6 19.7"/>
+    {%- when 'trust-nsf' -%}
+      <path d="M2.8 17V7L8.8 17V7"/><path d="M15 8.3Q14.3 7 12.8 7Q10.8 7 10.8 8.9Q10.8 10.4 12.9 11.3Q15.2 12.3 15.2 14.4Q15.2 17 12.8 17Q11.1 17 10.5 15.6"/><path d="M17.2 17V7H21.4M17.2 11.8H20.6"/>
+    {%- when 'trust-usa' -%}
+      <rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M11 5V11H3M11 8H21M3 11H21M3 14H21"/><path d="m7 6.3.5 1 1.1.15-.8.77.2 1.1L7 8.8l-1 .52.2-1.1-.8-.77 1.1-.15z" fill="currentColor" stroke="none"/>
+    {%- when 'trust-flask' -%}
+      <path d="M8.6 8.2H15.4M10.1 8.2V11.6L4.6 18.6Q3.6 20.4 5.6 20.4H18.4Q20.4 20.4 19.4 18.6L13.9 11.6V8.2"/><path d="M6.4 17.4Q8.4 15 10.9 16Q12.4 16.6 14.2 15.9Q16 15.2 16.6 16.2L17.7 17.9Q18.2 18.8 17.2 18.8H6.6Q5.6 18.8 6 18Z" fill="currentColor" stroke="none"/><g fill="currentColor" stroke="none"><circle cx="10.7" cy="4.6" r="1.15"/><circle cx="14" cy="3.2" r=".95"/><circle cx="13.6" cy="6.1" r=".85"/></g>
     {%- when 'flask' -%}
       <path d="M9 3h6"/><path d="M10 3v6L4.5 18.5A2 2 0 0 0 6.2 21.5h11.6a2 2 0 0 0 1.7-3L14 9V3"/><path d="M7.5 15h9"/>
     {%- when 'badge' -%}

@@ -1,15 +1,14 @@
 {% doc %}
   Renders the LifePharm reassurance grid shown under the product buy buttons.
-  Guarantee, Made in the USA, NSF and Clinically Studied use the brand's badge artwork from Files
-  (icon-money-back.png, icon-made-in-usa.png, NSF_-_Lifepharm.png, clinically_studied_*.png);
-  delivery and checkout keep line icons. A missing file falls back to a line icon.
+  Guarantee, Made in the USA, NSF and Clinically Studied use the brand badges as SVG assets
+  (assets/lp-badge-*.svg, traced 1:1 from the brand artwork); delivery and checkout keep line icons.
 
   @example
   {% render 'lp-trust-row' %}
 {% enddoc %}
 {%- liquid
   assign t_keys = 'guarantee|shipping|tested|made|studied|secure' | split: '|'
-  assign t_files = 'icon-money-back.png||NSF_-_Lifepharm.png|icon-made-in-usa.png|clinically_studied_26999dde-6efc-4c76-98ea-113dcbbbcb69.png|' | split: '|'
+  assign t_files = 'lp-badge-guarantee.svg||lp-badge-nsf.svg|lp-badge-usa.svg|lp-badge-clinical.svg|' | split: '|'
   assign t_icons = 'shield|truck|badge|flag|flask|lock' | split: '|'
 -%}
 <ul class="lp-trust-row" role="list">
@@ -21,8 +20,8 @@
     -%}
     <li class="lp-trust-row__item">
       <span class="lp-trust-row__icon">
-        {%- if file != blank and images[file] != blank -%}
-          {{ images[file] | image_url: width: 80 | image_tag: width: 20, height: 20, loading: 'lazy', alt: '', class: 'lp-trust-row__badge' }}
+        {%- if file != blank -%}
+          <img src="{{ file | asset_url }}" class="lp-trust-row__badge" width="20" height="20" alt="" loading="lazy" decoding="async">
         {%- else -%}
           {% render 'lp-icon', name: t_icons[i], size: 20 %}
         {%- endif -%}

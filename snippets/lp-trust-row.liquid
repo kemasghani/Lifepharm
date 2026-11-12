@@ -1,29 +1,20 @@
 {% doc %}
   Renders the LifePharm reassurance block under the product buy buttons: the brand's four badge seals
-  (Files: icon-money-back.png, icon-made-in-usa.png, NSF_-_Lifepharm.png, clinically_studied_*.png),
-  then delivery and checkout reassurance as one quiet line. Falls back to line icons if a file is missing.
+  (inline SVG via lp-trust-seal, redrawn from the brand badges), then delivery and checkout reassurance as one quiet line.
 
   @example
   {% render 'lp-trust-row' %}
 {% enddoc %}
 {%- liquid
-  assign badge_files = 'icon-money-back.png|icon-made-in-usa.png|NSF_-_Lifepharm.png|clinically_studied_26999dde-6efc-4c76-98ea-113dcbbbcb69.png' | split: '|'
+  assign badge_seals = 'guarantee|usa|nsf|flask' | split: '|'
   assign badge_keys = 'guarantee_short|made|tested|studied' | split: '|'
-  assign badge_icons = 'shield|flag|badge|flask' | split: '|'
 -%}
 <div class="lp-trust-row">
   <ul class="lp-trust-row__badges" role="list">
-    {%- for file in badge_files -%}
-      {%- liquid
-        assign i = forloop.index0
-        assign label_key = 'lp.trust.' | append: badge_keys[i]
-      -%}
+    {%- for seal in badge_seals -%}
+      {%- assign label_key = 'lp.trust.' | append: badge_keys[forloop.index0] -%}
       <li class="lp-trust-row__badge">
-        {%- if images[file] != blank -%}
-          {{ images[file] | image_url: width: 120 | image_tag: width: 56, height: 56, loading: 'lazy', alt: '', class: 'lp-trust-row__seal' }}
-        {%- else -%}
-          <span class="lp-trust-row__seal lp-trust-row__seal--icon">{% render 'lp-icon', name: badge_icons[i], size: 24 %}</span>
-        {%- endif -%}
+        {%- render 'lp-trust-seal', name: seal, size: 56 -%}
         <span class="lp-trust-row__label">{{ label_key | t }}</span>
       </li>
     {%- endfor -%}

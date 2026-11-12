@@ -524,3 +524,9 @@ html.lp-menu-open .product-quick-add:not(#lp-none) { visibility: hidden !importa
 /* Product pages: the six reassurance points live in the buy box, so the footer icon strip is hidden there */
 body:has(.shopify-section--main-product) .shopify-section--text-with-icons:not(#lp-none) { display: none !important; }
 .lp-ba-caption { margin: 0 0 .9rem; font-family: var(--lp-serif); font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.25; color: rgb(var(--lp-ink)); text-wrap: balance; }
+
+/* ---------- Pairs well with: visible add button (Impact's subdued grey disappeared on ivory) ---------- */
+.horizontal-product__cta .button.button--subdued:not(#lp-none) { min-height: 44px; padding-inline: 1.25rem; border-radius: 999px; background-color: #fff; color: rgb(var(--lp-ink)); box-shadow: inset 0 0 0 1.5px rgb(var(--lp-ink)); font-size: .875rem; font-weight: 600; transition: background-color 160ms ease-out, box-shadow 160ms ease-out, color 160ms ease-out; }
+@media (hover: hover) { .horizontal-product__cta .button.button--subdued:not(#lp-none):hover { background-color: rgb(var(--lp-amber)); color: #1f1e20; box-shadow: inset 0 0 0 1.5px rgb(var(--lp-amber)); } }
+.horizontal-product__cta .button.button--subdued:not(#lp-none):focus-visible { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 2px; }
+.horizontal-product__cta .button.button--subdued[disabled]:not(#lp-none) { box-shadow: inset 0 0 0 1.5px rgb(var(--lp-ink) / .25); color: rgb(var(--lp-muted)); }

@@ -348,8 +348,10 @@
     const select = (tab) => {
       const key = tab.dataset.lpTab;
       tabs.forEach((t) => t.setAttribute('aria-selected', String(t === tab)));
-      cards.forEach((card) => { card.hidden = key !== 'all' && !card.dataset.collections.split(' ').includes(key); });
+      // The first tab shows the main collection only; the other tabs show every card that belongs to their collection.
+      cards.forEach((card) => { card.hidden = key === 'all' ? card.hasAttribute('data-lp-extra') : !card.dataset.collections.split(' ').includes(key); });
       if (grid) grid.scrollTo({ left: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+      window.requestAnimationFrame(() => syncRail());
     };
     const prev = root.querySelector('[data-lp-rail="-1"]');
     const next = root.querySelector('[data-lp-rail="1"]');

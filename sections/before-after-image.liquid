@@ -58,7 +58,8 @@ LIQUID
               if lp_sep == '</p>'
                 continue
               endif
-              assign lp_part = lp_part | replace: lp_plain, ''
+              assign lp_line = lp_plain | newline_to_br | split: '<br />' | first | strip
+              assign lp_part = lp_part | replace: lp_line, ''
               assign lp_skip_blank = true
             elsif lp_skip_blank and lp_plain == blank
               continue

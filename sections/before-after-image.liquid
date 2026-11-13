@@ -73,6 +73,7 @@ LIQUID
           endfor
         endif
       -%}
+      <!--lpdbg sep={{ lp_sep | escape }} cap={{ lp_cap | escape }} line={{ lp_line | escape }} parts={{ lp_parts.size }} p0={{ lp_parts.first | escape | truncate: 200 }}-->
       {{- lp_content -}}
     {%- endcapture -%}
 

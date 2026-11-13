@@ -51,29 +51,33 @@ LIQUID
           assign lp_parts = lp_content | split: lp_sep
           assign lp_content = ''
           assign lp_skip_blank = false
-          for lp_part in lp_parts
-            assign lp_plain = lp_part | strip_html | strip
+          for lp_raw in lp_parts
+            assign lp_seg = lp_raw
+            assign lp_plain = lp_raw | strip_html | strip
             assign lp_plain_down = lp_plain | downcase
             if lp_plain_down contains lp_cap
               if lp_sep == '</p>'
                 continue
               endif
               assign lp_line = lp_plain | newline_to_br | split: '<br />' | first | strip
-              assign lp_part = lp_part | replace: lp_line, ''
-              assign lp_skip_blank = true
+              assign lp_seg = lp_raw | replace: lp_line, ''
+              assign lp_left = lp_seg | strip_html | strip
+              assign lp_skip_blank = false
+              if lp_left == blank
+                assign lp_skip_blank = true
+              endif
             elsif lp_skip_blank and lp_plain == blank
               continue
             else
               assign lp_skip_blank = false
             endif
-            assign lp_content = lp_content | append: lp_part
+            assign lp_content = lp_content | append: lp_seg
             unless forloop.last or lp_skip_blank
               assign lp_content = lp_content | append: lp_sep
             endunless
           endfor
         endif
       -%}
-      <!--lpdbg sep={{ lp_sep | escape }} cap={{ lp_cap | escape }} line={{ lp_line | escape }} parts={{ lp_parts.size }} p0={{ lp_parts.first | escape | truncate: 200 }}-->
       {{- lp_content -}}
     {%- endcapture -%}
 

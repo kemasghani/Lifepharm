@@ -79,6 +79,29 @@
     place();
     mq.addEventListener('change', place);
   })();
+
+  /* Desktop sticky columns: the shorter column scrolls until its bottom is in view, then holds until the taller one ends, so both finish level. A column shorter than the screen holds just under the header. */
+  (() => {
+    const product = document.querySelector('#shopify-section-{{ section.id }} .product');
+    if (!product) return;
+    const cols = [product.querySelector('.lp-media-col'), product.querySelector('.product-info')].filter(Boolean);
+    const mq = window.matchMedia('(min-width: 1000px)');
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const headerOffset = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--sticky-area-height')) || 0) + 20;
+      cols.forEach((col) => {
+        if (!mq.matches) { col.style.removeProperty('--lp-sticky-top'); return; }
+        const fit = window.innerHeight - col.offsetHeight - 24;
+        col.style.setProperty('--lp-sticky-top', Math.min(headerOffset, fit) + 'px');
+      });
+    };
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+    if ('ResizeObserver' in window) { const ro = new ResizeObserver(schedule); cols.forEach((col) => ro.observe(col)); }
+    window.addEventListener('resize', schedule, { passive: true });
+    mq.addEventListener('change', schedule);
+    update();
+  })();
 </script>
 
 {%- assign buy_buttons_block = section.blocks | where: 'type', 'buy_buttons' | first -%}

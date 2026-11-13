@@ -288,6 +288,10 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
 .lp-media-col__extras { display: grid; gap: 1.75rem; }
 .lp-media-col__extras:empty { display: none; }
 .lp-media-col__extras > .product-info__block-item { margin: 0; }
+/* Both PDP columns are sticky on desktop; the top offset is set per column in sections/main-product.liquid so the shorter one ends level with the taller one */
+@media (min-width: 1000px) {
+  .shopify-section--main-product .lp-media-col, .shopify-section--main-product .product > .product-info { position: sticky; top: var(--lp-sticky-top, calc(var(--sticky-area-height, 0px) + 20px)); align-self: start; }
+}
 @media (max-width: 999px) {
   .shopify-section--main-product .product-gallery__thumbnail-list-wrapper { display: none; }
 }

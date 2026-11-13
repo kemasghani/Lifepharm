@@ -34,7 +34,27 @@ LIQUID
         <h2 class="h2">{{ section.settings.title | escape }}</h2>
       {%- endif -%}
 
-      {{- section.settings.content -}}
+      {%- liquid
+        # The image caption already says this; drop the matching paragraph from the intro so it is not said twice
+        assign lp_content = section.settings.content
+        if section.settings.image_caption != blank
+          assign lp_cap = section.settings.image_caption | strip | downcase | slice: 0, 40
+          assign lp_parts = lp_content | split: '</p>'
+          assign lp_content = ''
+          for lp_part in lp_parts
+            assign lp_plain = lp_part | strip_html | strip | downcase
+            if lp_plain contains lp_cap
+              continue
+            endif
+            if forloop.last
+              assign lp_content = lp_content | append: lp_part
+            else
+              assign lp_content = lp_content | append: lp_part | append: '</p>'
+            endif
+          endfor
+        endif
+      -%}
+      {{- lp_content -}}
     {%- endcapture -%}
 
     {%- if content != blank -%}
@@ -46,7 +66,6 @@ LIQUID
     {%- endif -%}
 
     <div class="section-stack__main">
-      {%- if section.settings.image_caption != blank -%}<p class="lp-ba-caption">{{ section.settings.image_caption | escape }}</p>{%- endif -%}
       <div {% render 'surface', class: 'before-after shadow', text_color: section.settings.before_text_color %}>
         <div {% render 'surface', class: 'before-after__before-image', text_color: section.settings.before_text_color %}>
           {%- capture sizes -%}(max-width: 999px) 100vw, {% if text_position == 'center' and section.settings.expand_image %}min({{ settings.page_width }}px, 100vw){% else %}1000px{% endif %}{%- endcapture -%}
@@ -104,13 +123,13 @@ LIQUID
           <split-cursor class="before-after__cursor" tabindex="0" style="--background: {{ section.settings.drag_cursor_background.rgb }}">
             <span class="sr-only">{{ 'general.accessibility.drag' | t }}</span>
 
-            <svg role="presentation" focusable="false" width="28" height="35" viewBox="0 0 32 40">
-              <path d="M0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16V24C32 32.8366 24.8366 40 16 40C7.16344 40 0 32.8366 0 24V16Z" fill="{{ section.settings.drag_cursor_background }}"></path>
-              <path fill="{{ section.settings.drag_cursor_color }}" d="M11 14H13V26H11zM15 14H17V26H15zM19 14H21V26H19z"></path>
-            </svg>
+            <span class="lp-ba-handle" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7 4 12l5 5"/><path d="m15 7 5 5-5 5"/></svg>
+            </span>
           </split-cursor>
         </div>
       </div>
+      {%- if section.settings.image_caption != blank -%}<p class="lp-ba-caption">{{ section.settings.image_caption | escape }}</p>{%- endif -%}
     </div>
   </div>
 </div>

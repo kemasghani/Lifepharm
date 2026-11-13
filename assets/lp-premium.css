@@ -315,6 +315,8 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
 /* Stamped reviews: align with theme typography */
 #stamped-main-widget { max-width: var(--container-max-width, 1600px); margin-inline: auto; font-family: var(--text-font-family) !important; }
 #stamped-main-widget .stamped-header-title, #stamped-main-widget .stamped-summary-caption-1 { font-family: var(--heading-font-family) !important; font-size: clamp(1.75rem, 3vw, 2.5rem) !important; letter-spacing: -.02em; color: rgb(var(--lp-ink)); text-align: start; }
+/* "Customer Reviews" matches the other section headlines (h1 scale, Playfair 400) and sits centred */
+#stamped-main-widget .stamped-header-title:not(#lp-none) { display: block; width: 100%; margin: 0 0 clamp(1.5rem, 3vw, 2.5rem) !important; font-size: var(--text-h1) !important; font-weight: 400 !important; line-height: 1.1 !important; letter-spacing: -.02em; text-align: center !important; }
 #stamped-main-widget .stamped-summary, #stamped-main-widget .stamped-review { border-color: var(--lp-hairline) !important; border-radius: var(--lp-radius); }
 #stamped-main-widget .stamped-button { border-radius: 4px !important; }
 .lp-pdp-eyebrow { display: inline-flex; align-items: center; gap: .5rem; font-size: .75rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgb(var(--lp-amber-deep)); }
@@ -555,7 +557,16 @@ html.lp-menu-open .product-quick-add:not(#lp-none) { visibility: hidden !importa
 
 /* Product pages: the six reassurance points live in the buy box, so the footer icon strip is hidden there */
 body:has(.shopify-section--main-product) .shopify-section--text-with-icons:not(#lp-none) { display: none !important; }
-.lp-ba-caption { margin: 0 0 .9rem; font-family: var(--lp-serif); font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.25; color: rgb(var(--lp-ink)); text-wrap: balance; }
+.lp-ba-caption { margin: 1rem 0 0; font-family: var(--lp-serif); font-size: clamp(1.125rem, 1.6vw, 1.375rem); line-height: 1.3; color: rgb(var(--lp-ink)); text-align: start; text-wrap: pretty; }
+/* Drag handle: round white button with left and right arrows, so it reads as "drag sideways" */
+.before-after__cursor:not(#lp-none) { display: grid; place-items: center; filter: none; }
+.lp-ba-handle { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: #fff; color: rgb(var(--lp-amber-deep)); box-shadow: 0 0 0 4px rgb(255 255 255 / .35), 0 8px 24px -6px rgb(0 0 0 / .45); transition: transform 200ms cubic-bezier(.16, 1, .3, 1), box-shadow 200ms ease-out; }
+@media (hover: hover) { .before-after__cursor:hover .lp-ba-handle { transform: scale(1.06); } }
+.before-after__cursor:active .lp-ba-handle { transform: scale(.96); }
+.before-after__cursor:focus-visible { outline: none; }
+.before-after__cursor:focus-visible .lp-ba-handle { box-shadow: 0 0 0 3px rgb(var(--lp-amber)), 0 8px 24px -6px rgb(0 0 0 / .45); }
+@media (max-width: 699px) { .lp-ba-handle { width: 44px; height: 44px; } .lp-ba-handle svg { width: 20px; height: 20px; } }
+@media (prefers-reduced-motion: reduce) { .lp-ba-handle { transition: none; } }
 
 /* ---------- Pairs well with: visible add button (Impact's subdued grey disappeared on ivory) ---------- */
 .horizontal-product__cta .button.button--subdued:not(#lp-none) { min-height: 44px; padding-inline: 1.25rem; border-radius: 999px; background-color: #fff; color: rgb(var(--lp-ink)); box-shadow: inset 0 0 0 1.5px rgb(var(--lp-ink)); font-size: .875rem; font-weight: 600; transition: background-color 160ms ease-out, box-shadow 160ms ease-out, color 160ms ease-out; }
@@ -577,3 +588,6 @@ body:has(.shopify-section--main-product) .shopify-section--text-with-icons:not(#
 .lp-howto__tip-icon { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: #fff; color: rgb(var(--lp-amber-deep)); box-shadow: 0 4px 10px -6px rgb(var(--lp-amber-deep) / .5); }
 .lp-howto__tip-label { margin: .05rem 0 0; font-size: .6875rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgb(var(--lp-amber-deep)); }
 .lp-howto__tip-text { margin: .2rem 0 0; font-size: .9375rem; line-height: 1.55; color: rgb(var(--lp-ink)); text-wrap: pretty; }
+
+/* Button labels in caps (Letisha, 2026-11-14): ADD TO CART, SHOP NUTRITIONALS. Metropolis SemiBold with open tracking so caps stay light; small inline "+ Add" buttons keep sentence case */
+.button:not(.button--subdued), .product-quick-add .button, button.shopify-payment-button__button--unbranded { text-transform: uppercase; letter-spacing: .08em; font-weight: 600; }

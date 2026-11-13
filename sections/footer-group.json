@@ -13,6 +13,7 @@
   "sections": {
     "text-with-icons": {
       "type": "text-with-icons",
+      "disabled": true,
       "blocks": {
         "free-shipping": {
           "type": "item",

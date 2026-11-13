@@ -100,13 +100,15 @@
 .lp-sci-st__rail { display: grid; gap: 1.5rem; min-width: 0; }
 .lp-sci-st__head { display: grid; gap: 1rem; }
 .lp-sci-st__title { margin: 0; color: rgb(var(--lp-ink)); }
-.lp-sci-st__title em { font-style: normal; color: rgb(var(--lp-amber-deep)); }
+.lp-sci-st__title em { font-style: normal; color: rgb(var(--lp-amber)); }
 .lp-sci-st__intro { font-size: 1.0625rem; line-height: 1.65; color: rgb(var(--lp-ink)); max-width: 44ch; }
 .lp-sci-st__intro p { margin: 0; }
 .lp-sci-st__chips { display: flex; gap: .5rem; overflow-x: auto; margin-inline: calc(-1 * var(--container-gutter, 1.25rem)); padding: 2px var(--container-gutter, 1.25rem); scrollbar-width: none; }
 .lp-sci-st__chips::-webkit-scrollbar { display: none; }
 .lp-sci-st__chip { display: inline-flex; align-items: center; justify-content: space-between; gap: .6rem; flex: none; min-height: 44px; padding: 0 1rem; border: 1px solid rgb(var(--lp-ink) / .18); border-radius: 999px; background: #fff; color: rgb(var(--lp-ink)); font: inherit; font-size: .875rem; font-weight: 600; white-space: nowrap; cursor: pointer; transition: background-color 200ms ease-out, border-color 200ms ease-out, color 200ms ease-out; }
 .lp-sci-st__chip:hover { border-color: rgb(var(--lp-ink) / .5); }
+/* Product names in caps, as the brand writes them (LAMININE) */
+.lp-sci-st__chip > span:first-child, .lp-sci-st__tag { text-transform: uppercase; letter-spacing: .05em; }
 .lp-sci-st__chip[aria-pressed="true"] { background: rgb(var(--lp-ink)); border-color: rgb(var(--lp-ink)); color: #fff; }
 .lp-sci-st__chip:focus-visible { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 2px; }
 .lp-sci-st__n { font-size: .75rem; font-weight: 700; font-variant-numeric: tabular-nums; color: rgb(var(--lp-muted)); }

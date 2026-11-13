@@ -82,8 +82,10 @@
 .lp-cmp__no::before, .lp-cmp__no::after { content: ""; position: absolute; inset: 50% auto auto 50%; width: 11px; height: 1.5px; border-radius: 1px; background: rgb(var(--lp-cmp-fg) / .7); transform: translate(-50%, -50%) rotate(45deg); }
 .lp-cmp__no::after { transform: translate(-50%, -50%) rotate(-45deg); }
 @media (max-width: 699px) {
-  .lp-cmp__table { --lp-cmp-pad: 1rem; --lp-cmp-us: 68px; --lp-cmp-them: 84px; }
-  .lp-cmp__them-text { font-size: .75rem; }
+  .lp-cmp__table { --lp-cmp-pad: 1rem; --lp-cmp-pad: .875rem; --lp-cmp-us: 64px; --lp-cmp-them: 80px; padding-block: .25rem; }
+  .lp-cmp__them-text { font-size: .75rem; color: rgb(var(--lp-cmp-fg) / .8); }
+  .lp-cmp__feat { text-wrap: balance; }
+  .lp-cmp__yes, .lp-cmp__no { width: 24px; height: 24px; }
   .lp-cmp__row > span { min-height: 50px; }
   .lp-cmp__row--head > span { min-height: 48px; }
   .lp-cmp__feat { font-size: .875rem; padding-inline-end: .75rem; }

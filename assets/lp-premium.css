@@ -560,6 +560,19 @@ html.lp-menu-open .product-quick-add:not(#lp-none) { visibility: hidden !importa
 }
 @media (prefers-reduced-motion: reduce) { #gorgias-chat-container :is(iframe#chat-button, iframe#mount-floating-engagement-widget, [class*="messenger-button-iframe"]) { transition: none !important; } }
 .lp-sticky__note { white-space: nowrap; }
+/* Mobile sticky add-to-cart: one slim row. Size and price on the left, a single-line button on the right */
+@media (max-width: 699px) {
+  .product-quick-add:not(#lp-none) { padding: .5rem 1rem calc(.5rem + env(safe-area-inset-bottom)); }
+  .lp-sticky { grid-template-columns: minmax(0, 1fr) auto; gap: .75rem; }
+  .lp-sticky__info { gap: 0; line-height: 1.25; }
+  .lp-sticky__variant { font-size: .75rem; color: rgb(var(--lp-muted)); }
+  .lp-sticky__price { flex-wrap: nowrap; column-gap: .4rem; white-space: nowrap; }
+  .lp-sticky__price strong { font-size: 1.125rem; }
+  .lp-sticky__unit { font-size: .75rem; overflow: hidden; text-overflow: ellipsis; }
+  .lp-sticky__note { display: none; }
+  .lp-sticky .button { width: auto; min-width: 9.5rem; min-height: 46px; padding-block: 0; padding-inline: 1.25rem; font-size: .9375rem; letter-spacing: .08em; white-space: nowrap; }
+  .lp-sticky .button > * { white-space: nowrap; }
+}
 
 /* Product pages: the six reassurance points live in the buy box, so the footer icon strip is hidden there */
 body:has(.shopify-section--main-product) .shopify-section--text-with-icons:not(#lp-none) { display: none !important; }

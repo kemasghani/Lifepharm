@@ -343,6 +343,12 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
 .lp-vcard__meta { max-width: 100%; font-size: .8125rem; line-height: 1.35; color: rgb(var(--lp-muted)); font-variant-numeric: tabular-nums; text-wrap: balance; overflow-wrap: anywhere; }
 .lp-vcard__meta strong { font-weight: 600; color: rgb(var(--lp-ink)); }
 .lp-vcard__name { overflow-wrap: anywhere; }
+/* Savings chip on multi-packs: amber tint, deep-amber text (AA), same pill language as the badge */
+.lp-vcard__save { display: inline-flex; align-items: center; gap: .3rem; margin-block-start: .45rem; padding: .3rem .6rem; border-radius: 999px; background: rgb(var(--lp-amber) / .14); color: rgb(var(--lp-amber-deep)); font-size: .6875rem; font-weight: 800; letter-spacing: .06em; line-height: 1; text-transform: uppercase; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.lp-vcard__save::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: rgb(var(--lp-amber)); }
+:checked + .lp-vcard .lp-vcard__save, .lp-vcard.is-selected .lp-vcard__save { background: rgb(var(--lp-amber)); color: #1f1e20; }
+:checked + .lp-vcard .lp-vcard__save::before, .lp-vcard.is-selected .lp-vcard__save::before { background: #1f1e20; }
+@media (max-width: 420px) { .lp-vcard__save { font-size: .625rem; padding: .28rem .5rem; letter-spacing: .04em; } }
 .lp-vcard__soldout { font-size: .6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: rgb(var(--lp-muted)); }
 .lp-vcard.is-disabled { opacity: .55; }
 .lp-vcard.is-disabled .lp-vcard__name { text-decoration: line-through; }

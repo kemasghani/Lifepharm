@@ -169,6 +169,41 @@ Color swatch specific parameters:
       elsif unit_word == 'tablets'
         assign unit_label = 'tablet'
       endif
+
+      # Savings against the dearest unit price of the product (the single bottle). Laminine's Family Pack is
+      # 9 x 30-count bottles plus 1 free (as its pack image shows), so 300 capsules.
+      assign unit_words = 'count,capsules,caps,ml,tablets,pack,packs'
+      assign label_down = label | downcase
+      if unit_qty == 0 and label_down contains 'family pack' and variant.product.handle == 'laminine'
+        assign unit_qty = 300
+        assign unit_label = 'capsule'
+        assign unit_word = 'count'
+      endif
+      assign save_amount = 0
+      assign counts_units = false
+      if unit_qty > 0 and unit_word != blank and unit_words contains unit_word
+        assign counts_units = true
+      endif
+      if variant != blank and counts_units
+        assign base_unit = 0
+        for v in variant.product.variants
+          assign v_down = v.title | downcase
+          assign v_words = v_down | split: ' '
+          assign v_qty = v_words.first | remove: ',' | plus: 0
+          assign v_word = v_words[1] | remove: '.' | strip
+          if v_down contains 'family pack' and variant.product.handle == 'laminine'
+            assign v_qty = 300
+            assign v_word = 'count'
+          endif
+          if v_qty > 0 and v_word != blank and unit_words contains v_word
+            assign v_unit = v.price | times: 1.0 | divided_by: v_qty
+            if v_unit > base_unit
+              assign base_unit = v_unit
+            endif
+          endif
+        endfor
+        assign save_amount = base_unit | times: unit_qty | minus: variant.price | divided_by: 100 | floor | times: 100
+      endif
     -%}
     <{{ option_value_tag }} class="lp-vcard {% if disabled %}is-disabled{% endif %} {% if selected and option_value_tag == 'a' %}is-selected{% endif %}" {{ attributes }}>
       {%- if badge != blank -%}<span class="lp-vcard__badge{% if badge_tone == 0 %} lp-vcard__badge--amber{% endif %}">{{ badge | escape }}</span>{%- endif -%}
@@ -187,6 +222,9 @@ Color swatch specific parameters:
             <strong>{{ variant.price | money }}</strong>
           {%- endif -%}
         </span>
+        {%- if save_amount >= 100 -%}
+          <span class="lp-vcard__save">Save {{ save_amount | money_without_trailing_zeros }}</span>
+        {%- endif -%}
       {%- endif -%}
       {%- if disabled -%}<span class="lp-vcard__soldout">{{ 'product.general.sold_out_button' | t }}</span>{%- endif -%}
     </{{ option_value_tag }}>

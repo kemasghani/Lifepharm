@@ -928,7 +928,7 @@
             "style": "outline",
             "size": "xl",
             "text": "View FAQs",
-            "url": "shopify://pages/laminine-faqs-1772819838",
+            "url": "shopify://pages/laminine-faqs",
             "background": "",
             "text_color": ""
           }
@@ -1197,7 +1197,7 @@
           "settings": {
             "title": "Tab 1",
             "content": "<p>Use this text to share information about your brand with your customers.</p>",
-            "page": "shorts-1772819851"
+            "page": "shorts"
           }
         },
         "tab_PWP6ty": {

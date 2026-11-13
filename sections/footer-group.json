@@ -160,7 +160,7 @@
         "links_dTR8mx": {
           "type": "links",
           "settings": {
-            "menu": "information",
+            "menu": "company",
             "show_menu_title": true,
             "menu_title": "Company"
           }

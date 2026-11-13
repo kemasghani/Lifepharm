@@ -8,6 +8,18 @@
 {%- liquid
   assign lp_mf = product.metafields.custom
   assign lp_s = lp_mf.product_short_summary.value | strip
+  assign lp_s_last = lp_s | slice: -1
+  unless lp_s contains '. '
+    if lp_s_last == '.'
+      assign lp_s_len = lp_s | size | minus: 1
+      assign lp_s = lp_s | slice: 0, lp_s_len
+    endif
+  endunless
+  assign lp_s_class = 'lp-pdp-summary__lead'
+  assign lp_s_size = lp_s | size
+  if lp_s_size <= 70
+    assign lp_s_class = 'lp-pdp-summary__lead lp-pdp-summary__lead--tagline'
+  endif
   assign lp_ideal = lp_mf.value_1.value | strip | remove: '.'
   assign lp_terms = lp_ideal | replace: ', and ', ',' | replace: ' and ', ',' | replace: ' & ', ',' | split: ','
   assign lp_as_icons = true
@@ -23,7 +35,7 @@
 -%}
 {%- if lp_s != blank -%}
   <div class="lp-pdp-summary">
-    <p class="lp-pdp-summary__lead">{{ lp_s | escape }}</p>
+    <p class="{{ lp_s_class }}">{{ lp_s | escape }}</p>
     {%- if lp_ideal != blank -%}
       {%- if lp_as_icons -%}
         <div class="lp-ideal">

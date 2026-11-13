@@ -256,6 +256,8 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
 .lp-pdp-summary { display: grid; gap: .5rem; max-width: 34rem; }
 .lp-pdp-summary p { margin: 0; }
 .lp-pdp-summary__lead { font-size: 1.0625rem; line-height: 1.5; color: rgb(var(--lp-ink)); }
+/* Short summaries read as a tagline: all caps in the brand label style (long ones stay sentence case for readability) */
+.lp-pdp-summary__lead--tagline { font-size: .9375rem; font-weight: 800; line-height: 1.4; letter-spacing: .08em; text-transform: uppercase; }
 .lp-pdp-summary__meta { font-size: .875rem; line-height: 1.55; color: rgb(var(--lp-muted)); }
 .lp-pdp-summary__meta span { font-weight: 600; color: rgb(var(--lp-ink)); }
 /* Ideal for: brand orange circle icons with a label each */

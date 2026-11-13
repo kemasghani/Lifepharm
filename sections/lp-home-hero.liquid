@@ -143,13 +143,17 @@
 .lp-hh__cta svg { transition: transform var(--lp-dur-2) var(--lp-ease); }
 @media (hover: hover) { .lp-hh__cta:hover svg { transform: translateX(4px); } }
 @media (max-width: 699px) {
-  .lp-hh__copy { gap: .7rem; }
-  .lp-hh__text { display: none; }
-  .lp-hh__chip { padding: .3rem .6rem; font-size: .71875rem; }
-  .lp-hh__actions .button { flex: 1 1 auto; padding-inline: 1.25rem; }
-  .lp-hh__actions { justify-content: center; }
-  .lp-hh__actions .button { flex-basis: 100%; }
-  .lp-hh__benefits { font-size: .875rem; gap: .35rem; }
+  /* Mobile: one calm column. Image, headline, proof, three benefits, one button, then the trust chips on a single row that scrolls sideways */
+  .lp-hh__frame { aspect-ratio: 16 / 9; }
+  .lp-hh__card { display: none; }
+  .lp-hh__copy { gap: .625rem; padding-block-start: .25rem; }
+  .lp-hh__text, .lp-hh__link { display: none; }
+  .lp-hh__benefits { gap: .4rem; font-size: .9375rem; }
+  .lp-hh__actions { padding-block-start: .375rem; justify-self: stretch; }
+  .lp-hh__actions .button { flex: 1 1 100%; padding-inline: 1.25rem; }
+  .lp-hh__chips { order: 2; justify-self: stretch; flex-wrap: nowrap; gap: .5rem; min-width: 0; margin-inline: calc(var(--container-gutter, 1.25rem) * -1); padding: .25rem var(--container-gutter, 1.25rem); overflow-x: auto; scroll-snap-type: x proximity; scroll-padding-inline: var(--container-gutter, 1.25rem); scrollbar-width: none; }
+  .lp-hh__chips::-webkit-scrollbar { display: none; }
+  .lp-hh__chip { flex: none; padding: .4rem .75rem; font-size: .75rem; scroll-snap-align: start; }
 }
 {% endstylesheet %}
 

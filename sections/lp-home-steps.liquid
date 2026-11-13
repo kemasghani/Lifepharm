@@ -62,7 +62,7 @@
 .lp-steps__head em { font-style: normal; color: rgb(var(--lp-amber)); }
 .lp-steps__list { display: grid; grid-auto-flow: column; grid-auto-columns: 78%; gap: 1rem; margin: 0 calc(var(--container-gutter, 1.25rem) * -1); padding: 0 var(--container-gutter, 1.25rem) .25rem; list-style: none; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--container-gutter, 1.25rem); scrollbar-width: none; }
 .lp-steps__list::-webkit-scrollbar { display: none; }
-.lp-steps__item { display: grid; align-content: start; gap: 1rem; min-width: 0; scroll-snap-align: start; }
+.lp-steps__item { position: relative; display: grid; align-content: start; gap: 1rem; min-width: 0; scroll-snap-align: start; }
 @media (min-width: 700px) {
   .lp-steps__list { grid-auto-flow: row; grid-auto-columns: auto; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1rem, 2.2vw, 2rem); margin: 0; padding: 0; overflow: visible; }
 }

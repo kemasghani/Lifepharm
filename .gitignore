@@ -1,1 +1,7 @@
 .env
+
+# store-audit working files
+tools/store-audit/.cache/
+tools/store-audit/reports/
+__pycache__/
+*.pyc

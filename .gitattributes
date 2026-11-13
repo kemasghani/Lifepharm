@@ -1,0 +1,6 @@
+# Store data belongs to each store's branch. When master is merged into a store branch and both sides
+# changed one of these files, keep the store's version. Enable once per clone: tools/store-audit/setup-git.sh
+templates/**/*.json merge=ours
+templates/*.json merge=ours
+sections/*.json merge=ours
+config/settings_data.json merge=ours

@@ -1,0 +1,56 @@
+{
+  "_comment": "One entry per store. Secrets stay in .env; this file only names the env keys. `remap` rewrites references that are valid on the source store (UK) but have a different handle on this store.",
+  "source_of_truth": "uk",
+  "stores": {
+    "uk": {
+      "branch": "uk",
+      "domain_env": "SHOPIFY-STORE-UK",
+      "storefront": "uk.lifepharm.com",
+      "currency": "GBP",
+      "remap": {}
+    },
+    "us": {
+      "branch": "us",
+      "domain_env": "SHOPIFY-STORE-USA",
+      "storefront": "shop.lifepharm.com",
+      "currency": "USD",
+      "remap": {
+        "collection": { "nutritionals": "cell-regeneration", "skin-health": "skin-regeneration" },
+        "menu": { "information": "company", "main-menu-1": "shop-footer", "footer-legal": "support" },
+        "page": {
+          "contact-1772819823": "contact",
+          "how-it-started-1772819852": "how-it-started",
+          "lamiderm-apex-faqs-1772819846": "lamiderm-apex-faqs",
+          "laminine-faqs-1772819838": "laminine-faqs",
+          "science-1772819827": "science",
+          "shorts-1772819851": "shorts"
+        }
+      }
+    },
+    "eu": {
+      "branch": "eu",
+      "domain_env": "SHOPIFY-STORE-EU",
+      "storefront": "europe.lifepharm.com",
+      "currency": "EUR",
+      "remap": {
+        "menu": { "information": "company" },
+        "page": {
+          "contact-1772819823": "contact",
+          "how-it-started-1772819852": "how-it-started",
+          "lamiderm-apex-faqs-1772819846": "lamiderm-apex-faqs",
+          "laminine-faqs-1772819838": "laminine-faqs",
+          "science-1772819827": "science",
+          "shorts-1772819851": "shorts"
+        }
+      }
+    },
+    "news": {
+      "branch": "news",
+      "domain_env": "SHOPIFY-STORE-NEWS",
+      "storefront": "news.lifepharm.com",
+      "currency": "USD",
+      "note": "Blog-only store on Dawn. It has no products, so the commerce templates on this branch cannot resolve until the store's scope is decided.",
+      "remap": {}
+    }
+  }
+}

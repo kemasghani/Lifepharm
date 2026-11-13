@@ -1,7 +1,8 @@
 {%- comment -%}
   PDP summary under the rating: short lead + "Ideal for" benefits.
   Benefits come from metafield custom.value_1 (comma list). Each one gets the brand's orange circle icon
-  when a keyword matches (Files: lp-benefit-*.png, cut from Dropbox ICONS 2024). Long or sentence-like
+  when a keyword matches (Files and assets: lp-benefit-*.png, cut from Dropbox ICONS 2024; brain, bone,
+  sugar and hair drawn in the same style because the set has none). Long or sentence-like
   values fall back to plain text.
 {%- endcomment -%}
 {%- liquid
@@ -10,7 +11,7 @@
   assign lp_ideal = lp_mf.value_1.value | strip | remove: '.'
   assign lp_terms = lp_ideal | replace: ', and ', ',' | replace: ' and ', ',' | replace: ' & ', ',' | split: ','
   assign lp_as_icons = true
-  if lp_terms.size < 2 or lp_terms.size > 6
+  if lp_terms.size < 1 or lp_terms.size > 6
     assign lp_as_icons = false
   endif
   for t in lp_terms
@@ -33,7 +34,35 @@
                 assign term = t | strip
                 assign k = term | downcase
                 assign icon = ''
-                if k contains 'aging' or k contains 'ageing'
+                assign from_asset = false
+                if k contains 'brain' or k contains 'cognit' or k contains 'memory' or k contains 'focus'
+                  assign icon = 'brain'
+                  assign from_asset = true
+                elsif k contains 'bone'
+                  assign icon = 'bone'
+                  assign from_asset = true
+                elsif k contains 'sugar' or k contains 'glucose'
+                  assign icon = 'sugar'
+                  assign from_asset = true
+                elsif k contains 'hair'
+                  assign icon = 'hair'
+                  assign from_asset = true
+                elsif k contains 'nail'
+                  assign icon = 'beauty'
+                  assign from_asset = true
+                elsif k contains 'hydrat' or k contains 'moistur'
+                  assign icon = 'hydration'
+                  assign from_asset = true
+                elsif k contains 'elastic' or k contains 'firm'
+                  assign icon = 'elasticity'
+                  assign from_asset = true
+                elsif k contains 'spot' or k contains 'pigment' or k contains 'tone'
+                  assign icon = 'skin-renewal'
+                  assign from_asset = true
+                elsif k contains 'immun'
+                  assign icon = 'immune'
+                  assign from_asset = true
+                elsif k contains 'aging' or k contains 'ageing' or k contains 'young' or k contains 'youth'
                   assign icon = 'healthy-aging'
                 elsif k contains 'joint' or k contains 'mobility'
                   assign icon = 'joint'
@@ -41,9 +70,9 @@
                   assign icon = 'sleep'
                 elsif k contains 'stress' or k contains 'mood'
                   assign icon = 'stress'
-                elsif k contains 'vitality' or k contains 'energy' or k contains 'stamina'
+                elsif k contains 'vitality' or k contains 'energy' or k contains 'stamina' or k contains 'fatigue'
                   assign icon = 'energy'
-                elsif k contains 'heart' or k contains 'cardio' or k contains 'cholesterol'
+                elsif k contains 'heart' or k contains 'cardio' or k contains 'cholesterol' or k contains 'circulat'
                   assign icon = 'heart'
                 elsif k contains 'gut' or k contains 'digest'
                   assign icon = 'gut'
@@ -51,13 +80,15 @@
                   assign icon = 'skin'
                 elsif k contains 'weight'
                   assign icon = 'weight'
-                elsif k contains 'cell' or k contains 'regenerat' or k contains 'immun'
+                elsif k contains 'cell' or k contains 'regenerat'
                   assign icon = 'regenerate'
                 endif
                 assign icon_file = 'lp-benefit-' | append: icon | append: '.png'
               -%}
               <li class="lp-ideal__item">
-                {%- if icon != '' and images[icon_file] != blank -%}
+                {%- if from_asset -%}
+                  <img src="{{ icon_file | asset_url }}" class="lp-ideal__icon" width="44" height="44" alt="" loading="eager" decoding="async">
+                {%- elsif icon != '' and images[icon_file] != blank -%}
                   {{ images[icon_file] | image_url: width: 192 | image_tag: width: 44, height: 44, widths: '96,144,192', sizes: '44px', loading: 'eager', alt: '', class: 'lp-ideal__icon' }}
                 {%- endif -%}
                 <span class="lp-ideal__text">{{ term | escape }}</span>

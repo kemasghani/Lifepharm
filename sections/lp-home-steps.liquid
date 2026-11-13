@@ -36,7 +36,7 @@
             <span class="lp-steps__num" aria-hidden="true">{{ forloop.index }}</span>
           </div>
           <div class="lp-steps__body">
-            <h3 class="lp-steps__title"><span class="visually-hidden">{{ section.settings.step_label | escape }} {{ forloop.index }}: </span>{{ block.settings.title | escape }}</h3>
+            <h3 class="lp-steps__title"><span class="sr-only">{{ section.settings.step_label | escape }} {{ forloop.index }}: </span>{{ block.settings.title | escape }}</h3>
             {%- if block.settings.text != blank -%}<div class="lp-steps__text">{{ block.settings.text }}</div>{%- endif -%}
           </div>
         </li>

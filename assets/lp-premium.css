@@ -597,3 +597,6 @@ body:has(.shopify-section--main-product) .shopify-section--text-with-icons:not(#
 
 /* Button labels in caps (Letisha, 2026-11-14): ADD TO CART, SHOP NUTRITIONALS. Metropolis SemiBold with open tracking so caps stay light; small inline "+ Add" buttons keep sentence case */
 .button:not(.button--subdued), .product-quick-add .button, button.shopify-payment-button__button--unbranded { text-transform: uppercase; letter-spacing: .08em; font-weight: 600; }
+/* Homepage rhythm: two sections on the same ivory ground share one gap instead of stacking two */
+.shopify-section:has(> :is(.lp-pt, .lp-cats, .lp-promos, .lp-hfaq)) + .shopify-section > :is(.lp-science, .lp-cats, .lp-hfaq, .lp-guarantee) { padding-block-start: 0; }
+.shopify-section:has(> .lp-pt) + .shopify-section > .lp-science { background: linear-gradient(180deg, rgb(var(--lp-ivory)) 40%, rgb(var(--lp-sand) / .8)); }

@@ -1,0 +1,46 @@
+{% doc %}
+  Product card for the home page product tabs.
+
+  @param {product} product - The product to show
+  @param {string} add_label - Label of the add to cart button
+  @param {boolean} [extra] - True when the product is outside the first tab's collection, so it starts hidden
+
+  @example
+  {% render 'lp-product-tab-card', product: product, add_label: 'Add to cart' %}
+{% enddoc %}
+{%- liquid
+  assign variant = product.selected_or_first_available_variant
+  assign handles = product.collections | map: 'handle' | join: ' '
+  assign summary = product.metafields.custom.product_short_summary.value | default: product.description | strip_html | truncatewords: 16
+-%}
+<li class="lp-pt__card" data-collections="{{ handles }}"{% if extra %} data-lp-extra hidden{% endif %}>
+  <a class="lp-pt__media" href="{{ product.url }}" tabindex="-1" aria-hidden="true">
+    {%- if product.featured_media -%}
+      {{ product.featured_media | image_url: width: 600 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 22vw, 60vw', widths: '300,400,500,600', alt: '' }}
+    {%- endif -%}
+  </a>
+  <div class="lp-pt__body">
+    {%- if product.metafields.reviews.rating.value != blank -%}
+      {%- assign r_value = product.metafields.reviews.rating.value.rating | round: 1 -%}
+      <p class="lp-pt__rating">
+        <span class="lp-pt__star" aria-hidden="true">★</span>
+        <span>{{ r_value }} / {{ product.metafields.reviews.rating.value.scale_max | round: 1 }}</span>
+        {%- if product.metafields.reviews.rating_count.value > 0 -%}<span class="lp-pt__count">· {{ product.metafields.reviews.rating_count.value }} reviews</span>{%- endif -%}
+      </p>
+    {%- endif -%}
+    <h3 class="lp-pt__name"><a href="{{ product.url }}">{{ product.title | escape }}</a></h3>
+    {%- if summary != blank -%}<p class="lp-pt__text">{{ summary }}</p>{%- endif -%}
+    <p class="lp-pt__price">
+      <span>{{ variant.price | money }}</span>
+      {%- if variant.compare_at_price > variant.price -%}<s>{{ variant.compare_at_price | money }}</s>{%- endif -%}
+    </p>
+    {%- if variant.available -%}
+      <button type="button" class="button lp-pt__add" data-lp-add="{{ variant.id }}">
+        <span class="lp-pt__add-label">{{ add_label | escape }}</span>
+        <span class="lp-pt__spinner" aria-hidden="true"></span>
+      </button>
+    {%- else -%}
+      <button type="button" class="button lp-pt__add" disabled>{{ 'product.general.sold_out_button' | t }}</button>
+    {%- endif -%}
+  </div>
+</li>

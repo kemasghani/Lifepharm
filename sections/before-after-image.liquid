@@ -35,22 +35,40 @@ LIQUID
       {%- endif -%}
 
       {%- liquid
-        # The image caption already says this; drop the matching paragraph from the intro so it is not said twice
+        # The image caption already says this; drop that sentence from the intro so it is not said twice.
+        # The metafield is one paragraph with line breaks, so work line by line and keep the paragraph tags.
         assign lp_content = section.settings.content
         if section.settings.image_caption != blank
           assign lp_cap = section.settings.image_caption | strip | downcase | slice: 0, 40
-          assign lp_parts = lp_content | split: '</p>'
+          assign lp_sep = '</p>'
+          if lp_content contains '<br>'
+            assign lp_sep = '<br>'
+          elsif lp_content contains '<br/>'
+            assign lp_sep = '<br/>'
+          elsif lp_content contains '<br />'
+            assign lp_sep = '<br />'
+          endif
+          assign lp_parts = lp_content | split: lp_sep
           assign lp_content = ''
+          assign lp_skip_blank = false
           for lp_part in lp_parts
-            assign lp_plain = lp_part | strip_html | strip | downcase
-            if lp_plain contains lp_cap
+            assign lp_plain = lp_part | strip_html | strip
+            assign lp_plain_down = lp_plain | downcase
+            if lp_plain_down contains lp_cap
+              if lp_sep == '</p>'
+                continue
+              endif
+              assign lp_part = lp_part | replace: lp_plain, ''
+              assign lp_skip_blank = true
+            elsif lp_skip_blank and lp_plain == blank
               continue
-            endif
-            if forloop.last
-              assign lp_content = lp_content | append: lp_part
             else
-              assign lp_content = lp_content | append: lp_part | append: '</p>'
+              assign lp_skip_blank = false
             endif
+            assign lp_content = lp_content | append: lp_part
+            unless forloop.last or lp_skip_blank
+              assign lp_content = lp_content | append: lp_sep
+            endunless
           endfor
         endif
       -%}

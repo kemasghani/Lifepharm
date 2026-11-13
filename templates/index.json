@@ -55,7 +55,7 @@
         "rating_text": "<strong>978+</strong> verified LAMININE reviews",
         "text": "",
         "button_label": "Shop best sellers",
-        "button_url": "shopify://collections/nutritionals",
+        "button_url": "shopify://collections/cell-regeneration",
         "secondary_label": "Discover LAMININE",
         "secondary_url": "shopify://products/laminine",
         "product": "laminine",
@@ -142,7 +142,7 @@
         "k2": {
           "type": "category",
           "settings": {
-            "collection": "nutritionals",
+            "collection": "cell-regeneration",
             "image": "shopify://shop_images/Supplements-Orange-bg_web.jpg",
             "title": "Nutritionals"
           }
@@ -150,7 +150,7 @@
         "k3": {
           "type": "category",
           "settings": {
-            "collection": "skin-health",
+            "collection": "skin-regeneration",
             "image": "shopify://shop_images/lp-hf-omnia-pedestal.jpg",
             "title": "Skin health"
           }
@@ -208,7 +208,7 @@
             "heading": "Complete your <em>routine</em>",
             "text": "Omega+++, Immune+++ and Digestive+++ are the products customers pair with LAMININE most often.",
             "button_label": "Shop nutritionals",
-            "url": "shopify://collections/nutritionals",
+            "url": "shopify://collections/cell-regeneration",
             "image": "shopify://shop_images/lp-kive-laminine-omega-bedside.jpg"
           }
         }
@@ -225,7 +225,7 @@
         "tab_skin": {
           "type": "tab",
           "settings": {
-            "collection": "skin-health",
+            "collection": "skin-regeneration",
             "label": "Skin Health"
           }
         },
@@ -243,7 +243,7 @@
       ],
       "settings": {
         "heading": "Our <em>best sellers</em>",
-        "collection": "nutritionals",
+        "collection": "cell-regeneration",
         "limit": 8,
         "all_label": "Best sellers",
         "add_label": "Add to cart",
@@ -368,7 +368,7 @@
         "heading": "Try it risk free <em>for 60 days</em>",
         "text": "<p>We stand behind every product we make. If it isn't right for you, let us know within 60 days of delivery and we'll refund you in full.</p>",
         "button_label": "Shop best sellers",
-        "button_url": "shopify://collections/nutritionals",
+        "button_url": "shopify://collections/cell-regeneration",
         "link_label": "Read our refund policy",
         "link_url": "/policies/refund-policy",
         "image": "shopify://shop_images/lp-hf-couple-walk.jpg",
@@ -554,7 +554,7 @@
         "g1": {
           "type": "goal",
           "settings": {
-            "collection": "nutritionals",
+            "collection": "cell-regeneration",
             "image": "shopify://shop_images/Supplements-Orange-bg_web.jpg",
             "title": "Nutritionals",
             "text": "Daily foundations for energy, immunity, digestion and recovery.",
@@ -564,7 +564,7 @@
         "g2": {
           "type": "goal",
           "settings": {
-            "collection": "skin-health",
+            "collection": "skin-regeneration",
             "image": "shopify://shop_images/Skincare-Blue-bg_web.jpg",
             "title": "Skin health",
             "text": "Growth-factor skincare for visibly smoother, firmer-looking skin.",

@@ -160,7 +160,7 @@
         "links_dTR8mx": {
           "type": "links",
           "settings": {
-            "menu": "information",
+            "menu": "company",
             "show_menu_title": true,
             "menu_title": "Company"
           }
@@ -168,7 +168,7 @@
         "links": {
           "type": "links",
           "settings": {
-            "menu": "main-menu-1",
+            "menu": "shop-footer",
             "show_menu_title": true,
             "menu_title": "Shop"
           }
@@ -176,7 +176,7 @@
         "links_6MrG8U": {
           "type": "links",
           "settings": {
-            "menu": "footer-legal",
+            "menu": "support",
             "show_menu_title": true,
             "menu_title": "Support"
           }

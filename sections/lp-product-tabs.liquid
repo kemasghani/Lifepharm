@@ -63,6 +63,8 @@
 .lp-pt .lp-pt__tab[aria-selected="true"] { background: #1f1e20; color: #fff; }
 .lp-pt__grid { display: grid; grid-auto-flow: column; grid-auto-columns: 66%; gap: .75rem; margin: 0 calc(-1 * var(--container-gutter, 1rem)); padding: 0 var(--container-gutter, 1rem) .5rem; list-style: none; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--container-gutter, 1rem); scrollbar-width: none; }
 .lp-pt__grid::-webkit-scrollbar { display: none; }
+/* A short tab (two or three products) sits centred; a full rail still starts at the left edge and scrolls */
+@media (min-width: 700px) { .lp-pt__grid { justify-content: safe center; } }
 @media (min-width: 700px) { .lp-pt__grid { grid-auto-columns: 40%; } }
 @media (min-width: 1000px) { .lp-pt__grid { grid-auto-columns: calc((100% - 3 * 1.25rem) / 4); gap: 1.25rem; margin: 0; padding: 0 0 .5rem; scroll-padding-inline: 0; } }
 .lp-pt__rail { position: relative; }

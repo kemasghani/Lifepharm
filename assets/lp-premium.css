@@ -51,7 +51,7 @@ p, .prose p { text-wrap: pretty; }
   font-weight: 800;
   letter-spacing: .1em;
   text-transform: uppercase;
-  color: rgb(var(--lp-amber-deep));
+  color: rgb(var(--lp-amber));
 }
 .text-subdued { color: rgb(var(--text-color) / .68); }
 .rich-text h2 span[style*="FF8F00"], .rich-text h2 span[style*="ff8f00"],
@@ -167,7 +167,7 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
 @keyframes lp-bump { 0% { transform: scale(1); } 30% { transform: scale(1.45); } 60% { transform: scale(.9); } 100% { transform: scale(1); } }
 .dropdown-menu, .mega-menu { border-radius: 0 0 var(--lp-radius) var(--lp-radius); box-shadow: var(--lp-shadow-3); }
 /* Mega menu column headlines: larger, title case, deep orange (AA on ivory) */
-.mega-menu__nav > li > a:not(#lp-none), .mega-menu__nav > li > a:not(#lp-none) > span { font-family: var(--lp-serif); font-size: 1.25rem; font-weight: 400; line-height: 1.25; letter-spacing: 0; text-transform: capitalize; color: rgb(var(--lp-amber-deep)); opacity: 1; }
+.mega-menu__nav > li > a:not(#lp-none), .mega-menu__nav > li > a:not(#lp-none) > span { font-family: var(--lp-serif); font-size: 1.25rem; font-weight: 400; line-height: 1.25; letter-spacing: 0; text-transform: capitalize; color: rgb(var(--lp-amber)); opacity: 1; }
 
 /* ---------- Sections rhythm ---------- */
 .section-header .h2, .section-header h2 { letter-spacing: -.02em; }
@@ -347,7 +347,7 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
 /* Customer photos: one tidy row that scrolls sideways on small screens */
 #stamped-main-widget .stamped-header-right:not(#lp-none) { display: block !important; width: auto !important; max-width: none !important; min-width: 0 !important; margin: 0 !important; padding: 1.25rem 0 0 !important; border: 0 !important; border-top: 1px solid var(--lp-hairline) !important; float: none !important; }
 #stamped-main-widget .stamped-summary-photos:not(#lp-none) { margin: 0 !important; padding: 0 !important; width: auto !important; }
-#stamped-main-widget .stamped-photos-title:not(#lp-none) { display: block !important; margin: 0 0 .75rem !important; padding: 0 !important; font-size: .6875rem !important; font-weight: 800 !important; letter-spacing: .1em !important; text-transform: uppercase !important; line-height: 1.2 !important; color: rgb(var(--lp-amber-deep)) !important; text-align: start !important; }
+#stamped-main-widget .stamped-photos-title:not(#lp-none) { display: block !important; margin: 0 0 .75rem !important; padding: 0 !important; font-size: .6875rem !important; font-weight: 800 !important; letter-spacing: .1em !important; text-transform: uppercase !important; line-height: 1.2 !important; color: rgb(var(--lp-amber)) !important; text-align: start !important; }
 #stamped-main-widget .stamped-photos-carousel:not(#lp-none) { width: auto !important; height: auto !important; max-height: none !important; margin: 0 !important; padding: 0 !important; overflow: visible !important; }
 #stamped-main-widget .stamped-photos-carousel > div:not(#lp-none) { display: flex !important; gap: .5rem !important; width: auto !important; height: auto !important; margin: 0 !important; padding: 0 0 2px !important; overflow-x: auto !important; scrollbar-width: none !important; transform: none !important; }
 #stamped-main-widget .stamped-photos-carousel > div::-webkit-scrollbar { display: none !important; }
@@ -445,7 +445,7 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
   #stamped-main-widget .stamped-photos-carousel .stamped-photo:not(#lp-none) { width: auto !important; height: auto !important; aspect-ratio: 1 !important; }
 }
 #stamped-main-widget ul.stamped-pagination > li:not(#lp-none), #stamped-main-widget ul.stamped-pagination > li > a:not(#lp-none) { text-decoration: none !important; }
-.lp-pdp-eyebrow { display: inline-flex; align-items: center; gap: .5rem; font-size: .75rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgb(var(--lp-amber-deep)); }
+.lp-pdp-eyebrow { display: inline-flex; align-items: center; gap: .5rem; font-size: .75rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgb(var(--lp-amber)); }
 .lp-pdp-eyebrow::before { content: ""; width: 18px; height: 1.5px; background: currentColor; }
 .shopify-section--main-product .product-info__accordion .accordion__toggle { font-size: 1rem; font-weight: 600; }
 .shopify-section--main-product .product-info__block-item[data-block-type="buy-buttons"] { margin-block-start: .25rem; }

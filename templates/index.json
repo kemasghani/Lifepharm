@@ -52,17 +52,17 @@
         "mobile_image": "shopify://shop_images/lp-home-hero-family-mobile.jpg",
         "eyebrow": "Science-led wellbeing",
         "heading": "Feel good at <em>every age</em>",
-        "rating_text": "<strong>978+</strong> verified Laminine reviews",
+        "rating_text": "<strong>978+</strong> verified LAMININE reviews",
         "text": "",
         "button_label": "Shop best sellers",
         "button_url": "shopify://collections/nutritionals",
-        "secondary_label": "Discover Laminine",
+        "secondary_label": "Discover LAMININE",
         "secondary_url": "shopify://products/laminine",
         "product": "laminine",
         "card_image": "shopify://shop_images/laminine-duo-cutout.png",
         "card_label": "Our best seller",
         "price_prefix": "From",
-        "benefit_1": "Made with fertilised avian egg extract",
+        "benefit_1": "Made with Fertilized Avian Egg Extract",
         "benefit_2": "Supports your body's natural renewal*",
         "benefit_3": "Clinically studied and fully NSF tested",
         "secondary_style": "link"
@@ -134,7 +134,7 @@
           "settings": {
             "product": "laminine",
             "image": "shopify://shop_images/2026-06-22-Laminine-ShopifyImages-05.jpg",
-            "title": "Laminine",
+            "title": "LAMININE",
             "caption": "Our best seller",
             "badge": "Save 25%"
           }
@@ -193,9 +193,9 @@
           "settings": {
             "style": "light",
             "tag": "Subscribe & save",
-            "heading": "Save 25% on <em>Laminine</em>",
+            "heading": "Save 25% on <em>LAMININE</em>",
             "text": "Our best seller, delivered every 4, 8, 12 or 26 weeks.",
-            "button_label": "Shop Laminine",
+            "button_label": "Shop LAMININE",
             "url": "shopify://products/laminine",
             "image": "shopify://shop_images/lp-kive-laminine-duo-eggs.jpg"
           }
@@ -204,9 +204,9 @@
           "type": "promo",
           "settings": {
             "style": "light",
-            "tag": "Most added to Laminine",
+            "tag": "Most added to LAMININE",
             "heading": "Complete your <em>routine</em>",
-            "text": "Omega+++, Immune+++ and Digestive+++ are the products customers pair with Laminine most often.",
+            "text": "Omega+++, Immune+++ and Digestive+++ are the products customers pair with LAMININE most often.",
             "button_label": "Shop nutritionals",
             "url": "shopify://collections/nutritionals",
             "image": "shopify://shop_images/lp-kive-laminine-omega-bedside.jpg"
@@ -258,7 +258,7 @@
           "settings": {
             "value": "978",
             "suffix": "+",
-            "label": "Verified Laminine reviews"
+            "label": "Verified LAMININE reviews"
           }
         },
         "s2": {
@@ -285,11 +285,11 @@
       ],
       "settings": {
         "image": "shopify://shop_images/lp-kive-laminine-egg-flatlay.jpg",
-        "caption": "LAMININE, made with fertilised avian egg extract",
+        "caption": "LAMININE, made with Fertilized Avian Egg Extract",
         "image_position": "object-position: 50% 50%",
         "eyebrow": "The science",
         "heading": "Powered by nature's <em>growth factors</em>",
-        "text": "<p>Your body is constantly working to repair itself, but as we age that process slows down. Our fertilised avian egg extract is harvested at peak activity and delivers growth factors, cellular factors and amino acids: the building blocks your body uses to renew.*</p>",
+        "text": "<p>Your body is constantly working to repair itself, but as we age that process slows down. Our Fertilized Avian Egg Extract is harvested at peak activity and delivers growth factors, cellular factors and amino acids: the building blocks your body uses to renew.*</p>",
         "button_label": "View published studies",
         "button_url": "shopify://pages/our-studies",
         "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent disease."
@@ -301,9 +301,9 @@
         "product": "laminine",
         "image": "shopify://shop_images/laminine-duo-cutout.png",
         "eyebrow": "Our best seller",
-        "heading": "Meet <em>Laminine</em>, loved in the UK, US and Europe",
+        "heading": "Meet <em>LAMININE</em>, loved in the UK, US and Europe",
         "price_text": "From [price] with Subscribe & Save. Backed by our 60-day money-back guarantee.",
-        "button_label": "Shop Laminine",
+        "button_label": "Shop LAMININE",
         "button_url": ""
       },
       "disabled": true
@@ -373,7 +373,7 @@
         "link_url": "/policies/refund-policy",
         "image": "shopify://shop_images/lp-hf-couple-walk.jpg",
         "caption": "",
-        "rating_text": "<strong>978+</strong> verified Laminine reviews",
+        "rating_text": "<strong>978+</strong> verified LAMININE reviews",
         "show_payment_icons": true,
         "payment_label": "Accepted payment methods"
       }
@@ -385,14 +385,14 @@
           "type": "question",
           "settings": {
             "question": "Where should I start?",
-            "answer": "<p>Most customers start with Laminine, our best seller in the UK, US and Europe. Many then add Omega+++, Immune+++ or Digestive+++ to complete their routine.</p>"
+            "answer": "<p>Most customers start with LAMININE, our best seller in the UK, US and Europe. Many then add Omega+++, Immune+++ or Digestive+++ to complete their routine.</p>"
           }
         },
         "q2": {
           "type": "question",
           "settings": {
             "question": "What makes LifePharm different?",
-            "answer": "<p>Our formulas are built around fertilised avian egg extract, a natural source of growth factors, cellular factors and amino acids. Our products are made in the USA and our nutritionals are fully NSF tested.</p>"
+            "answer": "<p>Our formulas are built around Fertilized Avian Egg Extract, a natural source of growth factors, cellular factors and amino acids. Our products are made in the USA and our nutritionals are fully NSF tested.</p>"
           }
         },
         "q3": {
@@ -495,8 +495,8 @@
       ],
       "settings": {
         "eyebrow": "Complete your routine",
-        "heading": "Often bought <em>with Laminine</em>",
-        "text": "<p>These are the products our customers add to their Laminine order most often.</p>",
+        "heading": "Often bought <em>with LAMININE</em>",
+        "text": "<p>These are the products our customers add to their LAMININE order most often.</p>",
         "price_prefix": "From"
       },
       "disabled": true
@@ -536,12 +536,12 @@
         "min_height": 75,
         "eyebrow": "",
         "heading": "Activate your body's <em>natural renewal</em>",
-        "text": "<p>Premium nutritionals and skincare powered by fertilised avian egg extract, rich in growth factors that support your body's own repair process.*</p>",
+        "text": "<p>Premium nutritionals and skincare powered by Fertilized Avian Egg Extract, rich in growth factors that support your body's own repair process.*</p>",
         "button_label": "Shop bestsellers",
         "button_url": "shopify://collections/all",
         "secondary_label": "Explore the science",
         "secondary_url": "shopify://pages/science",
-        "rating_text": "<strong>978+</strong> verified Laminine reviews",
+        "rating_text": "<strong>978+</strong> verified LAMININE reviews",
         "image": "shopify://shop_images/cellnergy_sqaure.jpg",
         "float_1": "60-day guarantee",
         "float_2": "Clinically studied"

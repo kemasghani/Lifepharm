@@ -1,0 +1,66 @@
+{% doc %}
+  Rating row for product pages: up to three real reviewers next to the Stamped stars.
+  Faces are cropped from the reviewers' own Stamped review photos (assets/lp-face-*.jpg); when a product has
+  fewer than three reviewer photos, the remaining circles show the initials of real 5-star reviewers.
+  Products without reviews show the stars only.
+
+  @param {product} product - The product being viewed
+
+  @example
+  {% render 'lp-rating-row', product: product %}
+{% enddoc %}
+{%- liquid
+  assign lp_faces = ''
+  assign lp_initials = ''
+  case product.handle
+    when 'digestive'
+      assign lp_faces = ''
+      assign lp_initials = 'RS,SS,VN'
+    when 'immune'
+      assign lp_faces = ''
+      assign lp_initials = 'LD,C,CG'
+    when 'refive'
+      assign lp_faces = 'refive-1'
+      assign lp_initials = 'MJ,BD'
+    when 'extrim-shape'
+      assign lp_faces = ''
+      assign lp_initials = 'TS,SP,E'
+    when 'omega'
+      assign lp_faces = ''
+      assign lp_initials = 'JC,IC,IG'
+    when 'laminine'
+      assign lp_faces = 'laminine-1,laminine-2,laminine-3'
+      assign lp_initials = ''
+    when 'lamiderm-apex-smart-serum'
+      assign lp_faces = 'lamiderm-1,lamiderm-2'
+      assign lp_initials = 'JC'
+    when 'omnia'
+      assign lp_faces = ''
+      assign lp_initials = 'M,CV,KS'
+    when 'cellnergy-wellness'
+      assign lp_faces = 'cellnergy-wellness-1'
+      assign lp_initials = 'NM,IH'
+    when 'cellnergy-power-cream'
+      assign lp_faces = ''
+      assign lp_initials = 'DS,A,R'
+    when 'cellnergy-footcharge'
+      assign lp_faces = ''
+      assign lp_initials = 'DS'
+  endcase
+  assign lp_face_list = lp_faces | split: ','
+  assign lp_initial_list = lp_initials | split: ','
+-%}
+<div class="lp-rating-row">
+  {%- if lp_face_list.size > 0 or lp_initial_list.size > 0 -%}
+    <a class="lp-rating-row__faces" href="#shopify-product-reviews" aria-hidden="true" tabindex="-1">
+      {%- for f in lp_face_list -%}
+        {%- assign face_file = 'lp-face-' | append: f | append: '.jpg' -%}
+        <img src="{{ face_file | asset_url }}" width="32" height="32" alt="" loading="eager" decoding="async">
+      {%- endfor -%}
+      {%- for i in lp_initial_list -%}
+        <span class="lp-rating-row__initial">{{ i }}</span>
+      {%- endfor -%}
+    </a>
+  {%- endif -%}
+  <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-sku="{{ product.handle }}" data-product-title="{{ product.title | escape }}" data-product-type="{{ product.type | escape }}" style="display: block;"></span>
+</div>

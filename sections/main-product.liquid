@@ -44,9 +44,12 @@
 <div {% render 'section-properties', tight: true %}>
   <product-rerender id="product-info-{{ product.id }}-{{ section.id }}" observe-form="{{ product_form_id }}" allow-partial-rerender>
     <div class="product">
-      {%- if product.media.size > 0 -%}
-        {%- render 'product-gallery', product: product, product_form_id: product_form_id -%}
-      {%- endif -%}
+      <div class="lp-media-col">
+        {%- if product.media.size > 0 -%}
+          {%- render 'product-gallery', product: product, product_form_id: product_form_id -%}
+        {%- endif -%}
+        <div class="lp-media-col__extras" data-lp-media-extras></div>
+      </div>
 
       {%- render 'product-info', 
         product: product, 
@@ -57,6 +60,26 @@
     </div>
   </product-rerender>
 </div>
+
+{%- comment -%} Desktop: Clinicians' Choice and "Pairs well with" sit under the gallery (left column). Mobile keeps them in the buy box. Each block returns to its original spot when the layout changes. {%- endcomment -%}
+<script>
+  (() => {
+    const extras = document.querySelector('#shopify-section-{{ section.id }} [data-lp-media-extras]');
+    if (!extras) return;
+    const info = extras.closest('.product').querySelector('.product-info');
+    if (!info) return;
+    const ids = [...info.querySelectorAll('.product-info__block-item')].filter((el) => el.querySelector('#frontrow-badge iframe') || el.dataset.blockType === 'associated-products').map((el) => el.dataset.blockId);
+    if (!ids.length) return;
+    const product = extras.closest('.product');
+    const find = (id) => product.querySelector('.product-info__block-item[data-block-id="' + id + '"]');
+    const marks = ids.map((id) => { const m = document.createComment('lp-media-extra'); find(id).before(m); return m; });
+    const mq = window.matchMedia('(min-width: 1000px)');
+    /* blocks are looked up by id each time: a variant change can swap a liquid block for a fresh copy */
+    const place = () => ids.forEach((id, i) => { const el = find(id); if (!el) return; if (mq.matches) extras.append(el); else marks[i].after(el); });
+    place();
+    mq.addEventListener('change', place);
+  })();
+</script>
 
 {%- assign buy_buttons_block = section.blocks | where: 'type', 'buy_buttons' | first -%}
 

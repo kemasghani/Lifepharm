@@ -276,12 +276,36 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
   .lp-ideal__text { max-width: 3.9rem; font-size: .6875rem; }
 }
 @media (min-width: 1000px) {
-  .shopify-section--main-product .product-gallery__media-list > .product-gallery__media:nth-child(n+8 of :not([hidden])) { display: none; }
+  .shopify-section--main-product .product-gallery--desktop-grid .product-gallery__media-list > .product-gallery__media:nth-child(n+8 of :not([hidden])) { display: none; }
 }
 /* Variant image comes to the front of the desktop grid (see snippets/product-gallery.liquid) */
 @media (min-width: 1000px) {
-  .shopify-section--main-product .product-gallery__media-list.lp-vm > .product-gallery__media:not(#lp-none) { grid-column: span 1 !important; }
-  .shopify-section--main-product .product-gallery__media-list.lp-vm > .product-gallery__media.lp-vm-first:not(#lp-none) { order: -1; grid-column: span 2 !important; display: block !important; }
+  .shopify-section--main-product .product-gallery--desktop-grid .product-gallery__media-list.lp-vm > .product-gallery__media:not(#lp-none) { grid-column: span 1 !important; }
+  .shopify-section--main-product .product-gallery--desktop-grid .product-gallery__media-list.lp-vm > .product-gallery__media.lp-vm-first:not(#lp-none) { order: -1; grid-column: span 2 !important; display: block !important; }
+}
+/* Gallery, desktop: one large square image with a row of square thumbnails underneath (Pendulum-style layout) */
+.lp-media-col { display: grid; align-content: start; gap: 2.5rem; min-width: 0; }
+.lp-media-col__extras { display: grid; gap: 1.75rem; }
+.lp-media-col__extras:empty { display: none; }
+.lp-media-col__extras > .product-info__block-item { margin: 0; }
+@media (max-width: 999px) {
+  .shopify-section--main-product .product-gallery__thumbnail-list-wrapper { display: none; }
+}
+@media (min-width: 1000px) {
+  .shopify-section--main-product .product-gallery--desktop-carousel { gap: 2rem; }
+  .shopify-section--main-product .product-gallery--desktop-carousel .product-gallery__media:not(#lp-none) { aspect-ratio: 1; display: grid; place-items: center; border-radius: 0; }
+  .shopify-section--main-product .product-gallery--desktop-carousel .product-gallery__media > :is(img, .media, video) { width: 100%; height: 100%; object-fit: contain; }
+  .shopify-section--main-product .product-gallery--desktop-carousel .product-gallery__cursor { display: none; }
+  .shopify-section--main-product .product-gallery__thumbnail-list-wrapper { display: block; }
+  .shopify-section--main-product .product-gallery__thumbnail-list-wrapper > button { display: none; }
+  .shopify-section--main-product .product-gallery__thumbnail-list:not(#lp-none) { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 5 * clamp(.75rem, 2.4%, 2.25rem)) / 6.25); gap: clamp(.75rem, 2.4%, 2.25rem); align-items: stretch; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x proximity; }
+  .shopify-section--main-product .product-gallery__thumbnail-list::-webkit-scrollbar { display: none; }
+  .shopify-section--main-product .product-gallery__thumbnail:not(#lp-none) { display: block; aspect-ratio: 1; padding: 6px; border-radius: 0; border: 1.5px solid transparent; background: none; cursor: pointer; scroll-snap-align: start; transition: border-color 200ms ease-out; }
+  .shopify-section--main-product .product-gallery__thumbnail::after { display: none; }
+  .shopify-section--main-product .product-gallery__thumbnail img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 0 !important; background: rgb(var(--lp-sand)); mix-blend-mode: multiply; transition: opacity 200ms ease-out; }
+  .shopify-section--main-product .product-gallery__thumbnail[aria-current="true"] { border-color: rgb(var(--lp-ink)); }
+  .shopify-section--main-product .product-gallery__thumbnail[aria-current="false"]:hover img { opacity: .8; }
+  .shopify-section--main-product .product-gallery__thumbnail:focus-visible { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 2px; }
 }
 .shopify-section--main-product .product-info__block-item:has(.lp-pdp-subhead:not(.is-ready)),
 .shopify-section--main-product .product-info__block-item:has(tolstoy-stories:not(.lp-ready)) { display: none; }

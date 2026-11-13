@@ -206,6 +206,20 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
 
         <link rel="preload" href="{{ 'design-pack-styles.css' | asset_url }}" as="style">
       {{ 'design-pack-styles.css' | asset_url | stylesheet_tag }} 
+        {%- comment -%} Stamped reviews: six per page, so the two-column grid always ends on a full row. The attribute has to be on the widget before Stamped starts. {%- endcomment -%}
+        <script>
+          (function () {
+            function setTake() {
+              var widget = document.getElementById('stamped-main-widget');
+              if (widget && !widget.hasAttribute('data-take-reviews')) widget.setAttribute('data-take-reviews', '6');
+              return !!widget;
+            }
+            if (setTake()) return;
+            var observer = new MutationObserver(function () { if (setTake()) observer.disconnect(); });
+            observer.observe(document.documentElement, { childList: true, subtree: true });
+            document.addEventListener('DOMContentLoaded', function () { setTake(); observer.disconnect(); });
+          })();
+        </script>
       </head>
 
 

@@ -1313,7 +1313,83 @@
         "other_label": "Typical brands",
         "other_value": "Not always",
         "guarantee_row": "60-Day Money-Back Guarantee"
-      }
+      },
+      "blocks": {
+        "r1": {
+          "type": "row",
+          "settings": {
+            "feature": "Fertilised Avian Egg Extract (exclusive to LifePharm)",
+            "other": ""
+          }
+        },
+        "r2": {
+          "type": "row",
+          "settings": {
+            "feature": "Naturally occurring growth factors (FGF-2)",
+            "other": ""
+          }
+        },
+        "r3": {
+          "type": "row",
+          "settings": {
+            "feature": "Whole-food protein blend: egg extract + marine cartilage + pea protein",
+            "other": "Usually isolated amino acids"
+          }
+        },
+        "r4": {
+          "type": "row",
+          "settings": {
+            "feature": "Studied in humans as the finished formula",
+            "other": "Rarely"
+          }
+        },
+        "r5": {
+          "type": "row",
+          "settings": {
+            "feature": "Supports healthy cortisol levels*",
+            "other": "Rarely"
+          }
+        },
+        "r6": {
+          "type": "row",
+          "settings": {
+            "feature": "Studied for telomerase activity, the enzyme that maintains telomeres*",
+            "other": ""
+          }
+        },
+        "r7": {
+          "type": "row",
+          "settings": {
+            "feature": "Studied to help regulate blood sugar levels*",
+            "other": ""
+          }
+        },
+        "r8": {
+          "type": "row",
+          "settings": {
+            "feature": "Full spectrum amino acid profile",
+            "other": "Varies"
+          }
+        },
+        "r9": {
+          "type": "row",
+          "settings": {
+            "feature": "60-day money-back guarantee",
+            "other": ""
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7",
+        "r8",
+        "r9"
+      ]
     },
     "lp_pdp_faq": {
       "type": "lp-pdp-faq",

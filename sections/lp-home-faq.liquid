@@ -42,7 +42,7 @@
 .lp-hfaq__title em { font-style: normal; color: rgb(var(--lp-amber)); }
 .lp-hfaq__list { display: grid; gap: .625rem; }
 .lp-hfaq__item { border-radius: var(--lp-radius-sm); background: #fff; box-shadow: 0 0 0 1px var(--lp-hairline); transition: background var(--lp-dur-2) var(--lp-ease); }
-.lp-hfaq__item[open] { background: rgb(var(--lp-ink)); color: #fff; box-shadow: none; }
+.lp-hfaq__item[open] { background: rgb(var(--lp-sand)); color: rgb(var(--lp-ink)); box-shadow: 0 0 0 1px rgb(var(--lp-amber) / .55); }
 .lp-hfaq__q { display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-height: 56px; padding: .9rem 1.25rem; font-weight: 600; cursor: pointer; list-style: none; }
 .lp-hfaq__q::-webkit-details-marker { display: none; }
 .lp-hfaq__icon { position: relative; flex: none; width: 28px; height: 28px; border-radius: 50%; background: rgb(var(--lp-sand)); }
@@ -50,11 +50,11 @@
 .lp-hfaq__icon::after { transform: translate(-50%, -50%) rotate(90deg); }
 .lp-hfaq__item[open] .lp-hfaq__icon { background: rgb(var(--lp-amber)); }
 .lp-hfaq__item[open] .lp-hfaq__icon::after { transform: translate(-50%, -50%) rotate(0deg); }
-.lp-hfaq__a { padding: 0 1.25rem 1.25rem; line-height: 1.65; color: rgb(255 255 255 / .82); }
+.lp-hfaq__a { padding: 0 1.25rem 1.25rem; line-height: 1.65; color: rgb(var(--lp-ink) / .82); }
 .lp-hfaq__a p { margin: 0; }
 .lp-hfaq__help { position: sticky; top: 7rem; display: grid; gap: .75rem; justify-items: center; padding: 2rem 1.5rem; border-radius: var(--lp-radius); background: rgb(var(--lp-sand)); text-align: center; }
 .lp-hfaq__help > * { margin: 0; }
-.lp-hfaq__help-icon { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: rgb(var(--lp-ink)); color: rgb(var(--lp-amber)); }
+.lp-hfaq__help-icon { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: #fff; color: rgb(var(--lp-amber-deep)); box-shadow: 0 0 0 1px var(--lp-hairline); }
 .lp-hfaq__help-title { font-size: 1.25rem; }
 .lp-hfaq__help p { color: rgb(var(--lp-ink) / .75); line-height: 1.55; }
 .lp-hfaq__help-cta { margin-block-start: .5rem; }

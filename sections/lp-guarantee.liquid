@@ -1,16 +1,30 @@
-<section class="lp-guarantee">
+<section class="lp-guarantee" aria-labelledby="lp-guarantee-title-{{ section.id }}">
   <div class="container">
-    <div class="lp-guarantee__card">
-      <div class="lp-guarantee__seal" aria-hidden="true">
-        <svg viewBox="0 0 120 120" class="lp-guarantee__ring"><defs><path id="lp-seal-{{ section.id }}" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0"/></defs><text><textPath href="#lp-seal-{{ section.id }}" textLength="286" lengthAdjust="spacing">{{ section.settings.seal_text | escape }}</textPath></text></svg>
-        <span class="lp-guarantee__seal-core">{{ section.settings.seal_value | escape }}</span>
-      </div>
+    <div class="lp-guarantee__card{% if section.settings.image != blank %} lp-guarantee__card--media{% endif %}">
+      {%- if section.settings.image != blank -%}
+        <figure class="lp-guarantee__media" data-lp-reveal>
+          {{ section.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '500,700,900,1200,1600', sizes: '(min-width: 1000px) 45vw, 100vw', class: 'lp-guarantee__img' }}
+          {%- if section.settings.caption != blank -%}<figcaption class="lp-guarantee__caption">{{ section.settings.caption | escape }}</figcaption>{%- endif -%}
+        </figure>
+      {%- endif -%}
       <div class="lp-guarantee__copy">
-        {%- if section.settings.heading != blank -%}<h2 class="h1 lp-guarantee__title">{{ section.settings.heading }}</h2>{%- endif -%}
+        <div class="lp-guarantee__proof">
+          <div class="lp-guarantee__seal" aria-hidden="true">
+            <svg viewBox="0 0 120 120" class="lp-guarantee__ring"><defs><path id="lp-seal-{{ section.id }}" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0"/></defs><text><textPath href="#lp-seal-{{ section.id }}" textLength="286" lengthAdjust="spacing">{{ section.settings.seal_text | escape }}</textPath></text></svg>
+            <span class="lp-guarantee__seal-core">{{ section.settings.seal_value | escape }}</span>
+          </div>
+          {%- if section.settings.rating_text != blank -%}
+            <p class="lp-guarantee__rating">
+              <span class="lp-guarantee__stars" aria-hidden="true">{%- for i in (1..5) -%}{% render 'lp-icon', name: 'star', size: 16 %}{%- endfor -%}</span>
+              <span>{{ section.settings.rating_text }}</span>
+            </p>
+          {%- endif -%}
+        </div>
+        {%- if section.settings.heading != blank -%}<h2 id="lp-guarantee-title-{{ section.id }}" class="h1 lp-guarantee__title">{{ section.settings.heading }}</h2>{%- endif -%}
         {%- if section.settings.text != blank -%}<div class="lp-guarantee__text">{{ section.settings.text }}</div>{%- endif -%}
         <div class="lp-guarantee__actions">
           {%- if section.settings.button_label != blank -%}
-            <a href="{{ section.settings.button_url | default: routes.all_products_collection_url }}" class="button button--xl button--secondary">
+            <a href="{{ section.settings.button_url | default: routes.all_products_collection_url }}" class="button button--xl lp-guarantee__cta">
               <span>{{ section.settings.button_label | escape }}</span>{% render 'lp-icon', name: 'arrow', size: 18 %}
             </a>
           {%- endif -%}
@@ -18,26 +32,47 @@
             <a href="{{ section.settings.link_url }}" class="lp-guarantee__link">{{ section.settings.link_label | escape }}</a>
           {%- endif -%}
         </div>
+        {%- if section.settings.show_payment_icons and shop.enabled_payment_types.size > 0 -%}
+          <ul class="lp-guarantee__pay" role="list" aria-label="{{ section.settings.payment_label | escape }}">
+            {%- for type in shop.enabled_payment_types -%}
+              <li>{{ type | payment_type_svg_tag: class: 'lp-guarantee__pay-icon' }}</li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
       </div>
     </div>
   </div>
 </section>
 
 {% stylesheet %}
-.lp-guarantee { padding-block: var(--lp-section-gap); }
-.lp-guarantee__card { position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; align-items: center; padding: clamp(2rem, 5vw, 4.5rem); border-radius: var(--lp-radius-lg); background: rgb(var(--lp-ink)); color: rgb(var(--lp-sand)); box-shadow: var(--lp-shadow-3); }
-.lp-guarantee__card::before { content: ""; position: absolute; inset: auto -20% -60% auto; width: 70%; aspect-ratio: 1; background: radial-gradient(closest-side, rgb(var(--lp-amber) / .35), transparent 70%); pointer-events: none; }
-@media (min-width: 1000px) { .lp-guarantee__card { grid-template-columns: auto minmax(0, 1fr); gap: 4rem; } }
-.lp-guarantee__seal { position: relative; width: 150px; aspect-ratio: 1; display: grid; place-items: center; }
-.lp-guarantee__ring { position: absolute; inset: 0; width: 100%; height: 100%; fill: rgb(var(--lp-amber)); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; }
-@keyframes lp-spin { to { transform: rotate(360deg); } }
-.lp-guarantee__seal-core { display: grid; place-items: center; width: 92px; aspect-ratio: 1; border-radius: 50%; background: rgb(var(--lp-amber)); color: rgb(var(--lp-ink)); font-family: var(--heading-font-family); font-size: 2.25rem; letter-spacing: -.02em; box-shadow: 0 0 0 8px rgb(var(--lp-amber) / .15); }
-.lp-guarantee__copy { position: relative; display: grid; gap: 1rem; justify-items: start; }
-.lp-guarantee__title { color: #fff; letter-spacing: -.02em; max-width: 18ch; }
-.lp-guarantee__title em { color: rgb(var(--lp-amber)); }
-.lp-guarantee__text { max-width: 40rem; color: rgb(var(--lp-sand) / .78); line-height: 1.65; }
-.lp-guarantee__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem; margin-block-start: .5rem; }
-.lp-guarantee__link { color: rgb(var(--lp-sand)); font-weight: 500; text-underline-offset: 4px; }
+.lp-guarantee { padding-block: var(--lp-section-gap); background: rgb(var(--lp-ivory)); }
+.lp-guarantee__card { display: grid; grid-template-columns: minmax(0, 1fr); align-items: stretch; overflow: hidden; border-radius: var(--lp-radius-lg); background: rgb(var(--lp-sand)); color: rgb(var(--lp-ink)); }
+@media (min-width: 1000px) { .lp-guarantee__card--media { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); } .lp-guarantee__card--media .lp-guarantee__media { order: 2; } }
+.lp-guarantee__media { position: relative; margin: 0; min-height: 14rem; aspect-ratio: 4 / 3; }
+@media (min-width: 1000px) { .lp-guarantee__media { aspect-ratio: auto; min-height: 26rem; } }
+.lp-guarantee__img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.lp-guarantee__caption { position: absolute; left: .75rem; bottom: .75rem; padding: .3rem .7rem; border-radius: 999px; background: rgb(255 255 255 / .92); font-size: .75rem; font-weight: 500; color: rgb(var(--lp-ink)); }
+.lp-guarantee__copy { display: grid; align-content: center; gap: 1rem; justify-items: start; padding: clamp(1.75rem, 4.5vw, 4rem); }
+.lp-guarantee__copy > * { margin: 0; }
+.lp-guarantee__proof { display: flex; align-items: center; gap: 1rem; }
+.lp-guarantee__seal { position: relative; flex: none; width: 96px; aspect-ratio: 1; display: grid; place-items: center; }
+.lp-guarantee__ring { position: absolute; inset: 0; width: 100%; height: 100%; fill: rgb(var(--lp-amber-deep)); font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; font-weight: 800; }
+.lp-guarantee__seal-core { display: grid; place-items: center; width: 56px; aspect-ratio: 1; border-radius: 50%; background: rgb(var(--lp-amber)); color: #1F1E20; font-family: var(--heading-font-family); font-size: 1.5rem; letter-spacing: -.02em; }
+.lp-guarantee__rating { display: grid; gap: .2rem; font-size: .875rem; line-height: 1.4; color: rgb(var(--lp-ink) / .85); }
+.lp-guarantee__stars { display: inline-flex; gap: 1px; color: rgb(var(--lp-amber)); }
+.lp-guarantee__stars svg { fill: currentColor; }
+.lp-guarantee__title { letter-spacing: -.02em; max-width: 16ch; }
+.lp-guarantee__title em { font-style: normal; color: rgb(var(--lp-amber)); }
+.lp-guarantee__text { max-width: 34rem; color: rgb(var(--lp-ink) / .78); line-height: 1.65; }
+.lp-guarantee__text p { margin: 0; }
+.lp-guarantee__actions { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.25rem; margin-block-start: .25rem; }
+.lp-guarantee__cta svg { transition: transform var(--lp-dur-2) var(--lp-ease); }
+@media (hover: hover) { .lp-guarantee__cta:hover svg { transform: translateX(4px); } }
+.lp-guarantee__link { display: inline-flex; align-items: center; min-height: 44px; color: rgb(var(--lp-ink)); font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+.lp-guarantee__pay { display: flex; flex-wrap: wrap; gap: .375rem; margin: .25rem 0 0; padding: 0; list-style: none; }
+.lp-guarantee__pay li { display: flex; }
+.lp-guarantee__pay-icon { display: block; width: 38px; height: 24px; }
+@media (max-width: 699px) { .lp-guarantee__actions .button { flex: 1 1 100%; } }
 {% endstylesheet %}
 
 {% schema %}
@@ -45,6 +80,11 @@
   "name": "LP · Guarantee CTA",
   "tag": "div",
   "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "caption", "label": "Image caption" },
+    { "type": "inline_richtext", "id": "rating_text", "label": "Rating text" },
+    { "type": "checkbox", "id": "show_payment_icons", "label": "Show payment icons", "default": true },
+    { "type": "text", "id": "payment_label", "label": "Payment icons label (screen readers)", "default": "Accepted payment methods" },
     { "type": "text", "id": "seal_value", "label": "Seal value", "default": "60" },
     { "type": "text", "id": "seal_text", "label": "Seal ring text", "default": "60-day guarantee · risk free · " },
     { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Try it for 60 days. <em>Risk free.</em>" },

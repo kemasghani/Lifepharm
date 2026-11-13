@@ -73,6 +73,14 @@
         <div class="lp-hh__text">{{ section.settings.text }}</div>
       {%- endif -%}
 
+      {%- if section.settings.benefit_1 != blank or section.settings.benefit_2 != blank or section.settings.benefit_3 != blank -%}
+        <ul class="lp-hh__benefits" role="list">
+          {%- if section.settings.benefit_1 != blank -%}<li>{% render 'lp-icon', name: 'check', size: 18 %}<span>{{ section.settings.benefit_1 }}</span></li>{%- endif -%}
+          {%- if section.settings.benefit_2 != blank -%}<li>{% render 'lp-icon', name: 'check', size: 18 %}<span>{{ section.settings.benefit_2 }}</span></li>{%- endif -%}
+          {%- if section.settings.benefit_3 != blank -%}<li>{% render 'lp-icon', name: 'check', size: 18 %}<span>{{ section.settings.benefit_3 }}</span></li>{%- endif -%}
+        </ul>
+      {%- endif -%}
+
       <div class="lp-hh__actions">
         {%- if section.settings.button_label != blank -%}
           <a href="{{ section.settings.button_url | default: routes.all_products_collection_url }}" class="button button--xl lp-hh__cta">
@@ -81,7 +89,11 @@
           </a>
         {%- endif -%}
         {%- if section.settings.secondary_label != blank -%}
-          <a href="{{ section.settings.secondary_url }}" class="button button--xl button--outline">{{ section.settings.secondary_label | escape }}</a>
+          {%- if section.settings.secondary_style == 'link' -%}
+            <a href="{{ section.settings.secondary_url }}" class="lp-hh__link">{{ section.settings.secondary_label | escape }}</a>
+          {%- else -%}
+            <a href="{{ section.settings.secondary_url }}" class="button button--xl button--outline">{{ section.settings.secondary_label | escape }}</a>
+          {%- endif -%}
         {%- endif -%}
       </div>
     </div>
@@ -123,7 +135,11 @@
 .lp-hh__chip svg { color: rgb(var(--lp-amber-deep)); }
 .lp-hh__text { font-size: clamp(1rem, 1.15vw, 1.125rem); line-height: 1.6; color: rgb(var(--lp-ink) / .75); }
 .lp-hh__text p { margin: 0; }
-.lp-hh__actions { display: flex; flex-wrap: wrap; gap: .75rem; padding-block-start: .25rem; }
+.lp-hh__benefits { display: grid; gap: .45rem; margin: 0; padding: 0; list-style: none; font-size: clamp(.9375rem, 1.1vw, 1.0625rem); line-height: 1.45; color: rgb(var(--lp-ink) / .85); }
+.lp-hh__benefits li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .6rem; align-items: start; }
+.lp-hh__benefits svg { margin-block-start: .15em; padding: 3px; border-radius: 50%; background: rgb(var(--lp-amber)); color: #1F1E20; }
+.lp-hh__actions { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.5rem; padding-block-start: .25rem; }
+.lp-hh__link { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; color: rgb(var(--lp-ink)); text-decoration: underline; text-underline-offset: 4px; }
 .lp-hh__cta svg { transition: transform var(--lp-dur-2) var(--lp-ease); }
 @media (hover: hover) { .lp-hh__cta:hover svg { transform: translateX(4px); } }
 @media (max-width: 699px) {
@@ -131,6 +147,9 @@
   .lp-hh__text { display: none; }
   .lp-hh__chip { padding: .3rem .6rem; font-size: .71875rem; }
   .lp-hh__actions .button { flex: 1 1 auto; padding-inline: 1.25rem; }
+  .lp-hh__actions { justify-content: center; }
+  .lp-hh__actions .button { flex-basis: 100%; }
+  .lp-hh__benefits { font-size: .875rem; gap: .35rem; }
 }
 {% endstylesheet %}
 
@@ -144,10 +163,14 @@
     { "type": "text", "id": "heading", "label": "Heading", "info": "Wrap a word in <em> to colour it.", "default": "Feel good at <em>every age</em>" },
     { "type": "inline_richtext", "id": "rating_text", "label": "Rating text" },
     { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "inline_richtext", "id": "benefit_1", "label": "Benefit 1" },
+    { "type": "inline_richtext", "id": "benefit_2", "label": "Benefit 2" },
+    { "type": "inline_richtext", "id": "benefit_3", "label": "Benefit 3" },
     { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop best sellers" },
     { "type": "url", "id": "button_url", "label": "Button link" },
     { "type": "text", "id": "secondary_label", "label": "Secondary button label" },
     { "type": "url", "id": "secondary_url", "label": "Secondary button link" },
+    { "type": "select", "id": "secondary_style", "label": "Secondary button style", "default": "outline", "options": [{ "value": "outline", "label": "Outline button" }, { "value": "link", "label": "Text link" }] },
     { "type": "header", "content": "Featured product card" },
     { "type": "product", "id": "product", "label": "Product" },
     { "type": "image_picker", "id": "card_image", "label": "Card image", "info": "Transparent PNG works best." },

@@ -53,7 +53,7 @@
         "eyebrow": "Science-led wellbeing",
         "heading": "Feel good at <em>every age</em>",
         "rating_text": "<strong>978+</strong> verified Laminine reviews",
-        "text": "<p>Premium nutritionals and skincare made with fertilised avian egg extract, rich in growth factors that support your body's natural renewal.*</p>",
+        "text": "",
         "button_label": "Shop best sellers",
         "button_url": "shopify://collections/nutritionals",
         "secondary_label": "Discover Laminine",
@@ -61,7 +61,11 @@
         "product": "laminine",
         "card_image": "shopify://shop_images/laminine-duo-cutout.png",
         "card_label": "Our best seller",
-        "price_prefix": "From"
+        "price_prefix": "From",
+        "benefit_1": "Made with fertilised avian egg extract, rich in growth factors",
+        "benefit_2": "Supports your body's natural renewal*",
+        "benefit_3": "Clinically studied and fully NSF tested",
+        "secondary_style": "link"
       }
     },
     "logo_list_cGNNLB": {
@@ -147,7 +151,7 @@
           "type": "category",
           "settings": {
             "collection": "skin-health",
-            "image": "shopify://shop_images/Skincare-Blue-bg_web.jpg",
+            "image": "shopify://shop_images/lp-hf-omnia-pedestal.jpg",
             "title": "Skin health"
           }
         },
@@ -361,12 +365,17 @@
       "settings": {
         "seal_value": "60",
         "seal_text": "60-day guarantee · risk free · ",
-        "heading": "Try it risk free for 60 days",
+        "heading": "Try it risk free <em>for 60 days</em>",
         "text": "<p>We stand behind every product we make. If it isn't right for you, let us know within 60 days of delivery and we'll refund you in full.</p>",
         "button_label": "Shop best sellers",
         "button_url": "shopify://collections/nutritionals",
         "link_label": "Read our refund policy",
-        "link_url": "/policies/refund-policy"
+        "link_url": "/policies/refund-policy",
+        "image": "shopify://shop_images/lp-hf-couple-walk.jpg",
+        "caption": "",
+        "rating_text": "<strong>978+</strong> verified Laminine reviews",
+        "show_payment_icons": true,
+        "payment_label": "Accepted payment methods"
       }
     },
     "lp_home_faq": {
@@ -782,19 +791,64 @@
         "overlay_opacity": 25
       },
       "disabled": true
+    },
+    "lp_home_steps": {
+      "type": "lp-home-steps",
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/lp-home-step-choose.jpg",
+            "video": "shopify://files/videos/lp-home-step-choose.mp4",
+            "title": "Choose Your Routine",
+            "text": "<p>Start with LAMININE, our best seller, or build a routine across nutritionals and skincare. Subscribe and save 25%.</p>"
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/lp-home-step-daily.jpg",
+            "video": "shopify://files/videos/lp-home-step-daily.mp4",
+            "title": "Take It Daily",
+            "text": "<p>Your order arrives at your door, with free UK delivery over £150. Take it each day with a glass of water.</p>"
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/lp-home-step-feel.jpg",
+            "video": "shopify://files/videos/lp-home-step-feel.mp4",
+            "title": "Feel The Difference",
+            "text": "<p>Give it time to work. If it is not right for you, our 60-day money-back guarantee has you covered.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "settings": {
+        "eyebrow": "How it works",
+        "heading": "Three steps to <em>feeling good</em>",
+        "step_label": "Step",
+        "button_label": "",
+        "note": ""
+      }
     }
   },
   "order": [
     "lp_home_hero",
     "logo_list_cGNNLB",
-    "lp_home_cats",
-    "lp_home_promos",
+    "lp_home_steps",
     "lp_tabs",
     "lp_science",
     "rich_text_arFn6i",
     "17175461316e8d66c7",
-    "lp_guarantee",
+    "lp_home_cats",
+    "lp_home_promos",
     "lp_home_faq",
+    "lp_guarantee",
     "lp_home_cta",
     "lp_home_offer",
     "lp_home_pairs",

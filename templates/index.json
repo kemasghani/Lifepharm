@@ -860,7 +860,7 @@
           "settings": {
             "image": "shopify://shop_images/lp-life-immune-desk.jpg",
             "product": "immune",
-            "caption": "On your desk through the working day"
+            "caption": "On your desk while you work"
           }
         },
         "p4": {
@@ -876,6 +876,7 @@
           "settings": {
             "image": "shopify://shop_images/lp-life-lamiderm-flowers.jpg",
             "product": "lamiderm-apex-smart-serum",
+            "title": "LAMIDERM APEX",
             "caption": "Part of your morning skincare"
           }
         },

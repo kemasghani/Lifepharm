@@ -835,6 +835,73 @@
         "button_label": "",
         "note": ""
       }
+    },
+    "lp_home_life": {
+      "type": "lp-home-life",
+      "blocks": {
+        "p1": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lp-life-laminine-omega-basket.jpg",
+            "product": "laminine",
+            "caption": "Along for the morning ride"
+          }
+        },
+        "p2": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lp-life-omega-padel.jpg",
+            "product": "omega",
+            "caption": "Courtside, between games"
+          }
+        },
+        "p3": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lp-life-immune-desk.jpg",
+            "product": "immune",
+            "caption": "On your desk through the working day"
+          }
+        },
+        "p4": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lp-life-extrim-kitchen.jpg",
+            "product": "extrim-shape",
+            "caption": "With breakfast at home"
+          }
+        },
+        "p5": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lp-life-lamiderm-flowers.jpg",
+            "product": "lamiderm-apex-smart-serum",
+            "caption": "Part of your morning skincare"
+          }
+        },
+        "p6": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lp-life-omnia-seaside.jpg",
+            "product": "omnia",
+            "caption": "Easy to take wherever you go"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5",
+        "p6"
+      ],
+      "settings": {
+        "eyebrow": "In daily life",
+        "heading": "Wherever your <em>day takes you</em>",
+        "text": "",
+        "link_label": "View product"
+      }
     }
   },
   "order": [
@@ -843,6 +910,7 @@
     "lp_home_steps",
     "lp_tabs",
     "lp_science",
+    "lp_home_life",
     "rich_text_arFn6i",
     "17175461316e8d66c7",
     "lp_home_cats",

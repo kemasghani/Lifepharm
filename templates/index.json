@@ -222,6 +222,13 @@
     "lp_tabs": {
       "type": "lp-product-tabs",
       "blocks": {
+        "tab_nutri": {
+          "type": "tab",
+          "settings": {
+            "collection": "nutritionals",
+            "label": "Nutritionals"
+          }
+        },
         "tab_skin": {
           "type": "tab",
           "settings": {
@@ -238,14 +245,15 @@
         }
       },
       "block_order": [
+        "tab_nutri",
         "tab_skin",
         "tab_freq"
       ],
       "settings": {
         "heading": "Our <em>products</em>",
-        "collection": "nutritionals",
-        "limit": 8,
-        "all_label": "Best sellers",
+        "collection": "all",
+        "limit": 4,
+        "all_label": "Best Sellers",
         "add_label": "Add to cart",
         "view_all_label": "View all products"
       }

@@ -25,7 +25,7 @@
     <button type="button" class="lp-pt__nav lp-pt__nav--prev" data-lp-rail="-1" aria-label="Previous products" disabled><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>
     <button type="button" class="lp-pt__nav lp-pt__nav--next" data-lp-rail="1" aria-label="Next products"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
     <ul class="lp-pt__grid" role="list" data-lp-tab-panel aria-live="polite">
-      {%- comment -%} The first tab lists the main collection. Each further tab adds the products of its own collection that are not listed yet; they start hidden and show when their tab is chosen. {%- endcomment -%}
+      {%- comment -%} The first tab lists the main collection, up to the "Products" setting. Each further tab (up to 12 products) adds the products of its own collection that are not listed yet; they start hidden and show when their tab is chosen. {%- endcomment -%}
       {%- assign seen = ',' -%}
       {%- for product in source.products limit: section.settings.limit -%}
         {%- assign seen = seen | append: product.id | append: ',' -%}
@@ -33,7 +33,7 @@
       {%- endfor -%}
       {%- for block in section.blocks -%}
         {%- if block.settings.collection != blank -%}
-          {%- for product in block.settings.collection.products limit: section.settings.limit -%}
+          {%- for product in block.settings.collection.products limit: 12 -%}
             {%- assign needle = ',' | append: product.id | append: ',' -%}
             {%- unless seen contains needle -%}
               {%- assign seen = seen | append: product.id | append: ',' -%}

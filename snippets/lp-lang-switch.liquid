@@ -49,7 +49,7 @@
 @media (max-width: 699px) {
   .lp-lang__btn { padding: 0; justify-content: center; }
   .lp-lang__current, .lp-lang__chev { display: none; }
-  .lp-lang__panel { position: fixed; inset-block-start: var(--lp-lang-top, 4rem); inset-inline: 1rem; width: auto; max-height: calc(100dvh - var(--lp-lang-top, 4rem) - 1rem); }
+  .lp-lang__panel, .lp-lang--start .lp-lang__panel { position: fixed; inset-block-start: var(--lp-lang-top, 4rem); inset-inline: 1rem; width: auto; max-height: calc(100dvh - var(--lp-lang-top, 4rem) - 1rem); }
 }
 @media (prefers-reduced-motion: reduce) {
   .lp-lang__panel, .lp-lang__chev, .lp-lang__btn { transition: none; }

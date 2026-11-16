@@ -100,6 +100,10 @@ Collected from her reviews on 2026-11-12. Treat these as the brief for every new
 - **Menu headlines**: larger than the links, title case, orange (`--lp-amber`).
 - **Use the brand's own orange circle icons** (Dropbox "ICONS 2024"; cut versions in Files as `lp-benefit-*.png`) wherever a list of benefits would otherwise be plain text that "gets lost".
 - **Follow her Dropbox designs** when one exists for a page. Ask for the source image or video if only the mockup is available.
+- **Orange is always #FF8F00 (`--lp-amber`)** for text, icons and ticks. Never the deep brown-orange (Letisha, 2026-11-17).
+- **Product names in brand capitals everywhere**, including running copy: LAMININE, OMEGA+++, IMMUNE+++, DIGESTIVE+++. Quoted study titles stay as published.
+- **Tab, filter and button labels in title case** ("Best Sellers").
+- **Imagery is minimalist and premium**: cream or beige backgrounds, soft daylight, one subject, no baked-in text, no busy props or saturated orange backdrops.
 
 ### Layout
 - **Image above its text.** Timelines and step content become columns of cards (image on top), not tabs beside a collage.

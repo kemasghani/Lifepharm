@@ -545,7 +545,7 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
 /* ---------- Footer ---------- */
 .footer { border-top-left-radius: var(--lp-radius-lg); border-top-right-radius: var(--lp-radius-lg); }
 .footer a { transition: color var(--lp-dur-1) var(--lp-ease), opacity var(--lp-dur-1) var(--lp-ease); }
-/* Footer sits on a light tint of the style-guide grey (#E2E3E4): near-black text, weight 500, nothing faded or orange */
+/* Footer sits on the warm sand surface (#F3EFE7, Letisha 2026-11-17: the grey did not go with the rest of the site) with the all-dark-grey logo: near-black text, weight 500, nothing faded or orange */
 .footer { --text-color: 14 13 15; color: rgb(14 13 15); }
 .footer .link-faded, .footer .link-faded-reverse { opacity: 1; }
 .footer :is(a, p, li, small, .text-sm, .text-xs) { color: rgb(14 13 15); font-weight: 500; }

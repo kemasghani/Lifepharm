@@ -40,6 +40,15 @@ def collect(root):
         if value:
             refs[kind][value].add(where)
 
+    app_ids = collections.defaultdict(set)
+
+    def add_app(block_type, where):
+        """`shopify://apps/<handle>/blocks/<block>/<extension id>`. Vendors rename handles; the extension id stays."""
+        parts = block_type.split("/")
+        add("app", parts[3], where)
+        if len(parts) > 6:
+            app_ids[parts[3]].add(parts[6])
+
     def scan_value(value, setting_type, where):
         if isinstance(value, list):
             for item in value:
@@ -60,7 +69,7 @@ def collect(root):
             elif kind == "files":
                 add("video" if rest.startswith("videos/") else "file", rest.split("/", 1)[-1], where)
             elif kind == "apps":
-                add("app", rest.split("/")[0], where)
+                add_app(value, where)
             elif kind in URI_KIND:
                 add(URI_KIND[kind], rest.split("/")[0] if kind != "articles" else rest, where)
         for match in PATH.finditer(value):
@@ -88,7 +97,7 @@ def collect(root):
             for block in (current.get("blocks") or {}).values():
                 block_type = block.get("type", "")
                 if block_type.startswith("shopify://apps/") and not block.get("disabled"):
-                    add("app", block_type.split("/")[3], name + "#app-embed")
+                    add_app(block_type, name + "#app-embed")
             continue
         for section_id, section in (doc.get("sections") or {}).items():
             schema = section_schema(root, section.get("type", ""))
@@ -98,11 +107,12 @@ def collect(root):
             for block_id, block in (section.get("blocks") or {}).items():
                 block_type = block.get("type", "")
                 if block_type.startswith("shopify://apps/"):
-                    add("app", block_type.split("/")[3], where)
+                    add_app(block_type, where)
                 scan_settings(block.get("settings"), block_settings.get(block_type), f"{where}/{block_id}")
 
     result = {kind: {value: sorted(where) for value, where in values.items()} for kind, values in refs.items()}
     result["metafield"] = product_metafields(root)
+    result["app_ids"] = {handle: sorted(ids) for handle, ids in app_ids.items()}
     return result
 
 

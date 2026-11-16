@@ -23,15 +23,17 @@ def installed_apps(store):
     """The app list is not readable with this app's scopes, so use the apps the live theme already renders as evidence."""
     themes = gql(store, THEMES)
     if themes.get("errors"):
-        return [], str(themes["errors"])[:200]
+        return [], [], str(themes["errors"])[:200]
     live = [t["id"] for t in themes["data"]["themes"]["nodes"] if t["role"] == "MAIN"]
     if not live:
-        return [], "no live theme"
+        return [], [], "no live theme"
     nodes, error = paged(store, THEME_JSON, ["theme", "files"], {"id": live[0]})
-    apps = set()
+    apps, ids = set(), set()
     for node in nodes:
-        apps.update(re.findall(r"shopify:\\?/\\?/apps\\?/([a-z0-9\-_]+)\\?/blocks", (node.get("body") or {}).get("content") or ""))
-    return sorted(apps), error
+        for handle, extension_id in re.findall(r"shopify:\\?/\\?/apps\\?/([a-z0-9\-_]+)\\?/blocks\\?/[^/\\\"]+\\?/([0-9a-f\-]{36})", (node.get("body") or {}).get("content") or ""):
+            apps.add(handle)
+            ids.add(extension_id)
+    return sorted(apps), sorted(ids), error
 
 
 def inventory(store):
@@ -52,7 +54,7 @@ def inventory(store):
     if error:
         errors["metafield"] = error
     result["metafield"] = sorted({f"product.{d['namespace']}.{d['key']}" for d in definitions})
-    result["app"], error = installed_apps(store)
+    result["app"], result["app_ids"], error = installed_apps(store)
     if error:
         errors["app"] = error
     result["errors"] = errors

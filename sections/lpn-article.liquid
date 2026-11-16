@@ -1,0 +1,198 @@
+{%- liquid
+  assign words = article.content | strip_html | split: ' ' | size
+  assign minutes = words | divided_by: 220 | at_least: 1
+  assign share_url = shop.url | append: article.url
+  assign share_text = article.title | url_encode
+-%}
+<div class="lpn-progress" aria-hidden="true"><span data-lpn-progress></span></div>
+
+<article class="lpn-article">
+  <header class="lpn-wrap lpn-article__head">
+    <nav class="lpn-crumbs" aria-label="Breadcrumb">
+      <a href="{{ routes.root_url }}">{{ 'lpn.home' | t }}</a>
+      <span aria-hidden="true">/</span>
+      <a href="{{ blog.url }}">{{ blog.title | escape }}</a>
+    </nav>
+    <h1 class="lpn-article__title">{{ article.title | escape }}</h1>
+    {%- if article.excerpt != blank -%}
+      <p class="lpn-article__dek">{{ article.excerpt | strip_html | strip | truncatewords: 40 }}</p>
+    {%- endif -%}
+    <p class="lpn-meta lpn-article__meta">
+      {%- if article.author != blank -%}<span>{{ 'lpn.written_by' | t: author: article.author }}</span>{%- endif -%}
+      <span><time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%-d %B %Y' }}</time></span>
+      <span>{{ 'lpn.min_read' | t: count: minutes }}</span>
+    </p>
+  </header>
+
+  {%- if article.image -%}
+    <figure class="lpn-wrap lpn-article__hero">
+      {{ article.image | image_url: width: 2400 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 1360px) 1248px, 92vw', widths: '600, 900, 1200, 1600, 2000, 2400', alt: article.image.alt | default: article.title }}
+    </figure>
+  {%- endif -%}
+
+  <div class="lpn-wrap">
+    <div class="lpn-prose rte" data-lpn-prose>
+      {{ article.content }}
+    </div>
+
+    <footer class="lpn-article__foot">
+      <div class="lpn-share">
+        <span class="lpn-share__label">{{ 'lpn.share' | t }}</span>
+        <button type="button" class="lpn-share__btn" data-lpn-copy="{{ share_url }}" data-lpn-copied="{{ 'lpn.copied' | t }}">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6.5 9.5a3 3 0 0 0 4.2.2l2.1-2.1a3 3 0 0 0-4.2-4.2l-.9.9"/><path d="M9.5 6.5a3 3 0 0 0-4.2-.2L3.2 8.4a3 3 0 0 0 4.2 4.2l.9-.9"/></svg>
+          <span data-lpn-copy-label>{{ 'lpn.copy_link' | t }}</span>
+        </button>
+        <a class="lpn-share__btn" href="https://www.facebook.com/sharer/sharer.php?u={{ share_url | url_encode }}" target="_blank" rel="noopener">Facebook</a>
+        <a class="lpn-share__btn" href="https://x.com/intent/post?url={{ share_url | url_encode }}&text={{ share_text }}" target="_blank" rel="noopener">X</a>
+        <a class="lpn-share__btn" href="mailto:?subject={{ share_text }}&body={{ share_url | url_encode }}">Email</a>
+      </div>
+      <a class="lpn-link" href="{{ blog.url }}"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13 8H3m4-4L3 8l4 4"/></svg> {{ 'lpn.back_to' | t: topic: blog.title }}</a>
+      <p class="lpn-article__disclaimer">{{ 'lpn.disclaimer' | t }}</p>
+    </footer>
+  </div>
+</article>
+
+{%- assign shown = 0 -%}
+{%- capture related -%}
+  {%- for item in blog.articles -%}
+    {%- if item.id != article.id and shown < 3 -%}
+      {%- assign shown = shown | plus: 1 -%}
+      <li>{%- render 'lpn-card', article: item, show_topic: false -%}</li>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- if shown > 0 -%}
+  <section class="lpn-section lpn-related">
+    <div class="lpn-wrap">
+      <div class="lpn-head">
+        <div>
+          <p class="lpn-eyebrow">{{ 'lpn.more_in' | t: topic: blog.title }}</p>
+          <h2 class="lpn-head__title">{{ 'lpn.keep_reading' | t }}</h2>
+        </div>
+        <a class="lpn-link" href="{{ blog.url }}">{{ 'lpn.view_all' | t }} <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 8h10m-4-4 4 4-4 4"/></svg></a>
+      </div>
+      <ul class="lpn-rail" role="list">{{ related }}</ul>
+    </div>
+  </section>
+{%- endif -%}
+
+<section class="lpn-section">
+  <div class="lpn-wrap">{%- render 'lpn-newsletter', id: 'article' -%}</div>
+</section>
+
+{% stylesheet %}
+.lpn-progress { position: fixed; inset: 0 0 auto; z-index: 30; height: 2px; pointer-events: none; }
+.lpn-progress span { display: block; height: 100%; width: 100%; background: rgb(var(--lp-amber)); transform: scaleX(0); transform-origin: left; }
+
+.lpn-article { padding-block-start: clamp(3.2rem, 5vw, 6.4rem); }
+.lpn-article__head { max-width: calc(80rem + var(--lpn-gutter) * 2); text-align: center; }
+.lpn-article__head .lpn-crumbs { justify-content: center; }
+.lpn-article__title { margin: 2rem auto 0; max-width: 22ch; font-size: clamp(3.6rem, 5vw, 6rem); line-height: 1.08; letter-spacing: -.02em; text-wrap: balance; }
+.lpn-article__dek { max-width: 64rem; margin: 2rem auto 0; font-size: clamp(1.7rem, 1.5vw, 2rem); line-height: 1.6; color: rgb(var(--lp-muted)); text-wrap: pretty; }
+.lpn-article__meta { justify-content: center; margin-block-start: 2.4rem; }
+.lpn-article__hero { margin-block: clamp(3.2rem, 5vw, 5.6rem) 0; }
+.lpn-article__hero img { display: block; width: 100%; height: auto; max-height: 67.2rem; object-fit: cover; aspect-ratio: 16 / 9; border-radius: calc(var(--lpn-radius) * 1.5); background: rgb(var(--lp-sand)); }
+
+/* Reading column: about 68 characters a line, 1.75 line height */
+.lpn-prose { max-width: 67.2rem; margin: clamp(4rem, 5vw, 6.4rem) auto 0; font-family: var(--lpn-sans); font-size: 1.7rem; line-height: 1.75; color: rgb(var(--lp-ink)); }
+.lpn-prose #bloggy--article, .lpn-prose .bggle--block { max-width: none !important; margin-inline: 0 !important; padding-inline: 0 !important; }
+.lpn-prose :is(p, li, span, td, th, div, a, summary, label):not(.lpn-keep-font) { font-family: var(--lpn-sans) !important; letter-spacing: 0 !important; }
+.lpn-prose p, .lpn-prose li { font-size: 1.7rem !important; line-height: 1.75 !important; color: rgb(var(--lp-ink)) !important; }
+.lpn-prose p { margin: 0 0 1.25em !important; }
+.lpn-prose :is(h1, h2, .h1, .h2) { margin: 2.25em 0 .6em !important; font-family: var(--lpn-serif) !important; font-weight: 400 !important; font-size: clamp(2.6rem, 2.6vw, 3.2rem) !important; line-height: 1.2 !important; letter-spacing: -.01em !important; color: rgb(var(--lp-ink)) !important; text-align: start !important; }
+.lpn-prose :is(h3, h4, .h3, .h4) { margin: 1.75em 0 .5em !important; font-family: var(--lpn-sans) !important; font-weight: 600 !important; font-size: 1.9rem !important; line-height: 1.35 !important; color: rgb(var(--lp-ink)) !important; }
+.lpn-prose :is(h1, h2, h3, h4, [id]) { scroll-margin-top: 11.2rem; }
+.lpn-prose strong, .lpn-prose b { font-weight: 600 !important; }
+.lpn-prose a:not(.bggle--anchor):not(.button):not(.bggle_blog-post-url) { color: rgb(var(--lp-ink)) !important; text-decoration: underline !important; text-decoration-color: rgb(var(--lp-amber)) !important; text-decoration-thickness: 1.5px !important; text-underline-offset: 3px !important; }
+.lpn-prose a:hover { text-decoration-color: currentColor !important; }
+.lpn-prose ul, .lpn-prose ol { margin: 0 0 1.5em !important; padding-inline-start: 1.25em !important; }
+.lpn-prose li { margin: 0 0 .5em !important; padding-inline-start: .25em; }
+.lpn-prose li::marker { color: rgb(var(--lp-amber)); }
+.lpn-prose img { display: block; max-width: 100%; height: auto !important; margin-inline: auto; border-radius: var(--lpn-radius) !important; }
+.lpn-prose .bggle_image--container, .lpn-prose figure { margin: 2em 0 !important; }
+.lpn-prose figcaption, .lpn-prose .bggle_image--container p { font-size: 1.3rem !important; color: rgb(var(--lp-muted)) !important; text-align: center; }
+.lpn-prose blockquote { margin: 2em 0 !important; padding: 0 0 0 2.4rem !important; border-inline-start: 2px solid rgb(var(--lp-amber)); font-family: var(--lpn-serif) !important; font-size: 2.2rem !important; line-height: 1.45 !important; }
+.lpn-prose hr { margin: 3em auto !important; border: 0; border-top: 1px solid rgb(var(--lp-line)); }
+.lpn-prose table { width: 100%; border-collapse: collapse; font-size: 1.5rem; }
+.lpn-prose :is(td, th) { padding: 1.2rem; border-bottom: 1px solid rgb(var(--lp-line)); text-align: start; }
+
+/* Bloggle table of contents */
+.lpn-prose .bggle_table-of-content { margin: 0 0 2.5em !important; padding: 0 !important; background: rgb(var(--lp-sand)) !important; border-radius: var(--lpn-radius) !important; }
+.lpn-prose .bggle-toc-summaryV2 { display: flex !important; align-items: center; gap: 1.2rem; min-height: 56px; padding: 0 2rem !important; cursor: pointer; list-style: none; }
+.lpn-prose .bggle-toc-summaryV2::-webkit-details-marker { display: none; }
+.lpn-prose .bggle-toc-summaryV2 p { margin: 0 !important; font-size: 1.2rem !important; font-weight: 800 !important; letter-spacing: .1em !important; text-transform: uppercase; }
+.lpn-prose .bggle-toc-summaryV2 svg { transition: transform 200ms ease-out; }
+.lpn-prose .bggle-toc-detailsV2[open] .bggle-toc-summaryV2 svg { transform: rotate(90deg); }
+.lpn-prose .bggle-toc-detailsV2 .fd--column { display: grid !important; gap: 0.2rem; padding: 0 2rem 2rem !important; }
+.lpn-prose .bggle--anchor { display: block; padding: 0.6rem 0; font-size: 1.5rem !important; line-height: 1.45 !important; color: rgb(var(--lp-ink)) !important; text-decoration: none !important; }
+.lpn-prose .bggle--anchor:hover { color: rgb(var(--lp-amber-deep)) !important; text-decoration: underline !important; text-underline-offset: 3px; }
+.lpn-prose .bggle--child-link { padding-inline-start: 1.6rem !important; color: rgb(var(--lp-muted)) !important; }
+
+/* Bloggle summary, FAQ, author and buttons */
+.lpn-prose .bggle_summary { padding: 2.4rem !important; border-radius: var(--lpn-radius) !important; background: rgb(var(--lp-sand)) !important; }
+.lpn-prose .bggle_faq .bggle--question, .lpn-prose .bggle--question-title { font-weight: 600 !important; }
+.lpn-prose .bggle_faq .faq--container > * { border-color: rgb(var(--lp-line)) !important; }
+.lpn-prose :is(.bggle_button-link, .bggle_blog-post-button, .button--primary) { display: inline-flex !important; align-items: center; justify-content: center; min-height: 48px; padding: 0 2.4rem !important; border: 0 !important; border-radius: 0.6rem !important; background: rgb(var(--lp-amber)) !important; color: rgb(var(--lp-ink-deep)) !important; font-size: 1.3rem !important; font-weight: 600 !important; letter-spacing: .08em !important; text-transform: uppercase; text-decoration: none !important; box-shadow: none !important; }
+.lpn-prose :is(.bggle_button-link, .bggle_blog-post-button, .button--primary)::before, .lpn-prose :is(.bggle_button-link, .bggle_blog-post-button, .button--primary)::after { display: none !important; }
+.lpn-prose .bggle_author { padding: 2.4rem !important; border-radius: var(--lpn-radius) !important; background: rgb(var(--lp-sand)) !important; }
+.lpn-prose .bggle_reco_blog_posts .bggle_blog-post-title { font-family: var(--lpn-serif) !important; font-size: 1.8rem !important; }
+.lpn-prose iframe { max-width: 100%; border-radius: var(--lpn-radius); }
+
+.lpn-article__foot { display: grid; justify-items: start; gap: 2.4rem; max-width: 67.2rem; margin: clamp(4rem, 5vw, 5.6rem) auto 0; padding-block-start: 3.2rem; border-top: 1px solid rgb(var(--lp-line)); }
+.lpn-share { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem; }
+.lpn-share__label { margin-inline-end: 0.8rem; font-size: 1.1rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.lpn-share__btn { display: inline-flex; align-items: center; gap: 0.6rem; min-height: 40px; padding: 0 1.6rem; border: 0; border-radius: 999px; background: rgb(var(--lp-sand)); color: rgb(var(--lp-ink)); font: inherit; font-size: 1.3rem; font-weight: 600; text-decoration: none; cursor: pointer; transition: background-color 150ms ease-out; }
+.lpn-share__btn:hover { background: rgb(var(--lp-ink) / .1); }
+.lpn-share__btn:focus-visible { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 2px; }
+.lpn-article__disclaimer { margin: 0; font-size: 1.3rem; line-height: 1.6; color: rgb(var(--lp-muted)); }
+.lpn-related { padding-block-start: var(--lpn-gap) !important; }
+
+@media (max-width: 749px) {
+  .lpn-article__head { text-align: start; }
+  .lpn-article__head .lpn-crumbs, .lpn-article__meta { justify-content: flex-start; }
+  .lpn-article__title { margin-inline: 0; }
+  .lpn-article__dek { margin-inline: 0; }
+  .lpn-article__hero { padding-inline: 0; }
+  .lpn-article__hero img { aspect-ratio: 4 / 3; border-radius: 0; }
+  .lpn-prose { font-size: 1.7rem; }
+}
+@media (prefers-reduced-motion: reduce) { .lpn-prose .bggle-toc-summaryV2 svg { transition: none; } }
+{% endstylesheet %}
+
+{% javascript %}
+(() => {
+  const bar = document.querySelector('[data-lpn-progress]');
+  const prose = document.querySelector('[data-lpn-prose]');
+  if (bar && prose) {
+    let ticking = false;
+    const update = () => {
+      const r = prose.getBoundingClientRect();
+      const total = r.height - window.innerHeight * 0.6;
+      const done = Math.min(1, Math.max(0, -r.top / (total > 0 ? total : 1)));
+      bar.style.transform = `scaleX(${done})`;
+      ticking = false;
+    };
+    window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    update();
+  }
+  document.querySelectorAll('[data-lpn-copy]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.lpnCopy);
+        const label = btn.querySelector('[data-lpn-copy-label]');
+        const before = label.textContent;
+        label.textContent = btn.dataset.lpnCopied;
+        window.setTimeout(() => { label.textContent = before; }, 2000);
+      } catch (e) {}
+    });
+  });
+})();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "News article",
+  "tag": "div",
+  "settings": []
+}
+{% endschema %}

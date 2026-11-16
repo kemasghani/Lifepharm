@@ -8,28 +8,45 @@
  * ------------------------------------------------------------
  */
 {
-  "name": "t:sections.footer.name",
   "type": "footer",
+  "name": "t:sections.footer.name",
   "sections": {
-    "footer": {
-      "type": "footer",
+    "lpn_footer": {
+      "type": "lpn-footer",
+      "blocks": {
+        "topics": {
+          "type": "menu",
+          "settings": {
+            "title": "Topics",
+            "menu": "main-menu"
+          }
+        },
+        "lifepharm": {
+          "type": "links",
+          "settings": {
+            "title": "LifePharm",
+            "label_1": "Shop US",
+            "url_1": "https://shop.lifepharm.com",
+            "label_2": "Shop UK",
+            "url_2": "https://uk.lifepharm.com",
+            "label_3": "Shop Europe",
+            "url_3": "https://europe.lifepharm.com",
+            "label_4": "Contact",
+            "url_4": "shopify://pages/contact"
+          }
+        }
+      },
+      "block_order": [
+        "topics",
+        "lifepharm"
+      ],
       "settings": {
-        "color_scheme": "background-1",
-        "newsletter_enable": true,
-        "newsletter_heading": "Subscribe to our emails",
-        "enable_follow_on_shop": true,
-        "show_social": true,
-        "enable_country_selector": true,
-        "enable_language_selector": true,
-        "payment_enable": true,
-        "show_policy": false,
-        "margin_top": 0,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "tagline": "Ideas for living well, at every age.",
+        "disclaimer": "These articles are for general information and are not medical advice. Please speak to your doctor before starting any supplement."
       }
     }
   },
   "order": [
-    "footer"
+    "lpn_footer"
   ]
 }

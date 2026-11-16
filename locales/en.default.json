@@ -283,7 +283,6 @@
       "announcement": "Announcement",
       "announcement_bar": "Announcement bar"
     },
-
     "header": {
       "announcement": "Announcement",
       "menu": "Menu",
@@ -537,5 +536,39 @@
       "send_on": "YYYY-MM-DD",
       "send_on_label": "Send on (optional)"
     }
+  },
+  "lpn": {
+    "min_read": "{{ count }} min read",
+    "read_story": "Read Story",
+    "latest": "Latest Stories",
+    "view_all": "View All",
+    "topics": "Explore Topics",
+    "articles_count": {
+      "one": "{{ count }} article",
+      "other": "{{ count }} articles"
+    },
+    "keep_reading": "Keep Reading",
+    "more_in": "More in {{ topic }}",
+    "share": "Share",
+    "copy_link": "Copy Link",
+    "copied": "Link Copied",
+    "newsletter_eyebrow": "Newsletter",
+    "newsletter_title": "New Stories in Your Inbox",
+    "newsletter_text": "One short email when we publish something new. No spam, unsubscribe at any time.",
+    "newsletter_button": "Subscribe",
+    "newsletter_ok": "Thank you. You are on the list.",
+    "email": "Email address",
+    "search": "Search",
+    "search_placeholder": "Search articles",
+    "menu": "Topics",
+    "shop": "Shop LifePharm",
+    "back_to": "Back to {{ topic }}",
+    "written_by": "By {{ author }}",
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page {{ page }}",
+    "all_topics": "All Topics",
+    "home": "Home",
+    "disclaimer": "These articles are for general information and are not medical advice. Please speak to your doctor before starting any supplement."
   }
 }

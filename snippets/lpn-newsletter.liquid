@@ -1,0 +1,35 @@
+{% doc %}
+  Newsletter band: a sand panel with a one-field sign-up. Uses Shopify's customer form with the "newsletter" tag,
+  so sign-ups land in the store's customer list (and any connected email app).
+
+  @param {string} [id] - Unique suffix when the band appears more than once on a page
+
+  @example
+  {% render 'lpn-newsletter', id: 'home' %}
+{% enddoc %}
+{%- assign uid = id | default: 'main' -%}
+{%- assign form_id = 'lpn-newsletter-form-' | append: uid -%}
+<div class="lpn-news">
+  <div>
+    <p class="lpn-eyebrow">{{ 'lpn.newsletter_eyebrow' | t }}</p>
+    <h2 class="lpn-news__title">{{ 'lpn.newsletter_title' | t }}</h2>
+    <p class="lpn-news__text">{{ 'lpn.newsletter_text' | t }}</p>
+  </div>
+  <div>
+    {%- form 'customer', id: form_id -%}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      {%- if form.posted_successfully? -%}
+        <p class="lpn-news__ok" role="status">{{ 'lpn.newsletter_ok' | t }}</p>
+      {%- else -%}
+        <div class="lpn-news__form">
+          <label class="sr-only" for="lpn-newsletter-email-{{ uid }}">{{ 'lpn.email' | t }}</label>
+          <input class="lpn-news__input" id="lpn-newsletter-email-{{ uid }}" type="email" name="contact[email]" autocomplete="email" autocapitalize="off" spellcheck="false" required placeholder="{{ 'lpn.email' | t }}" value="{{ form.email }}"{% if form.errors %} aria-invalid="true" aria-describedby="lpn-newsletter-error-{{ uid }}"{% endif %}>
+          <button class="lpn-btn" type="submit">{{ 'lpn.newsletter_button' | t }}</button>
+        </div>
+        {%- if form.errors -%}
+          <p class="lpn-news__note" id="lpn-newsletter-error-{{ uid }}" role="alert">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>
+        {%- endif -%}
+      {%- endif -%}
+    {%- endform -%}
+  </div>
+</div>

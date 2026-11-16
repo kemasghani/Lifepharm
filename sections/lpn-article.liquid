@@ -30,7 +30,19 @@
     </figure>
   {%- endif -%}
 
-  <div class="lpn-wrap">
+  <div class="lpn-wrap lpn-article__body" data-lpn-body>
+    <aside class="lpn-toc" data-lpn-toc hidden>
+      <nav class="lpn-toc__nav" aria-labelledby="lpn-toc-title">
+        <p class="lpn-toc__title" id="lpn-toc-title">{{ 'lpn.in_article' | t }}</p>
+        <ol class="lpn-toc__list" data-lpn-toc-list></ol>
+        <a class="lpn-toc__top" href="#MainContent" data-lpn-top>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 13V3M4 7l4-4 4 4"/></svg>
+          {{ 'lpn.back_to_top' | t }}
+        </a>
+      </nav>
+    </aside>
+
+    <div class="lpn-article__main">
     <div class="lpn-prose rte" data-lpn-prose>
       {{ article.content }}
     </div>
@@ -49,8 +61,32 @@
       <a class="lpn-link" href="{{ blog.url }}"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13 8H3m4-4L3 8l4 4"/></svg> {{ 'lpn.back_to' | t: topic: blog.title }}</a>
       <p class="lpn-article__disclaimer">{{ 'lpn.disclaimer' | t }}</p>
     </footer>
+    </div>
   </div>
 </article>
+
+<div class="lpn-tocbar" data-lpn-tocbar hidden>
+  <button type="button" class="lpn-tocbar__btn" aria-haspopup="dialog" aria-controls="lpn-toc-sheet" aria-expanded="false" data-lpn-toc-open>
+    <svg class="lpn-tocbar__icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 4.5h9M6 9h9M6 13.5h9"/><circle cx="2.75" cy="4.5" r=".75" fill="currentColor"/><circle cx="2.75" cy="9" r=".75" fill="currentColor"/><circle cx="2.75" cy="13.5" r=".75" fill="currentColor"/></svg>
+    <span class="lpn-tocbar__text">
+      <span class="lpn-tocbar__label">{{ 'lpn.in_article' | t }}</span>
+      <span class="lpn-tocbar__current" data-lpn-toc-current></span>
+    </span>
+    <span class="lpn-tocbar__count" data-lpn-toc-count></span>
+    <svg class="lpn-tocbar__caret" width="8" height="5" viewBox="0 0 8 5" aria-hidden="true" focusable="false"><path d="M0 0h8L4 5z" fill="currentColor"/></svg>
+  </button>
+</div>
+
+<dialog class="lpn-tocsheet" id="lpn-toc-sheet" aria-labelledby="lpn-tocsheet-title" tabindex="-1" data-lpn-toc-sheet>
+  <div class="lpn-tocsheet__head">
+    <p class="lpn-tocsheet__title" id="lpn-tocsheet-title">{{ 'lpn.in_article' | t }}</p>
+    <button type="button" class="lpn-tocsheet__close" data-lpn-toc-close>
+      <span class="sr-only">{{ 'accessibility.close' | t }}</span>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="m3.5 3.5 9 9m0-9-9 9"/></svg>
+    </button>
+  </div>
+  <ol class="lpn-toc__list lpn-toc__list--sheet" data-lpn-toc-list-sheet></ol>
+</dialog>
 
 {%- assign shown = 0 -%}
 {%- capture related -%}
@@ -157,6 +193,62 @@
   .lpn-prose { font-size: 1.7rem; }
 }
 @media (prefers-reduced-motion: reduce) { .lpn-prose .bggle-toc-summaryV2 svg { transition: none; } }
+
+/* Table of contents: a sticky rail beside the text on wide screens, a bar plus sheet below that */
+.lpn-article.has-toc .lpn-prose .bggle_table-of-content { display: none !important; }
+.lpn-toc { display: none; }
+.lpn-toc__title, .lpn-tocsheet__title { margin: 0; font-size: 1.1rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgb(var(--lp-amber)); }
+.lpn-toc__list { margin: 0; padding: 0; list-style: none; }
+.lpn-toc__link { position: relative; display: block; padding: .8rem 0 .8rem 1.8rem; font-size: 1.4rem; line-height: 1.45; color: rgb(var(--lp-muted)); text-decoration: none; text-wrap: pretty; transition: color 200ms ease-out; }
+.lpn-toc__link::before { content: ''; position: absolute; inset-block: .6rem; inset-inline-start: -1px; width: 2px; border-radius: 2px; background: rgb(var(--lp-amber)); transform: scaleY(0); transition: transform 250ms var(--lpn-ease); }
+.lpn-toc__link:hover { color: rgb(var(--lp-ink)); }
+.lpn-toc__link[aria-current="location"] { color: rgb(var(--lp-ink)); font-weight: 600; }
+.lpn-toc__link[aria-current="location"]::before { transform: scaleY(1); }
+.lpn-toc__link:focus-visible, .lpn-toc__top:focus-visible, .lpn-tocbar__btn:focus-visible, .lpn-tocsheet__close:focus-visible { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 2px; border-radius: .4rem; }
+.lpn-toc__item--child .lpn-toc__link { padding-inline-start: 3rem; font-size: 1.3rem; }
+
+@media (min-width: 1200px) {
+  .lpn-article__body.has-toc { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 67.2rem) minmax(0, 1fr); column-gap: clamp(4rem, 4vw, 6.4rem); }
+  .lpn-article__body.has-toc .lpn-article__main { grid-column: 2; min-width: 0; }
+  .lpn-article__body.has-toc .lpn-toc { display: block; grid-column: 1; grid-row: 1; justify-self: end; width: 100%; max-width: 26rem; }
+  .lpn-toc__nav { position: sticky; top: calc(var(--lpn-head, 8rem) + 3.2rem); max-height: calc(100vh - var(--lpn-head, 8rem) - 6.4rem); overflow-y: auto; margin-block-start: clamp(4rem, 5vw, 6.4rem); padding-inline-end: .4rem; scrollbar-width: thin; }
+  .lpn-toc__nav .lpn-toc__list { margin-block-start: 1.6rem; border-inline-start: 1px solid rgb(var(--lp-line)); }
+  .lpn-toc__top { display: inline-flex; align-items: center; gap: .6rem; min-height: 44px; margin-block-start: 1.6rem; font-size: 1.3rem; font-weight: 600; color: rgb(var(--lp-muted)); text-decoration: none; }
+  .lpn-toc__top:hover { color: rgb(var(--lp-ink)); }
+  .lpn-tocbar { display: none !important; }
+}
+
+/* Below 1200px: a slim bar under the header shows the current section and opens the full list */
+.lpn-tocbar { position: fixed; inset-inline: 0; top: var(--lpn-head, 8rem); z-index: 15; background: rgb(var(--lp-ivory) / .96); -webkit-backdrop-filter: saturate(1.4) blur(10px); backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid rgb(var(--lp-line)); transform: translateY(-100%); opacity: 0; visibility: hidden; transition: transform 250ms var(--lpn-ease), opacity 200ms ease-out, visibility 0s linear 250ms; }
+.lpn-tocbar.is-visible { transform: none; opacity: 1; visibility: visible; transition: transform 250ms var(--lpn-ease), opacity 200ms ease-out, visibility 0s; }
+.lpn-tocbar[hidden] { display: none; }
+.lpn-tocbar__btn { -webkit-appearance: none; appearance: none; display: flex; align-items: center; gap: 1.2rem; width: 100%; min-height: 56px; padding: .6rem var(--lpn-gutter); border: 0; background: transparent; color: rgb(var(--lp-ink)); font: inherit; text-align: start; cursor: pointer; }
+.lpn-tocbar__icon { flex: none; color: rgb(var(--lp-amber)); }
+.lpn-tocbar__text { display: grid; flex: 1; min-width: 0; }
+.lpn-tocbar__label { font-size: 1rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgb(var(--lp-muted)); }
+.lpn-tocbar__current { overflow: hidden; font-size: 1.4rem; font-weight: 600; line-height: 1.35; white-space: nowrap; text-overflow: ellipsis; }
+.lpn-tocbar__count { flex: none; font-size: 1.2rem; font-weight: 600; font-variant-numeric: tabular-nums; color: rgb(var(--lp-muted)); }
+.lpn-tocbar__caret { flex: none; }
+
+.lpn-tocsheet { position: fixed; inset: auto 0 0 0; width: 100%; max-width: 64rem; max-height: 82dvh; margin: 0 auto; padding: 0 0 env(safe-area-inset-bottom); overflow: hidden; display: flex; flex-direction: column; border: 0; border-radius: 2rem 2rem 0 0; background: #fff; color: rgb(var(--lp-ink)); box-shadow: 0 -12px 40px -16px rgb(var(--lp-ink) / .3); transform: translateY(100%); transition: transform 280ms var(--lpn-ease); }
+.lpn-tocsheet:not([open]) { display: none; }
+.lpn-tocsheet:focus { outline: none; }
+.lpn-tocsheet.is-open { transform: none; }
+.lpn-tocsheet::backdrop { background: rgb(31 30 32 / .4); opacity: 0; transition: opacity 200ms ease-out; }
+.lpn-tocsheet.is-open::backdrop { opacity: 1; }
+.lpn-tocsheet__head { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 1.6rem; padding: 2rem 1.2rem .8rem 2.4rem; }
+.lpn-tocsheet__head::before { content: ''; position: absolute; top: .8rem; left: 50%; width: 3.6rem; height: 4px; border-radius: 999px; background: rgb(var(--lp-ink) / .14); transform: translateX(-50%); }
+.lpn-tocsheet__close { -webkit-appearance: none; appearance: none; display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 999px; background: transparent; color: rgb(var(--lp-muted)); cursor: pointer; }
+.lpn-tocsheet__close:hover { background: rgb(var(--lp-ink) / .05); color: rgb(var(--lp-ink)); }
+.lpn-toc__list--sheet { overflow-y: auto; overscroll-behavior: contain; padding: 0 1.6rem 2.4rem; }
+.lpn-toc__list--sheet .lpn-toc__link { display: flex; align-items: center; min-height: 48px; padding: .8rem 1.2rem; border-radius: 1rem; font-size: 1.6rem; color: rgb(var(--lp-ink)); }
+.lpn-toc__list--sheet .lpn-toc__link::before { inset-block: 1.2rem; inset-inline-start: 0; }
+.lpn-toc__list--sheet .lpn-toc__link[aria-current="location"] { background: rgb(var(--lp-sand)); }
+.lpn-toc__list--sheet .lpn-toc__item--child .lpn-toc__link { padding-inline-start: 2.8rem; font-size: 1.5rem; color: rgb(var(--lp-muted)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .lpn-toc__link, .lpn-toc__link::before, .lpn-tocbar, .lpn-tocsheet, .lpn-tocsheet::backdrop { transition: none; }
+}
 {% endstylesheet %}
 
 {% javascript %}
@@ -186,6 +278,161 @@
       } catch (e) {}
     });
   });
+})();
+
+(() => {
+  const article = document.querySelector('.lpn-article');
+  const body = document.querySelector('[data-lpn-body]');
+  const prose = document.querySelector('[data-lpn-prose]');
+  const rail = document.querySelector('[data-lpn-toc]');
+  const bar = document.querySelector('[data-lpn-tocbar]');
+  const sheet = document.querySelector('[data-lpn-toc-sheet]');
+  if (!article || !body || !prose || !rail) return;
+  const header = document.querySelector('[data-lpn-header]');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const wide = window.matchMedia('(min-width: 1200px)');
+
+  // 1. Sections: Bloggle's own contents list when present (it knows the author's structure), else the h2/h3 headings
+  const slug = (s) => s.toLowerCase().normalize('NFKD').replace(/[^\w\s-]/g, '').trim().replace(/\s+/g, '-').slice(0, 60);
+  let sections = [...prose.querySelectorAll('.bggle-toc-detailsV2 a.bggle--anchor[href^="#"]')].map((a) => ({
+    title: a.textContent.trim(),
+    target: document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1))),
+    child: a.classList.contains('bggle--child-link'),
+  })).filter((s) => s.title && s.target);
+  if (sections.length < 2) {
+    sections = [...prose.querySelectorAll('h2, h3')].filter((h) => h.textContent.trim() && !h.closest('.bggle_table-of-content, .bggle_faq')).map((h) => {
+      if (!h.id) h.id = slug(h.textContent) || `section-${Math.random().toString(36).slice(2, 7)}`;
+      return { title: h.textContent.trim(), target: h, child: h.tagName === 'H3' };
+    });
+  }
+  if (sections.length < 2) return;
+
+  const build = (list) => {
+    if (!list) return [];
+    list.innerHTML = '';
+    return sections.map((s, i) => {
+      const li = document.createElement('li');
+      li.className = `lpn-toc__item${s.child ? ' lpn-toc__item--child' : ''}`;
+      const a = document.createElement('a');
+      a.className = 'lpn-toc__link';
+      a.href = `#${s.target.id}`;
+      a.textContent = s.title;
+      a.dataset.index = i;
+      li.append(a);
+      list.append(li);
+      return a;
+    });
+  };
+  const railLinks = build(rail.querySelector('[data-lpn-toc-list]'));
+  const sheetLinks = build(sheet && sheet.querySelector('[data-lpn-toc-list-sheet]'));
+  rail.hidden = false;
+  if (bar) bar.hidden = false;
+  body.classList.add('has-toc');
+  article.classList.add('has-toc');
+
+  // 2. Offsets: the sticky header, plus the contents bar when it is showing
+  const headHeight = () => (header ? Math.round(header.getBoundingClientRect().height) : 0);
+  const setHead = () => document.documentElement.style.setProperty('--lpn-head', `${headHeight()}px`);
+  setHead();
+  const offset = () => headHeight() + (!wide.matches && bar ? 56 : 0) + 24;
+
+  // 3. Scroll spy: the active section is the last one whose top has passed a line a quarter down the screen
+  const current = document.querySelector('[data-lpn-toc-current]');
+  const count = document.querySelector('[data-lpn-toc-count]');
+  let active = -1;
+  const setActive = (i) => {
+    if (i === active) return;
+    active = i;
+    [railLinks, sheetLinks].forEach((links) => links.forEach((a, n) => (n === i ? a.setAttribute('aria-current', 'location') : a.removeAttribute('aria-current'))));
+    if (current) current.textContent = i >= 0 ? sections[i].title : sections[0].title;
+    if (count) count.textContent = `${Math.max(i, 0) + 1}/${sections.length}`;
+    const link = railLinks[i];
+    const nav = rail.querySelector('.lpn-toc__nav');
+    if (link && nav && nav.scrollHeight > nav.clientHeight) {
+      const top = link.offsetTop - nav.clientHeight / 2;
+      nav.scrollTo({ top, behavior: reduce.matches ? 'auto' : 'smooth' });
+    }
+  };
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    const line = offset() + window.innerHeight * 0.18;
+    let i = -1;
+    sections.forEach((s, n) => { if (s.target.getBoundingClientRect().top <= line) i = n; });
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) i = sections.length - 1;
+    setActive(i);
+    if (bar) {
+      const r = prose.getBoundingClientRect();
+      const show = !wide.matches && r.top < headHeight() + 8 && r.bottom > headHeight() + 120;
+      bar.classList.toggle('is-visible', show);
+    }
+  };
+  const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', () => { setHead(); onScroll(); });
+  update();
+
+  // 4. Navigation: smooth scroll under the header, keep the URL hash without adding history entries, move focus for keyboard users
+  const go = (i, focus) => {
+    const target = sections[i].target;
+    const y = target.getBoundingClientRect().top + window.scrollY - offset() + 1;
+    window.scrollTo({ top: y, behavior: reduce.matches ? 'auto' : 'smooth' });
+    history.replaceState(null, '', `#${target.id}`);
+    if (focus) {
+      if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+      target.focus({ preventScroll: true });
+    }
+    setActive(i);
+  };
+  const onLink = (event) => {
+    const a = event.target.closest('.lpn-toc__link');
+    if (!a) return;
+    event.preventDefault();
+    const fromKeyboard = event.detail === 0;
+    if (sheet && sheet.open) closeSheet(false);
+    go(Number(a.dataset.index), fromKeyboard);
+  };
+  rail.addEventListener('click', onLink);
+  if (sheet) sheet.addEventListener('click', onLink);
+  const top = rail.querySelector('[data-lpn-top]');
+  if (top) top.addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: reduce.matches ? 'auto' : 'smooth' }); history.replaceState(null, '', location.pathname + location.search); });
+
+  // 5. Phone sheet: a modal dialog in the top layer, above every app widget
+  const opener = bar && bar.querySelector('[data-lpn-toc-open]');
+  let keyboardOpen = false;
+  const openSheet = (fromKeyboard) => {
+    if (!sheet || sheet.open || typeof sheet.showModal !== 'function') return;
+    keyboardOpen = fromKeyboard;
+    sheet.showModal();
+    opener.setAttribute('aria-expanded', 'true');
+    document.documentElement.style.overflow = 'hidden';
+    requestAnimationFrame(() => sheet.classList.add('is-open'));
+    const link = sheetLinks[Math.max(active, 0)];
+    if (link) link.scrollIntoView({ block: 'center' });
+    if (fromKeyboard && link) link.focus(); else sheet.focus();
+  };
+  const closeSheet = (restoreFocus = true) => {
+    if (!sheet || !sheet.open) return;
+    sheet.classList.remove('is-open');
+    opener.setAttribute('aria-expanded', 'false');
+    window.setTimeout(() => {
+      sheet.close();
+      document.documentElement.style.overflow = '';
+      if (restoreFocus && keyboardOpen) opener.focus();
+    }, reduce.matches ? 0 : 220);
+  };
+  if (opener) opener.addEventListener('click', (e) => openSheet(e.detail === 0));
+  if (sheet) {
+    sheet.querySelector('[data-lpn-toc-close]').addEventListener('click', () => closeSheet());
+    sheet.addEventListener('click', (e) => { if (e.target === sheet) closeSheet(); });
+    sheet.addEventListener('cancel', (e) => { e.preventDefault(); closeSheet(); });
+  }
+
+  // 6. Arriving with a hash (shared link to a section): land under the header
+  if (location.hash) {
+    const i = sections.findIndex((s) => `#${s.target.id}` === decodeURIComponent(location.hash));
+    if (i > -1) window.setTimeout(() => go(i, false), 300);
+  }
 })();
 {% endjavascript %}
 

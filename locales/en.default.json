@@ -569,6 +569,8 @@
     "page": "Page {{ page }}",
     "all_topics": "All Topics",
     "home": "Home",
-    "disclaimer": "These articles are for general information and are not medical advice. Please speak to your doctor before starting any supplement."
+    "disclaimer": "These articles are for general information and are not medical advice. Please speak to your doctor before starting any supplement.",
+    "in_article": "In This Article",
+    "back_to_top": "Back to Top"
   }
 }

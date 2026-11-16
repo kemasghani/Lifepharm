@@ -11,7 +11,11 @@
   "sections": {
     "main": {
       "type": "lpn-article",
-      "settings": {}
+      "settings": {
+        "latest_blogs": "health,nutrition,science,beauty,products,recipes,business,news",
+        "latest_count": 4,
+        "latest_url": "shopify://blogs/health"
+      }
     }
   },
   "order": [

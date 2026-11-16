@@ -733,3 +733,6 @@ body:has(.shopify-section--main-product) .shopify-section--text-with-icons:not(#
 /* Homepage rhythm: two sections on the same ivory ground share one gap instead of stacking two */
 .shopify-section:has(> :is(.lp-pt, .lp-cats, .lp-promos, .lp-hfaq)) + .shopify-section > :is(.lp-science, .lp-cats, .lp-hfaq, .lp-guarantee) { padding-block-start: 0; }
 .shopify-section:has(> .lp-pt) + .shopify-section > .lp-science { background: linear-gradient(180deg, rgb(var(--lp-ivory)) 40%, rgb(var(--lp-sand) / .8)); }
+
+/* Language: the header selector (snippets/lp-lang-switch.liquid) drives Weglot, so Weglot's own switcher (placed in the footer from the Weglot dashboard) is hidden */
+.weglot-container:not(#lp-none) { display: none !important; }

@@ -249,6 +249,10 @@ the underlying logic of the menu.
             </li>
           {%- endif -%}
 
+          <li class="shrink-0">
+            {%- render 'lp-lang-switch' -%}
+          </li>
+
           <li>
             <a href="{{ routes.search_url }}" class="hidden tap-area sm:block" aria-controls="search-drawer">
               <span class="sr-only">{{ 'header.general.search' | t }}</span>

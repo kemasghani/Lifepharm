@@ -33,7 +33,7 @@ Source: Dropbox "Branding Resources" > `LifePharm-QuickStyleGuide-2024.pdf`. Fon
 | `--lp-ink` | **#414042** (Black 90%) | text. **Not for large panels**: the client finds dark panels too heavy |
 | Panel grey | **#E2E3E4** (light tint of Pantone 423) | footer, comparison section. Ink text on it |
 | `--lp-amber` | **#FF8F00** (live-site orange, chosen by Letisha 2026-11-12; was Pantone 144 #F18A00) | brand accent, **all primary CTA buttons**, badges, icons |
-| `--lp-amber-deep` | #A65A00 | orange **text** only (AA contrast on light backgrounds) |
+| `--lp-amber-deep` | #A65A00 | focus outlines, shadows and gradient depth only. **Not for text or icons**: on 2026-11-17 the developer asked for every orange accent to use `--lp-amber`, because the deep tone reads as brown/yellow |
 | Logo grey | #888B8D (Pantone 423) | logo and illustration only. Too dark as a panel background (tried and rejected) |
 | `--lp-muted` | #6B6A6C | secondary text |
 | `--lp-ivory` / `--lp-sand` | #FBF9F5 / #F3EFE7 | backgrounds |
@@ -97,7 +97,7 @@ Collected from her reviews on 2026-11-12. Treat these as the brief for every new
 ### Look
 - **Light and bright.** No dark panels. Grey surfaces are the light tint #E2E3E4; orange is the bright live-site orange #FF8F00.
 - **Titles in title case**, never full caps. That includes accordion titles ("How to Use", "60-Day Money-Back Guarantee"), ingredient names and menu headlines.
-- **Menu headlines**: larger than the links, title case, orange (use `--lp-amber-deep` so they stay readable).
+- **Menu headlines**: larger than the links, title case, orange (`--lp-amber`).
 - **Use the brand's own orange circle icons** (Dropbox "ICONS 2024"; cut versions in Files as `lp-benefit-*.png`) wherever a list of benefits would otherwise be plain text that "gets lost".
 - **Follow her Dropbox designs** when one exists for a page. Ask for the source image or video if only the mockup is available.
 

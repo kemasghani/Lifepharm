@@ -204,3 +204,10 @@ body .lpn-search input:focus { outline: 2px solid rgb(var(--lp-amber-deep)); out
 /* from sections/lpn-search.liquid */
 .lpn-search--page { max-width: 64rem; margin: 3.2rem 0 5.6rem; }
 body .lpn-search--page input { min-height: 56px; font-size: 1.7rem; }
+
+/* Bloggle "recommended posts" slider: every card the same height (fixed image ratio, two-line title, aligned button) */
+body .lpn-prose .bggle_blog-post-url { display: flex !important; flex-direction: column !important; align-items: flex-start !important; gap: 0 !important; width: 100% !important; text-decoration: none !important; }
+body .lpn-prose .bggle_blog-post-image { display: block !important; width: 100% !important; height: auto !important; aspect-ratio: 3 / 2 !important; object-fit: cover !important; margin: 0 !important; border-radius: var(--lpn-radius) !important; background: rgb(var(--lp-sand)); }
+body .lpn-prose #bloggy--article .bggle_blog-post-title { display: -webkit-box !important; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; min-height: calc(2 * 1.3em) !important; margin: 1.4rem 0 1.6rem !important; padding: 0 !important; font-family: var(--lpn-serif) !important; font-size: 2rem !important; line-height: 1.3 !important; color: rgb(var(--lp-ink)) !important; text-align: start !important; }
+body .lpn-prose #bloggy--article .bggle_blog-post-button { margin: 0 !important; align-self: flex-start !important; min-height: 44px !important; }
+body .lpn-prose .bggle_reco_blog_posts .tns-item { vertical-align: top !important; }

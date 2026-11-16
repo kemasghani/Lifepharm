@@ -26,7 +26,7 @@
 
   {%- if article.image -%}
     <figure class="lpn-wrap lpn-article__hero">
-      {{ article.image | image_url: width: 2400 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 1360px) 1248px, 92vw', widths: '600, 900, 1200, 1600, 2000, 2400', alt: article.image.alt | default: article.title }}
+      {{ article.image | image_url: width: 2400 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 990px) 864px, 92vw', widths: '600, 864, 1200, 1728, 2400', alt: article.image.alt | default: article.title }}
     </figure>
   {%- endif -%}
 
@@ -126,8 +126,8 @@
 .lpn-article__title { margin: 2rem auto 0; max-width: 22ch; font-size: clamp(3.6rem, 5vw, 6rem); line-height: 1.08; letter-spacing: -.02em; text-wrap: balance; }
 .lpn-article__dek { max-width: 64rem; margin: 2rem auto 0; font-size: clamp(1.7rem, 1.5vw, 2rem); line-height: 1.6; color: rgb(var(--lp-muted)); text-wrap: pretty; }
 .lpn-article__meta { justify-content: center; margin-block-start: 2.4rem; }
-.lpn-article__hero { margin-block: clamp(3.2rem, 5vw, 5.6rem) 0; }
-.lpn-article__hero img { display: block; width: 100%; height: auto; max-height: 67.2rem; object-fit: cover; aspect-ratio: 16 / 9; border-radius: calc(var(--lpn-radius) * 1.5); background: rgb(var(--lp-sand)); }
+.lpn-wrap.lpn-article__hero { max-width: calc(86.4rem + var(--lpn-gutter) * 2); margin: clamp(3.2rem, 4vw, 4.8rem) auto 0; }
+.lpn-article__hero img { display: block; width: 100%; height: auto; object-fit: cover; aspect-ratio: 21 / 9; border-radius: var(--lpn-radius); background: rgb(var(--lp-sand)); box-shadow: 0 24px 48px -32px rgb(var(--lp-ink) / .35); }
 
 /* Reading column: about 68 characters a line, 1.75 line height */
 .lpn-prose { max-width: 67.2rem; margin: clamp(4rem, 5vw, 6.4rem) auto 0; font-family: var(--lpn-sans); font-size: 1.7rem; line-height: 1.75; color: rgb(var(--lp-ink)); }
@@ -188,8 +188,7 @@
   .lpn-article__head .lpn-crumbs, .lpn-article__meta { justify-content: flex-start; }
   .lpn-article__title { margin-inline: 0; }
   .lpn-article__dek { margin-inline: 0; }
-  .lpn-article__hero { padding-inline: 0; }
-  .lpn-article__hero img { aspect-ratio: 4 / 3; border-radius: 0; }
+  .lpn-article__hero img { aspect-ratio: 3 / 2; border-radius: 1.2rem; }
   .lpn-prose { font-size: 1.7rem; }
 }
 @media (prefers-reduced-motion: reduce) { .lpn-prose .bggle-toc-summaryV2 svg { transition: none; } }

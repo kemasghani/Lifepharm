@@ -3,20 +3,24 @@
   place and keeps the URL. The list comes from Weglot itself, so languages added in the Weglot dashboard appear
   here without a theme change. The element stays hidden until Weglot has loaded.
 
-  @example
-  {% render 'lp-lang-switch' %}
-{% enddoc %}
+  @param {string} [id] - Unique id when the selector is rendered more than once (default "lp-lang")
+  @param {string} [align] - "start" opens the panel from the left edge of the button, otherwise from the right
 
-<lp-lang-switch class="lp-lang" data-wg-notranslate hidden>
-  <button type="button" class="lp-lang__btn" aria-haspopup="listbox" aria-expanded="false" aria-controls="lp-lang-panel" aria-label="{{ 'general.localization.change_language_accessibility_text' | t | escape }}">
+  @example
+  {% render 'lp-lang-switch', id: 'lp-lang-mobile', align: 'start' %}
+{% enddoc %}
+{%- assign uid = id | default: 'lp-lang' -%}
+
+<lp-lang-switch class="lp-lang{% if align == 'start' %} lp-lang--start{% endif %}" data-wg-notranslate hidden>
+  <button type="button" class="lp-lang__btn" aria-haspopup="listbox" aria-expanded="false" aria-controls="{{ uid }}-panel" aria-label="{{ 'general.localization.change_language_accessibility_text' | t | escape }}">
     <svg class="lp-lang__globe" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="{{ settings.icon_stroke_width | default: 1.5 }}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"/></svg>
     <span class="lp-lang__current" data-lp-lang-current>EN</span>
     <svg class="lp-lang__chev" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m2 3.5 3 3 3-3"/></svg>
   </button>
 
-  <div class="lp-lang__panel" id="lp-lang-panel" hidden>
-    <p class="lp-lang__title" id="lp-lang-title">{{ 'general.localization.language' | t }}</p>
-    <ul class="lp-lang__list" role="listbox" aria-labelledby="lp-lang-title" data-lp-lang-list></ul>
+  <div class="lp-lang__panel" id="{{ uid }}-panel" hidden>
+    <p class="lp-lang__title" id="{{ uid }}-title">{{ 'general.localization.language' | t }}</p>
+    <ul class="lp-lang__list" role="listbox" aria-labelledby="{{ uid }}-title" data-lp-lang-list></ul>
   </div>
 </lp-lang-switch>
 
@@ -30,11 +34,12 @@
 .lp-lang__chev { opacity: .6; transition: transform 200ms ease-out; }
 .lp-lang__btn[aria-expanded="true"] .lp-lang__chev { transform: rotate(180deg); }
 
-.lp-lang__panel { position: absolute; z-index: 30; inset-block-start: calc(100% + .5rem); inset-inline-end: -.5rem; width: min(22rem, calc(100vw - 2rem)); max-height: min(30rem, 70vh); overflow-y: auto; overscroll-behavior: contain; padding: 1.25rem 1rem 1rem; background: #fff; color: rgb(var(--lp-ink)); border: 1px solid rgb(var(--lp-ink) / .08); border-radius: 1rem; box-shadow: 0 18px 40px -18px rgb(var(--lp-ink) / .28), 0 2px 6px rgb(var(--lp-ink) / .05); opacity: 0; transform: translateY(-6px); transition: opacity 180ms ease-out, transform 180ms cubic-bezier(.16, 1, .3, 1); }
+.lp-lang__panel { position: absolute; z-index: 30; inset-block-start: calc(100% + .5rem); inset-inline-end: -.5rem; width: min(25rem, calc(100vw - 2rem)); max-height: min(38rem, calc(100dvh - 7rem)); overflow-y: auto; overscroll-behavior: contain; padding: 1.25rem 1rem 1rem; background: #fff; color: rgb(var(--lp-ink)); border: 1px solid rgb(var(--lp-ink) / .08); border-radius: 1rem; box-shadow: 0 18px 40px -18px rgb(var(--lp-ink) / .28), 0 2px 6px rgb(var(--lp-ink) / .05); opacity: 0; transform: translateY(-6px); transition: opacity 180ms ease-out, transform 180ms cubic-bezier(.16, 1, .3, 1); }
 .lp-lang__panel.is-open { opacity: 1; transform: none; }
+.lp-lang--start .lp-lang__panel { inset-inline-end: auto; inset-inline-start: -.5rem; }
 .lp-lang__title { margin: 0 .5rem .75rem; font-size: .6875rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgb(var(--lp-amber)); }
 .lp-lang__list { display: grid; grid-template-columns: 1fr 1fr; gap: .125rem .25rem; margin: 0; padding: 0; list-style: none; }
-.lp-lang__opt { display: flex; align-items: center; justify-content: space-between; gap: .5rem; min-height: 44px; padding: 0 .625rem; border-radius: .625rem; font-size: .875rem; line-height: 1.2; cursor: pointer; transition: background-color 150ms ease-out; }
+.lp-lang__opt { display: flex; white-space: nowrap; align-items: center; justify-content: space-between; gap: .5rem; min-height: 44px; padding: 0 .625rem; border-radius: .625rem; font-size: .875rem; line-height: 1.2; cursor: pointer; transition: background-color 150ms ease-out; }
 .lp-lang__opt:hover, .lp-lang__opt:focus-visible { background: rgb(var(--lp-ink) / .05); outline: none; }
 .lp-lang__opt:focus-visible { box-shadow: inset 0 0 0 2px rgb(var(--lp-amber-deep)); }
 .lp-lang__opt[aria-selected="true"] { font-weight: 600; background: rgb(var(--lp-amber) / .1); }

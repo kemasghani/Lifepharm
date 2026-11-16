@@ -91,6 +91,10 @@ the underlying logic of the menu.
             <span class="lp-burger" aria-hidden="true"><i></i><i></i><i></i></span>
           </button>
 
+          <div class="lg:hidden">
+            {%- render 'lp-lang-switch', id: 'lp-lang-mobile', align: 'start' -%}
+          </div>
+
           {%- if section.settings.layout != 'drawer' and section.settings.menu.links.size > 0 -%}
             <nav class="header__link-list {% if section.settings.layout == 'logo_left_navigation_center' %}justify-center{% endif %} wrap" role="navigation">
               <ul class="contents" role="list">
@@ -249,7 +253,7 @@ the underlying logic of the menu.
             </li>
           {%- endif -%}
 
-          <li class="shrink-0">
+          <li class="hidden shrink-0 lg:block">
             {%- render 'lp-lang-switch' -%}
           </li>
 

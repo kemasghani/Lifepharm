@@ -736,9 +736,9 @@ body:has(.shopify-section--main-product) .shopify-section--text-with-icons:not(#
 .lp-chead { display: flex; align-items: baseline; gap: .625rem; flex: 1; min-width: 0; }
 .lp-chead__title { margin: 0; font-family: var(--lp-serif); font-weight: 400; font-size: 1.625rem; line-height: 1.15; color: rgb(var(--lp-ink)); }
 .lp-chead__count { margin: 0; font-size: .8125rem; color: rgb(var(--lp-muted)); }
-.cart-drawer .drawer__close-icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgb(var(--lp-ink) / .12); color: rgb(var(--lp-ink)); transition: background-color var(--lp-dur-1) var(--lp-ease), border-color var(--lp-dur-1) var(--lp-ease); }
-.cart-drawer .drawer__close-icon svg { width: 12px; height: 12px; }
-@media (hover: hover) { .cart-drawer .drawer__close-icon:hover { background: rgb(var(--lp-sand)); border-color: transparent; } }
+.cart-drawer .drawer__close-icon, .cart-drawer > [is="close-button"] { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgb(var(--lp-ink) / .12); color: rgb(var(--lp-ink)); transition: background-color var(--lp-dur-1) var(--lp-ease), border-color var(--lp-dur-1) var(--lp-ease); }
+.cart-drawer :is(.drawer__close-icon, [is="close-button"]) svg { width: 12px; height: 12px; }
+@media (hover: hover) { .cart-drawer :is(.drawer__close-icon, [is="close-button"]):hover { background: rgb(var(--lp-sand)); border-color: transparent; } }
 .cart-drawer :is(.drawer__close-icon, .share-cart-link, .lp-qty__btn, .lp-cline__remove, .lp-cline__title):focus-visible { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 2px; }
 
 /* Free-delivery progress: a quiet sand card, the amount in ink for contrast, the bar in brand orange */

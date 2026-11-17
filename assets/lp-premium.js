@@ -455,17 +455,17 @@
     };
     const remember = () => { if (checkbox.checked) setNever(); };
     const continueCheckout = () => {
-      let form = pending && pending.form;
+      const form = pending && pending.form;
       const submitter = pending && pending.submitter;
       pending = null;
-      if (!form || !form.isConnected) form = document.querySelector('#cart-drawer form.lp-cform') || document.querySelector('form[action*="/cart"] [name="checkout"]')?.form;
+      // After the app's reload there is no paused submit: the cart (and its Referral attribute) is already saved, so go straight to checkout
+      if (!form || !form.isConnected) { window.location.href = (window.Shopify?.routes?.root || '/') + 'checkout'; return; }
       bypass = true;
       if (form && form.requestSubmit) {
         form.requestSubmit(submitter && submitter.isConnected && submitter.form === form ? submitter : form.querySelector('[name="checkout"]') || undefined);
       } else {
-        const f = form || Object.assign(document.createElement('form'), { method: 'POST', action: (window.Shopify?.routes?.root || '/') + 'cart' });
         const input = Object.assign(document.createElement('input'), { type: 'hidden', name: 'checkout', value: '1' });
-        f.appendChild(input); if (!f.isConnected) document.body.appendChild(f); f.submit();
+        form.appendChild(input); form.submit();
       }
       setTimeout(() => { bypass = false; }, 0);
     };

@@ -340,8 +340,8 @@
       "remove_with_title": "Remove {{ title }}"
     },
     "free_shipping_bar": {
-      "limit_unreached_html": "Spend {{ remaining_amount }} more and get free shipping!",
-      "limit_reached_html": "You are eligible for free shipping."
+      "limit_unreached_html": "You're {{ remaining_amount }} away from free delivery",
+      "limit_reached_html": "You've unlocked free delivery"
     },
     "shipping_estimator": {
       "estimate_shipping": "Estimate shipping",
@@ -445,6 +445,19 @@
       "made": "Made in the USA",
       "studied": "Clinically Studied",
       "secure": "Secure, Encrypted Checkout"
+    },
+    "cart": {
+      "title": "Your Cart",
+      "items": {
+        "one": "{{ count }} item",
+        "other": "{{ count }} items"
+      },
+      "subtotal": "Subtotal",
+      "share": "Share Your Cart",
+      "empty_title": "Your Cart Is Empty",
+      "empty_text": "Start with LAMININE, our best seller, or browse the full range.",
+      "shop_all": "Shop All Products",
+      "discover_laminine": "Discover LAMININE"
     }
   }
 }

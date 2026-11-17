@@ -34,6 +34,9 @@ def compare(refs, inv):
         have = set(inv.get(kind, []))
         have_lower = {h.lower() for h in have}
         missing = {v: w for v, w in refs.get(kind, {}).items() if v not in have and v.lower() not in have_lower}
+        if kind == "app":  # the same app under an older or newer handle still counts as present
+            store_ids = set(inv.get("app_ids", []))
+            missing = {v: w for v, w in missing.items() if not store_ids & set(refs.get("app_ids", {}).get(v, []))}
         active = {v: w for v, w in missing.items() if any("(disabled)" not in x for x in w)}
         report[kind] = {"referenced": len(refs.get(kind, {})), "missing": missing, "missing_active": sorted(active)}
     return report

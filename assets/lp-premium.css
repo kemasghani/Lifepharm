@@ -849,6 +849,7 @@ body:has(.shopify-section--main-product) .shopify-section--text-with-icons:not(#
 .lp-ship__body { display: grid; min-width: 0; }
 .lp-ship__msg { grid-area: 1 / 1; display: grid; align-content: center; gap: .125rem; font-size: .8125rem; line-height: 1.4; color: rgb(var(--lp-ink)); transition: opacity 320ms var(--lp-ship-ease), transform 420ms var(--lp-ship-ease); }
 .lp-ship__msg strong { font-weight: 700; }
+.lp-ship__msg--progress { display: block; align-self: center; }
 .lp-ship__msg--free { opacity: 0; transform: translateY(6px); pointer-events: none; }
 .lp-ship.is-free .lp-ship__msg--free { opacity: 1; transform: none; pointer-events: auto; }
 .lp-ship.is-free .lp-ship__msg--progress { opacity: 0; transform: translateY(-6px); }

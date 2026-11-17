@@ -658,27 +658,89 @@
   });
 })();
 
-/* Free delivery card: play the HyperFrames truck clip once per visit, when the cart drawer is open and the card is on screen.
-   Before and after, the poster (its final frame) is the static icon. Reduced motion: never plays. */
+/* Free-delivery component in the cart drawer.
+   - Re-checks the state with Shopify.currency.rate (same rule as the theme's free-shipping bar), so it is right in every currency.
+   - When the drawer re-renders, the bar animates from the previous fill to the new one.
+   - Crossing the threshold: the bar fills to 100%, then the card crossfades to "Free Delivery Unlocked" and the HyperFrames truck clip plays.
+   - Opening a cart that is already free: the clip plays once per visit; otherwise its final frame (the poster) is the static icon.
+   - Reduced motion: no fill animation, no clip. */
 (() => {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const KEY = 'lp-fd-played';
-  const played = () => { try { return sessionStorage.getItem(KEY) === '1'; } catch (e) { return false; } };
-  const check = () => {
-    const drawer = document.getElementById('cart-drawer');
-    const video = drawer && drawer.querySelector('.lp-fd__video');
-    if (!video || reduce || played() || !drawer.hasAttribute('open') || video.dataset.lpPlayed) return;
-    video.dataset.lpPlayed = '1';
-    try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
-    setTimeout(() => video.play().catch(() => {}), 250);
+  let last = null; // { progress, free }
+  let pendingPlay = false;
+  const sessionPlayed = () => { try { return sessionStorage.getItem(KEY) === '1'; } catch (e) { return false; } };
+  const markPlayed = () => { try { sessionStorage.setItem(KEY, '1'); } catch (e) {} };
+  const money = (cents) => {
+    try { return new Intl.NumberFormat(Shopify.locale, { style: 'currency', currency: Shopify.currency.active }).format(cents / 100); }
+    catch (e) { return (cents / 100).toFixed(2); }
   };
+  const drawerOpen = () => document.getElementById('cart-drawer')?.hasAttribute('open');
+  const play = (el) => {
+    const video = el.querySelector('.lp-ship__video');
+    if (!video || reduce) return;
+    markPlayed();
+    try { video.currentTime = 0; } catch (e) {}
+    video.play().catch(() => {});
+  };
+
+  const sync = (el) => {
+    const rate = (window.Shopify && Shopify.currency && Number(Shopify.currency.rate)) || 1;
+    const threshold = Math.round(parseFloat(el.dataset.threshold) * rate);
+    const total = parseFloat(el.dataset.total) || 0;
+    const progress = threshold > 0 ? Math.min(1, Math.max(0, total / threshold)) : 1;
+    const free = total >= threshold;
+    const remaining = el.querySelector('[data-lp-ship-remaining]');
+    if (remaining) remaining.textContent = money(Math.max(0, threshold - total));
+    const row = document.querySelector('#cart-drawer [data-lp-ship-row]');
+    const fill = el.querySelector('.lp-ship__fill');
+
+    const crossing = last && !last.free && free;
+    const moved = last && Math.abs(last.progress - progress) > 0.001;
+
+    if (crossing && !reduce) {
+      // Hold the old look, fill the bar, then reveal the unlocked state
+      el.classList.remove('is-free');
+      el.style.setProperty('--lp-ship-progress', progress);
+      const anim = fill.animate([{ transform: `scaleX(${last.progress})` }, { transform: 'scaleX(1)' }], { duration: 650, easing: 'cubic-bezier(.22,1,.36,1)' });
+      anim.onfinish = () => {
+        el.classList.add('is-free');
+        if (row && row.hidden) { row.hidden = false; row.classList.add('is-entering'); }
+        drawerOpen() ? play(el) : (pendingPlay = true);
+      };
+    } else {
+      el.classList.toggle('is-free', free);
+      el.style.setProperty('--lp-ship-progress', progress);
+      if (moved && !reduce) fill.animate([{ transform: `scaleX(${last.progress})` }, { transform: `scaleX(${progress})` }], { duration: 600, easing: 'cubic-bezier(.22,1,.36,1)' });
+      if (row) {
+        if (row.hidden === free && free && last && !last.free) row.classList.add('is-entering');
+        row.hidden = !free;
+      }
+      if (free && !last && !sessionPlayed()) drawerOpen() ? play(el) : (pendingPlay = true);
+    }
+    last = { progress, free };
+  };
+
+  const scan = () => {
+    const el = document.querySelector('#cart-drawer [data-lp-ship]');
+    if (!el) { const row = document.querySelector('#cart-drawer [data-lp-ship-row]'); if (row) row.hidden = true; last = last && { progress: 0, free: false }; return; }
+    if (el.dataset.lpShipSynced) return;
+    el.dataset.lpShipSynced = '1';
+    sync(el);
+  };
+
   const start = () => {
     const drawer = document.getElementById('cart-drawer');
     if (!drawer) return;
-    let queued = false;
-    new MutationObserver(() => { if (!queued) { queued = true; requestAnimationFrame(() => { queued = false; check(); }); } })
-      .observe(drawer, { attributes: true, attributeFilter: ['open'], childList: true, subtree: true });
-    check();
+    new MutationObserver((records) => {
+      if (records.some((r) => r.type === 'childList')) scan();
+      if (records.some((r) => r.type === 'attributes') && drawer.hasAttribute('open') && pendingPlay) {
+        pendingPlay = false;
+        const el = drawer.querySelector('[data-lp-ship]');
+        if (el && el.classList.contains('is-free')) setTimeout(() => play(el), 300);
+      }
+    }).observe(drawer, { childList: true, subtree: true, attributes: true, attributeFilter: ['open'] });
+    scan();
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();

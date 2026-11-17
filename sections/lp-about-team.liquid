@@ -1,0 +1,107 @@
+<section class="lp-ab-team" aria-labelledby="lp-ab-team-{{ section.id }}">
+  <div class="container">
+    <header class="lp-ab-head">
+      {%- if section.settings.eyebrow != blank -%}<p class="lp-eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      <h2 id="lp-ab-team-{{ section.id }}" class="h1">{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<div class="lp-ab-head__text">{{ section.settings.text }}</div>{%- endif -%}
+    </header>
+    <ul class="lp-ab-team__grid" role="list" data-lp-reveal>
+      {%- for block in section.blocks -%}
+        <li class="lp-ab-team__card" {{ block.shopify_attributes }}>
+          <button type="button" class="lp-ab-team__open" data-lp-bio="{{ block.id }}" aria-haspopup="dialog" {% if block.settings.bio == blank %}disabled{% endif %}>
+            <span class="lp-ab-team__photo">
+              {%- if block.settings.image != blank -%}
+                {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '300,450,600,800', sizes: '(min-width: 1000px) 22vw, 44vw', alt: '' }}
+              {%- else -%}
+                {{ 'image' | placeholder_svg_tag }}
+              {%- endif -%}
+            </span>
+            <span class="lp-ab-team__name">{{ block.settings.name | escape }}</span>
+            <span class="lp-ab-team__role">{{ block.settings.role | escape }}</span>
+            {%- if block.settings.bio != blank -%}<span class="lp-ab-team__more">{{ section.settings.bio_label | escape }}<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 8h10m-4-4 4 4-4 4"/></svg></span>{%- endif -%}
+          </button>
+          {%- if block.settings.bio != blank -%}
+            <template data-lp-bio-tpl="{{ block.id }}">
+              <div class="lp-ab-bio__head">
+                {%- if block.settings.image != blank -%}{{ block.settings.image | image_url: width: 240 | image_tag: loading: 'lazy', alt: '', class: 'lp-ab-bio__img' }}{%- endif -%}
+                <div><p class="lp-ab-bio__name" id="lp-ab-bio-title-{{ section.id }}">{{ block.settings.name | escape }}</p><p class="lp-ab-bio__role">{{ block.settings.role | escape }}</p></div>
+              </div>
+              <div class="lp-ab-bio__text">{{ block.settings.bio }}</div>
+            </template>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+  <dialog class="lp-ab-bio" data-lp-bio-dialog aria-labelledby="lp-ab-bio-title-{{ section.id }}">
+    <button type="button" class="lp-ab-bio__close" data-lp-bio-close aria-label="{{ 'general.accessibility.close' | t | escape }}"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M1 1l10 10M11 1 1 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+    <div data-lp-bio-body></div>
+  </dialog>
+  <script>
+    (() => {
+      const root = document.currentScript.closest('.lp-ab-team');
+      const dialog = root.querySelector('[data-lp-bio-dialog]');
+      const body = dialog.querySelector('[data-lp-bio-body]');
+      root.addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-lp-bio]');
+        if (btn) {
+          const tpl = root.querySelector(`[data-lp-bio-tpl="${btn.dataset.lpBio}"]`);
+          if (!tpl) return;
+          body.replaceChildren(tpl.content.cloneNode(true));
+          dialog.showModal();
+          return;
+        }
+        if (e.target.closest('[data-lp-bio-close]') || e.target === dialog) dialog.close();
+      });
+    })();
+  </script>
+</section>
+
+{% stylesheet %}
+.lp-ab-team { padding-block: var(--lp-section-gap); background: rgb(var(--lp-ivory)); }
+.lp-ab-team__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(1.25rem, 2.5vw, 2rem) clamp(1rem, 2vw, 1.5rem); margin: 0; padding: 0; list-style: none; }
+button.lp-ab-team__open:not(#lp-none) { display: grid; gap: .25rem; width: 100%; padding: 0; border: 0; background: none; text-align: start; color: inherit; font: inherit; cursor: pointer; }
+button.lp-ab-team__open:disabled { cursor: default; }
+.lp-ab-team__photo { display: block; overflow: hidden; aspect-ratio: 4 / 5; margin-bottom: .75rem; border-radius: var(--lp-radius); background: #e9e7e3; }
+.lp-ab-team__photo img, .lp-ab-team__photo svg { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; transition: transform 700ms var(--lp-ease); }
+@media (hover: hover) { button.lp-ab-team__open:not(:disabled):hover .lp-ab-team__photo img { transform: scale(1.03); } }
+.lp-ab-team__name { font-size: 1.0625rem; font-weight: 600; color: rgb(var(--lp-ink)); }
+.lp-ab-team__role { font-size: .75rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: rgb(var(--lp-muted)); }
+.lp-ab-team__more { display: inline-flex; align-items: center; gap: .35rem; min-height: 32px; margin-top: .25rem; font-size: .8125rem; font-weight: 600; color: rgb(var(--lp-ink)); text-decoration: underline; text-underline-offset: 3px; }
+button.lp-ab-team__open:focus-visible { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 4px; border-radius: var(--lp-radius); }
+.lp-ab-bio { width: min(36rem, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: 2rem 1.75rem 1.75rem; border: 0; border-radius: 24px; background: #fff; color: rgb(var(--lp-ink)); box-shadow: var(--lp-shadow-3); }
+.lp-ab-bio::backdrop { background: rgb(var(--lp-ink) / .45); }
+.lp-ab-bio[open] { animation: lp-ab-bio-in 320ms cubic-bezier(.16, 1, .3, 1); }
+@keyframes lp-ab-bio-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.lp-ab-bio__close { position: absolute; top: 1rem; right: 1rem; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgb(var(--lp-ink) / .12); background: #fff; color: rgb(var(--lp-ink)); cursor: pointer; }
+.lp-ab-bio__head { display: flex; align-items: center; gap: 1rem; margin: 0 3rem 1.25rem 0; }
+.lp-ab-bio__img { width: 72px; height: 72px; border-radius: 999px; object-fit: cover; object-position: center 20%; }
+.lp-ab-bio__name { margin: 0; font-family: var(--lp-serif); font-size: 1.5rem; line-height: 1.2; }
+.lp-ab-bio__role { margin: .25rem 0 0; font-size: .75rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: rgb(var(--lp-muted)); }
+.lp-ab-bio__text { font-size: .9375rem; line-height: 1.7; color: rgb(var(--lp-muted)); }
+.lp-ab-bio__text p { margin: 0 0 .75rem; }
+@media (max-width: 899px) { .lp-ab-team__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .lp-ab-bio { width: 100vw; max-width: 100vw; margin: auto 0 0; border-radius: 24px 24px 0 0; } }
+@media (prefers-reduced-motion: reduce) { .lp-ab-bio[open] { animation: none; } .lp-ab-team__photo img { transition: none; } }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "LP About: team",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our Team" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Life Starts With <em>Leadership</em></p>" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "text", "id": "bio_label", "label": "Bio link label", "default": "Read Bio" }
+  ],
+  "blocks": [
+    { "type": "person", "name": "Person", "settings": [
+      { "type": "image_picker", "id": "image", "label": "Photo" },
+      { "type": "text", "id": "name", "label": "Name" },
+      { "type": "text", "id": "role", "label": "Role" },
+      { "type": "richtext", "id": "bio", "label": "Bio" }
+    ] }
+  ],
+  "presets": [{ "name": "LP About: team" }]
+}
+{% endschema %}

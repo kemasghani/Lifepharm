@@ -1,0 +1,57 @@
+<section class="lp-ab-values" aria-labelledby="lp-ab-values-{{ section.id }}">
+  <div class="container">
+    <header class="lp-ab-head">
+      {%- if section.settings.eyebrow != blank -%}<p class="lp-eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      <h2 id="lp-ab-values-{{ section.id }}" class="h1">{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<div class="lp-ab-head__text">{{ section.settings.text }}</div>{%- endif -%}
+    </header>
+    <ol class="lp-ab-values__list" role="list" data-lp-reveal>
+      {%- for block in section.blocks -%}
+        <li class="lp-ab-values__item" {{ block.shopify_attributes }}>
+          <span class="lp-ab-values__letter" aria-hidden="true">{{ block.settings.title | slice: 0 }}</span>
+          <h3 class="lp-ab-values__title">{{ block.settings.title | escape }}</h3>
+          <div class="lp-ab-values__text">{{ block.settings.text }}</div>
+        </li>
+      {%- endfor -%}
+    </ol>
+  </div>
+</section>
+
+{% stylesheet %}
+.lp-ab-values { padding-block: var(--lp-section-gap); background: #fff; }
+.lp-ab-values__list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--lp-hairline); }
+.lp-ab-values__item { display: grid; align-content: start; gap: .75rem; padding: clamp(1.5rem, 2.5vw, 2.25rem) clamp(1rem, 2vw, 1.75rem) 0; border-inline-start: 1px solid var(--lp-hairline); }
+.lp-ab-values__item:first-child { border-inline-start: 0; padding-inline-start: 0; }
+.lp-ab-values__letter { font-family: var(--lp-serif); font-weight: 400; font-size: clamp(3.5rem, 6vw, 5rem); line-height: .9; color: rgb(var(--lp-amber)); }
+.lp-ab-values__title { margin: 0; font-size: 1.125rem; font-weight: 600; color: rgb(var(--lp-ink)); }
+.lp-ab-values__text { font-size: .9375rem; line-height: 1.65; color: rgb(var(--lp-muted)); }
+.lp-ab-values__text p { margin: 0; }
+@media (max-width: 899px) {
+  .lp-ab-values__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lp-ab-values__item:nth-child(odd) { border-inline-start: 0; padding-inline-start: 0; }
+  .lp-ab-values__item:nth-child(n+3) { border-top: 1px solid var(--lp-hairline); margin-top: 1.5rem; }
+}
+@media (max-width: 520px) {
+  .lp-ab-values__list { grid-template-columns: 1fr; }
+  .lp-ab-values__item { border-inline-start: 0; padding-inline: 0; }
+  .lp-ab-values__item + .lp-ab-values__item { border-top: 1px solid var(--lp-hairline); margin-top: 1.5rem; }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "LP About: values",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our Core Values" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>We Think <em>BIIG</em></p>" },
+    { "type": "richtext", "id": "text", "label": "Text" }
+  ],
+  "blocks": [
+    { "type": "value", "name": "Value", "limit": 6, "settings": [
+      { "type": "text", "id": "title", "label": "Title", "default": "Balance" },
+      { "type": "richtext", "id": "text", "label": "Text" }
+    ] }
+  ],
+  "presets": [{ "name": "LP About: values" }]
+}
+{% endschema %}

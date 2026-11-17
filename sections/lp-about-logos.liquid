@@ -1,0 +1,42 @@
+<section class="lp-ab-logos" aria-labelledby="lp-ab-logos-{{ section.id }}">
+  <div class="container">
+    <h2 id="lp-ab-logos-{{ section.id }}" class="lp-ab-logos__title">{{ section.settings.heading | escape }}</h2>
+    <ul class="lp-ab-logos__list" role="list">
+      {%- for block in section.blocks -%}
+        {%- if block.settings.logo != blank -%}
+          <li {{ block.shopify_attributes }}>
+            {%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}" target="_blank" rel="noopener">{%- endif -%}
+            {{ block.settings.logo | image_url: width: 320 | image_tag: loading: 'lazy', alt: block.settings.logo.alt | default: block.settings.name, class: 'lp-ab-logos__img' }}
+            {%- if block.settings.link != blank -%}</a>{%- endif -%}
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% stylesheet %}
+.lp-ab-logos { padding-block: clamp(3rem, 6vw, 5rem); background: #fff; border-top: 1px solid var(--lp-hairline); }
+.lp-ab-logos__title { margin: 0 0 2rem; text-align: center; font-family: var(--lp-sans); font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: rgb(var(--lp-muted)); }
+.lp-ab-logos__list { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: clamp(1.5rem, 3.5vw, 3rem); margin: 0; padding: 0; list-style: none; }
+.lp-ab-logos__list a { display: block; }
+.lp-ab-logos__img { display: block; height: clamp(32px, 4vw, 44px); width: auto; max-width: 120px; object-fit: contain; filter: grayscale(1); opacity: .6; transition: filter 240ms var(--lp-ease), opacity 240ms var(--lp-ease); }
+@media (hover: hover) { .lp-ab-logos__list li:hover .lp-ab-logos__img { filter: none; opacity: 1; } }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "LP About: affiliations",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Affiliations and Certifications" }
+  ],
+  "blocks": [
+    { "type": "logo", "name": "Logo", "settings": [
+      { "type": "image_picker", "id": "logo", "label": "Logo" },
+      { "type": "text", "id": "name", "label": "Name (alt text)" },
+      { "type": "url", "id": "link", "label": "Link" }
+    ] }
+  ],
+  "presets": [{ "name": "LP About: affiliations" }]
+}
+{% endschema %}

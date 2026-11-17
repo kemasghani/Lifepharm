@@ -405,10 +405,14 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initProductTabs, { once: true });
   else initProductTabs();
 
-  /* Referral question at checkout (snippets/lp-referral-nudge.liquid). Replaces the old slide-in and floating tab.
-     Pressing Checkout opens it when: the Teqnavi referral app is on the page, no referrer is set yet, and the shopper
-     has not ticked "Don't show this again". "Add My Referrer" closes the cart and opens the app's enroller search;
-     "No, Continue to Checkout" carries on with the original checkout submit. */
+  /* Referral at checkout (snippets/lp-referral-nudge.liquid). Replaces the old slide-in and floating tab.
+     Pressing Checkout opens the dialog when the Teqnavi referral app is on the page and the shopper has not ticked
+     "Don't show this again":
+       - no referrer yet  -> "Were You Referred by Someone?" (Add My Referrer / No, Continue to Checkout)
+       - referrer set     -> "Your Order Is Referred By <name>" (Continue to Checkout / Change)
+     Add My Referrer / Change open the app's own enroller search. When the shopper picks someone, the dialog comes back
+     in the confirmed state with the name ticked; if they close the search, it comes back as it was.
+     The cart drawer shows a "Referred by <name> · Change" line whenever a referrer is set. */
   const initReferralCheckout = () => {
     const dialog = document.querySelector('[data-lp-refq]');
     if (!dialog) return;
@@ -416,14 +420,22 @@
     const never = () => { try { return localStorage.getItem(NEVER) === '1'; } catch (e) { return false; } };
     const setNever = () => { try { localStorage.setItem(NEVER, '1'); } catch (e) { /* storage unavailable */ } };
     const appButton = () => document.querySelector('.referral-banner__name--clickable');
-    const hasReferrer = () => {
+    const referrer = () => {
       const title = document.querySelector('.referral-banner__title');
-      return !!(appButton() && title && getComputedStyle(title).display !== 'none' && appButton().textContent.trim());
+      const button = appButton();
+      if (!button || !title || getComputedStyle(title).display === 'none') return '';
+      return button.textContent.trim();
     };
+    const appModalOpen = () => [...document.querySelectorAll('.referral-banner__modal')].some((m) => {
+      const cs = getComputedStyle(m);
+      return cs.display !== 'none' && cs.visibility !== 'hidden' && m.getBoundingClientRect().height > 0;
+    });
     const checkbox = dialog.querySelector('[data-lp-refq-never]');
+    const nameEl = dialog.querySelector('[data-lp-refq-name]');
     const video = dialog.querySelector('video');
     let pending = null; // { form, submitter }
     let bypass = false;
+    let watching = 0;
 
     const playArt = () => {
       if (!video || reduceMotion) return;
@@ -433,43 +445,100 @@
       const attempt = video.play();
       if (attempt && attempt.catch) attempt.catch(() => {});
     };
+    const show = (state) => {
+      const name = referrer();
+      const done = state === 'done' && !!name;
+      dialog.classList.toggle('is-done', done);
+      nameEl.textContent = name;
+      dialog.setAttribute('aria-labelledby', done ? '' : 'lp-refq-title');
+      if (!dialog.open) { dialog.showModal(); playArt(); }
+    };
     const remember = () => { if (checkbox.checked) setNever(); };
     const continueCheckout = () => {
-      if (!pending) return;
-      const { form, submitter } = pending;
+      let form = pending && pending.form;
+      const submitter = pending && pending.submitter;
       pending = null;
+      if (!form || !form.isConnected) form = document.querySelector('#cart-drawer form.lp-cform') || document.querySelector('form[action*="/cart"] [name="checkout"]')?.form;
       bypass = true;
-      if (form.requestSubmit) form.requestSubmit(submitter && submitter.form === form ? submitter : undefined);
-      else { const input = document.createElement('input'); input.type = 'hidden'; input.name = 'checkout'; form.appendChild(input); form.submit(); }
+      if (form && form.requestSubmit) {
+        form.requestSubmit(submitter && submitter.isConnected && submitter.form === form ? submitter : form.querySelector('[name="checkout"]') || undefined);
+      } else {
+        const f = form || Object.assign(document.createElement('form'), { method: 'POST', action: (window.Shopify?.routes?.root || '/') + 'cart' });
+        const input = Object.assign(document.createElement('input'), { type: 'hidden', name: 'checkout', value: '1' });
+        f.appendChild(input); if (!f.isConnected) document.body.appendChild(f); f.submit();
+      }
       setTimeout(() => { bypass = false; }, 0);
+    };
+
+    /* Referred-by line in the cart drawer */
+    const syncRow = () => {
+      const row = document.querySelector('#cart-drawer [data-lp-ref-row]');
+      if (!row) return;
+      const name = referrer();
+      row.hidden = !name;
+      const strong = row.querySelector('[data-lp-ref-row-name]');
+      if (strong) strong.textContent = name;
+    };
+
+    /* Open the app's enroller search, then come back to the dialog */
+    const openApp = (backToDialog) => {
+      const button = appButton();
+      if (!button) return;
+      const before = referrer();
+      const returnState = dialog.classList.contains('is-done') ? 'done' : 'ask';
+      if (dialog.open) dialog.close();
+      clearInterval(watching);
+      let seenOpen = false;
+      const started = Date.now();
+      setTimeout(() => button.click(), 120);
+      watching = setInterval(() => {
+        const now = referrer();
+        const open = appModalOpen();
+        if (open) seenOpen = true;
+        const picked = now && now !== before;
+        const closed = seenOpen && !open;
+        if (picked || closed || Date.now() - started > 300000) {
+          clearInterval(watching);
+          syncRow();
+          if (backToDialog) setTimeout(() => show(now ? 'done' : returnState), picked ? 200 : 60);
+        }
+      }, 250);
     };
 
     document.addEventListener('submit', (event) => {
       if (bypass) return;
       const submitter = event.submitter;
-      const isCheckout = (submitter && submitter.name === 'checkout') || event.target.querySelector('[name="checkout"]:focus');
-      if (!isCheckout || never() || !appButton() || hasReferrer()) return;
+      if (!submitter || submitter.name !== 'checkout') return;
+      if (never() || !appButton()) return;
       event.preventDefault();
       pending = { form: event.target, submitter };
       checkbox.checked = false;
-      dialog.showModal();
-      playArt();
+      show(referrer() ? 'done' : 'ask');
     }, true);
 
     dialog.addEventListener('click', (event) => {
-      if (event.target.closest('[data-lp-refq-skip]')) { remember(); dialog.close(); continueCheckout(); return; }
-      if (event.target.closest('[data-lp-refq-add]')) {
-        remember();
-        pending = null;
-        dialog.close();
-        document.getElementById('cart-drawer')?.hide?.();
-        const button = appButton();
-        if (button) setTimeout(() => button.click(), 250);
-        return;
-      }
+      if (event.target.closest('[data-lp-refq-skip]') || event.target.closest('[data-lp-refq-continue]')) { remember(); dialog.close(); continueCheckout(); return; }
+      if (event.target.closest('[data-lp-refq-add]') || event.target.closest('[data-lp-refq-change]')) { remember(); openApp(true); return; }
       if (event.target.closest('[data-lp-refq-close]') || event.target === dialog) { remember(); pending = null; dialog.close(); }
     });
     dialog.addEventListener('cancel', () => { remember(); pending = null; });
+    document.addEventListener('click', (event) => {
+      if (event.target.closest('[data-lp-ref-row-change]')) { event.preventDefault(); openApp(false); }
+    });
+
+    const drawer = document.getElementById('cart-drawer');
+    if (drawer) new MutationObserver(syncRow).observe(drawer, { childList: true, subtree: true });
+    let tries = 0;
+    const waitForApp = () => {
+      if (appButton()) {
+        syncRow();
+        const banner = document.querySelector('.referral-banner');
+        if (banner) new MutationObserver(syncRow).observe(banner, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ['style'] });
+        return;
+      }
+      if (++tries < 40) setTimeout(waitForApp, 250);
+    };
+    waitForApp();
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initReferralCheckout, { once: true });
   else initReferralCheckout();

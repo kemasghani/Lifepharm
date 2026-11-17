@@ -19,12 +19,32 @@
     </video>
   </div>
   <p class="lp-refq__eyebrow">{{ 'lp.referral.eyebrow' | t }}</p>
-  <p class="lp-refq__title" id="lp-refq-title">{{ 'lp.referral.title' | t }}</p>
-  <p class="lp-refq__text" id="lp-refq-text">{{ 'lp.referral.text' | t }}</p>
-  <div class="lp-refq__actions">
-    <button type="button" class="button lp-refq__add" data-lp-refq-add>{{ 'lp.referral.add' | t }}</button>
-    <button type="button" class="lp-refq__skip" data-lp-refq-skip>{{ 'lp.referral.skip' | t }}</button>
+
+  <div class="lp-refq__state lp-refq__state--ask">
+    <p class="lp-refq__title" id="lp-refq-title">{{ 'lp.referral.title' | t }}</p>
+    <p class="lp-refq__text" id="lp-refq-text">{{ 'lp.referral.text' | t }}</p>
+    <div class="lp-refq__actions">
+      <button type="button" class="button lp-refq__add" data-lp-refq-add>{{ 'lp.referral.add' | t }}</button>
+      <button type="button" class="lp-refq__skip" data-lp-refq-skip>{{ 'lp.referral.skip' | t }}</button>
+    </div>
   </div>
+
+  <div class="lp-refq__state lp-refq__state--done">
+    <p class="lp-refq__title">{{ 'lp.referral.done_title' | t }}</p>
+    <div class="lp-refq__who" role="status">
+      <span class="lp-refq__tick" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 12 12"><path d="m2 6.5 2.5 2.5L10 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span class="lp-refq__who-text">
+        <span class="lp-refq__who-label">{{ 'lp.referral.referred_by' | t }}</span>
+        <span class="lp-refq__who-name" data-lp-refq-name></span>
+      </span>
+      <button type="button" class="lp-refq__change" data-lp-refq-change>{{ 'lp.referral.change' | t }}</button>
+    </div>
+    <p class="lp-refq__text">{{ 'lp.referral.done_text' | t }}</p>
+    <div class="lp-refq__actions">
+      <button type="button" class="button lp-refq__add" data-lp-refq-continue>{{ 'lp.referral.continue' | t }}</button>
+    </div>
+  </div>
+
   <label class="lp-refq__never">
     <input type="checkbox" data-lp-refq-never>
     <span class="lp-refq__box" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 12 12"><path d="m2 6.5 2.5 2.5L10 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -38,6 +58,8 @@
 div.referral-banner.referral-banner:not(#lp-none) { padding: 0 !important; }
 .referral-banner { height: 0 !important; min-height: 0 !important; padding: 0 !important; background: none !important; overflow: visible !important; }
 .referral-banner__row { display: none !important; }
+/* The app's enroller search must sit above the open cart drawer */
+.referral-banner__modal { z-index: 2147483002 !important; }
 
 /* Referral question at checkout: a quiet, centred card in the top layer */
 .lp-refq { width: min(26rem, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: 2rem 1.75rem 1.5rem; border: 0; border-radius: 24px; background: #fff; color: rgb(var(--lp-ink)); text-align: center; box-shadow: 0 30px 80px -24px rgb(var(--lp-ink) / .35); overflow: auto; }
@@ -63,6 +85,26 @@ button.lp-refq__skip:not(#lp-none) { width: 100%; min-height: 52px; padding: 0 1
 .lp-refq__never input:checked + .lp-refq__box { background: rgb(var(--lp-ink)); border-color: rgb(var(--lp-ink)); color: #fff; }
 .lp-refq__never input:focus-visible + .lp-refq__box { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 2px; }
 .lp-refq :is(.lp-refq__close, .lp-refq__add, .lp-refq__skip):focus-visible { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 2px; }
+
+.lp-refq__state--done { display: none; }
+.lp-refq.is-done .lp-refq__state--ask { display: none; }
+.lp-refq.is-done .lp-refq__state--done { display: block; animation: lp-refq-swap 360ms cubic-bezier(.16, 1, .3, 1); }
+@keyframes lp-refq-swap { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.lp-refq__who { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: .75rem; margin: .75rem 0 1rem; padding: .875rem 1rem; border-radius: 16px; background: rgb(var(--lp-sand)); box-shadow: inset 0 0 0 1px rgb(var(--lp-amber) / .35); text-align: start; }
+.lp-refq__tick { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 999px; background: rgb(var(--lp-amber)); color: #1F1E20; animation: lp-refq-pop 420ms cubic-bezier(.34, 1.56, .64, 1) both 120ms; }
+@keyframes lp-refq-pop { from { transform: scale(.4); opacity: 0; } to { transform: none; opacity: 1; } }
+.lp-refq__who-text { display: grid; min-width: 0; }
+.lp-refq__who-label { font-size: .75rem; color: rgb(var(--lp-muted)); }
+.lp-refq__who-name { font-size: 1.0625rem; font-weight: 700; line-height: 1.3; color: rgb(var(--lp-ink)); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+button.lp-refq__change:not(#lp-none) { min-height: 44px; padding: 0 .25rem; border: 0; background: none; color: rgb(var(--lp-ink)); font: inherit; font-size: .8125rem; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.lp-refq.is-done .lp-refq__text { margin-bottom: 1.25rem; }
+/* Referred-by line in the cart drawer summary */
+.lp-csum__ref { display: flex; align-items: center; gap: .5rem; font-size: .8125rem; color: rgb(var(--lp-muted)); }
+.lp-csum__ref[hidden] { display: none; }
+.lp-csum__ref svg { flex: none; color: rgb(var(--lp-amber)); }
+.lp-csum__ref strong { color: rgb(var(--lp-ink)); font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+button.lp-csum__ref-change:not(#lp-none) { margin-inline-start: auto; min-height: 32px; padding: 0; border: 0; background: none; color: rgb(var(--lp-ink)); font: inherit; font-size: .8125rem; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+@media (prefers-reduced-motion: reduce) { .lp-refq__tick, .lp-refq.is-done .lp-refq__state--done { animation: none; } }
 @media (max-width: 480px) {
   .lp-refq { width: 100vw; max-width: 100vw; margin: auto 0 0; padding: 1.75rem 1.25rem calc(1rem + env(safe-area-inset-bottom)); border-radius: 24px 24px 0 0; }
   .lp-refq[open] { animation-name: lp-refq-up; }

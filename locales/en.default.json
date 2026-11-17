@@ -482,7 +482,12 @@
       "text": "Add their name so they're recognised for your order. It only takes a moment.",
       "add": "Add My Referrer",
       "skip": "No, Continue to Checkout",
-      "never": "Don't show this again"
+      "never": "Don't show this again",
+      "done_title": "Your Order Is Referred By",
+      "referred_by": "Referred by",
+      "change": "Change",
+      "done_text": "They'll be recognised for this order.",
+      "continue": "Continue to Checkout"
     }
   }
 }

@@ -405,116 +405,74 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initProductTabs, { once: true });
   else initProductTabs();
 
-  const initReferralNudge = () => {
-    const panel = document.querySelector('[data-lp-ref]');
-    const tab = document.querySelector('[data-lp-ref-tab]');
-    if (!panel || !tab) return;
-    const KEY = 'lp-ref-dismissed';
-    const TTL = 14 * 24 * 60 * 60 * 1000;
-    const store = {
-      get() { try { return Number(localStorage.getItem(KEY)) || 0; } catch (e) { return 0; } },
-      set() { try { localStorage.setItem(KEY, String(Date.now())); } catch (e) { /* storage unavailable */ } }
-    };
-    const OPT_OUT = 'lp-ref-optout';
-    const optedOut = () => { try { return localStorage.getItem(OPT_OUT) === '1'; } catch (e) { return false; } };
-    const video = panel.querySelector('video');
-    const tabLabel = tab.querySelector('[data-lp-ref-tab-label]');
+  /* Referral question at checkout (snippets/lp-referral-nudge.liquid). Replaces the old slide-in and floating tab.
+     Pressing Checkout opens it when: the Teqnavi referral app is on the page, no referrer is set yet, and the shopper
+     has not ticked "Don't show this again". "Add My Referrer" closes the cart and opens the app's enroller search;
+     "No, Continue to Checkout" carries on with the original checkout submit. */
+  const initReferralCheckout = () => {
+    const dialog = document.querySelector('[data-lp-refq]');
+    if (!dialog) return;
+    const NEVER = 'lp-ref-optout';
+    const never = () => { try { return localStorage.getItem(NEVER) === '1'; } catch (e) { return false; } };
+    const setNever = () => { try { localStorage.setItem(NEVER, '1'); } catch (e) { /* storage unavailable */ } };
     const appButton = () => document.querySelector('.referral-banner__name--clickable');
-    const referrerName = () => {
+    const hasReferrer = () => {
       const title = document.querySelector('.referral-banner__title');
-      const button = appButton();
-      if (!button || !title || getComputedStyle(title).display === 'none') return '';
-      return button.textContent.trim();
+      return !!(appButton() && title && getComputedStyle(title).display !== 'none' && appButton().textContent.trim());
     };
-    let open = false;
-    let timer = 0;
-
-    const showTab = () => {
-      const name = referrerName();
-      tabLabel.textContent = name ? `With ${name}` : 'Referred?';
-      tab.setAttribute('aria-label', name ? `You are shopping with ${name}. Change referrer` : 'Were you referred by someone?');
-      tab.hidden = false;
-      requestAnimationFrame(() => tab.classList.add('is-shown'));
-    };
-    const hideTab = () => { tab.classList.remove('is-shown'); };
+    const checkbox = dialog.querySelector('[data-lp-refq-never]');
+    const video = dialog.querySelector('video');
+    let pending = null; // { form, submitter }
+    let bypass = false;
 
     const playArt = () => {
       if (!video || reduceMotion) return;
       const source = video.querySelector('source[data-src]');
       if (source) { source.src = source.dataset.src; source.removeAttribute('data-src'); video.load(); }
-      video.currentTime = 0;
+      try { video.currentTime = 0; } catch (e) {}
       const attempt = video.play();
       if (attempt && attempt.catch) attempt.catch(() => {});
     };
-
-    const openPanel = () => {
-      if (open || !appButton()) return;
-      open = true;
-      clearTimeout(timer);
-      hideTab();
-      panel.hidden = false;
-      requestAnimationFrame(() => requestAnimationFrame(() => { panel.classList.add('is-open'); playArt(); }));
-    };
-    const dismissForGood = () => {
-      try { localStorage.setItem(OPT_OUT, '1'); } catch (e) { /* storage unavailable */ }
-      open = false;
-      clearTimeout(timer);
-      panel.classList.remove('is-open');
-      hideTab();
-      setTimeout(() => { panel.hidden = true; tab.hidden = true; }, 600);
-    };
-    const closePanel = (remember) => {
-      if (!open) return;
-      open = false;
-      panel.classList.remove('is-open');
-      if (remember) store.set();
-      setTimeout(() => { if (!open) panel.hidden = true; }, 600);
-      showTab();
+    const remember = () => { if (checkbox.checked) setNever(); };
+    const continueCheckout = () => {
+      if (!pending) return;
+      const { form, submitter } = pending;
+      pending = null;
+      bypass = true;
+      if (form.requestSubmit) form.requestSubmit(submitter && submitter.form === form ? submitter : undefined);
+      else { const input = document.createElement('input'); input.type = 'hidden'; input.name = 'checkout'; form.appendChild(input); form.submit(); }
+      setTimeout(() => { bypass = false; }, 0);
     };
 
-    panel.addEventListener('click', (event) => {
-      if (event.target.closest('[data-lp-ref-skip]')) { dismissForGood(); return; }
-      if (event.target.closest('[data-lp-ref-close]')) closePanel(true);
-      if (event.target.closest('[data-lp-ref-open]')) {
+    document.addEventListener('submit', (event) => {
+      if (bypass) return;
+      const submitter = event.submitter;
+      const isCheckout = (submitter && submitter.name === 'checkout') || event.target.querySelector('[name="checkout"]:focus');
+      if (!isCheckout || never() || !appButton() || hasReferrer()) return;
+      event.preventDefault();
+      pending = { form: event.target, submitter };
+      checkbox.checked = false;
+      dialog.showModal();
+      playArt();
+    }, true);
+
+    dialog.addEventListener('click', (event) => {
+      if (event.target.closest('[data-lp-refq-skip]')) { remember(); dialog.close(); continueCheckout(); return; }
+      if (event.target.closest('[data-lp-refq-add]')) {
+        remember();
+        pending = null;
+        dialog.close();
+        document.getElementById('cart-drawer')?.hide?.();
         const button = appButton();
-        closePanel(true);
-        if (button) button.click();
+        if (button) setTimeout(() => button.click(), 250);
+        return;
       }
+      if (event.target.closest('[data-lp-refq-close]') || event.target === dialog) { remember(); pending = null; dialog.close(); }
     });
-    panel.addEventListener('keydown', (event) => { if (event.key === 'Escape') closePanel(true); });
-    tab.addEventListener('click', () => {
-      if (referrerName()) { const button = appButton(); if (button) button.click(); return; }
-      openPanel();
-    });
-
-    const start = () => {
-      if (optedOut()) return;
-      if (referrerName()) { showTab(); return; }
-      if (Date.now() - store.get() < TTL) { showTab(); return; }
-      if (window.matchMedia('(max-width: 699px)').matches) { showTab(); return; }
-      const trigger = () => { window.removeEventListener('scroll', onScroll); openPanel(); };
-      const onScroll = () => { if (window.scrollY > window.innerHeight * 0.35) trigger(); };
-      window.addEventListener('scroll', onScroll, { passive: true });
-      timer = setTimeout(trigger, 6000);
-    };
-
-    let tries = 0;
-    const waitForApp = () => {
-      if (appButton()) { start(); return; }
-      if (++tries < 40) setTimeout(waitForApp, 250);
-    };
-    waitForApp();
-
-    const banner = () => document.querySelector('.referral-banner');
-    const watch = new MutationObserver(() => {
-      if (optedOut()) return;
-      if (referrerName()) { if (open) closePanel(true); else if (!tab.hidden) showTab(); }
-    });
-    const attach = () => { const b = banner(); if (b) watch.observe(b, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ['style'] }); };
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', attach, { once: true }); else attach();
+    dialog.addEventListener('cancel', () => { remember(); pending = null; });
   };
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initReferralNudge, { once: true });
-  else initReferralNudge();
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initReferralCheckout, { once: true });
+  else initReferralCheckout();
 
 
   const initStickyOffset = () => {

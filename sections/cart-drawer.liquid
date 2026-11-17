@@ -47,19 +47,39 @@
         </div>
 
         {%- if settings.cart_show_free_shipping_threshold -%}
-          {%- if lp_fd_reached -%}
-            {%- comment -%}Free delivery reached: a highlighted card with the HyperFrames truck animation (assets/lp-free-delivery.mp4, source ~/Documents/Lifepharm-freedelivery-icon). Plays once per visit, see lp-premium.js; the poster is its final frame.{%- endcomment -%}
-            <div class="lp-fd" role="status">
-              <span class="lp-fd__icon">
-                <video class="lp-fd__video" src="{{ 'lp-free-delivery.mp4' | asset_url }}" poster="{{ 'lp-free-delivery.jpg' | asset_url }}" width="56" height="56" muted playsinline preload="auto" disablepictureinpicture aria-hidden="true" tabindex="-1"></video>
+          {%- if cart.requires_shipping -%}
+            {%- liquid
+              assign lp_fd_progress = 1
+              if lp_fd_threshold > 0
+                assign lp_fd_progress = lp_fd_total | times: 1.0 | divided_by: lp_fd_threshold | at_most: 1 | at_least: 0
+              endif
+              assign lp_fd_remaining = lp_fd_threshold | minus: lp_fd_total | at_least: 0
+              assign lp_fd_remaining_money = lp_fd_remaining | money
+              capture lp_fd_remaining_html
+                echo '<strong data-lp-ship-remaining>'
+                echo lp_fd_remaining_money
+                echo '</strong>'
+              endcapture
+            -%}
+            {%- comment -%}
+              Free-delivery progress and the "unlocked" moment in one component, so the change happens in place.
+              State is re-checked in lp-premium.js with Shopify.currency.rate (as the theme's own bar does), and the
+              bar-fill -> crossfade -> HyperFrames truck clip (assets/lp-free-delivery.mp4) sequence runs there.
+            {%- endcomment -%}
+            <div class="lp-ship{% if lp_fd_reached %} is-free{% endif %}" data-lp-ship data-threshold="{{ lp_fd_threshold }}" data-total="{{ lp_fd_total }}" style="--lp-ship-progress: {{ lp_fd_progress }}">
+              <span class="lp-ship__icon" aria-hidden="true">
+                <svg class="lp-ship__truck" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M2.5 6.5h11v9h-11z"/><path d="M13.5 9.5h4l3 3.5v2.5h-7"/><circle cx="6.5" cy="17" r="1.8"/><circle cx="17" cy="17" r="1.8"/></svg>
+                <video class="lp-ship__video" src="{{ 'lp-free-delivery.mp4' | asset_url }}" poster="{{ 'lp-free-delivery.jpg' | asset_url }}" width="52" height="52" muted playsinline preload="auto" disablepictureinpicture tabindex="-1"></video>
               </span>
-              <span class="lp-fd__text">
-                <span class="lp-fd__title">{{ 'lp.cart.free_delivery_title' | t }}</span>
-                <span class="lp-fd__sub">{{ 'lp.cart.free_delivery_text' | t }}</span>
+              <span class="lp-ship__body" role="status">
+                <span class="lp-ship__msg lp-ship__msg--progress">{{ 'cart.free_shipping_bar.limit_unreached_html' | t: remaining_amount: lp_fd_remaining_html }}</span>
+                <span class="lp-ship__msg lp-ship__msg--free">
+                  <span class="lp-fd__title">{{ 'lp.cart.free_delivery_title' | t }}</span>
+                  <span class="lp-fd__sub">{{ 'lp.cart.free_delivery_text' | t }}</span>
+                </span>
               </span>
+              <span class="lp-ship__bar" aria-hidden="true"><span class="lp-ship__fill"></span></span>
             </div>
-          {%- else -%}
-            {%- render 'free-shipping-bar' -%}
           {%- endif -%}
         {%- endif -%}
       </div>
@@ -168,8 +188,8 @@
             <span>&minus;{{ cart.total_discount | money }}</span>
           </div>
         {%- endif -%}
-        {%- if lp_fd_reached and settings.cart_show_free_shipping_threshold -%}
-          <div class="lp-csum__row lp-csum__row--save">
+        {%- if settings.cart_show_free_shipping_threshold and cart.requires_shipping -%}
+          <div class="lp-csum__row lp-csum__row--save lp-csum__row--delivery" data-lp-ship-row{% unless lp_fd_reached %} hidden{% endunless %}>
             <span class="lp-csum__free">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2.5 6.5h11v9h-11z"/><path d="M13.5 9.5h4l3 3.5v2.5h-7"/><circle cx="6.5" cy="17" r="1.8"/><circle cx="17" cy="17" r="1.8"/></svg>
               {{- 'lp.cart.delivery' | t -}}

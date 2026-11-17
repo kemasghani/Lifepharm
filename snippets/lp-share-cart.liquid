@@ -1,0 +1,188 @@
+{% doc %}
+  Share-cart dialog for the Exigo shared-cart service (lpshopify.azurewebsites.net).
+  Replaces the old custom-liquid block in the footer group. Faster and steadier than before:
+  - the dialog opens on the click and shows "Creating your link" while the link is made,
+  - the click handler is delegated, so it is ready at once and survives cart drawer re-renders,
+  - the cart is fetched as soon as a shopper points at or focuses the link,
+  - icons are inline SVG (no Font Awesome download).
+  Relies on the Exigo app embed globals: apiUrl, shopUrl, customerId, isCustomer, referralCookieName, getCookie, getUrlVars, logCart.
+
+  @example
+  {% render 'lp-share-cart' %}
+{% enddoc %}
+<dialog id="lp-share-cart" class="lp-share" aria-labelledby="lp-share-title">
+  <button type="button" class="lp-share__close" data-lp-share-close aria-label="{{ 'general.accessibility.close' | t | escape }}">
+    <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M1 1l10 10M11 1 1 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+  </button>
+  <p class="lp-share__title" id="lp-share-title">{{ 'lp.share.title' | t }}</p>
+  <p class="lp-share__text">{{ 'lp.share.text' | t }}</p>
+
+  <div class="lp-share__field" data-state="loading">
+    <label class="sr-only" for="lp-share-url">{{ 'lp.share.title' | t }}</label>
+    <input id="lp-share-url" class="lp-share__input" type="text" readonly value="" placeholder="{{ 'lp.share.creating' | t | escape }}">
+    <button type="button" class="button lp-share__copy" data-lp-share-copy disabled>
+      <span data-label-default>{{ 'lp.share.copy' | t }}</span>
+      <span data-label-done hidden>{{ 'lp.share.copied' | t }}</span>
+    </button>
+  </div>
+  <p class="lp-share__status" role="status" aria-live="polite"></p>
+
+  <div class="lp-share__networks" aria-label="{{ 'lp.share.on' | t | escape }}">
+    <a class="lp-share__net" data-lp-share-net="facebook" href="#" target="_blank" rel="noopener" aria-disabled="true">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>Facebook
+    </a>
+    <a class="lp-share__net" data-lp-share-net="linkedin" href="#" target="_blank" rel="noopener" aria-disabled="true">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn
+    </a>
+  </div>
+</dialog>
+
+<script>
+  (() => {
+    const dialog = document.getElementById('lp-share-cart');
+    if (!dialog || dialog.dataset.ready) return;
+    dialog.dataset.ready = 'true';
+    const field = dialog.querySelector('.lp-share__field');
+    const input = dialog.querySelector('#lp-share-url');
+    const copyButton = dialog.querySelector('[data-lp-share-copy]');
+    const status = dialog.querySelector('.lp-share__status');
+    const nets = dialog.querySelectorAll('[data-lp-share-net]');
+    const T = {
+      creating: {{ 'lp.share.creating' | t | json }},
+      failed: {{ 'lp.share.failed' | t | json }},
+      retry: {{ 'lp.share.retry' | t | json }},
+      copiedStatus: {{ 'lp.share.copied_status' | t | json }}
+    };
+    /* The Exigo embed may declare its globals with let/const, so read them through typeof, not window */
+    const g = {
+      apiUrl: () => (typeof apiUrl !== 'undefined' ? apiUrl : undefined),
+      shopUrl: () => (typeof shopUrl !== 'undefined' ? shopUrl : undefined),
+      isCustomer: () => (typeof isCustomer !== 'undefined' ? isCustomer : false),
+      customerId: () => (typeof customerId !== 'undefined' ? customerId : ''),
+      referralCookie: () => (typeof referralCookieName !== 'undefined' ? referralCookieName : undefined)
+    };
+    const referral = () => (g.referralCookie() && typeof getCookie === 'function' ? getCookie(g.referralCookie()) || '' : '');
+
+    /* Start reading the cart as soon as the shopper heads for the link, so the click only waits for the share service */
+    let cartRequest = null, cartRequestedAt = 0;
+    const readCart = () => {
+      if (!cartRequest || Date.now() - cartRequestedAt > 4000) {
+        cartRequestedAt = Date.now();
+        cartRequest = fetch(`${window.Shopify?.routes?.root || '/'}cart.js`, { headers: { Accept: 'application/json' } }).then((r) => r.json());
+      }
+      return cartRequest;
+    };
+    document.addEventListener('cart:change', () => { cartRequest = null; });
+    ['pointerover', 'focusin', 'touchstart'].forEach((type) => document.addEventListener(type, (event) => {
+      if (event.target.closest && event.target.closest('.share-cart-link')) readCart();
+    }, { passive: true }));
+
+    const setState = (state, message = '') => {
+      field.dataset.state = state;
+      status.textContent = message;
+      copyButton.disabled = state !== 'ready';
+      nets.forEach((a) => a.setAttribute('aria-disabled', state === 'ready' ? 'false' : 'true'));
+    };
+
+    let busy = false;
+    const createLink = async () => {
+      if (busy) return;
+      busy = true;
+      input.value = '';
+      setState('loading', T.creating);
+      try {
+        if (!g.apiUrl() || !g.shopUrl()) throw new Error('share service not loaded');
+        const cart = await readCart();
+        const customerKey = g.isCustomer() ? g.customerId() : referral();
+        const response = await fetch(`${g.apiUrl()}/api/SharedCart/AddSharedCartToShopifyId?externalCustomerId=${customerKey}&shopUrl=${g.shopUrl()}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(cart)
+        });
+        if (!response.ok) throw new Error(`share service ${response.status}`);
+        const raw = (await response.text()).trim();
+        let key = raw;
+        try { const parsed = JSON.parse(raw); if (typeof parsed === 'string') key = parsed; } catch (e) {}
+        key = key.replace(/^"|"$/g, '');
+        if (!key) throw new Error('empty key');
+        const host = `https://${window.location.host}`;
+        const path = `?cart=${key}&ref=${referral()}`;
+        const url = host + path;
+        const encoded = encodeURIComponent(path);
+        input.value = url;
+        dialog.querySelector('[data-lp-share-net="facebook"]').href = `https://www.facebook.com/sharer/sharer.php?u=${host}${encoded}`;
+        dialog.querySelector('[data-lp-share-net="linkedin"]').href = `https://www.linkedin.com/shareArticle?mini=true&url=${host}${encoded}`;
+        setState('ready');
+      } catch (error) {
+        console.error('Share cart:', error);
+        setState('error', T.failed);
+        copyButton.disabled = false;
+        copyButton.querySelector('[data-label-default]').textContent = T.retry;
+      } finally {
+        busy = false;
+      }
+    };
+
+    const open = () => {
+      copyButton.querySelector('[data-label-default]').textContent = {{ 'lp.share.copy' | t | json }};
+      if (!dialog.open) dialog.showModal();
+      createLink();
+    };
+    const close = () => dialog.open && dialog.close();
+
+    document.addEventListener('click', (event) => {
+      const trigger = event.target.closest('.share-cart-link');
+      if (trigger) { event.preventDefault(); open(); return; }
+      if (event.target === dialog || event.target.closest('[data-lp-share-close]')) close();
+    });
+    document.addEventListener('keydown', (event) => {
+      if ((event.key === 'Enter' || event.key === ' ') && event.target.matches && event.target.matches('.share-cart-link')) { event.preventDefault(); open(); }
+    });
+    nets.forEach((a) => a.addEventListener('click', (event) => { if (a.getAttribute('aria-disabled') === 'true') event.preventDefault(); }));
+
+    copyButton.addEventListener('click', async () => {
+      if (field.dataset.state === 'error') { createLink(); return; }
+      try {
+        await navigator.clipboard.writeText(input.value);
+      } catch (e) {
+        input.select();
+        document.execCommand && document.execCommand('copy');
+      }
+      const def = copyButton.querySelector('[data-label-default]'), done = copyButton.querySelector('[data-label-done]');
+      def.hidden = true; done.hidden = false; status.textContent = T.copiedStatus;
+      setTimeout(() => { def.hidden = false; done.hidden = true; }, 2000);
+    });
+    input.addEventListener('focus', () => input.value && input.select());
+
+    /* Opening a shared link (?cart=KEY): rebuild that cart here, as the old block did */
+    const cartCopiedCookie = () => document.cookie.split(';').map((c) => c.trim()).find((c) => c.startsWith('CartCopied='))?.slice(11);
+    const openSharedCart = async (key) => {
+      if (cartCopiedCookie()) return;
+      document.cookie = `CartCopied=${key}; path=/`;
+      const shared = await (await fetch(`${g.apiUrl()}/api/SharedCart/GetSharedCartData?key=${key}&shopUrl=${g.shopUrl()}`)).json();
+      const items = [];
+      for (let i = shared.items.length; i-- > 0;) {
+        const item = shared.items[i];
+        const data = { id: item.variant_id, quantity: item.quantity };
+        if (item.selling_plan_allocation) data.selling_plan = item.selling_plan_allocation.selling_plan.id;
+        items.push(data);
+      }
+      /* Same requests as the original block (jQuery form encoding carries the SharedCart / Referral attributes) */
+      await window.jQuery.ajax({ type: 'POST', url: '/cart/clear.js', dataType: 'json' });
+      await window.jQuery.ajax({ type: 'POST', url: '/cart/add.js', dataType: 'json', data: { attributes: { SharedCart: key, Referral: shared.webalias }, items } });
+      window.location = `/cart?ref=${shared.webalias}`;
+    };
+    const start = () => {
+      const key = new URLSearchParams(window.location.search).get('cart');
+      if (key) {
+        let tries = 0;
+        const run = () => (g.apiUrl() && window.jQuery ? openSharedCart(key).catch((e) => console.error('Shared cart:', e)) : (tries++ < 50 && setTimeout(run, 200)));
+        run();
+      } else {
+        document.cookie = 'CartCopied=; Max-Age=0; path=/;';
+      }
+      if (typeof logCart === 'function') setTimeout(logCart, 3000);
+    };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+  })();
+</script>

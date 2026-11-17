@@ -458,6 +458,17 @@
       "empty_text": "Start with LAMININE, our best seller, or browse the full range.",
       "shop_all": "Shop All Products",
       "discover_laminine": "Discover LAMININE"
+    },
+    "share": {
+      "title": "Share Your Cart",
+      "text": "Anyone who opens this link gets the same products in their cart.",
+      "creating": "Creating your link…",
+      "copy": "Copy Link",
+      "copied": "Copied",
+      "copied_status": "Link copied to your clipboard",
+      "failed": "We couldn't create your link. Please try again.",
+      "retry": "Try Again",
+      "on": "Share on"
     }
   }
 }

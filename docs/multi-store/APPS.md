@@ -2,6 +2,14 @@
 
 The full comparison and the removal proposal are in `LifePharm-Shopify-Apps-Audit-2026-11-16.pdf` (same folder). This page keeps the facts a developer needs when working on a store branch.
 
+## Removed (2026-11-18)
+
+- **Replo** (US) and **Triple Whale** were uninstalled by the developer on 2026-11-18, after Letisha approved both removals. The pre-checks showed nothing on any storefront depended on either.
+
+## Share Your Cart (2026-11-18)
+
+The Exigo shared-cart feature now lives in `snippets/lp-share-cart.liquid` (rendered from `layout/theme.liquid`). The old custom-liquid block in `sections/footer-group.json`, with its Font Awesome stylesheet, was removed on every branch. The API is `lpshopify.azurewebsites.net` (Azure South Central US). The snippet relies on the Exigo app embed's globals: `apiUrl`, `shopUrl`, `customerId`, `isCustomer`, `referralCookieName`, `getCookie` and `logCart`.
+
 ## Correction (2026-11-16)
 
 The first version of this page counted app block handles, and two apps appear in the themes under more than one handle because their vendors renamed them:
@@ -44,4 +52,4 @@ To do on the branches:
 
 ## Apps active on the storefront but absent from the theme JSON
 
-These load through script tags or pixels, so they never show up in a theme audit: Skio, FrontrowMD, NoFraud (UK), Magefan Customer Assistance, Cartbot (UK), Replo (US), Microsoft Clarity and Intelligems (US), plus the custom Exigo script on all three commerce stores. An unidentified loader from `9gtb.com` also runs on UK, US and EU.
+These load through script tags or pixels, so they never show up in a theme audit: Skio, FrontrowMD, NoFraud (UK), Magefan Customer Assistance, Cartbot (UK), Microsoft Clarity and Intelligems (US), plus the custom Exigo script on all three commerce stores. The `9gtb.com` loader on UK, US and EU is **Gorgias Convert** (identified 2026-11-17): the Gorgias app block loads `content.9gtb.com/loader.js` with `data-gorgias-loader-convert`, and the file defines `ConvertRootLoader` and `GorgiasBridge`. UK also has an older Convert script tag (`media.9gtb.com/loader.js?g_cvt_id=26fad685-...`), the same file loaded twice. Whether any Convert campaign is live can only be seen in Gorgias > Convert.

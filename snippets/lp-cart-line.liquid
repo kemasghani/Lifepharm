@@ -1,0 +1,84 @@
+{% doc %}
+  One cart line for the premium cart drawer: image on a sand tile, name, options, a pill quantity stepper and the line price.
+  Keeps the theme's line-item / line-item-quantity elements, the pill loader and data-line-key so Impact's cart JS
+  (quantity change, remove, loader, drawer refresh) works unchanged. The +/- buttons are wired in assets/lp-premium.js.
+
+  @param {object} line_item - The cart line item to render
+
+  @example
+  {% render 'lp-cart-line', line_item: line_item %}
+{% enddoc %}
+{%- liquid
+  assign max_quantity = nil
+  if line_item.variant.quantity_rule.max != nil
+    assign max_quantity = 999999 | at_most: line_item.variant.quantity_rule.max
+  endif
+  assign min_quantity = line_item.variant.quantity_rule.min | default: 1
+  assign step = line_item.variant.quantity_rule.increment | default: 1
+  assign title = line_item.product.title | default: line_item.title
+-%}
+<line-item class="line-item lp-cline">
+  <div class="line-item__media-wrapper lp-cline__media">
+    {%- if line_item.image != blank -%}
+      <a href="{{ line_item.url }}" tabindex="-1" aria-hidden="true">
+        {{- line_item.image | image_url: width: 320 | image_tag: loading: 'lazy', sizes: '88px', widths: '88,176,264', class: 'line-item__media', alt: '' -}}
+      </a>
+    {%- endif -%}
+    <pill-loader class="pill-loader"></pill-loader>
+  </div>
+
+  <div class="line-item__info lp-cline__info">
+    <div class="lp-cline__head">
+      {%- if line_item.url != blank -%}
+        <a href="{{ line_item.url }}" class="lp-cline__title">{{ title }}</a>
+      {%- else -%}
+        <p class="lp-cline__title">{{ title }}</p>
+      {%- endif -%}
+
+      <p class="lp-cline__price">
+        {%- if line_item.original_line_price > line_item.final_line_price -%}
+          <s class="lp-cline__was"><span class="sr-only">{{ 'product.price.regular_price' | t }}</span>{{ line_item.original_line_price | money }}</s>
+          <span class="sr-only">{{ 'product.price.sale_price' | t }}</span>
+        {%- endif -%}
+        {{ line_item.final_line_price | money }}
+      </p>
+    </div>
+
+    {%- capture meta -%}
+      {%- unless line_item.product.has_only_default_variant or line_item.gift_card -%}<span>{{ line_item.variant.title }}</span>{%- endunless -%}
+      {%- if line_item.selling_plan_allocation -%}<span class="lp-cline__plan">{% render 'lp-icon', name: 'refresh', size: 13 %}{{ line_item.selling_plan_allocation.selling_plan.name }}</span>{%- endif -%}
+    {%- endcapture -%}
+    {%- if meta != blank -%}<p class="lp-cline__meta">{{ meta }}</p>{%- endif -%}
+
+    {%- unless line_item.properties == blank -%}
+      <ul class="lp-cline__props" role="list">
+        {%- for property in line_item.properties -%}
+          {%- assign first_character_in_key = property.first | truncate: 1, '' -%}
+          {%- if property.last == blank or first_character_in_key == '_' -%}{%- continue -%}{%- endif -%}
+          <li>{{ property.first }}: {{ property.last }}</li>
+        {%- endfor -%}
+      </ul>
+    {%- endunless -%}
+
+    {%- for discount_allocation in line_item.line_level_discount_allocations -%}
+      <p class="lp-cline__deal">{%- render 'icon' with 'discount' -%} {{ discount_allocation.discount_application.title }} (-{{ discount_allocation.amount | money }})</p>
+    {%- endfor -%}
+
+    {%- if line_item.url_to_remove -%}
+      <line-item-quantity class="lp-cline__actions">
+        <div class="lp-qty">
+          <button type="button" class="lp-qty__btn lp-qty__btn--minus" aria-label="{{ 'cart.order.decrease_quantity' | t | escape }}" {% if line_item.quantity <= min_quantity %}disabled{% endif %}>
+            <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <input class="quantity-input lp-qty__input" type="number" is="quantity-input" inputmode="numeric" min="{{ min_quantity }}" step="{{ step }}" {% if max_quantity != nil %}max="{{ max_quantity }}"{% endif %} data-line-key="{{ line_item.key }}" aria-label="{{ 'cart.order.change_quantity' | t | escape }}" value="{{ line_item.quantity }}">
+          <button type="button" class="lp-qty__btn lp-qty__btn--plus" aria-label="{{ 'cart.order.increase_quantity' | t | escape }}" {% if max_quantity != nil and line_item.quantity >= max_quantity %}disabled{% endif %}>
+            <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 6h8M6 2v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+        <a href="{{ line_item.url_to_remove }}" class="lp-cline__remove" aria-label="{{ 'cart.order.remove_with_title' | t: title: title | escape }}">{{- 'cart.order.remove' | t -}}</a>
+      </line-item-quantity>
+    {%- else -%}
+      <p class="lp-cline__meta">{{ 'customer.order.quantity' | t }}: {{ line_item.quantity }}</p>
+    {%- endif -%}
+  </div>
+</line-item>

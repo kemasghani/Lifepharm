@@ -482,10 +482,15 @@
     };
 
     /* Open the app's enroller search, then come back to the dialog */
+    // The app reloads the page (?ref=<webalias>) after a pick, so remember what to reopen
+    const RESUME = 'lp-refq-resume';
+    const setResume = (v) => { try { v ? sessionStorage.setItem(RESUME, JSON.stringify(v)) : sessionStorage.removeItem(RESUME); } catch (e) {} };
+    const getResume = () => { try { return JSON.parse(sessionStorage.getItem(RESUME) || 'null'); } catch (e) { return null; } };
     const openApp = (backToDialog) => {
       const button = appButton();
       if (!button) return;
       const before = referrer();
+      setResume({ t: Date.now(), dialog: !!backToDialog, before });
       const returnState = dialog.classList.contains('is-done') ? 'done' : 'ask';
       if (dialog.open) dialog.close();
       clearInterval(watching);
@@ -500,6 +505,7 @@
         const closed = seenOpen && !open;
         if (picked || closed || Date.now() - started > 300000) {
           clearInterval(watching);
+          setResume(null);
           syncRow();
           if (backToDialog) setTimeout(() => show(now ? 'done' : returnState), picked ? 200 : 60);
         }
@@ -535,6 +541,21 @@
     const waitForApp = () => {
       if (appButton()) {
         syncRow();
+        const resume = getResume();
+        if (resume && Date.now() - resume.t < 10 * 60 * 1000) {
+          setResume(null);
+          // Give the app a moment to apply the new referrer after the reload
+          let n = 0;
+          const settle = () => {
+            if (referrer() && referrer() !== resume.before) {
+              const cart = document.getElementById('cart-drawer');
+              if (cart && cart.show) cart.show();
+              syncRow();
+              if (resume.dialog) setTimeout(() => show('done'), 450);
+            } else if (++n < 20) setTimeout(settle, 250);
+          };
+          settle();
+        }
         const banner = document.querySelector('.referral-banner');
         if (banner) new MutationObserver(queueRow).observe(banner, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ['style'] });
         return;

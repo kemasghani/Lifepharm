@@ -662,7 +662,6 @@ html:not(.lp-js) [data-lp-reveal] { opacity: 1; transform: none; }
 .free-shipping-bar .progress-bar::before { background: linear-gradient(90deg, rgb(var(--lp-amber)), rgb(var(--lp-amber-deep))); transition: transform var(--lp-dur-3) var(--lp-ease); }
 
 html.lp-menu-open { overflow: hidden; overscroll-behavior: none; }
-html.lp-menu-open .lp-ref, html.lp-menu-open .lp-ref-tab { visibility: hidden; }
 /* Mobile menu open: the sticky add-to-cart must not sit on top of the menu */
 html.lp-menu-open .product-quick-add:not(#lp-none) { visibility: hidden !important; opacity: 0 !important; pointer-events: none !important; }
 .lp-stat__value { font-variant-numeric: lining-nums; }

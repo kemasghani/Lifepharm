@@ -449,7 +449,7 @@
       const name = referrer();
       const done = state === 'done' && !!name;
       dialog.classList.toggle('is-done', done);
-      nameEl.textContent = name;
+      if (nameEl.textContent !== name) nameEl.textContent = name;
       dialog.setAttribute('aria-labelledby', done ? '' : 'lp-refq-title');
       if (!dialog.open) { dialog.showModal(); playArt(); }
     };
@@ -475,9 +475,10 @@
       const row = document.querySelector('#cart-drawer [data-lp-ref-row]');
       if (!row) return;
       const name = referrer();
-      row.hidden = !name;
+      // Write only on change: these nodes sit inside observed subtrees, so an unconditional write would loop
+      if (row.hidden !== !name) row.hidden = !name;
       const strong = row.querySelector('[data-lp-ref-row-name]');
-      if (strong) strong.textContent = name;
+      if (strong && strong.textContent !== name) strong.textContent = name;
     };
 
     /* Open the app's enroller search, then come back to the dialog */
@@ -527,13 +528,15 @@
     });
 
     const drawer = document.getElementById('cart-drawer');
-    if (drawer) new MutationObserver(syncRow).observe(drawer, { childList: true, subtree: true });
+    let rowQueued = false;
+    const queueRow = () => { if (rowQueued) return; rowQueued = true; requestAnimationFrame(() => { rowQueued = false; syncRow(); }); };
+    if (drawer) new MutationObserver(queueRow).observe(drawer, { childList: true, subtree: true });
     let tries = 0;
     const waitForApp = () => {
       if (appButton()) {
         syncRow();
         const banner = document.querySelector('.referral-banner');
-        if (banner) new MutationObserver(syncRow).observe(banner, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ['style'] });
+        if (banner) new MutationObserver(queueRow).observe(banner, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ['style'] });
         return;
       }
       if (++tries < 40) setTimeout(waitForApp, 250);

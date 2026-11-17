@@ -691,7 +691,9 @@
     const progress = threshold > 0 ? Math.min(1, Math.max(0, total / threshold)) : 1;
     const free = total >= threshold;
     const remaining = el.querySelector('[data-lp-ship-remaining]');
-    if (remaining) remaining.textContent = money(Math.max(0, threshold - total));
+    const remainingText = money(Math.max(0, threshold - total));
+    // While the bar fills on the way to free, keep the last amount so it never reads "0.00 away"
+    if (remaining) remaining.textContent = (last && !last.free && free && last.remainingText) ? last.remainingText : remainingText;
     const row = document.querySelector('#cart-drawer [data-lp-ship-row]');
     const fill = el.querySelector('.lp-ship__fill');
 
@@ -718,7 +720,7 @@
       }
       if (free && !last && !sessionPlayed()) drawerOpen() ? play(el) : (pendingPlay = true);
     }
-    last = { progress, free };
+    last = { progress, free, remainingText: free ? (last && last.remainingText) : remainingText };
   };
 
   const scan = () => {

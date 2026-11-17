@@ -60,9 +60,17 @@
       </ul>
     {%- endunless -%}
 
-    {%- for discount_allocation in line_item.line_level_discount_allocations -%}
-      <p class="lp-cline__deal">{%- render 'icon' with 'discount' -%} {{ discount_allocation.discount_application.title }} (-{{ discount_allocation.amount | money }})</p>
-    {%- endfor -%}
+    {%- if line_item.line_level_discount_allocations.size > 0 -%}
+      <ul class="lp-cline__deals" role="list">
+        {%- for discount_allocation in line_item.line_level_discount_allocations -%}
+          <li class="lp-cline__deal">
+            <svg class="lp-cline__deal-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9-9-9z"/><circle cx="7.5" cy="7.5" r="1.25" fill="currentColor" stroke="none"/></svg>
+            <span class="lp-cline__deal-name">{{ discount_allocation.discount_application.title | escape }}</span>
+            <span class="lp-cline__deal-amount"><span class="sr-only">{{ 'lp.cart.saving' | t }}</span>&minus;{{ discount_allocation.amount | money }}</span>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
 
     {%- if line_item.url_to_remove -%}
       <line-item-quantity class="lp-cline__actions">

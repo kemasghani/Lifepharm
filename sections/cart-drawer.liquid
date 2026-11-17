@@ -68,15 +68,12 @@
             {%- endcomment -%}
             <div class="lp-ship{% if lp_fd_reached %} is-free{% endif %}" data-lp-ship data-threshold="{{ lp_fd_threshold }}" data-total="{{ lp_fd_total }}" style="--lp-ship-progress: {{ lp_fd_progress }}">
               <span class="lp-ship__icon" aria-hidden="true">
-                <svg class="lp-ship__truck" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M2.5 6.5h11v9h-11z"/><path d="M13.5 9.5h4l3 3.5v2.5h-7"/><circle cx="6.5" cy="17" r="1.8"/><circle cx="17" cy="17" r="1.8"/></svg>
-                <video class="lp-ship__video" src="{{ 'lp-free-delivery.mp4' | asset_url }}" poster="{{ 'lp-free-delivery.jpg' | asset_url }}" width="52" height="52" muted playsinline preload="auto" disablepictureinpicture tabindex="-1"></video>
+                <svg class="lp-ship__truck" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M2.5 6.5h11v9h-11z"/><path d="M13.5 9.5h4l3 3.5v2.5h-7"/><circle cx="6.5" cy="17" r="1.8"/><circle cx="17" cy="17" r="1.8"/></svg>
+                <video class="lp-ship__video" src="{{ 'lp-free-delivery.mp4' | asset_url }}" poster="{{ 'lp-free-delivery.jpg' | asset_url }}" width="32" height="32" muted playsinline preload="auto" disablepictureinpicture tabindex="-1"></video>
               </span>
               <span class="lp-ship__body" role="status">
                 <span class="lp-ship__msg lp-ship__msg--progress">{{ 'cart.free_shipping_bar.limit_unreached_html' | t: remaining_amount: lp_fd_remaining_html }}</span>
-                <span class="lp-ship__msg lp-ship__msg--free">
-                  <span class="lp-fd__title">{{ 'lp.cart.free_delivery_title' | t }}</span>
-                  <span class="lp-fd__sub">{{ 'lp.cart.free_delivery_text' | t }}</span>
-                </span>
+                <span class="lp-ship__msg lp-ship__msg--free"><span class="lp-fd__title">{{ 'lp.cart.free_delivery_title' | t }}</span></span>
               </span>
               <span class="lp-ship__bar" aria-hidden="true"><span class="lp-ship__fill"></span></span>
             </div>

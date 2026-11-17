@@ -243,7 +243,7 @@
         "logo": "{{shop.brand.logo}}",
         "logo_max_width": 200,
         "logo_mobile_max_width": 150,
-        "menu": "main-menu",
+        "menu": "main-menu-redesign",
         "lp_menu_image_1": "shopify://shop_images/Supplements-Orange-bg_web.jpg",
         "lp_menu_image_2": "shopify://shop_images/Skincare-Blue-bg_web.jpg",
         "lp_menu_image_3": "shopify://shop_images/lp-kive-power-cream-arch.jpg",

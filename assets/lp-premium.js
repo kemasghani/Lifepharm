@@ -470,11 +470,27 @@
       setTimeout(() => { bypass = false; }, 0);
     };
 
+    /* Store the referrer's display name on the cart, so the checkout "Referred by" block can show it
+       (Teqnavi only stores the webalias, as the "Referral" attribute) */
+    let nameWrite = Promise.resolve();
+    const writeName = (name) => {
+      let last = '';
+      try { last = sessionStorage.getItem('lp-ref-name') || ''; } catch (e) {}
+      if (!name || name === last) return nameWrite;
+      try { sessionStorage.setItem('lp-ref-name', name); } catch (e) {}
+      nameWrite = fetch((window.Shopify?.routes?.root || '/') + 'cart/update.js', {
+        method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ attributes: { 'Referrer Name': name } })
+      }).catch(() => { try { sessionStorage.removeItem('lp-ref-name'); } catch (e) {} });
+      return nameWrite;
+    };
+
     /* Referred-by line in the cart drawer */
     const syncRow = () => {
       const row = document.querySelector('#cart-drawer [data-lp-ref-row]');
       if (!row) return;
       const name = referrer();
+      if (name) writeName(name);
       // Write only on change: these nodes sit inside observed subtrees, so an unconditional write would loop
       if (row.hidden !== !name) row.hidden = !name;
       const strong = row.querySelector('[data-lp-ref-row-name]');
@@ -531,7 +547,13 @@
     }, true);
 
     dialog.addEventListener('click', (event) => {
-      if (event.target.closest('[data-lp-refq-skip]') || event.target.closest('[data-lp-refq-continue]')) { remember(); dialog.close(); continueCheckout(); return; }
+      if (event.target.closest('[data-lp-refq-skip]')) { remember(); dialog.close(); continueCheckout(); return; }
+      if (event.target.closest('[data-lp-refq-continue]')) {
+        remember(); dialog.close();
+        const name = referrer();
+        Promise.race([writeName(name), new Promise((r) => setTimeout(r, 1500))]).then(continueCheckout);
+        return;
+      }
       if (event.target.closest('[data-lp-refq-add]') || event.target.closest('[data-lp-refq-change]')) { remember(); openApp(true); return; }
       if (event.target.closest('[data-lp-refq-close]') || event.target === dialog) { remember(); pending = null; dialog.close(); }
     });

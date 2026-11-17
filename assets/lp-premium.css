@@ -774,7 +774,7 @@ body:has(.shopify-section--main-product) .shopify-section--text-with-icons:not(#
 .lp-cline__deals { display: grid; justify-items: start; gap: .375rem; margin: .25rem 0 0; padding: 0; list-style: none; }
 .lp-cline__deal { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; column-gap: .4375rem; max-width: 100%; padding: .375rem .625rem; border-radius: 8px; background: rgb(var(--lp-amber) / .1); font-size: .75rem; font-weight: 600; line-height: 1.4; color: rgb(var(--lp-ink)); }
 .lp-cline__deal-icon { margin-top: .1rem; color: rgb(var(--lp-amber)); }
-.lp-cline__deal-name { min-width: 0; overflow-wrap: anywhere; }
+.lp-cline__deal-name { min-width: 0; overflow-wrap: anywhere; text-wrap: balance; }
 .lp-cline__price { gap: .125rem; }
 .lp-csum__row--save { font-size: .875rem; font-weight: 600; color: rgb(var(--lp-sage)); font-variant-numeric: tabular-nums; }
 .lp-cline__actions { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-block-start: .5rem; }

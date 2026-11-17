@@ -132,6 +132,12 @@
       {%- endif -%}
 
       <div class="v-stack gap-1 lp-csum">
+        {%- if cart.total_discount > 0 -%}
+          <div class="lp-csum__row lp-csum__row--save">
+            <span>{{ 'lp.cart.savings' | t }}</span>
+            <span>&minus;{{ cart.total_discount | money }}</span>
+          </div>
+        {%- endif -%}
         <div class="lp-csum__row">
           <span class="lp-csum__label">{{ 'lp.cart.subtotal' | t }}</span>
           <span class="lp-csum__total">{{- cart.total_price | money -}}</span>

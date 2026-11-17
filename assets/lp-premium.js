@@ -484,6 +484,9 @@
     /* Open the app's enroller search, then come back to the dialog */
     // The app reloads the page (?ref=<webalias>) after a pick, so remember what to reopen
     const RESUME = 'lp-refq-resume';
+    let unloading = false;
+    window.addEventListener('pagehide', () => { unloading = true; });
+    window.addEventListener('beforeunload', () => { unloading = true; });
     const setResume = (v) => { try { v ? sessionStorage.setItem(RESUME, JSON.stringify(v)) : sessionStorage.removeItem(RESUME); } catch (e) {} };
     const getResume = () => { try { return JSON.parse(sessionStorage.getItem(RESUME) || 'null'); } catch (e) { return null; } };
     const openApp = (backToDialog) => {
@@ -505,9 +508,13 @@
         const closed = seenOpen && !open;
         if (picked || closed || Date.now() - started > 300000) {
           clearInterval(watching);
-          setResume(null);
-          syncRow();
-          if (backToDialog) setTimeout(() => show(now ? 'done' : returnState), picked ? 200 : 60);
+          // The app closes its search and then reloads the page after a pick: wait a beat before treating it as "closed"
+          setTimeout(() => {
+            if (unloading) return;
+            setResume(null);
+            syncRow();
+            if (backToDialog) show(referrer() ? 'done' : returnState);
+          }, picked ? 200 : 1500);
         }
       }, 250);
     };

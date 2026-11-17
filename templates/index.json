@@ -37,7 +37,7 @@
           "type": "chip",
           "settings": {
             "icon": "truck",
-            "text": "Free UK delivery over £150"
+            "text": "Free shipping over $150"
           }
         }
       },
@@ -133,7 +133,7 @@
           "type": "category",
           "settings": {
             "product": "laminine",
-            "image": "shopify://shop_images/2026-06-22-Laminine-ShopifyImages-05.jpg",
+            "image": "shopify://shop_images/lp-cat-laminine.jpg",
             "title": "LAMININE",
             "caption": "Our best seller",
             "badge": "Save 25%"
@@ -143,7 +143,7 @@
           "type": "category",
           "settings": {
             "collection": "cell-regeneration",
-            "image": "shopify://shop_images/Supplements-Orange-bg_web.jpg",
+            "image": "shopify://shop_images/lp-cat-nutritionals.jpg",
             "title": "Nutritionals"
           }
         },
@@ -151,15 +151,15 @@
           "type": "category",
           "settings": {
             "collection": "skin-regeneration",
-            "image": "shopify://shop_images/lp-hf-omnia-pedestal.jpg",
-            "title": "Skin health"
+            "image": "shopify://shop_images/lp-cat-skin-lamiderm.jpg",
+            "title": "Skin Health"
           }
         },
         "k4": {
           "type": "category",
           "settings": {
             "collection": "frequency-regeneration",
-            "image": "shopify://shop_images/lp-kive-power-cream-arch.jpg",
+            "image": "shopify://shop_images/lp-cat-frequency.jpg",
             "title": "Frequency"
           }
         },
@@ -167,8 +167,8 @@
           "type": "category",
           "settings": {
             "collection": "all",
-            "image": "shopify://shop_images/5.jpg",
-            "title": "Shop all"
+            "image": "shopify://shop_images/lp-cat-shop-all.jpg",
+            "title": "Shop All"
           }
         }
       },
@@ -206,7 +206,7 @@
             "style": "light",
             "tag": "Most added to LAMININE",
             "heading": "Complete your <em>routine</em>",
-            "text": "Omega+++, Immune+++ and Digestive+++ are the products customers pair with LAMININE most often.",
+            "text": "OMEGA+++, IMMUNE+++ and DIGESTIVE+++ are the products customers pair with LAMININE most often.",
             "button_label": "Shop nutritionals",
             "url": "shopify://collections/cell-regeneration",
             "image": "shopify://shop_images/lp-kive-laminine-omega-bedside.jpg"
@@ -243,11 +243,17 @@
       ],
       "settings": {
         "heading": "Our <em>products</em>",
-        "collection": "cell-regeneration",
-        "limit": 8,
-        "all_label": "Best sellers",
+        "collection": "all",
+        "limit": 4,
+        "all_label": "Best Sellers",
         "add_label": "Add to cart",
-        "view_all_label": "View all products"
+        "view_all_label": "View all products",
+        "products": [
+          "laminine",
+          "cellnergy-wellness",
+          "immune",
+          "cellnergy-footcharge"
+        ]
       }
     },
     "lp_science": {
@@ -258,7 +264,7 @@
           "settings": {
             "value": "978",
             "suffix": "+",
-            "label": "Verified LAMININE reviews"
+            "label": "Verified LAMININE Reviews"
           }
         },
         "s2": {
@@ -266,7 +272,7 @@
           "settings": {
             "value": "60",
             "suffix": "days",
-            "label": "Money-back guarantee"
+            "label": "Money-Back Guarantee"
           }
         },
         "s3": {
@@ -274,7 +280,7 @@
           "settings": {
             "value": "100",
             "suffix": "%",
-            "label": "NSF-tested nutritionals"
+            "label": "NSF-Tested Nutritionals"
           }
         }
       },
@@ -384,42 +390,42 @@
         "q1": {
           "type": "question",
           "settings": {
-            "question": "Where should I start?",
-            "answer": "<p>Most customers start with LAMININE, our best seller in the UK, US and Europe. Many then add Omega+++, Immune+++ or Digestive+++ to complete their routine.</p>"
+            "question": "Where Should I Start?",
+            "answer": "<p>Most customers start with LAMININE, our best seller in the UK, US and Europe. Many then add OMEGA+++, IMMUNE+++ or DIGESTIVE+++ to complete their routine.</p>"
           }
         },
         "q2": {
           "type": "question",
           "settings": {
-            "question": "What makes LifePharm different?",
+            "question": "What Makes LifePharm Different?",
             "answer": "<p>Our formulas are built around Fertilized Avian Egg Extract, a natural source of growth factors, cellular factors and amino acids. Our products are made in the USA and our nutritionals are fully NSF tested.</p>"
           }
         },
         "q3": {
           "type": "question",
           "settings": {
-            "question": "How does Subscribe & Save work?",
+            "question": "How Does Subscribe & Save Work?",
             "answer": "<p>Subscribers save 25% on every order. Choose a delivery every 4, 8, 12 or 26 weeks when you add a product to your basket.</p>"
           }
         },
         "q4": {
           "type": "question",
           "settings": {
-            "question": "What if a product is not right for me?",
+            "question": "What If a Product Is Not Right for Me?",
             "answer": "<p>Every order is backed by our 60-day money-back guarantee. Let us know within 60 days of delivery and we will refund you in full.</p>"
           }
         },
         "q5": {
           "type": "question",
           "settings": {
-            "question": "How much is UK delivery?",
-            "answer": "<p>Standard UK delivery is free on orders of £150 or more. Below that, it costs £7.95.</p>"
+            "question": "How Much Is Shipping?",
+            "answer": "<p>Standard shipping is free on orders of $150 or more. Below that, the shipping cost is shown at checkout.</p>"
           }
         },
         "q6": {
           "type": "question",
           "settings": {
-            "question": "Are your supplements right for me?",
+            "question": "Are Your Supplements Right for Me?",
             "answer": "<p>If you are pregnant, nursing, taking medication or have a medical condition, please speak to your doctor before taking any supplement.</p>"
           }
         }
@@ -435,7 +441,7 @@
       "settings": {
         "eyebrow": "Good to know",
         "heading": "Questions, <em>answered</em>",
-        "help_heading": "Still unsure?",
+        "help_heading": "Still Unsure?",
         "help_text": "Our team is happy to help you choose the right products.",
         "help_label": "Chat with our team",
         "help_url": "/pages/contact"
@@ -450,7 +456,7 @@
         "heading": "Subscribe and <em>save 25%</em>",
         "text": "<p>Pick a size, then choose a delivery every 4, 8, 12 or 26 weeks on the next page. Prefer a one-off order? You can choose that there too.</p>",
         "best_label": "Best value",
-        "free_label": "Free UK delivery",
+        "free_label": "Free shipping",
         "free_delivery_threshold": 150,
         "sub_label": "With Subscribe & Save",
         "oneoff_label": "One-off purchase",
@@ -566,7 +572,7 @@
           "settings": {
             "collection": "skin-regeneration",
             "image": "shopify://shop_images/Skincare-Blue-bg_web.jpg",
-            "title": "Skin health",
+            "title": "Skin Health",
             "text": "Growth-factor skincare for visibly smoother, firmer-looking skin.",
             "cta": "Shop skin health"
           }
@@ -576,7 +582,7 @@
           "settings": {
             "collection": "frequency-regeneration",
             "image": "shopify://shop_images/test_sqaure_08a86950-61d0-4e60-8977-5156471baea5.jpg",
-            "title": "Frequency regeneration",
+            "title": "Frequency Regeneration",
             "text": "Advanced Cellnergy technology for whole-body wellbeing.",
             "cta": "Discover Cellnergy"
           }
@@ -810,7 +816,7 @@
             "image": "shopify://shop_images/lp-home-step-daily.jpg",
             "video": "shopify://files/videos/lp-home-step-daily.mp4",
             "title": "Take It Daily",
-            "text": "<p>Your order arrives at your door, with free UK delivery over £150. Take it each day with a glass of water.</p>"
+            "text": "<p>Your order arrives at your door, with free shipping over $150. Take it each day with a glass of water.</p>"
           }
         },
         "s3": {
@@ -818,7 +824,7 @@
           "settings": {
             "image": "shopify://shop_images/lp-home-step-feel.jpg",
             "video": "shopify://files/videos/lp-home-step-feel.mp4",
-            "title": "Feel The Difference",
+            "title": "Feel the Difference",
             "text": "<p>Give it time to work. If it is not right for you, our 60-day money-back guarantee has you covered.</p>"
           }
         }
@@ -835,6 +841,73 @@
         "button_label": "",
         "note": ""
       }
+    },
+    "lp_home_life": {
+      "type": "lp-home-life",
+      "blocks": {
+        "p1": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lp-life-laminine-omega-basket.jpg",
+            "product": "laminine",
+            "caption": "Along for the morning ride"
+          }
+        },
+        "p2": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lp-life-omega-padel.jpg",
+            "product": "omega",
+            "caption": "Courtside, between games"
+          }
+        },
+        "p3": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lp-life-immune-desk.jpg",
+            "product": "immune",
+            "caption": "On your desk while you work"
+          }
+        },
+        "p4": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lp-life-extrim-kitchen.jpg",
+            "product": "extrim-shape",
+            "caption": "With breakfast at home"
+          }
+        },
+        "p5": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lp-life-lamiderm-flowers.jpg",
+            "product": "lamiderm-apex-smart-serum",
+            "title": "LAMIDERM APEX",
+            "caption": "Part of your morning skincare"
+          }
+        },
+        "p6": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/lp-life-omnia-seaside.jpg",
+            "product": "omnia",
+            "caption": "Easy to take wherever you go"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5",
+        "p6"
+      ],
+      "settings": {
+        "eyebrow": "In daily life",
+        "heading": "Wherever your <em>day takes you</em>",
+        "link_label": "View product"
+      }
     }
   },
   "order": [
@@ -843,6 +916,7 @@
     "lp_home_steps",
     "lp_tabs",
     "lp_science",
+    "lp_home_life",
     "rich_text_arFn6i",
     "17175461316e8d66c7",
     "lp_home_cats",

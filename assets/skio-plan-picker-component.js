@@ -598,7 +598,7 @@ position: relative;
       .group-content { gap: 14px; padding-left: 34px; }
       .group-content-additional { font-size: 14px; line-height: 1.5; color: var(--lp-ink); font-weight: 400; }
       .group-content-additional ul { display: grid; gap: 6px; }
-      .group-content-additional li::before { background-color: var(--lp-amber-deep); }
+      .group-content-additional li::before { background-color: var(--lp-amber); }
       .selling-plan-dropdown { height: 46px; margin: 0; padding: 0 40px 0 14px; border: 1px solid var(--lp-stone); border-radius: 12px; background-color: #fff; background-position: right 14px top 50%; font-size: 15px; font-weight: 500; color: var(--lp-ink); cursor: pointer; transition: border-color .2s ease; }
       .selling-plan-dropdown:hover, .selling-plan-dropdown:focus { border-color: var(--lp-ink); outline: none; }
       .selling-plan-dropdown-label:empty { display: none; }

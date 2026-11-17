@@ -770,13 +770,11 @@ body:has(.shopify-section--main-product) .shopify-section--text-with-icons:not(#
 .lp-cline__meta span + span::before { content: "\00B7"; margin-inline: .4rem; }
 .lp-cline__plan { display: inline-flex; align-items: center; gap: .3rem; }
 .lp-cline__plan svg { color: rgb(var(--lp-amber)); flex: none; }
-/* Line discount: a soft amber chip. Icon in brand orange, text in ink for contrast; wraps neatly on narrow screens */
+/* Line discount: a soft amber chip with the tag icon beside the name; the strike-through price shows the amount, the Savings row the total */
 .lp-cline__deals { display: grid; justify-items: start; gap: .375rem; margin: .25rem 0 0; padding: 0; list-style: none; }
-.lp-cline__deal { display: inline-flex; flex-wrap: wrap; align-items: center; column-gap: .375rem; row-gap: .125rem; max-width: 100%; padding: .3125rem .625rem; border-radius: 8px; background: rgb(var(--lp-amber) / .1); font-size: .75rem; line-height: 1.35; color: rgb(var(--lp-ink)); }
-.lp-cline__deal-icon { flex: none; color: rgb(var(--lp-amber)); }
-.lp-cline__deal-name { font-weight: 600; min-width: 0; overflow-wrap: anywhere; }
-.lp-cline__deal-amount { font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; color: rgb(var(--lp-muted)); }
-.lp-cline__deal-name + .lp-cline__deal-amount::before { content: "\00B7"; margin-inline-end: .375rem; color: rgb(var(--lp-muted) / .6); }
+.lp-cline__deal { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; column-gap: .4375rem; max-width: 100%; padding: .375rem .625rem; border-radius: 8px; background: rgb(var(--lp-amber) / .1); font-size: .75rem; font-weight: 600; line-height: 1.4; color: rgb(var(--lp-ink)); }
+.lp-cline__deal-icon { margin-top: .1rem; color: rgb(var(--lp-amber)); }
+.lp-cline__deal-name { min-width: 0; overflow-wrap: anywhere; }
 .lp-cline__price { gap: .125rem; }
 .lp-csum__row--save { font-size: .875rem; font-weight: 600; color: rgb(var(--lp-sage)); font-variant-numeric: tabular-nums; }
 .lp-cline__actions { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-block-start: .5rem; }

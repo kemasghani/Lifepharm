@@ -632,3 +632,28 @@
   else initEdgeBg();
   document.addEventListener('shopify:section:load', initEdgeBg);
 })();
+
+/* Cart drawer quantity stepper: +/- update the theme's quantity input and fire 'change', so Impact's line-item-quantity does the cart update. Delegated, because the drawer re-renders its lines. */
+(() => {
+  document.addEventListener('click', (event) => {
+    const button = event.target.closest('.lp-qty__btn');
+    if (!button || button.disabled) return;
+    const input = button.parentElement.querySelector('.lp-qty__input');
+    if (!input) return;
+    const step = parseInt(input.step, 10) || 1;
+    const min = parseInt(input.min, 10) || 1;
+    const max = input.max ? parseInt(input.max, 10) : Infinity;
+    const current = parseInt(input.value, 10) || min;
+    const next = Math.min(max, Math.max(min, current + (button.classList.contains('lp-qty__btn--plus') ? step : -step)));
+    if (next === current) return;
+    input.value = next;
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    input.dispatchEvent(new Event('change', { bubbles: true }));
+  });
+  document.addEventListener('keydown', (event) => {
+    if ((event.key === 'Enter' || event.key === ' ') && event.target.matches('.share-cart-link')) {
+      event.preventDefault();
+      event.target.click();
+    }
+  });
+})();

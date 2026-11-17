@@ -31,12 +31,12 @@ Source: Dropbox "Branding Resources" > `LifePharm-QuickStyleGuide-2024.pdf`. Fon
 | Token | Value | Use |
 |---|---|---|
 | `--lp-ink` | **#414042** (Black 90%) | text. **Not for large panels**: the client finds dark panels too heavy |
-| Panel grey | **#E2E3E4** (light tint of Pantone 423) | footer, comparison section. Ink text on it |
+| Panel grey | **#E2E3E4** (light tint of Pantone 423) | comparison section only. Ink text on it. **Not the footer**: on 2026-11-17 Letisha said the grey footer "doesn't really go with the rest of the site" |
 | `--lp-amber` | **#FF8F00** (live-site orange, chosen by Letisha 2026-11-12; was Pantone 144 #F18A00) | brand accent, **all primary CTA buttons**, badges, icons |
-| `--lp-amber-deep` | #A65A00 | orange **text** only (AA contrast on light backgrounds) |
+| `--lp-amber-deep` | #A65A00 | focus outlines, shadows and gradient depth only. **Not for text or icons**: on 2026-11-17 the developer asked for every orange accent to use `--lp-amber`, because the deep tone reads as brown/yellow |
 | Logo grey | #888B8D (Pantone 423) | logo and illustration only. Too dark as a panel background (tried and rejected) |
 | `--lp-muted` | #6B6A6C | secondary text |
-| `--lp-ivory` / `--lp-sand` | #FBF9F5 / #F3EFE7 | backgrounds |
+| `--lp-ivory` / `--lp-sand` | #FBF9F5 / #F3EFE7 | backgrounds. The footer is sand (#F3EFE7) |
 
 - **Primary buttons are #FF8F00 with #1F1E20 text** (7.3:1). Never use white text on #FF8F00 (2.3:1). Do not bring back dark or "pale black" buttons.
 - Product colours, for product-specific accents only:
@@ -95,11 +95,16 @@ Source: Dropbox "Branding Resources" > `LifePharm-QuickStyleGuide-2024.pdf`. Fon
 Collected from her reviews on 2026-11-12. Treat these as the brief for every new design. If a new request conflicts, ask.
 
 ### Look
-- **Light and bright.** No dark panels. Grey surfaces are the light tint #E2E3E4; orange is the bright live-site orange #FF8F00.
+- **Light and bright.** No dark panels. Prefer the warm cream surfaces (ivory, sand) over grey; the only grey surface left is the PDP comparison panel (#E2E3E4). Orange is the bright live-site orange #FF8F00.
+- **Footer logo is all dark grey** (#414042, `LifePharm_logo_mono_ink.png`), not the two-tone logo (Letisha, 2026-11-17).
 - **Titles in title case**, never full caps. That includes accordion titles ("How to Use", "60-Day Money-Back Guarantee"), ingredient names and menu headlines.
-- **Menu headlines**: larger than the links, title case, orange (use `--lp-amber-deep` so they stay readable).
+- **Menu headlines**: larger than the links, title case, orange (`--lp-amber`).
 - **Use the brand's own orange circle icons** (Dropbox "ICONS 2024"; cut versions in Files as `lp-benefit-*.png`) wherever a list of benefits would otherwise be plain text that "gets lost".
 - **Follow her Dropbox designs** when one exists for a page. Ask for the source image or video if only the mockup is available.
+- **Orange is always #FF8F00 (`--lp-amber`)** for text, icons and ticks. Never the deep brown-orange (Letisha, 2026-11-17).
+- **Product names in brand capitals everywhere**, including running copy: LAMININE, OMEGA+++, IMMUNE+++, DIGESTIVE+++. Quoted study titles stay as published.
+- **Tab, filter and button labels in title case** ("Best Sellers").
+- **Imagery is minimalist and premium**: cream or beige backgrounds, soft daylight, one subject, no baked-in text, no busy props or saturated orange backdrops.
 
 ### Layout
 - **Image above its text.** Timelines and step content become columns of cards (image on top), not tabs beside a collage.

@@ -32,7 +32,7 @@
         "message_ATBdQg": {
           "type": "message",
           "settings": {
-            "text": "Free UK delivery on orders over £150",
+            "text": "Free delivery on orders over €150",
             "url": ""
           }
         }
@@ -110,7 +110,7 @@
             "menu_item": "Shop",
             "layout": "horizontal",
             "submenu_style": "bold_heading",
-            "image_1": "shopify://shop_images/5.jpg",
+            "image_1": "shopify://shop_images/lp-menu-shop-all.jpg",
             "image_heading_1": "Shop All",
             "image_link_1": "shopify://collections/all",
             "image_text_color_1": "#181818",

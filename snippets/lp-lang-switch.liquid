@@ -1,0 +1,206 @@
+{% doc %}
+  Header language selector. It drives the Weglot app (JavaScript integration), so a choice translates the page in
+  place and keeps the URL. The list comes from Weglot itself, so languages added in the Weglot dashboard appear
+  here without a theme change. The element stays hidden until Weglot has loaded.
+
+  The list opens in a modal <dialog>, which sits in the browser's top layer: above the header, app widgets
+  (chat, badges, the referral tab) and any z-index, with the page dimmed behind it. Phones get a bottom sheet;
+  larger screens get a dropdown under the button.
+
+  @param {string} [id] - Unique id when the selector is rendered more than once (default "lp-lang")
+  @param {string} [align] - "start" opens the dropdown from the left edge of the button, otherwise from the right
+
+  @example
+  {% render 'lp-lang-switch', id: 'lp-lang-mobile', align: 'start' %}
+{% enddoc %}
+{%- assign uid = id | default: 'lp-lang' -%}
+
+<lp-lang-switch class="lp-lang" data-align="{{ align | default: 'end' }}" hidden>
+  <button type="button" class="lp-lang__btn" aria-haspopup="dialog" aria-expanded="false" aria-controls="{{ uid }}-dialog">
+    <span class="lp-lang__current" data-lp-lang-current data-wg-notranslate>EN</span>
+    <svg class="lp-lang__caret" width="8" height="5" viewBox="0 0 8 5" aria-hidden="true" focusable="false"><path d="M0 0h8L4 5z" fill="currentColor"/></svg>
+    <span class="sr-only">{{ 'general.localization.change_language_accessibility_text' | t }}</span>
+  </button>
+
+  <dialog class="lp-lang__dialog" id="{{ uid }}-dialog" aria-labelledby="{{ uid }}-title" tabindex="-1">
+    <div class="lp-lang__head">
+      <p class="lp-lang__title" id="{{ uid }}-title">{{ 'general.localization.language' | t }}</p>
+      <button type="button" class="lp-lang__close" data-lp-lang-close>
+        <span class="sr-only">{{ 'general.accessibility.close' | t }}</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="m3.5 3.5 9 9m0-9-9 9"/></svg>
+      </button>
+    </div>
+    <ul class="lp-lang__list" role="listbox" aria-labelledby="{{ uid }}-title" data-lp-lang-list data-wg-notranslate></ul>
+  </dialog>
+</lp-lang-switch>
+
+{% stylesheet %}
+.lp-lang { display: block; }
+.lp-lang[hidden] { display: none; }
+
+.lp-lang__btn { display: inline-flex; align-items: center; justify-content: center; gap: .375rem; min-width: 44px; min-height: 44px; padding: 0 .25rem; color: inherit; cursor: pointer; transition: opacity 200ms ease-out; }
+.lp-lang__btn:hover { opacity: .7; }
+.lp-lang__btn:focus-visible { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 2px; border-radius: .5rem; }
+.lp-lang__current { font-size: .8125rem; font-weight: 600; letter-spacing: .08em; line-height: 1; }
+.lp-lang__caret { flex: none; transition: transform 200ms ease-out; }
+.lp-lang__btn[aria-expanded="true"] .lp-lang__caret { transform: rotate(180deg); }
+
+.lp-lang__dialog { position: fixed; inset: auto; margin: 0; width: min(23rem, calc(100vw - 2rem)); max-width: none; max-height: min(36rem, calc(100dvh - 7rem)); padding: 0; overflow: hidden; display: flex; flex-direction: column; background: #fff; color: rgb(var(--lp-ink)); border: 1px solid rgb(var(--lp-ink) / .08); border-radius: 1rem; box-shadow: 0 24px 48px -20px rgb(var(--lp-ink) / .3), 0 2px 6px rgb(var(--lp-ink) / .05); opacity: 0; transform: translateY(-6px); transition: opacity 200ms ease-out, transform 240ms cubic-bezier(.16, 1, .3, 1); }
+.lp-lang__dialog:not([open]) { display: none; }
+.lp-lang__dialog:focus { outline: none; }
+.lp-lang__dialog::backdrop { background: rgb(31 30 32 / .18); opacity: 0; transition: opacity 200ms ease-out; }
+.lp-lang__dialog.is-open { opacity: 1; transform: none; }
+.lp-lang__dialog.is-open::backdrop { opacity: 1; }
+
+.lp-lang__head { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .75rem .75rem .25rem 1.25rem; }
+.lp-lang__title { margin: 0; font-size: 1rem; font-weight: 600; letter-spacing: -.005em; }
+.lp-lang__close { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 999px; color: rgb(var(--lp-muted)); cursor: pointer; transition: background-color 150ms ease-out, color 150ms ease-out; }
+.lp-lang__close:hover { background: rgb(var(--lp-ink) / .05); color: rgb(var(--lp-ink)); }
+.lp-lang__close:focus { outline: none; }
+.lp-lang__close:focus-visible { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: -2px; }
+
+.lp-lang__list { display: grid; grid-template-columns: 1fr 1fr; column-gap: .5rem; margin: 0; padding: .25rem .75rem 1rem; list-style: none; overflow-y: auto; overscroll-behavior: contain; }
+.lp-lang__opt { display: flex; align-items: center; justify-content: space-between; gap: .5rem; min-height: 46px; padding: 0 .5rem; border-radius: .5rem; font-size: .9375rem; line-height: 1.2; white-space: nowrap; cursor: pointer; transition: background-color 150ms ease-out; }
+.lp-lang__opt:hover { background: rgb(var(--lp-ink) / .04); }
+.lp-lang__opt:focus { outline: none; }
+.lp-lang__opt:focus-visible { box-shadow: inset 0 0 0 2px rgb(var(--lp-amber-deep)); }
+.lp-lang__opt[aria-selected="true"] { font-weight: 600; }
+.lp-lang__check { flex: none; color: rgb(var(--lp-amber)); visibility: hidden; }
+.lp-lang__opt[aria-selected="true"] .lp-lang__check { visibility: visible; }
+
+@media (max-width: 699px) {
+  .lp-lang__dialog { inset: auto 0 0 0; width: 100%; max-height: 82dvh; border: 0; border-radius: 1.25rem 1.25rem 0 0; box-shadow: 0 -12px 40px -16px rgb(var(--lp-ink) / .3); transform: translateY(100%); padding-bottom: env(safe-area-inset-bottom); }
+  .lp-lang__dialog::backdrop { background: rgb(31 30 32 / .4); }
+  .lp-lang__head { padding: 1.25rem .75rem .5rem 1.5rem; }
+  .lp-lang__head::before { content: ''; position: absolute; inset-block-start: .5rem; inset-inline-start: 50%; width: 2.25rem; height: 4px; border-radius: 999px; background: rgb(var(--lp-ink) / .14); transform: translateX(-50%); }
+  .lp-lang__title { font-size: 1.0625rem; }
+  .lp-lang__list { padding: 0 1rem 1.25rem; }
+  .lp-lang__opt { min-height: 48px; font-size: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lp-lang__dialog, .lp-lang__dialog::backdrop, .lp-lang__btn, .lp-lang__caret { transition: none; }
+}
+{% endstylesheet %}
+
+{% javascript %}
+if (!customElements.get('lp-lang-switch')) {
+  class LpLangSwitch extends HTMLElement {
+    connectedCallback() {
+      this.button = this.querySelector('.lp-lang__btn');
+      this.dialog = this.querySelector('.lp-lang__dialog');
+      this.list = this.querySelector('[data-lp-lang-list]');
+      this.current = this.querySelector('[data-lp-lang-current]');
+      this.sheet = window.matchMedia('(max-width: 699px)');
+      let tries = 0;
+      const wait = () => {
+        const wg = window.Weglot;
+        if (wg && wg.initialized && wg.options) return this.setup(wg);
+        if (wg && typeof wg.on === 'function' && !this.listening) { this.listening = true; wg.on('initialized', () => this.setup(window.Weglot)); }
+        if (++tries < 40) window.setTimeout(wait, 250);
+      };
+      wait();
+    }
+
+    setup(wg) {
+      if (this.ready || !wg.options || typeof this.dialog.showModal !== 'function') return;
+      this.ready = true;
+      this.wg = wg;
+      const from = wg.options.language_from;
+      const others = (wg.options.languages || []).filter((l) => l.enabled !== false && l.public !== false).map((l) => l.language_to);
+      const name = (code) => { try { return wg.getLanguageName(code) || code.toUpperCase(); } catch (e) { return code.toUpperCase(); } };
+      const codes = [from].concat(others.sort((a, b) => name(a).localeCompare(name(b))));
+      const check = '<svg class="lp-lang__check" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3.5 8.5 3 3 6-7"/></svg>';
+      this.list.innerHTML = '';
+      codes.forEach((code) => {
+        const li = document.createElement('li');
+        li.className = 'lp-lang__opt';
+        li.setAttribute('role', 'option');
+        li.tabIndex = -1;
+        li.dataset.code = code;
+        li.lang = code;
+        const label = document.createElement('span');
+        label.textContent = name(code);
+        li.append(label);
+        li.insertAdjacentHTML('beforeend', check);
+        this.list.append(li);
+      });
+      this.options = [...this.list.children];
+      this.sync(wg.getCurrentLang());
+      if (typeof wg.on === 'function') wg.on('languageChanged', (lang) => this.sync(lang));
+
+      this.button.addEventListener('click', (event) => this.open(event.detail === 0));
+      this.querySelector('[data-lp-lang-close]').addEventListener('click', () => this.close());
+      this.dialog.addEventListener('click', (event) => { if (event.target === this.dialog) this.close(); });
+      this.dialog.addEventListener('cancel', (event) => { event.preventDefault(); this.close(); });
+      this.list.addEventListener('click', (event) => {
+        const opt = event.target.closest('.lp-lang__opt');
+        if (opt) this.choose(opt.dataset.code);
+      });
+      this.list.addEventListener('keydown', (event) => this.onKey(event));
+      window.addEventListener('resize', () => { if (this.dialog.open) this.place(); });
+      this.hidden = false;
+    }
+
+    sync(code) {
+      if (!code) return;
+      this.current.textContent = code.toUpperCase();
+      this.options.forEach((o) => o.setAttribute('aria-selected', String(o.dataset.code === code)));
+    }
+
+    place() {
+      const s = this.dialog.style;
+      if (this.sheet.matches) { s.top = ''; s.left = ''; s.right = ''; return; }
+      const r = this.button.getBoundingClientRect();
+      s.top = `${Math.round(r.bottom + 8)}px`;
+      if (this.dataset.align === 'start') { s.left = `${Math.max(16, Math.round(r.left - 8))}px`; s.right = 'auto'; }
+      else { s.right = `${Math.max(16, Math.round(window.innerWidth - r.right - 8))}px`; s.left = 'auto'; }
+    }
+
+    open(fromKeyboard) {
+      if (this.dialog.open) return;
+      this.place();
+      this.dialog.showModal();
+      this.button.setAttribute('aria-expanded', 'true');
+      document.documentElement.style.overflow = 'hidden';
+      requestAnimationFrame(() => this.dialog.classList.add('is-open'));
+      const selected = this.options.find((o) => o.getAttribute('aria-selected') === 'true') || this.options[0];
+      this.keyboard = fromKeyboard;
+      if (fromKeyboard && selected) selected.focus();
+      else this.dialog.focus();
+      if (selected) selected.scrollIntoView({ block: 'nearest' });
+    }
+
+    close() {
+      if (!this.dialog.open) return;
+      this.dialog.classList.remove('is-open');
+      this.button.setAttribute('aria-expanded', 'false');
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.setTimeout(() => {
+        this.dialog.close();
+        document.documentElement.style.overflow = '';
+        if (this.keyboard) this.button.focus();
+      }, reduce ? 0 : 200);
+    }
+
+    choose(code) {
+      this.close();
+      if (code && this.wg && code !== this.wg.getCurrentLang()) this.wg.switchTo(code);
+    }
+
+    onKey(event) {
+      const index = this.options.indexOf(document.activeElement);
+      const move = { ArrowDown: 2, ArrowUp: -2, ArrowRight: 1, ArrowLeft: -1, Home: -Infinity, End: Infinity }[event.key];
+      if (move !== undefined) {
+        event.preventDefault();
+        this.options[Math.max(0, Math.min(this.options.length - 1, index + move))].focus();
+      } else if (event.key === 'Enter' || event.key === ' ') {
+        this.keyboard = true;
+        event.preventDefault();
+        if (index > -1) this.choose(this.options[index].dataset.code);
+      }
+    }
+  }
+  customElements.define('lp-lang-switch', LpLangSwitch);
+}
+{% endjavascript %}

@@ -4,26 +4,23 @@
       {%- render 'icon' with 'close' -%}
     </button>
 
-    <div class="empty-state align-self-center">
-      <div class="empty-state__icon-wrapper">
-        {%- render 'icon' with 'cart', width: 32, height: 32, stroke_width: 1 -%}
-        <span class="count-bubble count-bubble--lg">0</span>
-      </div>
-
-      <div class="prose">
-        <p class="h5">{{ 'cart.general.empty' | t }}</p>
-
-        {%- assign button_content = 'cart.general.continue_shopping' | t -%}
+    <div class="empty-state align-self-center lp-cempty">
+      <span class="lp-cempty__icon">{%- render 'icon' with 'cart', width: 28, height: 28, stroke_width: 1 -%}</span>
+      <p class="lp-cempty__title">{{ 'lp.cart.empty_title' | t }}</p>
+      <p class="lp-cempty__text">{{ 'lp.cart.empty_text' | t }}</p>
+      <div class="lp-cempty__actions">
+        {%- assign button_content = 'lp.cart.shop_all' | t -%}
         {%- render 'button', href: settings.cart_empty_button_link, size: 'xl', content: button_content -%}
+        <a class="lp-cempty__link" href="{{ routes.root_url | append: 'products/laminine' | replace: '//', '/' }}">{{ 'lp.cart.discover_laminine' | t }}</a>
       </div>
     </div>
   {%- else -%}
     <div class="cart-drawer__inner">
       <div class="cart-drawer__top">
         <div class="h-stack items-center justify-between">
-          <div class="h-stack grow gap-2 sm:gap-2.5">
-            <p class="h5">{{- 'cart.general.title' | t -}}</p>
-            <cart-count class="count-bubble count-bubble--md">{{ cart.item_count }}</cart-count>
+          <div class="lp-chead">
+            <p class="lp-chead__title">{{- 'lp.cart.title' | t -}}</p>
+            <p class="lp-chead__count">{{ 'lp.cart.items' | t: count: cart.item_count }}</p>
           </div>
 
           <button type="button" is="close-button" class="drawer__close-icon">
@@ -37,22 +34,18 @@
         {%- endif -%}
       </div>
 
-{% comment %}
-  Share cart custom
-{% endcomment %}
-      <div id="share-cart-link-container">
-              <a class="share-cart-link text-accent" style="cursor:pointer; float:left;">CLICK HERE TO SHARE YOUR CART</a>
-            </div>
-            <br>
-            <br>
-{% comment %}
-  Share cart custom end
-{% endcomment %}
+      {%- comment -%}Share cart: the Exigo shared-cart script in footer-group.json binds to .share-cart-link{%- endcomment -%}
+      <div id="share-cart-link-container" class="lp-cshare">
+        <a class="share-cart-link" role="button" tabindex="0">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="m16 6-4-4-4 4"/><path d="M12 2v13"/></svg>
+          {{- 'lp.cart.share' | t -}}
+        </a>
+      </div>
 
       <div class="v-stack gap-6 sm:gap-8">
         <div class="cart-drawer__line-items">
           {%- for line_item in cart.items -%}
-            {%- render 'line-item', line_item: line_item, show_desktop_quantity: true -%}
+            {%- render 'lp-cart-line', line_item: line_item -%}
           {%- endfor -%}
         </div>
 
@@ -138,10 +131,10 @@
         </div>
       {%- endif -%}
 
-      <div class="v-stack gap-1">
-        <div class="h-stack gap-4 justify-between">
-          <span class="h5">{{ 'cart.general.total' | t }}</span>
-          <span class="h5">{{- cart.total_price | money_with_currency -}}</span>
+      <div class="v-stack gap-1 lp-csum">
+        <div class="lp-csum__row">
+          <span class="lp-csum__label">{{ 'lp.cart.subtotal' | t }}</span>
+          <span class="lp-csum__total">{{- cart.total_price | money -}}</span>
         </div>
 
         {%- if section.settings.show_shipping_text -%}
@@ -188,7 +181,7 @@
         {%- endif -%}
       </div>
 
-      <form action="{{ routes.cart_url }}" method="POST" class="buy-buttons {% if section.settings.show_checkout_button %}buy-buttons--compact{% endif %}">
+      <form action="{{ routes.cart_url }}" method="POST" class="buy-buttons lp-cform">
         {%- assign checkout_label = 'cart.general.checkout' | t -%}
 
         {%- if section.settings.show_view_cart_button or section.settings.show_checkout_button == false -%}

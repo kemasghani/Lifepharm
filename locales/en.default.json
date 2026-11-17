@@ -459,7 +459,11 @@
       "shop_all": "Shop All Products",
       "discover_laminine": "Discover LAMININE",
       "savings": "Savings",
-      "saving": "You save"
+      "saving": "You save",
+      "free_delivery_title": "Free Delivery Unlocked",
+      "free_delivery_text": "Your order ships free, at no extra cost.",
+      "delivery": "Delivery",
+      "free": "Free"
     },
     "share": {
       "title": "Share Your Cart",

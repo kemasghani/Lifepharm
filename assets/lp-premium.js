@@ -657,3 +657,28 @@
     }
   });
 })();
+
+/* Free delivery card: play the HyperFrames truck clip once per visit, when the cart drawer is open and the card is on screen.
+   Before and after, the poster (its final frame) is the static icon. Reduced motion: never plays. */
+(() => {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const KEY = 'lp-fd-played';
+  const played = () => { try { return sessionStorage.getItem(KEY) === '1'; } catch (e) { return false; } };
+  const check = () => {
+    const drawer = document.getElementById('cart-drawer');
+    const video = drawer && drawer.querySelector('.lp-fd__video');
+    if (!video || reduce || played() || !drawer.hasAttribute('open') || video.dataset.lpPlayed) return;
+    video.dataset.lpPlayed = '1';
+    try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+    setTimeout(() => video.play().catch(() => {}), 250);
+  };
+  const start = () => {
+    const drawer = document.getElementById('cart-drawer');
+    if (!drawer) return;
+    let queued = false;
+    new MutationObserver(() => { if (!queued) { queued = true; requestAnimationFrame(() => { queued = false; check(); }); } })
+      .observe(drawer, { attributes: true, attributeFilter: ['open'], childList: true, subtree: true });
+    check();
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();

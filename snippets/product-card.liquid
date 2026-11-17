@@ -43,8 +43,17 @@ Supported variables
   {%- assign card_class = 'product-card product-card--blends ' -%}
 {%- endif -%}
 
-{%- if show_secondary_image and product.media.size > 1 -%}
-  {%- assign card_class = card_class | append: 'product-card--show-secondary-media' -%}
+{%- comment -%}LifePharm: a lifestyle photo (Soona shoot) in Files named lp-hover-<handle>.jpg replaces the second product photo on hover{%- endcomment -%}
+{%- assign lp_hover_name = 'lp-hover-' | append: product.handle | append: '.jpg' -%}
+{%- assign lp_hover_image = images[lp_hover_name] -%}
+{%- if lp_hover_image.width == blank -%}
+  {%- assign lp_hover_image = nil -%}
+{%- endif -%}
+
+{%- if show_secondary_image -%}
+  {%- if product.media.size > 1 or lp_hover_image -%}
+    {%- assign card_class = card_class | append: 'product-card--show-secondary-media' -%}
+  {%- endif -%}
 {%- endif -%}
 
 <product-card handle="{{ product.handle | escape }}" {% if reveal and settings.stagger_products_apparition %}reveal-js{% endif %} {% render 'surface', class: card_class, background: card_background, text_color: card_text_color %}>
@@ -86,7 +95,9 @@ Supported variables
         {%- capture main_image_classes -%}product-card__image product-card__image--primary {% if settings.product_image_aspect_ratio contains 'crop' %}object-fill-safe{% endif %} aspect-{{ settings.product_image_aspect_ratio | split: '_' | first }}{%- endcapture -%}
         {{- product.featured_media | image_url: width: product.featured_media.width | image_tag: loading: main_media_loading_strategy, sizes: sizes, widths: '200,300,400,500,600,700,800,1000,1200,1400,1600,1800', class: main_image_classes -}}
 
-        {%- if show_secondary_image and product.media.size > 1 -%}
+        {%- if show_secondary_image and lp_hover_image -%}
+          {{- lp_hover_image | image_url: width: lp_hover_image.width | image_tag: class: 'product-card__image product-card__image--secondary product-card__image--lifestyle object-fill', loading: 'lazy', fetchpriority: 'low', sizes: sizes, widths: '200,300,400,500,600,700,800,1000,1200,1400,1600', alt: '', aria-hidden: 'true' -}}
+        {%- elsif show_secondary_image and product.media.size > 1 -%}
           {%- assign next_media = product.media[product.featured_media.position] | default: product.media[1] -%}
           {{- next_media | image_url: width: next_media.width | image_tag: class: 'product-card__image product-card__image--secondary object-fill', loading: 'lazy', fetchpriority: 'low', sizes: sizes, widths: '200,300,400,500,600,700,800,1000,1200,1400,1600,1800', aria-hidden: 'true' -}}
         {%- endif -%}

@@ -15,8 +15,16 @@
       "storefront": "shop.lifepharm.com",
       "currency": "USD",
       "remap": {
-        "collection": { "nutritionals": "cell-regeneration", "skin-health": "skin-regeneration" },
-        "menu": { "information": "company", "main-menu-1": "shop-footer", "footer-legal": "support" },
+        "collection": {
+          "nutritionals": "cell-regeneration",
+          "skin-health": "skin-regeneration"
+        },
+        "menu": {
+          "information": "company",
+          "main-menu-1": "shop-footer",
+          "footer-legal": "support",
+          "main-menu": "main-menu-redesign"
+        },
         "page": {
           "contact-1772819823": "contact",
           "how-it-started-1772819852": "how-it-started",
@@ -33,7 +41,9 @@
       "storefront": "europe.lifepharm.com",
       "currency": "EUR",
       "remap": {
-        "menu": { "information": "company" },
+        "menu": {
+          "information": "company"
+        },
         "page": {
           "contact-1772819823": "contact",
           "how-it-started-1772819852": "how-it-started",

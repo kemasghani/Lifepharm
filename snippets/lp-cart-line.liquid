@@ -66,7 +66,7 @@
           <li class="lp-cline__deal">
             <svg class="lp-cline__deal-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9-9-9z"/><circle cx="7.5" cy="7.5" r="1.25" fill="currentColor" stroke="none"/></svg>
             <span class="lp-cline__deal-name">{{ discount_allocation.discount_application.title | escape }}</span>
-            <span class="lp-cline__deal-amount"><span class="sr-only">{{ 'lp.cart.saving' | t }}</span>&minus;{{ discount_allocation.amount | money }}</span>
+            <span class="sr-only">{{ 'lp.cart.saving' | t }} {{ discount_allocation.amount | money }}</span>
           </li>
         {%- endfor -%}
       </ul>

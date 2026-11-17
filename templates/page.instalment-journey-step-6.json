@@ -1,0 +1,34 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": { "type": "scrolling-text", "settings": { "full_width": true, "text": "MOCKUP — INTERNAL WALKTHROUGH ONLY — NOT A LIVE PURCHASE FLOW", "text_size": "medium", "text_style": "fill", "scrolling_mode": "auto", "scrolling_speed": 10, "background": "#fbf4ec", "background_gradient": "", "text_color": "#9c5b0e", "text_gradient": "" } },
+    "intro": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": { "type": "heading", "settings": { "text": "Step 6 of 6 — Fully Paid", "heading_tag": "h2", "text_color": "", "gradient": "" } },
+        "richtext": { "type": "richtext", "settings": { "content": "<p>&#10003; Order complete. The customer's <b>Downpay Order Card</b> now shows paid in full, and the Exigo mirror order is released so commission is earned.</p><p>This is the moment the Exigo gate (R1–R7) releases the order from its non-commissionable hold.</p>" } }
+      },
+      "block_order": ["heading", "richtext"],
+      "settings": { "full_width": true, "content_width": "small", "text_position": "center", "background": "#eaf6f1", "background_gradient": "", "text_color": "" }
+    },
+    "nav": {
+      "type": "rich-text",
+      "blocks": {
+        "prev_button": { "type": "button", "settings": { "style": "outline", "size": "lg", "text": "← Back: Balance charged", "url": "https://t3dsxh0bkhct31li-69939265753.shopifypreview.com/pages?preview_key=dae4410ea3558cf73c1fe83672f85e90", "background": "", "text_color": "" } },
+        "restart_button": { "type": "button", "settings": { "style": "solid", "size": "lg", "text": "Restart journey →", "url": "/products/laminine-instalment-journey", "background": "", "text_color": "" } }
+      },
+      "block_order": ["prev_button", "restart_button"],
+      "settings": { "full_width": true, "content_width": "small", "text_position": "center", "background": "#ffffff", "background_gradient": "", "text_color": "" }
+    },
+    "main": { "type": "main-page", "settings": { "content_width": "100%" } }
+  },
+  "order": ["banner", "intro", "nav", "main"]
+}

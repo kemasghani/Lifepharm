@@ -1,0 +1,354 @@
+{%- assign show_join = true -%}
+{%- assign kit = all_products['enrollment-kit'] -%}
+{%- assign kit_v = kit.selected_or_first_available_variant -%}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Lato:wght@400;700&display=swap">
+<style>
+  /* Everything is scoped under .ibp so it can't restyle the rest of the store.
+     Same design system as the store theme: Playfair Display headings, Lato body,
+     #181818 text, #FF8F00 pill buttons (56px radius). */
+  .ibp {
+    --bg: #ffffff; --ink: #181818; --accent: #FF8F00; --accent-ink: #ffffff; --line: #E7E5E0;
+    --band-h: 40px; --band-gray: #7A7A7A;
+    background: var(--bg); color: var(--ink);
+    font-family: 'Lato', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px; line-height: 1.6; letter-spacing: 0.4px;
+  }
+  .ibp *, .ibp *::before, .ibp *::after { box-sizing: border-box; }
+  .ibp a:focus-visible, .ibp button:focus-visible, .ibp [role="radio"]:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  .ibp-page { max-width: 1120px; margin: 0 auto; padding: 48px 16px 56px; display: flex; flex-direction: column; }
+  .ibp h1, .ibp h2 { font-family: 'Playfair Display', Georgia, serif; font-weight: 400; letter-spacing: 0.5px; margin: 0; text-wrap: balance; color: var(--ink); text-align: center; }
+  .ibp h1 { font-size: clamp(36px, 5.4vw, 52px); line-height: 1.1; }
+
+  /* ---- Intro ---- */
+  .ibp-intro { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center; }
+  .ibp-intro p { margin: 0; font-size: 18px; }
+  .ibp-intro .ibp-intro-cta { margin-top: 6px; }
+  .ibp-br-desk { display: none; }
+
+  /* ---- Pack cards: pick one ---- */
+  .ibp-packs { list-style: none; margin: 52px 0 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: 24px; }
+  .ibp-card { position: relative; cursor: pointer; background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 0 22px 26px; overflow: hidden; display: flex; flex-direction: column; gap: 14px; text-align: center; transition: border-color .15s, box-shadow .15s, opacity .2s, filter .2s; }
+  .ibp-card:hover { border-color: #cfccc5; }
+  /* once a pack is picked, the other two fade to gray */
+  .ibp-packs.has-pick .ibp-card[aria-checked="false"] { opacity: 0.45; filter: grayscale(1); }
+  .ibp-packs.has-pick .ibp-card[aria-checked="false"]:hover { opacity: 0.75; }
+  /* selected pack: orange outline + check in the top band */
+  /* selected pack: thick orange outline, warm tint, lifted, button turns solid "Selected" */
+  .ibp-card[aria-checked="true"] { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent), 0 10px 28px rgba(255, 143, 0, 0.18); background: #FFF8EF; }
+  .ibp-card[aria-checked="true"] .ibp-img { mix-blend-mode: multiply; }
+  .ibp-pick { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 54px; margin-top: 4px; border: 2px solid var(--accent); border-radius: 56px; background: #fff; color: var(--accent); font-size: 17px; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; }
+  .ibp-card:hover .ibp-pick { background: #FFF3E3; }
+  .ibp-pick-on { display: none; align-items: center; gap: 8px; }
+  .ibp-card[aria-checked="true"] .ibp-pick { background: var(--accent); color: #fff; }
+  .ibp-card[aria-checked="true"] .ibp-pick-off { display: none; }
+  .ibp-card[aria-checked="true"] .ibp-pick-on { display: inline-flex; }
+  .ibp-band { position: relative; margin: 0 -22px; min-height: var(--band-h); display: flex; align-items: center; justify-content: center; background: var(--band-gray); color: #fff; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+  .ibp-card--best .ibp-band { background: var(--accent); }
+  .ibp-check { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); width: 24px; height: 24px; border-radius: 50%; background: #fff; color: var(--accent); display: none; align-items: center; justify-content: center; }
+  .ibp-card:not(.ibp-card--best) .ibp-check { color: var(--band-gray); }
+  .ibp-card[aria-checked="true"] .ibp-check { display: flex; }
+  .ibp-img { width: 100%; max-width: 300px; aspect-ratio: 1; object-fit: contain; display: block; margin: 0 auto; border-radius: 12px; }
+  .ibp .ibp-card h2 { font-size: 26px; }
+  .ibp-line { margin: 0; }
+  .ibp-inside-h { color: var(--accent); margin: 0 0 4px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
+  .ibp-inside ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+  .ibp-inside li { font-size: 15.5px; line-height: 1.5; }
+  .ibp-price { display: flex; flex-direction: column; align-items: center; gap: 8px; padding-top: 14px; border-top: 1px solid var(--line); }
+  .ibp-save { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); background: #FFEFD9; border-radius: 56px; padding: 4px 14px; }
+  .ibp-price-row { display: flex; flex-direction: column; align-items: center; gap: 0; font-variant-numeric: tabular-nums; }
+  .ibp-sale { font-size: 28px; line-height: 1.2; font-weight: 700; }
+  .ibp-compare { text-decoration: line-through; }
+
+  /* ---- The two buttons under the cards ---- */
+  .ibp-buy { margin: 56px 0 0; background: #F7F6F3; box-shadow: 0 0 0 100vmax #F7F6F3; clip-path: inset(0 -100vmax); padding-block: 48px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+  .ibp-buy[hidden] { display: none; }
+  .ibp-buy { transition: opacity .5s ease, transform .5s ease; }
+  .ibp-buy.is-entering { opacity: 0; transform: translateY(24px); }
+  .ibp .ibp-buy h2 { font-size: clamp(28px, 4vw, 36px); line-height: 1.2; }
+  .ibp-selected { margin: 0; text-align: center; font-size: 18px; }
+  .ibp-selected strong { font-weight: 700; }
+  .ibp-btns { width: 100%; max-width: 720px; display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 6px; }
+  .ibp-option { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 26px 22px; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; height: 100%; }
+  .ibp-option-sub { margin: 0 0 12px; font-size: 15.5px; }
+  .ibp-option .ibp-cta { margin-top: auto; }
+  .ibp-option-h { margin: 0; font-size: 18px; font-weight: 700; }
+  .ibp .ibp-cta { width: 100%; display: flex; align-items: center; justify-content: center; min-height: 54px; border: 2px solid var(--accent); cursor: pointer; background: var(--accent); color: var(--accent-ink); font: inherit; font-size: 17px; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; padding: 12px 18px; border-radius: 56px; text-decoration: none; white-space: nowrap; }
+  .ibp .ibp-cta--outline { background: #fff; color: var(--accent); }
+  .ibp .ibp-cta:hover { filter: brightness(0.96); }
+  .ibp .ibp-cta[aria-busy="true"] { opacity: 0.7; pointer-events: none; }
+  .ibp .ibp-cta[aria-disabled="true"] { opacity: 0.4; cursor: not-allowed; filter: none; }
+  .ibp-note { font-size: 13.5px; }
+
+  .ibp-link { border: 0; background: none; padding: 0; font: inherit; color: var(--accent); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+
+  /* ---- Starter Kit pop-up: centered window on desktop, bottom sheet on phones ---- */
+  .ibp-kit { border: 0; padding: 0; width: min(460px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); overflow: hidden; border-radius: 20px; background: #fff; color: var(--ink); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25); text-align: center; }
+  .ibp-kit::backdrop { background: rgba(24, 24, 24, 0.55); }
+  .ibp-kit[open] { display: flex; flex-direction: column; }
+  /* only the inside scrolls, so the X (pinned to the pop-up's corner) never scrolls away */
+  .ibp-kit-body:focus { outline: none; }
+  .ibp-kit-body { overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; padding: 44px 28px 28px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .ibp-kit-close { position: absolute; z-index: 2; top: 12px; right: 12px; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12); width: 40px; height: 40px; border: 0; border-radius: 50%; background: #F4F3F0; color: var(--ink); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; }
+  .ibp-kit-img { width: 100%; max-width: 220px; height: auto; display: block; border-radius: 12px; }
+  .ibp .ibp-kit h2 { font-size: 28px; line-height: 1.2; }
+  .ibp-kit-sub { margin: 0; }
+  .ibp .ibp-kit-list { list-style: none; margin: 4px 0 8px; padding: 0; text-align: left; display: flex; flex-direction: column; gap: 10px; font-size: 15.5px; line-height: 1.5; }
+  .ibp .ibp-kit-list li { position: relative; padding-left: 20px; list-style: none; }
+  .ibp .ibp-kit-list li::before { content: ""; position: absolute; left: 2px; top: 0.6em; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+  .ibp-kit .ibp-cta { flex: none; }
+  .ibp-kit-fee { margin: 0 0 4px; font-size: 14px; color: #5f5d58; }
+  @media (max-width: 639px) {
+    .ibp-kit { width: 100vw; max-width: 100vw; margin: auto 0 0; border-radius: 20px 20px 0 0; max-height: 88dvh; }
+    .ibp-kit-body { padding: 40px 20px calc(24px + env(safe-area-inset-bottom)); }
+    .ibp-kit[open] { animation: ibp-sheet-up .25s ease-out; }
+    .ibp-kit-img { max-width: 160px; }
+  }
+  @keyframes ibp-sheet-up { from { transform: translateY(100%); } to { transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) { .ibp-kit[open] { animation: none; } }
+
+  .ibp-disclaimer { margin: 40px auto 0; max-width: 80ch; font-size: 12px; line-height: 1.5; text-align: center; }
+
+  @media (min-width: 640px) {
+    .ibp-btns { grid-template-columns: 1fr 1fr; align-items: stretch; }
+    .ibp-btns > :only-child { grid-column: 1 / -1; max-width: 360px; width: 100%; justify-self: center; }
+  }
+  @media (min-width: 960px) {
+    .ibp-br-desk { display: inline; }
+    .ibp-packs { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 0; }
+    /* subgrid: band, image, name, description, what's inside, price share rows across the cards,
+       so prices line up even when a name wraps. */
+    .ibp-card { display: grid; grid-row: span 7; grid-template-rows: subgrid; row-gap: 14px; }
+    .ibp-band { margin-bottom: 10px; }
+    .ibp-card h2 { align-self: center; }
+    .ibp-price { align-self: end; }
+  }
+  @media (prefers-reduced-motion: reduce) { .ibp-card { transition: none; } }
+</style>
+
+<div class="ibp">
+<div class="ibp-page">
+
+  <section class="ibp-intro" aria-labelledby="ibp-h">
+    <h1 id="ibp-h">Four Daily Essentials. Three Ways to Get Them.</h1>
+    <p>Every pack brings together LAMININE, OMEGA&#8314;&#8314;&#8314;, DIGESTIVE&#8314;&#8314;&#8314; and IMMUNE&#8314;&#8314;&#8314;,<br class="ibp-br-desk"> the foundation of a complete daily wellness routine.*</p>
+    <p class="ibp-intro-cta"><strong>Select a pack below to get started.</strong></p>
+  </section>
+
+  <ul class="ibp-packs" role="radiogroup" aria-label="Choose your pack">
+  {%- assign p_ph = all_products['powerhouse-pack'] -%}
+  {%- assign v_ph = p_ph.selected_or_first_available_variant -%}
+  <li class="ibp-card" role="radio" aria-checked="false" tabindex="0" data-variant="{{ v_ph.id }}" data-name="Powerhouse Pack" data-price="{{ v_ph.price | money }}">
+      <div class="ibp-band">Start Here</div>
+      <img class="ibp-img" src="{{ p_ph.featured_image | image_url: width: 720 }}" alt="Powerhouse Pack" width="300" height="300" loading="lazy">
+      <h2>Powerhouse Pack</h2>
+      <p class="ibp-line">All four daily essentials in classic bottles.</p>
+      <div class="ibp-inside">
+        <p class="ibp-inside-h">What's inside</p>
+        <ul>
+          <li>1 LAMININE (30-count)</li>
+          <li>1 OMEGA&#8314;&#8314;&#8314; (30-count)</li>
+          <li>1 DIGESTIVE&#8314;&#8314;&#8314; (30-count)</li>
+          <li>1 IMMUNE&#8314;&#8314;&#8314; (30-count)</li>
+        </ul>
+      </div>
+      <div class="ibp-price">
+        <div class="ibp-price-row"><span class="ibp-sale">{{ v_ph.price | money }}</span>{%- if v_ph.compare_at_price > v_ph.price %}<span class="ibp-compare">{{ v_ph.compare_at_price | money }}</span>{%- endif %}</div>
+        <span class="ibp-save">{%- if v_ph.compare_at_price > v_ph.price %}Save {{ v_ph.compare_at_price | minus: v_ph.price | money_without_trailing_zeros }}{%- if v_ph.price >= 15000 %} + {% endif %}{%- endif %}{%- if v_ph.price >= 15000 %}Free Shipping{%- endif %}</span>
+      </div>
+      <span class="ibp-pick" aria-hidden="true"><span class="ibp-pick-off">Select Pack</span><span class="ibp-pick-on">Selected</span></span>
+    </li>
+  {%- assign p_rf = all_products['refive-pack'] -%}
+  {%- assign v_rf = p_rf.selected_or_first_available_variant -%}
+  <li class="ibp-card" role="radio" aria-checked="false" tabindex="-1" data-variant="{{ v_rf.id }}" data-name="REFIVE" data-price="{{ v_rf.price | money }}">
+      <div class="ibp-band">Perfect for On-the-Go</div>
+      <img class="ibp-img" src="{{ p_rf.featured_image | image_url: width: 720 }}" alt="REFIVE" width="300" height="300" loading="lazy">
+      <h2>REFIVE</h2>
+      <p class="ibp-line">Pre-portioned into one daily sachet that fits in your pocket.</p>
+      <div class="ibp-inside">
+        <p class="ibp-inside-h">What's inside</p>
+        <ul>
+          <li>30 sachets per box</li>
+          <li>Each sachet: 2 LAMININE capsules, 1 OMEGA&#8314;&#8314;&#8314; softgel, 1 DIGESTIVE&#8314;&#8314;&#8314; capsule, 1 IMMUNE&#8314;&#8314;&#8314; tablet</li>
+        </ul>
+      </div>
+      <div class="ibp-price">
+        <div class="ibp-price-row"><span class="ibp-sale">{{ v_rf.price | money }}</span>{%- if v_rf.compare_at_price > v_rf.price %}<span class="ibp-compare">{{ v_rf.compare_at_price | money }}</span>{%- endif %}</div>
+        <span class="ibp-save">{%- if v_rf.compare_at_price > v_rf.price %}Save {{ v_rf.compare_at_price | minus: v_rf.price | money_without_trailing_zeros }}{%- if v_rf.price >= 15000 %} + {% endif %}{%- endif %}{%- if v_rf.price >= 15000 %}Free Shipping{%- endif %}</span>
+      </div>
+      <span class="ibp-pick" aria-hidden="true"><span class="ibp-pick-off">Select Pack</span><span class="ibp-pick-on">Selected</span></span>
+    </li>
+  {%- assign p_gf = all_products['powerhouse'] -%}
+  {%- assign v_gf = p_gf.selected_or_first_available_variant -%}
+  <li class="ibp-card ibp-card--best" role="radio" aria-checked="false" tabindex="-1" data-variant="{{ v_gf.id }}" data-name="Go Fast Powerhouse Pack" data-price="{{ v_gf.price | money }}">
+      <div class="ibp-band">Best Value</div>
+      <img class="ibp-img" src="{{ p_gf.featured_image | image_url: width: 720 }}" alt="Go Fast Powerhouse Pack" width="300" height="300" loading="lazy">
+      <h2>Go Fast Powerhouse Pack</h2>
+      <p class="ibp-line">Four times the supply of every essential, for you or your family.</p>
+      <div class="ibp-inside">
+        <p class="ibp-inside-h">What's inside</p>
+        <ul>
+          <li>1 LAMININE (120-count)</li>
+          <li>1 OMEGA&#8314;&#8314;&#8314; (120-count)</li>
+          <li>1 DIGESTIVE&#8314;&#8314;&#8314; (120-count)</li>
+          <li>1 IMMUNE&#8314;&#8314;&#8314; (120-count)</li>
+        </ul>
+      </div>
+      <div class="ibp-price">
+        <div class="ibp-price-row"><span class="ibp-sale">{{ v_gf.price | money }}</span>{%- if v_gf.compare_at_price > v_gf.price %}<span class="ibp-compare">{{ v_gf.compare_at_price | money }}</span>{%- endif %}</div>
+        <span class="ibp-save">{%- if v_gf.compare_at_price > v_gf.price %}Save {{ v_gf.compare_at_price | minus: v_gf.price | money_without_trailing_zeros }}{%- if v_gf.price >= 15000 %} + {% endif %}{%- endif %}{%- if v_gf.price >= 15000 %}Free Shipping{%- endif %}</span>
+      </div>
+      <span class="ibp-pick" aria-hidden="true"><span class="ibp-pick-off">Select Pack</span><span class="ibp-pick-on">Selected</span></span>
+    </li>
+  </ul>
+
+  <section class="ibp-buy" id="ibp-buy" aria-labelledby="ibp-buy-h" hidden>
+    <h2 id="ibp-buy-h">How Would You Like to Order?</h2>
+    <div class="ibp-btns">
+      <div class="ibp-option">
+        <p class="ibp-option-h">Already an IBO?</p>
+        <p class="ibp-option-sub">Check out with your IBO account email.</p>
+        <button type="button" class="ibp-cta" id="ibp-buy-ibo">Buy as an IBO</button>
+      </div>
+      {%- if show_join and kit_v.available %}<div class="ibp-option">
+        <p class="ibp-option-h">New to LifePharm?</p>
+        <p class="ibp-option-sub">Get a <strong>FREE IBO Starter Kit</strong> ({{ kit_v.price | money_without_trailing_zeros }} value) with your pack. <button type="button" class="ibp-link" id="ibp-kit-open" aria-haspopup="dialog">What's included?</button></p>
+        <button type="button" class="ibp-cta" id="ibp-join" data-kit="{{ kit_v.id }}">Join as an IBO</button>
+      </div>{%- endif %}
+    </div>
+  </section>
+
+  {%- if show_join and kit_v.available %}<dialog class="ibp-kit" id="ibp-kit" aria-labelledby="ibp-kit-h">
+    <button type="button" class="ibp-kit-close" id="ibp-kit-close" aria-label="Close"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+    <div class="ibp-kit-body" tabindex="-1" autofocus>
+    <img class="ibp-kit-img" src="{{ kit.featured_image | image_url: width: 600 }}" alt="IBO Starter Kit" width="300" height="300">
+    <h2 id="ibp-kit-h">Your FREE IBO Starter Kit</h2>
+    <p class="ibp-kit-sub">Included free when you join with any pack ({{ kit_v.price | money_without_trailing_zeros }} value).</p>
+    <ul class="ibp-kit-list">
+      <li><strong>Your own IBO website</strong> to share LifePharm with others</li>
+      <li><strong>A private Virtual Office</strong> for your reports, resources and company updates</li>
+      <li><strong>Training to help you get started:</strong> how-to tips, conversation scripts, social media guidance, and how commissions, bonuses and IBO pricing work</li>
+    </ul>
+    <p class="ibp-kit-fee">€20 renewal fee billed annually.</p>
+    <button type="button" class="ibp-cta" id="ibp-kit-join">Join as an IBO</button>
+    </div>
+  </dialog>{%- endif %}
+
+  <p class="ibp-disclaimer">*These statements have not been evaluated by the Food and Drug Administration. These products are not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary.</p>
+
+</div>
+</div>
+
+<script>
+  (function () {
+    const cards = [...document.querySelectorAll('.ibp-card[role="radio"]')];
+    const buy = document.getElementById('ibp-buy');
+    let selected = null;   // nothing pre-selected
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Gentle scroll: eases in and out over ~0.9s instead of the browser's quick jump.
+    let glide = 0;
+    function glideTo(y) {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const end = Math.max(0, Math.min(y, max)), start = window.scrollY, dist = end - start;
+      if (reduceMotion || Math.abs(dist) < 2) { window.scrollTo(0, end); return; }
+      const dur = Math.min(1100, Math.max(600, Math.abs(dist) * 0.9));
+      const t0 = performance.now(), id = ++glide;
+      const ease = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      const stop = () => { glide++; };
+      window.addEventListener('wheel', stop, { once: true, passive: true });
+      window.addEventListener('touchstart', stop, { once: true, passive: true });
+      (function step(now) {
+        if (id !== glide) return;   // the shopper scrolled themselves: let go
+        const t = Math.min(1, (now - t0) / dur);
+        window.scrollTo(0, start + dist * ease(t));
+        if (t < 1) requestAnimationFrame(step);
+      })(t0);
+    }
+
+    function select(card, scroll) {
+      selected = card;
+      cards.forEach(c => {
+        const on = c === card;
+        c.setAttribute('aria-checked', on ? 'true' : 'false');
+        c.tabIndex = on ? 0 : -1;
+      });
+      document.querySelector('.ibp-packs').classList.add('has-pick');
+      if (buy.hidden) {
+        // the two options appear once a pack is picked: fade + slide up into place
+        buy.hidden = false;
+        if (!reduceMotion) { buy.classList.add('is-entering'); requestAnimationFrame(() => requestAnimationFrame(() => buy.classList.remove('is-entering'))); }
+      }
+      // bring the two buttons into view, unless they're already fully on screen
+      if (scroll) {
+        const r = buy.getBoundingClientRect();
+        if (r.top < 0 || r.bottom > window.innerHeight) {
+          const target = window.scrollY + r.top - (r.height < window.innerHeight ? (window.innerHeight - r.height) / 2 : 0);
+          glideTo(target);
+        }
+      }
+    }
+
+    cards.forEach((c, i) => {
+      c.addEventListener('click', () => select(c, true));
+      c.addEventListener('keydown', e => {
+        if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); select(c, true); }
+        const step = (e.key === 'ArrowRight' || e.key === 'ArrowDown') ? 1 : (e.key === 'ArrowLeft' || e.key === 'ArrowUp') ? -1 : 0;
+        if (step) { e.preventDefault(); const n = cards[(i + step + cards.length) % cards.length]; select(n, false); n.focus(); }
+      });
+    });
+
+    // Both buttons add to the shopper's EXISTING cart (keeps the IBO referral) and then open the cart page.
+    // No pack picked yet: the buttons just take the shopper back up to the packs.
+    function needPack() {
+      if (selected) return false;
+      glideTo(window.scrollY + document.querySelector('.ibp-packs').getBoundingClientRect().top - 24);
+      return true;
+    }
+
+    async function addAndGo(btn, items, attributes) {
+      btn.setAttribute('aria-busy', 'true');
+      try {
+        const r = await fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ items })
+        });
+        if (!r.ok) throw new Error('add failed');
+        if (attributes) {
+          await fetch('/cart/update.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({ attributes })
+          });
+        }
+        location.href = '/cart';
+      } catch (err) {
+        btn.removeAttribute('aria-busy');
+        location.href = '/cart/add?id=' + items[0].id + '&quantity=1';
+      }
+    }
+
+    document.getElementById('ibp-buy-ibo').addEventListener('click', e => {
+      if (needPack()) return;
+      addAndGo(e.currentTarget, [{ id: Number(selected.dataset.variant), quantity: 1 }]);
+    });
+
+    // Join as an IBO: pack + Starter Kit, marked the same way the US store marks enrollments
+    // (kit line property enrollmentkit=true, cart attributes IsEnrollment / EnrollmentType).
+    const join = document.getElementById('ibp-join');
+    const kit = document.getElementById('ibp-kit');
+    if (kit && typeof kit.showModal === 'function') {
+      document.getElementById('ibp-kit-open').addEventListener('click', () => kit.showModal());
+      document.getElementById('ibp-kit-close').addEventListener('click', () => kit.close());
+      kit.addEventListener('click', e => { if (e.target === kit) kit.close(); });   // tap the dark background to close
+      document.getElementById('ibp-kit-join').addEventListener('click', () => { kit.close(); join.click(); });
+    }
+    if (join) join.addEventListener('click', e => {
+      if (needPack()) return;
+      addAndGo(e.currentTarget, [
+        { id: Number(selected.dataset.variant), quantity: 1 },
+        { id: Number(join.dataset.kit), quantity: 1, properties: { enrollmentkit: 'true' } }
+      ], { IsEnrollment: 'true', EnrollmentType: 'IBO' });
+    });
+  })();
+</script>

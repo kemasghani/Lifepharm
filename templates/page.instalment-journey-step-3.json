@@ -1,0 +1,34 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": { "type": "scrolling-text", "settings": { "full_width": true, "text": "MOCKUP — INTERNAL WALKTHROUGH ONLY — NOT A LIVE PURCHASE FLOW", "text_size": "medium", "text_style": "fill", "scrolling_mode": "auto", "scrolling_speed": 10, "background": "#fbf4ec", "background_gradient": "", "text_color": "#9c5b0e", "text_gradient": "" } },
+    "intro": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": { "type": "heading", "settings": { "text": "Step 3 of 6 — Order Ships", "heading_tag": "h2", "text_color": "", "gradient": "" } },
+        "richtext": { "type": "richtext", "settings": { "content": "<p>&#10003; Your order is on its way. The fulfilment hold releases automatically once Downpay's <b>\"Authorize remaining payment\"</b> action confirms the first payment.</p><p>The customer's account now shows a <b>Downpay Order Card</b> with the running balance and a Pay Now option. The order-confirmation email includes Downpay's Pay Now button too.</p><p>Balance of &euro;90.00 is scheduled over the next 10 months.</p>" } }
+      },
+      "block_order": ["heading", "richtext"],
+      "settings": { "full_width": true, "content_width": "small", "text_position": "center", "background": "#eaf6f1", "background_gradient": "", "text_color": "" }
+    },
+    "nav": {
+      "type": "rich-text",
+      "blocks": {
+        "prev_button": { "type": "button", "settings": { "style": "outline", "size": "lg", "text": "← Back: Pay today", "url": "https://t3dsxh0bkhct31li-69939265753.shopifypreview.com/pages?preview_key=41e66648dca34acb7b57058099602599", "background": "", "text_color": "" } },
+        "next_button": { "type": "button", "settings": { "style": "solid", "size": "lg", "text": "Next: Reminders sent →", "url": "https://t3dsxh0bkhct31li-69939265753.shopifypreview.com/pages?preview_key=9ede639ea0926e8e92cd35d982991568", "background": "", "text_color": "" } }
+      },
+      "block_order": ["prev_button", "next_button"],
+      "settings": { "full_width": true, "content_width": "small", "text_position": "center", "background": "#ffffff", "background_gradient": "", "text_color": "" }
+    },
+    "main": { "type": "main-page", "settings": { "content_width": "100%" } }
+  },
+  "order": ["banner", "intro", "nav", "main"]
+}

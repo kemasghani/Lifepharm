@@ -1,0 +1,699 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        "h1 {text-align: left !important;}"
+      ],
+      "settings": {
+        "content_width": "100%"
+      }
+    },
+    "media_with_text_9PEKkb": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_cEghpQ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/skin-top-1.webp",
+            "media_width": 40,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "",
+            "content": "<h1>The World's First Skin<br/>Cell Regeneration<br/>Serum & Supplement</h1><p><em>Clinically tested to show 200% increase<br/>Human skin cell fiber regeneration</em></p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "rgba(0,0,0,0)",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_cEghpQ"
+      ],
+      "custom_css": [
+        ".section-full {background-image: url(https://cdn.shopify.com/s/files/1/0790/7665/5396/files/skin-bg-1.webp?v=1724691468); background-size: cover; background-repeat: no-repeat; background-position: center; padding-bottom: 0; padding-top: 20px;}",
+        ".section-full .prose p {font-size: 20px;}",
+        "@media (max-width: 999px) {.section-full .media-with-text__item {display: flex; flex-direction: column-reverse; }}"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "none"
+      }
+    },
+    "rich_text_B6aUJ8": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_8qQ8th": {
+          "type": "richtext",
+          "settings": {
+            "content": "<h2>Restore the look of damaged skin by<br/>focusing on the foundations of youth</h2>"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_8qQ8th"
+      ],
+      "custom_css": [
+        ".section-full {padding-top: 50px; padding-bottom: 10px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "rgba(0,0,0,0)",
+        "background_gradient": "",
+        "text_color": "#b08e58"
+      }
+    },
+    "media_with_text_eikdgX": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_hXnR6T": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/dkin-health.webp",
+            "media_width": 45,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "",
+            "content": "<h4>The Skin Cell Regeneration System works from the inside out and outside in to help support younger, more radiant-looking skin.</h4><p>LifePharm’s proprietary egg extract is proven to regenerate three skin fibers — <strong>collagen, elastin, and fibronectin</strong>. These are crucial for keeping the skin firm while improving your complexion. <br/>Start your journey today.</p><p>Get your 30-day supply of OMNIA and LAMIDERM APEX and start your journey to a better complexion today.</p><ul><li>OMNIA® Skin Support Dietary Supplement (60 Capsules) </li><li>LAMIDERM® High Performance Bio-Skin Serum (15ml Serum)</li></ul>",
+            "link_text": "",
+            "link_url": "",
+            "background": "rgba(0,0,0,0)",
+            "background_gradient": "",
+            "text_color": "#000000",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_hXnR6T"
+      ],
+      "custom_css": [
+        ".section-full .media-with-text__item img {object-fit: contain;}",
+        ".section-full .media-with-text__content {padding-right: 30px; padding-left: 30px;}",
+        ".section-full {padding-bottom: 30px;}"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "none"
+      }
+    },
+    "multi_column_g43enW": {
+      "type": "multi-column",
+      "blocks": {
+        "item_yBhPfi": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/batch.webp",
+            "column_size": "4",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_xig96Q": {
+          "type": "item",
+          "settings": {
+            "column_size": "1.5",
+            "title": "Industry-Leading 60-Day “Hassle-Free” Product Return Policy",
+            "heading_tag": "h4",
+            "content": "<p>We’re so sure you’ll love the results you experience with our products, we guarantee it or your money back. You have 60 days to try out the Skin Cell Rejuvenation System—if you don’t see results or are unhappy with the product for any reason, we’ll issue you a full refund. No hassles. No risk. We guarantee it. </p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_yBhPfi",
+        "item_xig96Q"
+      ],
+      "custom_css": [
+        ".section-full {padding-top: 20px; padding-bottom: 20px;}",
+        ".section-full .multi-column {align-items: center;}",
+        "@media (min-width: 700px) {.section-full {padding-right: 0px; }}"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": true,
+        "gap": "small",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "background": "#dbdbdb",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_q9KEPx": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_cpWcJ7": {
+          "type": "heading",
+          "settings": {
+            "text": "DUAL DELIVERY SYSTEM",
+            "heading_tag": "h1",
+            "text_color": "#254386",
+            "gradient": ""
+          }
+        },
+        "richtext_FPmFgW": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>STIMULATING SKIN CELL REGENERATION FROM THE INSIDE OUT AND THE OUTSIDE IN</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_cpWcJ7",
+        "richtext_FPmFgW"
+      ],
+      "custom_css": [
+        ".section-full {padding-top: 50px;}",
+        ".section-full .prose div {margin-top: 5px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_efqjNa": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_33WXfW": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>University of Toronto Skin Culture Study, Dr. A. Hinek 2016<br/>Photos of human skin cells seen at 200x magnification</p>"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_33WXfW"
+      ],
+      "custom_css": [
+        ".section-full {padding-top: 30px; padding-bottom: 30px; margin-top: -2px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "medium",
+        "text_position": "center",
+        "background": "#02426a",
+        "background_gradient": "",
+        "text_color": "#ffffff"
+      }
+    },
+    "media_with_text_wdXGaX": {
+      "type": "media-with-text",
+      "blocks": {
+        "video_V7in4D": {
+          "type": "video",
+          "settings": {
+            "external_video_url": "https://youtu.be/-aA_gbm7VFI",
+            "poster_image": "shopify://shop_images/Screenshot-poster-1.png",
+            "autoplay": false,
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "SEE THE SCIENCE IN ACTION",
+            "content": "<p>See how the revolutionary Skin Cell Regeneration system works quickly for tighter and firmer skin.</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "rgba(0,0,0,0)",
+            "background_gradient": "",
+            "text_color": "#000000",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        },
+        "video_c3Qhtb": {
+          "type": "video",
+          "settings": {
+            "external_video_url": "https://youtu.be/L1szADpY5Dk",
+            "poster_image": "shopify://shop_images/Screenshot-poster-2.png",
+            "autoplay": false,
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "VISIBLE EFFECTS IN THREE DAYS",
+            "content": "<p>“My skin felt tighter and had a radiant glow just three days into using the product. I’d wake up in the morning and immediately look refreshed.”</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "rgba(0,0,0,0)",
+            "background_gradient": "",
+            "text_color": "#000000",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_V7in4D",
+        "video_c3Qhtb"
+      ],
+      "custom_css": [
+        "video-media::part(play-button) {display: none;}",
+        ".section-full .media-with-text {display: flex;}",
+        ".section-full .media-with-text__item {display: block; width: 50%;}",
+        ".section-full .media-with-text__item .prose .h2 {color: #254386;}",
+        ".section-full {padding-bottom: 0px; padding-top: 40px; background-color: #cdd0d7;}",
+        ".media-with-text__content {padding: 10px 10px 50px 10px;}",
+        "img {object-fit: contain;}",
+        "@media (max-width: 768px) {.section-full .media-with-text {flex-wrap: wrap; } .section-full .media-with-text__item {display: block; width: 100%; }}"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
+    },
+    "rich_text_tjKcUj": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_NNHfcD": {
+          "type": "heading",
+          "settings": {
+            "text": "AMAZING TRANSFORMATIONS",
+            "heading_tag": "h1",
+            "text_color": "#254386",
+            "gradient": ""
+          }
+        },
+        "richtext_4CLdXA": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Science doesn’t lie and neither do results from real people. In addition to noticing more vibrant, even skin tone and a healthy glow, Skin Cell Regeneration users are seeing fewer wrinkles and tighter, more youthful-looking skin.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_NNHfcD",
+        "richtext_4CLdXA"
+      ],
+      "custom_css": [
+        ".section-full {padding-bottom: 40px; padding-top: 50px;}",
+        ".section-full .prose div {margin-top: 5px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "rgba(0,0,0,0)"
+      }
+    },
+    "media_with_text_fRNQAe": {
+      "type": "media-with-text",
+      "blocks": {
+        "video_gfHNDd": {
+          "type": "video",
+          "settings": {
+            "external_video_url": "https://youtu.be/40BG_ubzch8",
+            "poster_image": "shopify://shop_images/Screenshot_2024-08-26_170127.png",
+            "autoplay": false,
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "",
+            "content": "<h5>FEWER LINES AND WRINKLES</h5>",
+            "link_text": "",
+            "link_url": "",
+            "background": "rgba(0,0,0,0)",
+            "background_gradient": "",
+            "text_color": "#02426a",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        },
+        "video_Jwcciz": {
+          "type": "video",
+          "settings": {
+            "external_video_url": "https://youtu.be/gx-CQC2akvg",
+            "poster_image": "shopify://shop_images/Screenshot_2024-08-26_170410.png",
+            "autoplay": false,
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "",
+            "content": "<h5>FADING SUN SPOTS</h5>",
+            "link_text": "",
+            "link_url": "",
+            "background": "rgba(0,0,0,0)",
+            "background_gradient": "",
+            "text_color": "#02426a",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        },
+        "video_7yeYAc": {
+          "type": "video",
+          "settings": {
+            "external_video_url": "https://youtu.be/XRm-tmCqPkw",
+            "poster_image": "shopify://shop_images/Screenshot_2024-08-26_170708.png",
+            "autoplay": false,
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "",
+            "content": "<h5>SMOOTHER SKIN</h5>",
+            "link_text": "",
+            "link_url": "",
+            "background": "rgba(0,0,0,0)",
+            "background_gradient": "",
+            "text_color": "#02426a",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        },
+        "video_6NCeJn": {
+          "type": "video",
+          "settings": {
+            "external_video_url": "https://youtu.be/17GjeP1ViJE",
+            "poster_image": "shopify://shop_images/Screenshot_2024-08-26_170824.png",
+            "autoplay": false,
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "",
+            "content": "<h5>MORE RADIANT SKI</h5>",
+            "link_text": "",
+            "link_url": "",
+            "background": "rgba(0,0,0,0)",
+            "background_gradient": "",
+            "text_color": "#02426a",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        },
+        "video_DeEfDz": {
+          "type": "video",
+          "settings": {
+            "external_video_url": "https://youtu.be/gXX21OCSXL4",
+            "poster_image": "shopify://shop_images/Screenshot_2024-08-26_170939.png",
+            "autoplay": false,
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "",
+            "content": "<h5>YOUTHFUL-LOOKING SKIN</h5>",
+            "link_text": "",
+            "link_url": "",
+            "background": "rgba(0,0,0,0)",
+            "background_gradient": "",
+            "text_color": "#02426a",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        },
+        "video_PbgnMD": {
+          "type": "video",
+          "settings": {
+            "external_video_url": "https://youtu.be/yfMHmPU1z24",
+            "poster_image": "shopify://shop_images/Screenshot_2024-08-26_171120.png",
+            "autoplay": false,
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "",
+            "content": "<h5>TIGHTER AND FIRMER SKIN</h5>",
+            "link_text": "",
+            "link_url": "",
+            "background": "rgba(0,0,0,0)",
+            "background_gradient": "",
+            "text_color": "#02426a",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_gfHNDd",
+        "video_Jwcciz",
+        "video_7yeYAc",
+        "video_6NCeJn",
+        "video_DeEfDz",
+        "video_PbgnMD"
+      ],
+      "custom_css": [
+        ".section-full .media-with-text {display: flex; flex-wrap: wrap;}",
+        ".section-full .media-with-text__item {display: block; width: 31%;}",
+        "video-media::part(play-button) {display: none;}",
+        ".media-with-text__content {padding: 5px 10px 0px 10px;}",
+        "img {object-fit: contain;}",
+        "@media (max-width: 768px) {.section-full .media-with-text {flex-wrap: wrap; } .section-full .media-with-text__item {display: block; width: 100%; }}"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
+    },
+    "testimonials_Mz3EzH": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_FJ8QY4": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/download-1.webp",
+            "round_avatar": true,
+            "show_rating": false,
+            "rating": 5,
+            "author": "",
+            "title": "",
+            "content": "<p>“I noticed an improvement in the tone of my skin, which seems plumper especially in the cheekbone area, and an ever-so-slight improvement of the fine line on my forehead. Since I’ve used the products only for a couple of weeks, I feel this is quite a remarkable result.”</p><p></p><p><strong>ARIANNA REGGIO<br/></strong>Photographer at Angelia Communications and Social Media Strategist</p>"
+          }
+        },
+        "testimonial_Yqmam7": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/review_3.jpg",
+            "round_avatar": true,
+            "show_rating": false,
+            "rating": 4,
+            "author": "",
+            "title": "",
+            "content": "<p>“I am very picky about the products I use. I am delighted to say that Lamiderm Apex is an obvious winner and has become my winter skin care secret weapon.”<br/></p><p></p><p><strong>ERIN LAYNE</strong><br/>Actress, Model, Hollywood Costume Designer</p>"
+          }
+        },
+        "testimonial_iCx9H4": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/download-3.webp",
+            "round_avatar": false,
+            "show_rating": false,
+            "rating": 4,
+            "author": "",
+            "title": "",
+            "content": "<p>“After using for a few weeks, I found this serum amazingly brightens my skin tone. The ingredients in this product have been thoroughly tested for safety and efficacy. I just love this serum and would love to share it with all the beauty junkies.”<br/></p><p></p><p><strong>CHRIS HAN<br/></strong>Style and Beauty Blogger, Fashion Consultant</p>"
+          }
+        },
+        "testimonial_wMRB8t": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/review_2.jpg",
+            "round_avatar": true,
+            "show_rating": false,
+            "rating": 4,
+            "author": "",
+            "title": "",
+            "content": "<p>“I have recently been using Lamiderm Apex and it is such an impressive new serum, I can’t get over it. I fell in love with this as soon as I opened it and saw the sleek packaging. I would confidently recommend this to my mom or anyone who wants to protect and improve their aging skin. Overall, this is a great serum. It’s also backed by a 100 percent satisfaction guarantee.”</p><p></p><p><strong>ANDREA CANNON<br/></strong>Founder of TheStepfordGuide.com and Beauty & Lifestyle Blogger</p>"
+          }
+        },
+        "testimonial_yJjFm3": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/download-5.webp",
+            "round_avatar": true,
+            "show_rating": false,
+            "rating": 4,
+            "author": "",
+            "title": "",
+            "content": "<p>“I discovered a new serum by LifePharm. I’m so happy with it, because it provides my skin with a healthy glow. Give it a try because while most serums target just one or two proteins, Lamiderm Apex targets all three: elastin, fibronectin and collagen.”</p><p></p><p><strong>MIKA NEWTON<br/></strong>Ukrainian-born Actress, Singer, Model</p>"
+          }
+        },
+        "testimonial_BpGRtV": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/download-6.webp",
+            "round_avatar": true,
+            "show_rating": false,
+            "rating": 4,
+            "author": "",
+            "title": "",
+            "content": "<p>“New, amazing, rejuvenating serum Lamiderm Apex arrives from LifePharm! I love the product, I love the packaging and I love their personal approach!”</p><p></p><p><strong>BOJANA LAMBROU<br/></strong>Model, Children’s Book Author</p>"
+          }
+        },
+        "testimonial_EFQaM8": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/download-7.webp",
+            "round_avatar": true,
+            "show_rating": false,
+            "rating": 4,
+            "author": "",
+            "title": "",
+            "content": "<p>\"Trying a new product called Lamiderm Apex. I have been using it for a couple days and I love how smooth my skin feels after applying. Also, I was so amazed by the packaging - it was in a gorgeous dark blue velvet box- you could say the packaging doesn't matter, but that is where an awesome product experience begins.”</p><p></p><p><strong>ANDREA CANNON<br/></strong>Fashion Photographer and Beauty Blogger</p>"
+          }
+        },
+        "testimonial_Mi7jdY": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/download-8.webp",
+            "round_avatar": true,
+            "show_rating": false,
+            "rating": 4,
+            "author": "",
+            "title": "",
+            "content": "<p>“I found a new serum called Lamiderm Apex and I like it so much. Sometimes my skin feels tired and this skin care product makes my face feel much better. Check it out. You will like it.”</p><p></p><p><strong>MIKA NEWTON<br/></strong>Lifestyle Blogger</p>"
+          }
+        },
+        "testimonial_jLnXkE": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/download-9.webp",
+            "round_avatar": true,
+            "show_rating": false,
+            "rating": 4,
+            "author": "",
+            "title": "",
+            "content": "<p>“Lamiderm Apex absorbs fast so it is undetectable on the skin. It has great ingredients like vitamin C, which is my absolute must every morning! This works as an antioxidant with anti-aging benefits as well as evening out the skin tone.”</p><p></p><p><strong>BOJANA LAMBROU<br/></strong>Chief Editor of Beauty4free2u.com</p>"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_FJ8QY4",
+        "testimonial_Yqmam7",
+        "testimonial_iCx9H4",
+        "testimonial_wMRB8t",
+        "testimonial_yJjFm3",
+        "testimonial_BpGRtV",
+        "testimonial_EFQaM8",
+        "testimonial_Mi7jdY",
+        "testimonial_jLnXkE"
+      ],
+      "custom_css": [
+        ".section-full .v-stack p strong {color: #a48a3d;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_testimonials": true,
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "link_url": "shopify://collections/skin-health",
+        "link_text": "",
+        "background": "#eaeaea",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "testimonial_card_background": "#ffffff",
+        "testimonial_card_text_color": ""
+      }
+    },
+    "rich_text_Pewbtd": {
+      "type": "rich-text",
+      "blocks": {
+        "button_eFUtHa": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "xl",
+            "text": "SHOP NOW",
+            "url": "shopify://collections/skin-health",
+            "background": "#ff8f00",
+            "text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "button_eFUtHa"
+      ],
+      "custom_css": [],
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "#eaeaea",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "media_with_text_9PEKkb",
+    "rich_text_B6aUJ8",
+    "media_with_text_eikdgX",
+    "multi_column_g43enW",
+    "rich_text_q9KEPx",
+    "rich_text_efqjNa",
+    "media_with_text_wdXGaX",
+    "rich_text_tjKcUj",
+    "media_with_text_fRNQAe",
+    "testimonials_Mz3EzH",
+    "rich_text_Pewbtd"
+  ]
+}

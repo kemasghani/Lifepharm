@@ -1,0 +1,353 @@
+{%- assign gds = all_products['gut-defense-system'] -%}
+{%- assign gds_variant = gds.selected_or_first_available_variant -%}
+{%- if gds_variant -%}
+  {%- assign gds_variant_id = gds_variant.id -%}
+  {%- assign gds_price = gds_variant.price -%}
+  {%- assign gds_compare = gds_variant.compare_at_price | default: gds_variant.price -%}
+{%- else -%}
+  {%- assign gds_variant_id = 50631528480985 -%}
+  {%- assign gds_price = 21900 -%}
+  {%- assign gds_compare = 33200 -%}
+{%- endif -%}
+{%- comment -%} Pack photo: the product's own image, or this file if the product has none (the EU product has no photo yet; this is the pack photo already in the EU store's Files). {%- endcomment -%}
+{%- if gds.featured_image -%}
+  {%- assign gds_image = gds.featured_image | image_url: width: 840 -%}
+{%- else -%}
+  {%- assign gds_image = 'https://cdn.shopify.com/s/files/1/0699/3926/5753/files/GutFuelPack-NA.png' -%}
+{%- endif -%}
+{%- assign gds_save_pct = 0 -%}
+{%- if gds_compare > gds_price -%}
+  {%- assign gds_save_pct = gds_compare | minus: gds_price | times: 100 | divided_by: gds_compare -%}
+{%- endif -%}
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Lato:wght@400;700&display=swap">
+<style>
+  /*
+    Everything is scoped under .gds so it can't restyle the theme's header, menu or footer
+    (now that this page uses the normal theme layout instead of 'lp').
+    Same design system as the LAMININE & OMEGA+++ page; product accent is DIGESTIVE+++ green.
+  */
+  .gds {
+    --bg: #ffffff;
+    --surface: #F7F6F3;
+    --ink: #181818;
+    --ink-70: rgba(24, 24, 24, 0.7);
+    --ink-soft: #666666;
+    --digestive-green: #3DAE2B;
+    --digestive-soft: #EEF7EC;
+    --accent: #FF8F00;
+    --accent-ink: #ffffff;
+    --line: #E7E5E0;
+
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Lato', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    letter-spacing: 0.4px;
+  }
+  .gds *, .gds *::before, .gds *::after { box-sizing: border-box; }
+  .gds a { color: var(--accent); }
+  .gds a:focus-visible, .gds button:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+  .gds-page { max-width: 1040px; margin: 0 auto; padding-block: 28px 56px; padding-inline: 16px; display: flex; flex-direction: column; }
+
+  .gds h1, .gds h2 { font-family: 'Playfair Display', Georgia, serif; font-weight: 400; letter-spacing: 1.12px; margin: 0; text-wrap: balance; color: var(--ink); }
+  .gds h1 { font-size: clamp(32px, 5vw, 44px); line-height: 1.12; }
+  .gds h2 { font-size: clamp(26px, 3.4vw, 32px); line-height: 1.2; }
+  .gds sup { font-size: 0.6em; line-height: 0; vertical-align: 0; position: relative; top: -0.55em; letter-spacing: 0; margin-left: 0.04em; }
+
+  /* ---- Intro: full-width video, then headline, then two columns of copy ---- */
+  .gds-intro { width: 100%; max-width: 960px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px; }
+  .gds .gds-intro h1 { text-align: center; font-size: clamp(34px, 5.6vw, 52px); line-height: 1.1; }
+  .gds-video { width: 100%; aspect-ratio: 16 / 9; border-radius: 20px; overflow: hidden; background: #141412; }
+  .gds-video iframe { display: block; width: 100%; height: 100%; border: 0; }
+
+  .gds-copy-cols { display: grid; grid-template-columns: 1fr; gap: 28px; }
+  .gds-copy { display: flex; flex-direction: column; gap: 14px; }
+  .gds-copy p { margin: 0; color: var(--ink-70); font-size: 18px; line-height: 1.6; }
+
+  /* Right column: the two parts of the system */
+  .gds-parts { list-style: none; margin: 0; padding: 8px 24px; background: var(--digestive-soft); border-radius: 16px; display: flex; flex-direction: column; }
+  .gds-part { display: flex; gap: 16px; align-items: flex-start; padding-block: 18px; }
+  .gds-part-icon { flex-shrink: 0; width: 36px; height: 36px; color: var(--digestive-green); margin-top: 2px; }
+  .gds-part + .gds-part { border-top: 1px solid rgba(61, 174, 43, 0.22); }
+  .gds-part p { margin: 0; color: var(--ink-70); }
+  .gds-part strong { color: var(--ink); font-weight: 700; }
+
+  /* ---- Pack / offer box (same layout as the LAMININE & OMEGA+++ page) ---- */
+  .gds-offer { margin: 48px auto 0; width: 100%; max-width: 960px; border: 1px solid var(--line); border-radius: 20px; padding-block: 30px; padding-inline: clamp(18px, 4vw, 40px); display: grid; grid-template-columns: 1fr; gap: 24px; }
+  .gds-offer-media, .gds-offer-buy { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+  .gds-offer h2 { text-align: center; }
+  .gds-pack-img { width: 100%; max-width: 420px; height: auto; display: block; margin-inline: auto; border-radius: 12px; }
+
+  .gds-deal { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+  .gds-badge { font-size: 14px; font-weight: 700; color: #fff; background: var(--digestive-green); border-radius: 56px; padding: 5px 14px; }
+  .gds-price-row { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; justify-content: center; font-variant-numeric: tabular-nums; }
+  .gds-sale-price { font-size: 28px; }
+  .gds-compare-price { color: var(--ink-70); text-decoration: line-through; }
+  .gds-includes { margin: 0; font-size: 14.5px; color: var(--ink-70); text-align: center; }
+
+  .gds-buy-row { display: flex; gap: 12px; align-items: stretch; }
+  .gds-qty { display: flex; align-items: center; border: 1px solid var(--line); border-radius: 56px; overflow: hidden; flex-shrink: 0; }
+  .gds-qty button { width: 44px; height: 100%; min-height: 52px; border: 0; background: none; font: inherit; font-size: 20px; cursor: pointer; color: var(--ink); }
+  .gds-qty button:disabled { color: var(--line); cursor: default; }
+  .gds-qty output { min-width: 28px; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .gds .gds-cta { flex: 1; display: flex; align-items: center; justify-content: center; background: var(--accent); color: var(--accent-ink); font-weight: 700; letter-spacing: 0.4px; padding: 16px 28px; border-radius: 56px; text-decoration: none; }
+  .gds .gds-cta:hover { filter: brightness(0.96); }
+  .gds .gds-cta[aria-busy="true"] { opacity: 0.7; pointer-events: none; }
+
+  .gds-trust { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .gds-trust li { display: flex; gap: 10px; align-items: flex-start; font-size: 16px; }
+  .gds-trust svg { flex-shrink: 0; margin-top: 4px; }
+  .gds-fine { font-size: 12.5px; color: var(--ink-soft); text-align: center; margin: 0; }
+
+  .gds-disclaimer { margin: 48px auto 0; max-width: 80ch; font-size: 12px; line-height: 1.5; color: var(--ink-soft); text-align: center; }
+
+  /* ---- IBO contact (same as the LAMININE & OMEGA+++ page) ---- */
+  .gds-ibo { width: 100%; background: #fdf4e7; padding-block: 36px; padding-inline: 16px; }
+  .gds-ibo-card { max-width: 560px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
+  .gds-ibo-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); }
+  .gds-ibo-name { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; line-height: 1.2; }
+  .gds-ibo-actions { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .gds .gds-ibo-btn { align-self: center; border: 1.5px solid var(--ink); background: var(--bg); color: var(--ink); font: inherit; font-weight: 700; padding: 10px 22px; border-radius: 56px; cursor: pointer; text-decoration: none; }
+  .gds-ibo-email { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; font-size: 14px; }
+  .gds-ibo-email code { font-family: inherit; background: var(--bg); padding: 6px 10px; border-radius: 8px; user-select: all; word-break: break-all; }
+  .gds-ibo-email button { border: 0; background: none; color: var(--accent); font: inherit; font-weight: 700; cursor: pointer; padding: 4px; }
+
+  @media (prefers-reduced-motion: reduce) { .gds * { transition: none !important; } }
+  @media (min-width: 900px) {
+    .gds-copy-cols { grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  }
+  @media (min-width: 900px) {
+    .gds-offer { grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+    .gds-offer h2 { text-align: left; }
+    .gds-deal { align-items: flex-start; }
+    .gds-price-row { justify-content: flex-start; }
+    .gds-includes, .gds-fine { text-align: left; }
+  }
+</style>
+
+<div class="gds" lang="hu">
+<div class="gds-page">
+
+  <section class="gds-intro" aria-labelledby="gds-intro-h">
+    <h1 id="gds-intro-h">Minden étkezés&nbsp;után puffad?<br> Nem az étel a&nbsp;hibás.</h1>
+
+    <div class="gds-video">
+      <iframe
+        src="https://www.youtube.com/embed/He7jiejlcXc"
+        title="Gut Defense System videó"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        loading="lazy"></iframe>
+    </div>
+
+    <div class="gds-copy-cols">
+      <div class="gds-copy">
+        <p>
+          Ahogy idősödünk, szervezetünk természetes módon egyre kevesebb emésztőenzimet termel, így
+          nehezebbé válik az ételek panaszmentes lebontása. Ugyanakkor a bélrendszerünkben élő jótékony
+          baktériumoknak is megfelelő táplálékra van szükségük ahhoz, hogy támogassák az egészséges emésztést.
+        </p>
+        <p>
+          Ezért a Gut Defense System kétrészes megközelítéssel támogatja az emésztés egészségét. Az emésztést
+          támogató DIGESTIVE<sup>+++</sup> készítményt a Cellnergy Hydration Systemmel ötvözi, hogy kiegészítse
+          mindennapi bélegészség-rutinját. Így segít a jobb emésztés támogatásában, és abban, hogy étkezés után
+          is komfortosabban érezze magát.*
+        </p>
+      </div>
+
+      <ul class="gds-parts">
+        <li class="gds-part">
+          <svg class="gds-part-icon" width="36" height="36" viewBox="0 0 512 512" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M 507 362 L 506 361 L 505 354 L 504 353 L 502 345 L 500 342 L 500 340 L 494 328 L 492 326 L 491 323 L 489 321 L 487 317 L 483 313 L 483 312 L 479 308 L 479 307 L 469 297 L 468 297 L 463 292 L 462 292 L 459 289 L 458 289 L 450 283 L 431 274 L 429 274 L 428 273 L 426 273 L 419 270 L 411 269 L 410 268 L 405 268 L 404 267 L 381 266 L 380 267 L 371 267 L 370 268 L 360 269 L 359 270 L 356 270 L 352 272 L 346 273 L 325 283 L 323 285 L 313 291 L 309 295 L 308 295 L 294 309 L 294 310 L 290 314 L 290 315 L 285 321 L 284 324 L 282 326 L 281 329 L 279 331 L 277 335 L 277 337 L 272 347 L 272 349 L 270 353 L 270 356 L 269 357 L 269 360 L 268 361 L 268 364 L 267 365 L 267 370 L 266 371 L 266 380 L 265 381 L 265 396 L 266 397 L 266 406 L 267 407 L 267 412 L 268 413 L 268 416 L 269 417 L 269 420 L 270 421 L 270 424 L 271 425 L 272 430 L 274 433 L 274 435 L 277 440 L 277 442 L 279 446 L 281 448 L 282 451 L 284 453 L 287 459 L 294 467 L 294 468 L 308 482 L 309 482 L 312 485 L 311 487 L 300 488 L 299 489 L 291 489 L 290 490 L 276 490 L 275 491 L 246 490 L 245 489 L 237 489 L 236 488 L 230 488 L 229 487 L 220 486 L 219 485 L 208 483 L 207 482 L 193 478 L 177 470 L 175 470 L 173 468 L 166 465 L 161 461 L 158 460 L 155 457 L 151 455 L 143 448 L 142 448 L 114 423 L 113 423 L 109 419 L 108 419 L 103 415 L 99 413 L 94 412 L 93 411 L 88 411 L 87 410 L 85 411 L 79 411 L 78 412 L 71 414 L 60 424 L 52 440 L 42 452 L 42 454 L 41 455 L 41 460 L 43 464 L 47 467 L 55 467 L 57 466 L 62 461 L 62 460 L 68 453 L 76 437 L 83 431 L 89 431 L 93 433 L 100 439 L 101 439 L 116 453 L 117 453 L 134 468 L 135 468 L 138 471 L 139 471 L 153 481 L 156 482 L 158 484 L 178 494 L 180 494 L 188 498 L 190 498 L 197 501 L 200 501 L 204 503 L 215 505 L 216 506 L 226 507 L 227 508 L 232 508 L 233 509 L 241 509 L 242 510 L 253 510 L 254 511 L 282 511 L 283 510 L 294 510 L 295 509 L 303 509 L 304 508 L 315 507 L 316 506 L 325 505 L 326 504 L 329 504 L 330 503 L 333 503 L 334 502 L 340 501 L 341 502 L 346 503 L 349 505 L 352 505 L 353 506 L 359 507 L 360 508 L 370 509 L 371 510 L 380 510 L 381 511 L 393 511 L 394 510 L 404 510 L 405 509 L 415 508 L 416 507 L 419 507 L 420 506 L 431 503 L 434 501 L 436 501 L 450 494 L 452 492 L 459 488 L 468 480 L 469 480 L 478 471 L 478 470 L 483 465 L 483 464 L 491 454 L 502 432 L 502 430 L 505 423 L 506 416 L 507 415 L 507 411 L 508 410 L 508 405 L 509 404 L 509 390 L 510 388 L 509 387 L 509 373 L 508 372 Z M 375 287 L 400 287 L 401 288 L 406 288 L 407 289 L 415 290 L 416 291 L 421 292 L 424 294 L 426 294 L 440 301 L 449 308 L 450 308 L 463 320 L 463 321 L 468 326 L 468 327 L 475 336 L 482 350 L 483 355 L 485 358 L 485 361 L 486 362 L 486 365 L 487 366 L 487 370 L 488 371 L 488 376 L 489 377 L 489 400 L 488 401 L 488 406 L 487 407 L 487 411 L 486 412 L 485 419 L 483 422 L 482 427 L 475 441 L 468 450 L 468 451 L 456 464 L 455 464 L 450 469 L 449 469 L 440 476 L 421 485 L 419 485 L 415 487 L 412 487 L 411 488 L 401 489 L 400 490 L 375 490 L 374 489 L 369 489 L 368 488 L 360 487 L 359 486 L 351 484 L 346 481 L 344 481 L 326 470 L 310 455 L 310 454 L 306 450 L 306 449 L 303 446 L 300 440 L 298 438 L 294 430 L 294 428 L 292 425 L 292 423 L 289 416 L 288 409 L 287 408 L 287 403 L 286 402 L 286 375 L 287 374 L 287 369 L 288 368 L 289 361 L 290 360 L 292 352 L 294 349 L 294 347 L 298 339 L 300 337 L 301 334 L 306 328 L 306 327 L 320 312 L 321 312 L 326 307 L 327 307 L 335 301 L 338 300 L 340 298 L 344 296 L 346 296 L 351 293 L 353 293 L 360 290 L 368 289 L 369 288 L 374 288 Z M 450 338 L 448 337 L 441 337 L 436 340 L 436 341 L 418 362 L 418 363 L 414 367 L 414 368 L 409 373 L 409 374 L 405 378 L 405 379 L 401 383 L 401 384 L 396 389 L 396 390 L 387 400 L 387 401 L 383 405 L 383 406 L 373 417 L 368 412 L 368 411 L 363 406 L 363 405 L 359 401 L 359 400 L 354 395 L 354 394 L 342 380 L 340 379 L 332 379 L 330 381 L 329 381 L 326 386 L 326 392 L 330 397 L 330 398 L 334 402 L 334 403 L 339 408 L 339 409 L 348 419 L 348 420 L 352 424 L 352 425 L 356 429 L 356 430 L 361 435 L 361 436 L 368 443 L 370 444 L 376 444 L 378 443 L 385 436 L 385 435 L 389 431 L 389 430 L 394 425 L 394 424 L 398 420 L 398 419 L 403 414 L 403 413 L 407 409 L 407 408 L 412 403 L 412 402 L 416 398 L 416 397 L 421 392 L 421 391 L 425 387 L 425 386 L 439 370 L 439 369 L 443 365 L 443 364 L 447 360 L 447 359 L 452 354 L 454 350 L 454 343 Z M 136 54 L 130 54 L 128 55 L 124 59 L 124 61 L 123 62 L 123 66 L 124 67 L 125 74 L 126 75 L 126 77 L 128 81 L 128 84 L 130 87 L 131 92 L 139 108 L 141 110 L 144 116 L 147 119 L 150 124 L 157 131 L 157 132 L 175 149 L 176 149 L 196 169 L 196 170 L 200 174 L 200 175 L 204 180 L 206 185 L 208 187 L 208 189 L 212 196 L 212 198 L 213 199 L 213 201 L 216 208 L 217 216 L 218 217 L 218 221 L 219 222 L 219 226 L 220 227 L 220 233 L 221 234 L 221 243 L 222 244 L 222 265 L 223 266 L 223 271 L 222 272 L 222 282 L 221 283 L 221 287 L 220 288 L 220 291 L 219 292 L 219 295 L 218 296 L 217 301 L 209 317 L 204 323 L 204 324 L 199 329 L 199 330 L 188 340 L 187 340 L 182 344 L 179 345 L 177 347 L 175 347 L 167 351 L 159 352 L 158 353 L 142 353 L 141 352 L 138 352 L 137 351 L 131 350 L 119 344 L 117 344 L 114 342 L 112 342 L 108 340 L 105 340 L 104 339 L 101 339 L 100 338 L 95 338 L 94 337 L 83 337 L 82 336 L 80 337 L 69 337 L 68 338 L 59 339 L 42 346 L 40 348 L 33 352 L 21 363 L 21 364 L 13 373 L 13 374 L 9 379 L 8 382 L 6 384 L 0 396 L 0 401 L 1 402 L 1 404 L 5 408 L 7 408 L 8 409 L 12 409 L 13 408 L 15 408 L 19 404 L 21 399 L 23 397 L 25 392 L 27 390 L 29 386 L 40 373 L 41 373 L 46 368 L 47 368 L 52 364 L 58 361 L 60 361 L 67 358 L 72 358 L 73 357 L 90 357 L 91 358 L 96 358 L 97 359 L 100 359 L 101 360 L 109 362 L 120 368 L 122 368 L 123 369 L 125 369 L 132 372 L 140 373 L 141 374 L 144 374 L 145 375 L 150 375 L 151 376 L 157 376 L 158 377 L 169 377 L 170 378 L 196 377 L 197 376 L 204 376 L 205 375 L 210 375 L 211 374 L 220 373 L 221 372 L 224 372 L 225 371 L 228 371 L 229 370 L 232 370 L 236 368 L 242 367 L 246 365 L 249 361 L 249 359 L 250 358 L 249 352 L 244 347 L 241 347 L 240 346 L 238 347 L 235 347 L 228 350 L 225 350 L 224 351 L 213 353 L 212 354 L 208 354 L 207 355 L 204 355 L 203 354 L 215 343 L 215 342 L 223 333 L 226 327 L 228 325 L 235 311 L 235 309 L 236 308 L 236 306 L 239 299 L 239 296 L 240 295 L 240 292 L 241 291 L 241 287 L 242 286 L 242 278 L 243 277 L 243 254 L 242 253 L 242 240 L 241 239 L 241 230 L 240 229 L 239 218 L 238 217 L 237 208 L 235 204 L 235 201 L 233 197 L 233 194 L 231 191 L 230 186 L 223 172 L 221 170 L 218 164 L 212 157 L 212 156 L 203 147 L 203 146 L 201 145 L 188 132 L 187 132 L 166 111 L 166 110 L 162 106 L 162 105 L 158 100 L 156 95 L 154 93 L 152 89 L 152 87 L 149 82 L 149 80 L 148 79 L 148 77 L 145 70 L 145 67 L 144 66 L 143 60 L 140 56 Z M 183 11 L 182 15 L 181 16 L 182 33 L 183 34 L 183 38 L 184 39 L 184 42 L 185 43 L 186 48 L 190 56 L 195 62 L 195 63 L 224 91 L 224 92 L 233 101 L 233 102 L 237 106 L 237 107 L 243 113 L 244 113 L 249 117 L 251 117 L 255 119 L 258 119 L 259 120 L 269 120 L 270 119 L 273 119 L 283 114 L 297 103 L 315 92 L 317 92 L 320 90 L 322 90 L 329 87 L 332 87 L 333 86 L 337 86 L 338 85 L 342 85 L 343 84 L 351 84 L 352 83 L 380 83 L 381 84 L 388 84 L 389 85 L 393 85 L 394 86 L 401 87 L 402 88 L 413 91 L 418 94 L 420 94 L 422 96 L 429 99 L 431 101 L 435 103 L 444 111 L 445 111 L 458 125 L 458 126 L 461 129 L 461 130 L 467 138 L 476 156 L 476 158 L 478 161 L 478 163 L 481 170 L 481 173 L 483 177 L 483 180 L 484 181 L 484 184 L 485 185 L 485 189 L 486 190 L 486 194 L 487 195 L 488 208 L 489 209 L 489 217 L 490 218 L 490 235 L 491 236 L 490 277 L 489 278 L 490 279 L 490 282 L 493 286 L 497 288 L 502 288 L 506 286 L 508 284 L 510 280 L 510 267 L 511 266 L 511 227 L 510 226 L 510 214 L 509 213 L 508 197 L 507 196 L 507 191 L 506 190 L 506 186 L 505 185 L 505 181 L 504 180 L 502 169 L 501 168 L 501 166 L 500 165 L 496 151 L 493 146 L 493 144 L 486 130 L 484 128 L 483 125 L 481 123 L 477 116 L 474 113 L 474 112 L 458 95 L 457 95 L 452 90 L 451 90 L 442 83 L 418 71 L 416 71 L 409 68 L 398 66 L 397 65 L 385 64 L 384 63 L 369 63 L 367 62 L 366 63 L 347 63 L 346 64 L 340 64 L 339 65 L 329 66 L 328 67 L 325 67 L 321 69 L 315 70 L 296 79 L 294 81 L 284 87 L 276 94 L 275 94 L 270 98 L 266 99 L 265 100 L 262 100 L 261 99 L 257 98 L 242 81 L 242 80 L 228 66 L 227 66 L 211 50 L 211 49 L 208 46 L 204 38 L 204 35 L 203 34 L 203 30 L 202 29 L 202 16 L 201 15 L 200 11 L 195 7 L 188 7 Z"/></svg>
+          <p>A <strong>DIGESTIVE<sup>+++</sup></strong> 11 emésztőenzimet tartalmaz az ételek lebontásához, valamint prebiotikumokat, amelyekre a jótékony baktériumoknak szükségük van. Egy négyhetes LifePharm-vizsgálatban az átlagos butirátszint 39%-kal magasabb volt.</p>
+        </li>
+        <li class="gds-part">
+          <svg class="gds-part-icon" width="36" height="36" viewBox="3 3 30 30" fill="none" aria-hidden="true"><path d="M18 4C18 4 8 15.5 8 22a10 10 0 0 0 20 0C28 15.5 18 4 18 4Z" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round"/><g stroke="currentColor" stroke-width="1.25"><circle cx="15" cy="22" r="2.2"/><circle cx="21.5" cy="19" r="1.6"/><circle cx="21" cy="26" r="1.3"/></g></svg>
+          <p>A <strong>Cellnergy Hydration System</strong> az Ön által egyébként is fogyasztott vizet lúgos, hidrogénben gazdag vízzé alakítja – olyan vízzé, amelyet a kutatások ugyanezekkel a jótékony baktériumokkal hoznak összefüggésbe.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Pack / offer -->
+  <section class="gds-offer" aria-labelledby="gds-offer-h">
+    <div class="gds-offer-media">
+      <img class="gds-pack-img" src="{{ gds_image }}" alt="Gut Defense System: DIGESTIVE+++ és Cellnergy Hydration System" width="420" height="420">
+    </div>
+
+    <div class="gds-offer-buy">
+      <h2 id="gds-offer-h">Gut Defense System</h2>
+      <div class="gds-deal">
+        {%- if gds_save_pct > 0 %}
+        <span class="gds-badge">Különleges ajánlat – {{ gds_save_pct }}% megtakarítás</span>
+        {%- endif %}
+        <div class="gds-price-row">
+          <span class="gds-sale-price" id="gds-sale-price">{{ gds_price | money }}</span>
+          {%- if gds_compare > gds_price %}
+          <span class="gds-compare-price" id="gds-compare-price">{{ gds_compare | money }}</span>
+          {%- endif %}
+        </div>
+      </div>
+      <p class="gds-includes">Tartalma: 1 db DIGESTIVE<sup>+++</sup> (120 db-os) + 3 db Cellnergy Hydration System</p>
+
+      <div class="gds-buy-row">
+        <div class="gds-qty" role="group" aria-label="Mennyiség">
+          <button type="button" id="gds-qty-minus" aria-label="Mennyiség csökkentése">&minus;</button>
+          <output id="gds-qty" aria-live="polite">1</output>
+          <button type="button" id="gds-qty-plus" aria-label="Mennyiség növelése">+</button>
+        </div>
+        <a class="gds-cta" id="gds-cta" href="/cart/{{ gds_variant_id }}:1?checkout">Megrendelem</a>
+      </div>
+
+      <ul class="gds-trust">
+        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9.5L7 13.5L15 4.5" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>60 napos pénzvisszafizetési garancia</span></li>
+        <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9.5L7 13.5L15 4.5" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Az USA-ban készült · FDA-nál regisztrált gyártóüzem · cGMP · Clean Label tanúsítvány</span></li>
+      </ul>
+      <p class="gds-fine">Az adókat és a szállítási költséget a pénztárban számítjuk ki.</p>
+    </div>
+  </section>
+
+  <p class="gds-disclaimer">*Ezeket az állításokat az amerikai Élelmiszer- és Gyógyszerügyi Hatóság (FDA) nem értékelte. A termék nem alkalmas betegségek diagnosztizálására, kezelésére, gyógyítására vagy megelőzésére. Az egyéni eredmények eltérőek lehetnek.</p>
+
+</div>
+
+<!-- IBO contact: "You are now shopping with <IBO>". Hidden unless the shopper came in through an IBO's ?ref= link.
+     The Contact button only shows when the referral app has an email for that IBO. -->
+<section class="gds-ibo" id="gds-ibo" aria-live="polite" hidden></section>
+</div>
+
+<script>
+  (function () {
+    // Values rendered by Liquid from the Gut Defense System product (prices in cents).
+    const VARIANT = {{ gds_variant_id | json }};
+    const UNIT_SALE = {{ gds_price | json }}, UNIT_COMPARE = {{ gds_compare | json }};
+    const MAX_QTY = 10;
+    let qty = 1;
+
+    const $ = id => document.getElementById(id);
+    // EU store money format: €1.234,50
+    const fmt = cents => '€' + (cents / 100).toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+    function render() {
+      $('gds-qty').textContent = qty;
+      $('gds-qty-minus').disabled = qty <= 1;
+      $('gds-qty-plus').disabled = qty >= MAX_QTY;
+      $('gds-sale-price').textContent = fmt(UNIT_SALE * qty);
+      if ($('gds-compare-price')) $('gds-compare-price').textContent = fmt(UNIT_COMPARE * qty);
+      $('gds-cta').href = `/cart/${VARIANT}:${qty}?checkout`;
+    }
+    $('gds-qty-minus').addEventListener('click', () => { if (qty > 1) { qty--; render(); } });
+    $('gds-qty-plus').addEventListener('click', () => { if (qty < MAX_QTY) { qty++; render(); } });
+    render();
+
+    // Order Now: add the pack to the shopper's EXISTING cart, then go to checkout.
+    // This keeps the IBO referral the store saved on the cart. A /cart/<variant>:<qty> permalink
+    // would start a fresh cart and drop that referral, so it is only the fallback.
+    $('gds-cta').addEventListener('click', async e => {
+      e.preventDefault();
+      const btn = e.currentTarget, fallback = btn.href;
+      btn.setAttribute('aria-busy', 'true');
+      try {
+        const r = await fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ items: [{ id: Number(VARIANT), quantity: qty }] })
+        });
+        if (!r.ok) throw new Error('add failed');
+        location.href = '/checkout';
+      } catch (err) {
+        location.href = fallback;
+      }
+    });
+  })();
+
+  // ----- IBO contact card -----
+  // The store's referral app (Sync Engine) resolves ?ref=<web alias / Exigo login name> and saves the IBO
+  // to localStorage as "sync_engine_referral": {"webalias":"...","firstName":"...","lastName":"...","email":null,...}
+  // "RetailDirect" is the app's corporate fallback when there's no referral, so the card stays hidden for it.
+  // Outside the store (a preview), localStorage is a different origin, so a sample card shows instead.
+  (function () {
+    const ON_STORE = /(^|\.)lifepharm\.com$/i.test(location.hostname);
+    const SAMPLE_IBO = { first: 'Név', last: 'IBO', email: 'ibo@example.com' };
+    const $ = id => document.getElementById(id);
+    const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+    // Turns a referral-app record into what the card needs. No valid email -> no Contact button (name still shows).
+    function toIbo(r) {
+      if (!r || !r.firstName || /^retaildirect$/i.test(r.webalias || '')) return null;
+      const email = String(r.email || '').trim();
+      return { first: r.firstName, last: r.lastName || '', email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? email : '' };
+    }
+    // NA store: the referral app saves the IBO here after its own lookup.
+    function readReferral() {
+      try { return toIbo(JSON.parse(localStorage.getItem('sync_engine_referral') || 'null')); }
+      catch (e) { return null; }
+    }
+    // EU store (and fallback anywhere): look the IBO up with the referral app's own search.
+    // Alias comes from ?ref= or the cart.
+    async function lookupByAlias() {
+      let alias = new URLSearchParams(location.search).get('ref');
+      if (!alias) {
+        try { const c = await fetch('/cart.js').then(r => r.json()); alias = c.attributes && (c.attributes.referrer_webalias || c.attributes.Referral); } catch (e) {}
+      }
+      if (!alias || /^retaildirect$/i.test(alias)) return null;
+      const r = await fetch('/apps/teqnavi/referral/search?term=' + encodeURIComponent(alias));
+      if (!r.ok) return null;
+      const list = await r.json();
+      return toIbo((Array.isArray(list) ? list : []).find(x => String(x.webalias || '').toLowerCase() === alias.toLowerCase()));
+    }
+
+    function renderIbo(ibo) {
+      const el = $('gds-ibo');
+      if (!ibo) { el.innerHTML = ''; el.hidden = true; return; }
+      el.hidden = false;
+      // Hungarian name order: family name first.
+      const name = `${ibo.last} ${ibo.first}`.trim();
+      el.innerHTML = `
+        <div class="gds-ibo-card">
+          <div>
+            <div class="gds-ibo-label">Ön most vele vásárol</div>
+            <div class="gds-ibo-name">${esc(name)}</div>
+          </div>
+          ${ibo.email ? `
+          <div class="gds-ibo-actions">
+            <a class="gds-ibo-btn" id="gds-ibo-contact" href="mailto:${esc(ibo.email)}?subject=${encodeURIComponent('Kérdés a Gut Defense Systemmel kapcsolatban')}">Kapcsolatfelvétel – ${esc(ibo.first)}</a>
+            <div class="gds-ibo-email" id="gds-ibo-email" hidden>
+              <code id="gds-ibo-email-text">${esc(ibo.email)}</code>
+              <button type="button" id="gds-ibo-copy">Másolás</button>
+            </div>
+          </div>` : ''}
+        </div>`;
+      const btn = $('gds-ibo-contact');
+      if (btn) {
+        // Reveal the address too, so it works even where mailto links don't open.
+        btn.addEventListener('click', () => { $('gds-ibo-email').hidden = false; });
+        $('gds-ibo-copy').addEventListener('click', e => {
+          const b = e.currentTarget;
+          navigator.clipboard.writeText(ibo.email).then(() => { b.textContent = 'Másolva'; }).catch(() => {
+            const r = document.createRange(); r.selectNodeContents($('gds-ibo-email-text'));
+            const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+          });
+        });
+      }
+    }
+
+    if (!ON_STORE) {
+      renderIbo(SAMPLE_IBO);
+    } else {
+      // The referral app can finish a moment after page load, so check its saved record a few times,
+      // then fall back to looking the alias up directly (this is what makes the name work on EU).
+      (async () => {
+        for (let i = 0; i < 4; i++) {
+          const ibo = readReferral();
+          if (ibo) return renderIbo(ibo);
+          await new Promise(r => setTimeout(r, 500));
+        }
+        renderIbo(await lookupByAlias().catch(() => null));
+      })();
+      window.addEventListener('storage', e => { if (e.key === 'sync_engine_referral') renderIbo(readReferral()); });
+    }
+  })();
+</script>

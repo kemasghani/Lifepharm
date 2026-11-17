@@ -1,0 +1,750 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        "h1 {text-align: left !important;}"
+      ],
+      "settings": {
+        "content_width": "100%"
+      }
+    },
+    "featured_product_K6NtMz": {
+      "type": "featured-product",
+      "blocks": {
+        "vendor_LJBDe6": {
+          "type": "vendor",
+          "disabled": true,
+          "settings": {}
+        },
+        "title_JMn7EW": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "text_TG3Gpb": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Growth Factor + Stem Cell Optimizer</p>"
+          }
+        },
+        "badges_dqchAi": {
+          "type": "badges",
+          "settings": {}
+        },
+        "price_YyAwHc": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "rating_R469eP": {
+          "type": "rating",
+          "disabled": true,
+          "settings": {
+            "show_empty": false
+          }
+        },
+        "separator_Je8yYp": {
+          "type": "separator",
+          "settings": {}
+        },
+        "description_k4fxQX": {
+          "type": "description",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "collapse_content": false
+          }
+        },
+        "variant_picker_k7agRy": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "quantity_selector_xTUWBU": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "buy_buttons_MhAp3U": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "pickup_availability_TWcjz3": {
+          "type": "pickup_availability",
+          "settings": {}
+        },
+        "image_ykjE8G": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Asset_8-removebg-preview.png",
+            "alignment": "start",
+            "max_width": 80
+          }
+        },
+        "text_ftdtPe": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>60 Day Money Back Guarantee</strong></p>"
+          }
+        },
+        "collapsible_text_9PKk3y": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "Description",
+            "content": "<p>LAMININE is a stem cell regeneration supplement that contains the proprietary blend of egg bioactive growth factors, marine proteins, and phyto proteins. Protein bio-factors such as FGF-2 are only available in this egg extract. These unique bio-factors play an important role in the proliferation, differentiation, and survival of cells in almost all organ systems by regulating the activity of multiple genes.</p><p>These bio-factors help cells proliferate, optimize cellular functions, and protect DNA by lengthening telomeres. The ends of chromosomes are called telomeres and they protect the DNA from damage. Studies show that telomere length is strongly associated with healthy aging, less stress on the body, and better health. When your telomeres are shorter, your stem cells age faster and can no longer divide, which results in your body aging faster.</p><p>Studies show that taking LAMININE daily can help to increase telomerase enzyme activity, which lengthens telomeres.</p><p>Have severe pain? Taking 4 capsules per day for 30 days is the best way to experience the fastest results. After that, many customers reduce to only 1-2 capsules per day to maintain benefits. </p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_QdYi3m": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "Ingredients ",
+            "content": "<h4>High Quality Ingredients</h4><p><strong>EGG BIOACTIVE GROWTH FACTORS</strong></p><p>Support most organs and stem cells, by working at the DNA level to stimulate cell rejuvenation.</p><p><strong>MARINE PROTEIN</strong></p><p>High quality cartilaginous proteins that supply essential amino acids for all basic cellular and thus body functions.</p><p><strong>PHYTO PROTEIN</strong></p><p>Contains essential amino acids to create a complete amino acid supplement.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_am9JdE": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "How to Use",
+            "content": "<p>The suggested use is 1-4 capsules of LAMININE daily with food and/or water. If it is your first time taking LAMININE, we recommend 2 capsules twice a day for a month for best results. After the first month is over, you can reduce your daily supplementation to 1-4 capsules daily, depending on how you feel.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "vendor_LJBDe6",
+        "title_JMn7EW",
+        "text_TG3Gpb",
+        "badges_dqchAi",
+        "price_YyAwHc",
+        "rating_R469eP",
+        "separator_Je8yYp",
+        "description_k4fxQX",
+        "variant_picker_k7agRy",
+        "quantity_selector_xTUWBU",
+        "buy_buttons_MhAp3U",
+        "pickup_availability_TWcjz3",
+        "image_ykjE8G",
+        "text_ftdtPe",
+        "collapsible_text_9PKk3y",
+        "collapsible_text_QdYi3m",
+        "collapsible_text_am9JdE"
+      ],
+      "custom_css": [
+        ".section-full .product-info__text {margin-top: 0;}",
+        ".section-full .product-info__price {margin-bottom: 0;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "product": "laminine",
+        "desktop_media_width": 55,
+        "desktop_media_layout": "carousel_thumbnails_bottom",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": true,
+        "enable_video_looping": false,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "#181818",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "image_with_text_overlay_eU73LQ": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify://shop_images/lami-banner.webp",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "multi_column_PJLjEa": {
+      "type": "multi-column",
+      "blocks": {
+        "item_EVENBW": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2024-08-12_125603_bbd59a2c-819e-45f4-8590-b816374739f5.png",
+            "column_size": "4",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<p>Lowers cortisol levels in the body to reduce anxiety and boost energy*</p><p><br/>Helps prevent signs of aging at the cellular level by strengthening telomeres*</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_YefrRQ": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2024-08-12_125505_fe7019cc-4705-408f-bbae-b8fb62a03f22.png",
+            "column_size": "4",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<p>Promotes restful sleep and deeper periods of sleep*</p><p><br/>Helps prevent signs of aging at the cellular level by strengthening telomeres*</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_66HTXW": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/p2__1.jpg",
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_EVENBW",
+        "item_YefrRQ",
+        "item_66HTXW"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".section-full {padding-top: 20px; padding-bottom: 20px;}",
+        ".section-full .prose p {font-size: 20px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": false,
+        "gap": "small",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "HERE'S THE FACTS",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "#181818"
+      }
+    },
+    "impact_text_4qbkf9": {
+      "type": "impact-text",
+      "blocks": {
+        "item_rkwct9": {
+          "type": "item",
+          "settings": {
+            "title": "",
+            "subheading": "",
+            "content": "<p>*These statements have not been evaluated by the Food and Drug Administration. <br/>This product is not intended to diagnose, treat, cure, or prevent any disease.</p>",
+            "button_text": "",
+            "button_url": "",
+            "animate_impact_text": false,
+            "animate_impact_text_duration": 2
+          }
+        }
+      },
+      "block_order": [
+        "item_rkwct9"
+      ],
+      "custom_css": [
+        ".section-full {padding-top: 0; padding-bottom: 40px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_mobile": true,
+        "text_alignment": "center",
+        "impact_text_style": "fill",
+        "text_divider": "none",
+        "impact_text_size_ratio": 1,
+        "background": "",
+        "background_gradient": "",
+        "heading_text_color": "",
+        "heading_gradient": "",
+        "text_color": "#181818",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "rich_text_qx6UdN": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_MzDGK9": {
+          "type": "heading",
+          "settings": {
+            "text": "Healthy aging starts with healthy cells",
+            "heading_tag": "h2",
+            "text_color": "#ffffff",
+            "gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_MzDGK9"
+      ],
+      "custom_css": [
+        ".section-full {padding-top: 70px; padding-bottom: 70px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "#e28f30",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "multiple_images_with_text_LQLfbX": {
+      "type": "multiple-images-with-text",
+      "blocks": {
+        "item_M6wcRF": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/lifepharm2__1.jpg",
+            "image_rotation_degrees": -2,
+            "subheading": "",
+            "title": "OUR FORMULA, EXPLAINED",
+            "content": "<p><strong>LAMININE supplies rare egg bioactive growth factors and proteins needed to stimulate stem cell regeneration and promote the body's ability to heal itself.<br/><br/></strong>Protein bio-factors such as FGF-2, are only available in the egg extract used in LAMININE. Support joint health by supporting your cellular health at the DNA level.<br/><br/>Most customers report that by taking 1 or 2 daily they are able to maintain the benefits but that, at first, a stronger serving of 4 capsules daily helped them to feel the greatest benefit more quickly.</p>",
+            "button_url": "shopify://products/laminine",
+            "button_text": "LEARN MORE"
+          }
+        }
+      },
+      "block_order": [
+        "item_M6wcRF"
+      ],
+      "custom_css": [
+        ".section-full {padding-top: 20px; padding-bottom: 60px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "images_layout": "stacked",
+        "collage_images_alignment": "middle",
+        "background": "rgba(0,0,0,0)",
+        "background_gradient": "",
+        "text_color": "#181818",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "rich_text_enkLeC": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_LxxdpT": {
+          "type": "heading",
+          "settings": {
+            "text": "What to Expect",
+            "heading_tag": "h1",
+            "text_color": "#ef8903",
+            "gradient": ""
+          }
+        },
+        "richtext_wFjbDf": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Every person has a unique body chemistry and other differentiating factors such as height, weight, and age that affect how your body responds to different doses of LAMININE. Based on scientific data and customer reviews, we found a way that generally works to get the best results...</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_LxxdpT",
+        "richtext_wFjbDf"
+      ],
+      "custom_css": [],
+      "settings": {
+        "full_width": true,
+        "content_width": "medium",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "#181818"
+      }
+    },
+    "timeline_Hpyw43": {
+      "type": "timeline",
+      "blocks": {
+        "slide_bBVMgx": {
+          "type": "slide",
+          "settings": {
+            "navigation_label": "0-4 WEEKS",
+            "subheading": "",
+            "title": "",
+            "content": "<p>This is what we call the \"<strong>Loading Phase</strong>\" in which we suggest taking 4 capsules daily in order to build up your body's cell activator sites that the growth factors, peptides, and amino acids in LAMININE need to interact with to be effective. Some users report feelings of higher energy within the first few weeks while others might not experience any results quite yet.</p>"
+          }
+        },
+        "slide_bDzCNP": {
+          "type": "slide",
+          "settings": {
+            "navigation_label": "4-8 WEEKS",
+            "subheading": "",
+            "title": "",
+            "content": "<p>At this point, users are experiencing sustainable energy amounts throughout the day as well as a decrease in inflammation and deeper, more restful sleep.</p>"
+          }
+        },
+        "slide_Bj7X3q": {
+          "type": "slide",
+          "settings": {
+            "navigation_label": "8 WEEKS & BEYOND",
+            "subheading": "",
+            "title": "",
+            "content": "<p>Now that LAMININE has had at least 60 days of repairing and lengthening telomeres, users report overall feelings of well-being, improved physical health, mental clarity, and healthier organ functions.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "slide_bBVMgx",
+        "slide_bDzCNP",
+        "slide_Bj7X3q"
+      ],
+      "custom_css": [
+        ".section-full .timeline__image-wrapper {display: none;}",
+        ".section-full .prose {max-width: 100%; color: #181818;}",
+        ".section-full .timeline {gap: 20px;}",
+        "@media (min-width: 768px) {.section-full .timeline {max-width: 80%; margin: 0 auto; } .section-full .timeline__slide {display: block; }}"
+      ],
+      "settings": {
+        "full_width": true,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "#ef8903"
+      }
+    },
+    "testimonials_bXkLC7": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_ALKeDV": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "",
+            "title": "Kylie G.",
+            "content": "<p>I was a long time user of Laminine and gave it up - what was I thinking?! I thought everything had been fixed so I didn't need it any more - which is partly true, but I just feel so much better everywhere in my body now that I am taking it again.</p>"
+          }
+        },
+        "testimonial_mqEJg4": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "",
+            "title": "Kasia",
+            "content": "<p>I start to use Laminine in 2014 and I still use it every day. I love it because it still works for my body.</p>"
+          }
+        },
+        "testimonial_L6ePUn": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "",
+            "title": "Phil V.",
+            "content": "<p>It keeps me energized and it keeps me going plus I don't feel no pain mainly my lower back was I love it when it stimulates my stem cells makes me feel young again thank you very much</p>"
+          }
+        },
+        "testimonial_98hhqf": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "",
+            "title": "Rachel N.",
+            "content": "<p>I’m not sure yet. I’ve been having the herxeimer reactions so still going through the healing process. Hoping to come out on the other side of things and then review :)</p>"
+          }
+        },
+        "testimonial_rHTcbx": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "",
+            "title": "Yvonne C.",
+            "content": "<p>This product is wonderful. I have taken Laminine off and on for about 4 years. I feel like it has really helped my joints, as I am still pretty flexible, and have very little joint pain. It has also been wonderful for my skin. My skin is very resilient, and my face is smooth for the most part. I am 74 years young.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_ALKeDV",
+        "testimonial_mqEJg4",
+        "testimonial_L6ePUn",
+        "testimonial_98hhqf",
+        "testimonial_rHTcbx"
+      ],
+      "custom_css": [
+        ".section-full {padding-top: 30px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_testimonials": false,
+        "subheading": "",
+        "title": "WHY CUSTOMERS LOVE LAMININE",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "#f8f8f8",
+        "background_gradient": "",
+        "text_color": "#181818",
+        "heading_color": "",
+        "heading_gradient": "",
+        "testimonial_card_background": "#f8f8f8",
+        "testimonial_card_text_color": ""
+      }
+    },
+    "faq_wCQXki": {
+      "type": "faq",
+      "blocks": {
+        "item_WTQkap": {
+          "type": "item",
+          "settings": {
+            "title": "What is LAMININE?",
+            "content": "<p>LAMININE is an all-natural supplement that is made up of 3 ingredients: fertilized avian egg extract, marine protein, and pea protein. Egg bioactive growth factors that are naturally found in LAMININE, including FGF-2 (Fibroblast Growth Factor-2), are scientifically proven to support healthy DNA as you age by repairing and lengthening your telomeres. Your telomeres shorten with age, which can lead to several health issues.</p>"
+          }
+        },
+        "item_G7VWqq": {
+          "type": "item",
+          "settings": {
+            "title": "What are telomeres?",
+            "content": "<p>Telomeres are the ends of chromosomes that protect DNA, similar to plastic caps at the end of shoelaces that prevent them from fraying. Telomeres get shorter as you age because every time your cells divide, your telomeres gradually get shorter. When your telomeres are shorter, you are more likely to have health issues that come with aging. But lengthening your telomeres can slow down and reduce the effects that come with aging. Supplementing with LAMININE can help repair and lengthen your telomeres. A study has shown that LAMININE increases telomerase activity by 4-fold greater, in 90 days. This revealed that taking LAMININE supports telomerase activity, which results in longer telomeres for improved health.</p>"
+          }
+        },
+        "item_yXVweU": {
+          "type": "item",
+          "settings": {
+            "title": "What are bioactive growth factors?",
+            "content": "<p>Bioactive factors, including growth factors, are components that have been studied to help rebuild tissue and cartilage by stimulating nearby bone cells. A biofactor called FGF-2 has been shown in studies to stimulate almost all types of cells including types of stem cells, to function to regenerate and stimulate tissue repair.</p>"
+          }
+        },
+        "item_EEbcVh": {
+          "type": "item",
+          "settings": {
+            "title": "Which bioactive growth factors are in LAMININE?",
+            "content": "<p>LAMININE contains FGF-2 (Fibroblast Growth Factor-2), TGF (Transforming Growth Factor), and PDGF (Platelet Derived Growth Factor). LAMININE also contains Lysyl Oxidase (LOX) and Interleukin Receptor-1 Antagonist Protein (IRAP), which are not growth factors but are important cellular factors. LOX is a collagen crosslinking enzyme for building strong fibers of collagen and elastin that are found to build connective tissues in skin tissue and cartilage in joint tissue. IRAP is the body's own natural component that supports anti-inflammation throughout the body.</p>"
+          }
+        },
+        "item_njPrRY": {
+          "type": "item",
+          "settings": {
+            "title": "What is FGF-2?",
+            "content": "<p>FGF-2 (Fibroblast Growth Factor-2) is one of the egg bioactive growth factors naturally found in LAMININE. It has been shown in studies to lengthen your telomeres to support DNA health as you age. It also plays a role in supporting cells of various tissues and some stem cells, including bone cells to help stimulate cartilage production to help with joint relief.<br/></p>"
+          }
+        },
+        "item_wxUwPg": {
+          "type": "item",
+          "settings": {
+            "title": "What makes LAMININE different from other growth factor supplements?",
+            "content": "<p>LifePharm uses a proprietary low heat and hygienic drying technique with no chemicals, in order to preserve active factors and their functions. It is not known nor have other companies tested their fertilized avian egg extract for active FGF2 and other factors that we have listed, which are important for cellular health and regeneration.<br/></p>"
+          }
+        },
+        "item_cCXKaw": {
+          "type": "item",
+          "settings": {
+            "title": "How does LAMININE work with other supplements?",
+            "content": "<p>The ingredients in LAMININE combined with its bioactive growth factors has been shown to support joint tissue health, blood vessel integrity, and wound repair. When combined with other LifePharm supplements, LAMININE supports immune cell production, the digestive system and colon health. It was also these regenerative qualities that were observed in subjects consuming LAMININE daily for 90 days. Their white blood cells showed better DNA protection with increased telomere repair at the cellular level. Healthy cells tend to have better cell regeneration and longer telomeres, a signal that the body is under less physical and oxidative stress.<br/></p>"
+          }
+        },
+        "item_RcaY6e": {
+          "type": "item",
+          "settings": {
+            "title": "How do bioactive growth factors compare to human growth hormone?",
+            "content": "<p>Bioactive growth factors in LAMININE are bio-identical to growth factors found in humans but have slightly different functions for the body. FGF-2, a bioactive growth factor in LAMININE, stimulates cells to produce collagen and elastin in skin, blood vessels, and some bone and joint tissue regeneration. It also supports the pancreas, balances blood sugar, reduces inflammation and helps cells regenerate. Bioactive growth factors including FGF-2, TGF, and PDGF, can be obtained from consuming LAMININE. LAMININE also contains an anti-inflammatory agent (IRAP) and LOX to help strengthen skin and connective tissues. <br/><br/>Human growth hormone naturally regulates body composition, body fluids, muscle and bone growth, sugar and fat metabolism, and possibly heart function. Real human growth hormone can only be obtained by prescription from a physician. Human growth hormone is typically given to children that have stunted growth and lack this hormone. Some supplements claim that they can help increase levels of specific amino acids that support production of human growth hormone.</p>"
+          }
+        },
+        "item_UN93ME": {
+          "type": "item",
+          "settings": {
+            "title": "Where is the fertilized avian egg extract from?",
+            "content": "<p>The fertilized avian eggs come from a United States Department of Agriculture (USDA) inspected poultry farm in the USA. The chickens are raised cage-free and are fed high quality whole grains.<br/></p>"
+          }
+        },
+        "item_3CnyTy": {
+          "type": "item",
+          "settings": {
+            "title": "What makes the fertilized avian egg extract different from normal eggs you can purchase at the grocery store?",
+            "content": "<p>The eggs used in LAMININE are naturally fertilized eggs, incubated for a very specific time and temperature, to extract growth factors at their peak activity. The eggs are non-GMO, and no chemicals or extreme heat are used in processing the fertilized avian egg extract to maintain the function and activity of growth factors.<br/></p>"
+          }
+        },
+        "item_mrX9HK": {
+          "type": "item",
+          "settings": {
+            "title": "Does LAMININE contain stem cells?",
+            "content": "<p>No, LAMININE does not contain stem cells. LAMININE contains FGF2 which has been shown in studies to stimulate the stem cells in the body for repair.<br/></p>"
+          }
+        },
+        "item_Ed7qaj": {
+          "type": "item",
+          "settings": {
+            "title": "Where are the ingredients in LAMININE sourced from?",
+            "content": "<p>The fertilized avian egg extract and pea protein in LAMININE are sourced from North America. The marine protein in LAMININE is sourced from the Pacific Ocean near New Zealand.<br/></p>"
+          }
+        },
+        "item_4jfe4X": {
+          "type": "item",
+          "settings": {
+            "title": "Is LAMININE safe to consume?",
+            "content": "<p>Yes, LAMININE is safe to consume. It is made with high quality ingredients and doesn’t contain any synthetic substances or pharmaceuticals. LAMININE is manufactured in the USA in a facility with certifications for current Good Manufacturing Practices (cGMP) and Federal Drug Administration (FDA) compliance. This facility uses top-of-the-line equipment for developing, sampling, and testing all finished bottles of LAMININE, and has an RPI Quality Control Lab that performs physical, analytical, and microbiological testing of raw material and the finished product.<br/></p>"
+          }
+        },
+        "item_jV6W9g": {
+          "type": "item",
+          "settings": {
+            "title": "Who should not take LAMININE?",
+            "content": "<p>Anyone over the age of 12 can consume LAMININE. </p><p>Though the supplement is considered safe for everyone, if you’re expecting a child or you’re nursing and you want to give LAMININE a try, you should consult with your physician first. If you have any concerns or medical conditions, please consult with your physician first before taking LAMININE. </p><p>Do not take LAMININE if you are allergic to fish or eggs.</p>"
+          }
+        },
+        "item_6tQcqh": {
+          "type": "item",
+          "settings": {
+            "title": "Is it safe to take LAMININE with other medication and supplements?",
+            "content": "<p>Yes it is safe, since LAMININE does not interfere with any other medication and dietary supplements.</p>"
+          }
+        },
+        "item_bLRU9R": {
+          "type": "item",
+          "settings": {
+            "title": "Are there any side effects when taking LAMININE?",
+            "content": "<p>LAMININE has no known side effects.</p>"
+          }
+        },
+        "item_KqNCNc": {
+          "type": "item",
+          "settings": {
+            "title": "What is the suggested recommend use?",
+            "content": "<p>The suggested use is 1-4 capsules of LAMININE daily with food and/or water. If it is your first time taking LAMININE, we recommend 2 capsules twice a day for a month for best results. After the first month is over, you can reduce your daily supplementation to 1-4 capsules daily, depending on how you feel.</p>"
+          }
+        },
+        "item_VXpJaM": {
+          "type": "item",
+          "settings": {
+            "title": "QuestionWhen is the best time to take LAMININE?",
+            "content": "<p>We recommend taking LAMININE in the morning and evening with food and a glass of water. If you experience that LAMININE is making you sleepy during the daytime, we recommend taking LAMININE only at night. If you experience that LAMININE is making it difficult for you to fall asleep at night, we recommend taking LAMININE only in the morning.<br/></p>"
+          }
+        },
+        "item_bRUEVk": {
+          "type": "item",
+          "settings": {
+            "title": "Is LAMININE FDA approved?",
+            "content": "<p>LAMININE is manufactured in a facility that upholds current Good Manufacturing Practices (cGMP) and US Food and Drug Administration (FDA) compliance. Only drugs or medical devices are registered with the FDA.<br/></p>"
+          }
+        },
+        "item_ncB3TN": {
+          "type": "item",
+          "settings": {
+            "title": "Is LAMININE halal?",
+            "content": "<p>Yes, LAMININE has a halal certification.</p>"
+          }
+        },
+        "item_g9M48L": {
+          "type": "item",
+          "settings": {
+            "title": "Where can doctors read more information on LAMININE?",
+            "content": "<p>Please click on the studies tab above to view all of our published studies on LAMININE, or search for \"Laminine\" on PDR.net. Physician’s Desk Reference (PDR) is the most recognized drug information reference available in the U.S and trusted by healthcare providers.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_WTQkap",
+        "item_G7VWqq",
+        "item_yXVweU",
+        "item_EEbcVh",
+        "item_njPrRY",
+        "item_wxUwPg",
+        "item_cCXKaw",
+        "item_RcaY6e",
+        "item_UN93ME",
+        "item_3CnyTy",
+        "item_mrX9HK",
+        "item_Ed7qaj",
+        "item_4jfe4X",
+        "item_jV6W9g",
+        "item_6tQcqh",
+        "item_bLRU9R",
+        "item_KqNCNc",
+        "item_VXpJaM",
+        "item_bRUEVk",
+        "item_ncB3TN",
+        "item_g9M48L"
+      ],
+      "custom_css": [
+        ".section-full .accordion__content {background: rgb(255, 255, 255); padding: 10px; border-radius: 10px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "FAQ",
+        "content": "",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "#f8f8f8",
+        "background_gradient": "",
+        "text_color": "#181818",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "#f8f8f8",
+        "accordion_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "featured_product_K6NtMz",
+    "image_with_text_overlay_eU73LQ",
+    "multi_column_PJLjEa",
+    "impact_text_4qbkf9",
+    "rich_text_qx6UdN",
+    "multiple_images_with_text_LQLfbX",
+    "rich_text_enkLeC",
+    "timeline_Hpyw43",
+    "testimonials_bXkLC7",
+    "faq_wCQXki"
+  ]
+}

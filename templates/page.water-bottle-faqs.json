@@ -1,0 +1,333 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "content_width": "80ch"
+      }
+    },
+    "image_with_text_overlay_maXaPX": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_7ALn6M": {
+          "type": "heading",
+          "settings": {
+            "text": "Customer Support FAQs",
+            "heading_tag": "h1"
+          }
+        },
+        "subheading_D3XcGy": {
+          "type": "subheading",
+          "settings": {
+            "text": "You have questions? We have answers."
+          }
+        },
+        "richtext_JwDTUC": {
+          "type": "richtext",
+          "settings": {
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_7ALn6M",
+        "subheading_D3XcGy",
+        "richtext_JwDTUC"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "sm",
+        "image": "shopify://shop_images/faq_new_e371201b-6c54-448e-bcc8-8dcde984d378.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 15
+      }
+    },
+    "rich_text_A7iF6U": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_FMitnM": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ page.title }}",
+            "heading_tag": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_8THFbb": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>You have questions? We have answers.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_FMitnM",
+        "richtext_8THFbb"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "#f9f9f9",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "faq_cXt6aM": {
+      "type": "faq",
+      "blocks": {
+        "item_VtWJjU": {
+          "type": "item",
+          "settings": {
+            "title": "How does the CELLNERGY Water Bottle work?",
+            "content": "<p>Once filled with water, the bottle uses a specialized mineral diffuser, molecular hydron and terahertz-based conditioning to help optimize water quality. After 15 minutes, the water is conditioned to support improved hydration, nutrient transport, and cellular performance.* </p>"
+          }
+        },
+        "item_iU9NMM": {
+          "type": "item",
+          "settings": {
+            "title": "What makes CELLNERGY different from a regular water bottle?",
+            "content": "<p>Unlike conventional bottles, CELLNERGY does more than hold water. It is designed to help optimize water’s mineral balance, antioxidant-supportive properties, and interaction with cells—creating a stronger foundation for hydration, supplements, nutrition, and overall wellness.* </p>"
+          }
+        },
+        "item_twWMKE": {
+          "type": "item",
+          "settings": {
+            "title": "What is the pH of regular drinking water?",
+            "content": "<p>Most conventional drinking water—whether tap or bottled—typically falls between pH 6.5 and 7.5, which is neutral to slightly acidic. </p>"
+          }
+        },
+        "item_bQMCHk": {
+          "type": "item",
+          "settings": {
+            "title": "What pH level does the CELLNERGY Water Bottle produce?",
+            "content": "<p>The CELLNERGY Water Bottle conditions water to a more alkaline range of approximately pH 8–9.5, depending on water source and usage conditions. </p>"
+          }
+        },
+        "item_FQy7n9": {
+          "type": "item",
+          "settings": {
+            "title": "Why is pH 8–9 water beneficial compared to regular water?",
+            "content": "<p>Alkaline water in the pH 8–9.5 range may support more efficient hydration and mineral balance than neutral or slightly acidic water. This can help water interact more effectively with cells, supporting nutrient transport, cellular performance, and overall vitality.* </p>"
+          }
+        },
+        "item_wWnBhH": {
+          "type": "item",
+          "settings": {
+            "title": "Does alkaline water change the body’s pH?",
+            "content": "<p>The body tightly regulates blood pH on its own. CELLNERGY-conditioned water is not intended to alter blood pH, but rather to support hydration efficiency and internal balance as part of a healthy lifestyle.* </p>"
+          }
+        },
+        "item_dKHqwR": {
+          "type": "item",
+          "settings": {
+            "title": "How does CELLNERGY raise the water’s pH?",
+            "content": "<p> CELLNERGY uses a mineral-based alkalization system that interacts with water to increase alkalinity naturally—without chemicals—while also enhancing hydration quality through hydrogen infusion and frequency conditioning.* </p>"
+          }
+        },
+        "item_DnECC7": {
+          "type": "item",
+          "settings": {
+            "title": "Is pH 8–9.5 water safe to drink daily?",
+            "content": "<p>Yes. Alkaline water within this range is widely consumed as part of daily hydration routines. The CELLNERGY Water Bottle is designed for regular, everyday use. If you have any preexisting medical conditions or are on medication, we always recommend consulting with your physician beforehand. </p>"
+          }
+        },
+        "item_HdUJny": {
+          "type": "item",
+          "settings": {
+            "title": "Will I notice a difference compared to regular water?",
+            "content": "<p>Many users report feeling more hydrated, refreshed, and supported—especially when taking supplements or focusing on wellness routines. Results may vary.* </p>"
+          }
+        },
+        "item_NAYhXB": {
+          "type": "item",
+          "settings": {
+            "title": "Why does hydration matter for regeneration?",
+            "content": "<p>Water is the body’s primary delivery system. Proper hydration supports nutrient transport, cellular communication, and internal balance. When hydration is optimized, the body may more efficiently use the nutrients and supplements you already take—supporting energy, recovery, and overall vitality.* </p>"
+          }
+        },
+        "item_eNdhjj": {
+          "type": "item",
+          "settings": {
+            "title": "How long does it take to condition the water?",
+            "content": "<p>Allow approximately 15 minutes after filling the bottle for optimal conditioning. You can then drink the water throughout the day. </p>"
+          }
+        },
+        "item_VmXaYi": {
+          "type": "item",
+          "settings": {
+            "title": "How often should I use the CELLNERGY Water Bottle?",
+            "content": "<p>For best results, use the CELLNERGY Water Bottle daily, especially when taking supplements or focusing on hydration as part of a regenerative lifestyle. </p>"
+          }
+        },
+        "item_LLnJ7B": {
+          "type": "item",
+          "settings": {
+            "title": "Can I use any type of water?",
+            "content": "<p>Yes. For optimal results, we recommend using filtered or purified water. This allows the conditioning technologies to work more effectively. </p>"
+          }
+        },
+        "item_NDwCNG": {
+          "type": "item",
+          "settings": {
+            "title": "Does CELLNERGY-conditioned water taste different?",
+            "content": "<p>Yes—some users notice a smoother, cleaner, and lighter taste compared to regular water. This is due to the mineral-based alkalization process and enhanced water structure. The taste is not flavored or sweetened and may vary slightly depending on your original water source. </p>"
+          }
+        },
+        "item_z4pnrn": {
+          "type": "item",
+          "settings": {
+            "title": "Is the CELLNERGY Water Bottle safe?",
+            "content": "<p>Yes. The bottle is made from BPA-free, medical-grade Tritan™, designed for clean, safe hydration. It is suitable for cold and warm water up to 60°C / 140°F. </p>"
+          }
+        },
+        "item_Mi3CQ8": {
+          "type": "item",
+          "settings": {
+            "title": "How do I care for the bottle?",
+            "content": "<p>• Hand wash the bottle with dish soap and water <br/>• Rinse the mineral diffuser under running water <br/>• Do not microwave, freeze, or use with boiling liquids <br/>• Proper care helps maintain performance and longevity. </p>"
+          }
+        },
+        "item_VExz9A": {
+          "type": "item",
+          "settings": {
+            "title": "Do I need to replace the mineral diffuser?",
+            "content": "<p>We recommend replacing the diffuser every 3 months. The CELLNERGY bottle comes with one diffuser, and the diffuser replacements are sold separately.</p>"
+          }
+        },
+        "item_BViEE9": {
+          "type": "item",
+          "settings": {
+            "title": "Can I use this bottle with hot beverages?",
+            "content": "<p>The CELLNERGY Water Bottle is safe for cold and warm water only, up to 60°C / 140°F. It is not intended for boiling or hot liquids. </p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_VtWJjU",
+        "item_iU9NMM",
+        "item_twWMKE",
+        "item_bQMCHk",
+        "item_FQy7n9",
+        "item_wWnBhH",
+        "item_dKHqwR",
+        "item_DnECC7",
+        "item_HdUJny",
+        "item_NAYhXB",
+        "item_eNdhjj",
+        "item_VmXaYi",
+        "item_LLnJ7B",
+        "item_NDwCNG",
+        "item_z4pnrn",
+        "item_Mi3CQ8",
+        "item_VExz9A",
+        "item_BViEE9"
+      ],
+      "custom_css": [],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "{{ page.title }}",
+        "content": "",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "#ff8f00",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "#f9f9f9",
+        "accordion_text_color": ""
+      }
+    },
+    "rich_text_8JaCxa": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_iXch7P": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "text": "Still have questions?",
+            "heading_tag": "h3",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_CpE6JC": {
+          "type": "richtext",
+          "disabled": true,
+          "settings": {
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+          }
+        },
+        "button_VnUiqA": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "xl",
+            "text": "Back to CELLNERGY WATER BOTTLE",
+            "url": "shopify://products/cellnergy-hydration-system",
+            "background": "",
+            "text_color": ""
+          }
+        },
+        "button_8K4Pgm": {
+          "type": "button",
+          "settings": {
+            "style": "outline",
+            "size": "xl",
+            "text": "Contact Us",
+            "url": "shopify://pages/contact-1772819671",
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_iXch7P",
+        "richtext_CpE6JC",
+        "button_VnUiqA",
+        "button_8K4Pgm"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_overlay_maXaPX",
+    "rich_text_A7iF6U",
+    "faq_cXt6aM",
+    "rich_text_8JaCxa"
+  ]
+}

@@ -1,0 +1,648 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        "h1 {text-align: left !important;}"
+      ],
+      "settings": {
+        "content_width": "100%"
+      }
+    },
+    "media_with_text_cptMw9": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_VTec8y": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/omega-banner.jpg",
+            "media_width": 55,
+            "media_position": "end",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "",
+            "content": "<h1>OMEGA+++</h1><p>It All Circles Back to Circulation</p>",
+            "link_text": "SHOP NOW",
+            "link_url": "shopify://products/omega",
+            "background": "rgba(0,0,0,0)",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_VTec8y"
+      ],
+      "custom_css": [
+        ".section-full {background-color: #ff2115; padding-top: 25px; padding-bottom: 5px;}"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
+    },
+    "image_with_text_overlay_EyjUMN": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_Be4Dtr": {
+          "type": "heading",
+          "settings": {
+            "text": "WHY",
+            "heading_tag": "h0"
+          }
+        },
+        "richtext_bTMfri": {
+          "type": "richtext",
+          "settings": {
+            "content": "<h3>OMEGA+++?</h3>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Be4Dtr",
+        "richtext_bTMfri"
+      ],
+      "custom_css": [
+        ".section-full .prose .h0 {font-size: 90px;}",
+        ".section-full .prose div {margin-top: 0;}",
+        ".section-full .prose {padding-right: 60px;}",
+        "@media (max-width: 768px) {.section-full {display: none; }}"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify://shop_images/omnia-banner-2_2.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center-end sm:text-end",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "media_with_text_DcPkeP": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_pT6BEt": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/omeg-mobile.jpg",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "WHY",
+            "content": "<h2>OMEGA+++?</h2>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#ff8f00",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_pT6BEt"
+      ],
+      "custom_css": [
+        ".section-full {display: none; background: #ff8f00; padding-top: 0;}",
+        ".section-full .prose .h2 {font-size: 80px;}",
+        ".section-full .prose h2 {margin-top: 0;}",
+        "@media (max-width: 768px) {.section-full {display: block; } .section-full .media-with-text__item {flex-direction: column-reverse; display: flex; }}"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
+    },
+    "rich_text_DWVU64": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_PAANig": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Age-related diseases and symptoms happen faster when you are not getting enough omega-3s in your diet. When consuming enough long-chain omega-3s, one notices improvement in heart rate variability, lowered heart rate and blood pressure, improved endothelial function (lining of the blood vessels), decreased platelet aggregation, and lowered blood triglyceride levels. So, how much is enough?</p><p>The American Heart Association recommends two weekly servings of fatty fish to maintain an appropriate source for the diet. However, research findings are showing that this amount may not be enough to maintain optimal amounts of omega-3’s to reap the amazing benefits now proven in numerous studies. Most current studies utilize up to three times this amount for effective dosages that can optimize these numerous benefits for the body. OMEGA+++ is available in a 120-count bottle so you can take 3 daily as needed.<br/></p>"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_PAANig"
+      ],
+      "custom_css": [
+        ".section-full {padding-top: 30px; padding-bottom:40px;}",
+        ".section-full .prose p {font-size: 19px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "medium",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "media_with_text_jT9pF6": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_RjMBP4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/omega-image-round.jpg",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "Benefits",
+            "content": "<ul><li>Regenerates brain tissue to support memory and cognition </li><li>Improves blood circulation</li><li>Regenerate immune cells for improved immune health </li><li>Eases joint pain and stiffness</li><li>Regenerates retina eye tissue to help improve eyesight </li><li>Revitalizes heart muscle to support a healthy heart beat </li><li>Supports recovery of muscles after exercise </li><li>Helps lower cholesterol, triglycerides, and bad cholesterol</li></ul>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_RjMBP4"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
+    },
+    "multi_column_icNBtr": {
+      "type": "multi-column",
+      "blocks": {
+        "item_ayXamD": {
+          "type": "item",
+          "settings": {
+            "column_size": "1.5",
+            "title": "",
+            "heading_tag": "h2",
+            "content": "<ul><li>Regenerates brain tissue to support memory and cognition </li><li>Improves blood circulation</li><li>Regenerate immune cells for improved immune health </li><li>Eases joint pain and stiffness</li><li>Regenerates retina eye tissue to help improve eyesight </li><li>Revitalizes heart muscle to support a healthy heart beat </li><li>Supports recovery of muscles after exercise </li><li>Helps lower cholesterol, triglycerides, and ba</li></ul>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_rYVzxk": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot-rounded.png",
+            "column_size": "3",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "shopify://products/omega",
+            "link_text": "SHOP NOW",
+            "link_style": "button"
+          }
+        }
+      },
+      "block_order": [
+        "item_ayXamD",
+        "item_rYVzxk"
+      ],
+      "custom_css": [
+        ".section-full {background-image: url(https://cdn.shopify.com/s/files/1/0790/7665/5396/files/omega-3.jpg?v=1724177116); background-size: cover; background-repeat: no- repeat; background-position: center; padding-top: 40px; padding-bottom: 50px;}",
+        ".section-full .mc-img-full img {border-radius: 50%;}",
+        ".section-full .prose div {text-align: center;}",
+        ".section-full .prose ul {background: #fff; padding: 50px 30px; font-size: 19px; border-radius: 12px; color: #000;}",
+        "@media (max-width: 768px) {.section-full .prose ul {padding: 20px; font-size: 16px; }}"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": true,
+        "gap": "small",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "Benefits",
+        "content": "",
+        "background": "rgba(0,0,0,0)",
+        "background_gradient": "",
+        "text_color": "#ffffff"
+      }
+    },
+    "featured_product_M8FjpN": {
+      "type": "featured-product",
+      "blocks": {
+        "vendor_MtNf7N": {
+          "type": "vendor",
+          "disabled": true,
+          "settings": {}
+        },
+        "title_fy78dt": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "text_mhPLfL": {
+          "type": "text",
+          "settings": {
+            "text": "<p>IT ALL CIRCLES BACK TO CIRCULATION</p>"
+          }
+        },
+        "badges_wVVTxK": {
+          "type": "badges",
+          "settings": {}
+        },
+        "price_QKxJnb": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "text_GiKKYj": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Per Bottle (30 Count)</p>"
+          }
+        },
+        "rating_B9XPrm": {
+          "type": "rating",
+          "disabled": true,
+          "settings": {
+            "show_empty": false
+          }
+        },
+        "separator_6fCB77": {
+          "type": "separator",
+          "settings": {}
+        },
+        "description_fchfQJ": {
+          "type": "description",
+          "disabled": true,
+          "settings": {
+            "collapse_content": false
+          }
+        },
+        "variant_picker_8CKHw6": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "quantity_selector_CGRGeG": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "buy_buttons_Y66ccC": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "pickup_availability_iNpgP3": {
+          "type": "pickup_availability",
+          "disabled": true,
+          "settings": {}
+        },
+        "image_eaNKNb": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Asset_8-removebg-preview.png",
+            "alignment": "start",
+            "max_width": 80
+          }
+        },
+        "text_iRGbbQ": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>60 Day Money Back Guarantee</strong></p>"
+          }
+        },
+        "collapsible_text_ieN3Ny": {
+          "type": "collapsible_text",
+          "settings": {
+            "title": "Description",
+            "content": "<p>OMEGA+++ is a proprietary multi-action formula designed to help maintain and improve circulatory health. We use omega fatty acids 3 (EPA and DHA) and 9.</p><p>OMEGA+++ is also strengthened with vitamin K2, CoQ10 Extended Release, egg bioactive growth factors, and borage oil. This gives our formula a unique boost of efficiency that supports healthy blood flow and improves overall circulatory health.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_63LUE4": {
+          "type": "collapsible_text",
+          "settings": {
+            "title": "Ingredients ",
+            "content": "<h4>High Quality Ingredients</h4><p><strong>OMEGA-3</strong></p><p>Sourced from an exclusive species of fish found in South America and plants from the Mediterranean.</p><p><strong>VITAMIN K2</strong></p><p>Natto, a superb source of Vitamin K often deficient in Western diets, critical for blood vessel integrity.</p><p><strong>COQ10 EXTENDED RELEASE</strong></p><p>A powerful antioxidant that mirrors what is naturally produced in the heart and liver.</p><p><strong>EGG BIOACTIVE GROWTH FACTORS</strong></p><p>Stimulate stem cells and help the other ingredients be more effective</p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_Hi4eQH": {
+          "type": "collapsible_text",
+          "settings": {
+            "title": "How to Use",
+            "content": "<p>We recommend taking one softgel one to two times daily with a meal. To obtain higher blood levels, 4-5 softgels can be taken daily, as recommended by some health experts. </p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "vendor_MtNf7N",
+        "title_fy78dt",
+        "text_mhPLfL",
+        "badges_wVVTxK",
+        "price_QKxJnb",
+        "text_GiKKYj",
+        "rating_B9XPrm",
+        "separator_6fCB77",
+        "description_fchfQJ",
+        "variant_picker_8CKHw6",
+        "quantity_selector_CGRGeG",
+        "buy_buttons_Y66ccC",
+        "pickup_availability_iNpgP3",
+        "image_eaNKNb",
+        "text_iRGbbQ",
+        "collapsible_text_ieN3Ny",
+        "collapsible_text_63LUE4",
+        "collapsible_text_Hi4eQH"
+      ],
+      "custom_css": [
+        ".section-full {padding-top: 50px;}",
+        ".section-full .product-info__text {margin-top: 0;}",
+        ".section-full .product-info__price {margin-bottom: 0;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "product": "omega",
+        "desktop_media_width": 55,
+        "desktop_media_layout": "carousel_thumbnails_left",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": true,
+        "enable_video_looping": false,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "multi_column_BdjbU9": {
+      "type": "multi-column",
+      "blocks": {
+        "item_XBpFEW": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot-bone-roundpng.png",
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_YrceUp": {
+          "type": "item",
+          "settings": {
+            "column_size": "2",
+            "title": "Regenerate Cells.Repair Tissues.Revitalize Your Body.",
+            "heading_tag": "h2",
+            "content": "<p>Your heart, like any other muscle, can weaken over time, especially if you are not very physically active. As one ages and becomes less active, the heart chamber that pumps oxygenated blood back out to the body becomes more rigid and less functional, causing inflammation of the heart and quicker degeneration of heart muscle cells.</p><p>Our LifePharm proprietary fertilized egg with Fibroblast Growth Factor 2 in Omega+++ is a signaling protein that regenerates heart muscle cells, stem cells, and the cells that line the blood vessels, while the fish oils help regenerate nerve cells, brain, and retina eye tissues.</p><p>Vitamin K2 then helps to remove calcium from plaques that form in blood vessels so that blood can flow more freely, keeping your blood vessels flexible, delivering more oxygen to your cells throughout the body. Finally, the CoQ10 improves the utilization of oxygen at the cellular level, reduces blood pressure, strengthens cardiac muscles and stabilizes heart membranes. In simpler language, CoQ10 makes your heart stronger, pump more efficiently and beat a little quicker.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_XBpFEW",
+        "item_YrceUp"
+      ],
+      "custom_css": [
+        ".section-full .mc-img-full img {border-radius: 50%; max-width: 75%; margin: auto;}",
+        ".section-full .multi-column {align-items: center;}",
+        ".section-full {padding-bottom: 40px; padding-top: 40px;}",
+        "@media (min-width: 768px) {.section-full {background-image: url(https://cdn.shopify.com/s/files/1/0790/7665/5396/files/omges-bg-clean.jpg?v=1724181214); background-repeat: no-repeat; background-size: cover; }}"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": true,
+        "gap": "small",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "faq_CPrifN": {
+      "type": "faq",
+      "blocks": {
+        "item_fVCirg": {
+          "type": "item",
+          "settings": {
+            "title": "What makes OMEGA+++ different from other Omega products on the market?",
+            "content": "<p>OMEGA+++ is a high quality, potent, and safe blend of omega-3 (EPA and DHA), 6, and 9 fatty acids. It is fortified with vitamin K2, CoQ10 Extended Release, borage oil, and Fertilized Avian Egg Extract for improved blood circulation benefits. OMEGA+++ is the only omega product on the market that contains our Proprietary Fertilized Avian Egg Extract, which contains egg bioactive growth factors to help stimulate stem cells.</p>"
+          }
+        },
+        "item_eNp7wC": {
+          "type": "item",
+          "settings": {
+            "title": "What is the Fertilized Avian Egg Extract?",
+            "content": "<p>The fertilized avian egg extract comes from naturally fertilized eggs incubated for a very specific time and temperature, to extract bioactive growth factors at their peak activity. The eggs are non-GMO, and no chemicals or extreme heat are used in processing the fertilized avian egg extract to maintain the function and activity of growth factors. The fertilized avian egg extract contains biofactors such as FGF-2, which has been shown in studies to stimulate almost all types of cells including types of stem cells, to function to regenerate and stimulate repair in the body.</p>"
+          }
+        },
+        "item_3wDPLq": {
+          "type": "item",
+          "settings": {
+            "title": "What kind of fish does OMEGA+++ use?",
+            "content": "<p>OMEGA+++ sources its fish oil from Engraulis Ringens, a member of the anchovy family. They are harvested in clean waters from the Humboldt Current off the coast of South America near Peru. Phytoplankton that the small fish consume in this region is rich in DHA and EPA, giving the fish the highest naturally occurring ratios of DHA and EPA of any other fish species. The fish oil also undergoes molecular distillation and is tested before and after the process to remove heavy metals and ensure the safety of the oil. The fish are sustainably harvested (Friends of the Sea member) and processed in a GMP and FDA compliant facility.</p>"
+          }
+        },
+        "item_BNDWVK": {
+          "type": "item",
+          "settings": {
+            "title": "I heard that omega-6 fatty acids are bad for you if you consume too much, is this true?",
+            "content": "<p>OMEGA+++ contains only a very slight amount of omega-6 that is found naturally in the fish oil. It is only a few milligrams and will not add any significant consumption amount. OMEGA+++ contains a higher amount of omega-3 fatty acids, which offsets the very small amount of omega-6 in the supplement.</p>"
+          }
+        },
+        "item_Ckz38t": {
+          "type": "item",
+          "settings": {
+            "title": "Why should you take OMEGA+++ with LAMININE?",
+            "content": "<p>OMEGA+++ and LAMININE are effective supplements on their own, but their effects are even more powerful when taken together. Our clinical study shows that OMEGA+++ can help regulate cholesterol, LDL, triglyceride and blood pressure levels, but the benefits are even more significant when OMEGA+++ and LAMININE are taken together.</p>"
+          }
+        },
+        "item_fELwTB": {
+          "type": "item",
+          "settings": {
+            "title": "Does OMEGA+++ have a fishy aftertaste?",
+            "content": "<p>Because our fish oil undergoes molecular distillation to remove any potential toxins and is then tested before and after the process, there is no fishy aftertaste or burps when taking OMEGA+++.</p>"
+          }
+        },
+        "item_NQNMg9": {
+          "type": "item",
+          "settings": {
+            "title": "What is the recommended dosage?",
+            "content": "<p>We recommend taking one softgel one to two times daily with a meal. To obtain higher blood levels, 4-5 softgels can be taken daily, as recommended by some health experts. </p>"
+          }
+        },
+        "item_eaeeGa": {
+          "type": "item",
+          "settings": {
+            "title": "When is the best time to take OMEGA+++?",
+            "content": "<p>OMEGA+++ can be taken anytime of the day with food and water.</p>"
+          }
+        },
+        "item_JDJmKx": {
+          "type": "item",
+          "settings": {
+            "title": "Is OMEGA+++ safe to consume?",
+            "content": "<p>OMEGA+++ is safe for adults or children over 12 years to consume. There are no documented cases or instances of adverse reactions. Please do not take OMEGA+++ if you are allergic to eggs, fish, or soy. If you have any concerns, health conditions, or if you are taking blood thinner medication, please consult with your physician first before taking OMEGA+++.</p>"
+          }
+        },
+        "item_6mLAq9": {
+          "type": "item",
+          "settings": {
+            "title": "Is OMEGA+++ FDA approved?",
+            "content": "<p>OMEGA+++ is manufactured in a facility that upholds current Good Manufacturing Practices (cGMP) and US Food and Drug Administration (FDA) compliant. Only drugs or medical devices are registered with the FDA.</p>"
+          }
+        },
+        "item_M3LnX3": {
+          "type": "item",
+          "settings": {
+            "title": "Where can doctors read more information on OMEGA+++?",
+            "content": "<p>Please click on the studies tab above to view our published study on OMEGA+++, or search for “Laminine omega” on PDR.net. Physician’s Desk Reference (PDR) is the most recognized drug information reference available in the U.S and trusted by healthcare providers.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_fVCirg",
+        "item_eNp7wC",
+        "item_3wDPLq",
+        "item_BNDWVK",
+        "item_Ckz38t",
+        "item_fELwTB",
+        "item_NQNMg9",
+        "item_eaeeGa",
+        "item_JDJmKx",
+        "item_6mLAq9",
+        "item_M3LnX3"
+      ],
+      "custom_css": [
+        ".section-full {padding-top: 50px; padding-bottom: 30px;}",
+        ".section-full .accordion__content {color: #000;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "OMEGA+++ FAQs",
+        "content": "",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "#ff8f00",
+        "heading_color": "#000000",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "#ffffff",
+        "accordion_text_color": ""
+      }
+    },
+    "image_with_text_overlay_6zXN8n": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "richtext_7R6znk": {
+          "type": "richtext",
+          "settings": {
+            "content": "<h1>Healthy Living<br/>Starts Here</h1>"
+          }
+        },
+        "button_UMxrWV": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "xl",
+            "text": "SHOP NOW",
+            "url": "shopify://products/omega",
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "richtext_7R6znk",
+        "button_UMxrWV"
+      ],
+      "custom_css": [
+        ".section-full .prose {text-align: center;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify://shop_images/omega-bg-last.webp",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center-start sm:text-start",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "media_with_text_cptMw9",
+    "image_with_text_overlay_EyjUMN",
+    "media_with_text_DcPkeP",
+    "rich_text_DWVU64",
+    "media_with_text_jT9pF6",
+    "multi_column_icNBtr",
+    "featured_product_M8FjpN",
+    "multi_column_BdjbU9",
+    "faq_CPrifN",
+    "image_with_text_overlay_6zXN8n"
+  ]
+}

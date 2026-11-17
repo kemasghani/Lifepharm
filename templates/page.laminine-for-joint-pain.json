@@ -1,0 +1,1974 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        "h1 {text-align: left !important;}"
+      ],
+      "settings": {
+        "content_width": "100%"
+      }
+    },
+    "media_with_text_7rhM4q": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_d6HBWe": {
+          "type": "image",
+          "settings": {
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "",
+            "content": "<h1>The First Steps To<br/><strong>Eliminating Joint Pain </strong>Start With Your <strong>DNA</strong></h1><p>Start your journey today!</p>",
+            "link_text": "Try LAMININE Risk-Free",
+            "link_url": "shopify://products/laminine",
+            "background": "rgba(0,0,0,0)",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_d6HBWe"
+      ],
+      "custom_css": [
+        ".section-full {background-image: url(https://cdn.shopify.com/s/files/1/0790/7665/5396/files/1-banner-laminine.webp?v=1724866550); background-size: cover; background-repeat: no-repeat; padding-top: 0; padding-bottom: 0;}"
+      ],
+      "settings": {
+        "full_width": false,
+        "alternate_media_position": false,
+        "spacing": "none"
+      }
+    },
+    "multi_column_96BaX7": {
+      "type": "multi-column",
+      "blocks": {
+        "spacer_V48tEh": {
+          "type": "spacer",
+          "settings": {
+            "column_size": "12"
+          }
+        },
+        "item_xcaxRc": {
+          "type": "item",
+          "settings": {
+            "column_size": "3",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<h4>Do You Suffer From The Following?</h4>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_PzxTKt": {
+          "type": "item",
+          "settings": {
+            "column_size": "4",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<ul><li>Joint Soreness</li><li>Loss of Flexibility</li><li>Grating Sensation</li></ul>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_Taiynh": {
+          "type": "item",
+          "settings": {
+            "column_size": "4",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<ul><li>Joint Stiffness</li><li>Swelling</li><li>Aching</li></ul>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "spacer_YfTmm4": {
+          "type": "spacer",
+          "settings": {
+            "column_size": "6"
+          }
+        },
+        "item_63WBng": {
+          "type": "item",
+          "settings": {
+            "column_size": "1.5",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<h4>Consider the <strong>social cost </strong>of being in constant physical discomfort</h4>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_cGRHgR": {
+          "type": "item",
+          "settings": {
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<p>Joint pain has a profound impact on our ability to function in day to day life. </p><p><br/>And these symptoms are highly associated with anxiety and depression, negatively affecting our personal and professional relationships.</p><p><br/>This can lead to diminished confidence and social withdrawal, creating a vicious cycle. We all want a life of peace and tranquility, but joint soreness and stiffness can lead to a downward spiral.</p><p><br/><strong>But there is an answer.</strong></p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_GBpbi6": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/laminine-pain.webp",
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "spacer_V48tEh",
+        "item_xcaxRc",
+        "item_PzxTKt",
+        "item_Taiynh",
+        "spacer_YfTmm4",
+        "item_63WBng",
+        "item_cGRHgR",
+        "item_GBpbi6"
+      ],
+      "custom_css": [
+        ".section-full .prose h4 {letter-spacing: 0;}",
+        ".section-full .prose strong {color: #ff8f00;}",
+        ".section-full {padding-top: 40px; padding-bottom: 40px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": true,
+        "gap": "medium",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "background": "rgba(0,0,0,0)",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "multi_column_ibAgCb": {
+      "type": "multi-column",
+      "blocks": {
+        "item_ChYrA9": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/round-lam.webp",
+            "column_size": "4",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_Y6pCRj": {
+          "type": "item",
+          "settings": {
+            "column_size": "1.5",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<p>“I started taking this a while back, and after about two weeks it changed my life.</p><p>I suffered from a debilitating condition and cartilage degeneration, I couldn't walk, I couldn't get out of bed, I couldn't get down on the floor, I couldn't do anything. </p><p>Now I can walk, I can get out of bed in the morning without being in such discomfort, I can get on the floor and sit cross-legged. It's a wonderful product, I believe in it 100 percent. It got me off of the pharmaceuticals that I was taking.</p><p>It's not just that, it gives me energy and makes me feel great.”</p><h5><strong>Ruth H.</strong></h5>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_ChYrA9",
+        "item_Y6pCRj"
+      ],
+      "custom_css": [
+        ".section-full .section-header {display: block; text-align: center;}",
+        ".section-full {background-image: url(https://cdn.shopify.com/s/files/1/0790/7665/5396/files/text-bg-1.webp?v=1724774518); background-position: center; padding-top: 50px; padding-bottom: 50px;}",
+        ".section-full .prose h5 strong {color: #ff8f00;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": true,
+        "gap": "small",
+        "text_alignment": "center",
+        "subheading": "",
+        "title": "",
+        "content": "<h4><strong>After about two weeks it changed my life.</strong></h4>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "media_with_text_f9RaD9": {
+      "type": "media-with-text",
+      "blocks": {
+        "video_pU6zBt": {
+          "type": "video",
+          "settings": {
+            "external_video_url": "https://youtu.be/PRGHVFSVrgY",
+            "poster_image": "shopify://shop_images/laminine-video-poster.webp",
+            "autoplay": false,
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "",
+            "content": "<h3><strong>Introducing LAMININE</strong></h3><p>This holistic , scientifically-formulated <strong>cell regeneration supplement</strong> is designed for busy people who want the energy, vitality, and <strong>joint discomfort relief</strong> that come with reduced inflammation, reduced swelling, and reduced joint soreness and stiffness.</p><h5><strong>The Body’s Own Natural Stem Cells</strong></h5><p>FGF-2 (Fibroblast Growth Factor 2) is naturally found in the proprietary LifePharm fertilized egg extract. <br/></p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "rgba(0,0,0,0)",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_pU6zBt"
+      ],
+      "custom_css": [
+        ".section-full video-media::part(play-button) {display: none;}",
+        ".section-full .media-with-text__media img {object-fit: contain;}",
+        ".section-full {background-color: #006b7f; padding-bottom: 0; padding-top: 40px;}",
+        ".section-full .media-with-text__content {padding: 20px 30px 20px 0;}"
+      ],
+      "settings": {
+        "full_width": false,
+        "alternate_media_position": false,
+        "spacing": "none"
+      }
+    },
+    "rich_text_JKEt8m": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_6UFjX9": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>FGF-2 is an important egg bioactive growth factor and has been shown to activate most types of cells in the body. It acts at the DNA level. It is known to<strong>activate bone cells near the site of the joints to help stimulate cartilage repair.</strong>This factor has been shown to activate stem cells which lay in the various tissues and organs of the body. W<strong>hen activated, healthy stem cells can help repair and regenerate cells for restoring healthier tissues. </strong></p><p>Special amino acids (including all 22 of them) and natural chondroitin also support joint tissue repair.</p><p>We \"age\" because the body faces a constant problem. Telomeres (the protective caps on our chromosomes) are clipped shorter and shorter as cells divide and the body gets less efficient at producing new cells.</p><p><strong>FGF-2 is needed to support telomere activity.</strong></p><p>The problem is, the availability of FGF-2 to the human body diminishes over time and essentially vanishes as we age. Since our body relies less on our own production of FGF-2 , we can take advantage of mother nature’s rare source and obtain it from the LifePharm proprietary egg extract.</p><p>This explains why LAMININE has demonstrated a wide range of benefits for different people, and in varying parts of the body.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_6UFjX9"
+      ],
+      "custom_css": [
+        ".section-full {padding-top: 20px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "start",
+        "background": "#006b7f",
+        "background_gradient": "",
+        "text_color": "#ffffff"
+      }
+    },
+    "featured_product_RGecqQ": {
+      "type": "featured-product",
+      "blocks": {
+        "vendor_Rzywxw": {
+          "type": "vendor",
+          "disabled": true,
+          "settings": {}
+        },
+        "title_fPgK8Q": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "badges_JWnzXT": {
+          "type": "badges",
+          "settings": {}
+        },
+        "price_aJgfHR": {
+          "type": "price",
+          "disabled": true,
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "rating_zbWjA4": {
+          "type": "rating",
+          "settings": {
+            "show_empty": false
+          }
+        },
+        "separator_iWhRVy": {
+          "type": "separator",
+          "disabled": true,
+          "settings": {}
+        },
+        "description_bD8EPL": {
+          "type": "description",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "collapse_content": false
+          }
+        },
+        "text_yd8VWM": {
+          "type": "text",
+          "settings": {
+            "text": "<p>LAMININE supplies rare egg bioactive growth factors and proteins needed to <strong>stimulate stem cell regeneration and promote the body's ability to heal itself</strong>. Protein bio-factors such as FGF-2, are only available in the egg extract used in LAMININE. <strong>Support joint health by supporting your cellular health </strong>at the DNA level. <br/><br/>For best results for users who suffer severe pain, we recommend 2  capsules, twice daily with meals for at least 30 days. After significant benefits are felt and maintained, then start reducing serving by 1 capsule per week and assess how you feel.<strong>Most customers report that by taking 1 or 2 daily they are able to maintain the benefits but that, at first, a stronger serving of 4 capsules daily helped them to feel the greatest benefit more quickly.<br/><br/></strong>Select between 30 count and 120 count bottle below, depending on your needs. A subscription is a great way to save significantly on your LAMININE orders and prevent a lapse in servings. </p>"
+          }
+        },
+        "variant_picker_UAJgAb": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "quantity_selector_BQ6xCW": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_FJ8m6i": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "pickup_availability_Cg4HVT": {
+          "type": "pickup_availability",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "vendor_Rzywxw",
+        "title_fPgK8Q",
+        "badges_JWnzXT",
+        "price_aJgfHR",
+        "rating_zbWjA4",
+        "separator_iWhRVy",
+        "description_bD8EPL",
+        "text_yd8VWM",
+        "variant_picker_UAJgAb",
+        "quantity_selector_BQ6xCW",
+        "buy_buttons_FJ8m6i",
+        "pickup_availability_Cg4HVT"
+      ],
+      "custom_css": [
+        ".section-full {padding-bottom: 20px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "product": "laminine",
+        "desktop_media_width": 50,
+        "desktop_media_layout": "carousel_thumbnails_bottom",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": true,
+        "enable_video_looping": false,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "contact_kCtqKk": {
+      "type": "contact",
+      "blocks": {
+        "text_aicdWJ": {
+          "type": "text",
+          "settings": {
+            "title": "Title of Review",
+            "use_long_text": false,
+            "required": false
+          }
+        }
+      },
+      "block_order": [
+        "text_aicdWJ"
+      ],
+      "custom_css": [
+        ".section-full {padding-bottom: 30px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "text_position": "start",
+        "contact_form_size": "large",
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "contact_background": "#ffffff",
+        "contact_text_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "testimonials_iqFKEG": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_PnViBp": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "",
+            "title": "Super mega reparatoare",
+            "content": "<p>Consum acest produs de peste doi ani de zile Doza de reparații este de 3- 0- 3 timp de 10 - 15 zile apoi reduc doza la 2 pastile pe zi timp îndelungat  Pe mine acest produs ma ajutat enorm</p><p>LAMININE</p><p><strong><br/>Ziegler S.</strong></p>"
+          }
+        },
+        "testimonial_pptaKh": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Gregory R.",
+            "title": "Gave me my life back",
+            "content": "<p>My experience with Lamanine has been amazing. It kept cancer at bay and allowed me to be a dad, it's been helping me recover from surgery faster and before all of that it allowed me to work out again since a fitness injury I had.</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEzNjAyNjEzOA2\" target=\"_top\">LAMININE-</a>120 Count</p>"
+          }
+        },
+        "testimonial_HnjrdK": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Jana L.",
+            "title": "",
+            "content": "<p>Das Beste was es für mich gibt.</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDI2NTEwOHxyfDEzNTcxMzkzMQ2\" target=\"_top\">LAMININE-</a>30 Count</p>"
+          }
+        },
+        "testimonial_Awz6Rd": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Joni S.",
+            "title": "Love the benefits of Laminine!",
+            "content": "<p>I have used Laminine off and on for over a decade. Only ever taking breaks from taking it because I felt good and didn’t think I needed it. Once again over the last 6 months I decided to start up again. The last year has been very stressful & traumatic in my personal life, coupled with menopause & Laminine has carried me through amazingly. Assisting me with my energy, mental state and functioning of my body🙌</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEzNTE2NDQ1OA2\" target=\"_top\">LAMININE-</a>120 Count</p>"
+          }
+        },
+        "testimonial_rcchRA": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Diane H.",
+            "title": "Great product",
+            "content": "<p>It was good! I plan on ordering again</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEzNDkxMjU4OA2\" target=\"_top\">LAMININE-</a>30 Count</p>"
+          }
+        },
+        "testimonial_Kjjr9G": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Anna B.",
+            "title": "Best",
+            "content": "<p>My mom used to struggle falling in sleep, but after taking Laminine, she does not struggle anymore.</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEzMzgyMjc4Mg2\" target=\"_top\">LAMININE-</a>30 Count</p>"
+          }
+        },
+        "testimonial_Arj3hV": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Cristina M.",
+            "title": "Laminine",
+            "content": "<p>Best supplement ever; bring lots of energy</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDI2NTEwOHxyfDEzMjk0MTY4OA2\" target=\"_top\">LAMININE-</a>120 Count</p>"
+          }
+        },
+        "testimonial_TLDJmX": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Renáta F.",
+            "title": "perfect product",
+            "content": "<p>Using it in the past and now again, very good for imunity</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDI2NTEwOHxyfDEzMTQwMTI5OQ2\" target=\"_top\">LAMININE-</a>30 Count</p>"
+          }
+        },
+        "testimonial_R7Hbxr": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Mario H.",
+            "title": "Revitalized",
+            "content": "<p>Ever since I started using lamanine I have more than doubled my regular walking routine that was 1.7 miles a day to 4 miles a day, with a visit to the gym for my swimming routine as well on the same day with only two days off. My focus at work has also been remarkable. I love it</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEzMTI2NTgxNw2\" target=\"_top\">LAMININE-</a>120 Count</p>"
+          }
+        },
+        "testimonial_Q9QFzb": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "JANET M.",
+            "title": "Works.to relieve pain",
+            "content": "<p>Going well so far. Seems to help relieve pain. This is my second time after using several bottles I stopped. Back again. Tired of using pain relief.</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEzMTIzNzI4Ng2\" target=\"_top\">LAMININE-</a>30 Count</p>"
+          }
+        },
+        "testimonial_CaNB87": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Jeab A.",
+            "title": "First 2 months",
+            "content": "<p>I have been taking the capsules for 2 months now. They do not cause any GI upset and overall I'm happy to have been introduced to the product. <br/>I also got a small bottle of the skin serum and have been very happy with it. A little goes far so it has lasted well. It also has helped mt skin look smoother</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEzMTA5NjYyMA2\" target=\"_top\">LAMININE-</a>120 Count</p>"
+          }
+        },
+        "testimonial_4iG8bF": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "IZTOK K.",
+            "title": "Dobro",
+            "content": "<p>Zelo dober izdelek</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDI2NTEwOHxyfDEzMDg0Njk4Nw2\" target=\"_top\">LAMININE-</a>120 Count</p>"
+          }
+        },
+        "testimonial_4wPhR9": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Robin J.",
+            "title": "Laminine",
+            "content": "<p>Amazing!!<br/>Scars have become almost invisible!<br/>Also acne scars!<br/>New hair growth!<br/>New eyelashes coming in<br/>Softer skin</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEzMDQ3NDYwOA2\" target=\"_top\">LAMININE-</a>30 Count</p>"
+          }
+        },
+        "testimonial_Gkm3QM": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/review-t.webp",
+            "round_avatar": false,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Lawrence H.",
+            "title": "Rebuild your body with LAMININE stem cells",
+            "content": "<p>Excelllent product five stars<br/>Ive tried other overpriced stem cell products and LAMININE is the best by far<br/>with patented ingredients.</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEzMDQ3MzMwNQ2\" target=\"_top\">LAMININE-</a>30 Count</p>"
+          }
+        },
+        "testimonial_HJzDLi": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "",
+            "title": "Easy Stem Cell Regeneration",
+            "content": "<p>This product is the most affordable and easiest way to regenerate your natural rate of stem cell production.<br/>I use it very often together with my patients.</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyOTg0NTY4OQ2\" title=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyOTg0NTY4OQ2\">LAMININE</a></p><p><strong><br/>Prashant M.</strong></p>"
+          }
+        },
+        "testimonial_BnPb7i": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Cristina M.",
+            "title": " 5 star product",
+            "content": "<p>Best suppliment ever taken</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDI2NTEwOHxyfDEyOTgwMDI4Mg2\" target=\"_top\">LAMININE-</a>120 Count</p>"
+          }
+        },
+        "testimonial_tzcFBK": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Cristina V.",
+            "title": "Very good",
+            "content": "<p>Very good and satisfying experience</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDI2NTEwOHxyfDEyOTc5OTY1NA2\" target=\"_top\">LAMININE-</a>30 Count</p>"
+          }
+        },
+        "testimonial_99FXkd": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Diana T.",
+            "title": "Laminine",
+            "content": "<p>I feel more energetic in the day and get a better deeper sleep at night. I am on my second bottle 2nd month of Laminine and already feel the effects. I am going to order two bottles autoshiped per month just because I want to take two pills per day and it is recommended that you can take two or more per day. I was searching for something to help me feel better and found it again because I used to take it and stopped for a while. Now I'm happy I started again!</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyOTc2OTMzMA2\" target=\"_top\">LAMININE-</a>30 Count</p>"
+          }
+        },
+        "testimonial_EiAKeq": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "strohalm s.",
+            "title": "Cel mai bun",
+            "content": "<p>Lamine si omega+++ cea mai tare combinație mare mulțumiri doctorului știti voi care.</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDI2NTEwOHxyfDEyOTcxNTU5OA2\" target=\"_top\">LAMININE-</a>30 Count</p>"
+          }
+        },
+        "testimonial_xrMx7c": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "",
+            "title": "The only supplement one needs",
+            "content": "<p>I've tried Laminine since 2012, and i have seen how my overall health changed and recommended to my friends and it was unbelievable. This is the only supplement one needs. The only anti-aging pill one needs. I would like to start spreading the news here in Thailand but i hope someone can help me out. It is a failure for me if i don't share the great benefits of Laminine around the world. I have seen child with Asperger syndrome changed significantly. A person with bipolar disorder changed. A person with erectile dysfunction brought back his confidence. Hairs growing. White hair changed to black. Arthritis gone. Person having dialysis was advised by di tor to stop dialysis. It's just amazing pill.</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyOTI0NDg4Nw2\" title=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyOTI0NDg4Nw2\">LAMININE</a></p><p><br/><strong>Sari S.</strong></p>"
+          }
+        },
+        "testimonial_iR9bJw": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Marivel L.",
+            "title": "Bought it for a friend in Chemo",
+            "content": "<p>His overall test results showed improvement in blood cell count. His cholesterol went down, his urine lab results showed improvement in kidney function. It's been two months and he ordered another 120-count bottle.</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyODQ5MDU3OA2\" target=\"_top\">LAMININE-</a>120 Count</p>"
+          }
+        },
+        "testimonial_kWYbQj": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Cedric P.",
+            "title": "Review",
+            "content": "<p>The item was awesome, loved it will be purchasing more</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyNjQ4Nzk0OA2\" target=\"_top\">LAMININE-</a>30 Count</p>"
+          }
+        },
+        "testimonial_TVV6wM": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Beth J.",
+            "title": "Great customer care",
+            "content": "<p>A delivery was mistakenly overlooked and the representative thoughtfully rushed a replacement delivery, plus added a small bottle to compensate.</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyNTUyNDcyNA2\" target=\"_top\">LAMININE-</a>120 Count</p>"
+          }
+        },
+        "testimonial_AWBDah": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Irene D.",
+            "title": "Laminine experience",
+            "content": "<p>This supplement is awesome. I’ve been taking it for over 10 years, but if in my 20-30s 1 pill a day was enough for me, now its not. It helps maintain a healthy BMI, promotes strong sparkly hair, keeps skin young and fresh. I would recommend it to each and everyone. I am thinking about increasing a dose. To stay forever young and healthy.</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyNTM3MzgwNA2\" target=\"_top\">LAMININE-</a>30 Count</p>"
+          }
+        },
+        "testimonial_RcpLLk": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Martin K.",
+            "title": "Laminine",
+            "content": "<p>veľmi účinny produkt,ktorý skutočne funguje od začiatku používania</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDI2NTEwOHxyfDEyNDgxMTQ3Nw2\" target=\"_top\">LAMININE-</a>30 Count</p>"
+          }
+        },
+        "testimonial_iGEcdH": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Colleen K.",
+            "title": "Best product ever!",
+            "content": "<p>For years I struggle with vision.This due to 7 eye surgeries. This product helps me to focus, see better and removes 'floaters'. It has also helped with eye migraines - those electrified staircases that never move but take over and block vision for about 20 minutes. I have been on this for years; great product.</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyNDYxNDEwNA2\" target=\"_top\">LAMININE-</a>120 Count</p>"
+          }
+        },
+        "testimonial_KjHtc7": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "John S.",
+            "title": "work in progress",
+            "content": "<p>I won't know exactly what progress has been made until I have taken this product between 6 months to a year. As of now there is no way to know whether it is helping or not.</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMzk2MTg4NQ2\" target=\"_top\">LAMININE-</a>120 Count</p>"
+          }
+        },
+        "testimonial_qfPqix": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "PUIULET A.",
+            "title": "LAMININE",
+            "content": "<p>It's a wonderful product that I highly recommend!</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDI2NTEwOHxyfDEyMzk1NzgwMw2\" target=\"_top\">LAMININE-</a>120 Count</p>"
+          }
+        },
+        "testimonial_BE6ALh": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Cedric P.",
+            "title": "Feedback",
+            "content": "<p>It was a great overall experience</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMzk0MDIxMQ2\" target=\"_top\">LAMININE-</a>30 Count</p>"
+          }
+        },
+        "testimonial_kWB3tg": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "",
+            "title": "Excelent product",
+            "content": "<p>It`s the second time i order those, it really works. <br/>Highly recomand.</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDI2NTEwOHxyfDEyMTk3NDQ0MA2\" title=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDI2NTEwOHxyfDEyMTk3NDQ0MA2\">LAMININE</a></p><p><strong><br/>Rodica</strong></p>"
+          }
+        },
+        "testimonial_gWXceg": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Faith S.",
+            "title": "Laminine Praise",
+            "content": "<p>Laminine has helped me keeps my sickness at bay. Thank you for your research.</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMDMwNDc2NQ2\" target=\"_top\">LAMININE-</a>30 Count</p>"
+          }
+        },
+        "testimonial_fcjm6X": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Hisham",
+            "title": "m 56 but i can see alot of improvement in all asp",
+            "content": "<p>I understand that this products should be used for at least 6 months on end. The reason being, our bodies have been degenerated for a long time and any repairs need time to trigger n take place. During this process, bodies are likely to experience healing crisis which vary from person to person depending on each others condition. Just be patient as laminine does its work in repairing our bodies. I ve been on laminine for 7 mths and have experienced several healing crises which lasted for several weeks. After 6 mths i feel so much more energetic n healthy. My eczema has cleared up and overall skin looks radiant. I m 56 but i can see alot of improvement in all aspects of my health n looks. I m grateful n thankful tat i have benefitted from laminine.<br/>Hisham, Malaysia</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMjAxNzk4MA2\" title=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMjAxNzk4MA2\">LAMININE</a></p>"
+          }
+        },
+        "testimonial_jgUbnj": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Kylie G.",
+            "title": "So glad to be back on Laminine",
+            "content": "<p>I was a long time user of Laminine and gave it up - what was I thinking?! I thought everything had been fixed so I didn't need it any more - which is partly true, but I just feel so much better everywhere in my body now that I am taking it again.</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMjAxNzk4MQ2\" title=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMjAxNzk4MQ2\">LAMININE</a></p>"
+          }
+        },
+        "testimonial_UfC4Yf": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Kasia",
+            "title": "I love Laminine",
+            "content": "<p>I start to use Laminine in 2014 and I still use it every day. I love it because it still works for my body.</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMjAxNzk5Mg2\" title=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMjAxNzk5Mg2\">LAMININE</a></p>"
+          }
+        },
+        "testimonial_VPewr4": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Sheila D.",
+            "title": "Love!",
+            "content": "<p>Love this product, been using it for years!</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMjAxNzk5Mw2\" title=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMjAxNzk5Mw2\">LAMININE</a></p>"
+          }
+        },
+        "testimonial_DfqkQQ": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "D'Arcy G.",
+            "title": "Good product",
+            "content": "<p>I love this product. I think it helps me heal at a much quicker rate than most people my age and younger</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMjAxNzk5NA2\" title=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMjAxNzk5NA2\">LAMININE</a></p>"
+          }
+        },
+        "testimonial_LnTe7M": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Sandra G.",
+            "title": "Amazing product for my hip",
+            "content": "<p>Amazing product for my hip pain!</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMjAxNzk5NQ2\" title=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMjAxNzk5NQ2\">LAMININE</a></p>"
+          }
+        },
+        "testimonial_ntaNfL": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Uvon M.",
+            "title": "Very happy so far...have noticed",
+            "content": "<p>Very happy so far...have noticed a slight difference ..</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMjAxODAwMQ2\" title=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMjAxODAwMQ2\">LAMININE</a></p>"
+          }
+        },
+        "testimonial_DgXVYc": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Phil V.",
+            "title": "It keeps me energized and",
+            "content": "<p>It keeps me energized and it keeps me going plus I don't feel no pain mainly my lower back was I love it when it stimulates my stem cells makes me feel young again thank you very much</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMjAxODAwMg2\" title=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMjAxODAwMg2\">LAMININE</a></p>"
+          }
+        },
+        "testimonial_zkHaFK": {
+          "type": "testimonial",
+          "disabled": true,
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Marilou V.",
+            "title": "Best food supplement ever!!!",
+            "content": "<p>Eversince i tried using laminine which was recommended by my mum,i was impressed by what it can do for your body. Whatever ****** complaints you have, the results are visible once a medicine is paired by laminine.I used to take it during exams and my memory was super focused. And my mother's skin is flowing and her pores seemed invisible. For years she had used it now and she has baby face skin. She is 90 years old but she's more baby faced than i am. So I'm inspired to use it with the hope that i get the same results. My skin seemed to glow from the inside. I paired it with Omega and Immune. I'm on my 6th month of using the trio. My face and skin started to glow, fine lines start to disappear. I'm a scrub nurse and I used to complain of knee pain when i get up from a low position to standing up, i simply don't feel it anymore. My back pain is gone too.And i used to feel tired at midmorning during work but when i stayed using the trio, i have the power i need to last me through late night.And i have no trouble sleeping ang waking up, as long as i have enough sleep. <br/>I will be 57 years old this year,i work and move faster than other 30 or 40 years old. It's no surprise they have mistaken me as in my mid forties. Thanks to this supplement, together with healthy lifestyle and a positive attitude in life, I'm hopeful i get to be at old as my Mum🙏�🙏�and stay healthy. <br/>I would highly recommend this to my family and friends. Almost all of my siblings are taking it as well.</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMjAxODAwNA2\" title=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMjAxODAwNA2\">LAMININE</a></p>"
+          }
+        },
+        "testimonial_JphaMm": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Rachel N.",
+            "title": "I’m not sure yet. I’ve",
+            "content": "<p>I’m not sure yet. I’ve been having the herxeimer reactions so still going through the healing process. Hoping to come out on the other side of things and then review :)</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMjAxODAwNg2\" title=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMjAxODAwNg2\">LAMININE</a></p>"
+          }
+        },
+        "testimonial_jDJfBH": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "LOUIS V.",
+            "title": "Laminine",
+            "content": "<p>I like the product a lot</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEwMjk4NDA4Ng2\" target=\"_top\">LAMININE-</a>120 Count</p>"
+          }
+        },
+        "testimonial_gBHytW": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Brooke S.",
+            "title": "Great product!",
+            "content": "<p>My bonus mom recommended this product to me, she has been taking this product for 10 years and swears by it. I’m in my 30s and do CrossFit every day. This has kept me going with more energy and my recovery time has been shortened and I’ve don’t feel as sore. Highly recommend 🤩</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEwMjA2OTQxMQ2\" target=\"_top\">LAMININE-</a>30 Count</p>"
+          }
+        },
+        "testimonial_wn6VTx": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Sunny Y. Chang",
+            "title": "Excellent!!",
+            "content": "<p>Laminine Subscription is good! Thank you for good service and laminine!</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEwMTc4NzQ1OQ2\" target=\"_top\">LAMININE</a>120 Count</p>"
+          }
+        },
+        "testimonial_C4qJFn": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Susie C.",
+            "title": "Need to reorder",
+            "content": "<p>Body pains are gone after taking the capsule for 2 days.</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMjAxODAwOQ2\" title=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMjAxODAwOQ2\">LAMININE</a></p>"
+          }
+        },
+        "testimonial_4pdBaX": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Yvonne C.",
+            "title": "This product is wonderful. I",
+            "content": "<p>This product is wonderful. I have taken Laminine off and on for about 4 years. I feel like it has really helped my joints, as I am still pretty flexible, and have very little joint pain. It has also been wonderful for my skin. My skin is very resilient, and my face is smooth for the most part. I am 74 years young.</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMjAxODAxMA2\" title=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMjAxODAxMA2\">LAMININE</a></p>"
+          }
+        },
+        "testimonial_HMHPgE": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "test",
+            "title": "Test",
+            "content": "<p>test</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMjAxODAxMQ2\" title=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMjAxODAxMQ2\">LAMININE</a></p>"
+          }
+        },
+        "testimonial_pjHbYi": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Diana A.",
+            "title": "Minimal Effort, Fast Results",
+            "content": "<p>First photo - me at age 57. Did a video - I did specific exercises for 6.42 minutes and day after looked buff. Had been taking 1 capsule of Laminine per day for about 1 month Second photo - me at age 67 2 weeks ago. Had been taking 1 capsule per day for about 2 months. Took a before picture, then I did specific exercises for about 25 minutes and next day I was looking buff. I love Laminine. I decided to increase dosage to 4 capsules per day.</p><p><a href=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMjAxODAxMg2\" title=\"https://stamped.io/go/d3xXaWRnZXRNYWlufDEzMjc2MXxyfDEyMjAxODAxMg2\">LAMININE</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_PnViBp",
+        "testimonial_pptaKh",
+        "testimonial_HnjrdK",
+        "testimonial_Awz6Rd",
+        "testimonial_rcchRA",
+        "testimonial_Kjjr9G",
+        "testimonial_Arj3hV",
+        "testimonial_TLDJmX",
+        "testimonial_R7Hbxr",
+        "testimonial_Q9QFzb",
+        "testimonial_CaNB87",
+        "testimonial_4iG8bF",
+        "testimonial_4wPhR9",
+        "testimonial_Gkm3QM",
+        "testimonial_HJzDLi",
+        "testimonial_BnPb7i",
+        "testimonial_tzcFBK",
+        "testimonial_99FXkd",
+        "testimonial_EiAKeq",
+        "testimonial_xrMx7c",
+        "testimonial_iR9bJw",
+        "testimonial_kWYbQj",
+        "testimonial_TVV6wM",
+        "testimonial_AWBDah",
+        "testimonial_RcpLLk",
+        "testimonial_iGEcdH",
+        "testimonial_KjHtc7",
+        "testimonial_qfPqix",
+        "testimonial_BE6ALh",
+        "testimonial_kWB3tg",
+        "testimonial_gWXceg",
+        "testimonial_fcjm6X",
+        "testimonial_jgUbnj",
+        "testimonial_UfC4Yf",
+        "testimonial_VPewr4",
+        "testimonial_DfqkQQ",
+        "testimonial_LnTe7M",
+        "testimonial_ntaNfL",
+        "testimonial_DgXVYc",
+        "testimonial_zkHaFK",
+        "testimonial_JphaMm",
+        "testimonial_jDJfBH",
+        "testimonial_gBHytW",
+        "testimonial_wn6VTx",
+        "testimonial_C4qJFn",
+        "testimonial_4pdBaX",
+        "testimonial_HMHPgE",
+        "testimonial_pjHbYi"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "stack_testimonials": false,
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "#000000",
+        "heading_color": "",
+        "heading_gradient": "",
+        "testimonial_card_background": "",
+        "testimonial_card_text_color": ""
+      }
+    },
+    "multi_column_MKcggt": {
+      "type": "multi-column",
+      "blocks": {
+        "item_edUhxj": {
+          "type": "item",
+          "settings": {
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<p><strong>Serving Size:</strong> 1 Capsule</p><p><strong>Suggested for Adult Use:<br/></strong>As a dietary supplement, take 1-4 capsules a day.</p><p><strong>Ingredients:</strong>OPT9™ Proprietary Blend (Fertilized Avian Egg Extract, Fish Protein, Phyto Protein), Vegetable Capsule, Silicon Dioxide, Magnesium Stearate</p><p>No evidence has been found to show drug interactions of any kind.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_4fNMA3": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/laminine-label.jpg",
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_edUhxj",
+        "item_4fNMA3"
+      ],
+      "custom_css": [
+        ".section-full .mc-img-full img {border-radius: 0;}",
+        ".section-full {padding-top: 50px; padding-bottom: 50px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": true,
+        "gap": "medium",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "background": "#f6f6f6",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "multi_column_XydY9j": {
+      "type": "multi-column",
+      "blocks": {
+        "item_BkcQ9B": {
+          "type": "item",
+          "settings": {
+            "column_size": "1.5",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<h4>Step 1: Cellular <strong>DNA</strong> repair and regeneration</h4>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "spacer_LTnUmA": {
+          "type": "spacer",
+          "settings": {
+            "column_size": "3"
+          }
+        },
+        "spacer_hKVQ89": {
+          "type": "spacer",
+          "settings": {
+            "column_size": "12"
+          }
+        },
+        "item_c6BzhV": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/dna-1.webp",
+            "column_size": "3",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "spacer_DaBQnj": {
+          "type": "spacer",
+          "settings": {
+            "column_size": "12"
+          }
+        },
+        "item_BywQTq": {
+          "type": "item",
+          "settings": {
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<p>In a breakthrough discovery, a renowned Norwegian doctor revived research spanning 50 years by isolating a specialized compound taken from avian egg embryos. The LifePharm LAMININE formula with the proprietary fertilized egg extract has been evaluated by a third party lab showing that it helped repair the telomeres, the protective cap found on chromosomes associated with better cell division, cell longevity and less stress-related damage.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_3Ti4cB": {
+          "type": "item",
+          "settings": {
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<p>Studies have shown that sore, inflamed and immobile joints<strong>are associated with shorter telomeres in bone cells. Shorter telomeres are associated with physical aging.</strong>Cartilage is basically a material similar to rubber or soft plastic. Unfortunately, it has no blood vessels or stem cells or the lymphatic system. Once the cartilage is worn away by aging, physical trauma or athletic endeavors it does not have much ability to repair itself. However,<strong>bone cells called chondrocytes near the joint cartilage are activated by FGF2 to help produce collagen, elastin, and matrix proteins that build up cartilage.</strong></p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "spacer_weY4dr": {
+          "type": "spacer",
+          "settings": {
+            "column_size": "12"
+          }
+        },
+        "item_qEDgre": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/dna-2.webp",
+            "column_size": "3",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_BkcQ9B",
+        "spacer_LTnUmA",
+        "spacer_hKVQ89",
+        "item_c6BzhV",
+        "spacer_DaBQnj",
+        "item_BywQTq",
+        "item_3Ti4cB",
+        "spacer_weY4dr",
+        "item_qEDgre"
+      ],
+      "custom_css": [
+        ".section-full {padding-top: 50px;}",
+        ".section-full .section-header {display: block; text-align: center;}",
+        ".section-full .prose h4 strong,h5 strong {color: #ff8f00;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": true,
+        "gap": "medium",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "",
+        "content": "<h4>LAMININE's specialized formulation includes <strong>5 essential steps</strong> working together in tandem to <strong>reduce joint pain</strong> and its effects.</h4>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "rgba(0,0,0,0)"
+      }
+    },
+    "multi_column_mEiJGn": {
+      "type": "multi-column",
+      "blocks": {
+        "spacer_yGbRdX": {
+          "type": "spacer",
+          "settings": {
+            "column_size": "12"
+          }
+        },
+        "item_PVJrgz": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/laminine-check.webp",
+            "column_size": "4",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_KNng3e": {
+          "type": "item",
+          "settings": {
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<p>“The joints in my knees were very uncomfortable. After about a week of LAMININE. I can't believe they don't hurt anymore.”</p><h5><strong>Stan B.</strong></h5>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "spacer_yGbRdX",
+        "item_PVJrgz",
+        "item_KNng3e"
+      ],
+      "custom_css": [
+        ".section-full {background-image: url(https://cdn.shopify.com/s/files/1/0790/7665/5396/files/text-bg-1.webp?v=1724774518); background-size: cover; padding-top: 40px; padding-bottom: 40px;}",
+        ".section-full .prose h5 strong {color: #ff8f00;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": true,
+        "gap": "medium",
+        "text_alignment": "center",
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "rgba(0,0,0,0)"
+      }
+    },
+    "multi_column_Xj9rc7": {
+      "type": "multi-column",
+      "blocks": {
+        "item_3epJL6": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/laminine-acid-1.webp",
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_Bfcy7T": {
+          "type": "item",
+          "settings": {
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<p>Amino acids are essential for <strong>protecting and rebuilding joint cartilage</strong>, and when combined with our proprietary LifePharm egg extract the results are nothing short of amazing.</p><p><br/></p><p>That’s why LAMININE contains all 22 amino acids that your body needs for maximum health, so when tissue damage occurs <strong>your body has the essential nutrients and biofactors necessary to help in its repair.</strong></p><p>“I had aching joints all along my back and I experienced discomfort sitting and bending down. But since I've been taking LAMININE, it doesn't hurt that much.”</p><h5><strong>Steve G.</strong></h5>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_3epJL6",
+        "item_Bfcy7T"
+      ],
+      "custom_css": [
+        ".section-full {padding-top: 50px;}",
+        ".section-full .prose h5 strong {color: #ff8f00;}",
+        ".section-full .section-header {display: block;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": true,
+        "gap": "medium",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "",
+        "content": "<h4><strong>Step 2: The full chain of 22 amino acids essential for cellular health and cartilage repair</strong></h4>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "rgba(0,0,0,0)"
+      }
+    },
+    "multi_column_ym6n4H": {
+      "type": "multi-column",
+      "blocks": {
+        "item_JTXqpi": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/life-I.webp",
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_eYdBaw": {
+          "type": "item",
+          "settings": {
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<p><strong>Serotonin</strong> is a very important chemical when it comes to our well-being. <strong>Why?</strong></p><p><br/>Because studies have shown <strong>serotonin to help increase cell division and bone metabolism.</strong><br/></p><p><br/>But it doesn’t stop there.<br/></p><p><br/>Serotonin is also vital in helping to <strong>elevate our moods</strong>, and can even help lift us out of depression.<br/></p><p><br/>This is so important because many times we can't do the things we love anymore due to physical limitations… so our serotonin levels take a hit.<br/>And not just once or twice…but over and over again, sometimes for years…<br/><br/>Not only do serotonin levels affect our mood, but they can also affect <strong>digestion, appetite levels, quality of sleep, memory and even social behavior.</strong></p><p><strong>References:<br/></strong><a href=\"https://pubmed.ncbi.nlm.nih.gov/15131521/?ref=retaildirect&ref=retaildirect\" target=\"_blank\">NCBI - Tryptophan depletion, serotonin, and depression <br/></a><a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5098683/?ref=retaildirect&ref=retaildirect\">NCBI - Anxiety and depression in patients with osteoarthritis<br/></a><a href=\"https://pubmed.ncbi.nlm.nih.gov/29101650/?ref=retaildirect&ref=retaildirect\">NCBI - Regulation of Bone Metabolism by Serotonin</a></p>",
+            "link_url": "shopify://products/laminine",
+            "link_text": "Try LAMININE Risk Free",
+            "link_style": "button"
+          }
+        }
+      },
+      "block_order": [
+        "item_JTXqpi",
+        "item_eYdBaw"
+      ],
+      "custom_css": [
+        ".section-full {padding-top: 60px; padding-bottom: 60px;}",
+        ".section-full .prose h4 strong,p a {color: #ff8f00;}",
+        ".section-full .button {margin-top: 25px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": true,
+        "gap": "medium",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "",
+        "content": "<h4>Step 3: LAMININE’s effect on <strong>Serotonin</strong> and <strong>Cortisol</strong></h4>",
+        "background": "#006b7f",
+        "background_gradient": "",
+        "text_color": "#ffffff"
+      }
+    },
+    "multi_column_GyV6RC": {
+      "type": "multi-column",
+      "blocks": {
+        "item_RLgGdn": {
+          "type": "item",
+          "settings": {
+            "column_size": "3",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<h6><strong>Based on a recent clinical study it has now been shown that LAMININE lowers the level of the stress hormone cortisol in our bodies.</strong></h6><p><br/>A vicious cycle often occurs in the relationship between joint pain and stress.</p><p><br/>The difficulties which arise from living with chronic pain creates stress...</p><p><br/>and this stress causes muscle tension and increased pain along with worsening symptoms.</p><p><strong><br/>The worsening symptoms lead back to more stress.</strong></p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_9bnDew": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/laminine-lowering-chart.webp",
+            "column_size": "1.5",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_UcgBke": {
+          "type": "item",
+          "settings": {
+            "column_size": "1.5",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<p>But by lowering cortisol levels in the body, LAMININE helps to end this cycle. <br/><br/><strong>References:<br/></strong><a href=\"https://lifepharm.com/media/pdf/laminine/ENG-LaminineCortisol-Study.pdf?ref=retaildirect&ref=retaildirect\" target=\"_blank\"><strong>LAMININE - Cortisol Study<br/></strong></a><a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4263906/?ref=retaildirect&ref=retaildirect\" target=\"_blank\"><strong>NCBI - Chronic Stress, Cortisol Dysfunction, and Pain</strong></a></p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "spacer_VfEpGC": {
+          "type": "spacer",
+          "settings": {
+            "column_size": "3"
+          }
+        },
+        "spacer_PXBaar": {
+          "type": "spacer",
+          "settings": {
+            "column_size": "4"
+          }
+        },
+        "item_aYBfVR": {
+          "type": "item",
+          "settings": {
+            "column_size": "1.5",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<p>\"Within 4 hours this energetic calm came across me, it was like the stress just dissolved.\"</p><h5><strong>Emilie W.</strong></h5>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_RLgGdn",
+        "item_9bnDew",
+        "item_UcgBke",
+        "spacer_VfEpGC",
+        "spacer_PXBaar",
+        "item_aYBfVR"
+      ],
+      "custom_css": [
+        ".section-full {padding-top: 60px; padding-bottom: 60px;}",
+        ".section-full .prose h4 strong,h6 strong {color: #296579;}",
+        ".section-full .prose p a,h5 strong {color: #ff8f00;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": true,
+        "gap": "medium",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "",
+        "content": "<h4>Lowering <strong>Cortisol</strong> improves overall health</h4>",
+        "background": "#f6f6f6",
+        "background_gradient": "",
+        "text_color": "rgba(0,0,0,0)"
+      }
+    },
+    "rich_text_tWWhKw": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_6Akz9q": {
+          "type": "richtext",
+          "settings": {
+            "content": "<h4><strong>By Healing DNA, Rebuilding Collagen, and Reducing Free Radicalsin the Body You Can Say “YES!” to</strong></h4>"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_6Akz9q"
+      ],
+      "custom_css": [
+        ".section-full {padding-top: 50px; padding-bottom: 10px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "medium",
+        "text_position": "center",
+        "background": "#006b7f",
+        "background_gradient": "",
+        "text_color": "#ffffff"
+      }
+    },
+    "media_with_text_7wyPCW": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_iHQxXR": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/laminine-match.webp",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "",
+            "content": "<ul><li>Less Joint Tenderness</li><li>Less Joint Swelling</li><li>Less Joint Discomfort</li><li>Improved Mobility</li><li>Mental Clarity & Focus</li><li>Healthier Skin</li><li>More Energy</li><li>Calming Effect</li><li>Restful Sleep</li></ul>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#000000",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        },
+        "image_MtCPjV": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/laminine-cells-removebg-preview-removebg-preview_88c3f739-b52c-4b45-b22a-b60ab3e4229d.png",
+            "media_width": 30,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "",
+            "content": "<p>\"When I take LAMININE before bed, eight hours later I wake up and my mind is firing on all cylinders.\" </p><h5><strong>Adrian Mathews</strong></h5>",
+            "link_text": "",
+            "link_url": "",
+            "background": "rgba(0,0,0,0)",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_iHQxXR",
+        "image_MtCPjV"
+      ],
+      "custom_css": [
+        ".section-full {background-color: #006b7f; padding-top: 40px; padding-bottom: 30px;}",
+        ".media-with-text__content {padding: 30px 10px 30px 35px;}",
+        ".media-with-text__content .prose ul {gap: 20px; font-size: 24px;}",
+        "#block-template--23368255308068__media_with_text_7wyPCW-image_MtCPjV .media-with-text__media {display: none;}",
+        "#block-template--23368255308068__media_with_text_7wyPCW-image_MtCPjV {display: block;}",
+        "@media (min-width: 768px) {.section-full {padding-right: 90px; padding-left: 90px; } .media-with-text {padding: 0 30px; }}"
+      ],
+      "settings": {
+        "full_width": false,
+        "alternate_media_position": false,
+        "spacing": "large"
+      }
+    },
+    "media_with_text_9mkKiB": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_YGFgPa": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/ADRIAN_LIFEPHARM_93133889-d4fb-448f-8906-48eb61c33a5f.webp",
+            "media_width": 30,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "",
+            "content": "<p>When you choose LAMININE's “Healthy Joints, Happy Life” Program you’ll receive:<br/></p><h4><strong>A 30 Day Supply of LAMININE</strong></h4>",
+            "link_text": "Try LAMININE Risk Free",
+            "link_url": "shopify://products/laminine",
+            "background": "rgba(0,0,0,0)",
+            "background_gradient": "",
+            "text_color": "#344c55",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_YGFgPa"
+      ],
+      "custom_css": [
+        ".section-full {background-image: url(https://cdn.shopify.com/s/files/1/0790/7665/5396/files/text-bg-1.webp?v=1724774518); padding-top: 20px; padding-bottom: 20px;}"
+      ],
+      "settings": {
+        "full_width": false,
+        "alternate_media_position": false,
+        "spacing": "none"
+      }
+    },
+    "rich_text_g86Dfw": {
+      "type": "rich-text",
+      "blocks": {
+        "image_VVw3nJ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/logo-1.webp",
+            "width_mode": "custom",
+            "max_width": 400,
+            "mobile_max_width": 300
+          }
+        },
+        "richtext_FkXwK3": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p><strong>LifePharm is committed to producing products of only the highest quality, made with the most potent and safely sourced ingredients.<br/></strong>To ensure the efficacy of its products, LifePharm continues to seek improvements in processing and production. We are dedicated to conducting studies that clinically prove the effects of LAMININE. This is accomplished through the LifePharm Scientific Advisory Board, 3rd party university researchers and medical clinics.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "image_VVw3nJ",
+        "richtext_FkXwK3"
+      ],
+      "custom_css": [
+        ".section-full {padding-top: 30px; padding-bottom: 40px;}",
+        ".section-full .prose img {margin-bottom: 0;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "#006b7f",
+        "background_gradient": "",
+        "text_color": "#ffffff"
+      }
+    },
+    "multi_column_VYWUFf": {
+      "type": "multi-column",
+      "blocks": {
+        "spacer_nLdpaz": {
+          "type": "spacer",
+          "settings": {
+            "column_size": "12"
+          }
+        },
+        "item_CeRiKe": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/batch.webp",
+            "column_size": "4",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_MJ6mge": {
+          "type": "item",
+          "settings": {
+            "column_size": "1.5",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<h5><strong>Our Industry-Leading 60-Day \"Hassle-Free\" Unconditional Money-Back Guarantee</strong></h5><p>We’re so sure you’ll love LAMININE, you’re covered by our <strong>FULL 60-day money-back guarantee.<br/></strong><br/>We want you to have plenty of time to experience the renewed energy, pain-free mobility, and youthful appearance that comes with taking LAMININE. <strong>If you’re not happy for any reason whatsoever</strong>, just let us know, and we’ll cheerfully issue a prompt refund. <strong>No hassles.</strong></p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "spacer_nLdpaz",
+        "item_CeRiKe",
+        "item_MJ6mge"
+      ],
+      "custom_css": [
+        ".section-full {padding-top: 50px; padding-bottom: 50px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": true,
+        "gap": "small",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "multi_column_V7bkYX": {
+      "type": "multi-column",
+      "blocks": {
+        "item_cWCdt6": {
+          "type": "item",
+          "settings": {
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<p><strong>A.</strong> You can continue down the frustrating path of short-term, quick fix solutions that only mask the real problem.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_7eA687": {
+          "type": "item",
+          "settings": {
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<p><strong>B. </strong>Or experience LAMINE 100% Risk-Free and join our vibrant community of people who’ve taken charge of their health.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "spacer_wBkWJN": {
+          "type": "spacer",
+          "settings": {
+            "column_size": "4"
+          }
+        },
+        "item_GqQFnU": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/color-dots.webp",
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_cWCdt6",
+        "item_7eA687",
+        "spacer_wBkWJN",
+        "item_GqQFnU"
+      ],
+      "custom_css": [
+        ".section-full {padding-top: 50px; padding-bottom: 40px;}",
+        ".section-full .mc-img-full img {margin: auto;}",
+        ".section-full .section-header {display: block; text-align: center;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": true,
+        "gap": "small",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "",
+        "content": "<h4><strong>Two Paths:</strong></h4><h4>We’ve come to a fork in the road...</h4>",
+        "background": "#f6f6f6",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "faq_8ViFB8": {
+      "type": "faq",
+      "blocks": {
+        "item_4KAUfq": {
+          "type": "item",
+          "settings": {
+            "title": "Do I need to talk to a doctor before taking LAMININE?",
+            "content": "<p>You may have positive responses to taking LAMININE. Please speak with your doctor if you have concerns or medical conditions. You should not take LAMININE if you are allergic to eggs or fish.</p>"
+          }
+        },
+        "item_eMNQWG": {
+          "type": "item",
+          "settings": {
+            "title": "What’s the recommended dosage?",
+            "content": "<p>1-4 capsules per day is the recommended dosage. We recommend taking 2 capsules twice a day during the first month of taking LAMININE. After this initial month is over, you can reduce your dosage to 1-4 capsules daily. For convenience, we offer a 120 capsule bottle at purchase so that it may last a month.</p>"
+          }
+        },
+        "item_CjKqhe": {
+          "type": "item",
+          "settings": {
+            "title": "Are there any side effects associated to taking LAMININE?",
+            "content": "<p>Natural supplements that don’t contain synthetic substances or pharmaceuticals are usually safe. LAMININE has no known side effects. Some people might experience a stomach disturbance or mild headache, but it is not common and usually goes away within a couple of days. We recommend taking LAMININE with food and a glass of water to avoid stomach disturbance.</p>"
+          }
+        },
+        "item_LenpmE": {
+          "type": "item",
+          "settings": {
+            "title": "Is LAMININE safe for children?",
+            "content": "<p>Anyone over the age of 12 can consume LAMININE at the recommended dosage. It's recommended to consult your pediatrician on the safety of LAMININE.</p>"
+          }
+        },
+        "item_i4HC6j": {
+          "type": "item",
+          "settings": {
+            "title": "Can both men and women take LAMININE?",
+            "content": "<p>LAMININE will produce health benefits regardless of gender. Both men and women will enjoy its wonderful effects.</p>"
+          }
+        },
+        "item_QyxCNp": {
+          "type": "item",
+          "settings": {
+            "title": "Can breastfeeding or pregnant women take LAMININE?",
+            "content": "<p>Talk to your physician if you’re expecting a child or you’re nursing and you want to give LAMININE a try. Though the supplement is safe for everyone, it’s a good idea to have a professional consultation before getting started.</p>"
+          }
+        },
+        "item_AH7qjp": {
+          "type": "item",
+          "settings": {
+            "title": "When should I take LAMININE?",
+            "content": "<p>No contraindications with other dietary supplements or medications are noted.</p>"
+          }
+        },
+        "item_n7aQJp": {
+          "type": "item",
+          "settings": {
+            "title": "Is LAMININE safe alongside medications or other supplements?",
+            "content": "<p>Talk to your physician if you’re expecting a child or you’re nursing and you want to give LAMININE a try. Though the supplement is safe for everyone, it’s a good idea to have a professional consultation before getting started.</p>"
+          }
+        },
+        "item_RiqA4Y": {
+          "type": "item",
+          "settings": {
+            "title": "What is FGF-2?",
+            "content": "<p>FGF-2 is a naturally occurring growth factor found in LAMININE that plays a role in supporting cells of various tissues and some stem cells.</p>"
+          }
+        },
+        "item_QDAhK8": {
+          "type": "item",
+          "settings": {
+            "title": "Is it true that LAMININE can be used to slow down aging?",
+            "content": "<p>The FGF-2 and amino acids found in LAMININE work on a cellular level. In addition to stimulating tissue regeneration, LAMININE is also a source of antioxidants that protect the cells against the activity of free radicals, thus slowing down cellular aging. Specific studies have shown that LAMININE supported DNA repair mechanisms indicating healthier cell division and regeneration, which is anti-aging benefit.</p>"
+          }
+        },
+        "item_DdWhRA": {
+          "type": "item",
+          "settings": {
+            "title": "How is the egg extract produced?",
+            "content": "<p>LifePharm uses a USDA (United States Department of Agriculture) inspected poultry farm in the USA. Chickens are fed high quality whole grains and raised cage-free. Eggs are incubated for a specific time and temperature to extract factors at their peak activity. Eggs are non-GMO and no chemicals or extreme heat is used in processing the LifePharm egg extract to maintain functions of growth factors.</p>"
+          }
+        },
+        "item_DQQ8KB": {
+          "type": "item",
+          "settings": {
+            "title": "Is there any scientific evidence proving the benefits of LAMININE?",
+            "content": "<p>The extract from a fertilized avian egg has been the subject of scientific studies and experiments for numerous decades. It all started in 1929 when a Canadian doctor decided to figure out whether the extract could be used as a natural remedy for debilitating conditions. Extensive research continued in the 1980s and intensified even further after 2000. Numerous basic science research studies and clinical trials have been conducted to determine the biochemically active factors found in the fertilized eggs and how these nutrients can support human health. New clinical studies are being executed all the time, revealing more and more information about the incredible qualities of LAMININE. See research about LAMININE and it's key ingredients.</p>"
+          }
+        },
+        "item_MHTBPM": {
+          "type": "item",
+          "settings": {
+            "title": "How much will the delivery cost?",
+            "content": "<p>Delivery is free inside of the US.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_4KAUfq",
+        "item_eMNQWG",
+        "item_CjKqhe",
+        "item_LenpmE",
+        "item_i4HC6j",
+        "item_QyxCNp",
+        "item_AH7qjp",
+        "item_n7aQJp",
+        "item_RiqA4Y",
+        "item_QDAhK8",
+        "item_DdWhRA",
+        "item_DQQ8KB",
+        "item_MHTBPM"
+      ],
+      "custom_css": [
+        ".section-full {padding-bottom: 60px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "",
+        "content": "<h4><strong>Common Questions about LAMININE</strong></h4><p>Want to give LAMININE a try but still have questions about this amazing supplement? Here we’ll address some of the most common inquiries about this natural superfood.</p>",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "button_text": "Try LAMININE Risk Free",
+        "button_url": "shopify://products/laminine",
+        "text_position": "center",
+        "background": "#f6f6f6",
+        "background_gradient": "",
+        "text_color": "#344c55",
+        "heading_color": "rgba(0,0,0,0)",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "#f6f6f6",
+        "accordion_text_color": "#000000"
+      }
+    },
+    "rich_text_JddhHm": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_ieRyUm": {
+          "type": "richtext",
+          "settings": {
+            "content": "<h4><strong>References</strong></h4><p>References on LAMININE's key active components and some clinical studies on its effect on cortisol levels and telomere activity after supplementation with LAMININE.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_ieRyUm"
+      ],
+      "custom_css": [
+        ".section-full {padding-top: 40px; padding-bottom: 40px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_qxdmfX": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_Mk3M6V": {
+          "type": "richtext",
+          "settings": {
+            "content": "<h4><strong>LAMININE</strong></h4><p>Summary published in Prescriber's Digital Reference - <a href=\"https://www.pdr.net/full-prescribing-information/Laminine-fertilized-avian-egg-extract-marine-protein-phyto-protein-3591?ref=retaildirect&ref=retaildirect\">https://www.pdr.net/full-prescribing-information/LAMININE-fertilized-avian-egg-extract-marine-protein-phyto-protein-3591</a></p><p>LAMININE Reduces CRP, an Inflammation Marker, in Subjects With Joint Soreness and Stiffness  - <a href=\"https://www.lifepharm.com/Media/Studies/Laminine%20CRP%20Andujar,_%20LAMININE.pdf?ref=retaildirect&ref=retaildirect\">https://www.lifepharm.com/Media/Studies/LAMININE%20CRP%20Andujar,_%20LAMININE.pdf</a><br/></p><h4><strong><br/>FIBROBLAST GROWTH FACTOR</strong></h4><p>Allouche M, Bikfalvi A. The role of fibroblast growth factor-2 (FGF-2) in hematopoiesis[J]. Progress in growth factor research, 1995, 6(1): 35-48.<br/>Itkin T, Ludin A, Gradus B, et al. FGF-2 expands murine hematopoietic stem and progenitor cells via proliferation of stromal cells, c-Kit activation, and CXCL12 down-regulation[J]. Blood, 2012, 120(9): 1843-1855. - <a href=\"https://www.ncbi.nlm.nih.gov/pubmed/8714368?ref=retaildirect&ref=retaildirect\" target=\"_blank\">https://www.ncbi.nlm.nih.gov/pubmed/8714368</a><br/><br/></p><p>Lai W T, Krishnappa V, Phinney D G. Fgf2 Inhibits Differentiation of Mesenchymal Stem Cells by Inducing Twist2 and Spry4, Blocking Extracellular Regulated Kinase Activation and Altering Fgfr Expression Levels[J]. Stem cells (Dayton, Ohio), 2011, 29(7): 1102. - <a href=\"https://www.ncbi.nlm.nih.gov/pubmed/21608080?ref=retaildirect&ref=retaildirect\" target=\"_blank\">https://www.ncbi.nlm.nih.gov/pubmed/21608080</a><br/><br/></p><p>Eiselleova L, Matulka K, Kriz V, et al. A Complex Role for FGF‐2 in Self‐Renewal, Survival, and Adhesion of Human Embryonic Stem Cells[J]. Stem Cells, 2009, 27(8): 1847-1857. - <a href=\"https://www.ncbi.nlm.nih.gov/pubmed/19544431?ref=retaildirect&ref=retaildirect\" target=\"_blank\">https://www.ncbi.nlm.nih.gov/pubmed/19544431</a></p><h4><strong><br/>CORTISOL</strong></h4><p>LAMININE - Cortisol Study: <a href=\"https://lifepharm.com/media/pdf/laminine/ENG-LaminineCortisol-Study.pdf?ref=retaildirect&ref=retaildirect\" target=\"_blank\">https://lifepharm.com/media/pdf/LAMININE/ENG-LAMININECortisol-Study.pdf</a></p><p>Arthritis.org - What Triggers an Arthritis Flare?: <a href=\"https://www.arthritis.org/health-wellness/healthy-living/managing-pain/pain-relief-solutions/what-triggers-an-arthritis-flare?ref=retaildirect&ref=retaildirect\" target=\"_blank\">https://www.arthritis.org/health-wellness/healthy-living/managing-pain/pain-relief-solutions/what-triggers-an-arthritis-flare</a></p><p>NCBI - Chronic Stress, Cortisol Dysfunction, and Pain: <a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4263906/?ref=retaildirect&ref=retaildirect\" target=\"_blank\">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4263906/</a></p><h4><strong><br/>GLYCINE</strong></h4><p>NCBI - High glycine concentration increases collagen synthesis...: <a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6153947/?ref=retaildirect&ref=retaildirect\" target=\"_blank\">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6153947/</a></p><h4><strong><br/>Telomere Activity</strong></h4><p>LAMININE (fertilized avian egg extract/marine protein/phyto protein) - Full Prescribing Information - <a href=\"https://www.pdr.net/full-prescribing-information/Laminine-fertilized-avian-egg-extract-marine-protein-phyto-protein-3591?ref=retaildirect&ref=retaildirect\" target=\"_blank\">https://www.pdr.net/full-prescribing-information/LAMININE-fertilized-avian-egg-extract-marine-protein-phyto-protein-3591</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_Mk3M6V"
+      ],
+      "custom_css": [
+        ".section-full {padding-bottom: 60px;}",
+        ".section-full .prose p a {color: #ff8f00;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "rgba(0,0,0,0)"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "media_with_text_7rhM4q",
+    "multi_column_96BaX7",
+    "multi_column_ibAgCb",
+    "media_with_text_f9RaD9",
+    "rich_text_JKEt8m",
+    "featured_product_RGecqQ",
+    "contact_kCtqKk",
+    "testimonials_iqFKEG",
+    "multi_column_MKcggt",
+    "multi_column_XydY9j",
+    "multi_column_mEiJGn",
+    "multi_column_Xj9rc7",
+    "multi_column_ym6n4H",
+    "multi_column_GyV6RC",
+    "rich_text_tWWhKw",
+    "media_with_text_7wyPCW",
+    "media_with_text_9mkKiB",
+    "rich_text_g86Dfw",
+    "multi_column_VYWUFf",
+    "multi_column_V7bkYX",
+    "faq_8ViFB8",
+    "rich_text_JddhHm",
+    "rich_text_qxdmfX"
+  ]
+}

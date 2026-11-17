@@ -1,0 +1,801 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        "h1 {text-align: left !important;}"
+      ],
+      "settings": {
+        "content_width": "100%"
+      }
+    },
+    "multi_column_eqLcir": {
+      "type": "multi-column",
+      "blocks": {
+        "item_TdcEaQ": {
+          "type": "item",
+          "settings": {
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h3",
+            "content": "<h1>It Starts With <br/>A Gut Feeling</h1><p><strong>A healthy brain starts with a healthy gut</strong></p>",
+            "link_url": "shopify://products/digestive",
+            "link_text": "SHOP NOW",
+            "link_style": "button"
+          }
+        },
+        "item_PU4Nfi": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/digestive_main-1.webp",
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_TdcEaQ",
+        "item_PU4Nfi"
+      ],
+      "custom_css": [
+        ".section-full .multi-column {align-items: center;}",
+        ".section-full {padding-top: 25px; padding-bottom: 20px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": true,
+        "gap": "small",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "background": "#3dae2a",
+        "background_gradient": "",
+        "text_color": "#ffffff"
+      }
+    },
+    "logo_list_kEkgd7": {
+      "type": "logo-list",
+      "blocks": {
+        "logo_AL8Vqb": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo_1.webp",
+            "logo_width": 200,
+            "link": ""
+          }
+        },
+        "logo_3PVpMf": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo_2.webp",
+            "logo_width": 200,
+            "link": ""
+          }
+        },
+        "logo_fE48CC": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo_3.webp",
+            "logo_width": 200,
+            "link": ""
+          }
+        },
+        "logo_FwmEdr": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo_4.webp",
+            "logo_width": 200,
+            "link": ""
+          }
+        },
+        "logo_agNU7k": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo_5.webp",
+            "logo_width": 200,
+            "link": ""
+          }
+        },
+        "logo_3P3Lzz": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/logo_6.webp",
+            "logo_width": 200,
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_AL8Vqb",
+        "logo_3PVpMf",
+        "logo_fE48CC",
+        "logo_FwmEdr",
+        "logo_agNU7k",
+        "logo_3P3Lzz"
+      ],
+      "custom_css": [
+        ".section-full {padding-top: 10px; padding-bottom: 40px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_mobile": true,
+        "title": "",
+        "content": "",
+        "text_alignment": "start",
+        "items_per_row": 6,
+        "background": "#f8f8f8",
+        "background_gradient": "",
+        "text_color": "#3dae2a",
+        "heading_color": "",
+        "heading_gradient": "",
+        "logo_item_background": "#f8f8f8",
+        "logo_item_border": ""
+      }
+    },
+    "rich_text_U8gajE": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_CwxfzJ": {
+          "type": "heading",
+          "settings": {
+            "text": "Level Up Your Gut Health",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_CwxfzJ"
+      ],
+      "custom_css": [
+        ".section-full {padding-bottom: 25px; padding-top: 35px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "medium",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "image_with_text_overlay_tzdpgP": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "sm",
+        "image": "shopify://shop_images/bg-parallex.webp",
+        "mobile_image": "shopify://shop_images/adobestock.webp",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "rich_text_PMr4wG": {
+      "type": "rich-text",
+      "blocks": {
+        "image_iYKPDT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/digestive-img-banner.webp",
+            "width_mode": "full_width",
+            "max_width": 700,
+            "mobile_max_width": 400
+          }
+        },
+        "heading_dYPVyQ": {
+          "type": "heading",
+          "settings": {
+            "text": "The Gut-Brain Connection with Butyrate",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_gN9pBi": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>The human gut has been called “The Second Brain” because it’s similarly wired like the brain, with neurons and neurotransmitters. Your gut can play a role in brain-based disorders, like anxiety and depression, while gut bacteria can produce neurotransmitters like serotonin and dopamine, affecting brain function.<br/><br/></p><p>DIGESTIVE+++ contains probiotics, prebiotics, postbiotics, and digestive enzymes to promote a healthy and balanced gut . Butyrate is postbiotic produced by beneficial bacteria in the gut microbiome after taking DIGESTIVE+++. Butyrate has been shown to slow down signs of aging by encouraging brain and gut health.<br/><br/></p><p>Benefits of increased Butyrate production after taking DIGESTIVE+++:</p><p>•Reduces bloating*<br/>•Helps the body digest food and absorb more nutrients*<br/>•Manages weight*<br/>•Better elimination*<br/>•Less constipation and diarrhea*<br/>•Improved mood and energy*<br/>•Less brain fog*<br/>•Stronger immunity*<br/>•Less inflammation in the gut lining can help prevent colon conditions such as IBS*<br/><br/>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent disease.</p>"
+          }
+        },
+        "button_VKNeTX": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "xl",
+            "text": "SHOP NOW",
+            "url": "shopify://products/digestive",
+            "background": "#3dae2a",
+            "text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "image_iYKPDT",
+        "heading_dYPVyQ",
+        "richtext_gN9pBi",
+        "button_VKNeTX"
+      ],
+      "custom_css": [
+        ".section-full {padding-top: 30px; padding-bottom: 40px;}",
+        ".section-full .prose img {margin-top: 0; margin-bottom: 0;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_iqbN83": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_YnCDc4": {
+          "type": "heading",
+          "settings": {
+            "text": "The Gut-Brain Connection with Butyrate",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_Q4FkTj": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>The human gut has been called “The Second Brain” because it’s similarly wired like the brain, with neurons and neurotransmitters. Your gut can play a role in brain-based disorders, like anxiety and depression, while gut bacteria can produce neurotransmitters like serotonin and dopamine, affecting brain function.<br/><br/></p><p>DIGESTIVE+++ contains probiotics, prebiotics, postbiotics, and digestive enzymes to promote a healthy and balanced gut . Butyrate is postbiotic produced by beneficial bacteria in the gut microbiome after taking DIGESTIVE+++. Butyrate has been shown to slow down signs of aging by encouraging brain and gut health.<br/><br/></p><p>Benefits of increased Butyrate production after taking DIGESTIVE+++:</p><p>•Reduces bloating*<br/>•Helps the body digest food and absorb more nutrients*<br/>•Manages weight*<br/>•Better elimination*<br/>•Less constipation and diarrhea*<br/>•Improved mood and energy*<br/>•Less brain fog*<br/>•Stronger immunity*<br/>•Less inflammation in the gut lining can help prevent colon conditions such as IBS*<br/><br/>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent disease.</p>"
+          }
+        },
+        "button_Kxiah3": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "xl",
+            "text": "SHOP NOW",
+            "url": "shopify://products/digestive",
+            "background": "#3dae2a",
+            "text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "heading_YnCDc4",
+        "richtext_Q4FkTj",
+        "button_Kxiah3"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".section-full {padding-bottom: 40px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "featured_product_idhXwH": {
+      "type": "featured-product",
+      "blocks": {
+        "vendor_6VQVnp": {
+          "type": "vendor",
+          "disabled": true,
+          "settings": {}
+        },
+        "title_NXaWPj": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "text_kkEWbN": {
+          "type": "text",
+          "settings": {
+            "text": "<p>IT STARTS WITH A GUT FEELING</p>"
+          }
+        },
+        "badges_DWw4qi": {
+          "type": "badges",
+          "settings": {}
+        },
+        "price_gFBc6k": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "text_jEqa7z": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Per Bottle (30 Count)</p>"
+          }
+        },
+        "rating_CpW9qQ": {
+          "type": "rating",
+          "disabled": true,
+          "settings": {
+            "show_empty": false
+          }
+        },
+        "separator_YcXCT4": {
+          "type": "separator",
+          "settings": {}
+        },
+        "description_3BpWkG": {
+          "type": "description",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "collapse_content": false
+          }
+        },
+        "variant_picker_qQzrag": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "quantity_selector_fWKRm8": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "buy_buttons_wjiRJq": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "pickup_availability_wiNr7Q": {
+          "type": "pickup_availability",
+          "disabled": true,
+          "settings": {}
+        },
+        "image_6qGizM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Asset_8-removebg-preview.png",
+            "alignment": "start",
+            "max_width": 80
+          }
+        },
+        "text_9dP4TF": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>60 Day Money Back Guarantee</strong></p>"
+          }
+        },
+        "collapsible_text_tBteQV": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "Description",
+            "content": "<p>DIGESTIVE+++ is a proprietary combination of a probiotic, prebiotic, and an enzyme blend created for peak digestion performance. We use a probiotic called Bacillus Coagulans, which has a spore that allows it to survive in digestive enzymes and acids until reaching the lower digestive tract.</p><p>Studies have shown this probiotic strengthens the integrity of the lining of the colon. Probiotics are good bacteria in your gut that help keep detrimental bacteria from proliferating. Our prebiotic is a powerful blend of short-chain fructooligosaccharides, Jerusalem Artichoke, Dandelion Leaves, and Yacon Root. Prebiotics are basically food for the good bacteria in your gut. Using both probiotics and prebiotics together increases the good bacteria, which improves the lining of the digestive tract and colon, improving overall gut health.</p><p>DIGESTIVE+++ also has a comprehensive enzyme blend to help your body break down proteins, carbohydrates, lactose (milk sugar), and fats to maximize their benefits. This also supports more effective elimination and less bloating.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_F4PR47": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "Ingredients ",
+            "content": "<h4>High Quality Ingredients</h4><p><strong>PROBIOTIC</strong></p><p>Bacillus coagulans is a spore forming strain that helps maximize its viability for a long shelf-life and inhabit the gut effectively for maximal benefits.</p><p><strong>PREBIOTIC</strong></p><p>Short-chain fructooligosaccharides, Jerusalem Artichoke, Dandelion Leaves and Yacon Root provide nature's best fibers for sustaining good microbes and their by-products now shown to support colon health.</p><p><strong>ENZYME BLEND</strong></p><p>Helps break down proteins, carbohydrates, fats, and lactose (milk sugar) for optimal nutrient absorption and utilization.</p><p><strong>PLUS</strong></p><p>Flaxseed with important ALA (Alpha Linolenic Acid), fiber and lignans (hormone-like precursor).</p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_fGFdrL": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "How to Use",
+            "content": "<p>DIGESTIVE+++ is best taken one to two times daily about 15 minutes before meal time</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "vendor_6VQVnp",
+        "title_NXaWPj",
+        "text_kkEWbN",
+        "badges_DWw4qi",
+        "price_gFBc6k",
+        "text_jEqa7z",
+        "rating_CpW9qQ",
+        "separator_YcXCT4",
+        "description_3BpWkG",
+        "variant_picker_qQzrag",
+        "quantity_selector_fWKRm8",
+        "buy_buttons_wjiRJq",
+        "pickup_availability_wiNr7Q",
+        "image_6qGizM",
+        "text_9dP4TF",
+        "collapsible_text_tBteQV",
+        "collapsible_text_F4PR47",
+        "collapsible_text_fGFdrL"
+      ],
+      "custom_css": [
+        ".section-full .product-info__text {margin-top: 0;}",
+        ".section-full .product-info__price {margin-bottom: 0;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "product": "digestive",
+        "desktop_media_width": 55,
+        "desktop_media_layout": "carousel_thumbnails_bottom",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": true,
+        "enable_video_looping": false,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "rgba(0,0,0,0)",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": "rgba(0,0,0,0)"
+      }
+    },
+    "rich_text_bNdmma": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_i6THLB": {
+          "type": "heading",
+          "settings": {
+            "text": "Us vs. The Other Guys",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "image_6Rd8xT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/1_2f3a023b-ab07-4354-ae90-42c401231f52.png",
+            "width_mode": "custom",
+            "max_width": 1000,
+            "mobile_max_width": 400
+          }
+        }
+      },
+      "block_order": [
+        "heading_i6THLB",
+        "image_6Rd8xT"
+      ],
+      "custom_css": [
+        ".section-full .rich-text__wrapper {width: 100%;}",
+        ".section-full .rich-text__wrapper img {max-width: 100%; width: 100%;}",
+        ".section-full {background: #f8f8f8; padding-top: 50px; padding-bottom: 40px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_dhMrCM": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_r36cex": {
+          "type": "heading",
+          "settings": {
+            "text": "Why Our Customers Love DIGESTIVE+++",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_r36cex"
+      ],
+      "custom_css": [
+        ".section-full {padding-bottom: 0px; padding-top: 70px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "testimonials_jwbBya": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_WnCTjp": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "",
+            "title": "",
+            "content": "<p>\"I have been using this product off and on for a few months since it came out and can honestly say that it works well. My bowel movements are now like clockwork and I feel much better as a result. I highly recommend it for anyone.\"</p><p><strong>-Ron H.<br/></strong>U.S.A</p>"
+          }
+        },
+        "testimonial_CrUXtH": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "",
+            "title": "",
+            "content": "<p>\"I’ve taken two bottles of DIGESTIVE+++ so far, and my digestive system is like clockwork. But what really surprised me is that I lost a few pounds almost immediately! This product is really great not only for digestion but to help with weight loss, too!\"</p><p><strong>-Olga M.<br/></strong>U.S.A</p>"
+          }
+        },
+        "testimonial_BnqyEJ": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "",
+            "title": "",
+            "content": "<p>\"I have gluten sensitivity so I have to take digestive enzymes daily. I have been using DIGESTIVE+++ on and off, alternating with another digestive product in order to compare. What I have found is that with the other digestive enzyme products, I have to take about five at a time. With DIGESTIVE+++, I only have to take one!\"</p><p><strong>-Patricia B</strong>.<br/>U.S.A</p>"
+          }
+        },
+        "testimonial_KBMVMb": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "",
+            "title": "",
+            "content": "<p>\"I have been taking DIGESTIVE+++ for a month now. I feel amazing. My bowel movement is now regular. I used to suffer from constipation but now it’s gone, and I no longer feel bloated. This product really works! Thank you, LifePharm!\"</p><p><strong>-Annah H.<br/></strong>U.S.A</p>"
+          }
+        },
+        "testimonial_zzyzx4": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "",
+            "title": "",
+            "content": "<p>\"My husband has suffered problems with digestion for many years, to the point that he had to undergo a surgical procedure. The effect of this surgery is that he can only eat very small quantities of food, and still suffered a great deal of digestive discomfort. Our daughter recommended DIGESTIVE+++ and he has been now taking it for about four months. We have been amazed at the results! After years of suffering severe discomfort for days at a time, he has not had any digestive trouble since his first week on this wonderful product! Thank you from the bottom of my heart.”</p><p><strong>-Robin H.<br/></strong>U.S.A</p>"
+          }
+        },
+        "testimonial_cpTdXK": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "",
+            "title": "",
+            "content": "<p>\"I care full time for an aging ailing husband. I do it all, his personal care, taking care of the home including cutting lawns and maintaining two vehicles. At 70 I have a severely degenerated hip joint and knee. Laminine is the only product that I consider worthy of taking for relief. All the topicals and pain meds prescribed by physicians do not match up to the relief and reliability of this product.\"</p><p><strong>-Susan K.</strong></p><p>U.S.A</p>"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_WnCTjp",
+        "testimonial_CrUXtH",
+        "testimonial_BnqyEJ",
+        "testimonial_KBMVMb",
+        "testimonial_zzyzx4",
+        "testimonial_cpTdXK"
+      ],
+      "custom_css": [
+        ".section-full {padding-top: 50px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_testimonials": false,
+        "subheading": "",
+        "title": "Testimonials",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "testimonial_card_background": "#ffffff",
+        "testimonial_card_text_color": ""
+      }
+    },
+    "faq_PNt4Wg": {
+      "type": "faq",
+      "blocks": {
+        "item_MwCgGb": {
+          "type": "item",
+          "settings": {
+            "title": " When is the best time to take DIGESTIVE+++?",
+            "content": "<p> DIGESTIVE+++ is best taken one to two times daily about 15 minutes before meal time</p>"
+          }
+        },
+        "item_DAzibc": {
+          "type": "item",
+          "settings": {
+            "title": " How many DIGESTIVE+++ softgels should I take?",
+            "content": "<p> The suggested usage for DIGESTIVE+++ is 1 to 2 softgels daily.</p>"
+          }
+        },
+        "item_bAb8Ud": {
+          "type": "item",
+          "settings": {
+            "title": " Does DIGESTIVE+++ need to be refrigerated?",
+            "content": "<p> DIGESTIVE+++ is best kept in a cool, dry place, but it does not need to be refrigerated.  </p>"
+          }
+        },
+        "item_i9J7Vd": {
+          "type": "item",
+          "settings": {
+            "title": "How many softgels are in each bottle of DIGESTIVE+++?",
+            "content": "<p>Each bottle of DIGESTIVE+++ contains 30 softgels</p>"
+          }
+        },
+        "item_Ba834Q": {
+          "type": "item",
+          "settings": {
+            "title": "Are there any adverse reactions for DIGESTIVE+++?",
+            "content": "<p>There are no documented cases of adverse reactions to DIGESTIVE+++. When taken as recommended, DIGESTIVE+++ is safe and effective.</p>"
+          }
+        },
+        "item_ejXQDC": {
+          "type": "item",
+          "settings": {
+            "title": " What if I already take another prebiotic, probiotic and/or digestive enzyme supplement?",
+            "content": "<p> DIGESTIVE+++ offers a superior Probiotic that is fueled by a potent and natural Prebiotic Blend, in addition to essential digestive enzymes for maximum nutrient absorption, eliminating the need for three separate supplements*</p>"
+          }
+        },
+        "item_FefAMr": {
+          "type": "item",
+          "settings": {
+            "title": "What is the difference between a probiotic and a prebiotic?",
+            "content": "<p> Probiotics are living, beneficial bacteria that help to maintain the good bacteria in the intestinal tract that are key to keeping the large intestine healthy. Prebiotics are non-living food ingredients that fuel the probiotic to help good bacteria grow.</p>"
+          }
+        },
+        "item_BYWXkT": {
+          "type": "item",
+          "settings": {
+            "title": " Isn’t bacteria bad for you?",
+            "content": "<p> When it comes to your large intestine, there are “good” or healthy bacteria, such as probiotics, and “bad” or pathogenic bacteria, which can cause a multitude of health issues. Probiotics are the “good” bacteria that are essential to maintaining intestinal health</p>"
+          }
+        },
+        "item_KPw4KR": {
+          "type": "item",
+          "settings": {
+            "title": " Why are there three different Proteases in DIGESTIVE+++?",
+            "content": "<p> Proteases are digestive enzymes that help to digest proteins. As with carbohydrates and sugars, there are different types of proteinsthat come from different sources. So, we need different proteases to help digest the variety of proteins that we consume.Additionally, Laminine is composed of proteins and added Proteases can allow Laminine to be absorbed better in the body*  <br/></p>"
+          }
+        },
+        "item_edAqai": {
+          "type": "item",
+          "settings": {
+            "title": "What if I already have a well-functioning digestive system?",
+            "content": "<p> Issues associated with the digestive system are often difficult to recognize until they turn into something more serious. That’s why it is important to take the steps necessary to maintain good digestive health throughout our lifetime.</p>"
+          }
+        },
+        "item_jbrJem": {
+          "type": "item",
+          "settings": {
+            "title": " Can I take this product with other medications/prescriptions?",
+            "content": "<p>DIGESTIVE+++ is a safe and natural dietary supplement. When taken as recommended, it is safe and effective. Any questions about how DIGESTIVE+++ will interact with other medications you take should be addressed by your personal physician. </p>"
+          }
+        },
+        "item_gm9WqT": {
+          "type": "item",
+          "settings": {
+            "title": "For how long do I need to take DIGESTIVE+++ before I notice results?",
+            "content": "<p> The effects of DIGESTIVE+++ will vary by individual. Some may feel positive benefits in a short period of time and others may have to take the product longer to notice a change.  </p>"
+          }
+        },
+        "item_aKE6VR": {
+          "type": "item",
+          "settings": {
+            "title": " Is there such a thing as taking too many enzymes?",
+            "content": "<p>Digestive enzymes do not accumulate in the body, and therefore only stay in the body for a short period of time, which is why it is important to constantly replenish the enzymes.</p>"
+          }
+        },
+        "item_AkYBb7": {
+          "type": "item",
+          "settings": {
+            "title": " Do I need to take DIGESTIVE+++, Laminine, OMEGA+++ and IMMUNE+++?",
+            "content": "<p> Any of the four can be taken individually for specific health needs. However, all of the body’s various systems—digestive, circulatory and immune—function less efficiently as we age. As all the systems are interconnected, when one weakens all are affected. It’s <br/> important to keep all of our body’s systems functioning optimally. When they are, the beneficial nutrients that we put in our bodies, such as Laminine, can be even more effective. This is why the best health benefits can come from taking the products together*.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_MwCgGb",
+        "item_DAzibc",
+        "item_bAb8Ud",
+        "item_i9J7Vd",
+        "item_Ba834Q",
+        "item_ejXQDC",
+        "item_FefAMr",
+        "item_BYWXkT",
+        "item_KPw4KR",
+        "item_edAqai",
+        "item_jbrJem",
+        "item_gm9WqT",
+        "item_aKE6VR",
+        "item_AkYBb7"
+      ],
+      "custom_css": [
+        ".section-full .accordion__content {background: #fff; padding: 20px;}",
+        ".section-full {padding-bottom: 20px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "FAQ",
+        "content": "<p>You have questions? <br/>Our team of experts has answers.</p>",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "#f2f2f2",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "#f2f2f2",
+        "accordion_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "multi_column_eqLcir",
+    "logo_list_kEkgd7",
+    "rich_text_U8gajE",
+    "image_with_text_overlay_tzdpgP",
+    "rich_text_PMr4wG",
+    "rich_text_iqbN83",
+    "featured_product_idhXwH",
+    "rich_text_bNdmma",
+    "rich_text_dhMrCM",
+    "testimonials_jwbBya",
+    "faq_PNt4Wg"
+  ]
+}

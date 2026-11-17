@@ -760,7 +760,7 @@ body:has(.shopify-section--main-product) .shopify-section--text-with-icons:not(#
 .lp-cline__media { width: 88px; min-width: 88px; aspect-ratio: 1; border-radius: 14px; overflow: hidden; background: rgb(var(--lp-sand)); }
 .lp-cline__media a { display: block; height: 100%; }
 .lp-cline__media img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; padding: 6px; }
-.lp-cline__info { display: grid; gap: .3rem; min-width: 0; }
+.lp-cline__info { display: grid; gap: .3rem; min-width: 0; width: 100%; justify-items: stretch; }
 .lp-cline__head { display: flex; justify-content: space-between; align-items: start; gap: 1rem; }
 .lp-cline__title { margin: 0; font-size: .9375rem; font-weight: 600; line-height: 1.35; letter-spacing: .01em; color: rgb(var(--lp-ink)); text-decoration: none; }
 @media (hover: hover) { a.lp-cline__title:hover { text-decoration: underline; text-underline-offset: 3px; } }
@@ -775,6 +775,8 @@ body:has(.shopify-section--main-product) .shopify-section--text-with-icons:not(#
 .lp-qty { display: inline-flex; align-items: center; height: 44px; border: 1px solid rgb(var(--lp-ink) / .14); border-radius: 999px; }
 .lp-qty__btn { display: grid; place-items: center; width: 44px; height: 42px; border-radius: 999px; color: rgb(var(--lp-ink)); transition: background-color var(--lp-dur-1) var(--lp-ease), opacity var(--lp-dur-1) var(--lp-ease); }
 .lp-qty__btn:disabled { opacity: .3; cursor: not-allowed; }
+.lp-qty:focus-within { border-color: rgb(var(--lp-ink) / .45); }
+.lp-qty .lp-qty__input:focus, .lp-qty .lp-qty__input:focus-visible { outline: none; box-shadow: none; }
 @media (hover: hover) { .lp-qty__btn:not(:disabled):hover { background: rgb(var(--lp-sand)); } }
 .lp-qty .lp-qty__input { width: 2rem; min-width: 2rem; height: 42px; padding: 0; border: 0; background: transparent; box-shadow: none; text-align: center; font-size: .875rem; font-weight: 600; color: rgb(var(--lp-ink)); font-variant-numeric: tabular-nums; -moz-appearance: textfield; appearance: textfield; }
 .lp-qty .lp-qty__input::-webkit-inner-spin-button, .lp-qty .lp-qty__input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }

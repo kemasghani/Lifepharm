@@ -1,0 +1,98 @@
+{%- liquid
+  assign menu = section.settings.menu
+-%}
+<header class="lpn-header" data-lpn-header>
+  <div class="lpn-wrap lpn-header__bar">
+    <a class="lpn-header__logo" href="{{ routes.root_url }}">
+      <img src="{{ 'lpn-logo.png' | asset_url }}" alt="{{ shop.name | escape }}" width="660" height="184" loading="eager" fetchpriority="high">
+    </a>
+
+    {%- if menu != blank -%}
+      <nav class="lpn-header__nav" aria-label="{{ 'lpn.menu' | t }}">
+        <ul class="lpn-header__links">
+          {%- for link in menu.links -%}
+            {%- if link.url != routes.root_url -%}
+              <li><a href="{{ link.url }}" class="lpn-header__link"{% if link.active or link.child_active %} aria-current="page"{% endif %}>{{ link.title | escape }}</a></li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </nav>
+    {%- endif -%}
+
+    <div class="lpn-header__actions">
+      <a class="lpn-header__icon" href="{{ routes.search_url }}?type=article">
+        <span class="sr-only">{{ 'lpn.search' | t }}</span>
+        <svg width="20" height="20" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="7"/><path d="m15.5 15.5 4 4"/></svg>
+      </a>
+      {%- render 'lp-lang-switch', id: 'lpn-lang' -%}
+      {%- if section.settings.shop_url != blank -%}
+        <a class="lpn-header__shop" href="{{ section.settings.shop_url }}">{{ section.settings.shop_label | escape }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</header>
+
+{% stylesheet %}
+.lpn-header-section { position: sticky; top: 0; z-index: 20; }
+.lpn-header { position: relative; background: rgb(var(--lp-ivory) / .94); -webkit-backdrop-filter: saturate(1.4) blur(10px); backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid transparent; transition: border-color 200ms ease-out; }
+.lpn-header.is-stuck { border-bottom-color: rgb(var(--lp-line)); }
+.lpn-header__bar { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "logo nav actions"; align-items: center; gap: 3.2rem; min-height: 8rem; }
+.lpn-header__logo { grid-area: logo; display: block; line-height: 0; }
+.lpn-header__logo img { width: 150px; height: auto; }
+.lpn-header__nav { grid-area: nav; min-width: 0; }
+.lpn-header__links { display: flex; justify-content: center; gap: clamp(1.6rem, 2.2vw, 3.2rem); margin: 0; padding: 0; list-style: none; }
+.lpn-header__link { position: relative; display: inline-flex; align-items: center; min-height: 44px; font-size: 1.5rem; font-weight: 600; color: rgb(var(--lp-ink)); text-decoration: none; white-space: nowrap; }
+.lpn-header__link::after { content: ''; position: absolute; inset-inline: 0; bottom: 0.8rem; height: 2px; border-radius: 2px; background: rgb(var(--lp-amber)); transform: scaleX(0); transform-origin: left; transition: transform 250ms var(--lpn-ease); }
+.lpn-header__link:hover::after, .lpn-header__link[aria-current="page"]::after { transform: scaleX(1); }
+.lpn-header__link:focus-visible, .lpn-header__icon:focus-visible, .lpn-header__shop:focus-visible { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 2px; border-radius: 0.6rem; }
+.lpn-header__actions { grid-area: actions; display: flex; align-items: center; gap: 0.4rem; }
+.lpn-header__icon { display: grid; place-items: center; width: 44px; height: 44px; color: rgb(var(--lp-ink)); border-radius: 999px; transition: background-color 150ms ease-out; }
+.lpn-header__icon:hover { background: rgb(var(--lp-ink) / .05); }
+.lpn-header__shop { display: inline-flex; align-items: center; min-height: 40px; margin-inline-start: 0.8rem; padding: 0 1.6rem; border-radius: 999px; box-shadow: inset 0 0 0 1px rgb(var(--lp-ink) / .25); font-size: 1.3rem; font-weight: 600; color: rgb(var(--lp-ink)); text-decoration: none; white-space: nowrap; transition: box-shadow 200ms ease-out; }
+.lpn-header__shop:hover { box-shadow: inset 0 0 0 1px rgb(var(--lp-ink)); }
+
+@media (max-width: 1099px) {
+  .lpn-header__bar { grid-template-columns: auto 1fr; grid-template-areas: "logo actions" "nav nav"; gap: 0 1.6rem; min-height: 0; padding-block-start: 1.2rem; }
+  .lpn-header__actions { justify-self: end; }
+  .lpn-header__nav { margin-inline: calc(var(--lpn-gutter) * -1); }
+  .lpn-header__links { justify-content: flex-start; gap: 2.4rem; padding-inline: var(--lpn-gutter); overflow-x: auto; scrollbar-width: none; }
+  .lpn-header__links::-webkit-scrollbar { display: none; }
+  .lpn-header__links::after { content: ''; flex: 0 0 1px; }
+}
+@media (max-width: 749px) {
+  .lpn-header__logo img { width: 128px; }
+  .lpn-header__shop { display: none; }
+  .lpn-header__link { font-size: 1.4rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lpn-header, .lpn-header__link::after { transition: none; }
+}
+{% endstylesheet %}
+
+{% javascript %}
+(() => {
+  const header = document.querySelector('[data-lpn-header]');
+  if (!header) return;
+  const onScroll = () => header.classList.toggle('is-stuck', window.scrollY > 4);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  const current = header.querySelector('.lpn-header__link[aria-current="page"]');
+  if (current && current.scrollIntoView && window.matchMedia('(max-width: 1099px)').matches) {
+    const list = current.closest('.lpn-header__links');
+    list.scrollLeft = current.offsetLeft - 16;
+  }
+})();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "LifePharm News header",
+  "tag": "div",
+  "class": "lpn-header-section",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Topics menu", "default": "main-menu" },
+    { "type": "text", "id": "shop_label", "label": "Shop link label", "default": "Shop LifePharm" },
+    { "type": "url", "id": "shop_url", "label": "Shop link" }
+  ]
+}
+{% endschema %}

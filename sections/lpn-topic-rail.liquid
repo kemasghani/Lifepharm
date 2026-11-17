@@ -1,0 +1,33 @@
+{%- assign topic = section.settings.blog -%}
+{%- if topic != blank -%}
+  <section class="lpn-section">
+    <div class="lpn-wrap">
+      <div class="lpn-head">
+        <div>
+          <p class="lpn-eyebrow">{{ section.settings.eyebrow | default: topic.title | escape }}</p>
+          <h2 class="lpn-head__title">{{ section.settings.heading | default: topic.title | escape }}</h2>
+        </div>
+        <a class="lpn-link" href="{{ topic.url }}">{{ 'lpn.view_all' | t }} <span class="sr-only">{{ topic.title | escape }}</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 8h10m-4-4 4 4-4 4"/></svg></a>
+      </div>
+      <ul class="lpn-rail" role="list">
+        {%- for article in topic.articles limit: section.settings.count -%}
+          <li>{%- render 'lpn-card', article: article, show_topic: false -%}</li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "News topic spotlight",
+  "tag": "div",
+  "settings": [
+    { "type": "blog", "id": "blog", "label": "Blog" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "range", "id": "count", "label": "Articles", "min": 2, "max": 6, "step": 1, "default": 3 }
+  ],
+  "presets": [{ "name": "News topic spotlight" }]
+}
+{% endschema %}

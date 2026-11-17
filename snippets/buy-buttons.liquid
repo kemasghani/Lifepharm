@@ -1,108 +1,154 @@
-{%- comment -%}
-----------------------------------------------------------------------------------------------------------------------
-BUY BUTTONS
-----------------------------------------------------------------------------------------------------------------------
+{% doc %}
+  Renders a product form with add-to-cart and dynamic checkout buttons.
 
-This component is used to show the buy buttons
+  @param {block} block - The buy-buttons block, whose settings control the form and whose attributes are added to the wrapper.
+  @param {product} product - The product to purchase.
+  @param {string} product_form_id - The product form's unique ID.
+  @param {string} section_id - The section ID used to namespace the form and submit button.
+  @param {boolean} [show_pickup_availability] - Whether to render pickup availability. Defaults to `false`.
+  @param {object} [section] - The current section context, supplied implicitly when rendered from a section and used for IDs and pickup-availability colors.
 
-********************************************
-Supported variables
-********************************************
+  @example
+  {% render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true %}
+{% enddoc %}
+<div {{ block.shopify_attributes }}>
+  {%- if product != blank -%}
+    {%- liquid
+      assign gift_card_recipient_feature_active = false
+      if block.settings.show_gift_card_recipient and product.gift_card?
+        assign gift_card_recipient_feature_active = true
+      endif
 
-* product: the product from which to show the buttons
-* show_payment_button: if we show or not the dynamic checkout button
-* show_gift_card_recipient: for gift card products, an optional message/email to be sent to the recipient
-* button_size: the size of the button (default to xl if none is passed)
-* atc_button_background: the background of the ATC button
-* atc_button_text_color: the text color of the ATC button
-* payment_button_background: the custom dynamic checkout button background
-* payment_button_text_color: the custom dynamic checkout button text color
-* form_id: if specified, define the form ID linked to this input
-{%- endcomment -%}
+      assign show_dynamic_checkout = false
+      if block.settings.show_dynamic_checkout and gift_card_recipient_feature_active == false
+        assign show_dynamic_checkout = true
+      endif
+    -%}
 
-{%- assign variant_picker_block = section.blocks | where: 'type', 'variant_picker' | first -%}
+    <product-form
+      class="product-form"
+      data-hide-errors="{{ gift_card_recipient_feature_active }}"
+      data-section-id="{{ section.id }}"
+    >
+      <div class="product-form__error-message-wrapper" role="alert" hidden>
+        <span class="svg-wrapper">
+          {{- 'icon-error.svg' | inline_asset_content -}}
+        </span>
+        <span class="product-form__error-message"></span>
+      </div>
 
-{%- assign recipient_feature_active = false -%}
+      {%- assign quantity_rule_soldout = false -%}
 
-{%- if product.gift_card? and show_gift_card_recipient -%}
-  {%- assign recipient_feature_active = true -%}
-  {%- assign show_payment_button = false -%}
-{%- endif -%}
+      {%- form 'product',
+        product,
+        id: product_form_id,
+        class: 'form',
+        novalidate: 'novalidate',
+        data-type: 'add-to-cart-form'
+      -%}
+        <input
+          type="hidden"
+          name="id"
+          value="{{ product.selected_or_first_available_variant.id }}"
+          {% if product.selected_or_first_available_variant.available == false
+            or quantity_rule_soldout
+            or product.selected_or_first_available_variant == null
+          %}
+            disabled
+          {% endif %}
+          class="product-variant-id"
+        >
 
-{%- form 'product', product, is: 'product-form', id: form_id -%}
-  <input type="hidden" {% if variant_picker_block != blank %}disabled{% endif %} name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        {%- if gift_card_recipient_feature_active -%}
+          {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
+        {%- endif -%}
 
-  {%- assign button_disabled = false -%}
-  {%- assign button_size = button_size | default: 'xl' -%}
-
-  {%- if product.selected_or_first_available_variant == nil -%}
-    {%- capture button_content -%}{{ 'product.general.unavailable_button' | t }}{%- endcapture -%}
-    {%- assign button_disabled = true -%}
-  {%- elsif product.selected_or_first_available_variant.available -%}
-    {%- if product.template_suffix contains 'pre-order' -%}
-      {%- capture button_content -%}{{ 'product.general.pre_order_button' | t }}{%- endcapture -%}
-    {%- else -%}
-      {%- capture button_content -%}{{ 'product.general.add_to_cart_button' | t }}{%- endcapture -%}
-    {%- endif -%}
+        <div class="product-form__buttons">
+          {%- liquid
+            assign check_against_inventory = true
+            if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_policy == 'continue'
+              assign check_against_inventory = false
+            endif
+            if product.selected_or_first_available_variant.quantity_rule.min > product.selected_or_first_available_variant.inventory_quantity and check_against_inventory
+              assign quantity_rule_soldout = true
+            endif
+          -%}
+          <button
+            id="ProductSubmitButton-{{ section_id }}"
+            type="submit"
+            name="add"
+            class="product-form__submit button button--full-width {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
+            {% if product.selected_or_first_available_variant.available == false
+              or quantity_rule_soldout
+              or product.selected_or_first_available_variant == null
+            %}
+              disabled
+            {% endif %}
+          >
+            <span>
+              {%- if product.selected_or_first_available_variant == null -%}
+                {{ 'products.product.unavailable' | t }}
+              {%- elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
+                {{ 'products.product.sold_out' | t }}
+              {%- else -%}
+                {{ 'products.product.add_to_cart' | t }}
+              {%- endif -%}
+            </span>
+            {%- render 'loading-spinner' -%}
+          </button>
+          {%- if show_dynamic_checkout -%}
+            {{ form | payment_button }}
+          {%- endif -%}
+        </div>
+      {%- endform -%}
+    </product-form>
   {%- else -%}
-    {%- capture button_content -%}{{ 'product.general.sold_out_button' | t }}{%- endcapture -%}
-    {%- assign button_disabled = true -%}
+    <div class="product-form">
+      <div class="product-form__buttons form">
+        <button
+          type="submit"
+          name="add"
+          class="product-form__submit button button--full-width button--primary"
+          disabled
+        >
+          {{ 'products.product.sold_out' | t }}
+        </button>
+      </div>
+    </div>
   {%- endif -%}
 
-  <div class="v-stack gap-4">
-    {%- if recipient_feature_active -%}
-      <gift-card-recipient class="gift-card-recipient v-stack gap-3">
-        {%- assign checkbox_label = 'gift_card.recipient.checkbox' | t -%}
-        {%- render 'checkbox', label: checkbox_label, name: 'properties[__shopify_send_gift_card_to_recipient]' -%}
+  {%- if show_pickup_availability -%}
+    {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
 
-        <div class="gift-card-recipient__fields" hidden>
-          <div class="fieldset">
-            {%- liquid
-              assign recipient_email_label = 'gift_card.recipient.email_label' | t
-              render 'input', type: 'email', label: recipient_email_label, name: 'properties[Recipient email]', value: form.email, required: true, maxlength: 138
+    {%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities
+      | where: 'pick_up_enabled', true
+    -%}
 
-              assign recipient_name_label = 'gift_card.recipient.name_label' | t
-              render 'input', label: recipient_name_label, name: 'properties[Recipient name]', value: form.name
-
-              assign send_on_label = 'gift_card.recipient.send_on_label' | t
-              render 'input', type: 'date', label: send_on_label, name: 'properties[Send on]', value: form.send_on, pattern: '\d{4}-\d{2}-\d{2}'
-              render 'input', type: 'hidden', name: 'properties[__shopify_offset]'
-
-              assign message_label = 'gift_card.recipient.message_label' | t
-              render 'input', label: message_label, name: 'properties[Message]', value: form.message, multiline: 3, maxlength: 200, show_max_characters_count: true
-            -%}
-          </div>
-        </div>
-      </gift-card-recipient>
-    {%- endif -%}
-
-    <buy-buttons class="buy-buttons {% if show_payment_button %}buy-buttons--multiple{% endif %}" template="{{ product.template_suffix | escape }}" form="{{ form_id }}">
-      {% if product.title == "OMNIA" %}
-        <p class="preorder-notice">
-          <strong>PREORDER SHIPS APRIL 2026:</strong> Your order will be processed and shipped in April. We'll notify you when it's on its way.
-        </p>
+    <pickup-availability
+      class="product__pickup-availabilities quick-add-hidden"
+      {% if product.selected_or_first_available_variant.available and pick_up_availabilities.size > 0 %}
+        available
       {% endif %}
-      {%- render 'button', content: button_content, type: 'submit', size: button_size, disabled: button_disabled, secondary: show_payment_button, subdued: button_disabled, background: atc_button_background, text_color: atc_button_text_color -%}
+      data-root-url="{{ routes.root_url }}"
+      data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+      data-has-only-default-variant="{{ product.has_only_default_variant }}"
+      data-product-page-color-scheme="gradient color-{{ section.settings.color_scheme }}"
+    >
+      <template>
+        <pickup-availability-preview class="pickup-availability-preview">
+          <span class="svg-wrapper">
+            {{- 'icon-unavailable.svg' | inline_asset_content -}}
+          </span>
+          <div class="pickup-availability-info">
+            <p class="caption-large">{{ 'products.product.pickup_availability.unavailable' | t }}</p>
+            <button class="pickup-availability-button link link--text underlined-link">
+              {{ 'products.product.pickup_availability.refresh' | t }}
+            </button>
+          </div>
+        </pickup-availability-preview>
+      </template>
+    </pickup-availability>
 
-      {%- if show_payment_button -%}
-        {{- form | payment_button -}}
-
-        <style>
-          #{{ form_id }} .shopify-payment-button {
-            {%- unless product.selected_or_first_available_variant.available -%}
-              display: none;
-            {%- endunless -%}
-
-            {%- if payment_button_background != blank and payment_button_background != 'rgba(0,0,0,0)' -%}
-              --button-background: {{ payment_button_background.rgb }};
-            {%- endif -%}
-
-            {%- if payment_button_text_color != blank and payment_button_text_color != 'rgba(0,0,0,0)' -%}
-              --button-text-color: {{ payment_button_text_color.rgb }};
-            {%- endif -%}
-          }
-        </style>
-      {%- endif -%}
-    </buy-buttons>
-  </div>
-{%- endform -%}
+    <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
+  {%- endif -%}
+</div>

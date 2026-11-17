@@ -1,0 +1,69 @@
+<section class="lpn-section">
+  <div class="lpn-wrap">
+    <div class="lpn-head">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}<p class="lpn-eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+        <h2 class="lpn-head__title">{{ section.settings.heading | escape }}</h2>
+      </div>
+    </div>
+    <ul class="lpn-topics lpn-reveal" role="list" data-lpn-reveal>
+      {%- for block in section.blocks -%}
+        {%- assign topic = block.settings.blog -%}
+        {%- if topic != blank -%}
+          {%- assign image = block.settings.image | default: topic.articles.first.image -%}
+          <li {{ block.shopify_attributes }}>
+            <a class="lpn-topic" href="{{ topic.url }}">
+              <span class="lpn-topic__media">
+                {%- if image -%}{{ image | image_url: width: 800 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 22vw, (min-width: 750px) 30vw, 44vw', widths: '300, 450, 600, 800', alt: '' }}{%- endif -%}
+              </span>
+              <span class="lpn-topic__name">{{ topic.title | escape }}</span>
+              <span class="lpn-topic__count">{{ 'lpn.articles_count' | t: count: topic.articles_count }}</span>
+            </a>
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% stylesheet %}
+.lpn-topics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(2.8rem, 3vw, 4rem) clamp(1.6rem, 2vw, 2.4rem); margin: 0; padding: 0; list-style: none; }
+.lpn-topic { display: grid; gap: 0.4rem; color: rgb(var(--lp-ink)); text-decoration: none; }
+.lpn-topic__media { display: block; overflow: hidden; aspect-ratio: 4 / 5; margin-block-end: 1.2rem; border-radius: var(--lpn-radius); background: rgb(var(--lp-sand)); }
+.lpn-topic__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 600ms var(--lpn-ease); }
+.lpn-topic:hover .lpn-topic__media img { transform: scale(1.03); }
+.lpn-topic__name { font-family: var(--lpn-serif); font-size: 2.2rem; line-height: 1.2; }
+.lpn-topic__count { font-size: 1.3rem; color: rgb(var(--lp-muted)); }
+.lpn-topic:focus-visible { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 4px; border-radius: var(--lpn-radius); }
+@media (max-width: 989px) { .lpn-topics { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 749px) {
+  .lpn-topics { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 42%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-inline: calc(var(--lpn-gutter) * -1); padding-inline: var(--lpn-gutter); scroll-padding-inline: var(--lpn-gutter); }
+  .lpn-topics::-webkit-scrollbar { display: none; }
+  .lpn-topics > li { scroll-snap-align: start; }
+  .lpn-topic__name { font-size: 1.9rem; }
+}
+@media (prefers-reduced-motion: reduce) { .lpn-topic__media img { transition: none; } }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "News topics",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Browse" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Explore Topics" }
+  ],
+  "blocks": [
+    {
+      "type": "topic",
+      "name": "Topic",
+      "settings": [
+        { "type": "blog", "id": "blog", "label": "Blog" },
+        { "type": "image_picker", "id": "image", "label": "Image", "info": "Defaults to the image of the newest article." }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [{ "name": "News topics" }]
+}
+{% endschema %}

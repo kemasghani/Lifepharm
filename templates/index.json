@@ -9,854 +9,123 @@
  */
 {
   "sections": {
-    "lp_home_hero": {
-      "type": "lp-home-hero",
-      "blocks": {
-        "c1": {
-          "type": "chip",
-          "settings": {
-            "icon": "shield",
-            "text": "60-day money-back guarantee"
-          }
-        },
-        "c2": {
-          "type": "chip",
-          "settings": {
-            "icon": "badge",
-            "text": "Fully NSF tested"
-          }
-        },
-        "c3": {
-          "type": "chip",
-          "settings": {
-            "icon": "flag",
-            "text": "Made in the USA"
-          }
-        },
-        "c4": {
-          "type": "chip",
-          "settings": {
-            "icon": "truck",
-            "text": "Free UK delivery over £150"
-          }
-        }
-      },
-      "block_order": [
-        "c1",
-        "c2",
-        "c3",
-        "c4"
-      ],
+    "hero": {
+      "type": "lpn-home-hero",
       "settings": {
-        "image": "shopify://shop_images/lp-home-hero-family.jpg",
-        "mobile_image": "shopify://shop_images/lp-home-hero-family-mobile.jpg",
-        "eyebrow": "Science-led wellbeing",
-        "heading": "Feel good at <em>every age</em>",
-        "rating_text": "<strong>978+</strong> verified LAMININE reviews",
-        "text": "",
-        "button_label": "Shop best sellers",
-        "button_url": "shopify://collections/nutritionals",
-        "secondary_label": "Discover LAMININE",
-        "secondary_url": "shopify://products/laminine",
-        "product": "laminine",
-        "card_image": "shopify://shop_images/laminine-duo-cutout.png",
-        "card_label": "Our best seller",
-        "price_prefix": "From",
-        "benefit_1": "Made with Fertilized Avian Egg Extract",
-        "benefit_2": "Supports your body's natural renewal*",
-        "benefit_3": "Clinically studied and fully NSF tested",
-        "secondary_style": "link"
+        "eyebrow": "LifePharm News",
+        "heading": "Ideas for Living Well, <em>at Every Age</em>",
+        "text": "Practical guides on health, nutrition and skin, and the science behind our products.",
+        "blogs": "health,nutrition,science,beauty,products,recipes,business,news"
       }
     },
-    "logo_list_cGNNLB": {
-      "type": "lp-press",
-      "blocks": {
-        "logo_7a7nxn": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/americanhealthjournal_copy.jpg",
-            "name": "American Health Journal"
-          }
-        },
-        "logo_D78Maw": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/AP.png",
-            "name": "AP"
-          }
-        },
-        "logo_G6HqmD": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/today_in_science.png",
-            "name": "Today in Science"
-          }
-        },
-        "logo_ijzfbF": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/US_Healthcare_Journal.png",
-            "name": "US Healthcare Journal"
-          }
-        },
-        "logo_xGn64W": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/24_7_business_reporter.png",
-            "name": "24/7 Business Reporter"
-          }
-        },
-        "logo_mAqXqc": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/stem_news_today.png",
-            "name": "Stem News Today"
-          }
-        }
-      },
-      "block_order": [
-        "logo_7a7nxn",
-        "logo_D78Maw",
-        "logo_G6HqmD",
-        "logo_ijzfbF",
-        "logo_xGn64W",
-        "logo_mAqXqc"
-      ],
+    "latest": {
+      "type": "lpn-latest",
       "settings": {
-        "label": "As featured in"
+        "eyebrow": "Just Published",
+        "heading": "Latest Stories",
+        "blogs": "health,nutrition,science,beauty,products,recipes,business,news",
+        "offset": 1,
+        "count": 6,
+        "link_label": "View All",
+        "link_url": "shopify://blogs/health"
       }
     },
-    "lp_home_cats": {
-      "type": "lp-home-cats",
+    "topics": {
+      "type": "lpn-topics",
       "blocks": {
-        "k1": {
-          "type": "category",
+        "t_health": {
+          "type": "topic",
           "settings": {
-            "product": "laminine",
-            "image": "shopify://shop_images/2026-06-22-Laminine-ShopifyImages-05.jpg",
-            "title": "LAMININE",
-            "caption": "Our best seller",
-            "badge": "Save 25%"
+            "blog": "health"
           }
         },
-        "k2": {
-          "type": "category",
+        "t_nutrition": {
+          "type": "topic",
           "settings": {
-            "collection": "nutritionals",
-            "image": "shopify://shop_images/Supplements-Orange-bg_web.jpg",
-            "title": "Nutritionals"
+            "blog": "nutrition"
           }
         },
-        "k3": {
-          "type": "category",
+        "t_science": {
+          "type": "topic",
           "settings": {
-            "collection": "skin-health",
-            "image": "shopify://shop_images/lp-hf-omnia-pedestal.jpg",
-            "title": "Skin health"
+            "blog": "science"
           }
         },
-        "k4": {
-          "type": "category",
+        "t_beauty": {
+          "type": "topic",
           "settings": {
-            "collection": "frequency-regeneration",
-            "image": "shopify://shop_images/lp-kive-power-cream-arch.jpg",
-            "title": "Frequency"
+            "blog": "beauty"
           }
         },
-        "k5": {
-          "type": "category",
+        "t_products": {
+          "type": "topic",
           "settings": {
-            "collection": "all",
-            "image": "shopify://shop_images/5.jpg",
-            "title": "Shop all"
+            "blog": "products"
+          }
+        },
+        "t_recipes": {
+          "type": "topic",
+          "settings": {
+            "blog": "recipes"
+          }
+        },
+        "t_business": {
+          "type": "topic",
+          "settings": {
+            "blog": "business"
+          }
+        },
+        "t_news": {
+          "type": "topic",
+          "settings": {
+            "blog": "news"
           }
         }
       },
       "block_order": [
-        "k1",
-        "k2",
-        "k3",
-        "k4",
-        "k5"
+        "t_health",
+        "t_nutrition",
+        "t_science",
+        "t_beauty",
+        "t_products",
+        "t_recipes",
+        "t_business",
+        "t_news"
       ],
       "settings": {
-        "eyebrow": "Our range",
-        "heading": "Shop by <em>category</em>",
-        "count_label": "products"
+        "eyebrow": "Browse",
+        "heading": "Explore Topics"
       }
     },
-    "lp_home_promos": {
-      "type": "lp-home-promos",
-      "blocks": {
-        "pr1": {
-          "type": "promo",
-          "settings": {
-            "style": "light",
-            "tag": "Subscribe & save",
-            "heading": "Save 25% on <em>LAMININE</em>",
-            "text": "Our best seller, delivered every 4, 8, 12 or 26 weeks.",
-            "button_label": "Shop LAMININE",
-            "url": "shopify://products/laminine",
-            "image": "shopify://shop_images/lp-kive-laminine-duo-eggs.jpg"
-          }
-        },
-        "pr2": {
-          "type": "promo",
-          "settings": {
-            "style": "light",
-            "tag": "Most added to LAMININE",
-            "heading": "Complete your <em>routine</em>",
-            "text": "Omega+++, Immune+++ and Digestive+++ are the products customers pair with LAMININE most often.",
-            "button_label": "Shop nutritionals",
-            "url": "shopify://collections/nutritionals",
-            "image": "shopify://shop_images/lp-kive-laminine-omega-bedside.jpg"
-          }
-        }
-      },
-      "block_order": [
-        "pr1",
-        "pr2"
-      ],
+    "science": {
+      "type": "lpn-topic-rail",
+      "settings": {
+        "blog": "science",
+        "eyebrow": "Science",
+        "heading": "The Science Behind It",
+        "count": 3
+      }
+    },
+    "nutrition": {
+      "type": "lpn-topic-rail",
+      "settings": {
+        "blog": "nutrition",
+        "eyebrow": "Nutrition",
+        "heading": "Eat Well, Feel Well",
+        "count": 3
+      }
+    },
+    "newsletter": {
+      "type": "lpn-newsletter",
       "settings": {}
-    },
-    "lp_tabs": {
-      "type": "lp-product-tabs",
-      "blocks": {
-        "tab_skin": {
-          "type": "tab",
-          "settings": {
-            "collection": "skin-health",
-            "label": "Skin Health"
-          }
-        },
-        "tab_freq": {
-          "type": "tab",
-          "settings": {
-            "collection": "frequency-regeneration",
-            "label": "Frequency"
-          }
-        }
-      },
-      "block_order": [
-        "tab_skin",
-        "tab_freq"
-      ],
-      "settings": {
-        "heading": "Our <em>products</em>",
-        "collection": "nutritionals",
-        "limit": 8,
-        "all_label": "Best sellers",
-        "add_label": "Add to cart",
-        "view_all_label": "View all products"
-      }
-    },
-    "lp_science": {
-      "type": "lp-science",
-      "blocks": {
-        "s1": {
-          "type": "stat",
-          "settings": {
-            "value": "978",
-            "suffix": "+",
-            "label": "Verified LAMININE reviews"
-          }
-        },
-        "s2": {
-          "type": "stat",
-          "settings": {
-            "value": "60",
-            "suffix": "days",
-            "label": "Money-back guarantee"
-          }
-        },
-        "s3": {
-          "type": "stat",
-          "settings": {
-            "value": "100",
-            "suffix": "%",
-            "label": "NSF-tested nutritionals"
-          }
-        }
-      },
-      "block_order": [
-        "s1",
-        "s2",
-        "s3"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/lp-kive-laminine-egg-flatlay.jpg",
-        "caption": "LAMININE, made with Fertilized Avian Egg Extract",
-        "image_position": "object-position: 50% 50%",
-        "eyebrow": "The science",
-        "heading": "Powered by nature's <em>growth factors</em>",
-        "text": "<p>Your body is constantly working to repair itself, but as we age that process slows down. Our Fertilized Avian Egg Extract is harvested at peak activity and delivers growth factors, cellular factors and amino acids: the building blocks your body uses to renew.*</p>",
-        "button_label": "View published studies",
-        "button_url": "shopify://pages/our-studies",
-        "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent disease."
-      }
-    },
-    "lp_home_cta": {
-      "type": "lp-home-cta",
-      "settings": {
-        "product": "laminine",
-        "image": "shopify://shop_images/laminine-duo-cutout.png",
-        "eyebrow": "Our best seller",
-        "heading": "Meet <em>LAMININE</em>, loved in the UK, US and Europe",
-        "price_text": "From [price] with Subscribe & Save. Backed by our 60-day money-back guarantee.",
-        "button_label": "Shop LAMININE",
-        "button_url": ""
-      },
-      "disabled": true
-    },
-    "rich_text_arFn6i": {
-      "type": "rich-text",
-      "blocks": {
-        "liquid_EEHxxN": {
-          "type": "liquid",
-          "settings": {
-            "liquid": "<p class=\"lp-eyebrow\">978+ verified reviews</p><h2>Hear it from <em>our customers</em></h2>"
-          }
-        }
-      },
-      "block_order": [
-        "liquid_EEHxxN"
-      ],
-      "custom_css": [
-        "{margin-bottom: -40px;}"
-      ],
-      "settings": {
-        "full_width": false,
-        "content_width": "small",
-        "text_position": "center",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
-    "17175461316e8d66c7": {
-      "type": "apps",
-      "blocks": {
-        "tolstoy_shoppable_video_ugc_carousel_block_pzP3CD": {
-          "type": "shopify://apps/tolstoy/blocks/carousel-block/06fa8282-42ff-403e-b67c-1936776aed11",
-          "settings": {
-            "publishId": "frv9afb0xww6h"
-          }
-        }
-      },
-      "block_order": [
-        "tolstoy_shoppable_video_ugc_carousel_block_pzP3CD"
-      ],
-      "custom_css": [
-        ".tolstoy-carousel {margin: 0px !important; width: 100% !important;}",
-        "._carouselContainer_1y5mc_1 {width: 100% !important; justify-content: center; margin: 0px auto; direction: ;}",
-        "._previousButtonContainer_1y5mc_23 {background: #f2f2f2; min-height: 50px; min-width: 50px;}"
-      ],
-      "settings": {
-        "full_width": false,
-        "remove_vertical_spacing": false,
-        "remove_horizontal_spacing": false,
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
-    "lp_guarantee": {
-      "type": "lp-guarantee",
-      "settings": {
-        "seal_value": "60",
-        "seal_text": "60-day guarantee · risk free · ",
-        "heading": "Try it risk free <em>for 60 days</em>",
-        "text": "<p>We stand behind every product we make. If it isn't right for you, let us know within 60 days of delivery and we'll refund you in full.</p>",
-        "button_label": "Shop best sellers",
-        "button_url": "shopify://collections/nutritionals",
-        "link_label": "Read our refund policy",
-        "link_url": "/policies/refund-policy",
-        "image": "shopify://shop_images/lp-hf-couple-walk.jpg",
-        "caption": "",
-        "rating_text": "<strong>978+</strong> verified LAMININE reviews",
-        "show_payment_icons": true,
-        "payment_label": "Accepted payment methods"
-      }
-    },
-    "lp_home_faq": {
-      "type": "lp-home-faq",
-      "blocks": {
-        "q1": {
-          "type": "question",
-          "settings": {
-            "question": "Where should I start?",
-            "answer": "<p>Most customers start with LAMININE, our best seller in the UK, US and Europe. Many then add Omega+++, Immune+++ or Digestive+++ to complete their routine.</p>"
-          }
-        },
-        "q2": {
-          "type": "question",
-          "settings": {
-            "question": "What makes LifePharm different?",
-            "answer": "<p>Our formulas are built around Fertilized Avian Egg Extract, a natural source of growth factors, cellular factors and amino acids. Our products are made in the USA and our nutritionals are fully NSF tested.</p>"
-          }
-        },
-        "q3": {
-          "type": "question",
-          "settings": {
-            "question": "How does Subscribe & Save work?",
-            "answer": "<p>Subscribers save 25% on every order. Choose a delivery every 4, 8, 12 or 26 weeks when you add a product to your basket.</p>"
-          }
-        },
-        "q4": {
-          "type": "question",
-          "settings": {
-            "question": "What if a product is not right for me?",
-            "answer": "<p>Every order is backed by our 60-day money-back guarantee. Let us know within 60 days of delivery and we will refund you in full.</p>"
-          }
-        },
-        "q5": {
-          "type": "question",
-          "settings": {
-            "question": "How much is UK delivery?",
-            "answer": "<p>Standard UK delivery is free on orders of £150 or more. Below that, it costs £7.95.</p>"
-          }
-        },
-        "q6": {
-          "type": "question",
-          "settings": {
-            "question": "Are your supplements right for me?",
-            "answer": "<p>If you are pregnant, nursing, taking medication or have a medical condition, please speak to your doctor before taking any supplement.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "q1",
-        "q2",
-        "q3",
-        "q4",
-        "q5",
-        "q6"
-      ],
-      "settings": {
-        "eyebrow": "Good to know",
-        "heading": "Questions, <em>answered</em>",
-        "help_heading": "Still unsure?",
-        "help_text": "Our team is happy to help you choose the right products.",
-        "help_label": "Chat with our team",
-        "help_url": "/pages/contact"
-      }
-    },
-    "lp_home_offer": {
-      "type": "lp-home-offer",
-      "settings": {
-        "product": "laminine",
-        "anchor": "lp-offer",
-        "eyebrow": "Choose your supply",
-        "heading": "Subscribe and <em>save 25%</em>",
-        "text": "<p>Pick a size, then choose a delivery every 4, 8, 12 or 26 weeks on the next page. Prefer a one-off order? You can choose that there too.</p>",
-        "best_label": "Best value",
-        "free_label": "Free UK delivery",
-        "free_delivery_threshold": 150,
-        "sub_label": "With Subscribe & Save",
-        "oneoff_label": "One-off purchase",
-        "unit_label": "per capsule",
-        "button_label": "Choose",
-        "footnote": "Every order is covered by our <strong>60-day money-back guarantee</strong>."
-      },
-      "disabled": true
-    },
-    "lp_home_pairs": {
-      "type": "lp-home-pairs",
-      "blocks": {
-        "p1": {
-          "type": "product",
-          "settings": {
-            "product": "omega",
-            "text": "Omega-3 support for heart and circulation.",
-            "accent": "#E1251B"
-          }
-        },
-        "p2": {
-          "type": "product",
-          "settings": {
-            "product": "immune",
-            "text": "Everyday support for your immune system.",
-            "accent": "#F2CD00"
-          }
-        },
-        "p3": {
-          "type": "product",
-          "settings": {
-            "product": "digestive",
-            "text": "Probiotics, prebiotics and enzymes for digestion.",
-            "accent": "#3DAE2B"
-          }
-        }
-      },
-      "block_order": [
-        "p1",
-        "p2",
-        "p3"
-      ],
-      "settings": {
-        "eyebrow": "Complete your routine",
-        "heading": "Often bought <em>with LAMININE</em>",
-        "text": "<p>These are the products our customers add to their LAMININE order most often.</p>",
-        "price_prefix": "From"
-      },
-      "disabled": true
-    },
-    "lp_hero": {
-      "type": "lp-hero",
-      "blocks": {
-        "chip_usa": {
-          "type": "chip",
-          "settings": {
-            "icon": "flag",
-            "text": "Made in the USA"
-          }
-        },
-        "chip_nsf": {
-          "type": "chip",
-          "settings": {
-            "icon": "badge",
-            "text": "Fully NSF tested"
-          }
-        },
-        "chip_study": {
-          "type": "chip",
-          "settings": {
-            "icon": "flask",
-            "text": "Clinically studied"
-          }
-        }
-      },
-      "block_order": [
-        "chip_usa",
-        "chip_nsf",
-        "chip_study"
-      ],
-      "settings": {
-        "layout": "media-right",
-        "min_height": 75,
-        "eyebrow": "",
-        "heading": "Activate your body's <em>natural renewal</em>",
-        "text": "<p>Premium nutritionals and skincare powered by Fertilized Avian Egg Extract, rich in growth factors that support your body's own repair process.*</p>",
-        "button_label": "Shop bestsellers",
-        "button_url": "shopify://collections/all",
-        "secondary_label": "Explore the science",
-        "secondary_url": "shopify://pages/science",
-        "rating_text": "<strong>978+</strong> verified LAMININE reviews",
-        "image": "shopify://shop_images/cellnergy_sqaure.jpg",
-        "float_1": "60-day guarantee",
-        "float_2": "Clinically studied"
-      },
-      "disabled": true
-    },
-    "lp_goals": {
-      "type": "lp-shop-by-goal",
-      "blocks": {
-        "g1": {
-          "type": "goal",
-          "settings": {
-            "collection": "nutritionals",
-            "image": "shopify://shop_images/Supplements-Orange-bg_web.jpg",
-            "title": "Nutritionals",
-            "text": "Daily foundations for energy, immunity, digestion and recovery.",
-            "cta": "Shop nutritionals"
-          }
-        },
-        "g2": {
-          "type": "goal",
-          "settings": {
-            "collection": "skin-health",
-            "image": "shopify://shop_images/Skincare-Blue-bg_web.jpg",
-            "title": "Skin health",
-            "text": "Growth-factor skincare for visibly smoother, firmer-looking skin.",
-            "cta": "Shop skin health"
-          }
-        },
-        "g3": {
-          "type": "goal",
-          "settings": {
-            "collection": "frequency-regeneration",
-            "image": "shopify://shop_images/test_sqaure_08a86950-61d0-4e60-8977-5156471baea5.jpg",
-            "title": "Frequency regeneration",
-            "text": "Advanced Cellnergy technology for whole-body wellbeing.",
-            "cta": "Discover Cellnergy"
-          }
-        }
-      },
-      "block_order": [
-        "g1",
-        "g2",
-        "g3"
-      ],
-      "settings": {
-        "eyebrow": "",
-        "heading": "Shop by category",
-        "cta": "Explore"
-      },
-      "disabled": true
-    },
-    "lp_system": {
-      "type": "lp-system",
-      "blocks": {
-        "p1": {
-          "type": "point",
-          "settings": {
-            "text": "Backed by clinical studies, not just marketing claims"
-          }
-        },
-        "p2": {
-          "type": "point",
-          "settings": {
-            "text": "Made in the USA and fully NSF tested"
-          }
-        },
-        "p3": {
-          "type": "point",
-          "settings": {
-            "text": "Every order backed by a 60-day money-back guarantee"
-          }
-        }
-      },
-      "block_order": [
-        "p1",
-        "p2",
-        "p3"
-      ],
-      "settings": {
-        "heading": "A full system, not just a supplement",
-        "text": "<p>From nutritionals to skin health to frequency regeneration, our products work together to support your whole body, not just one symptom.</p>",
-        "button_label": "Shop with confidence",
-        "button_url": "shopify://collections/all"
-      },
-      "disabled": true
-    },
-    "rich_text_Jhh874": {
-      "type": "rich-text",
-      "blocks": {
-        "image_XhCg6B": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/cellnergy_sqaure.jpg",
-            "width_mode": "full_width",
-            "max_width": 600,
-            "mobile_max_width": 400
-          }
-        },
-        "divider_yah6tg": {
-          "type": "divider",
-          "settings": {}
-        },
-        "icon_NTE8FU": {
-          "type": "icon",
-          "disabled": true,
-          "settings": {
-            "icon": "picto-coupon",
-            "custom_icon": "shopify://shop_images/new_arrival.png",
-            "icon_width": 72,
-            "icon_background_type": "none",
-            "icon_background": "#f2f2f2",
-            "icon_color": ""
-          }
-        },
-        "liquid_AwGcGX": {
-          "type": "liquid",
-          "settings": {
-            "liquid": "<h2>Cellnergy <em>Power Cream</em></h2>"
-          }
-        },
-        "richtext_YpqUXt": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>The world’s first topical solution for degenerative disorder. Now available for purchase!</p>"
-          }
-        },
-        "button_wagET7": {
-          "type": "button",
-          "settings": {
-            "style": "fill",
-            "size": "lg",
-            "text": "Buy Now",
-            "url": "shopify://products/cellnergy-power-cream",
-            "background": "",
-            "text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_XhCg6B",
-        "divider_yah6tg",
-        "icon_NTE8FU",
-        "liquid_AwGcGX",
-        "richtext_YpqUXt",
-        "button_wagET7"
-      ],
-      "custom_css": [
-        ".split-rich-text {align-items: center !important;}",
-        ".prose * + :is(p, div, ul, ol) {margin-block-start: var(--spacing-4); max-width: 550px;}"
-      ],
-      "settings": {
-        "full_width": false,
-        "content_width": "small",
-        "text_position": "center",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      },
-      "disabled": true
-    },
-    "image_with_text_overlay_gD4YMa": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "heading_GqYDfK": {
-          "type": "heading",
-          "settings": {
-            "text": "Our mission is to make optimal well-being inclusive for all.",
-            "heading_tag": "h2"
-          }
-        }
-      },
-      "block_order": [
-        "heading_GqYDfK"
-      ],
-      "custom_css": [
-        ".content-over-media > :not(img, video, iframe, svg, video-media, picture) {text-align: center; padding: 46px;}",
-        ".h2,.prose h2:not(.h0, .h1, .h2, .h3, .h4, .h5, .h6) {font-size: var(--text-h3);}"
-      ],
-      "settings": {
-        "full_width": true,
-        "allow_transparent_header": false,
-        "enable_parallax": false,
-        "image_size": "sm",
-        "image": "shopify://shop_images/home_page_lifepharm_web_quality.jpg",
-        "mobile_image": "shopify://shop_images/home_lifepharm_mobile.jpg",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center-end sm:text-end",
-        "text_color": "#181818",
-        "overlay_color": "#000000",
-        "overlay_opacity": 5
-      },
-      "disabled": true
-    },
-    "image_with_text_overlay_BGEPpd": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "heading_dbLyjF": {
-          "type": "heading",
-          "settings": {
-            "text": "Unsure Where to Begin?",
-            "heading_tag": "h2"
-          }
-        },
-        "liquid_CtPHyq": {
-          "type": "liquid",
-          "disabled": true,
-          "settings": {
-            "liquid": "<h2>Unsure Where to <em>Begin?</em></h2>"
-          }
-        },
-        "richtext_P7yapz": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>We're here and ready to help with advice</p>"
-          }
-        },
-        "button_hVCnGK": {
-          "type": "button",
-          "settings": {
-            "style": "fill",
-            "size": "lg",
-            "text": "<a onclick=\"GorgiasChat.open();\">Chat with our team</a>",
-            "url": "",
-            "background": "#ff8f00",
-            "text_color": "#414042"
-          }
-        }
-      },
-      "block_order": [
-        "heading_dbLyjF",
-        "liquid_CtPHyq",
-        "richtext_P7yapz",
-        "button_hVCnGK"
-      ],
-      "custom_css": [],
-      "settings": {
-        "full_width": true,
-        "allow_transparent_header": false,
-        "enable_parallax": false,
-        "image_size": "sm",
-        "image": "shopify://shop_images/home_page_2_lifepharm_copy.jpg",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center-start sm:text-start",
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 25
-      },
-      "disabled": true
-    },
-    "lp_home_steps": {
-      "type": "lp-home-steps",
-      "blocks": {
-        "s1": {
-          "type": "step",
-          "settings": {
-            "image": "shopify://shop_images/lp-home-step-choose.jpg",
-            "video": "shopify://files/videos/lp-home-step-choose.mp4",
-            "title": "Choose Your Routine",
-            "text": "<p>Start with LAMININE, our best seller, or build a routine across nutritionals and skincare. Subscribe and save 25%.</p>"
-          }
-        },
-        "s2": {
-          "type": "step",
-          "settings": {
-            "image": "shopify://shop_images/lp-home-step-daily.jpg",
-            "video": "shopify://files/videos/lp-home-step-daily.mp4",
-            "title": "Take It Daily",
-            "text": "<p>Your order arrives at your door, with free UK delivery over £150. Take it each day with a glass of water.</p>"
-          }
-        },
-        "s3": {
-          "type": "step",
-          "settings": {
-            "image": "shopify://shop_images/lp-home-step-feel.jpg",
-            "video": "shopify://files/videos/lp-home-step-feel.mp4",
-            "title": "Feel The Difference",
-            "text": "<p>Give it time to work. If it is not right for you, our 60-day money-back guarantee has you covered.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "s1",
-        "s2",
-        "s3"
-      ],
-      "settings": {
-        "eyebrow": "How it works",
-        "heading": "Three steps to <em>feeling good</em>",
-        "step_label": "Step",
-        "button_label": "",
-        "note": ""
-      }
     }
   },
   "order": [
-    "lp_home_hero",
-    "logo_list_cGNNLB",
-    "lp_home_steps",
-    "lp_tabs",
-    "lp_science",
-    "rich_text_arFn6i",
-    "17175461316e8d66c7",
-    "lp_home_cats",
-    "lp_home_promos",
-    "lp_home_faq",
-    "lp_guarantee",
-    "lp_home_cta",
-    "lp_home_offer",
-    "lp_home_pairs",
-    "lp_hero",
-    "lp_goals",
-    "lp_system",
-    "rich_text_Jhh874",
-    "image_with_text_overlay_gD4YMa",
-    "image_with_text_overlay_BGEPpd"
+    "hero",
+    "latest",
+    "topics",
+    "science",
+    "nutrition",
+    "newsletter"
   ]
 }

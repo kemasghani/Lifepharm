@@ -1,0 +1,509 @@
+{%- liquid
+  assign words = article.content | strip_html | split: ' ' | size
+  assign minutes = words | divided_by: 220 | at_least: 1
+  assign share_url = shop.url | append: article.url
+  assign share_text = article.title | url_encode
+
+  assign handles = section.settings.latest_blogs | split: ','
+  assign pool = blogs[handles.first].articles
+  for h in handles offset: 1
+    assign h = h | strip
+    if blogs[h] != blank
+      assign pool = pool | concat: blogs[h].articles
+    endif
+  endfor
+  assign pool = pool | sort: 'published_at' | reverse
+-%}
+<div class="lpn-progress" aria-hidden="true"><span data-lpn-progress></span></div>
+
+<article class="lpn-article">
+  <header class="lpn-wrap lpn-article__head">
+    <nav class="lpn-crumbs" aria-label="Breadcrumb">
+      <a href="{{ routes.root_url }}">{{ 'lpn.home' | t }}</a>
+      <span aria-hidden="true">/</span>
+      <a href="{{ blog.url }}">{{ blog.title | escape }}</a>
+    </nav>
+    <h1 class="lpn-article__title">{{ article.title | escape }}</h1>
+    {%- if article.excerpt != blank -%}
+      <p class="lpn-article__dek">{{ article.excerpt | strip_html | strip | truncatewords: 40 }}</p>
+    {%- endif -%}
+    <p class="lpn-meta lpn-article__meta">
+      {%- if article.author != blank -%}<span>{{ 'lpn.written_by' | t: author: article.author }}</span>{%- endif -%}
+      <span><time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%-d %B %Y' }}</time></span>
+      <span>{{ 'lpn.min_read' | t: count: minutes }}</span>
+    </p>
+  </header>
+
+  {%- if article.image -%}
+    <figure class="lpn-wrap lpn-article__hero">
+      {{ article.image | image_url: width: 2400 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 990px) 864px, 92vw', widths: '600, 864, 1200, 1728, 2400', alt: article.image.alt | default: article.title }}
+    </figure>
+  {%- endif -%}
+
+  <div class="lpn-wrap lpn-article__body" data-lpn-body>
+    <aside class="lpn-toc" data-lpn-toc hidden>
+      <nav class="lpn-toc__nav" aria-labelledby="lpn-toc-title">
+        <p class="lpn-toc__title" id="lpn-toc-title">{{ 'lpn.in_article' | t }}</p>
+        <ol class="lpn-toc__list" data-lpn-toc-list></ol>
+        <a class="lpn-toc__top" href="#MainContent" data-lpn-top>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 13V3M4 7l4-4 4 4"/></svg>
+          {{ 'lpn.back_to_top' | t }}
+        </a>
+      </nav>
+    </aside>
+
+    <div class="lpn-article__main">
+    <div class="lpn-prose rte" data-lpn-prose>
+      {{ article.content }}
+    </div>
+
+    <footer class="lpn-article__foot">
+      <div class="lpn-share">
+        <span class="lpn-share__label">{{ 'lpn.share' | t }}</span>
+        <button type="button" class="lpn-share__btn" data-lpn-copy="{{ share_url }}" data-lpn-copied="{{ 'lpn.copied' | t }}">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6.5 9.5a3 3 0 0 0 4.2.2l2.1-2.1a3 3 0 0 0-4.2-4.2l-.9.9"/><path d="M9.5 6.5a3 3 0 0 0-4.2-.2L3.2 8.4a3 3 0 0 0 4.2 4.2l.9-.9"/></svg>
+          <span data-lpn-copy-label>{{ 'lpn.copy_link' | t }}</span>
+        </button>
+        <a class="lpn-share__btn" href="https://www.facebook.com/sharer/sharer.php?u={{ share_url | url_encode }}" target="_blank" rel="noopener">Facebook</a>
+        <a class="lpn-share__btn" href="https://x.com/intent/post?url={{ share_url | url_encode }}&text={{ share_text }}" target="_blank" rel="noopener">X</a>
+        <a class="lpn-share__btn" href="mailto:?subject={{ share_text }}&body={{ share_url | url_encode }}">Email</a>
+      </div>
+      <a class="lpn-link" href="{{ blog.url }}"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13 8H3m4-4L3 8l4 4"/></svg> {{ 'lpn.back_to' | t: topic: blog.title }}</a>
+      <p class="lpn-article__disclaimer">{{ 'lpn.disclaimer' | t }}</p>
+    </footer>
+    </div>
+
+    <aside class="lpn-side" aria-labelledby="lpn-side-title">
+      <div class="lpn-side__inner">
+        <p class="lpn-toc__title" id="lpn-side-title">{{ 'lpn.latest_news' | t }}</p>
+        <ol class="lpn-mini" role="list">
+          {%- assign shown_side = 0 -%}
+          {%- for item in pool -%}
+            {%- if item.id != article.id and shown_side < section.settings.latest_count -%}
+              {%- assign shown_side = shown_side | plus: 1 -%}
+              {%- assign item_handle = item.url | split: '/blogs/' | last | split: '/' | first -%}
+              {%- assign item_topic = blogs[item_handle] -%}
+              <li>
+                <a class="lpn-mini__item" href="{{ item.url }}">
+                  <span class="lpn-mini__media">
+                    {%- if item.image -%}{{ item.image | image_url: width: 240, height: 240, crop: 'center' | image_tag: loading: 'lazy', width: 120, height: 120, alt: '' }}{%- endif -%}
+                  </span>
+                  <span class="lpn-mini__body">
+                    {%- if item_topic != blank -%}<span class="lpn-mini__topic">{{ item_topic.title | escape }}</span>{%- endif -%}
+                    <span class="lpn-mini__title">{{ item.title | escape }}</span>
+                    <span class="lpn-mini__meta">{{ item.published_at | date: '%-d %b %Y' }}</span>
+                  </span>
+                </a>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ol>
+        {%- if section.settings.latest_url != blank -%}
+          <a class="lpn-link lpn-side__all" href="{{ section.settings.latest_url }}">{{ 'lpn.view_all' | t }} <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 8h10m-4-4 4 4-4 4"/></svg></a>
+        {%- endif -%}
+      </div>
+    </aside>
+  </div>
+</article>
+
+<div class="lpn-tocbar" data-lpn-tocbar hidden>
+  <button type="button" class="lpn-tocbar__btn" aria-haspopup="dialog" aria-controls="lpn-toc-sheet" aria-expanded="false" data-lpn-toc-open>
+    <svg class="lpn-tocbar__icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 4.5h9M6 9h9M6 13.5h9"/><circle cx="2.75" cy="4.5" r=".75" fill="currentColor"/><circle cx="2.75" cy="9" r=".75" fill="currentColor"/><circle cx="2.75" cy="13.5" r=".75" fill="currentColor"/></svg>
+    <span class="lpn-tocbar__text">
+      <span class="lpn-tocbar__label">{{ 'lpn.in_article' | t }}</span>
+      <span class="lpn-tocbar__current" data-lpn-toc-current></span>
+    </span>
+    <span class="lpn-tocbar__count" data-lpn-toc-count></span>
+    <svg class="lpn-tocbar__caret" width="8" height="5" viewBox="0 0 8 5" aria-hidden="true" focusable="false"><path d="M0 0h8L4 5z" fill="currentColor"/></svg>
+  </button>
+</div>
+
+<dialog class="lpn-tocsheet" id="lpn-toc-sheet" aria-labelledby="lpn-tocsheet-title" tabindex="-1" data-lpn-toc-sheet>
+  <div class="lpn-tocsheet__head">
+    <p class="lpn-tocsheet__title" id="lpn-tocsheet-title">{{ 'lpn.in_article' | t }}</p>
+    <button type="button" class="lpn-tocsheet__close" data-lpn-toc-close>
+      <span class="sr-only">{{ 'accessibility.close' | t }}</span>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="m3.5 3.5 9 9m0-9-9 9"/></svg>
+    </button>
+  </div>
+  <ol class="lpn-toc__list lpn-toc__list--sheet" data-lpn-toc-list-sheet></ol>
+</dialog>
+
+{%- assign shown = 0 -%}
+{%- capture related -%}
+  {%- for item in blog.articles -%}
+    {%- if item.id != article.id and shown < 3 -%}
+      {%- assign shown = shown | plus: 1 -%}
+      <li>{%- render 'lpn-card', article: item, show_topic: false -%}</li>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- if shown > 0 -%}
+  <section class="lpn-section lpn-related">
+    <div class="lpn-wrap">
+      <div class="lpn-head">
+        <div>
+          <p class="lpn-eyebrow">{{ 'lpn.more_in' | t: topic: blog.title }}</p>
+          <h2 class="lpn-head__title">{{ 'lpn.keep_reading' | t }}</h2>
+        </div>
+        <a class="lpn-link" href="{{ blog.url }}">{{ 'lpn.view_all' | t }} <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 8h10m-4-4 4 4-4 4"/></svg></a>
+      </div>
+      <ul class="lpn-rail" role="list">{{ related }}</ul>
+    </div>
+  </section>
+{%- endif -%}
+
+<section class="lpn-section">
+  <div class="lpn-wrap">{%- render 'lpn-newsletter', id: 'article' -%}</div>
+</section>
+
+{% stylesheet %}
+.lpn-progress { position: fixed; inset: 0 0 auto; z-index: 30; height: 2px; pointer-events: none; }
+.lpn-progress span { display: block; height: 100%; width: 100%; background: rgb(var(--lp-amber)); transform: scaleX(0); transform-origin: left; }
+
+.lpn-article { padding-block-start: clamp(3.2rem, 5vw, 6.4rem); }
+.lpn-article__head { max-width: calc(80rem + var(--lpn-gutter) * 2); text-align: center; }
+.lpn-article__head .lpn-crumbs { justify-content: center; }
+.lpn-article__title { margin: 2rem auto 0; max-width: 22ch; font-size: clamp(3.6rem, 5vw, 6rem); line-height: 1.08; letter-spacing: -.02em; text-wrap: balance; }
+.lpn-article__dek { max-width: 64rem; margin: 2rem auto 0; font-size: clamp(1.7rem, 1.5vw, 2rem); line-height: 1.6; color: rgb(var(--lp-muted)); text-wrap: pretty; }
+.lpn-article__meta { justify-content: center; margin-block-start: 2.4rem; }
+.lpn-wrap.lpn-article__hero { max-width: calc(86.4rem + var(--lpn-gutter) * 2); margin: clamp(3.2rem, 4vw, 4.8rem) auto 0; }
+.lpn-article__hero img { display: block; width: 100%; height: auto; object-fit: cover; aspect-ratio: 21 / 9; border-radius: var(--lpn-radius); background: rgb(var(--lp-sand)); box-shadow: 0 24px 48px -32px rgb(var(--lp-ink) / .35); }
+
+/* Reading column: about 68 characters a line, 1.75 line height */
+.lpn-prose { max-width: 67.2rem; margin: clamp(4rem, 5vw, 6.4rem) auto 0; font-family: var(--lpn-sans); font-size: 1.7rem; line-height: 1.75; color: rgb(var(--lp-ink)); }
+.lpn-prose #bloggy--article, .lpn-prose .bggle--block { max-width: none !important; margin-inline: 0 !important; padding-inline: 0 !important; }
+.lpn-prose :is(p, li, span, td, th, div, a, summary, label):not(.lpn-keep-font) { font-family: var(--lpn-sans) !important; letter-spacing: 0 !important; }
+.lpn-prose p, .lpn-prose li { font-size: 1.7rem !important; line-height: 1.75 !important; color: rgb(var(--lp-ink)) !important; }
+.lpn-prose p { margin: 0 0 1.25em !important; }
+.lpn-prose :is(h1, h2, .h1, .h2) { margin: 2.25em 0 .6em !important; font-family: var(--lpn-serif) !important; font-weight: 400 !important; font-size: clamp(2.6rem, 2.6vw, 3.2rem) !important; line-height: 1.2 !important; letter-spacing: -.01em !important; color: rgb(var(--lp-ink)) !important; text-align: start !important; }
+.lpn-prose :is(h3, h4, .h3, .h4) { margin: 1.75em 0 .5em !important; font-family: var(--lpn-sans) !important; font-weight: 600 !important; font-size: 1.9rem !important; line-height: 1.35 !important; color: rgb(var(--lp-ink)) !important; }
+.lpn-prose :is(h1, h2, h3, h4, [id]) { scroll-margin-top: 11.2rem; }
+.lpn-prose strong, .lpn-prose b { font-weight: 600 !important; }
+.lpn-prose a:not(.bggle--anchor):not(.button):not(.bggle_blog-post-url) { color: rgb(var(--lp-ink)) !important; text-decoration: underline !important; text-decoration-color: rgb(var(--lp-amber)) !important; text-decoration-thickness: 1.5px !important; text-underline-offset: 3px !important; }
+.lpn-prose a:hover { text-decoration-color: currentColor !important; }
+.lpn-prose ul, .lpn-prose ol { margin: 0 0 1.5em !important; padding-inline-start: 1.25em !important; }
+.lpn-prose li { margin: 0 0 .5em !important; padding-inline-start: .25em; }
+.lpn-prose li::marker { color: rgb(var(--lp-amber)); }
+.lpn-prose img { display: block; max-width: 100%; height: auto !important; margin-inline: auto; border-radius: var(--lpn-radius) !important; }
+.lpn-prose .bggle_image--container, .lpn-prose figure { margin: 2em 0 !important; }
+.lpn-prose figcaption, .lpn-prose .bggle_image--container p { font-size: 1.3rem !important; color: rgb(var(--lp-muted)) !important; text-align: center; }
+.lpn-prose blockquote { margin: 2em 0 !important; padding: 0 0 0 2.4rem !important; border-inline-start: 2px solid rgb(var(--lp-amber)); font-family: var(--lpn-serif) !important; font-size: 2.2rem !important; line-height: 1.45 !important; }
+.lpn-prose hr { margin: 3em auto !important; border: 0; border-top: 1px solid rgb(var(--lp-line)); }
+.lpn-prose table { width: 100%; border-collapse: collapse; font-size: 1.5rem; }
+.lpn-prose :is(td, th) { padding: 1.2rem; border-bottom: 1px solid rgb(var(--lp-line)); text-align: start; }
+
+/* Bloggle table of contents */
+.lpn-prose .bggle_table-of-content { margin: 0 0 2.5em !important; padding: 0 !important; background: rgb(var(--lp-sand)) !important; border-radius: var(--lpn-radius) !important; }
+.lpn-prose .bggle-toc-summaryV2 { display: flex !important; align-items: center; gap: 1.2rem; min-height: 56px; padding: 0 2rem !important; cursor: pointer; list-style: none; }
+.lpn-prose .bggle-toc-summaryV2::-webkit-details-marker { display: none; }
+.lpn-prose .bggle-toc-summaryV2 p { margin: 0 !important; font-size: 1.2rem !important; font-weight: 800 !important; letter-spacing: .1em !important; text-transform: uppercase; }
+.lpn-prose .bggle-toc-summaryV2 svg { transition: transform 200ms ease-out; }
+.lpn-prose .bggle-toc-detailsV2[open] .bggle-toc-summaryV2 svg { transform: rotate(90deg); }
+.lpn-prose .bggle-toc-detailsV2 .fd--column { display: grid !important; gap: 0.2rem; padding: 0 2rem 2rem !important; }
+.lpn-prose .bggle--anchor { display: block; padding: 0.6rem 0; font-size: 1.5rem !important; line-height: 1.45 !important; color: rgb(var(--lp-ink)) !important; text-decoration: none !important; }
+.lpn-prose .bggle--anchor:hover { color: rgb(var(--lp-amber-deep)) !important; text-decoration: underline !important; text-underline-offset: 3px; }
+.lpn-prose .bggle--child-link { padding-inline-start: 1.6rem !important; color: rgb(var(--lp-muted)) !important; }
+
+/* Bloggle summary, FAQ, author and buttons */
+.lpn-prose .bggle_summary { padding: 2.4rem !important; border-radius: var(--lpn-radius) !important; background: rgb(var(--lp-sand)) !important; }
+.lpn-prose .bggle_faq .bggle--question, .lpn-prose .bggle--question-title { font-weight: 600 !important; }
+.lpn-prose .bggle_faq .faq--container > * { border-color: rgb(var(--lp-line)) !important; }
+.lpn-prose :is(.bggle_button-link, .bggle_blog-post-button, .button--primary) { display: inline-flex !important; align-items: center; justify-content: center; min-height: 48px; padding: 0 2.4rem !important; border: 0 !important; border-radius: 0.6rem !important; background: rgb(var(--lp-amber)) !important; color: rgb(var(--lp-ink-deep)) !important; font-size: 1.3rem !important; font-weight: 600 !important; letter-spacing: .08em !important; text-transform: uppercase; text-decoration: none !important; box-shadow: none !important; }
+.lpn-prose :is(.bggle_button-link, .bggle_blog-post-button, .button--primary)::before, .lpn-prose :is(.bggle_button-link, .bggle_blog-post-button, .button--primary)::after { display: none !important; }
+.lpn-prose .bggle_author { padding: 2.4rem !important; border-radius: var(--lpn-radius) !important; background: rgb(var(--lp-sand)) !important; }
+.lpn-prose .bggle_reco_blog_posts .bggle_blog-post-title { font-family: var(--lpn-serif) !important; font-size: 1.8rem !important; }
+.lpn-prose iframe { max-width: 100%; border-radius: var(--lpn-radius); }
+
+.lpn-article__foot { display: grid; justify-items: start; gap: 2.4rem; max-width: 67.2rem; margin: clamp(4rem, 5vw, 5.6rem) auto 0; padding-block-start: 3.2rem; border-top: 1px solid rgb(var(--lp-line)); }
+.lpn-share { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem; }
+.lpn-share__label { margin-inline-end: 0.8rem; font-size: 1.1rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.lpn-share__btn { display: inline-flex; align-items: center; gap: 0.6rem; min-height: 40px; padding: 0 1.6rem; border: 0; border-radius: 999px; background: rgb(var(--lp-sand)); color: rgb(var(--lp-ink)); font: inherit; font-size: 1.3rem; font-weight: 600; text-decoration: none; cursor: pointer; transition: background-color 150ms ease-out; }
+.lpn-share__btn:hover { background: rgb(var(--lp-ink) / .1); }
+.lpn-share__btn:focus-visible { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 2px; }
+.lpn-article__disclaimer { margin: 0; font-size: 1.3rem; line-height: 1.6; color: rgb(var(--lp-muted)); }
+.lpn-related { padding-block-start: var(--lpn-gap) !important; }
+
+@media (max-width: 749px) {
+  .lpn-article__head { text-align: start; }
+  .lpn-article__head .lpn-crumbs, .lpn-article__meta { justify-content: flex-start; }
+  .lpn-article__title { margin-inline: 0; }
+  .lpn-article__dek { margin-inline: 0; }
+  .lpn-article__hero img { aspect-ratio: 3 / 2; border-radius: 1.2rem; }
+  .lpn-prose { font-size: 1.7rem; }
+}
+@media (prefers-reduced-motion: reduce) { .lpn-prose .bggle-toc-summaryV2 svg { transition: none; } }
+
+/* Table of contents: a sticky rail beside the text on wide screens, a bar plus sheet below that */
+.lpn-article.has-toc .lpn-prose .bggle_table-of-content { display: none !important; }
+.lpn-toc { display: none; }
+.lpn-toc__title, .lpn-tocsheet__title { margin: 0; font-size: 1.1rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgb(var(--lp-amber)); }
+.lpn-toc__list { margin: 0; padding: 0; list-style: none; }
+.lpn-toc__link { position: relative; display: block; padding: .8rem 0 .8rem 1.8rem; font-size: 1.4rem; line-height: 1.45; color: rgb(var(--lp-muted)); text-decoration: none; text-wrap: pretty; transition: color 200ms ease-out; }
+.lpn-toc__link::before { content: ''; position: absolute; inset-block: .6rem; inset-inline-start: -1px; width: 2px; border-radius: 2px; background: rgb(var(--lp-amber)); transform: scaleY(0); transition: transform 250ms var(--lpn-ease); }
+.lpn-toc__link:hover { color: rgb(var(--lp-ink)); }
+.lpn-toc__link[aria-current="location"] { color: rgb(var(--lp-ink)); font-weight: 600; }
+.lpn-toc__link[aria-current="location"]::before { transform: scaleY(1); }
+.lpn-toc__link:focus-visible, .lpn-toc__top:focus-visible, .lpn-tocbar__btn:focus-visible, .lpn-tocsheet__close:focus-visible { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 2px; border-radius: .4rem; }
+.lpn-toc__item--child .lpn-toc__link { padding-inline-start: 3rem; font-size: 1.3rem; }
+
+@media (min-width: 1200px) {
+  .lpn-article__body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 67.2rem) minmax(0, 1fr); column-gap: clamp(4rem, 4vw, 6.4rem); }
+  .lpn-article__body .lpn-article__main { grid-column: 2; grid-row: 1; min-width: 0; }
+  .lpn-article__body .lpn-side { display: block; grid-column: 3; grid-row: 1; justify-self: start; width: 100%; max-width: 27.2rem; }
+  .lpn-side__inner { position: sticky; top: calc(var(--lpn-head, 8rem) + 3.2rem); max-height: calc(100vh - var(--lpn-head, 8rem) - 6.4rem); overflow-y: auto; margin-block-start: clamp(4rem, 5vw, 6.4rem); scrollbar-width: thin; }
+  .lpn-article__body.has-toc .lpn-toc { display: block; grid-column: 1; grid-row: 1; justify-self: end; width: 100%; max-width: 26rem; }
+  .lpn-toc__nav { position: sticky; top: calc(var(--lpn-head, 8rem) + 3.2rem); max-height: calc(100vh - var(--lpn-head, 8rem) - 6.4rem); overflow-y: auto; margin-block-start: clamp(4rem, 5vw, 6.4rem); padding-inline-end: .4rem; scrollbar-width: thin; }
+  .lpn-toc__nav .lpn-toc__list { margin-block-start: 1.6rem; border-inline-start: 1px solid rgb(var(--lp-line)); }
+  .lpn-toc__top { display: inline-flex; align-items: center; gap: .6rem; min-height: 44px; margin-block-start: 1.6rem; font-size: 1.3rem; font-weight: 600; color: rgb(var(--lp-muted)); text-decoration: none; }
+  .lpn-toc__top:hover { color: rgb(var(--lp-ink)); }
+  .lpn-tocbar { display: none !important; }
+}
+
+/* Below 1200px: a slim bar under the header shows the current section and opens the full list */
+.lpn-tocbar { position: fixed; inset-inline: 0; top: var(--lpn-head, 8rem); z-index: 15; background: rgb(var(--lp-ivory) / .96); -webkit-backdrop-filter: saturate(1.4) blur(10px); backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid rgb(var(--lp-line)); transform: translateY(-100%); opacity: 0; visibility: hidden; transition: transform 250ms var(--lpn-ease), opacity 200ms ease-out, visibility 0s linear 250ms; }
+.lpn-tocbar.is-visible { transform: none; opacity: 1; visibility: visible; transition: transform 250ms var(--lpn-ease), opacity 200ms ease-out, visibility 0s; }
+.lpn-tocbar[hidden] { display: none; }
+.lpn-tocbar__btn { -webkit-appearance: none; appearance: none; display: flex; align-items: center; gap: 1.2rem; width: 100%; min-height: 56px; padding: .6rem var(--lpn-gutter); border: 0; background: transparent; color: rgb(var(--lp-ink)); font: inherit; text-align: start; cursor: pointer; }
+.lpn-tocbar__icon { flex: none; color: rgb(var(--lp-amber)); }
+.lpn-tocbar__text { display: grid; flex: 1; min-width: 0; }
+.lpn-tocbar__label { font-size: 1rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgb(var(--lp-muted)); }
+.lpn-tocbar__current { overflow: hidden; font-size: 1.4rem; font-weight: 600; line-height: 1.35; white-space: nowrap; text-overflow: ellipsis; }
+.lpn-tocbar__count { flex: none; font-size: 1.2rem; font-weight: 600; font-variant-numeric: tabular-nums; color: rgb(var(--lp-muted)); }
+.lpn-tocbar__caret { flex: none; }
+
+.lpn-tocsheet { position: fixed; inset: auto 0 0 0; width: 100%; max-width: 64rem; max-height: 82dvh; margin: 0 auto; padding: 0 0 env(safe-area-inset-bottom); overflow: hidden; display: flex; flex-direction: column; border: 0; border-radius: 2rem 2rem 0 0; background: #fff; color: rgb(var(--lp-ink)); box-shadow: 0 -12px 40px -16px rgb(var(--lp-ink) / .3); transform: translateY(100%); transition: transform 280ms var(--lpn-ease); }
+.lpn-tocsheet:not([open]) { display: none; }
+.lpn-tocsheet:focus { outline: none; }
+.lpn-tocsheet.is-open { transform: none; }
+.lpn-tocsheet::backdrop { background: rgb(31 30 32 / .4); opacity: 0; transition: opacity 200ms ease-out; }
+.lpn-tocsheet.is-open::backdrop { opacity: 1; }
+.lpn-tocsheet__head { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 1.6rem; padding: 2rem 1.2rem .8rem 2.4rem; }
+.lpn-tocsheet__head::before { content: ''; position: absolute; top: .8rem; left: 50%; width: 3.6rem; height: 4px; border-radius: 999px; background: rgb(var(--lp-ink) / .14); transform: translateX(-50%); }
+.lpn-tocsheet__close { -webkit-appearance: none; appearance: none; display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 999px; background: transparent; color: rgb(var(--lp-muted)); cursor: pointer; }
+.lpn-tocsheet__close:hover { background: rgb(var(--lp-ink) / .05); color: rgb(var(--lp-ink)); }
+.lpn-toc__list--sheet { overflow-y: auto; overscroll-behavior: contain; padding: 0 1.6rem 2.4rem; }
+.lpn-toc__list--sheet .lpn-toc__link { display: flex; align-items: center; min-height: 48px; padding: .8rem 1.2rem; border-radius: 1rem; font-size: 1.6rem; color: rgb(var(--lp-ink)); }
+.lpn-toc__list--sheet .lpn-toc__link::before { inset-block: 1.2rem; inset-inline-start: 0; }
+.lpn-toc__list--sheet .lpn-toc__link[aria-current="location"] { background: rgb(var(--lp-sand)); }
+.lpn-toc__list--sheet .lpn-toc__item--child .lpn-toc__link { padding-inline-start: 2.8rem; font-size: 1.5rem; color: rgb(var(--lp-muted)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .lpn-toc__link, .lpn-toc__link::before, .lpn-tocbar, .lpn-tocsheet, .lpn-tocsheet::backdrop { transition: none; }
+}
+
+/* Latest News rail (wide screens only; phones get Keep Reading below the article) */
+.lpn-side { display: none; }
+.lpn-mini { margin: 1.6rem 0 0; padding: 0; list-style: none; }
+.lpn-mini li + li { border-top: 1px solid rgb(var(--lp-line)); }
+.lpn-mini__item { display: grid; grid-template-columns: 6.4rem minmax(0, 1fr); align-items: start; gap: 1.4rem; padding-block: 1.6rem; color: rgb(var(--lp-ink)); text-decoration: none; }
+.lpn-mini li:first-child .lpn-mini__item { padding-block-start: .4rem; }
+.lpn-mini__media { display: block; overflow: hidden; aspect-ratio: 1; border-radius: .8rem; background: rgb(var(--lp-sand)); }
+.lpn-mini__media img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 500ms var(--lpn-ease); }
+.lpn-mini__item:hover .lpn-mini__media img { transform: scale(1.05); }
+.lpn-mini__body { display: grid; gap: .4rem; min-width: 0; }
+.lpn-mini__topic { font-size: 1rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgb(var(--lp-amber)); }
+.lpn-mini__title { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; font-family: var(--lpn-serif); font-size: 1.6rem; line-height: 1.3; text-wrap: pretty; }
+.lpn-mini__item:hover .lpn-mini__title { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.lpn-mini__meta { font-size: 1.2rem; color: rgb(var(--lp-muted)); }
+.lpn-mini__item:focus-visible { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 2px; border-radius: .8rem; }
+.lpn-side__all { margin-block-start: .4rem; font-size: 1.3rem; }
+@media (prefers-reduced-motion: reduce) { .lpn-mini__media img { transition: none; } }
+{% endstylesheet %}
+
+{% javascript %}
+(() => {
+  const bar = document.querySelector('[data-lpn-progress]');
+  const prose = document.querySelector('[data-lpn-prose]');
+  if (bar && prose) {
+    let ticking = false;
+    const update = () => {
+      const r = prose.getBoundingClientRect();
+      const total = r.height - window.innerHeight * 0.6;
+      const done = Math.min(1, Math.max(0, -r.top / (total > 0 ? total : 1)));
+      bar.style.transform = `scaleX(${done})`;
+      ticking = false;
+    };
+    window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    update();
+  }
+  document.querySelectorAll('[data-lpn-copy]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.lpnCopy);
+        const label = btn.querySelector('[data-lpn-copy-label]');
+        const before = label.textContent;
+        label.textContent = btn.dataset.lpnCopied;
+        window.setTimeout(() => { label.textContent = before; }, 2000);
+      } catch (e) {}
+    });
+  });
+})();
+
+(() => {
+  const article = document.querySelector('.lpn-article');
+  const body = document.querySelector('[data-lpn-body]');
+  const prose = document.querySelector('[data-lpn-prose]');
+  const rail = document.querySelector('[data-lpn-toc]');
+  const bar = document.querySelector('[data-lpn-tocbar]');
+  const sheet = document.querySelector('[data-lpn-toc-sheet]');
+  if (!article || !body || !prose || !rail) return;
+  const header = document.querySelector('[data-lpn-header]');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const wide = window.matchMedia('(min-width: 1200px)');
+
+  // 1. Sections: Bloggle's own contents list when present (it knows the author's structure), else the h2/h3 headings
+  const slug = (s) => s.toLowerCase().normalize('NFKD').replace(/[^\w\s-]/g, '').trim().replace(/\s+/g, '-').slice(0, 60);
+  let sections = [...prose.querySelectorAll('.bggle-toc-detailsV2 a.bggle--anchor[href^="#"]')].map((a) => ({
+    title: a.textContent.trim(),
+    target: document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1))),
+    child: a.classList.contains('bggle--child-link'),
+  })).filter((s) => s.title && s.target);
+  if (sections.length < 2) {
+    sections = [...prose.querySelectorAll('h2, h3')].filter((h) => h.textContent.trim() && !h.closest('.bggle_table-of-content, .bggle_faq')).map((h) => {
+      if (!h.id) h.id = slug(h.textContent) || `section-${Math.random().toString(36).slice(2, 7)}`;
+      return { title: h.textContent.trim(), target: h, child: h.tagName === 'H3' };
+    });
+  }
+  if (sections.length < 2) return;
+
+  const build = (list) => {
+    if (!list) return [];
+    list.innerHTML = '';
+    return sections.map((s, i) => {
+      const li = document.createElement('li');
+      li.className = `lpn-toc__item${s.child ? ' lpn-toc__item--child' : ''}`;
+      const a = document.createElement('a');
+      a.className = 'lpn-toc__link';
+      a.href = `#${s.target.id}`;
+      a.textContent = s.title;
+      a.dataset.index = i;
+      li.append(a);
+      list.append(li);
+      return a;
+    });
+  };
+  const railLinks = build(rail.querySelector('[data-lpn-toc-list]'));
+  const sheetLinks = build(sheet && sheet.querySelector('[data-lpn-toc-list-sheet]'));
+  rail.hidden = false;
+  if (bar) bar.hidden = false;
+  body.classList.add('has-toc');
+  article.classList.add('has-toc');
+
+  // 2. Offsets: the sticky header, plus the contents bar when it is showing
+  const headHeight = () => (header ? Math.round(header.getBoundingClientRect().height) : 0);
+  const setHead = () => document.documentElement.style.setProperty('--lpn-head', `${headHeight()}px`);
+  setHead();
+  const offset = () => headHeight() + (!wide.matches && bar ? 56 : 0) + 24;
+
+  // 3. Scroll spy: the active section is the last one whose top has passed a line a quarter down the screen
+  const current = document.querySelector('[data-lpn-toc-current]');
+  const count = document.querySelector('[data-lpn-toc-count]');
+  let active = -1;
+  const setActive = (i) => {
+    if (i === active) return;
+    active = i;
+    [railLinks, sheetLinks].forEach((links) => links.forEach((a, n) => (n === i ? a.setAttribute('aria-current', 'location') : a.removeAttribute('aria-current'))));
+    if (current) current.textContent = i >= 0 ? sections[i].title : sections[0].title;
+    if (count) count.textContent = `${Math.max(i, 0) + 1}/${sections.length}`;
+    const link = railLinks[i];
+    const nav = rail.querySelector('.lpn-toc__nav');
+    if (link && nav && nav.scrollHeight > nav.clientHeight) {
+      const top = link.offsetTop - nav.clientHeight / 2;
+      nav.scrollTo({ top, behavior: reduce.matches ? 'auto' : 'smooth' });
+    }
+  };
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    const line = offset() + window.innerHeight * 0.18;
+    let i = -1;
+    sections.forEach((s, n) => { if (s.target.getBoundingClientRect().top <= line) i = n; });
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) i = sections.length - 1;
+    setActive(i);
+    if (bar) {
+      const r = prose.getBoundingClientRect();
+      const show = !wide.matches && r.top < headHeight() + 8 && r.bottom > headHeight() + 120;
+      bar.classList.toggle('is-visible', show);
+    }
+  };
+  const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', () => { setHead(); onScroll(); });
+  update();
+
+  // 4. Navigation: smooth scroll under the header, keep the URL hash without adding history entries, move focus for keyboard users
+  const go = (i, focus) => {
+    const target = sections[i].target;
+    const y = target.getBoundingClientRect().top + window.scrollY - offset() + 1;
+    window.scrollTo({ top: y, behavior: reduce.matches ? 'auto' : 'smooth' });
+    history.replaceState(null, '', `#${target.id}`);
+    if (focus) {
+      if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+      target.focus({ preventScroll: true });
+    }
+    setActive(i);
+  };
+  const onLink = (event) => {
+    const a = event.target.closest('.lpn-toc__link');
+    if (!a) return;
+    event.preventDefault();
+    const fromKeyboard = event.detail === 0;
+    if (sheet && sheet.open) closeSheet(false);
+    go(Number(a.dataset.index), fromKeyboard);
+  };
+  rail.addEventListener('click', onLink);
+  if (sheet) sheet.addEventListener('click', onLink);
+  const top = rail.querySelector('[data-lpn-top]');
+  if (top) top.addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: reduce.matches ? 'auto' : 'smooth' }); history.replaceState(null, '', location.pathname + location.search); });
+
+  // 5. Phone sheet: a modal dialog in the top layer, above every app widget
+  const opener = bar && bar.querySelector('[data-lpn-toc-open]');
+  let keyboardOpen = false;
+  const openSheet = (fromKeyboard) => {
+    if (!sheet || sheet.open || typeof sheet.showModal !== 'function') return;
+    keyboardOpen = fromKeyboard;
+    sheet.showModal();
+    opener.setAttribute('aria-expanded', 'true');
+    document.documentElement.style.overflow = 'hidden';
+    requestAnimationFrame(() => sheet.classList.add('is-open'));
+    const link = sheetLinks[Math.max(active, 0)];
+    if (link) link.scrollIntoView({ block: 'center' });
+    if (fromKeyboard && link) link.focus(); else sheet.focus();
+  };
+  const closeSheet = (restoreFocus = true) => {
+    if (!sheet || !sheet.open) return;
+    sheet.classList.remove('is-open');
+    opener.setAttribute('aria-expanded', 'false');
+    window.setTimeout(() => {
+      sheet.close();
+      document.documentElement.style.overflow = '';
+      if (restoreFocus && keyboardOpen) opener.focus();
+    }, reduce.matches ? 0 : 220);
+  };
+  if (opener) opener.addEventListener('click', (e) => openSheet(e.detail === 0));
+  if (sheet) {
+    sheet.querySelector('[data-lpn-toc-close]').addEventListener('click', () => closeSheet());
+    sheet.addEventListener('click', (e) => { if (e.target === sheet) closeSheet(); });
+    sheet.addEventListener('cancel', (e) => { e.preventDefault(); closeSheet(); });
+  }
+
+  // 6. Arriving with a hash (shared link to a section): land under the header
+  if (location.hash) {
+    const i = sections.findIndex((s) => `#${s.target.id}` === decodeURIComponent(location.hash));
+    if (i > -1) window.setTimeout(() => go(i, false), 300);
+  }
+})();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "News article",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "latest_blogs", "label": "Latest News from", "info": "Blog handles separated by commas.", "default": "health,nutrition,science,beauty,products,recipes,business,news" },
+    { "type": "range", "id": "latest_count", "label": "Latest News articles", "min": 3, "max": 6, "step": 1, "default": 4 },
+    { "type": "url", "id": "latest_url", "label": "Latest News link" }
+  ]
+}
+{% endschema %}

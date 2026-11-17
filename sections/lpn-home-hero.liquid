@@ -1,0 +1,51 @@
+{%- liquid
+  assign handles = section.settings.blogs | split: ','
+  assign pool = blogs[handles.first].articles
+  for h in handles offset: 1
+    assign h = h | strip
+    if blogs[h] != blank
+      assign pool = pool | concat: blogs[h].articles
+    endif
+  endfor
+  assign pool = pool | sort: 'published_at' | reverse
+  assign featured = pool.first
+-%}
+<section class="lpn-hero">
+  <div class="lpn-wrap">
+    <div class="lpn-hero__intro">
+      {%- if section.settings.eyebrow != blank -%}<p class="lpn-eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      <h1 class="lpn-hero__title">{{ section.settings.heading }}</h1>
+      {%- if section.settings.text != blank -%}<p class="lpn-hero__text">{{ section.settings.text | escape }}</p>{%- endif -%}
+    </div>
+    {%- if featured != blank -%}
+      {%- render 'lpn-card', article: featured, layout: 'feature', show_excerpt: true, eager: true, heading_tag: 'h2' -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{% stylesheet %}
+.lpn-hero { padding-block: clamp(4rem, 6vw, 8rem) var(--lpn-gap); }
+.lpn-hero__intro { max-width: 76.8rem; margin-block-end: clamp(4rem, 5vw, 6.4rem); }
+.lpn-hero__title { margin: 1.2rem 0 0; font-size: clamp(4rem, 6vw, 7.6rem); line-height: 1.02; letter-spacing: -.02em; color: rgb(var(--lp-ink)); text-wrap: balance; }
+.lpn-hero__title em { font-style: normal; color: rgb(var(--lp-amber)); }
+.lpn-hero__text { max-width: 57.6rem; margin: 2rem 0 0; font-size: clamp(1.6rem, 1.3vw, 1.8rem); line-height: 1.65; color: rgb(var(--lp-muted)); }
+@media (min-width: 990px) {
+  .lpn-hero__intro { max-width: none; }
+  .lpn-hero__title { font-size: clamp(4.8rem, 5.2vw, 7.6rem); white-space: nowrap; }
+  .lpn-hero__text { max-width: none; white-space: nowrap; }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "News hero",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "LifePharm News" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Ideas for Living Well, <em>at Every Age</em>" },
+    { "type": "text", "id": "text", "label": "Intro", "default": "Practical guides on health, nutrition and skin, and the science behind our products." },
+    { "type": "text", "id": "blogs", "label": "Blogs to feature from", "info": "Blog handles separated by commas. The newest article across them is featured.", "default": "health,nutrition,science,beauty,products,recipes,business,news" }
+  ],
+  "presets": [{ "name": "News hero" }]
+}
+{% endschema %}

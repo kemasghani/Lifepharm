@@ -1,0 +1,66 @@
+{% doc %}
+  Article card for LifePharm News.
+
+  The topic (blog) is read from the article URL, so the card works for lists that mix several blogs.
+  Reading time is the article length at 220 words a minute, at least one minute.
+
+  @param {article} article - The article to show
+  @param {string} [layout] - "feature" (large, image beside text), "row" (thumbnail beside title) or "card" (default)
+  @param {boolean} [show_topic] - Show the topic label above the title (default true)
+  @param {boolean} [show_excerpt] - Show the article excerpt when it has one
+  @param {boolean} [eager] - Load the image eagerly, for the first card in the viewport
+  @param {string} [heading_tag] - Tag for the title (default "h3")
+
+  @example
+  {% render 'lpn-card', article: article, layout: 'feature', show_excerpt: true, eager: true, heading_tag: 'h2' %}
+{% enddoc %}
+{%- liquid
+  assign layout = layout | default: 'card'
+  assign tag = heading_tag | default: 'h3'
+  assign topic_handle = article.url | split: '/blogs/' | last | split: '/' | first
+  assign topic = blogs[topic_handle]
+  assign words = article.content | strip_html | split: ' ' | size
+  assign minutes = words | divided_by: 220 | at_least: 1
+
+  if layout == 'feature'
+    assign sizes = '(min-width: 990px) 56vw, (min-width: 750px) 55vw, 100vw'
+    assign widths = '480, 720, 960, 1200, 1500'
+  elsif layout == 'row'
+    assign sizes = '104px'
+    assign widths = '208, 312'
+  else
+    assign sizes = '(min-width: 990px) 30vw, (min-width: 750px) 46vw, 92vw'
+    assign widths = '360, 540, 720, 900'
+  endif
+
+  if eager
+    assign loading = 'eager'
+    assign priority = 'high'
+  else
+    assign loading = 'lazy'
+    assign priority = 'auto'
+  endif
+-%}
+<article class="lpn-card lpn-card--{{ layout }}">
+  <a class="lpn-card__media" href="{{ article.url }}" tabindex="-1" aria-hidden="true">
+    {%- if article.image -%}
+      {{ article.image | image_url: width: 1500 | image_tag: loading: loading, fetchpriority: priority, sizes: sizes, widths: widths, alt: '' }}
+    {%- endif -%}
+  </a>
+  <div class="lpn-card__body">
+    {%- if show_topic != false and topic != blank -%}
+      <a class="lpn-eyebrow" href="{{ topic.url }}">{{ topic.title | escape }}</a>
+    {%- endif -%}
+    <{{ tag }} class="lpn-card__title"><a href="{{ article.url }}">{{ article.title | escape }}</a></{{ tag }}>
+    {%- if show_excerpt and article.excerpt != blank -%}
+      <p class="lpn-card__excerpt">{{ article.excerpt | strip_html | strip | truncatewords: 34 }}</p>
+    {%- endif -%}
+    <p class="lpn-meta">
+      <span>{{ article.published_at | date: '%-d %B %Y' }}</span>
+      <span>{{ 'lpn.min_read' | t: count: minutes }}</span>
+    </p>
+    {%- if layout == 'feature' -%}
+      <a class="lpn-link" href="{{ article.url }}">{{ 'lpn.read_story' | t }} <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 8h10m-4-4 4 4-4 4"/></svg><span class="sr-only">: {{ article.title | escape }}</span></a>
+    {%- endif -%}
+  </div>
+</article>

@@ -33,6 +33,8 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
     {%- comment -%}Few prefetch to increase performance on commonly used third-parties{%- endcomment -%}
     <link rel="preconnect" href="https://cdn.shopify.com">
     <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- comment -%}Exigo shared-cart service: open the connection early so "Share Your Cart" does not pay for DNS + TLS on the click{%- endcomment -%}
+    <link rel="preconnect" href="https://lpshopify.azurewebsites.net" crossorigin>
     <link rel="dns-prefetch" href="https://productreviews.shopifycdn.com">
 
     {%- unless settings.heading_font.system? -%}
@@ -267,6 +269,7 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
     <!-- Stamped -->
     <script>function myInit(){ StampedFn.init({ apiKey: '9ad7ae72-fc06-4606-9d55-3fe5a0e312d5', sId: '301382' }); }</script>
 <script async onload="myInit()" type="text/javascript" src="https://cdn1.stamped.io/files/widget.min.js"></script>
+    {%- render 'lp-share-cart' -%}
   </body>
 </html>{%- comment -%}
 

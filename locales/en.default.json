@@ -475,6 +475,14 @@
       "failed": "We couldn't create your link. Please try again.",
       "retry": "Try Again",
       "on": "Share on"
+    },
+    "referral": {
+      "eyebrow": "Before You Check Out",
+      "title": "Were You Referred by Someone?",
+      "text": "Add their name so they're recognised for your order. It only takes a moment.",
+      "add": "Add My Referrer",
+      "skip": "No, Continue to Checkout",
+      "never": "Don't show this again"
     }
   }
 }

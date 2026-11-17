@@ -1,0 +1,940 @@
+{% layout 'lp' %}
+{{ 'light-hydration.css' | asset_url | stylesheet_tag }}
+<link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+<link rel="preload" as="image" href="{{ 'hero-after-meals-product-16x9.jpg' | asset_url }}" media="(min-width: 761px)" fetchpriority="high">
+<link rel="preload" as="image" href="{{ 'hero-after-meals-product-4x5.jpg' | asset_url }}" media="(max-width: 760px)" fetchpriority="high">
+<script>
+  /* CART SETUP — edit these numbers here (this is your live file).
+     Variant ID: Products > CELLNERGY > click a variant > number at the end of the URL. */
+  window.CN_CART = {
+    single: { variant: 53040002400565 },   // 1 Bottle
+    triple: { variant: 53003471388981 },   // 3 Bottles
+    // 6-MONTH REFILL 3-PACK (the checkbox). Paste the refill variant ID below.
+    // Leave sellingPlan null for a one-time buy, OR paste a Subscribe & Save
+    // selling-plan ID to make the refill auto-ship.
+    refill: { variant: 53049168167221, sellingPlan: 710885900597 }
+  };
+</script>
+
+
+  <!-- 01 ANNOUNCEMENT BAR -->
+  <div class="announce">
+    <div class="wrap">
+      <p>SPECIAL OFFER <span class="a-price">$39</span> (was $49)</p>
+      <a class="a-claim" href="https://shop.lifepharm.com/discount/MEAL10?redirect=/checkout">Claim $39</a>
+    </div>
+  </div>
+
+  <!-- 02 HERO -->
+  <header class="hero hero-v2" id="top">
+    <div class="hero-media">
+      <img src="{{ 'hero-after-meals.jpg' | asset_url }}" class="hero-after" loading="lazy" alt="A happy couple relaxing together after a big home-cooked family dinner" />
+    </div>
+    <div class="wrap">
+      <div class="hero-content">
+        <h1>Love the meal. <span class="grad">Skip the heavy hour.</span></h1>
+        <p class="sub">It's not the food. <strong>It's your water.</strong></p>
+        <div class="price-chip">
+          <span class="was">$49</span>
+          <span class="now">$39</span>
+          <span class="save">SPECIAL OFFER &middot; save $10</span>
+        </div>
+        <div class="hero-cta">
+          <a class="btn" href="https://shop.lifepharm.com/discount/MEAL10?redirect=/checkout">Get 20% Off, Just $39 &rarr;</a>
+          <span class="reassure"><svg class="guar-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>90-Day Money-Back Guarantee</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 02 HERO (MAIN, product-in-scene, full-bleed photo). This is now the live default hero.
+       The original lifestyle hero above (#top) is kept in the markup but hidden via CSS, so it
+       can be restored or A/B tested later. -->
+  <style>
+    #top { display: none; }
+    .hero-b { display: flex; }
+    /* full-bleed photo behind everything */
+    .hero-b .hero-media { position: absolute; inset: 0; width: 100%; height: 100%; min-height: 0; max-height: none; z-index: 0; }
+    .hero-b .hero-media picture { display: block; width: 100%; height: 100%; }
+    .hero-b .hero-media img.hero-after { width: 100%; height: 100%; object-fit: cover; object-position: 72% 50%; }
+    /* dark scrim: heavy on the left (text), clear on the right (couple + bottle) */
+    .hero-b .hero-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(16,11,6,.80) 0%, rgba(16,11,6,.52) 34%, rgba(16,11,6,.06) 64%); }
+    .hero-b .wrap { position: relative; z-index: 2; }
+    .hero-b .hero-content h1 { color: #fff; text-shadow: 0 2px 22px rgba(0,0,0,.7); }
+    .hero-b .hero-content .grad { color: #ffb265; }
+    .hero-b .hero-content .sub { color: #fff; text-shadow: 0 1px 14px rgba(0,0,0,.65); }
+    .hero-b .hero-content .sub strong { color: #fff; }
+    .hero-b .reassure { color: #fff; text-shadow: 0 1px 10px rgba(0,0,0,.7); }
+    /* white price card so $49/$39 are readable on the photo */
+    .hero-b .price-chip { position: relative; display: inline-flex; align-items: baseline; gap: 12px; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 16px 28px; box-shadow: 0 16px 46px rgba(0,0,0,.4); }
+    @media (max-width: 760px) {
+      /* mobile: show the FULL photo in flow, fade its bottom into the cream bg, dark text below */
+      .hero-b { display: block !important; position: relative; min-height: 0; background: #f3ede3; }
+      .hero-b .hero-media { position: relative; inset: auto; width: 100%; height: auto; max-height: none; min-height: 0; }
+      .hero-b .hero-media picture { display: block; width: 100%; }
+      .hero-b .hero-media img.hero-after { position: relative; width: 100%; height: auto; object-fit: contain; }
+      .hero-b .hero-media::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; top: auto; height: 110px; background: linear-gradient(to bottom, rgba(243,237,227,0) 0%, #f3ede3 100%); }
+      .hero-b .wrap { position: relative; z-index: 2; text-align: center; padding: 6px 24px 34px; }
+      .hero-b .hero-content h1 { position: static; transform: none; left: auto; right: auto; top: auto; padding: 0; color: var(--ink-strong); text-shadow: none; font-size: clamp(30px, 8vw, 40px); }
+      .hero-b .hero-content .grad { color: var(--orange); }
+      .hero-b .hero-content .sub { color: var(--muted); text-shadow: none; }
+      .hero-b .hero-content .sub strong { color: var(--ink-strong); }
+      .hero-b .reassure { color: var(--ink); text-shadow: none; }
+      .hero-b .price-chip { margin: 16px auto 0; box-shadow: 0 14px 38px rgba(0,0,0,.10); }
+      .hero-b .hero-cta { justify-content: center; align-items: center; }
+    }
+  </style>
+  <style>
+    /* review-star eyebrow above the hero headline (real 5-star rating, links to reviews) */
+    .hero-stars { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 12px; font-size: 14px; font-weight: 700; text-decoration: none; color: #fff; text-shadow: 0 1px 10px rgba(0,0,0,.7); }
+    .hero-stars .hs-stars { color: #F5A623; letter-spacing: 1px; font-size: 15px; text-shadow: none; }
+    @media (max-width: 760px) { .hero-b .hero-stars { color: var(--ink-strong, #2b2b2b); text-shadow: none; justify-content: center; } }
+  </style>
+  <header class="hero hero-v2 hero-b">
+    <div class="hero-media">
+      <picture>
+        <source media="(max-width: 760px)" srcset="{{ 'hero-after-meals-product-4x5.jpg' | asset_url }}">
+        <img src="{{ 'hero-after-meals-product-16x9.jpg' | asset_url }}" class="hero-after" fetchpriority="high" decoding="async" alt="An older couple relaxing together after a home-cooked family dinner, with the CELLNERGY Hydration System bottle on the table" />
+      </picture>
+    </div>
+    <div class="wrap">
+      <div class="hero-content">
+        <a class="hero-stars" href="#reviews-all"><span class="hs-stars">&starf;&starf;&starf;&starf;&starf;</span> Rated 5 stars by verified customers</a>
+        <h1>You watch what you eat. <span class="grad">What about your water?</span></h1>
+        <p class="sub">You put thought into every meal. <strong>Your water deserves the same.</strong></p>
+        <div class="price-chip">
+          <span class="was">$49</span>
+          <span class="now">$39</span>
+          <span class="save">SPECIAL OFFER &middot; save $10</span>
+        </div>
+        <div class="hero-cta">
+          <a class="btn" href="https://shop.lifepharm.com/discount/MEAL10?redirect=/checkout">Get 20% Off, Just $39 &rarr;</a>
+          <span class="reassure"><svg class="guar-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>90-Day Money-Back Guarantee</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 03 TRUST MARQUEE -->
+  <div class="marquee" aria-label="Accreditations">
+    <div class="marquee-track" id="marquee-track"></div>
+  </div>
+
+  <!-- 04 THE TURN (spine) -->
+  <section class="section problem" id="problem">
+    <style>
+      /* centered heading on top; intro copy on the left, hub ring on the right */
+      #problem .p-head { text-align: center; }
+      #problem .problem-2col { display: flex; align-items: center; gap: 44px; margin-top: 10px; }
+      #problem .problem-2col > .p-copy { flex: 1 1 44%; text-align: left; }
+      #problem .problem-2col > .p-copy p { margin: 0 0 14px; }
+      #problem .problem-2col > .hub { flex: 1 1 56%; min-width: 440px; margin: 0; }
+      @media (max-width: 900px) {
+        #problem .problem-2col { flex-direction: column; gap: 22px; }
+        #problem .problem-2col > .p-copy { flex-basis: auto; text-align: center; }
+        #problem .problem-2col > .hub { min-width: 0; width: 100%; }
+      }
+    </style>
+    <div class="wrap">
+      <div class="section-head p-head reveal">
+        <span class="step-badge">1</span>
+        <h2>You think about every meal. <span class="grad">Your water&rsquo;s an afterthought.</span></h2>
+      </div>
+      <div class="problem-2col">
+        <div class="p-copy reveal">
+          <p class="intro">You pick the ingredients, watch the portions, read the labels. But the water on the table? Most of us never give it a thought, even though it&rsquo;s the one thing we drink with every single meal.</p>
+          <p class="intro">Ordinary water is just that, plain and a little acidic. CELLNERGY turns it into <strong>fresh, mineral-rich, gently alkaline water</strong>, so what you drink finally gets the same care as what you eat. <strong>No diet. Nothing to give up.</strong></p>
+          <p class="hub-cue">Hover or tap each point beside it to see what CELLNERGY adds to ordinary water.</p>
+        </div>
+        <div class="hub reveal">
+          <div class="hub-ring">
+            <div class="hub-center">What CELLNERGY Adds</div>
+            <button class="spoke s1" type="button">Gently Alkaline pH<span class="pop"><span class="arrow">&rarr;</span>Raises plain, slightly acidic water to a <b>balanced pH near 9.</b>*</span></button>
+            <button class="spoke s2" type="button">Fresh Minerals<span class="pop"><span class="arrow">&rarr;</span>The built-in <b>diffuser</b> adds a fresh mineral profile to every fill.*</span></button>
+            <button class="spoke s3" type="button">Molecular Hydrogen<span class="pop"><span class="arrow">&rarr;</span>Every fill is <b>antioxidant-rich</b> from molecular hydrogen.*</span></button>
+            <button class="spoke s4 up" type="button">Terahertz Finish<span class="pop"><span class="arrow">&rarr;</span>A final conditioning step, for <b>clean, fresh-tasting water.</b>*</span></button>
+            <button class="spoke s5 up" type="button">Better Taste<span class="pop"><span class="arrow">&rarr;</span>Fresh and smooth, so you <b>actually reach for it</b> all day.</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- inline CTA -->
+  <div class="cta-strip">
+    <div class="wrap">
+      <a class="btn cta-btn" href="https://shop.lifepharm.com/discount/MEAL10?redirect=/checkout">Upgrade My Water for $39 &rarr;</a>
+      <span class="cta-guar"><svg class="guar-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>90-Day Money-Back Guarantee</span>
+    </div>
+  </div>
+
+  <!-- 05 THE PROOF â€” one mechanism -->
+  <section class="section" id="proof">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="step-badge">2</span>
+        <h2>The difference? <span class="grad">What&rsquo;s in the water.</span></h2>
+        <p class="intro">Fresh, mineral-rich, and gently alkaline &mdash; and you can see the change for yourself.</p>
+      </div>
+      <div class="proof-wrap reveal">
+        <div class="proof-grid">
+          <div class="proof-col">
+            <p class="vchart-title">Ordinary Water vs. CELLNERGY Water</p>
+            <div class="vchart-plot">
+              <div class="vthresh" style="bottom:68%"><span>alkaline range, 8.5+</span></div>
+              <div class="vbar ord"><span class="vval">pH 7.8</span><div class="vcol" style="height:48%"></div><span class="vlab">Ordinary water</span></div>
+              <div class="vbar cell"><span class="vval">pH 9</span><div class="vcol" style="height:82%"></div><span class="vlab">CELLNERGY</span></div>
+            </div>
+            <p class="proof-bridge"><strong>You can see the change.</strong> Ordinary water tests acidic (around pH 7.8). CELLNERGY lands near pH 9 &mdash; gently alkaline, fresh, and smooth to drink.</p>
+          </div>
+          <div class="proof-video">
+            <p class="pv-cap">See the difference for yourself.</p>
+            <div class="ph-video">
+              {%- assign ph_vid_fallback = 'https://cdn.shopify.com/videos/c/o/v/89bafd5f7a124653961859999b29d633.mp4' -%}
+              {%- assign ph_poster_fallback = 'ph-thumb.jpg' | asset_url -%}
+              <video id="ph-vid" src="{{ page.metafields.custom.demo_video_url | default: ph_vid_fallback }}" poster="{{ page.metafields.custom.demo_poster_url | default: ph_poster_fallback }}" controls playsinline loop preload="none" aria-label="A pH test: ordinary water poured into the CELLNERGY bottle turns from green to blue as it becomes alkaline"></video>
+            </div>
+            <p class="pv-sub">A pH indicator shows it: <strong>green</strong> is more acidic, <strong>blue</strong> is alkaline. Same water, made gently alkaline by CELLNERGY.</p>
+          </div>
+        </div>
+        <div class="also-inside">
+          <p class="ai-label">Also inside every fill</p>
+          <ul>
+            <li><strong>Molecular hydrogen</strong> &mdash; naturally antioxidant-rich.*</li>
+            <li><strong>A final terahertz step</strong> &mdash; so the water feels light and fresh.*</li>
+          </ul>
+        </div>
+        <p class="proof-foot">Measured in LifePharm product testing; individual results vary.*</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- inline CTA -->
+  <div class="cta-strip">
+    <div class="wrap">
+      <a class="btn cta-btn" href="https://shop.lifepharm.com/discount/MEAL10?redirect=/checkout">Get Mine for $39 &rarr;</a>
+      <span class="cta-guar"><svg class="guar-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>90-Day Money-Back Guarantee</span>
+    </div>
+  </div>
+
+  <!-- 06 COMPARISON -->
+  <section class="section tight" id="compare">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="step-badge">3</span>
+        <h2>Not all water <span class="grad">is the same.</span></h2>
+        <p class="intro">Regular water is plain and acidic. Even alkaline water misses a step. Here&rsquo;s where <strong>CELLNERGY</strong> is different.</p>
+      </div>
+      <div class="compare-wrap reveal">
+        <table class="ctable">
+          <thead>
+            <tr><th></th><th>Regular water</th><th>Alkaline water</th><th class="hl-col">CELLNERGY</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Fresh, gently alkaline water*</td><td><span class="mark-no">&times;</span></td><td><span class="mark-yes">&check;</span></td><td class="hl-col col-cell"><span class="mark-yes">&check;</span></td></tr>
+            <tr><td>Mineral-rich, sip after sip*</td><td><span class="mark-no">&times;</span></td><td><span class="mark-no">&times;</span></td><td class="hl-col col-cell"><span class="mark-yes">&check;</span></td></tr>
+            <tr><td>Made fresh in one bottle, ready to go*</td><td><span class="mark-no">&times;</span></td><td><span class="mark-no">&times;</span></td><td class="hl-col col-cell"><span class="mark-yes">&check;</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="compare-proof">Regular water is plain and acidic. Alkaline water is a step up. <strong>CELLNERGY goes further:</strong> a built-in mineral diffuser makes every fill fresh, mineral-rich, and gently alkaline, and holds it there, sip after sip.*</p>
+    </div>
+  </section>
+
+  <!-- 07 HOW IT WORKS -->
+  <section class="section tight" id="how">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="step-badge">4</span>
+        <h2>It&rsquo;s as simple as fill, wait, and <span class="grad">drink.</span></h2>
+        <p class="sub">Meet the CELLNERGY Hydration System, a 650 mL (22 oz) bottle with a built-in <strong>mineral diffuser.</strong></p>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><span class="num">1</span><h4>Fill</h4><p>Add room-temperature filtered water.</p></div>
+        <div class="step reveal d1"><span class="num">2</span><h4>Wait</h4><p>Let it sit about 15 minutes while the minerals do their work.</p></div>
+        <div class="step reveal d2"><span class="num">3</span><h4>Drink</h4><p>Drink it down within 24 hours, especially with meals.</p></div>
+        <div class="step reveal d3"><span class="num">4</span><h4>Replace</h4><p>Swap the mineral diffuser about every 2 to 3 months for full performance.*</p></div>
+      </div>
+      <div class="inside reveal">
+        <div>
+          <h3>What&rsquo;s inside</h3>
+          <ul class="inside-list">
+            <li>650 mL / 22 oz capacity</li>
+            <li>Leak-proof flip-top lid and carry strap</li>
+            <li>Mineral diffuser that makes fresh, gently alkaline water*</li>
+            <li>Made for the meals you love, and everyday hydration*</li>
+          </ul>
+        </div>
+        <div class="inside-img"><video id="vid-inside" src="https://cdn.shopify.com/videos/c/o/v/b2f57c9fb6674d54ac50b54da65623e4.mp4" poster="{{ 'product-detail.jpg' | asset_url }}" muted loop playsinline controls preload="none" aria-label="The CELLNERGY Hydration System and its mineral diffuser"></video></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 TESTIMONIALS -->
+  <section class="section" id="reviews">
+    <style>
+      /* compact this section vertically (keeps all content): tighter cards, less padding,
+         and 4 review cards in a single row on desktop instead of a 2x2 block */
+      #reviews.section { padding-top: 40px; padding-bottom: 40px; }
+      #reviews .section-head { margin-bottom: 18px; }
+      #reviews .reviews-list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+      #reviews .tcard { padding: 16px 16px; }
+      #reviews .tcard .quote { margin: 8px 0; font-size: 14.5px; line-height: 1.45; }
+      #reviews .ugc-3row { margin-top: 22px; }
+      @media (max-width: 860px) { #reviews .reviews-list { grid-template-columns: repeat(2, 1fr); } }
+      @media (max-width: 520px) { #reviews .reviews-list { grid-template-columns: 1fr; } }
+    </style>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="step-badge">5</span>
+        <h2>From our <span class="grad">customers.</span></h2>
+      </div>
+      <div class="reviews-list">
+        <div class="tcard reveal">
+          <span class="stars">&starf;&starf;&starf;&starf;&starf;</span>
+          <p class="quote">I still eat my big <strong>Sunday dinners</strong>. I just changed the water, not the food, and <strong>I actually look forward to drinking it now.</strong></p>
+          <div class="who"><span class="mono">RT</span><div><div class="name">Raymond T.</div></div></div>
+        </div>
+        <div class="tcard reveal d1">
+          <span class="stars">&starf;&starf;&starf;&starf;&starf;</span>
+          <p class="quote">I was never a water person. <strong>About three weeks in,</strong> I'm drinking way more of it, and honestly it just <strong>tastes better.</strong></p>
+          <div class="who"><span class="mono">DR</span><div><div class="name">Denise R.</div></div></div>
+        </div>
+        <div class="tcard reveal">
+          <span class="stars">&starf;&starf;&starf;&starf;&starf;</span>
+          <p class="quote">The only thing I changed was my water. It&rsquo;s fresh and easy to drink, so <strong>I reach for it all day.</strong></p>
+          <div class="who"><span class="mono">CM</span><div><div class="name">Chris M.</div></div></div>
+        </div>
+        <div class="tcard reveal d1">
+          <span class="stars">&starf;&starf;&starf;&starf;&starf;</span>
+          <p class="quote">I cook the big family dinners and <strong>didn&rsquo;t give up a single dish.</strong> I just drink <strong>better water</strong> with them now.</p>
+          <div class="who"><span class="mono">SO</span><div><div class="name">Sandra O.</div></div></div>
+        </div>
+      </div>
+
+      <!-- All three UGC videos in one compact row. Shopify-hosted; the two without a poster
+           use a #t= media fragment so a real frame shows as the thumbnail (not a black box). -->
+      <style>
+        .ugc-3row { display: flex; gap: 16px; justify-content: center; margin-top: 34px; flex-wrap: wrap; }
+        .ugc-3row .ugc-frame { flex: 0 1 240px; max-width: 240px; aspect-ratio: 9 / 16; align-self: auto; }
+        @media (max-width: 760px) {
+          .ugc-3row { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; -webkit-overflow-scrolling: touch; padding-bottom: 6px; }
+          .ugc-3row .ugc-frame { flex: 0 0 62%; max-width: 62%; }
+        }
+      </style>
+      <div class="ugc-3row reveal">
+        <div class="ugc-frame">
+          <span class="ugc-badge">Real customer</span>
+          <video src="https://cdn.shopify.com/videos/c/o/v/4b8a45fccb3d41e78931872e97d5d785.mp4" poster="{{ 'ugc-poster.jpg' | asset_url }}" controls playsinline muted loop preload="none" aria-label="A real customer shares how the water feels"></video>
+        </div>
+        <div class="ugc-frame">
+          <span class="ugc-badge">Real customer</span>
+          <video src="https://cdn.shopify.com/videos/c/o/v/f773dcd20603433b8a43ed83016faa5f.mp4#t=0.5" controls playsinline muted loop preload="metadata" aria-label="A real customer shares their experience with the water"></video>
+        </div>
+        <div class="ugc-frame">
+          <span class="ugc-badge">Real customer</span>
+          <video src="https://cdn.shopify.com/videos/c/o/v/a94d02fa3bdb4a46be674ac015da0f20.mp4#t=0.5" controls playsinline muted loop preload="metadata" aria-label="A real customer shares their experience with the water"></video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- inline CTA -->
+  <div class="cta-strip">
+    <div class="wrap">
+      <a class="btn cta-btn" href="https://shop.lifepharm.com/discount/MEAL10?redirect=/checkout">Shop Now &rarr;</a>
+      <span class="cta-guar"><svg class="guar-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>90-Day Money-Back Guarantee</span>
+    </div>
+  </div>
+
+  <!-- 09 CLOSING OFFER -->
+  <section class="section warm" id="offer">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="step-badge">6</span>
+        <h2>Give your water <span class="grad">the same thought as your food.</span></h2>
+      </div>
+      <div class="offer-grid">
+        <div class="offer-visual reveal">
+          <video id="vid-offer" src="https://cdn.shopify.com/videos/c/o/v/6e2415e688574d3e89d33056cba33530.mp4" poster="{{ 'offer-reflux.jpg' | asset_url }}" autoplay muted loop playsinline preload="metadata" aria-label="The CELLNERGY Hydration System"></video>
+          <div class="save-badge"><span class="s-small">Save</span><span class="s-big" id="save-amt">$10</span></div>
+        </div>
+        <div class="order reveal d1">
+          <p class="order-sub">One bottle. The water you already drink, <strong>made fresh, mineral-rich, and gently alkaline.</strong></p>
+          <div class="buy-tabs" role="tablist" aria-label="Choose your pack">
+            <button class="buy-tab active" type="button" data-plan="single" aria-selected="true">
+              <span class="bt-name">1 Bottle</span>
+              <span class="bt-price">$39</span>
+            </button>
+            <button class="buy-tab" type="button" data-plan="triple" aria-selected="false">
+              <span class="bt-tag">Best value</span>
+              <span class="bt-name">3 Bottles</span>
+              <span class="bt-price">$99</span>
+            </button>
+          </div>
+          <div class="pricing">
+            <span class="was" id="p-was">$49</span>
+            <span class="now" id="p-now">$39</span>
+            <span class="save-pill" id="p-save">You save $10</span>
+          </div>
+          <a class="btn block" id="order-cta" href="https://shop.lifepharm.com/discount/MEAL10?redirect=/checkout">Get My Bottle, Save $10</a>
+          <div class="guar-line"><svg class="guar-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg><strong>90-Day Money-Back Guarantee</strong></div>
+          <p style="font-size:12.5px;color:#8a8a8a;margin-top:10px;line-height:1.4;">Discount applied automatically at checkout. Shipping and tax calculated at checkout.</p>
+          <label class="bump">
+            <input type="checkbox" id="diffuser-bump" />
+            <span class="bump-text"><span style="display:inline-block;background:#F58220;color:#fff;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;margin-right:8px;white-space:nowrap;">Subscribe &amp; Save</span><strong style="font-size:17px;">25% off</strong> on your <strong>first</strong> diffuser refill<sup style="font-size:9px;font-weight:700;">*</sup><span style="display:block;margin-top:8px;">Add a <a href="https://shop.lifepharm.com/products/cellnergy-diffuser-replacement?ref=RetailDirect" target="_blank" rel="noopener" onclick="event.stopPropagation();" style="color:#F18A00;text-decoration:underline;">CELLNERGY Diffuser Replacement &#8599;</a> subscription. Your mineral diffuser swaps about every 2 to 3 months, so a fresh one arrives right on time.</span><span style="font-size:11px;color:#8a8a8a;line-height:1.4;display:block;margin-top:5px;">Recurring subscription, $22 every 3 months until you cancel. Cancel anytime in your account. Frequency and price confirmed at checkout.</span><span style="display:block;font-size:11.5px;color:#8a8a8a;margin-top:5px;">*12% off each one after.</span></span>
+          </label>
+          <div class="wyg">
+            <h3 class="wyg-head">What you get</h3>
+            <ul class="includes" id="p-includes">
+              <li>1 CELLNERGY Hydration System (650 mL / 22 oz)</li>
+              <li>Mineral diffuser installed inside</li>
+              <li>90-day money-back guarantee</li>
+              <li>HSA / FSA accepted</li>
+            </ul>
+          </div>
+          <div class="pay-note"><img class="tm" src="{{ 'truemed-orange.svg' | asset_url }}" alt="Truemed, pay with HSA or FSA" loading="lazy" /> Pay with HSA / FSA via Truemed</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09b VERIFIED REVIEWS (Stamped.io live widget: read + write reviews) -->
+  <section class="section" id="reviews-all">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>Don't take our <span class="grad">word for it.</span></h2>
+      </div>
+
+      <!-- Stamped auto-detects the stamped-main-widget container and renders the review
+           list plus the built-in Write-a-review button. Its script is loaded site-wide by
+           the Stamped app. Product data is hardcoded here since a page template has no
+           product object. -->
+      <style>
+        #reviews-all .reviews-all-sub { text-align: center; font-size: 15px; color: #7a7a7a; margin: -6px 0 24px; }
+        #stamped-main-widget { max-width: 900px; margin: 0 auto; }
+        .stamped-fallback { text-align: center; margin-top: 18px; }
+        .stamped-fallback a { display: inline-block; padding: 12px 22px; border: 2px solid #F58220;
+          color: #F58220; border-radius: 999px; font-weight: 700; text-decoration: none; }
+        /* Best-effort brand styling of Stamped's own markup (classes may vary by version). */
+        #stamped-main-widget .stamped-fa-star:before,
+        #stamped-main-widget .stamped-fa-star-half:before { color: #F58220 !important; }
+        #stamped-main-widget .stamped-summary-actions-newreview,
+        #stamped-main-widget .stamped-button,
+        #stamped-main-widget button.stamped-button { background: #F58220 !important;
+          border-color: #F58220 !important; color: #fff !important; }
+      </style>
+      <p class="reviews-all-sub">Real reviews from verified buyers. Add yours.</p>
+      <div id="stamped-main-widget"
+           data-product-id="10558101160245"
+           data-name="CELLNERGY HYDRATION SYSTEM"
+           data-url="https://shop.lifepharm.com/products/cellnergy-hydration-system"
+           data-image-url="//shop.lifepharm.com/cdn/shop/files/cellnergy-bottle_large.png?v=1782146397"
+           data-description="CELLNERGY Hydration System"
+           data-product-sku="cellnergy-hydration-system"
+           data-product-type="Wave technology"
+           data-product-title="CELLNERGY HYDRATION SYSTEM"
+           data-sort="recent"
+           data-linkify="true">
+      </div>
+      <noscript><div class="stamped-fallback"><a href="https://shop.lifepharm.com/pages/reviews">Read verified reviews &rarr;</a></div></noscript>
+      <div id="stamped-fallback" class="stamped-fallback" hidden>
+        <a href="https://shop.lifepharm.com/products/cellnergy-hydration-system#reviews">Read &amp; write verified reviews &rarr;</a>
+      </div>
+      <script>
+        /* If Stamped hasn't rendered after a few seconds (e.g. its app script isn't on
+           this page), reveal a link to the full reviews page so shoppers always have a path. */
+        (function () {
+          var w = document.getElementById("stamped-main-widget"),
+              fb = document.getElementById("stamped-fallback");
+          if (!w || !fb) return;
+          setTimeout(function () {
+            if (w.children.length === 0 && !window.StampedFn) { fb.hidden = false; }
+          }, 5000);
+        })();
+      </script>
+    </div>
+  </section>
+
+  <!-- 10 FAQ -->
+  <section class="section" id="faq">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>You asked, <span class="grad">we answered</span></h2>
+      </div>
+      <div class="faq-wrap reveal">
+        <div class="faq-item">
+          <button class="faq-q">How do I use it?</button>
+          <div class="faq-a"><p>Hand wash the bottle with mild soap, never the dishwasher. Rinse the mineral diffuser before first use: fill, shake, and pour out the first two fills to clear any loose mineral dust. Then fill with filtered water and wait 15 minutes for CELLNERGY to condition it. For best results, use it daily, especially with meals.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What makes CELLNERGY water different?</button>
+          <div class="faq-a"><p>Ordinary water is slightly acidic. A mineral diffuser raises CELLNERGY to a balanced, gently alkaline pH (about 9, measured in LifePharm product testing), so it is fresh and smooth to drink. Every fill is also antioxidant-rich from molecular hydrogen, with a final terahertz conditioning step, so the water tastes light and fresh.*</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is there proof of the pH?</button>
+          <div class="faq-a"><p>Yes. In LifePharm product testing, ordinary water measured slightly acidic (around pH 7.8) and CELLNERGY measured gently alkaline (around pH 9) &mdash; you can watch the test above. Individual results vary.*</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Will the water taste different?</button>
+          <div class="faq-a"><p>Most people tell us it tastes smoother and easier to drink, and they reach for it more. Everyone is different, which is exactly why we back it with a 90-day money-back guarantee.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is this a treatment for acid reflux or any digestive condition?</button>
+          <div class="faq-a"><p>No. It is a hydration product, not a medication or medical device. It is meant for everyday hydration, not to diagnose, treat, cure, or prevent any disease. If you have frequent reflux or a digestive condition, please talk to your doctor.*</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How often do I replace the diffuser?</button>
+          <div class="faq-a"><p>Replace the mineral diffuser about every 2 to 3 months for full performance. Replacements are available from LifePharm.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is it safe and BPA-free?</button>
+          <div class="faq-a"><p>Yes. It is made from BPA-free, food-safe material. Hand wash recommended, safe for cold and warm water up to 140&deg;F (60&deg;C).</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What is your guarantee?</button>
+          <div class="faq-a"><p>A full 90-day, hassle-free money-back guarantee. If it is not for you, send it back for a refund.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STICKY MOBILE BUY BAR -->
+  <style>
+    .sticky-buy { display: none; }
+    @media (max-width: 760px) {
+      .sticky-buy { display: flex; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 60; justify-content: center; align-items: center; gap: 10px; background: var(--orange, #F58220); color: #fff; padding: 15px 18px; border-radius: 999px; font-weight: 800; text-decoration: none; font-size: 17px; box-shadow: 0 10px 30px rgba(0,0,0,.30); }
+      .sticky-buy .sb-price { background: rgba(255,255,255,.22); padding: 2px 10px; border-radius: 999px; }
+      body { padding-bottom: 82px; }
+    }
+  </style>
+  <a class="sticky-buy" href="https://shop.lifepharm.com/discount/MEAL10?redirect=/checkout">Get 20% Off <span class="sb-price">$39</span></a>
+
+  <!-- CART DRAWER (self-contained, styled to match the theme drawer) -->
+  <style>
+    #cd-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.45); opacity: 0; visibility: hidden; transition: opacity .25s ease; z-index: 9998; }
+    #cd-overlay.open { opacity: 1; visibility: visible; }
+    #cart-drawer-lp { position: fixed; top: 0; right: 0; height: 100%; width: 400px; max-width: 92vw; background: #fff; box-shadow: -10px 0 40px rgba(0,0,0,.22); transform: translateX(100%); transition: transform .3s cubic-bezier(.4,0,.2,1); z-index: 9999; display: flex; flex-direction: column; font-family: inherit; color: #2b2b2b; }
+    #cart-drawer-lp.open { transform: translateX(0); }
+    #cart-drawer-lp .cd-head { display: flex; align-items: center; gap: 10px; padding: 20px 22px; border-bottom: 1px solid #ececec; }
+    #cart-drawer-lp .cd-h-title { font-size: 18px; font-weight: 800; }
+    #cart-drawer-lp .cd-count { display: inline-flex; align-items: center; justify-content: center; min-width: 22px; height: 22px; padding: 0 6px; border-radius: 999px; background: var(--orange, #F58220); color: #fff; font-size: 12px; font-weight: 800; }
+    #cart-drawer-lp .cd-close { margin-left: auto; background: none; border: none; font-size: 28px; line-height: 1; color: #9a9a9a; cursor: pointer; padding: 0 4px; }
+    #cart-drawer-lp .cd-items { flex: 1; overflow-y: auto; padding: 8px 22px; }
+    #cart-drawer-lp .cd-it { display: flex; gap: 14px; align-items: center; padding: 16px 0; border-bottom: 1px solid #f3f3f3; }
+    #cart-drawer-lp .cd-it-img { width: 60px; height: 60px; border-radius: 10px; object-fit: cover; background: #f3ede3; flex: none; }
+    #cart-drawer-lp .cd-it-mid { min-width: 0; }
+    #cart-drawer-lp .cd-it-t { font-size: 14px; font-weight: 700; line-height: 1.3; }
+    #cart-drawer-lp .cd-it-s { font-size: 12.5px; color: #8a8a8a; margin-top: 3px; }
+    #cart-drawer-lp .cd-it-p { margin-left: auto; white-space: nowrap; align-self: flex-start; display: flex; flex-direction: column; align-items: flex-end; gap: 1px; }
+    #cart-drawer-lp .cd-was { font-size: 12px; font-weight: 600; color: #9a9a9a; text-decoration: line-through; }
+    #cart-drawer-lp .cd-now { font-size: 14px; font-weight: 800; color: #2b2b2b; }
+    #cart-drawer-lp .cd-qty { display: flex; align-items: center; margin-top: 10px; }
+    #cart-drawer-lp .cd-q { width: 28px; height: 28px; border: 1px solid #e6e0d7; background: #fff; color: #2b2b2b; font-size: 16px; font-weight: 700; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    #cart-drawer-lp .cd-q.cd-dec { border-radius: 8px 0 0 8px; }
+    #cart-drawer-lp .cd-q.cd-inc { border-radius: 0 8px 8px 0; }
+    #cart-drawer-lp .cd-q:hover { border-color: var(--orange, #F58220); color: var(--orange, #F58220); }
+    #cart-drawer-lp .cd-qn { min-width: 34px; height: 28px; border-top: 1px solid #e6e0d7; border-bottom: 1px solid #e6e0d7; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; }
+    #cart-drawer-lp .cd-rm { margin-left: 14px; background: none; border: none; color: #9a9a9a; font-size: 12.5px; text-decoration: underline; cursor: pointer; padding: 0; }
+    #cart-drawer-lp .cd-rm:hover { color: var(--orange, #F58220); }
+    #cart-drawer-lp .cd-foot { border-top: 1px solid #ececec; padding: 18px 22px 22px; }
+    #cart-drawer-lp .cd-row { display: flex; align-items: center; justify-content: space-between; font-size: 14px; color: #6a6a6a; margin-bottom: 8px; }
+    #cart-drawer-lp .cd-discrow { color: #237A4E; font-weight: 700; }
+    #cart-drawer-lp .cd-disc-l { display: inline-flex; align-items: center; gap: 6px; }
+    #cart-drawer-lp .cd-discrow svg { width: 15px; height: 15px; }
+    #cart-drawer-lp .cd-totrow { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 6px; padding-top: 10px; border-top: 1px solid #ececec; }
+    #cart-drawer-lp .cd-totrow .l { font-size: 16px; font-weight: 800; }
+    #cart-drawer-lp .cd-totrow .r { font-size: 18px; font-weight: 800; }
+    #cart-drawer-lp .cd-save { margin: 8px 0 14px; font-size: 13.5px; font-weight: 800; color: var(--orange, #F58220); }
+    #cart-drawer-lp .cd-note { font-size: 11.5px; color: #8a8a8a; line-height: 1.45; margin: 0 0 14px; }
+    #cart-drawer-lp .cd-checkout { display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--orange, #F58220); color: #fff; font-weight: 800; font-size: 16.5px; padding: 15px; border-radius: 999px; text-decoration: none; box-shadow: 0 8px 22px rgba(245,130,32,.35); }
+    #cart-drawer-lp .cd-checkout svg { width: 15px; height: 15px; }
+    #cart-drawer-lp .cd-keep { display: block; width: 100%; margin-top: 12px; background: none; border: none; color: #7a7a7a; font-size: 13.5px; text-decoration: underline; cursor: pointer; }
+    #navCart { position: fixed; top: 14px; right: 14px; z-index: 9997; background: #fff; border: 1px solid #e6e0d7; border-radius: 999px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(0,0,0,.14); cursor: pointer; }
+    #navCart svg { width: 22px; height: 22px; stroke: #2b2b2b; fill: none; stroke-width: 2; }
+    #navCart:hover svg { stroke: var(--orange, #F58220); }
+    #navCart .nav-cart-count { position: absolute; top: -4px; right: -4px; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 999px; background: var(--orange, #F58220); color: #fff; font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center; line-height: 1; }
+    @media (max-width: 480px) { #cart-drawer-lp { width: 100%; max-width: 100%; } }
+  </style>
+  <div id="cd-overlay"></div>
+  <aside id="cart-drawer-lp" aria-hidden="true" aria-label="Your cart">
+    <div class="cd-head">
+      <span class="cd-h-title">Cart</span>
+      <span class="cd-count" id="cd-count">0</span>
+      <button type="button" class="cd-close" id="cd-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="cd-items" id="cd-items"></div>
+    <div class="cd-foot">
+      <div class="cd-row cd-subrow"><span>Subtotal</span><span id="cd-subtotal">$0.00</span></div>
+      <div class="cd-row cd-discrow" id="cd-discrow" hidden><span class="cd-disc-l"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.6 13.4L11 3.8a2 2 0 0 0-1.4-.6H4v5.6a2 2 0 0 0 .6 1.4l9.6 9.6a2 2 0 0 0 2.8 0l3.6-3.6a2 2 0 0 0 0-2.8z"/><circle cx="7.5" cy="7.5" r="1.2" fill="currentColor"/></svg> <span id="cd-disclabel">MEAL10</span></span><span id="cd-disc">-$0.00</span></div>
+      <div class="cd-totrow"><span class="l">Total</span><span class="r" id="cd-total">$0.00</span></div>
+      <div class="cd-save" id="cd-save" hidden>You're saving $0.00 at checkout</div>
+      <p class="cd-note">Discount applied automatically at checkout. Shipping &amp; taxes calculated at checkout.</p>
+      <a href="#" class="cd-checkout" id="cd-checkout">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 10V8a6 6 0 0 1 12 0v2"/><rect x="4" y="10" width="16" height="10" rx="2"/></svg>
+        Checkout
+      </a>
+      <button type="button" class="cd-keep" id="cd-keep">Continue reading</button>
+    </div>
+  </aside>
+
+  <!-- Floating cart button (non-destructive reopen; appears once the cart has items) -->
+  <button type="button" id="navCart" hidden aria-label="View your cart">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M3 4h2l2.2 11.2a1 1 0 0 0 1 .8h8.4a1 1 0 0 0 1-.8L20 8H6"/></svg>
+    <span class="nav-cart-count" id="navCartCount">0</span>
+  </button>
+
+  <!-- FOOTER -->
+  <footer class="foot">
+    <p class="disc">*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease, including acid reflux or any digestive condition. The CELLNERGY Hydration System is a hydration product, not a medical device. pH values were measured in LifePharm product testing; individual results vary.</p>
+    <p class="copy">Exclusively distributed by LifePharm Inc., Irvine, CA, USA. &copy; 2026 LifePharm.</p>
+  </footer>
+
+  <!-- Lenis is now loaded conditionally on desktop only, from the script below. -->
+  <script>
+  (function () {
+    "use strict";
+
+    /* CART: reads window.CN_CART set at the top of this template. */
+    var CN_CART = window.CN_CART = window.CN_CART || {};
+    CN_CART.single = CN_CART.single || { variant: 53040002400565 };
+    CN_CART.triple = CN_CART.triple || { variant: 53003471388981 };
+    CN_CART.refill = CN_CART.refill || { variant: null, sellingPlan: null };
+    var onShopify = (CN_CART.onShopify != null) ? CN_CART.onShopify : !!window.Shopify;
+
+    function addToCart(items) {
+      return fetch("/cart/add.js", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({ items: items })
+      }).then(function (r) { if (!r.ok) throw new Error("cart add failed"); return r.json(); });
+    }
+    function openCartDrawer() {
+      try {
+        document.dispatchEvent(new CustomEvent("cart:refresh", { bubbles: true }));
+        document.dispatchEvent(new CustomEvent("cart:build", { bubbles: true }));
+      } catch (e) {}
+      var dr = document.querySelector("cart-drawer");
+      if (dr && typeof dr.open === "function") { dr.open(); return; }
+      if (dr) { dr.classList.remove("is-empty"); }
+      var sel = CN_CART.drawerToggle ||
+        '#cart-icon-bubble,[data-cart-drawer-toggle],.js-drawer-open-cart,#CartDrawer-Toggle,.header__icon--cart,a[href="/cart"],a[href^="/cart"]';
+      var t = document.querySelector(sel);
+      if (t) { t.click(); return; }
+      window.location.href = "/cart";
+    }
+
+    /* ---------- checkout: AJAX-add the item, then JS-redirect to the discounted /checkout.
+       We NEVER navigate to a /cart/{variant}:1 permalink: the Instagram attribution app
+       rewrites those links with a malformed attributes={...} param, which throws Shopify's
+       "expected String to be a Hash" 500. A background fetch + window.location cannot be
+       rewritten by the app's <a>-href decorator. ---------- */
+    function co(code) { return "https://shop.lifepharm.com/discount/" + code + "?redirect=/checkout"; }
+    /* instant feedback so the button never feels dead while the cart adds + checkout redirects */
+    function setBtnLoading(el) {
+      if (!el || el.dataset._loading) return;
+      el.dataset._loading = "1";
+      el.dataset._label = el.textContent;
+      el.style.pointerEvents = "none";
+      el.style.opacity = "0.8";
+      el.textContent = "One moment…";
+      setTimeout(function () {
+        if (el.dataset._label != null) { el.textContent = el.dataset._label; el.style.pointerEvents = ""; el.style.opacity = ""; delete el.dataset._loading; }
+      }, 7000);
+    }
+    /* ---------- CART DRAWER (self-contained; matches theme look, no theme dependencies) ---------- */
+    var _cdCheckoutUrl = null;
+    /* Regular ("was") prices in cents for the strikethrough: bottle $49, 3-pack $119, diffuser
+       refill $25 (first payment is 25% off). Fallback if /cart.js has no compare-at price. */
+    var WAS = {}; WAS[CN_CART.single.variant] = 4900; WAS[CN_CART.triple.variant] = 11900; WAS[CN_CART.refill.variant] = 2500;
+    function _cdMoney(c) { return "$" + (Math.round(c) / 100).toFixed(2); }
+    function restoreBtn(el) {
+      if (el && el.dataset && el.dataset._label != null) {
+        el.textContent = el.dataset._label; el.style.pointerEvents = ""; el.style.opacity = "";
+        delete el.dataset._loading; delete el.dataset._label;
+      }
+    }
+    function updateNav(n) {
+      var fab = document.getElementById("navCart"), c = document.getElementById("navCartCount");
+      if (c) c.textContent = n;
+      if (fab) fab.hidden = !n;
+    }
+    /* Pick the checkout discount code from what's actually in the cart: 3-pack -> MEAL20, else MEAL10. */
+    function recomputeCode(cart) {
+      var has3 = false; ((cart && cart.items) || []).forEach(function (it) { if (it.id == CN_CART.triple.variant) has3 = true; });
+      _cdCheckoutUrl = co(has3 ? "MEAL20" : "MEAL10");
+    }
+    var _cdBusy = false;
+    /* Change a line's quantity in place (0 removes it), then re-render from the returned cart.
+       This is what makes the reset unnecessary: shoppers adjust here instead of re-clicking CTAs. */
+    function changeQty(key, qty) {
+      if (_cdBusy) return; _cdBusy = true;
+      fetch("/cart/change.js", { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify({ id: key, quantity: qty }) })
+        .then(function (r) { return r.json(); })
+        .then(function (cart) { recomputeCode(cart); renderDrawer(cart); })
+        .catch(function () {})
+        .then(function () { _cdBusy = false; });
+    }
+    function go(variant, code, diffuser, btn) {
+      setBtnLoading(btn);
+      var items = [{ id: variant, quantity: 1 }];
+      if (diffuser) items.push({ id: CN_CART.refill.variant, quantity: 1, selling_plan: CN_CART.refill.sellingPlan });
+      /* ADD the chosen item(s) to the cart (no clearing — shoppers manage quantity in the drawer),
+         then OPEN THE DRAWER so they stay on the page. Checkout goes to the discounted /checkout
+         (skips the cart page + its referral gate). On failure, fall back to a direct redirect. */
+      addToCart(items)
+        .then(function () { return fetch("/cart.js", { headers: { "Accept": "application/json" } }); })
+        .then(function (r) { return r.json(); })
+        .then(function (cart) { recomputeCode(cart); renderDrawer(cart); openDrawer(); restoreBtn(btn); })
+        .catch(function () { _cdCheckoutUrl = co(code); window.location.href = _cdCheckoutUrl; });
+    }
+    function buySingle(btn) { go(CN_CART.single.variant, "MEAL10", false, btn); }
+
+    function renderDrawer(cart) {
+      var items = (cart && cart.items) || [];
+      var box = document.getElementById("cd-items"), cnt = document.getElementById("cd-count");
+      /* Preview the checkout discount so the drawer "looks like they're saving": subtotal,
+         discount line (MEAL10 -$10 / MEAL20 -$20), discounted total, savings. */
+      var subtotal = cart && cart.total_price != null ? cart.total_price : 0;
+      var has3 = false, has1 = false;
+      items.forEach(function (it) { if (it.id == CN_CART.triple.variant) has3 = true; if (it.id == CN_CART.single.variant) has1 = true; });
+      var disc = has3 ? 2000 : (has1 ? 1000 : 0), code = has3 ? "MEAL20" : "MEAL10", total = Math.max(0, subtotal - disc);
+      if (cnt) cnt.textContent = cart && cart.item_count != null ? cart.item_count : items.length;
+      var sEl = document.getElementById("cd-subtotal"); if (sEl) sEl.textContent = _cdMoney(subtotal);
+      var dRow = document.getElementById("cd-discrow"), dLab = document.getElementById("cd-disclabel"), dAmt = document.getElementById("cd-disc"), sv = document.getElementById("cd-save");
+      if (disc > 0) { if (dRow) dRow.hidden = false; if (dLab) dLab.textContent = code; if (dAmt) dAmt.textContent = "-" + _cdMoney(disc); if (sv) { sv.hidden = false; sv.textContent = "You're saving " + _cdMoney(disc) + " at checkout"; } }
+      else { if (dRow) dRow.hidden = true; if (sv) sv.hidden = true; }
+      var tEl = document.getElementById("cd-total"); if (tEl) tEl.textContent = _cdMoney(total);
+      updateNav(cart && cart.item_count != null ? cart.item_count : items.length);
+      if (box) box.innerHTML = items.map(function (it) {
+        var sub = it.selling_plan_allocation ? '<div class="cd-it-s">Subscription</div>' : "";
+        var img = it.image ? '<img class="cd-it-img" src="' + it.image + '" alt="">' : '<div class="cd-it-img"></div>';
+        var k = it.key;
+        var qty = '<div class="cd-qty"><button type="button" class="cd-q cd-dec" data-key="' + k + '" aria-label="Decrease quantity">&minus;</button><span class="cd-qn">' + it.quantity + '</span><button type="button" class="cd-q cd-inc" data-key="' + k + '" aria-label="Increase quantity">+</button><button type="button" class="cd-rm" data-key="' + k + '">Remove</button></div>';
+        var wasUnit = Math.max(it.compare_at_price || 0, WAS[it.id] || 0);
+        var wasLine = (wasUnit > it.final_price) ? wasUnit * it.quantity : 0;
+        var priceHtml = (wasLine ? '<span class="cd-was">' + _cdMoney(wasLine) + '</span>' : '') + '<span class="cd-now">' + _cdMoney(it.final_line_price) + '</span>';
+        return '<div class="cd-it">' + img +
+          '<div class="cd-it-mid"><div class="cd-it-t">' + (it.product_title || it.title) + '</div>' + sub + qty + '</div>' +
+          '<div class="cd-it-p">' + priceHtml + '</div></div>';
+      }).join("");
+    }
+    /* View the cart WITHOUT touching it (non-destructive) — the floating cart button uses this,
+       so reopening never resets a shopper's selection. */
+    function openCart() {
+      fetch("/cart.js", { headers: { "Accept": "application/json" } })
+        .then(function (r) { return r.json(); })
+        .then(function (cart) { recomputeCode(cart); renderDrawer(cart); openDrawer(); })
+        .catch(function () {});
+    }
+    function openDrawer() {
+      var o = document.getElementById("cd-overlay"), d = document.getElementById("cart-drawer-lp");
+      if (o) o.classList.add("open");
+      if (d) { d.classList.add("open"); d.setAttribute("aria-hidden", "false"); }
+      document.body.style.overflow = "hidden";
+    }
+    function closeDrawer() {
+      var o = document.getElementById("cd-overlay"), d = document.getElementById("cart-drawer-lp");
+      if (o) o.classList.remove("open");
+      if (d) { d.classList.remove("open"); d.setAttribute("aria-hidden", "true"); }
+      document.body.style.overflow = "";
+    }
+    (function () {
+      var x = document.getElementById("cd-close"), keep = document.getElementById("cd-keep"),
+          ov = document.getElementById("cd-overlay"), coBtn = document.getElementById("cd-checkout");
+      if (x) x.addEventListener("click", closeDrawer);
+      if (keep) keep.addEventListener("click", closeDrawer);
+      if (ov) ov.addEventListener("click", closeDrawer);
+      if (coBtn) coBtn.addEventListener("click", function (e) { e.preventDefault(); if (_cdCheckoutUrl) window.location.href = _cdCheckoutUrl; });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeDrawer(); });
+      /* Quantity +/- and Remove, delegated on the items container so it survives re-renders. */
+      var itemsBox = document.getElementById("cd-items");
+      if (itemsBox) itemsBox.addEventListener("click", function (e) {
+        var b = e.target.closest("button[data-key]"); if (!b) return;
+        var key = b.getAttribute("data-key"), row = b.closest(".cd-it"), qn = row ? row.querySelector(".cd-qn") : null;
+        var cur = qn ? (parseInt(qn.textContent, 10) || 1) : 1;
+        if (b.classList.contains("cd-rm")) changeQty(key, 0);
+        else if (b.classList.contains("cd-inc")) changeQty(key, cur + 1);
+        else if (b.classList.contains("cd-dec")) changeQty(key, cur - 1);
+      });
+      /* Floating cart button = non-destructive reopen. On load, show current count. */
+      var nav = document.getElementById("navCart");
+      if (nav) nav.addEventListener("click", function (e) { e.preventDefault(); openCart(); });
+      fetch("/cart.js", { headers: { "Accept": "application/json" } }).then(function (r) { return r.json(); }).then(function (cart) { updateNav(cart && cart.item_count != null ? cart.item_count : 0); }).catch(function () {});
+    })();
+
+    /* secondary CTAs: #offer jump links + every /discount/ link (announce, hero, mid-page)
+       -> single bottle. The #order-cta button is handled separately (respects pack + diffuser). */
+    document.querySelectorAll('a[href="#offer"]').forEach(function (a) {
+      a.addEventListener("click", function (e) { e.preventDefault(); buySingle(e.currentTarget); });
+    });
+    document.querySelectorAll('a[href*="/discount/"]').forEach(function (a) {
+      if (a.id === "order-cta") return;
+      a.addEventListener("click", function (e) { e.preventDefault(); buySingle(e.currentTarget); });
+    });
+
+    /* ---------- trust marquee ---------- */
+    var SVG = {
+      shield: '<svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>',
+      bpa: '<svg viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/><path d="M4 4l16 16"/></svg>'
+    };
+    var ITEMS = [
+      { svg: "shield", label: "90-Day Money-Back Guarantee" },
+      { chip: true, plain: true, logo: "{{ 'truemed-orange.svg' | asset_url }}", label: "FSA Eligible" },
+      { logo: "{{ 'bbb.webp' | asset_url }}", logoOnly: true, label: "BBB Accredited Business" },
+      { chip: true, logoOnly: true, logo: "{{ 'asa-logo.svg' | asset_url }}", label: "American Society on Aging" },
+      { svg: "bpa", label: "BPA Free" }
+    ];
+    var track = document.getElementById("marquee-track");
+    if (track) {
+      var html = ITEMS.map(function (it) {
+        if (it.chip) return '<span class="m-item chip' + (it.plain ? " nobg" : "") + '"><img class="m-logo" src="' + it.logo + '" alt="' + it.label + '">' + (it.logoOnly ? "" : '<span class="m-lab">' + it.label + "</span>") + "</span>";
+        if (it.logoOnly) return '<span class="m-item"><img class="m-logo" src="' + it.logo + '" alt="' + it.label + '"></span>';
+        if (it.logo) return '<span class="m-item"><img class="m-logo" src="' + it.logo + '" alt="' + it.label + '"><span class="m-lab">' + it.label + "</span></span>";
+        return '<span class="m-item"><span class="m-ic">' + SVG[it.svg] + '</span><span class="m-lab">' + it.label + "</span></span>";
+      }).join("");
+      track.innerHTML = html + html;
+    }
+
+    /* ---------- problem hub ---------- */
+    var spokes = document.querySelectorAll(".spoke");
+    spokes.forEach(function (s) {
+      s.addEventListener("click", function (e) {
+        e.preventDefault();
+        var wasOpen = s.classList.contains("open");
+        spokes.forEach(function (o) { o.classList.remove("open"); });
+        if (!wasOpen) s.classList.add("open");
+      });
+    });
+
+    /* ---------- comparison ---------- */
+    var glance = document.querySelector(".glance");
+    if (glance) {
+      glance.addEventListener("click", function (e) {
+        if (e.target.closest("a")) return;
+        glance.classList.toggle("open");
+      });
+    }
+
+    /* ---------- FAQ accordion ---------- */
+    document.querySelectorAll(".faq-item").forEach(function (item) {
+      var q = item.querySelector(".faq-q"), a = item.querySelector(".faq-a");
+      q.addEventListener("click", function () {
+        var open = item.classList.contains("open");
+        document.querySelectorAll(".faq-item.open").forEach(function (o) { o.classList.remove("open"); o.querySelector(".faq-a").style.maxHeight = null; });
+        if (!open) { item.classList.add("open"); a.style.maxHeight = a.scrollHeight + "px"; }
+      });
+    });
+
+    /* ---------- buy tabs ---------- */
+    var PLANS = {
+      single: {
+        variant: CN_CART.single.variant,
+        was: "$49", now: "$39", save: "You save $10", badge: "$10", cta: "Get My Bottle, Save $10", code: "MEAL10",
+        includes: ["1 CELLNERGY Hydration System (650 mL / 22 oz)", "6-element mineral diffuser installed inside", "90-day money-back guarantee", "HSA / FSA accepted"]
+      },
+      triple: {
+        variant: CN_CART.triple.variant,
+        was: "$119", now: "$99", save: "You save $20", badge: "$20", cta: "Get My 3-Pack, Save $20", code: "MEAL20",
+        includes: ["3 CELLNERGY Hydration Systems (650 mL / 22 oz)", "6-element mineral diffuser installed inside", "90-day money-back guarantee", "HSA / FSA accepted"]
+      }
+    };
+    var currentPlan = "single";
+    var elWas = document.getElementById("p-was"), elNow = document.getElementById("p-now"),
+        elSave = document.getElementById("p-save"), elCta = document.getElementById("order-cta"),
+        elInc = document.getElementById("p-includes"), elAmt = document.getElementById("save-amt"),
+        buyTabs = [].slice.call(document.querySelectorAll(".buy-tab"));
+    function applyPlan(key) {
+      var p = PLANS[key];
+      if (!p) return;
+      currentPlan = key;
+      if (elWas) elWas.textContent = p.was;
+      if (elNow) elNow.textContent = p.now;
+      if (elSave) elSave.textContent = p.save;
+      if (elAmt) elAmt.textContent = p.badge;
+      if (elInc) elInc.innerHTML = p.includes.map(function (i) { return "<li>" + i + "</li>"; }).join("");
+      if (elCta) { elCta.textContent = p.cta; elCta.setAttribute("href", co(p.code)); }
+      buyTabs.forEach(function (t) {
+        var on = t.getAttribute("data-plan") === key;
+        t.classList.toggle("active", on);
+        t.setAttribute("aria-selected", on ? "true" : "false");
+      });
+    }
+    buyTabs.forEach(function (t) {
+      t.addEventListener("click", function () { applyPlan(t.getAttribute("data-plan")); });
+    });
+    applyPlan("single");
+    var _bump = document.getElementById("diffuser-bump");
+    if (_bump) _bump.addEventListener("change", function () { applyPlan(currentPlan); });
+
+    /* main order button: AJAX-add the selected pack (+ diffuser if checked), then redirect
+       to the discounted /checkout. preventDefault stops navigation to the fallback href. */
+    if (elCta) elCta.addEventListener("click", function (e) {
+      e.preventDefault();
+      var p = PLANS[currentPlan] || PLANS.single;
+      var bump = document.getElementById("diffuser-bump");
+      go(p.variant, p.code, !!(bump && bump.checked), e.currentTarget);
+    });
+
+    /* ---------- order CTA: its href is the discounted checkout link (set per plan in applyPlan);
+       clicking just navigates. AddToCart pixel is handled by lp.liquid's click-listener. ---------- */
+
+    /* ---------- video poster fallback ---------- */
+    ["ph-vid", "vid-inside", "vid-offer"].forEach(function (id) {
+      var v = document.getElementById(id);
+      if (!v) return;
+      v.addEventListener("error", function () {
+        var img = document.createElement("img");
+        img.src = v.getAttribute("poster") || "";
+        img.alt = v.getAttribute("aria-label") || "";
+        v.replaceWith(img);
+      });
+    });
+
+    /* ---------- reveals + (desktop-only) Lenis smooth scroll ---------- */
+    var lenis = null;
+    function raf(t) { if (lenis) lenis.raf(t); requestAnimationFrame(raf); }
+    /* Lenis only on non-touch/desktop. On phones (esp. the Facebook/Instagram in-app browser)
+       it adds a heavy always-on loop + an external script that can error, and native scroll is
+       smoother. Reveals below fall back to the native scroll listener. */
+    if (!(window.matchMedia && window.matchMedia("(pointer: coarse)").matches)) {
+      var _lenisScript = document.createElement("script");
+      _lenisScript.src = "https://unpkg.com/lenis@1.3.21/dist/lenis.min.js";
+      _lenisScript.onload = function () {
+        if (!window.Lenis) return;
+        lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
+        window.__lenis = lenis;
+        requestAnimationFrame(raf);
+        if (lenis.on) lenis.on("scroll", revealInView);
+      };
+      document.head.appendChild(_lenisScript);
+    }
+    var reveals = [].slice.call(document.querySelectorAll(".reveal"));
+    function revealInView() {
+      var h = window.innerHeight || document.documentElement.clientHeight;
+      for (var i = reveals.length - 1; i >= 0; i--) {
+        if (reveals[i].getBoundingClientRect().top < h * 0.9) { reveals[i].classList.add("in"); reveals.splice(i, 1); }
+      }
+    }
+    revealInView();
+    if (lenis && lenis.on) lenis.on("scroll", revealInView);
+    window.addEventListener("scroll", revealInView, { passive: true });
+    window.addEventListener("resize", revealInView);
+    setTimeout(revealInView, 300);
+    setTimeout(revealInView, 1200);
+
+    /* ---------- anchor smooth scroll ---------- */
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        var id = a.getAttribute("href");
+        if (id.length < 2 || id === "#offer") return; // #offer buttons add to cart, don't scroll
+        var target = document.querySelector(id);
+        if (!target) return;
+        e.preventDefault();
+        if (lenis && lenis.scrollTo) lenis.scrollTo(target, { offset: -60 });
+        else target.scrollIntoView({ behavior: "smooth" });
+      });
+    });
+  })();
+  </script>
+

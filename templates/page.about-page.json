@@ -1,0 +1,685 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        "h1 {text-align: left !important;}"
+      ],
+      "settings": {
+        "content_width": "100%"
+      }
+    },
+    "image_with_text_overlay_HrG6nG": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_8H8RhG": {
+          "type": "subheading",
+          "settings": {
+            "text": "THE REGENERATION COMPANY"
+          }
+        },
+        "liquid_Q4jRcz": {
+          "type": "liquid",
+          "disabled": true,
+          "settings": {
+            "liquid": "<p style= \"text-align: left;\">THE REGENERATION COMPANY</span></p>"
+          }
+        },
+        "liquid_7fEAm9": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<h1 style= \"text-align: left;\">Cellular Renewal<span style= \"color: #FF8F00;\"> Starts Here</span></h1>"
+          }
+        },
+        "richtext_DxKHLz": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Backed by science. Built for life.</p>"
+          }
+        },
+        "button_F97WFn": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "lg",
+            "text": "VIEW OUR STUDIES",
+            "url": "shopify://pages/our-studies",
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading_8H8RhG",
+        "liquid_Q4jRcz",
+        "liquid_7fEAm9",
+        "richtext_DxKHLz",
+        "button_F97WFn"
+      ],
+      "custom_css": [
+        "@media screen and (min-width: 700px) {.content-over-media > :not(img, video, iframe, svg, video-media, picture) {max-width: 600px; }}"
+      ],
+      "name": "Image with text overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "md",
+        "image": "shopify://shop_images/About_page_header.jpg",
+        "mobile_image": "shopify://shop_images/About_Header_Image_Mobile.jpg",
+        "mobile_text_position": "place-self-start text-start",
+        "desktop_text_position": "sm:place-self-center-start sm:text-start",
+        "text_color": "#181818",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "design_pack_marquee_multitext_jUrM4C": {
+      "type": "design_pack_-_marquee_-_multitext",
+      "blocks": {
+        "content_x8ygjK": {
+          "type": "content",
+          "settings": {
+            "text": "    18+ CLINICAL STUDIES       |"
+          }
+        },
+        "content_kBp8nW": {
+          "type": "content",
+          "settings": {
+            "text": "    REGENERATION PATENT (SEPT 2020)       |"
+          }
+        },
+        "content_CNrfTc": {
+          "type": "content",
+          "settings": {
+            "text": "    WINNER OF THE MONDE SELECTION GOLD AWARD       |"
+          }
+        },
+        "content_GLGj7H": {
+          "type": "content",
+          "settings": {
+            "text": "    RATED 5 STARS BY DERMATEST®       |"
+          }
+        }
+      },
+      "block_order": [
+        "content_x8ygjK",
+        "content_kBp8nW",
+        "content_CNrfTc",
+        "content_GLGj7H"
+      ],
+      "name": "Marquee - multi-text 🎒",
+      "settings": {
+        "speed": 25,
+        "reverse_scrolling": false,
+        "scrolling_pause": false,
+        "image_size": "medium",
+        "text_size": 60,
+        "text_color": "#ffffff",
+        "background_color": "#FF8F00",
+        "fade_edges": false,
+        "inner_padding": 20,
+        "outer_margin": 0,
+        "custom_css": "{\n  font-weight: 600;\n}",
+        "mobile_custom_css": "",
+        "anchor_id": "",
+        "override_theme_font": false,
+        "main_font": "system_ui_n4"
+      }
+    },
+    "rich_text_rg7fzk": {
+      "type": "rich-text",
+      "blocks": {
+        "liquid_yb8tU4": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<h2 class=\"h2\" style= \"text-align: center;\">LifePharm Empowers<span style= \"color: #FF8F00;\"> Regeneration.</span></h2>"
+          }
+        }
+      },
+      "block_order": [
+        "liquid_yb8tU4"
+      ],
+      "custom_css": [
+        "{margin-bottom: -20px;}"
+      ],
+      "name": "Rich text - IMMUNE+++",
+      "settings": {
+        "full_width": false,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "media_with_text_tpyMxR": {
+      "type": "media-with-text",
+      "blocks": {
+        "video_zXwxdJ": {
+          "type": "video",
+          "settings": {
+            "external_video_url": "https://www.youtube.com/watch?v=9dquXo21eG4",
+            "poster_image": "shopify://shop_images/fgf-2_lifepharm_761cd22d-e140-4206-a7f0-bc28bcc7dd8e.jpg",
+            "autoplay": false,
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "",
+            "custom_liquid": "<p>It starts with your body’s natural design. You were made to regenerate—from cells to systems. LifePharm’s science-backed solutions support that design using bioactive growth factors, stem cell activation, and telomere support to help restore vitality from the inside out.\n<br><br>\nFrom skincare to supplements to cutting-edge wellness technology, our products are built to recharge what matters most: your cellular health. \n<br><br>\nEven if you eat well, your environment—pollution, stress, and toxins—is beyond your control. That’s why LifePharm exists: to give your body the regenerative support it needs to thrive in today’s world.</p>",
+            "content": "<p></p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "rgba(0,0,0,0)",
+            "background_gradient": "",
+            "text_color": "#181818",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_zXwxdJ"
+      ],
+      "custom_css": [
+        ".text-custom {padding-top: 10px;}"
+      ],
+      "name": "Media with text",
+      "settings": {
+        "full_width": false,
+        "alternate_media_position": false,
+        "spacing": "small"
+      }
+    },
+    "rich_text_h4GHBA": {
+      "type": "rich-text",
+      "blocks": {
+        "image_QFQRRW": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/About_Page_Scientist_Image_Mobile.jpg",
+            "width_mode": "custom",
+            "max_width": 1000,
+            "mobile_max_width": 600
+          }
+        },
+        "divider_ca4RM7": {
+          "type": "divider",
+          "settings": {}
+        },
+        "liquid_yXjxAb": {
+          "type": "liquid",
+          "name": "Header",
+          "settings": {
+            "liquid": "<h2 style= \"text-align: center;\">How<span style= \"color: #FF8F00;\"> Regeneration</span> Works</h2>"
+          }
+        },
+        "richtext_MHaywU": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>True regeneration begins with stem cells—the body’s natural repair agents. But their ability to divide, specialize, and restore damaged tissue depends on the length and integrity of telomeres, the protective caps on the ends of chromosomes. <br/><br/>LifePharm’s egg bioactive growth factors are designed to support both: activating stem cells for cellular repair, while helping maintain telomere length to sustain that renewal process over time. Together, they work to restore vitality at the deepest level—where aging and regeneration begin. <br/><br/>Our Cellnergy line builds on this foundation with solutions that use precisely tuned frequencies to support the body’s regenerative systems. These frequencies are designed to resonate with healthy cellular vibrations, helping to stimulate stem cell activity and promote optimal cellular performance. It’s regeneration powered by both biological nutrients and energy-based innovation. </p>"
+          }
+        }
+      },
+      "block_order": [
+        "image_QFQRRW",
+        "divider_ca4RM7",
+        "liquid_yXjxAb",
+        "richtext_MHaywU"
+      ],
+      "disabled": true,
+      "name": "Rich text - IMMUNE+++",
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "start",
+        "background": "#fff4e5",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "media_with_text_RLB7Fk": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_WQwpnX": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/About_Page_Scientist_Image_Mobile.jpg",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "",
+            "content": "",
+            "custom_liquid": "<h2 class=\"h2\">LifePharm Empowers<span style= \"color: #FF8F00;\"> Regeneration.</span></h2>\n<p>True regeneration begins with stem cells—the body’s natural repair agents. But their ability to divide, specialize, and restore damaged tissue depends on the length and integrity of telomeres, the protective caps on the ends of chromosomes. \n</p>\n\n\n<p>LifePharm’s egg bioactive growth factors are designed to support both: activating stem cells for cellular repair, while helping maintain telomere length to sustain that renewal process over time. Together, they work to restore vitality at the deepest level—where aging and regeneration begin.</p>\n\n<p>Our Cellnergy line builds on this foundation with solutions that use precisely tuned frequencies to support the body’s regenerative systems. These frequencies are designed to resonate with healthy cellular vibrations, helping to stimulate stem cell activity and promote optimal cellular performance. It’s regeneration powered by both biological nutrients and energy-based innovation.</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#fff4e5",
+            "background_gradient": "",
+            "text_color": "#181818",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_WQwpnX"
+      ],
+      "custom_css": [],
+      "name": "Media with text",
+      "settings": {
+        "full_width": true,
+        "alternate_media_position": false,
+        "spacing": "none"
+      }
+    },
+    "rich_text_gUjyBc": {
+      "type": "rich-text",
+      "blocks": {
+        "liquid_iGCxqz": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<h2 class=\"h2\" style= \"text-align: center;\">Efficacy Backed By<span style= \"color: #FF8F00;\"> Science</span></h2>"
+          }
+        }
+      },
+      "block_order": [
+        "liquid_iGCxqz"
+      ],
+      "custom_css": [
+        "{margin-bottom: -20px;}"
+      ],
+      "name": "Rich text - IMMUNE+++",
+      "settings": {
+        "full_width": false,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "media_with_text_DngLqY": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_9K7x9g": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/about_page_-_Telomere.jpg",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "",
+            "content": "",
+            "custom_liquid": "<p>At LifePharm, we don’t just claim results—we clinically measure them. In one of our key studies, participants who took 4 Laminine® capsules daily for 90 days showed a significant increase in telomerase activity, a biomarker closely linked to healthy aging and long-term cellular function.</p>\n<p>Telomerase helps preserve the length of telomeres, the protective caps on DNA strands, which are essential to cellular renewal and longevity. These findings indicate that Laminine may support the body’s natural ability to regenerate from within. \n</p>\n<p>Additional laboratory research has also shown that Laminine supports normal cell growth in human skin cells, confirming both its efficacy and safety on a cellular level. </p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "rgba(0,0,0,0)",
+            "background_gradient": "",
+            "text_color": "#181818",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_9K7x9g"
+      ],
+      "custom_css": [
+        ".text-custom {padding-top: 20px;}",
+        ".media-with-text__media > * {object-fit: contain;}"
+      ],
+      "name": "Media with text",
+      "settings": {
+        "full_width": false,
+        "alternate_media_position": false,
+        "spacing": "none"
+      }
+    },
+    "rich_text_r7nUpj": {
+      "type": "rich-text",
+      "blocks": {
+        "liquid_qTwjkG": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<h3 class=\"h3\" style= \"text-align: center;\">Want to Explore The<span style= \"color: #FF8F00;\"> Science</span> Behind Our Products?</h3>"
+          }
+        },
+        "button_mwQeXr": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "base",
+            "text": "VIEW OUR STUDIES",
+            "url": "shopify://pages/our-studies",
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "liquid_qTwjkG",
+        "button_mwQeXr"
+      ],
+      "name": "Rich text - IMMUNE+++",
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "#fff4e5",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_pyeeB8": {
+      "type": "rich-text",
+      "blocks": {
+        "liquid_ryjGb7": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<h2 class=\"h2\" style= \"text-align: center;\">A Timeline Of How<span style= \"color: #FF8F00;\"> LifePharm</span><br> Came To Be</h2>"
+          }
+        },
+        "richtext_dnYaqr": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>From a discovery in the early 1900s to a global regenerative wellness movement—here’s our journey.</p>"
+          }
+        },
+        "image_dTq8AJ": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/about_-_mobile_timeline.png",
+            "width_mode": "full_width",
+            "max_width": 600,
+            "mobile_max_width": 400
+          }
+        }
+      },
+      "block_order": [
+        "liquid_ryjGb7",
+        "richtext_dnYaqr",
+        "image_dTq8AJ"
+      ],
+      "custom_css": [
+        "{margin-bottom: -20px;}"
+      ],
+      "name": "Rich text - IMMUNE+++",
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "image_with_text_overlay_YFMWBr": {
+      "type": "image-with-text-overlay",
+      "custom_css": [
+        "{margin-top: -20px;}"
+      ],
+      "name": "Image with text overlay",
+      "settings": {
+        "full_width": false,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify://shop_images/about_-_desktop_timeline.png",
+        "mobile_image": "shopify://shop_images/about_-_mobile_timeline.png",
+        "mobile_text_position": "place-self-start-center text-center",
+        "desktop_text_position": "sm:place-self-start-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "rich_text_jHibgm": {
+      "type": "rich-text",
+      "blocks": {
+        "liquid_bwHX9R": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<h2 style= \"text-align: center;\">Our<span style= \"color: #FF8F00;\"> Scientific</span> Advisory Board</h2>"
+          }
+        }
+      },
+      "block_order": [
+        "liquid_bwHX9R"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "{margin-bottom: -10px;}"
+      ],
+      "name": "Rich text - IMMUNE+++",
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "#fff4e5",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "multi_column_BzWAwD": {
+      "type": "multi-column",
+      "blocks": {
+        "item_4gjMPR": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/DrThomasStaudacher_b21450e1-b583-4742-b28b-e2d8bab47eb6.jpg",
+            "column_size": "2",
+            "title": "Thomas Staudacher",
+            "heading_tag": "h4",
+            "content": "<h6>N.D, LifePharm Scientific Advisory Board Member</h6><p>Thomas Staudacher has worked in the field of holistic medicine since graduating from the Germany-based Paracelsus School of Naturopathy in 2003. The Australian-based naturopathic doctor founded a relaxation technique called Acoustic Restoration Therapy™ and currently runs both the International Holistic Clinic of Natural Medicine and Subtle Energy Solution. Staudacher received advanced diplomas in naturopathy, nutrition, acupuncture, and homeopathy from the Australian Institute <br/>of Applied Science in Brisbane.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_w6kdWr": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Kimberly-Headshot_aa8fed86-7d37-4ae8-bb7e-3edd42d1b385.jpg",
+            "column_size": "2",
+            "title": "Kimberly Purdy Lloyd",
+            "heading_tag": "h4",
+            "content": "<h6>Executive Research and Development Scientist</h6><p>Extensive and ongoing research is an absolute necessity for LifePharm. Kimberly Purdy Lloyd has a career path of formidable experience in dietary supplement and specialty skincare formulations. She joined the Dietary Supplement industry with specialties in Wound Care and Cosmetic Formulations, developing clinical and basic research protocols and peer publishes results.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_xxqxaD": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/DrSamina-Headshot-2025_b09c7e84-c2fe-48ae-af53-68ebfc44c93e.jpg",
+            "column_size": "2",
+            "title": "Samina Ahmad",
+            "heading_tag": "h3",
+            "content": "<h6>M.D., HHC, ALC, AP & AFNC, <br/>LifePharm Scientific Advisory Board Member</h6><p>While working as an Internal Medicine Physician, Dr. Samina Ahmad championed efforts for underprivileged Pakistani women and children. She is a strong advocate for better healthcare and nutrition in underserved countries. She received her medical degree from the University of Punjab in Pakistan and holds numerous certifications. Currently, she operates Samina’s Wellness in New York.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_wKjpCB": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/DrGiuseppe-Maffi_14952567-603b-479a-8be2-6108564e2f61.jpg",
+            "column_size": "2",
+            "title": "Giuseppe Maffi",
+            "heading_tag": "h4",
+            "content": "<h6>Ph.D, N.D, Scientific Advisory Board Member</h6><p>Dr. Giuseppe Maffi is a biologist and naturopath specializing in mitochondrial health, oxidative stress, and epigenetic therapies. With over 20 years of experience, he has advised leading nutraceutical and biotech companies on product development, scientific strategy, and regulatory affairs. A founding member of the Well Aging Project Society, Dr. Maffi is also a frequent speaker and published expert in the field of anti-aging and redox science. </p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_aFXXhX": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/DrSewiteNegash_92006159-371e-42af-bd85-2aca948becaf.jpg",
+            "column_size": "2",
+            "title": "Sewite M. Negash",
+            "heading_tag": "h4",
+            "content": "<h6>Ph.D, NIH, Science Advisory Board Member</h6><p>Dr. Sewite M. Negash got her Ph.D. in Biochemistry & Biophysics from the University of Kansas and did her post-doctoral training at the National Institutes of Health (NIH) and at the Pacific Northwest National Labs. She teaches college level biotechnology, chemistry and biochemistry courses, and her primary interest lies in understanding the interplay between chronic inflammation, oxidative stress, and the body’s anti-oxidant protection systems in health and disease. She has been published in numerous peer-reviewed journals. Through her philanthropic work, she advocates for access to free, quality education for all in Africa.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_RpGAxW": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/DrFrigyesBaack_a3c6df6c-b7bd-40ce-9e57-3619a69d902f.jpg",
+            "column_size": "2",
+            "title": "Frigyes Back",
+            "heading_tag": "h4",
+            "content": "<h6>Scientific Advisory Board Member</h6><p>Dr. Frigyes Back is a highly experienced specialist in surgery and proctology with decades of service in traditional medicine. He earned his medical degree from Semmelweis University of Medicine in Budapest in 1975 and completed his surgical specialization in 1980.Dr. Back began his medical career as an assistant lecturer at the Surgical Clinic of the Postgraduate Medical Training Institute. Over the years, he gained valuable international experience in Austria and Germany, and held key positions at esteemed institutions such as the 3rd Surgical Clinic of Semmelweis University and István Hospital. He later served as Chief Medical Inspector at the National Health Insurance Fund.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_DXEDXa": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Yana_Etemadi.jpg",
+            "column_size": "2",
+            "title": "Yana Etemadi",
+            "heading_tag": "h4",
+            "content": "<h6>NC, Science Advisory Board Member</h6><p>The Russian native, who graduated with honors from Bauman College as a nutritionist for six years. At her Denver-based private practice, Food as Medicine, she teaches patients how to shop for the proper foods to optimize the gut microbiome and makes home pantry inspections. She first became convinced of this brain-gut relationship when her young son was diagnosed with autism and she learned how integral a child’s diet is to their behavior.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_THeDrk": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/DrAndujar-Headshot_1ace2437-04e0-4f95-a29f-f9d4df3cf4c0.jpg",
+            "column_size": "2",
+            "title": "Dr. Edward Andujar",
+            "heading_tag": "h4",
+            "content": "<h6>Scientific Advisory Board Member</h6><p>Dr. Frigyes Back is a highly experienced specialist in surgery and proctology with decades of service in traditional medicine. He earned his medical degree from Semmelweis University of Medicine in Budapest in 1975 and completed his surgical specialization in 1980.Dr. Back began his medical career as an assistant lecturer at the Surgical Clinic of the Postgraduate Medical Training Institute. Over the years, he gained valuable international experience in Austria and Germany, and held key positions at esteemed institutions such as the 3rd Surgical Clinic of Semmelweis University and István Hospital. He later served as Chief Medical Inspector at the National Health Insurance Fund.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_4gjMPR",
+        "item_w6kdWr",
+        "item_xxqxaD",
+        "item_wKjpCB",
+        "item_aFXXhX",
+        "item_RpGAxW",
+        "item_DXEDXa",
+        "item_THeDrk"
+      ],
+      "custom_css": [
+        ".gap-4 {background: #f9f9f9; padding: 30px; margin-top: -25px; border-radius: 20px; border-start-end-radius: 0px; border-start-start-radius: 0px; align-content: baseline; border-width: 1px;}",
+        ".rounded {border-end-end-radius: 0px; border-end-start-radius: 0px;}",
+        "@media screen and (min-width: 700px) {.multi-column {padding: 0px 125px 0px 125px; }}",
+        ".bg-custom {border-width: 1px; border-color: #a6a6a6; max-width: 1350px; margin-right: auto; margin-left: auto;}",
+        "@media screen and (min-width: 700px) {.gap-4 {min-height: 630px; }}"
+      ],
+      "name": "Multi-column",
+      "settings": {
+        "full_width": false,
+        "stack_on_mobile": true,
+        "gap": "medium",
+        "text_alignment": "center",
+        "subheading": "",
+        "title": "",
+        "content": "{{ page.content }}<p></p>",
+        "background": "#fff4e5",
+        "background_gradient": "",
+        "text_color": "rgba(0,0,0,0)"
+      }
+    },
+    "rich_text_hkJgPY": {
+      "type": "rich-text",
+      "blocks": {
+        "liquid_ezTARn": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<h3 class=\"h3\" style= \"text-align: center;\">Not Sure Where To Start?<span style= \"color: #FF8F00;\"></span></h3>"
+          }
+        },
+        "richtext_FmLMHy": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Let’s get you on the path to regeneration. Our team is here to guide you.</p>"
+          }
+        },
+        "button_i8iJET": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "lg",
+            "text": "<a onclick=\"GorgiasChat.open();\">CHAT WITH US</a>",
+            "url": "",
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "liquid_ezTARn",
+        "richtext_FmLMHy",
+        "button_i8iJET"
+      ],
+      "name": "Rich text - IMMUNE+++",
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_overlay_HrG6nG",
+    "design_pack_marquee_multitext_jUrM4C",
+    "rich_text_rg7fzk",
+    "media_with_text_tpyMxR",
+    "rich_text_h4GHBA",
+    "media_with_text_RLB7Fk",
+    "rich_text_gUjyBc",
+    "media_with_text_DngLqY",
+    "rich_text_r7nUpj",
+    "rich_text_pyeeB8",
+    "image_with_text_overlay_YFMWBr",
+    "rich_text_jHibgm",
+    "multi_column_BzWAwD",
+    "rich_text_hkJgPY"
+  ]
+}

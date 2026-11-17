@@ -1,0 +1,607 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        "h1 {text-align: left !important;}"
+      ],
+      "settings": {
+        "content_width": "100%"
+      }
+    },
+    "slideshow_Hq3z3J": {
+      "type": "slideshow",
+      "blocks": {
+        "image_8nBpHx": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Event_Desktop_1_73938b17-2299-4f05-af05-8631f5ace7b3.jpg",
+            "mobile_image": "shopify://shop_images/Event_Mobile_1_0e7926e4-a1f6-47e3-9e9f-16028032a5e1.jpg",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h0",
+            "button_text": "",
+            "button_link": "#shopify-section-template--25272665211189__1755267274a658f6f9",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_8nBpHx"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "text_with_icons_pcfUpq": {
+      "type": "text-with-icons",
+      "blocks": {
+        "item_Xzb86z": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "mobile_icon_width": 24,
+            "icon_width": 32,
+            "icon_background_type": "circle",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "Free shipping",
+            "content": "<p>Free worldwide shipping and returns - customs and duties taxes included</p>"
+          }
+        },
+        "item_HrEbJ3": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "mobile_icon_width": 24,
+            "icon_width": 32,
+            "icon_background_type": "circle",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "Customer service",
+            "content": "<p>We are available from monday to friday to answer your questions.</p>"
+          }
+        },
+        "item_RANYpY": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "mobile_icon_width": 24,
+            "icon_width": 32,
+            "icon_background_type": "circle",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "Secure payment",
+            "content": "<p>Your payment information is processed securely.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_Xzb86z",
+        "item_HrEbJ3",
+        "item_RANYpY"
+      ],
+      "disabled": true,
+      "name": "Text with icons",
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": false,
+        "title": "",
+        "heading_tag": "h5",
+        "text_alignment": "center",
+        "icon_spacing": "medium",
+        "background": "#f2f2f2",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_AmT7pa": {
+      "type": "rich-text",
+      "blocks": {
+        "image_MxiXEm": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/smarter_way_to_earn.jpg",
+            "width_mode": "custom",
+            "max_width": 700,
+            "mobile_max_width": 400
+          }
+        },
+        "liquid_RjzVjq": {
+          "type": "liquid",
+          "disabled": true,
+          "settings": {
+            "liquid": "<h1>What If One Choice Could <span style=\"color: #FF8F00\">Regenerate</span> Your Life? </h1>\n<style>\nh1 {text-align: center;}\n</style>"
+          }
+        }
+      },
+      "block_order": [
+        "image_MxiXEm",
+        "liquid_RjzVjq"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "rgba(0,0,0,0)",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_X8z4c8": {
+      "type": "rich-text",
+      "blocks": {
+        "liquid_BzVAWi": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<h2>Why the Market is <span style=\"color: #FF8F00\">Exploding</span></h2>\n<style>\nh2 {text-align: center;}\n</style>"
+          }
+        },
+        "liquid_W9CM6T": {
+          "type": "liquid",
+          "disabled": true,
+          "settings": {
+            "liquid": "<h2><span style=\"color: #FF8F00\">Regenerate</span> Your Income</h2>\n<style>\nh1 {text-align: center;}\n</style>"
+          }
+        },
+        "richtext_tqaVQr": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Healthy aging is one of today's biggest wellness trends, and telomeres - the protective caps on out DNA - are a big reason why.</p>"
+          }
+        },
+        "image_9BfyhC": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/science_of_living_longer_-_time_0fcc33fb-c628-4e30-a7a9-dea60ce4d32b.jpg",
+            "width_mode": "custom",
+            "max_width": 600,
+            "mobile_max_width": 400
+          }
+        },
+        "button_pxJ6dr": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "sm",
+            "text": "VIEW STUDY",
+            "url": "https://www.lifepharm.com/media/Studies/PDR%202018%20final-2.pdf?ref=retaildirect",
+            "background": "",
+            "text_color": ""
+          }
+        },
+        "liquid_KciErh": {
+          "type": "liquid",
+          "disabled": true,
+          "settings": {
+            "liquid": "<h1>What If One Choice Could <span style=\"color: #FF8F00\">Regenerate</span> Your Life? </h1>\n<style>\nh1 {text-align: center;}\n</style>"
+          }
+        }
+      },
+      "block_order": [
+        "liquid_BzVAWi",
+        "liquid_W9CM6T",
+        "richtext_tqaVQr",
+        "image_9BfyhC",
+        "button_pxJ6dr",
+        "liquid_KciErh"
+      ],
+      "custom_css": [
+        "{background-color: #fff4e7;}"
+      ],
+      "name": "Market Exploding",
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "#fff4e7",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_n78wHM": {
+      "type": "rich-text",
+      "blocks": {
+        "image_jcVVjV": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Event_Desktop_4_b1e622b9-c9a5-49cd-8aaa-1423f1e5acbb.jpg",
+            "width_mode": "custom",
+            "max_width": 700,
+            "mobile_max_width": 400
+          }
+        },
+        "liquid_byfR9e": {
+          "type": "liquid",
+          "disabled": true,
+          "settings": {
+            "liquid": "<h1>What If One Choice Could <span style=\"color: #FF8F00\">Regenerate</span> Your Life? </h1>\n<style>\nh1 {text-align: center;}\n</style>"
+          }
+        }
+      },
+      "block_order": [
+        "image_jcVVjV",
+        "liquid_byfR9e"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "rgba(0,0,0,0)",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_YKdt3X": {
+      "type": "rich-text",
+      "blocks": {
+        "liquid_AaH87j": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<h1><span style=\"color: #FF8F00\">Regenerate</span> Your Life</h1>\n<style>\nh1 {text-align: center;}\n</style>"
+          }
+        },
+        "liquid_L6dmPA": {
+          "type": "liquid",
+          "disabled": true,
+          "settings": {
+            "liquid": "<h2><span style=\"color: #FF8F00\">Regenerate</span> Your Life</h2>\n<style>\nh1 {text-align: center;}\n</style>"
+          }
+        },
+        "image_NVt7QN": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-08-15_at_16.20.43.png",
+            "width_mode": "custom",
+            "max_width": 600,
+            "mobile_max_width": 400
+          }
+        },
+        "liquid_KFJfrz": {
+          "type": "liquid",
+          "disabled": true,
+          "settings": {
+            "liquid": "<h1>What If One Choice Could <span style=\"color: #FF8F00\">Regenerate</span> Your Life? </h1>\n<style>\nh1 {text-align: center;}\n</style>"
+          }
+        }
+      },
+      "block_order": [
+        "liquid_AaH87j",
+        "liquid_L6dmPA",
+        "image_NVt7QN",
+        "liquid_KFJfrz"
+      ],
+      "disabled": true,
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "#fff4e7",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_TahYnz": {
+      "type": "rich-text",
+      "blocks": {
+        "liquid_D8VthR": {
+          "type": "liquid",
+          "disabled": true,
+          "settings": {
+            "liquid": "<h2><span style=\"color: #FF8F00\">Regenerate</span> Your Life</h2>\n<style>\nh1 {text-align: center;}\n</style>"
+          }
+        },
+        "image_LTGrMU": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Event_Desktop_5_55e9344f-83b3-46c2-ad29-9cf1ffaeadc4.jpg",
+            "width_mode": "full_width",
+            "max_width": 600,
+            "mobile_max_width": 400
+          }
+        },
+        "richtext_3Fr7RD": {
+          "type": "richtext",
+          "disabled": true,
+          "settings": {
+            "content": "<p>Curious how wellness and purpose can align to create real income? At this event, you’ll see how regenerating your body can also regenerate your possibilities. With the LifeFunds Plan, you can earn up to $200 a month simply by inviting others to take part in a wellness journey alongside you. It’s a simple, flexible way to supplement your income—on your schedule, without pressure, from anywhere, and with the support of a community focused on growth and wellbeing.</p>"
+          }
+        },
+        "liquid_H4VPME": {
+          "type": "liquid",
+          "disabled": true,
+          "settings": {
+            "liquid": "<h1>What If One Choice Could <span style=\"color: #FF8F00\">Regenerate</span> Your Life? </h1>\n<style>\nh1 {text-align: center;}\n</style>"
+          }
+        }
+      },
+      "block_order": [
+        "liquid_D8VthR",
+        "image_LTGrMU",
+        "richtext_3Fr7RD",
+        "liquid_H4VPME"
+      ],
+      "custom_css": [
+        "{background-colour: #fff4e7;}"
+      ],
+      "name": "what you'll discover at the event",
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "#fff4e7",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_bpGRMF": {
+      "type": "rich-text",
+      "blocks": {
+        "image_tVgJAq": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Event_Desktop_6_2c7e2154-b2d3-4d9b-9991-6612bc64e938.jpg",
+            "width_mode": "custom",
+            "max_width": 700,
+            "mobile_max_width": 400
+          }
+        },
+        "liquid_kt3iJ4": {
+          "type": "liquid",
+          "disabled": true,
+          "settings": {
+            "liquid": "<h1>What If One Choice Could <span style=\"color: #FF8F00\">Regenerate</span> Your Life? </h1>\n<style>\nh1 {text-align: center;}\n</style>"
+          }
+        }
+      },
+      "block_order": [
+        "image_tVgJAq",
+        "liquid_kt3iJ4"
+      ],
+      "custom_css": [],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "rgba(0,0,0,0)",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "multi_column_wtkb4M": {
+      "type": "multi-column",
+      "blocks": {
+        "item_jXg7iV": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-08-15_at_16.00.05.png",
+            "column_size": "3",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_rxWegm": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-08-15_at_16.00.24.png",
+            "column_size": "3",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_FWkEAx": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-08-15_at_16.00.13.png",
+            "column_size": "3",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_jXg7iV",
+        "item_rxWegm",
+        "item_FWkEAx"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "{background-color: #fff4e7;}"
+      ],
+      "name": "Multi-column",
+      "settings": {
+        "full_width": false,
+        "stack_on_mobile": true,
+        "gap": "x-large",
+        "text_alignment": "center",
+        "subheading": "",
+        "title": "Regenerate Your Health",
+        "content": "",
+        "background": "#fff4e7",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_wDUUQD": {
+      "type": "rich-text",
+      "blocks": {
+        "liquid_fBgMTx": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<h2><span style=\"color: #FF8F00\">Regenerate</span> Your Life</h2>\n<style>\nh2 {text-align: center;}\n</style>"
+          }
+        },
+        "liquid_MHAgDB": {
+          "type": "liquid",
+          "disabled": true,
+          "settings": {
+            "liquid": "<h2><span style=\"color: #FF8F00\">Regenerate</span> Your Life</h2>\n<style>\nh1 {text-align: center;}\n</style>"
+          }
+        },
+        "image_jn7kpG": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/regenerate_your_life.jpg",
+            "width_mode": "custom",
+            "max_width": 600,
+            "mobile_max_width": 400
+          }
+        },
+        "liquid_9pDUrJ": {
+          "type": "liquid",
+          "disabled": true,
+          "settings": {
+            "liquid": "<h1>What If One Choice Could <span style=\"color: #FF8F00\">Regenerate</span> Your Life? </h1>\n<style>\nh1 {text-align: center;}\n</style>"
+          }
+        }
+      },
+      "block_order": [
+        "liquid_fBgMTx",
+        "liquid_MHAgDB",
+        "image_jn7kpG",
+        "liquid_9pDUrJ"
+      ],
+      "name": "Regenerate Your Life",
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "#fff4e7",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "1755267274a658f6f9": {
+      "type": "apps",
+      "blocks": {
+        "powerful_form_builder_app_block_h7UVQW": {
+          "type": "shopify://apps/powerful-form-builder/blocks/app-block/e4bcb1eb-35b2-42e6-bc37-bfe0e1542c9d",
+          "settings": {
+            "shortcode": "<div class=\"globo-formbuilder\" data-id=\"MTA0Mzc0\"></div>"
+          }
+        }
+      },
+      "block_order": [
+        "powerful_form_builder_app_block_h7UVQW"
+      ],
+      "custom_css": [
+        "h2 {text-align: center; font-size: 40px; font-family: \"Playfair Display\";}"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": true,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_TE6cEc": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_8P4P9G": {
+          "type": "richtext",
+          "disabled": true,
+          "settings": {
+            "content": "<p>For educational purposed only. Products are not intended to diagnose, treat, or prevent any disease. Exampled of rewards or results are illustrative only, actual outcomes vary based on effort, skill, and market conditions.</p>"
+          }
+        },
+        "liquid_VkCpPF": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<p><span style=\"font-size: 12px\">For educational purposed only. Products are not intended to diagnose, treat, or prevent any disease. Exampled of rewards or results are illustrative only, actual outcomes vary based on effort, skill, and market conditions.</span> </p>\n<style>\n</style>"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_8P4P9G",
+        "liquid_VkCpPF"
+      ],
+      "name": "bottom of page",
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "#fff4e7",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "custom_liquid_jDTEFR": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "custom_css": [],
+      "name": "mailchimp form",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "liquid": "<div id=\"mc_embed_shell\">\n      <link href=\"//cdn-images.mailchimp.com/embedcode/classic-061523.css\" rel=\"stylesheet\" type=\"text/css\">\n  <style type=\"text/css\">\n        #mc_embed_signup{background:#fff; false;clear:center; font:14px Helvetica,Arial,sans-serif; width: 600px;}\n        /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.\n           We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */\n</style>\n<div id=\"mc_embed_signup\">\n    <form action=\"https://LifePharm.us3.list-manage.com/subscribe/post?u=9bc959a476a7c8266c01547ff&amp;id=4bfca8a934&amp;f_id=008fbae3f0\" method=\"post\" id=\"mc-embedded-subscribe-form\" name=\"mc-embedded-subscribe-form\" class=\"validate\" target=\"_blank\">\n        <div id=\"mc_embed_signup_scroll\"><h2>Better Health <span style=\"color: #FF8F00\">Starts Here</span></h2>\n            <div class=\"indicates-required\"><span class=\"asterisk\">*</span> indicates required</div>\n            <div class=\"mc-field-group\"><label for=\"mce-FNAME\">First Name </label><input type=\"text\" name=\"FNAME\" class=\" text\" id=\"mce-FNAME\" value=\"\"></div><div class=\"mc-field-group\"><label for=\"mce-LNAME\">Last Name </label><input type=\"text\" name=\"LNAME\" class=\" text\" id=\"mce-LNAME\" value=\"\"></div><div class=\"mc-field-group\"><label for=\"mce-EMAIL\">Email Address <span class=\"asterisk\">*</span></label><input type=\"email\" name=\"EMAIL\" class=\"required email\" id=\"mce-EMAIL\" required=\"\" value=\"\"></div><div class=\"mc-field-group\"><label for=\"mce-PHONE\">Phone Number </label><input type=\"text\" name=\"PHONE\" class=\"REQ_CSS\" id=\"mce-PHONE\" value=\"\"></div>\n        <div id=\"mce-responses\" class=\"clear\">\n            <div class=\"response\" id=\"mce-error-response\" style=\"display: none;\"></div>\n            <div class=\"response\" id=\"mce-success-response\" style=\"display: none;\"></div>\n        </div><div aria-hidden=\"true\" style=\"position: absolute; center: -5000px;\"><input type=\"text\" name=\"b_9bc959a476a7c8266c01547ff_4bfca8a934\" tabindex=\"-1\" value=\"\"></div><div class=\"clear\"><input type=\"submit\" name=\"subscribe\" id=\"mc-embedded-subscribe\" class=\"button\" value=\"Subscribe\"></div>\n    </div>\n</form>\n</div>\n<script type=\"text/javascript\" src=\"//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js\"></script><script type=\"text/javascript\">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[0]='EMAIL';ftypes[0]='email';fnames[4]='PHONE';ftypes[4]='phone';}(jQuery));var $mcj = jQuery.noConflict(true);</script></div>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "slideshow_Hq3z3J",
+    "text_with_icons_pcfUpq",
+    "rich_text_AmT7pa",
+    "rich_text_X8z4c8",
+    "rich_text_n78wHM",
+    "rich_text_YKdt3X",
+    "rich_text_TahYnz",
+    "rich_text_bpGRMF",
+    "multi_column_wtkb4M",
+    "rich_text_wDUUQD",
+    "1755267274a658f6f9",
+    "rich_text_TE6cEc",
+    "custom_liquid_jDTEFR"
+  ]
+}

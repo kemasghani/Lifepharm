@@ -1,0 +1,173 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        "h1 {text-align: left !important;}"
+      ],
+      "settings": {
+        "content_width": "100%"
+      }
+    },
+    "rich_text_KzPCPM": {
+      "type": "rich-text",
+      "blocks": {
+        "liquid_bF8hNp": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<h2 class=\"h2\" style= \"text-align: center;\">Get<span style= \"color: #FF8F00;\"> Started </span> </h2>"
+          }
+        },
+        "heading_CbyCbE": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "text": "Get Started",
+            "heading_tag": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_nqxPcp": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>You’re on your way to becoming a Life Changer! Set yourself up for success with a Business Starter Kit and choose a product to begin your journey.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "liquid_bF8hNp",
+        "heading_CbyCbE",
+        "richtext_nqxPcp"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "featured_product_gwcppU": {
+      "type": "featured-product",
+      "blocks": {
+        "vendor_yhRNm8": {
+          "type": "vendor",
+          "settings": {}
+        },
+        "title_yeWg77": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "badges_PaP9yy": {
+          "type": "badges",
+          "settings": {}
+        },
+        "price_QfJYAz": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "rating_HF467W": {
+          "type": "rating",
+          "settings": {
+            "show_empty": false
+          }
+        },
+        "separator_pwf3hm": {
+          "type": "separator",
+          "settings": {}
+        },
+        "description_KTEC3b": {
+          "type": "description",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "collapse_content": false
+          }
+        },
+        "variant_picker_ByqG7Y": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "quantity_selector_G49NNK": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_MV8FLp": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "pickup_availability_BBJacn": {
+          "type": "pickup_availability",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "vendor_yhRNm8",
+        "title_yeWg77",
+        "badges_PaP9yy",
+        "price_QfJYAz",
+        "rating_HF467W",
+        "separator_pwf3hm",
+        "description_KTEC3b",
+        "variant_picker_ByqG7Y",
+        "quantity_selector_G49NNK",
+        "buy_buttons_MV8FLp",
+        "pickup_availability_BBJacn"
+      ],
+      "name": "Featured product",
+      "settings": {
+        "full_width": true,
+        "product": "brain-protect-pack",
+        "desktop_media_width": 55,
+        "desktop_media_layout": "carousel_thumbnails_left",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": true,
+        "enable_video_looping": false,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_KzPCPM",
+    "featured_product_gwcppU"
+  ]
+}

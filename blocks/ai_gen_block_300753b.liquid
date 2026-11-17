@@ -1,0 +1,1227 @@
+{% doc %}
+  @prompt
+    Create a comprehensive referral program section called "Ambassador Program" with the following elements: 1) Hero headline "Become a LifePharm Ambassador - Earn Up to €10,000/Month" 2) Subheading explaining how purchasing an Annual Supply unlocks earning potential 3) Two-track system explanation (Fast Track 14-day vs Standard Track) with visual comparison 4) Six-level earning structure showing progression from €250 to €10,000 with clear visual hierarchy 5) Simple 3-step process: Purchase Annual Supply → Refer 3 Friends → Earn Rewards 6) Benefits section highlighting monthly payouts and unlimited earning potential 7) Strong call-to-action button "Start Your Ambassador Journey" 8) Include testimonial placeholder and FAQ section. Use modern, professional styling with gradient backgrounds and clear typography that builds excitement and urgency around the opportunity.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-ambassador-program-{{ ai_gen_id }} {
+    background: linear-gradient(135deg, {{ block.settings.hero_bg_color_1 }} 0%, {{ block.settings.hero_bg_color_2 }} 100%);
+    padding: 60px 20px;
+    color: {{ block.settings.text_color }};
+    font-family: {{ settings.text_font.family }}, {{ settings.text_font.fallback_families }};
+  }
+
+  .ai-ambassador-container-{{ ai_gen_id }} {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .ai-ambassador-hero-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .ai-ambassador-hero-title-{{ ai_gen_id }} {
+    font-family: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};
+    font-size: {{ block.settings.hero_title_size }}px;
+    font-weight: 700;
+    margin: 0 0 20px;
+    line-height: 1.2;
+    background: linear-gradient(45deg, {{ block.settings.title_gradient_1 }}, {{ block.settings.title_gradient_2 }});
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .ai-ambassador-hero-subtitle-{{ ai_gen_id }} {
+    font-size: {{ block.settings.subtitle_size }}px;
+    margin: 0 0 40px;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+  }
+
+  .ai-ambassador-tracks-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 80px;
+  }
+
+  .ai-ambassador-track-{{ ai_gen_id }} {
+    background: {{ block.settings.card_bg_color }};
+    border-radius: {{ settings.block_border_radius }}px;
+    padding: 40px 30px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .ai-ambassador-track-{{ ai_gen_id }}:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .ai-ambassador-track-badge-{{ ai_gen_id }} {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: {{ block.settings.badge_color }};
+    color: {{ block.settings.badge_text_color }};
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .ai-ambassador-track-title-{{ ai_gen_id }} {
+    font-family: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};
+    font-size: 28px;
+    font-weight: 600;
+    margin: 20px 0 15px;
+    color: {{ block.settings.card_text_color }};
+  }
+
+  .ai-ambassador-track-description-{{ ai_gen_id }} {
+    font-size: 16px;
+    color: {{ block.settings.card_text_color }};
+    opacity: 0.8;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .ai-ambassador-track-features-{{ ai_gen_id }} {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .ai-ambassador-track-feature-{{ ai_gen_id }} {
+    padding: 8px 0;
+    font-size: 15px;
+    color: {{ block.settings.card_text_color }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .ai-ambassador-track-feature-{{ ai_gen_id }}::before {
+    content: "✓";
+    color: {{ block.settings.success_color }};
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .ai-ambassador-earning-structure-{{ ai_gen_id }} {
+    margin-bottom: 80px;
+  }
+
+  .ai-ambassador-section-title-{{ ai_gen_id }} {
+    font-family: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};
+    font-size: {{ block.settings.section_title_size }}px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0 0 50px;
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-ambassador-levels-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+  }
+
+  .ai-ambassador-level-{{ ai_gen_id }} {
+    background: {{ block.settings.level_bg_color }};
+    border-radius: {{ settings.block_border_radius }}px;
+    padding: 30px 20px;
+    text-align: center;
+    position: relative;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+  }
+
+  .ai-ambassador-level-{{ ai_gen_id }}:hover {
+    border-color: {{ block.settings.level_hover_border }};
+    transform: scale(1.05);
+  }
+
+  .ai-ambassador-level-number-{{ ai_gen_id }} {
+    background: {{ block.settings.level_number_bg }};
+    color: {{ block.settings.level_number_text }};
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    font-weight: 600;
+    font-size: 18px;
+  }
+
+  .ai-ambassador-level-amount-{{ ai_gen_id }} {
+    font-family: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};
+    font-size: 24px;
+    font-weight: 700;
+    color: {{ block.settings.amount_color }};
+    margin: 0 0 10px;
+  }
+
+  .ai-ambassador-level-description-{{ ai_gen_id }} {
+    font-size: 14px;
+    color: {{ block.settings.card_text_color }};
+    opacity: 0.8;
+  }
+
+  .ai-ambassador-process-{{ ai_gen_id }} {
+    margin-bottom: 80px;
+  }
+
+  .ai-ambassador-steps-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+  }
+
+  .ai-ambassador-step-{{ ai_gen_id }} {
+    text-align: center;
+    position: relative;
+  }
+
+  .ai-ambassador-step-icon-{{ ai_gen_id }} {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, {{ block.settings.step_icon_bg_1 }}, {{ block.settings.step_icon_bg_2 }});
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 36px;
+    color: {{ block.settings.step_icon_color }};
+  }
+
+  .ai-ambassador-step-title-{{ ai_gen_id }} {
+    font-family: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 10px;
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-ambassador-step-description-{{ ai_gen_id }} {
+    font-size: 16px;
+    color: {{ block.settings.text_color }};
+    opacity: 0.8;
+    line-height: 1.5;
+  }
+
+  .ai-ambassador-benefits-{{ ai_gen_id }} {
+    background: {{ block.settings.benefits_bg_color }};
+    border-radius: {{ settings.block_border_radius }}px;
+    padding: 50px 40px;
+    margin-bottom: 80px;
+    text-align: center;
+  }
+
+  .ai-ambassador-benefits-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  .ai-ambassador-benefit-{{ ai_gen_id }} {
+    text-align: center;
+  }
+
+  .ai-ambassador-benefit-icon-{{ ai_gen_id }} {
+    font-size: 48px;
+    margin-bottom: 15px;
+    color: {{ block.settings.benefit_icon_color }};
+  }
+
+  .ai-ambassador-benefit-title-{{ ai_gen_id }} {
+    font-family: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 10px;
+    color: {{ block.settings.benefits_text_color }};
+  }
+
+  .ai-ambassador-benefit-description-{{ ai_gen_id }} {
+    font-size: 14px;
+    color: {{ block.settings.benefits_text_color }};
+    opacity: 0.8;
+    line-height: 1.5;
+  }
+
+  .ai-ambassador-cta-section-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .ai-ambassador-cta-button-{{ ai_gen_id }} {
+    display: inline-block;
+    background: linear-gradient(135deg, {{ block.settings.cta_bg_1 }}, {{ block.settings.cta_bg_2 }});
+    color: {{ block.settings.cta_text_color }};
+    padding: 18px 40px;
+    border-radius: {{ settings.button_border_radius }}px;
+    text-decoration: none;
+    font-size: {{ block.settings.cta_font_size }}px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .ai-ambassador-cta-button-{{ ai_gen_id }}:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+    color: {{ block.settings.cta_text_color }};
+  }
+
+  .ai-ambassador-testimonial-{{ ai_gen_id }} {
+    background: {{ block.settings.testimonial_bg_color }};
+    border-radius: {{ settings.block_border_radius }}px;
+    padding: 40px;
+    margin-bottom: 80px;
+    text-align: center;
+    position: relative;
+  }
+
+  .ai-ambassador-testimonial-quote-{{ ai_gen_id }} {
+    font-size: 20px;
+    font-style: italic;
+    color: {{ block.settings.testimonial_text_color }};
+    margin: 0 0 20px;
+    line-height: 1.6;
+  }
+
+  .ai-ambassador-testimonial-author-{{ ai_gen_id }} {
+    font-weight: 600;
+    color: {{ block.settings.testimonial_author_color }};
+    font-size: 16px;
+  }
+
+  .ai-ambassador-faq-{{ ai_gen_id }} {
+    margin-bottom: 40px;
+  }
+
+  .ai-ambassador-faq-item-{{ ai_gen_id }} {
+    background: {{ block.settings.faq_bg_color }};
+    border-radius: {{ settings.block_border_radius }}px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+
+  .ai-ambassador-faq-question-{{ ai_gen_id }} {
+    background: none;
+    border: none;
+    width: 100%;
+    padding: 25px 30px;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 600;
+    color: {{ block.settings.faq_text_color }};
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+  }
+
+  .ai-ambassador-faq-question-{{ ai_gen_id }}:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .ai-ambassador-faq-answer-{{ ai_gen_id }} {
+    padding: 0 30px 25px;
+    color: {{ block.settings.faq_text_color }};
+    opacity: 0.8;
+    line-height: 1.6;
+    display: none;
+  }
+
+  .ai-ambassador-faq-answer-{{ ai_gen_id }}.active {
+    display: block;
+  }
+
+  .ai-ambassador-faq-icon-{{ ai_gen_id }} {
+    transition: transform 0.3s ease;
+    font-size: 20px;
+  }
+
+  .ai-ambassador-faq-question-{{ ai_gen_id }}.active .ai-ambassador-faq-icon-{{ ai_gen_id }} {
+    transform: rotate(45deg);
+  }
+
+  @media (max-width: 768px) {
+    .ai-ambassador-program-{{ ai_gen_id }} {
+      padding: 40px 15px;
+    }
+
+    .ai-ambassador-hero-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.hero_title_size | times: 0.7 }}px;
+    }
+
+    .ai-ambassador-hero-subtitle-{{ ai_gen_id }} {
+      font-size: {{ block.settings.subtitle_size | times: 0.9 }}px;
+    }
+
+    .ai-ambassador-levels-{{ ai_gen_id }} {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ai-ambassador-steps-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .ai-ambassador-benefits-{{ ai_gen_id }} {
+      padding: 30px 20px;
+    }
+  }
+{% endstyle %}
+
+<ambassador-program-{{ ai_gen_id }} class="ai-ambassador-program-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-ambassador-container-{{ ai_gen_id }}">
+    
+    <!-- Hero Section -->
+    <div class="ai-ambassador-hero-{{ ai_gen_id }}">
+      <h1 class="ai-ambassador-hero-title-{{ ai_gen_id }}">
+        {{ block.settings.hero_title }}
+      </h1>
+      <p class="ai-ambassador-hero-subtitle-{{ ai_gen_id }}">
+        {{ block.settings.hero_subtitle }}
+      </p>
+    </div>
+
+    <!-- Two-Track System -->
+    <div class="ai-ambassador-tracks-{{ ai_gen_id }}">
+      <div class="ai-ambassador-track-{{ ai_gen_id }}">
+        <div class="ai-ambassador-track-badge-{{ ai_gen_id }}">{{ block.settings.fast_track_badge }}</div>
+        <h3 class="ai-ambassador-track-title-{{ ai_gen_id }}">{{ block.settings.fast_track_title }}</h3>
+        <p class="ai-ambassador-track-description-{{ ai_gen_id }}">{{ block.settings.fast_track_description }}</p>
+        <ul class="ai-ambassador-track-features-{{ ai_gen_id }}">
+          {% if block.settings.fast_track_feature_1 != blank %}
+            <li class="ai-ambassador-track-feature-{{ ai_gen_id }}">{{ block.settings.fast_track_feature_1 }}</li>
+          {% endif %}
+          {% if block.settings.fast_track_feature_2 != blank %}
+            <li class="ai-ambassador-track-feature-{{ ai_gen_id }}">{{ block.settings.fast_track_feature_2 }}</li>
+          {% endif %}
+          {% if block.settings.fast_track_feature_3 != blank %}
+            <li class="ai-ambassador-track-feature-{{ ai_gen_id }}">{{ block.settings.fast_track_feature_3 }}</li>
+          {% endif %}
+        </ul>
+      </div>
+
+      <div class="ai-ambassador-track-{{ ai_gen_id }}">
+        <div class="ai-ambassador-track-badge-{{ ai_gen_id }}">{{ block.settings.standard_track_badge }}</div>
+        <h3 class="ai-ambassador-track-title-{{ ai_gen_id }}">{{ block.settings.standard_track_title }}</h3>
+        <p class="ai-ambassador-track-description-{{ ai_gen_id }}">{{ block.settings.standard_track_description }}</p>
+        <ul class="ai-ambassador-track-features-{{ ai_gen_id }}">
+          {% if block.settings.standard_track_feature_1 != blank %}
+            <li class="ai-ambassador-track-feature-{{ ai_gen_id }}">{{ block.settings.standard_track_feature_1 }}</li>
+          {% endif %}
+          {% if block.settings.standard_track_feature_2 != blank %}
+            <li class="ai-ambassador-track-feature-{{ ai_gen_id }}">{{ block.settings.standard_track_feature_2 }}</li>
+          {% endif %}
+          {% if block.settings.standard_track_feature_3 != blank %}
+            <li class="ai-ambassador-track-feature-{{ ai_gen_id }}">{{ block.settings.standard_track_feature_3 }}</li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Earning Structure -->
+    <div class="ai-ambassador-earning-structure-{{ ai_gen_id }}">
+      <h2 class="ai-ambassador-section-title-{{ ai_gen_id }}">{{ block.settings.earning_structure_title }}</h2>
+      <div class="ai-ambassador-levels-{{ ai_gen_id }}">
+        {% for i in (1..6) %}
+          {% assign level_amount_key = 'level_' | append: i | append: '_amount' %}
+          {% assign level_description_key = 'level_' | append: i | append: '_description' %}
+          {% assign level_amount = block.settings[level_amount_key] %}
+          {% assign level_description = block.settings[level_description_key] %}
+          
+          {% if level_amount != blank %}
+            <div class="ai-ambassador-level-{{ ai_gen_id }}">
+              <div class="ai-ambassador-level-number-{{ ai_gen_id }}">{{ i }}</div>
+              <div class="ai-ambassador-level-amount-{{ ai_gen_id }}">{{ level_amount }}</div>
+              <div class="ai-ambassador-level-description-{{ ai_gen_id }}">{{ level_description }}</div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- 3-Step Process -->
+    <div class="ai-ambassador-process-{{ ai_gen_id }}">
+      <h2 class="ai-ambassador-section-title-{{ ai_gen_id }}">{{ block.settings.process_title }}</h2>
+      <div class="ai-ambassador-steps-{{ ai_gen_id }}">
+        <div class="ai-ambassador-step-{{ ai_gen_id }}">
+          <div class="ai-ambassador-step-icon-{{ ai_gen_id }}">
+            {% if block.settings.step_1_icon %}
+              <img src="{{ block.settings.step_1_icon | image_url: width: 200 }}" alt="{{ block.settings.step_1_title }}" loading="lazy">
+            {% endif %}
+          </div>
+          <h3 class="ai-ambassador-step-title-{{ ai_gen_id }}">{{ block.settings.step_1_title }}</h3>
+          <p class="ai-ambassador-step-description-{{ ai_gen_id }}">{{ block.settings.step_1_description }}</p>
+        </div>
+        <div class="ai-ambassador-step-{{ ai_gen_id }}">
+          <div class="ai-ambassador-step-icon-{{ ai_gen_id }}">
+            {% if block.settings.step_2_icon %}
+              <img src="{{ block.settings.step_2_icon | image_url: width: 200 }}" alt="{{ block.settings.step_2_title }}" loading="lazy">
+            {% endif %}
+          </div>
+          <h3 class="ai-ambassador-step-title-{{ ai_gen_id }}">{{ block.settings.step_2_title }}</h3>
+          <p class="ai-ambassador-step-description-{{ ai_gen_id }}">{{ block.settings.step_2_description }}</p>
+        </div>
+        <div class="ai-ambassador-step-{{ ai_gen_id }}">
+          <div class="ai-ambassador-step-icon-{{ ai_gen_id }}">
+            {% if block.settings.step_3_icon %}
+              <img src="{{ block.settings.step_3_icon | image_url: width: 200 }}" alt="{{ block.settings.step_3_title }}" loading="lazy">
+            {% endif %}
+          </div>
+          <h3 class="ai-ambassador-step-title-{{ ai_gen_id }}">{{ block.settings.step_3_title }}</h3>
+          <p class="ai-ambassador-step-description-{{ ai_gen_id }}">{{ block.settings.step_3_description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Benefits Section -->
+    <div class="ai-ambassador-benefits-{{ ai_gen_id }}">
+      <h2 class="ai-ambassador-section-title-{{ ai_gen_id }}">{{ block.settings.benefits_title }}</h2>
+      <div class="ai-ambassador-benefits-grid-{{ ai_gen_id }}">
+        {% if block.settings.benefit_1_title != blank %}
+          <div class="ai-ambassador-benefit-{{ ai_gen_id }}">
+            <div class="ai-ambassador-benefit-icon-{{ ai_gen_id }}"></div>
+            <h3 class="ai-ambassador-benefit-title-{{ ai_gen_id }}">{{ block.settings.benefit_1_title }}</h3>
+            <p class="ai-ambassador-benefit-description-{{ ai_gen_id }}">{{ block.settings.benefit_1_description }}</p>
+          </div>
+        {% endif %}
+        {% if block.settings.benefit_2_title != blank %}
+          <div class="ai-ambassador-benefit-{{ ai_gen_id }}">
+            <div class="ai-ambassador-benefit-icon-{{ ai_gen_id }}"></div>
+            <h3 class="ai-ambassador-benefit-title-{{ ai_gen_id }}">{{ block.settings.benefit_2_title }}</h3>
+            <p class="ai-ambassador-benefit-description-{{ ai_gen_id }}">{{ block.settings.benefit_2_description }}</p>
+          </div>
+        {% endif %}
+        {% if block.settings.benefit_3_title != blank %}
+          <div class="ai-ambassador-benefit-{{ ai_gen_id }}">
+            <div class="ai-ambassador-benefit-icon-{{ ai_gen_id }}"></div>
+            <h3 class="ai-ambassador-benefit-title-{{ ai_gen_id }}">{{ block.settings.benefit_3_title }}</h3>
+            <p class="ai-ambassador-benefit-description-{{ ai_gen_id }}">{{ block.settings.benefit_3_description }}</p>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="ai-ambassador-cta-section-{{ ai_gen_id }}">
+      <a href="{{ block.settings.cta_link }}" class="ai-ambassador-cta-button-{{ ai_gen_id }}">
+        {{ block.settings.cta_text }}
+      </a>
+    </div>
+
+    <!-- Testimonial -->
+    {% if block.settings.testimonial_quote != blank %}
+      <div class="ai-ambassador-testimonial-{{ ai_gen_id }}">
+        <p class="ai-ambassador-testimonial-quote-{{ ai_gen_id }}">"{{ block.settings.testimonial_quote }}"</p>
+        <div class="ai-ambassador-testimonial-author-{{ ai_gen_id }}">{{ block.settings.testimonial_author }}</div>
+      </div>
+    {% endif %}
+
+    <!-- FAQ Section -->
+    {% if block.settings.faq_title != blank %}
+      <div class="ai-ambassador-faq-{{ ai_gen_id }}">
+        <h2 class="ai-ambassador-section-title-{{ ai_gen_id }}">{{ block.settings.faq_title }}</h2>
+        
+        {% for i in (1..5) %}
+          {% assign faq_question_key = 'faq_' | append: i | append: '_question' %}
+          {% assign faq_answer_key = 'faq_' | append: i | append: '_answer' %}
+          {% assign faq_question = block.settings[faq_question_key] %}
+          {% assign faq_answer = block.settings[faq_answer_key] %}
+          
+          {% if faq_question != blank and faq_answer != blank %}
+            <div class="ai-ambassador-faq-item-{{ ai_gen_id }}">
+              <button class="ai-ambassador-faq-question-{{ ai_gen_id }}" data-faq="{{ i }}">
+                {{ faq_question }}
+                <span class="ai-ambassador-faq-icon-{{ ai_gen_id }}">+</span>
+              </button>
+              <div class="ai-ambassador-faq-answer-{{ ai_gen_id }}" data-faq-answer="{{ i }}">
+                {{ faq_answer }}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+  </div>
+</ambassador-program-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class AmbassadorProgram{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.setupFAQ();
+      }
+
+      setupFAQ() {
+        const faqQuestions = this.querySelectorAll('.ai-ambassador-faq-question-{{ ai_gen_id }}');
+        
+        faqQuestions.forEach(question => {
+          question.addEventListener('click', () => {
+            const faqId = question.getAttribute('data-faq');
+            const answer = this.querySelector(`[data-faq-answer="${faqId}"]`);
+            const isActive = question.classList.contains('active');
+            
+            // Close all other FAQs
+            faqQuestions.forEach(q => {
+              q.classList.remove('active');
+              const otherId = q.getAttribute('data-faq');
+              const otherAnswer = this.querySelector(`[data-faq-answer="${otherId}"]`);
+              otherAnswer.classList.remove('active');
+            });
+            
+            // Toggle current FAQ
+            if (!isActive) {
+              question.classList.add('active');
+              answer.classList.add('active');
+            }
+          });
+        });
+      }
+    }
+
+    customElements.define('ambassador-program-{{ ai_gen_id }}', AmbassadorProgram{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Ambassador Program",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero section"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero title",
+      "default": "Become a LifePharm Ambassador - Earn Up to €10,000/Month"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtitle",
+      "label": "Hero subtitle",
+      "default": "Transform your passion for health into a lucrative income stream. Purchase an Annual Supply and unlock unlimited earning potential through our revolutionary Ambassador Program."
+    },
+    {
+      "type": "range",
+      "id": "hero_title_size",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Hero title size",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle size",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "hero_bg_color_1",
+      "label": "Hero background gradient start",
+      "default": "#667eea"
+    },
+    {
+      "type": "color",
+      "id": "hero_bg_color_2",
+      "label": "Hero background gradient end",
+      "default": "#764ba2"
+    },
+    {
+      "type": "color",
+      "id": "title_gradient_1",
+      "label": "Title gradient start",
+      "default": "#ff8f00"
+    },
+    {
+      "type": "color",
+      "id": "title_gradient_2",
+      "label": "Title gradient end",
+      "default": "#ff6f00"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Track system"
+    },
+    {
+      "type": "text",
+      "id": "fast_track_badge",
+      "label": "Fast track badge",
+      "default": "FAST TRACK"
+    },
+    {
+      "type": "text",
+      "id": "fast_track_title",
+      "label": "Fast track title",
+      "default": "14-Day Fast Track"
+    },
+    {
+      "type": "textarea",
+      "id": "fast_track_description",
+      "label": "Fast track description",
+      "default": "Accelerated path to maximum earnings with premium support and exclusive bonuses."
+    },
+    {
+      "type": "text",
+      "id": "fast_track_feature_1",
+      "label": "Fast track feature 1",
+      "default": "Priority support & training"
+    },
+    {
+      "type": "text",
+      "id": "fast_track_feature_2",
+      "label": "Fast track feature 2",
+      "default": "Exclusive marketing materials"
+    },
+    {
+      "type": "text",
+      "id": "fast_track_feature_3",
+      "label": "Fast track feature 3",
+      "default": "Higher commission rates"
+    },
+    {
+      "type": "text",
+      "id": "standard_track_badge",
+      "label": "Standard track badge",
+      "default": "STANDARD"
+    },
+    {
+      "type": "text",
+      "id": "standard_track_title",
+      "label": "Standard track title",
+      "default": "Standard Track"
+    },
+    {
+      "type": "textarea",
+      "id": "standard_track_description",
+      "label": "Standard track description",
+      "default": "Steady growth path with comprehensive training and ongoing support for sustainable success."
+    },
+    {
+      "type": "text",
+      "id": "standard_track_feature_1",
+      "label": "Standard track feature 1",
+      "default": "Complete training program"
+    },
+    {
+      "type": "text",
+      "id": "standard_track_feature_2",
+      "label": "Standard track feature 2",
+      "default": "Marketing toolkit included"
+    },
+    {
+      "type": "text",
+      "id": "standard_track_feature_3",
+      "label": "Standard track feature 3",
+      "default": "Community support access"
+    },
+    {
+      "type": "header",
+      "content": "Earning structure"
+    },
+    {
+      "type": "text",
+      "id": "earning_structure_title",
+      "label": "Earning structure title",
+      "default": "Six-Level Earning Structure"
+    },
+    {
+      "type": "text",
+      "id": "level_1_amount",
+      "label": "Level 1 amount",
+      "default": "€250"
+    },
+    {
+      "type": "text",
+      "id": "level_1_description",
+      "label": "Level 1 description",
+      "default": "Starter level"
+    },
+    {
+      "type": "text",
+      "id": "level_2_amount",
+      "label": "Level 2 amount",
+      "default": "€500"
+    },
+    {
+      "type": "text",
+      "id": "level_2_description",
+      "label": "Level 2 description",
+      "default": "Bronze ambassador"
+    },
+    {
+      "type": "text",
+      "id": "level_3_amount",
+      "label": "Level 3 amount",
+      "default": "€1,000"
+    },
+    {
+      "type": "text",
+      "id": "level_3_description",
+      "label": "Level 3 description",
+      "default": "Silver ambassador"
+    },
+    {
+      "type": "text",
+      "id": "level_4_amount",
+      "label": "Level 4 amount",
+      "default": "€2,500"
+    },
+    {
+      "type": "text",
+      "id": "level_4_description",
+      "label": "Level 4 description",
+      "default": "Gold ambassador"
+    },
+    {
+      "type": "text",
+      "id": "level_5_amount",
+      "label": "Level 5 amount",
+      "default": "€5,000"
+    },
+    {
+      "type": "text",
+      "id": "level_5_description",
+      "label": "Level 5 description",
+      "default": "Platinum ambassador"
+    },
+    {
+      "type": "text",
+      "id": "level_6_amount",
+      "label": "Level 6 amount",
+      "default": "€10,000"
+    },
+    {
+      "type": "text",
+      "id": "level_6_description",
+      "label": "Level 6 description",
+      "default": "Diamond ambassador"
+    },
+    {
+      "type": "header",
+      "content": "Process steps"
+    },
+    {
+      "type": "text",
+      "id": "process_title",
+      "label": "Process title",
+      "default": "Simple 3-Step Process"
+    },
+    {
+      "type": "text",
+      "id": "step_1_title",
+      "label": "Step 1 title",
+      "default": "Purchase Annual Supply"
+    },
+    {
+      "type": "textarea",
+      "id": "step_1_description",
+      "label": "Step 1 description",
+      "default": "Invest in your health and business with our premium Annual Supply package."
+    },
+    {
+      "type": "image_picker",
+      "id": "step_1_icon",
+      "label": "Step 1 icon"
+    },
+    {
+      "type": "text",
+      "id": "step_2_title",
+      "label": "Step 2 title",
+      "default": "Refer 3 Friends"
+    },
+    {
+      "type": "image_picker",
+      "id": "step_2_icon",
+      "label": "Step 2 icon"
+    },
+    {
+      "type": "textarea",
+      "id": "step_2_description",
+      "label": "Step 2 description",
+      "default": "Share the LifePharm experience with friends and family who value their health."
+    },
+    {
+      "type": "text",
+      "id": "step_3_title",
+      "label": "Step 3 title",
+      "default": "Earn Rewards"
+    },
+    {
+      "type": "textarea",
+      "id": "step_3_description",
+      "label": "Step 3 description",
+      "default": "Start earning monthly commissions and build your path to financial freedom."
+    },
+    {
+      "type": "image_picker",
+      "id": "step_3_icon",
+      "label": "Step 3 icon"
+    },
+    {
+      "type": "header",
+      "content": "Benefits section"
+    },
+    {
+      "type": "text",
+      "id": "benefits_title",
+      "label": "Benefits title",
+      "default": "Ambassador Benefits"
+    },
+    {
+      "type": "text",
+      "id": "benefit_1_title",
+      "label": "Benefit 1 title",
+      "default": "Monthly Payouts"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_1_description",
+      "label": "Benefit 1 description",
+      "default": "Receive guaranteed monthly payments directly to your account."
+    },
+    {
+      "type": "text",
+      "id": "benefit_2_title",
+      "label": "Benefit 2 title",
+      "default": "Unlimited Potential"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_2_description",
+      "label": "Benefit 2 description",
+      "default": "No caps on your earning potential - the sky's the limit."
+    },
+    {
+      "type": "text",
+      "id": "benefit_3_title",
+      "label": "Benefit 3 title",
+      "default": "Exclusive Training"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_3_description",
+      "label": "Benefit 3 description",
+      "default": "Access to premium training materials and ongoing support."
+    },
+    {
+      "type": "header",
+      "content": "Call to action"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA button text",
+      "default": "Start Your Ambassador Journey"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA button link"
+    },
+    {
+      "type": "range",
+      "id": "cta_font_size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "CTA font size",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "cta_bg_1",
+      "label": "CTA background gradient start",
+      "default": "#ff8f00"
+    },
+    {
+      "type": "color",
+      "id": "cta_bg_2",
+      "label": "CTA background gradient end",
+      "default": "#ff6f00"
+    },
+    {
+      "type": "color",
+      "id": "cta_text_color",
+      "label": "CTA text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial"
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_quote",
+      "label": "Testimonial quote",
+      "default": "The Ambassador Program changed my life. I went from struggling financially to earning €8,000 per month in just 6 months. The support and training are incredible!"
+    },
+    {
+      "type": "text",
+      "id": "testimonial_author",
+      "label": "Testimonial author",
+      "default": "Sarah M., Diamond Ambassador"
+    },
+    {
+      "type": "header",
+      "content": "FAQ section"
+    },
+    {
+      "type": "text",
+      "id": "faq_title",
+      "label": "FAQ title",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "id": "faq_1_question",
+      "label": "FAQ 1 question",
+      "default": "How quickly can I start earning?"
+    },
+    {
+      "type": "textarea",
+      "id": "faq_1_answer",
+      "label": "FAQ 1 answer",
+      "default": "You can start earning commissions immediately after your first successful referral. Most ambassadors see their first payout within 30 days."
+    },
+    {
+      "type": "text",
+      "id": "faq_2_question",
+      "label": "FAQ 2 question",
+      "default": "Is there a monthly fee to be an ambassador?"
+    },
+    {
+      "type": "textarea",
+      "id": "faq_2_answer",
+      "label": "FAQ 2 answer",
+      "default": "No monthly fees! Your Annual Supply purchase is your only investment. Everything else is provided free of charge."
+    },
+    {
+      "type": "text",
+      "id": "faq_3_question",
+      "label": "FAQ 3 question",
+      "default": "What support do I receive?"
+    },
+    {
+      "type": "textarea",
+      "id": "faq_3_answer",
+      "label": "FAQ 3 answer",
+      "default": "You'll receive comprehensive training, marketing materials, dedicated support team access, and ongoing mentorship from successful ambassadors."
+    },
+    {
+      "type": "text",
+      "id": "faq_4_question",
+      "label": "FAQ 4 question",
+      "default": "Can I work part-time as an ambassador?"
+    },
+    {
+      "type": "textarea",
+      "id": "faq_4_answer",
+      "label": "FAQ 4 answer",
+      "default": "Absolutely! Many of our most successful ambassadors started part-time. You can work at your own pace and scale up as you grow."
+    },
+    {
+      "type": "text",
+      "id": "faq_5_question",
+      "label": "FAQ 5 question",
+      "default": "What makes LifePharm different?"
+    },
+    {
+      "type": "textarea",
+      "id": "faq_5_answer",
+      "label": "FAQ 5 answer",
+      "default": "Our scientifically-backed products, transparent compensation plan, and commitment to ambassador success set us apart from other opportunities."
+    },
+    {
+      "type": "header",
+      "content": "Design colors"
+    },
+    {
+      "type": "range",
+      "id": "section_title_size",
+      "min": 24,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Section title size",
+      "default": 36
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_text_color",
+      "label": "Card text color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "badge_color",
+      "label": "Badge background",
+      "default": "#ff8f00"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Badge text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "success_color",
+      "label": "Success color",
+      "default": "#28a745"
+    },
+    {
+      "type": "color",
+      "id": "level_bg_color",
+      "label": "Level card background",
+      "default": "#f8f9fa"
+    },
+    {
+      "type": "color",
+      "id": "level_hover_border",
+      "label": "Level hover border",
+      "default": "#ff8f00"
+    },
+    {
+      "type": "color",
+      "id": "level_number_bg",
+      "label": "Level number background",
+      "default": "#ff8f00"
+    },
+    {
+      "type": "color",
+      "id": "level_number_text",
+      "label": "Level number text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "amount_color",
+      "label": "Amount color",
+      "default": "#ff8f00"
+    },
+    {
+      "type": "color",
+      "id": "step_icon_bg_1",
+      "label": "Step icon background start",
+      "default": "#ff8f00"
+    },
+    {
+      "type": "color",
+      "id": "step_icon_bg_2",
+      "label": "Step icon background end",
+      "default": "#ff6f00"
+    },
+    {
+      "type": "color",
+      "id": "step_icon_color",
+      "label": "Step icon color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "benefits_bg_color",
+      "label": "Benefits background",
+      "default": "#f8f9fa"
+    },
+    {
+      "type": "color",
+      "id": "benefits_text_color",
+      "label": "Benefits text color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "benefit_icon_color",
+      "label": "Benefit icon color",
+      "default": "#ff8f00"
+    },
+    {
+      "type": "color",
+      "id": "testimonial_bg_color",
+      "label": "Testimonial background",
+      "default": "#f8f9fa"
+    },
+    {
+      "type": "color",
+      "id": "testimonial_text_color",
+      "label": "Testimonial text color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "testimonial_author_color",
+      "label": "Testimonial author color",
+      "default": "#ff8f00"
+    },
+    {
+      "type": "color",
+      "id": "faq_bg_color",
+      "label": "FAQ background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "faq_text_color",
+      "label": "FAQ text color",
+      "default": "#333333"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ambassador Program"
+    }
+  ]
+}
+{% endschema %}

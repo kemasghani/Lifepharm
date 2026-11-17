@@ -1,0 +1,880 @@
+{% layout 'lp' %}
+{% comment %}
+  CELLNERGY — "The $39 Habit" (cold / education-first). Layout: lp.
+  Checkout: JS adds item(s) via /cart/add.js then redirects to /discount/CODE?redirect=/checkout
+  (bypasses a store app that mangles /cart permalinks). Codes to create in Shopify > Discounts (fixed $ off):
+    HABIT10  -> 1 Bottle  (-$10)
+    HABIT20  -> 3 Bottles (-$20)
+  Variants: single 53040002400565 | triple 53003471388981 | diffuser 53049168167221.
+  Images: 16 webp + pH video load from Shopify Files CDN; bbb/bottle/ph-thumb/truemed from Theme Assets.
+{% endcomment %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --orange:#F58220; --orange-dk:#CC6A12; --orange-soft:#FFF3E6;
+    --ink:#211E1B; --gray:#403C37; --muted:#6E6860;
+    --bg:#FFFFFF; --cream:#FBF7F1; --line:#E7E0D7; --ok:#237A4E;
+    --shadow-sm:0 2px 10px rgba(43,38,32,.07);
+    --shadow:0 12px 34px rgba(43,38,32,.12);
+    --shadow-lg:0 28px 64px rgba(43,38,32,.20);
+    --radius:16px; --radius-lg:26px;
+    --serif:'Playfair Display',Georgia,serif;
+    --sans:'Montserrat',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--gray);background:var(--bg);line-height:1.68;font-size:17.5px;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--serif);color:var(--ink);line-height:1.14;font-weight:700}
+  strong{color:var(--ink);font-weight:700}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--orange);color:#fff;font-family:var(--sans);font-weight:700;font-size:18px;padding:17px 34px;border-radius:999px;border:none;cursor:pointer;transition:transform .2s,background .2s,box-shadow .2s;box-shadow:0 10px 24px rgba(245,130,32,.32)}
+  .btn:hover{background:var(--orange-dk);transform:translateY(-2px);box-shadow:0 16px 30px rgba(245,130,32,.42)}
+  .btn:focus-visible{outline:3px solid #F9B679;outline-offset:2px}
+  .btn.big{font-size:19px;padding:19px 42px}.btn.block{width:100%}
+  .strike{color:var(--muted);text-decoration:line-through;font-weight:600}
+  .price{color:var(--orange);font-weight:800}
+  .section{padding:82px 0}
+  .center{text-align:center}
+  .lead{font-size:21px;color:var(--gray);max-width:640px;line-height:1.6}
+  .center .lead{margin-left:auto;margin-right:auto}
+  h2.h{font-size:clamp(30px,4.6vw,48px)}
+  .kicker-line{width:56px;height:4px;background:var(--orange);border-radius:2px;margin:18px auto 24px}
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.btn,.stepcard,.bcard,.tchip,.way{transition:none!important}.marquee-track{animation:none!important}}
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .announce{background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;gap:14px;padding:9px 16px;font-size:14px;font-weight:600;text-align:center}
+  .announce b{color:var(--orange);font-weight:800}
+  .announce s{color:#b9b2a8;font-weight:500;margin-left:2px}
+  .announce a{background:var(--orange);color:var(--ink);padding:6px 14px;border-radius:999px;font-weight:800;font-size:13px;text-decoration:none;white-space:nowrap}
+  @media(max-width:520px){.announce{font-size:12.5px;gap:10px;padding:8px 12px}.announce a{padding:5px 11px}}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .logo{font-family:var(--serif);font-weight:800;font-size:23px;color:var(--ink)}
+  .logo span{display:block;font-family:var(--sans);font-weight:600;font-size:9px;letter-spacing:.28em;color:var(--muted);margin-top:-3px}
+  .nav-right{display:flex;align-items:center;gap:18px}
+  .nav-note{font-size:13px;font-weight:600;color:var(--gray)}
+  .nav .btn{padding:12px 24px;font-size:15px;box-shadow:none}
+  @media(max-width:640px){.nav-note{display:none}}
+
+  /* HERO: split — white text panel left, photo right with feathered edge */
+  .herobanner{display:flex;align-items:stretch;min-height:600px;background:#fff;overflow:hidden}
+  .hero-copy{flex:0 0 47%;display:flex;flex-direction:column;justify-content:center;padding:56px 46px 56px max(24px,5.5vw);position:relative;z-index:2}
+  .hero-media{flex:1;position:relative;overflow:hidden}
+  .hero-media img{width:100%;height:100%;object-fit:cover;object-position:center}
+  .hero-media::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.82) 7%,rgba(255,255,255,0) 26%)}
+  .hero-copy h1{font-size:clamp(38px,4.4vw,58px);font-weight:800;letter-spacing:-.015em;color:var(--ink)}
+  .hero-copy .lead{margin-top:20px;font-size:20px}
+  .cta-row{margin-top:30px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .deal{font-size:15px;font-weight:600;color:var(--gray)}
+  .stars{display:inline-flex;gap:2px;vertical-align:middle}
+  .trustrow{margin-top:24px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;font-size:14px;font-weight:600;color:var(--gray)}
+  .trustrow .dot{width:5px;height:5px;border-radius:50%;background:#C9C1B5}
+  .jumps{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
+  .jump{font-weight:600;font-size:14.5px;color:var(--ink);background:#fff;border:1px solid var(--line);padding:11px 18px;border-radius:999px;transition:border-color .2s,transform .2s;box-shadow:var(--shadow-sm)}
+  .jump:hover{border-color:var(--orange);transform:translateY(-2px)}
+  .jump.primary{border-color:var(--orange);color:var(--orange-dk)}
+  .herodeal{margin-top:18px;display:inline-flex;align-self:flex-start;align-items:center;gap:12px;flex-wrap:wrap;background:var(--orange-soft);border:1px solid #F6D6AE;border-radius:14px;padding:7px 18px}
+  .hd-was{font-size:22px;color:var(--muted);text-decoration:line-through;font-weight:600}
+  .hd-now{font-family:var(--serif);font-size:34px;font-weight:800;color:var(--orange);line-height:1}
+  .hd-save{background:var(--orange);color:#fff;font-weight:800;font-size:13px;padding:7px 13px;border-radius:999px}
+  @media(max-width:820px){
+    .herobanner{display:block;position:relative;min-height:600px}
+    .hero-media{position:absolute;inset:0;width:100%;height:100%}
+    .hero-media img{object-position:center 62%}
+    .hero-media::before{display:block;background:linear-gradient(180deg,#fff 0%,rgba(255,255,255,.93) 30%,rgba(255,255,255,.4) 56%,rgba(255,255,255,0) 78%)}
+    .hero-copy{position:relative;z-index:2;padding:36px 24px 44px;max-width:100%}
+  }
+
+  .marquee{background:var(--ink);overflow:hidden;padding:18px 0}
+  .marquee-track{display:flex;align-items:center;width:max-content;animation:scroll 30s linear infinite}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .mitem{display:flex;align-items:center;gap:10px;margin-right:56px;color:#F1EEEA;font-weight:700;font-size:15px;white-space:nowrap}
+  .mitem img{height:26px;width:auto;opacity:1}
+  .mitem img.badge{filter:none;opacity:1;height:30px;background:#fff;padding:3px 7px;border-radius:6px}
+  .mitem svg{width:20px;height:20px;stroke:var(--orange)}
+
+  .want{position:relative;overflow:hidden;color:#fff;padding:62px 0}
+  .want .wbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(7px) brightness(.55) saturate(1.05);transform:scale(1.08)}
+  .want .wscrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(33,30,27,.58),rgba(33,30,27,.7))}
+  .want .wrap{position:relative;z-index:2}
+  .want h2{color:#fff}.want .lead{color:#EFEBE5}.want strong{color:#fff}
+  .bcards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:36px auto 0;max-width:860px}
+  .bcard{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);border-radius:18px;padding:26px 22px;text-align:center;transition:transform .3s cubic-bezier(.2,.7,.2,1),background .3s}
+  .bcard:hover{transform:scale(1.06) translateY(-4px);background:rgba(255,255,255,.16)}
+  .bcard .bic{width:46px;height:46px;border-radius:12px;background:rgba(245,130,32,.9);display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+  .bcard .bic svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:2}
+  .bcard h3{color:#fff;font-size:20px;margin-bottom:6px}
+  .bcard p{color:#E6E2DC;font-size:15px;line-height:1.5}
+  @media(max-width:820px){.bcards{grid-template-columns:1fr}}
+
+  .diff-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center;margin-top:44px}
+  @media(max-width:860px){.diff-grid{grid-template-columns:1fr;gap:28px}}
+  .phbars{background:var(--cream);border:1px solid var(--line);border-radius:var(--radius-lg);padding:34px}
+  .ph-row{display:flex;align-items:flex-end;gap:34px;justify-content:center}
+  .barwrap{display:flex;flex-direction:column;align-items:center;gap:10px;justify-content:flex-end}
+  .barwrap .pt{font-weight:800;color:var(--ink);font-size:17px}
+  .bar{width:104px;border-radius:12px 12px 0 0}
+  .bar.o{height:120px;background:#C6BEB2}.bar.c{height:184px;background:var(--orange)}
+  .ph-cap{display:flex;gap:34px;justify-content:center;margin-top:10px;font-size:14.5px;font-weight:700;color:var(--gray)}
+  .ph-cap span{width:104px;text-align:center}
+  .phvideo{aspect-ratio:9/16;max-width:300px;margin:0 auto;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line);background:#000}
+  .phvideo video{width:100%;height:100%;object-fit:cover;display:block}
+  .difftech{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:44px}
+  .tchip{display:flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:13px 24px;font-weight:600;font-size:15.5px;color:var(--ink);box-shadow:var(--shadow-sm);transition:transform .25s,background .25s,box-shadow .25s}
+  .tchip:hover{transform:scale(1.07);background:var(--orange-soft);box-shadow:0 0 0 3px rgba(245,130,32,.22),0 10px 22px rgba(245,130,32,.2)}
+  .tchip svg{width:20px;height:20px;stroke:var(--orange);fill:none;stroke-width:2}
+  .why2{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+  .why-photo{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg)}
+  .why-photo img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/5}
+  .why-list{list-style:none;margin:22px 0 0;padding:0}
+  .why-list li{display:flex;align-items:flex-start;gap:12px;margin-bottom:16px;font-size:16.5px;color:var(--gray);line-height:1.5}
+  .why-list li:last-child{margin-bottom:0}
+  .why-list svg{width:22px;height:22px;stroke:var(--orange);fill:none;stroke-width:2.5;flex-shrink:0;margin-top:3px}
+  .why-list strong{color:var(--ink)}
+  @media(max-width:820px){.why2{grid-template-columns:1fr;gap:26px}.why-photo img{aspect-ratio:16/10}}
+
+  /* WHICH WAY interactive section */
+  .whichway{background:var(--cream)}
+  .ways{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:44px auto 0}
+  .way{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:24px 20px;text-align:center;box-shadow:var(--shadow-sm);transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s;cursor:default}
+  .way:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+  .way img{height:94px;object-fit:contain;margin:0 auto 12px}
+  .way-tag{font-size:11px;font-weight:800;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+  .way h3{font-size:22px;margin:6px 0 8px}
+  .way-body{max-height:none;opacity:1}
+  .way:hover .way-body,.way:focus-within .way-body{max-height:240px;opacity:1}
+  .way-body p{font-size:15.5px;color:var(--gray);padding-top:6px}
+  .way-list{list-style:none;margin:16px 0 0;padding:0;text-align:left;display:inline-block}
+  .way-list li{position:relative;padding-left:22px;font-size:15.5px;color:var(--gray);margin-bottom:10px;line-height:1.45}
+  .way-list li:last-child{margin-bottom:0}
+  .way-list li::before{content:"";position:absolute;left:2px;top:8px;width:7px;height:7px;border-radius:50%;background:var(--muted);opacity:.5}
+  .way-list li b{color:var(--ink);font-weight:700}
+  .way-hint{display:inline-block;margin-top:12px;font-size:12.5px;font-weight:700;color:var(--orange-dk)}
+  .way:hover .way-hint{opacity:0}
+  .waysolution{margin-top:30px}
+  .ws-inner{display:flex;align-items:stretch;background:var(--ink);color:#fff;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg)}
+  .ws-photo{flex:0 0 44%;position:relative;min-height:360px}
+  .ws-photo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+  .ws-text{flex:1;padding:46px 50px;align-self:center}
+  .ws-text .wstag{display:inline-block;background:var(--orange);color:#fff;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin-bottom:14px}
+  .ws-text h3{color:#fff;font-size:31px;margin-bottom:20px;line-height:1.14}
+  .ws-bullets{list-style:none;margin:0;padding:0}
+  .ws-bullets li{display:flex;align-items:flex-start;gap:11px;color:#EAE6E0;font-size:17px;margin-bottom:13px;font-weight:500}
+  .ws-bullets li:last-child{margin-bottom:0}
+  .ws-bullets svg{width:21px;height:21px;stroke:var(--orange);fill:none;stroke-width:2.6;flex-shrink:0;margin-top:2px}
+  .ws-sub{color:#EAE6E0;font-size:19px;font-weight:600;margin:-8px 0 20px}
+  .ws-offer{display:flex;align-items:center;gap:16px;margin-top:24px;flex-wrap:wrap}
+  .ws-price{font-size:18px;color:#fff;font-weight:700}
+  .ws-price b{color:var(--orange);font-size:23px}
+  .ws-btn{background:var(--orange);color:#fff;font-weight:800;padding:12px 24px;border-radius:999px;text-decoration:none;font-size:15px;transition:transform .2s,box-shadow .2s}
+  .ws-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(245,130,32,.4)}
+  @media(max-width:760px){.ws-inner{flex-direction:column}.ws-photo{flex:none;min-height:280px}.ws-text{padding:30px 26px}}
+  @media(max-width:760px){.ways{grid-template-columns:1fr}.way-body{max-height:240px;opacity:1}.way-hint{display:none}.ws-inner{flex-direction:column;text-align:center;gap:18px}}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+  .stepcard{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px 26px;text-align:center;box-shadow:var(--shadow-sm);transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s}
+  .stepcard:hover{transform:scale(1.05) translateY(-5px);box-shadow:var(--shadow)}
+  .stepcard .n{font-family:var(--serif);font-weight:800;font-size:42px;color:var(--orange);line-height:1}
+  .stepcard h3{font-size:21px;margin:12px 0 8px}.stepcard p{font-size:16.5px}
+  @media(max-width:820px){.steps{grid-template-columns:1fr}}
+
+  .bridge{background:#fff}
+  .bridge-copy{max-width:720px;margin:0 auto}
+  .bridge-copy p{font-size:18px;line-height:1.6;color:var(--gray);margin:0 0 16px}
+  .bridge-copy p:last-child{margin-bottom:0}
+  .bridge-punch{font-family:var(--serif);font-size:clamp(22px,3vw,28px)!important;color:var(--ink)!important;font-weight:700;line-height:1.2;margin:22px 0!important}
+  .bridge-final{color:var(--ink)!important;font-weight:600;font-size:19px!important}
+  .bridge .close{margin-top:16px;font-family:var(--serif);font-size:clamp(20px,2.6vw,27px);color:var(--ink)}
+  .bridge .close .price{color:var(--orange)}
+  .panels{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1000px;margin:0 auto}
+  .panels figure{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);aspect-ratio:1/1}
+  .panels img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+  .panels figure:hover img{transform:scale(1.06)}
+  .panels figcaption{position:absolute;left:0;right:0;bottom:0;padding:16px;background:linear-gradient(180deg,transparent,rgba(33,30,27,.66));color:#fff;font-weight:700;font-size:15px}
+  @media(max-width:640px){.panels{grid-template-columns:1fr;max-width:420px}}
+  @media (prefers-reduced-motion:reduce){.panels img{transition:none}}
+
+  .cmp-scroll{overflow-x:auto;padding:8px 0 4px}
+  .cmp{display:flex;gap:0;min-width:680px;max-width:880px;margin:40px auto 0;align-items:stretch}
+  .col{flex:1;display:flex;flex-direction:column}
+  .col.labels{flex:1.2}
+  .col.us{flex:1.16;background:var(--orange);border-radius:22px;box-shadow:var(--shadow-lg);transform:translateY(-14px);z-index:2;color:#fff;padding-bottom:14px}
+  .chead{height:200px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:10px;padding:16px 8px}
+  .ptile{width:104px;height:104px;border-radius:16px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 6px 16px rgba(43,38,32,.10)}
+  .ptile img{width:100%;height:100%;object-fit:contain;padding:6px}
+  .cname{font-family:var(--serif);font-weight:800;font-size:16px;color:var(--ink);text-align:center;line-height:1.1}
+  .col.us .cname{color:#fff}
+  .ctag{font-size:10.5px;font-weight:800;letter-spacing:.08em;padding:5px 13px;border-radius:999px;background:var(--ink);color:#fff}
+  .col.us .ctag{background:#fff;color:var(--orange)}
+  .crow{min-height:94px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12px 10px;border-top:1px solid var(--line);font-size:14.5px;line-height:1.35;color:var(--gray)}
+  .col.us .crow{border-top:1px solid rgba(255,255,255,.28);color:#fff;font-weight:600}
+  .col.labels .crow{align-items:flex-start;text-align:left;font-weight:700;color:var(--ink)}
+  .crow.head-sp{min-height:200px;border-top:none}
+  .bigp{font-family:var(--serif);font-weight:800;font-size:27px;color:var(--ink)}
+  .col.us .bigp{color:#fff}
+  .yes{color:var(--orange);font-weight:800;font-size:22px}.col.us .yes{color:#fff}
+  .no{color:#BDB6AC;font-weight:800;font-size:22px}
+
+  .conv-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+  @media(max-width:860px){.conv-grid{grid-template-columns:1fr;gap:28px}}
+
+  .proof{background:var(--cream)}
+  .rhead{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:8px}
+  .rhead .num{font-family:var(--serif);font-weight:800;font-size:40px;color:var(--ink)}
+  .reviews-sub{text-align:center;font-size:16px;color:var(--gray);margin:-2px auto 26px;max-width:560px}
+  .tgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin:0 auto 8px;max-width:920px}
+  .revcard{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow-sm)}
+  .revcard .rvstars{margin-bottom:10px}
+  .revcard p{font-size:16.5px;color:var(--ink);line-height:1.6}
+  .rvwho{display:flex;align-items:center;gap:12px;margin-top:16px}
+  .avatar{width:42px;height:42px;border-radius:50%;background:var(--orange-soft);color:var(--orange-dk);font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .rvname{font-weight:700;font-size:14px;color:var(--ink);line-height:1.3}
+  .verified{display:block;font-weight:600;font-size:12.5px;color:var(--ok)}
+  @media(max-width:760px){.tgrid{grid-template-columns:1fr}}
+  .rev-divider{text-align:center;font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin:36px 0 22px}
+  #stamped-main-widget{max-width:920px;margin:0 auto}
+  #stamped-main-widget .stamped-fa-star:before,#stamped-main-widget .stamped-fa-star-half:before{color:var(--orange)!important}
+  #stamped-main-widget .stamped-summary-actions-newreview,#stamped-main-widget .stamped-button,#stamped-main-widget button.stamped-button{background:var(--orange)!important;border-color:var(--orange)!important;color:#fff!important}
+  .stamped-fallback{text-align:center;margin-top:20px}
+  .stamped-fallback a{display:inline-block;padding:13px 26px;border:2px solid var(--orange);color:var(--orange-dk);border-radius:999px;font-weight:700;font-size:16px}
+
+  .offer-wrap{display:grid;grid-template-columns:.92fr 1.08fr;gap:40px;align-items:stretch;max-width:980px;margin:44px auto 0}
+  .offer-photo{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow)}
+  .offer-photo img{width:100%;height:100%;object-fit:cover;min-height:480px}
+  @media(max-width:860px){.offer-wrap{grid-template-columns:1fr;gap:24px}.offer-photo img{min-height:260px}}
+  .offer-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:30px;box-shadow:var(--shadow)}
+  .offer-card .otop{font-size:16px;color:var(--gray);margin-bottom:18px}.otop b{color:var(--ink)}
+  .plans{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .plan{position:relative;border:2px solid var(--line);border-radius:16px;padding:18px 14px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s}
+  .plan:hover{border-color:#F3C79B}
+  .plan.sel{border-color:var(--orange);background:var(--orange-soft)}
+  .plan .pt{font-weight:700;color:var(--ink);font-size:16px}
+  .plan .pp{font-family:var(--serif);font-weight:800;font-size:27px;color:var(--orange);margin-top:4px}
+  .plan .bv{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--orange);color:#fff;font-size:10.5px;font-weight:800;letter-spacing:.06em;padding:4px 12px;border-radius:999px}
+  .pricebar{display:flex;align-items:center;gap:16px;justify-content:center;margin:26px 0 26px;flex-wrap:wrap}
+  .pricebar .now{font-family:var(--serif);font-weight:800;font-size:62px;color:var(--orange);line-height:1}
+  .pricebar .was{font-size:28px}
+  .save{background:var(--orange);color:#fff;font-weight:800;font-size:15px;padding:9px 16px;border-radius:999px;box-shadow:0 6px 16px rgba(245,130,32,.3)}
+  .guar{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:18px;font-weight:700;font-size:15px;color:var(--ink)}
+  .guar svg{width:18px;height:18px;stroke:var(--orange);fill:none;stroke-width:2}
+  .fineprint{font-size:13px;color:var(--muted);text-align:center;margin-top:10px}
+  .addon{display:flex;gap:12px;align-items:flex-start;background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:22px}
+  .addon input{width:22px;height:22px;margin-top:1px;accent-color:var(--orange);flex-shrink:0;cursor:pointer}
+  .addon label{font-size:14.5px;color:var(--gray);line-height:1.5}
+  .addon a{color:var(--orange-dk);font-weight:700;text-decoration:underline}
+  .whatget{margin-top:24px;border-top:1px solid var(--line);padding-top:20px}
+  .whatget .lab{font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--muted);margin-bottom:12px}
+  .wg{display:flex;align-items:center;gap:10px;font-size:15.5px;color:var(--ink);margin-bottom:10px}
+  .wg svg{width:17px;height:17px;stroke:var(--orange);fill:none;stroke-width:2.5;flex-shrink:0}
+  .truemed{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:14px;color:var(--gray);font-weight:600}.truemed img{height:21px}
+  .sub-disc{font-size:12px;color:var(--muted);margin-top:16px;line-height:1.6}
+
+  .faq{max-width:760px;margin:40px auto 0}
+  .q{border-bottom:1px solid var(--line)}
+  .q button{width:100%;background:none;border:none;text-align:left;padding:24px 0;font-family:var(--serif);font-weight:700;font-size:21px;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;gap:16px}
+  .q button:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+  .q .a{max-height:0;overflow:hidden;transition:max-height .3s ease;color:var(--gray);font-size:16.5px}
+  .q .a p{padding-bottom:24px}.q.open .a{max-height:300px}
+  .q .plus{font-family:var(--sans);font-weight:400;font-size:28px;color:var(--orange);transition:transform .3s}
+  .q.open .plus{transform:rotate(45deg)}
+
+  .final{position:relative;overflow:hidden;background:var(--ink);color:#fff;text-align:center}
+  .final img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5}
+  .final .scrim2{position:absolute;inset:0;background:linear-gradient(180deg,rgba(33,30,27,.45),rgba(33,30,27,.66))}
+  .final .inner{position:relative;z-index:2}
+  .final h2{color:#fff;font-size:clamp(32px,5vw,52px)}
+  .final .lead{color:#F2EDE7;margin-left:auto;margin-right:auto}
+
+  footer{background:var(--ink);color:#C3BDB4;padding:46px 0;font-size:14px}
+  footer .wrap{display:flex;flex-direction:column;gap:14px}
+  footer .flog{font-family:var(--serif);font-weight:800;font-size:21px;color:#fff}
+  .disc{font-size:12.5px;color:#948E85;line-height:1.7;max-width:860px}
+
+</style>
+
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">CELLNERGY<span>HYDRATION SYSTEM</span></div>
+    <div class="nav-right">
+      <span class="nav-note">Special offer &middot; <strong style="color:var(--orange)">Save $10 today</strong> &middot; <s>$49</s> $39</span>
+      <a href="https://shop.lifepharm.com/discount/HABIT10?redirect=/checkout" class="btn">Shop $39</a>
+      <button type="button" class="nav-cart" id="navCart" aria-label="View your cart">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M3 4h2l2.2 11.2a1 1 0 0 0 1 .8h8.4a1 1 0 0 0 1-.8L20 8H6"/></svg>
+        <span class="nav-cart-count" id="navCartCount" hidden>0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO: split layout -->
+<section class="herobanner">
+  <div class="hero-copy">
+    <h1>Better water. Every day. Anywhere.</h1>
+    <p class="lead">The upgrade you've been overlooking: <strong>alkaline, hydrogen water*</strong> in a $39 bottle that <strong>goes everywhere</strong>.</p>
+    <div class="cta-row">
+      <a href="https://shop.lifepharm.com/discount/HABIT10?redirect=/checkout" class="btn big">Get Mine for $39</a>
+    </div>
+    <div class="herodeal"><span class="hd-was">$49</span><span class="hd-now">$39</span><span class="hd-save">Save $10</span></div>
+    <div class="trustrow">
+      <span class="stars" aria-label="5.0 out of 5 stars">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+      </span>
+      <span>5.0 from our customers</span><span class="dot"></span><span>HSA / FSA eligible</span>
+    </div>
+    <div class="jumps">
+      <a href="#how" class="jump primary">New to better water? See how it works</a>
+      <a href="#compare" class="jump">Coming from a machine? See the comparison</a>
+    </div>
+  </div>
+  <div class="hero-media">
+    <picture>
+      <source media="(max-width:820px)" srcset="https://cdn.shopify.com/s/files/1/0885/0128/9269/files/hero-mobile.webp?v=1784235206">
+      <img src="https://cdn.shopify.com/s/files/1/0885/0128/9269/files/hero-desktop.webp?v=1784235206" alt="A person enjoying CELLNERGY water at home">
+    </picture>
+  </div>
+</section>
+
+<div class="marquee" aria-label="Trust badges">
+  <div class="marquee-track" id="mtrack">
+    <span class="mitem"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg> 90-Day Money-Back Guarantee</span>
+    <span class="mitem"><img src="{{ 'truemed-orange.svg' | asset_url }}" alt="Truemed"> FSA / HSA Eligible</span>
+    <span class="mitem"><img src="{{ 'bbb.webp' | asset_url }}" alt="BBB Accredited Business" class="badge"></span>    <span class="mitem"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3s6 6.5 6 11a6 6 0 01-12 0c0-4.5 6-11 6-11z"/><path d="M5 4l14 16"/></svg> BPA Free</span>
+  </div>
+</div>
+
+<section class="section want">
+  <img loading="lazy" class="wbg" src="https://cdn.shopify.com/s/files/1/0885/0128/9269/files/foundation-bg.webp?v=1784235206" alt="">
+  <div class="wscrim"></div>
+  <div class="wrap center reveal">
+    <h2 class="h">Better water, right in the bottle.</h2>
+    <div class="kicker-line"></div>
+    <p class="lead">CELLNERGY turns filtered water into fresh, <strong>alkaline, hydrogen-rich water*</strong>. No $7,000 machine, no plumbing. Fill it, wait about 15 minutes, and drink, <strong>wherever your day takes you</strong>.</p>
+    <div class="bcards">
+      <div class="bcard"><div class="bic"><svg viewBox="0 0 24 24"><path d="M4 7h16M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></div><h3>Goes everywhere</h3><p>Bag, gym, car, desk. Your habit travels with you.</p></div>
+      <div class="bcard"><div class="bic"><svg viewBox="0 0 24 24"><path d="M12 3v6M12 21a6 6 0 006-6c0-4-6-9-6-9s-6 5-6 9a6 6 0 006 6z"/></svg></div><h3>One simple fill</h3><p>No buttons, no manual. Fill, wait 15 minutes, drink.</p></div>
+      <div class="bcard"><div class="bic"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><h3>A daily habit</h3><p>Small, repeatable, and easy enough to actually stick with.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SEE THE DIFFERENCE -->
+<section class="section" id="how">
+  <div class="wrap center reveal">
+    <h2 class="h">See the difference for yourself.</h2>
+    <div class="kicker-line"></div>
+    <p class="lead">The filtered water you start with still tests slightly <strong>acidic</strong> (around pH 7.8). CELLNERGY conditions it to a <strong>gently alkaline pH near 9*</strong>, the smoother, better water this whole thing is about. Here it is, side by side.</p>
+  </div>
+  <div class="wrap diff-grid reveal">
+    <div class="phbars">
+      <div class="ph-row">
+        <div class="barwrap"><span class="pt">pH 7.8</span><div class="bar o"></div></div>
+        <div class="barwrap"><span class="pt">pH 9</span><div class="bar c"></div></div>
+      </div>
+      <div class="ph-cap"><span>Ordinary water</span><span>CELLNERGY</span></div>
+      <p style="text-align:center;margin-top:20px;font-size:16px;color:var(--gray)">A simple <strong>pH test</strong> shows the shift: ordinary water tests in the acidic range, CELLNERGY lands in the <strong>alkaline range (8.5+)</strong>.*</p>
+    </div>
+    <div class="phvideo">
+      <video controls playsinline preload="none" poster="{{ 'ph-thumb.jpg' | asset_url }}"><source src="https://cdn.shopify.com/videos/c/o/v/89bafd5f7a124653961859999b29d633.mp4" type="video/mp4"></video>
+    </div>
+  </div>
+  <p class="wrap center" style="margin-top:24px;font-size:16.5px;color:var(--gray);max-width:660px">On a pH indicator, <strong>green is more acidic</strong> and <strong>blue is alkaline</strong>. CELLNERGY shifts ordinary water toward gentle alkaline, no machine required.</p>
+  <div class="wrap difftech reveal">
+    <span class="tchip"><svg viewBox="0 0 24 24"><path d="M12 2s6 6.5 6 11a6 6 0 01-12 0c0-4.5 6-11 6-11z"/></svg> Alkaline pH*</span>
+    <span class="tchip"><svg viewBox="0 0 24 24"><circle cx="7" cy="8" r="2.5"/><circle cx="17" cy="8" r="2.5"/><circle cx="12" cy="16" r="2.5"/><path d="M9 9l2.2 4.8M15 9l-2.2 4.8"/></svg> Molecular hydrogen*</span>
+    <span class="tchip"><svg viewBox="0 0 24 24"><path d="M2 12c2 0 2-4 4-4s2 8 4 8 2-8 4-8 2 4 4 4"/></svg> Terahertz conditioned*</span>
+  </div>
+  <p class="wrap center" style="margin-top:16px;font-size:13px;color:var(--muted)">*Measured in LifePharm product testing. Individual results may vary.</p>
+</section>
+
+<!-- WHY ALKALINE / education (compliant: no health-outcome claims) -->
+<section class="section">
+  <div class="wrap why2 reveal">
+    <div class="why-text">
+      <h2 class="h" style="text-align:left">So why alkaline water?</h2>
+      <div class="kicker-line" style="margin:16px 0 18px"></div>
+      <p class="lead" style="text-align:left">Most tap and bottled water is slightly acidic. CELLNERGY conditions it to a gently alkaline pH*. Many people simply find less-acidic water cleaner and smoother to drink.</p>
+      <ul class="why-list">
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Hydration is the foundation.</strong> Your body relies on water for nearly everything it does, so drinking enough, consistently, is one of the simplest things you can do for how you feel every day.</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Water you'll actually reach for.</strong> A gentler, less-acidic taste is easier to sip all day, so you naturally drink more of it.</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><strong>A higher pH, made in the bottle.</strong> A built-in mineral diffuser raises ordinary water to a gently alkaline pH*, no machine or plumbing needed.</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><strong>A wellness habit, minus the machine.</strong> Alkaline water is one of the most popular wellness upgrades, now a $39 daily habit instead of a $7,000 machine.</span></li>
+      </ul>
+      <p style="font-size:13px;color:var(--muted);margin-top:18px">*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+    </div>
+    <div class="why-photo"><img loading="lazy" src="{{ 'why-alkaline.webp' | asset_url }}" alt="Extreme close-up of fresh, crystal-clear water with fine bubbles and light"></div>
+  </div>
+</section>
+
+<!-- WHICH WAY: introduce the machine + store bottle, then CELLNERGY -->
+<section class="section whichway">
+  <div class="wrap center reveal">
+    <h2 class="h">Most people chase better water two ways. Both have a catch.</h2>
+    <div class="kicker-line"></div>
+    <p class="lead">Alkaline, hydrogen-rich water* is genuinely worth wanting. The usual ways to get it are the problem.</p>
+  </div>
+  <div class="wrap ways">
+    <div class="way reveal" tabindex="0">
+      <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0885/0128/9269/files/compare-machine.webp?v=1784235206" alt="Countertop water ionizer">
+      <div class="way-tag">Option 1</div>
+      <h3>The $7,000 water ionizer</h3>
+      <div class="way-body"><ul class="way-list">
+        <li>Makes <b>genuinely good water</b></li>
+        <li>But costs <b>as much as a used car</b></li>
+        <li>Needs plumbing, filters &amp; cleaning</li>
+        <li>Takes over your counter</li>
+      </ul></div>
+    </div>
+    <div class="way reveal" tabindex="0">
+      <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0885/0128/9269/files/compare-store.webp?v=1784235206" alt="Disposable plastic bottle">
+      <div class="way-tag">Option 2</div>
+      <h3>The $3 store-bought bottle</h3>
+      <div class="way-body"><ul class="way-list">
+        <li><b>Cheap</b> and everywhere</li>
+        <li>But it <b>conditions nothing</b></li>
+        <li>Flat, ordinary water</li>
+        <li>New plastic every time. Waste adds up</li>
+      </ul></div>
+    </div>
+  </div>
+  <div class="wrap waysolution reveal">
+    <div class="ws-inner">
+      <div class="ws-photo"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0885/0128/9269/files/smart-onthego.webp?v=1784235206" alt="CELLNERGY bottle carried on the go"></div>
+      <div class="ws-text">
+        <span class="wstag">Option 3 &middot; The smarter option</span>
+        <h3>The CELLNERGY Hydration System</h3>
+        <p class="ws-sub">Same water.* About $7,000 less.</p>
+        <ul class="ws-bullets">
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> The same alkaline, hydrogen water*</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> No $7,000 machine, no plumbing</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> No endless plastic waste</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Goes with you, everywhere</li>
+        </ul>
+        <div class="ws-offer">
+          <span class="ws-price">From just <b>$39</b></span>
+          <a class="ws-btn" href="https://shop.lifepharm.com/discount/HABIT10?redirect=/checkout">Shop $39</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3-PANEL: made for everywhere -->
+<section class="section" style="padding:64px 0">
+  <div class="wrap center reveal">
+    <h2 class="h">Made for everywhere you actually live.</h2>
+    <div class="kicker-line"></div>
+    <p class="lead">Not chained to a counter. The same premium water at home, at the gym, and at your desk.</p>
+  </div>
+  <div class="wrap reveal" style="margin-top:36px">
+    <div class="panels">
+      <figure><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0885/0128/9269/files/panel-morning.webp?v=1784235206" alt="CELLNERGY bottle in a bright kitchen"><figcaption>Morning at home</figcaption></figure>
+      <figure><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0885/0128/9269/files/panel-gym.webp?v=1784235206" alt="CELLNERGY bottle at the gym"><figcaption>At the gym</figcaption></figure>
+      <figure><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0885/0128/9269/files/panel-work.webp?v=1784235206" alt="CELLNERGY bottle at a work desk"><figcaption>At your desk</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" style="background:#fff">
+  <div class="wrap center reveal">
+    <h2 class="h">Three steps. Fifteen minutes.</h2><div class="kicker-line"></div>
+    <p class="lead">No plumbing, no settings to learn. Just fill, wait, and go, wherever your day takes you.</p>
+  </div>
+  <div class="wrap steps">
+    <div class="stepcard reveal"><div class="n">1</div><h3>Fill</h3><p>Add room-temperature filtered water. <strong>Nothing to install.</strong></p></div>
+    <div class="stepcard reveal"><div class="n">2</div><h3>Condition</h3><p>Wait about <strong>15 minutes</strong> while the mineral diffuser does the work.</p></div>
+    <div class="stepcard reveal"><div class="n">3</div><h3>Drink</h3><p>Take it with you and <strong>enjoy it all day</strong>, wherever you go.</p></div>
+  </div>
+</section>
+
+<!-- BRIDGE -->
+<section class="section bridge reveal">
+  <div class="wrap center">
+    <h2 class="h">The water ionizer had the right idea. The wrong price.</h2>
+    <div class="kicker-line"></div>
+    <p class="lead">The machine makes genuinely good water. The barrier was never the water, it was the <strong>$7,000 price</strong>, the plumbing, and the counter it takes over. CELLNERGY keeps the good part and drops the barrier.</p>
+    <p class="close">So how does a <span class="price">$39</span> bottle really compare? Let's do the math.</p>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="section" id="compare">
+  <div class="wrap center reveal">
+    <h2 class="h">Overpriced. Underpowered. Or just right.</h2><div class="kicker-line"></div>
+    <p class="lead">There are three ways to get alkaline water. Here's how they actually compare.</p>
+  </div>
+  <div class="cmp-scroll reveal">
+    <div class="cmp">
+      <div class="col labels">
+        <div class="crow head-sp"></div>
+        <div class="crow">Upfront price</div><div class="crow">Ongoing cost</div>
+        <div class="crow">Alkaline + hydrogen water*</div><div class="crow">Portable</div><div class="crow">Simple, no plumbing</div>
+      </div>
+      <div class="col">
+        <div class="chead"><div class="ptile"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0885/0128/9269/files/compare-machine.webp?v=1784235206" alt="Countertop water ionizer"></div><div class="cname">$7,000<br>Water Ionizer</div><span class="ctag">OVERPRICED</span></div>
+        <div class="crow"><span class="bigp" style="color:var(--gray)">~$7,000</span></div>
+        <div class="crow">Filters, cleaning, enhancer ($$$)</div>
+        <div class="crow"><span class="yes">&#10003;</span></div><div class="crow"><span class="no">&#10007;</span></div><div class="crow"><span class="no">&#10007;</span></div>
+      </div>
+      <div class="col">
+        <div class="chead"><div class="ptile"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0885/0128/9269/files/compare-store.webp?v=1784235206" alt="Disposable plastic bottle"></div><div class="cname">Store-Bought</div><span class="ctag">UNDERPOWERED</span></div>
+        <div class="crow"><span class="bigp" style="color:var(--gray)">~$3</span></div>
+        <div class="crow">New bottle every time</div>
+        <div class="crow"><span class="no">&#10007;</span></div><div class="crow"><span class="yes">&#10003;</span></div><div class="crow"><span class="yes">&#10003;</span></div>
+      </div>
+      <div class="col us">
+        <div class="chead"><div class="ptile"><img loading="lazy" src="{{ 'bottle.jpg' | asset_url }}" alt="CELLNERGY bottle"></div><div class="cname">CELLNERGY</div><span class="ctag">JUST RIGHT</span></div>
+        <div class="crow"><span class="bigp">$39</span></div>
+        <div class="crow">Low refill, about every 2 to 3 months</div>
+        <div class="crow"><span class="yes">&#10003;</span></div><div class="crow"><span class="yes">&#10003;</span></div><div class="crow"><span class="yes">&#10003;</span></div>
+      </div>
+    </div>
+  </div>
+  <p class="wrap center" style="margin-top:22px;font-size:13px;color:var(--muted)">Water ionizer and store-bought figures are approximate and vary by model. Different technologies.</p>
+</section>
+
+<!-- CONVENIENCE -->
+<section class="section" style="background:var(--ink);color:#E9E6E1">
+  <div class="wrap conv-grid" style="align-items:center">
+    <div class="reveal">
+      <h2 class="h" style="color:#fff">A habit only works if it goes with you.</h2>
+      <div class="kicker-line" style="margin:18px 0 22px"></div>
+      <p class="lead" style="color:#D3CFC8">A water ionizer <strong style="color:#fff">stays chained to your kitchen</strong>. CELLNERGY <strong style="color:#fff">comes with you</strong>: the gym, the office, the car, the trail. That is what turns better water into a habit you actually keep.</p>
+    </div>
+    <div class="reveal" style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg)">
+      <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0885/0128/9269/files/convenience.webp?v=1784235206" alt="CELLNERGY bottle in a gym bag, ready to go">
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section proof" id="reviews">
+  <div class="wrap center reveal">
+    <div class="rhead">
+      <span class="stars">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+      </span>
+      <span class="num">5.0</span>
+    </div>
+    <h2 class="h">Don't take our word for it.</h2>
+    <div class="kicker-line"></div>
+    <p class="reviews-sub">From verified CELLNERGY customers.</p>
+  </div>
+  <div class="wrap">
+    <div class="tgrid reveal">
+      <div class="revcard"><div class="rvstars stars"><svg width="16" height="16" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg></div><p>"Cannot say enough about this bottle. I feel better overall, and the price is astounding."</p><div class="rvwho"><span class="avatar">BT</span><div class="rvname">Barbara T.<span class="verified">Real customer</span></div></div></div>
+      <div class="revcard"><div class="rvstars stars"><svg width="16" height="16" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg></div><p>"The water tastes noticeably <strong>lighter and smoother</strong>, and I naturally <strong>drink much more</strong> than I did before."</p><div class="rvwho"><span class="avatar">MA</span><div class="rvname">Marco<span class="verified">Real customer</span></div></div></div>
+      <div class="revcard"><div class="rvstars stars"><svg width="16" height="16" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg></div><p>"It tastes <strong>cleaner and smoother</strong>, which makes it easy to <strong>drink more water</strong> all day."</p><div class="rvwho"><span class="avatar">JO</span><div class="rvname">Joan<span class="verified">Real customer</span></div></div></div>
+      <div class="revcard"><div class="rvstars stars"><svg width="16" height="16" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#F58220"><path d="M12 2l3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1z"/></svg></div><p>"I was <strong>never a big water drinker.</strong> It tastes cleaner and smoother, and I <strong>reach for it without thinking.</strong>"</p><div class="rvwho"><span class="avatar">WS</span><div class="rvname">Wally S.<span class="verified">Real customer</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section class="section" id="offer">
+  <div class="wrap center reveal">
+    <h2 class="h">Start the habit for $39.</h2><div class="kicker-line"></div>
+  </div>
+  <div class="offer-wrap reveal">
+    <div class="offer-photo"><img loading="lazy" src="https://cdn.shopify.com/s/files/1/0885/0128/9269/files/offer-cold.webp?v=1784235206" alt="CELLNERGY bottle on a bright kitchen counter"></div>
+    <div class="offer-card">
+      <div class="otop">One bottle. The water you already drink, <b>upgraded</b>.</div>
+      <div class="plans">
+        <div class="plan sel" role="button" tabindex="0" data-now="$39" data-was="$49" data-save="Save $10" data-btn="Get mine for $39" data-variant="53040002400565" data-code="HABIT10"><div class="pt">1 Bottle</div><div class="pp">$39</div></div>
+        <div class="plan" role="button" tabindex="0" data-now="$99" data-was="$119" data-save="Save $20" data-btn="Get 3 for $99" data-variant="53003471388981" data-code="HABIT20"><span class="bv">BEST VALUE</span><div class="pt">3 Bottles</div><div class="pp">$99</div></div>
+      </div>
+      <div class="pricebar"><span class="strike was" id="wasP">$49</span><span class="now" id="nowP">$39</span><span class="save" id="saveP">Save $10</span></div>
+      <a href="https://shop.lifepharm.com/discount/HABIT10?redirect=/checkout" class="btn big block" id="buyBtn">Get mine for $39</a>
+      <div class="guar"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg> 90-Day Money-Back Guarantee</div>
+      <div class="fineprint">Discount applied automatically at checkout. Shipping and tax calculated at checkout.</div>
+      <div class="addon">
+        <input type="checkbox" id="diffuser" aria-describedby="subdisc">
+        <label for="diffuser"><span style="display:inline-block;background:var(--orange);color:#fff;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;margin-right:8px;white-space:nowrap">Subscribe &amp; Save</span><strong style="font-size:17px">25% off</strong> your <strong>first</strong> diffuser refill<sup style="font-size:9px;font-weight:700">*</sup><span style="display:block;margin-top:8px">Add a <a href="https://shop.lifepharm.com/products/cellnergy-diffuser-replacement?ref=retaildirect" target="_blank" rel="noopener">CELLNERGY Diffuser Replacement &#8599;</a> subscription. Your mineral diffuser swaps about every 2 to 3 months, so a fresh one arrives right on time.</span><span style="display:block;font-size:11.5px;color:#8a8a8a;margin-top:5px">*12% off each one after.</span></label>
+      </div>
+      <div class="whatget">
+        <div class="lab">WHAT YOU GET</div>
+        <div class="wg"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> 1 CELLNERGY Hydration System (650 mL / 22 oz)</div>
+        <div class="wg"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> 6-element mineral diffuser installed inside</div>
+        <div class="wg"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> 90-day money-back guarantee</div>
+        <div class="wg"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> HSA / FSA accepted</div>
+        <div class="truemed"><img loading="lazy" src="{{ 'truemed-orange.svg' | asset_url }}" alt="Truemed"> Pay with HSA / FSA via Truemed</div>
+      </div>
+      <div class="sub-disc" id="subdisc">*The CELLNERGY Diffuser Replacement is a recurring subscription. You'll be charged $22 every 3 months until you cancel. Cancel anytime in your account. Frequency and price are confirmed at checkout.</div>
+    </div>
+  </div>
+</section>
+
+<!-- VERIFIED REVIEWS (Stamped) -->
+<section class="section" id="reviews-all">
+  <div class="wrap center reveal">
+    <h2 class="h">Real reviews from verified buyers.</h2>
+    <div class="kicker-line"></div>
+    <p class="reviews-sub">Read every verified review, and add your own.</p>
+  </div>
+  <div class="wrap">
+    <div id="stamped-main-widget"
+         data-product-id="10558101160245"
+         data-name="CELLNERGY HYDRATION SYSTEM"
+         data-url="https://shop.lifepharm.com/products/cellnergy-hydration-system"
+         data-image-url="//shop.lifepharm.com/cdn/shop/files/cellnergy-bottle_large.png?v=1782146397"
+         data-description="CELLNERGY Hydration System"
+         data-product-sku="cellnergy-hydration-system"
+         data-product-type="Wave technology"
+         data-product-title="CELLNERGY HYDRATION SYSTEM"
+         data-sort="recent"
+         data-linkify="true"></div>
+    <noscript><div class="stamped-fallback"><a href="https://shop.lifepharm.com/products/cellnergy-hydration-system#reviews">Read verified reviews &rarr;</a></div></noscript>
+    <div id="stamped-fallback" class="stamped-fallback" hidden>
+      <a href="https://shop.lifepharm.com/products/cellnergy-hydration-system#reviews">Read &amp; write verified reviews &rarr;</a>
+    </div>
+  </div>
+  <p class="wrap center" style="margin-top:18px;font-size:13px;color:var(--muted)">Verified reviews via Stamped. Individual results may vary. These statements have not been evaluated by the Food and Drug Administration.</p>
+</section>
+
+<section class="section" style="background:var(--cream)">
+  <div class="wrap center reveal">
+    <h2 class="h">Questions, answered.</h2><div class="kicker-line"></div>
+  </div>
+  <div class="wrap faq">
+    <div class="q"><button aria-expanded="false">How long until I notice a difference?<span class="plus">+</span></button><div class="a"><p>The <strong>taste is different from day one</strong>. The rest is a habit, not a quick fix. Most people make it their daily water and notice more over a few weeks, which is exactly why it is backed by a <strong>90-day guarantee</strong>.</p></div></div>
+    <div class="q"><button aria-expanded="false">Does it taste different?<span class="plus">+</span></button><div class="a"><p>Most people describe it as <strong>smoother, cleaner, and lighter</strong> than ordinary water.</p></div></div>
+    <div class="q"><button aria-expanded="false">What about refills?<span class="plus">+</span></button><div class="a"><p>The mineral diffuser is replaced about every <strong>2 to 3 months</strong>. Subscribe and Save keeps refills coming at a low cost, and you can cancel anytime.</p></div></div>
+    <div class="q"><button aria-expanded="false">What is the guarantee?<span class="plus">+</span></button><div class="a"><p>A <strong>90-day money-back guarantee</strong>. Give it an honest few weeks, and if it is not for you, you get a full refund.</p></div></div>
+    <div class="q"><button aria-expanded="false">How do I use it?<span class="plus">+</span></button><div class="a"><p>Fill with filtered water, wait about 15 minutes, and drink. <strong>No buttons, no plumbing, no manual.</strong></p></div></div>
+  </div>
+</section>
+
+<section class="section final">
+  <img loading="lazy" class="bg" src="https://cdn.shopify.com/s/files/1/0885/0128/9269/files/final-banner.webp?v=1784235206" alt="">
+  <div class="scrim2"></div>
+  <div class="wrap inner reveal">
+    <h2 class="h">Better water starts today.</h2><div class="kicker-line"></div>
+    <p class="lead center" style="margin-bottom:26px">A <strong style="color:#fff">$39 habit</strong> that goes where a <strong style="color:#fff">$7,000 water ionizer</strong> can't.</p>
+    <a href="https://shop.lifepharm.com/discount/HABIT10?redirect=/checkout" class="btn big">Get Mine for $39</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="flog">CELLNERGY</div>
+    <div>From LifePharm, Irvine, CA. The regeneration company.</div>
+    <div class="disc">*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. Water ionizer and store-bought comparison figures are approximate and reflect publicly listed prices for different technologies.</div>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Product","name":"CELLNERGY Hydration System","description":"Alkaline, hydrogen-conditioned water bottle with a mineral diffuser. 650 mL / 22 oz.","brand":{"@type":"Brand","name":"LifePharm"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"9"},"offers":{"@type":"Offer","price":"39.00","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://shop.lifepharm.com/products/cellnergy-hydration-system"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How long until I notice a difference?","acceptedAnswer":{"@type":"Answer","text":"The taste is different from day one. The rest is a habit; most people notice more over a few weeks, backed by a 90-day guarantee."}},{"@type":"Question","name":"What about refills?","acceptedAnswer":{"@type":"Answer","text":"The mineral diffuser is replaced about every 2 to 3 months. Subscribe and Save keeps refills coming and you can cancel anytime."}},{"@type":"Question","name":"What is the guarantee?","acceptedAnswer":{"@type":"Answer","text":"A 90-day money-back guarantee. If it is not for you, you get a full refund."}}]}
+</script>
+<script>
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+  document.querySelectorAll('.q button').forEach(function(b){b.addEventListener('click',function(){var q=b.parentElement;var o=q.classList.toggle('open');b.setAttribute('aria-expanded',o)})});
+  var mt=document.getElementById('mtrack'); if(mt){var __b=mt.innerHTML,__g=0;while(mt.scrollWidth < window.innerWidth && __g<12){mt.innerHTML+=__b;__g++;}mt.innerHTML+=mt.innerHTML;}
+  document.querySelectorAll('.plan').forEach(function(p){p.addEventListener('click',function(){
+    document.querySelectorAll('.plan').forEach(function(x){x.classList.remove('sel')});
+    p.classList.add('sel');
+    document.getElementById('nowP').textContent=p.dataset.now;
+    document.getElementById('wasP').textContent=p.dataset.was;
+    document.getElementById('saveP').textContent=p.dataset.save;
+    document.getElementById('buyBtn').textContent=p.dataset.btn;
+  })});
+  document.querySelectorAll('.plan').forEach(function(p){p.addEventListener('keydown',function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();p.click();}})});
+  (function(){var w=document.getElementById("stamped-main-widget"),fb=document.getElementById("stamped-fallback");
+    if(!w||!fb)return; setTimeout(function(){if(w.children.length===0&&!window.StampedFn){fb.hidden=false;}},5000);})();
+</script>
+<!-- CART DRAWER (self-contained, styled to match the theme drawer) -->
+<style>
+  #cd-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);opacity:0;visibility:hidden;transition:opacity .25s ease;z-index:9998}
+  #cd-overlay.open{opacity:1;visibility:visible}
+  #cart-drawer-lp{position:fixed;top:0;right:0;height:100%;width:400px;max-width:92vw;background:#fff;box-shadow:-10px 0 40px rgba(0,0,0,.22);transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);z-index:9999;display:flex;flex-direction:column;font-family:var(--sans);color:var(--ink)}
+  #cart-drawer-lp.open{transform:translateX(0)}
+  #cart-drawer-lp .cd-head{display:flex;align-items:center;gap:10px;padding:20px 22px;border-bottom:1px solid var(--line)}
+  #cart-drawer-lp .cd-h-title{font-family:var(--serif);font-size:20px;font-weight:800}
+  #cart-drawer-lp .cd-count{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--orange);color:#fff;font-size:12px;font-weight:800}
+  #cart-drawer-lp .cd-close{margin-left:auto;background:none;border:none;font-size:28px;line-height:1;color:#b3aca2;cursor:pointer;padding:0 4px}
+  #cart-drawer-lp .cd-items{flex:1;overflow-y:auto;padding:8px 22px}
+  #cart-drawer-lp .cd-it{display:flex;gap:14px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+  #cart-drawer-lp .cd-it-img{width:60px;height:60px;border-radius:10px;object-fit:cover;background:var(--cream);flex:none}
+  #cart-drawer-lp .cd-it-mid{min-width:0}
+  #cart-drawer-lp .cd-it-t{font-size:14px;font-weight:700;line-height:1.3;color:var(--ink)}
+  #cart-drawer-lp .cd-it-s{font-size:12.5px;color:var(--muted);margin-top:3px}
+  #cart-drawer-lp .cd-it-p{margin-left:auto;white-space:nowrap;align-self:flex-start;display:flex;flex-direction:column;align-items:flex-end;gap:1px}
+  #cart-drawer-lp .cd-was{font-size:12px;font-weight:600;color:var(--muted);text-decoration:line-through}
+  #cart-drawer-lp .cd-now{font-size:14px;font-weight:800;color:var(--ink)}
+  #cart-drawer-lp .cd-qty{display:flex;align-items:center;gap:0;margin-top:10px}
+  #cart-drawer-lp .cd-q{width:28px;height:28px;border:1px solid var(--line);background:#fff;color:var(--ink);font-size:16px;font-weight:700;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  #cart-drawer-lp .cd-q.cd-dec{border-radius:8px 0 0 8px}
+  #cart-drawer-lp .cd-q.cd-inc{border-radius:0 8px 8px 0}
+  #cart-drawer-lp .cd-q:hover{border-color:var(--orange);color:var(--orange)}
+  #cart-drawer-lp .cd-qn{min-width:34px;height:28px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--ink)}
+  #cart-drawer-lp .cd-rm{margin-left:14px;background:none;border:none;color:var(--muted);font-size:12.5px;text-decoration:underline;cursor:pointer;padding:0}
+  #cart-drawer-lp .cd-rm:hover{color:var(--orange)}
+  #cart-drawer-lp .cd-foot{border-top:1px solid var(--line);padding:18px 22px 22px}
+  #cart-drawer-lp .cd-totrow{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:6px}
+  #cart-drawer-lp .cd-totrow .l{font-size:16px;font-weight:800;color:var(--ink)}
+  #cart-drawer-lp .cd-totrow .r{font-family:var(--serif);font-size:20px;font-weight:800;color:var(--ink)}
+  #cart-drawer-lp .cd-row{display:flex;align-items:center;justify-content:space-between;font-size:14px;color:var(--gray);margin-bottom:8px}
+  #cart-drawer-lp .cd-discrow{color:var(--ok);font-weight:700}
+  #cart-drawer-lp .cd-disc-l{display:inline-flex;align-items:center;gap:6px}
+  #cart-drawer-lp .cd-discrow svg{width:15px;height:15px}
+  #cart-drawer-lp .cd-totrow{padding-top:10px;border-top:1px solid var(--line)}
+  #cart-drawer-lp .cd-save{margin:8px 0 14px;font-size:13.5px;font-weight:800;color:var(--orange)}
+  #cart-drawer-lp .cd-note{font-size:11.5px;color:var(--muted);line-height:1.45;margin:0 0 14px}
+  #cart-drawer-lp .cd-checkout{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--orange);color:#fff;font-weight:800;font-size:16.5px;padding:15px;border-radius:999px;text-decoration:none;box-shadow:0 8px 22px rgba(245,130,32,.35)}
+  #cart-drawer-lp .cd-checkout svg{width:15px;height:15px}
+  #cart-drawer-lp .cd-keep{display:block;width:100%;margin-top:12px;background:none;border:none;color:var(--muted);font-size:13.5px;text-decoration:underline;cursor:pointer}
+  @media(max-width:480px){#cart-drawer-lp{width:100%;max-width:100%}}
+  .nav-cart{position:relative;background:none;border:none;cursor:pointer;padding:6px;display:inline-flex;align-items:center;color:var(--ink);margin-left:2px}
+  .nav-cart svg{width:24px;height:24px;stroke:var(--ink);fill:none;stroke-width:2}
+  .nav-cart:hover svg{stroke:var(--orange)}
+  .nav-cart-count{position:absolute;top:-3px;right:-5px;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:var(--orange);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;line-height:1}
+</style>
+<div id="cd-overlay"></div>
+<aside id="cart-drawer-lp" aria-hidden="true" aria-label="Your cart">
+  <div class="cd-head">
+    <span class="cd-h-title">Cart</span>
+    <span class="cd-count" id="cd-count">0</span>
+    <button type="button" class="cd-close" id="cd-close" aria-label="Close">&times;</button>
+  </div>
+  <div class="cd-items" id="cd-items"></div>
+  <div class="cd-foot">
+    <div class="cd-row cd-subrow"><span>Subtotal</span><span id="cd-subtotal">$0.00</span></div>
+    <div class="cd-row cd-discrow" id="cd-discrow" hidden><span class="cd-disc-l"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.6 13.4L11 3.8a2 2 0 0 0-1.4-.6H4v5.6a2 2 0 0 0 .6 1.4l9.6 9.6a2 2 0 0 0 2.8 0l3.6-3.6a2 2 0 0 0 0-2.8z"/><circle cx="7.5" cy="7.5" r="1.2" fill="currentColor"/></svg> <span id="cd-disclabel">HABIT10</span></span><span id="cd-disc">-$0.00</span></div>
+    <div class="cd-totrow"><span class="l">Total</span><span class="r" id="cd-total">$0.00</span></div>
+    <div class="cd-save" id="cd-save" hidden>You're saving $0.00 at checkout</div>
+    <p class="cd-note">Discount applied automatically at checkout. Shipping &amp; taxes calculated at checkout.</p>
+    <a href="#" class="cd-checkout" id="cd-checkout">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 10V8a6 6 0 0 1 12 0v2"/><rect x="4" y="10" width="16" height="10" rx="2"/></svg>
+      Checkout
+    </a>
+    <button type="button" class="cd-keep" id="cd-keep">Continue reading</button>
+  </div>
+</aside>
+
+
+<script>
+(function(){
+  var SINGLE={variant:53040002400565,code:"HABIT10"},TRIPLE={variant:53003471388981,code:"HABIT20"},DIFF=53049168167221,SKIO=710885900597;
+  /* Regular ("was") prices in cents for the strikethrough, matching the page: bottle $49,
+     3-pack $119, diffuser refill $25 (first payment is 25% off). Used only as a fallback if
+     the variant's own compare-at price isn't returned by /cart.js. */
+  var WAS={};WAS[SINGLE.variant]=4900;WAS[TRIPLE.variant]=11900;WAS[DIFF]=2500;
+  var buyBtn=document.getElementById("buyBtn"),diff=document.getElementById("diffuser"),cur=SINGLE;
+  var _cdDest=null;
+  function _cdMoney(c){return "$"+(Math.round(c)/100).toFixed(2);}
+  function updateNav(n){var nc=document.getElementById("navCartCount");if(nc){nc.textContent=n;nc.hidden=!n;}}
+  /* Pick the checkout discount code from what's actually in the cart: 3-pack -> HABIT20,
+     otherwise -> HABIT10. Keeps the applied code correct no matter how they built the cart. */
+  function recomputeCode(cart){
+    var has3=false;(cart&&cart.items||[]).forEach(function(it){if(it.id==TRIPLE.variant)has3=true;});
+    _cdDest="https://shop.lifepharm.com/discount/"+(has3?TRIPLE.code:SINGLE.code)+"?redirect=/checkout";
+  }
+  var _cdBusy=false;
+  /* Change a line's quantity in place (0 removes it), then re-render from the returned cart.
+     This is what makes the reset unnecessary: shoppers adjust here instead of re-clicking CTAs. */
+  function changeQty(key,qty){
+    if(_cdBusy)return;_cdBusy=true;
+    fetch("/cart/change.js",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({id:key,quantity:qty})})
+      .then(function(r){return r.json();})
+      .then(function(cart){recomputeCode(cart);renderDrawer(cart);})
+      .catch(function(){})
+      .then(function(){_cdBusy=false;});
+  }
+  function renderDrawer(cart){
+    var items=(cart&&cart.items)||[];
+    var box=document.getElementById("cd-items"),cnt=document.getElementById("cd-count");
+    /* Preview the checkout discount so the drawer "looks like they're saving." The codes are
+       fixed-dollar (HABIT10 = $10 off, HABIT20 = $20 off) and applied at checkout via the
+       permalink, so we mirror them here: subtotal, discount line, discounted total, savings. */
+    var subtotal=cart&&cart.total_price!=null?cart.total_price:0;
+    var has3=false,has1=false;
+    items.forEach(function(it){if(it.id==TRIPLE.variant)has3=true;if(it.id==SINGLE.variant)has1=true;});
+    var disc=has3?2000:(has1?1000:0),code=has3?TRIPLE.code:SINGLE.code,total=Math.max(0,subtotal-disc);
+    if(cnt)cnt.textContent=cart&&cart.item_count!=null?cart.item_count:items.length;
+    var sEl=document.getElementById("cd-subtotal");if(sEl)sEl.textContent=_cdMoney(subtotal);
+    var dRow=document.getElementById("cd-discrow"),dLab=document.getElementById("cd-disclabel"),dAmt=document.getElementById("cd-disc"),sv=document.getElementById("cd-save");
+    if(disc>0){if(dRow)dRow.hidden=false;if(dLab)dLab.textContent=code;if(dAmt)dAmt.textContent="-"+_cdMoney(disc);if(sv){sv.hidden=false;sv.textContent="You're saving "+_cdMoney(disc)+" at checkout";}}
+    else{if(dRow)dRow.hidden=true;if(sv)sv.hidden=true;}
+    var tEl=document.getElementById("cd-total");if(tEl)tEl.textContent=_cdMoney(total);
+    updateNav(cart&&cart.item_count!=null?cart.item_count:items.length);
+    if(box)box.innerHTML=items.map(function(it){
+      var sub=it.selling_plan_allocation?'<div class="cd-it-s">Subscription</div>':"";
+      var img=it.image?'<img class="cd-it-img" src="'+it.image+'" alt="">':'<div class="cd-it-img"></div>';
+      var k=it.key;
+      var qty='<div class="cd-qty"><button type="button" class="cd-q cd-dec" data-key="'+k+'" aria-label="Decrease quantity">&minus;</button><span class="cd-qn">'+it.quantity+'</span><button type="button" class="cd-q cd-inc" data-key="'+k+'" aria-label="Increase quantity">+</button><button type="button" class="cd-rm" data-key="'+k+'">Remove</button></div>';
+      var wasUnit=Math.max(it.compare_at_price||0,WAS[it.id]||0);
+      var wasLine=(wasUnit>it.final_price)?wasUnit*it.quantity:0;
+      var priceHtml=(wasLine?'<span class="cd-was">'+_cdMoney(wasLine)+'</span>':'')+'<span class="cd-now">'+_cdMoney(it.final_line_price)+'</span>';
+      return '<div class="cd-it">'+img+'<div class="cd-it-mid"><div class="cd-it-t">'+(it.product_title||it.title)+'</div>'+sub+qty+'</div><div class="cd-it-p">'+priceHtml+'</div></div>';
+    }).join("");
+  }
+  function openDrawer(){var o=document.getElementById("cd-overlay"),d=document.getElementById("cart-drawer-lp");if(o)o.classList.add("open");if(d){d.classList.add("open");d.setAttribute("aria-hidden","false");}document.body.style.overflow="hidden";}
+  function closeDrawer(){var o=document.getElementById("cd-overlay"),d=document.getElementById("cart-drawer-lp");if(o)o.classList.remove("open");if(d){d.classList.remove("open");d.setAttribute("aria-hidden","true");}document.body.style.overflow="";}
+  /* View the cart WITHOUT touching it (non-destructive) — this is what the header cart icon
+     uses, so reopening never resets a shopper's selection. Sets the discounted checkout URL
+     from whatever's actually in the cart (single vs 3-pack) so Checkout still applies a code. */
+  function openCart(){
+    fetch("/cart.js",{headers:{"Accept":"application/json"}})
+      .then(function(r){return r.json();})
+      .then(function(cart){recomputeCode(cart);renderDrawer(cart);openDrawer();})
+      .catch(function(){});
+  }
+  /* ADD the chosen item(s) to the cart (no clearing — shoppers manage quantity in the drawer),
+     then OPEN THE DRAWER so they stay on the page. Checkout goes to the discounted /checkout
+     (skips the cart page + its referral gate). On failure, fall back to a direct redirect so
+     buying never breaks. */
+  function go(plan,withDiff){
+    var items=[{id:plan.variant,quantity:1}];
+    if(withDiff)items.push({id:DIFF,quantity:1,selling_plan:SKIO});
+    fetch("/cart/add.js",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({items:items})})
+      .then(function(){return fetch("/cart.js",{headers:{"Accept":"application/json"}});})
+      .then(function(r){return r.json();})
+      .then(function(cart){recomputeCode(cart);renderDrawer(cart);openDrawer();})
+      .catch(function(){_cdDest="https://shop.lifepharm.com/discount/"+plan.code+"?redirect=/checkout";window.location.href=_cdDest;});
+  }
+  document.querySelectorAll(".plan").forEach(function(p){p.addEventListener("click",function(){cur=(p.dataset.now==="$99")?TRIPLE:SINGLE;});});
+  if(buyBtn)buyBtn.addEventListener("click",function(e){e.preventDefault();go(cur,diff&&diff.checked);});
+  document.querySelectorAll('a[href*="/discount/"]').forEach(function(a){if(a===buyBtn)return;a.addEventListener("click",function(e){e.preventDefault();go(SINGLE,false);});});
+  var _x=document.getElementById("cd-close"),_k=document.getElementById("cd-keep"),_ov=document.getElementById("cd-overlay"),_co=document.getElementById("cd-checkout");
+  if(_x)_x.addEventListener("click",closeDrawer);
+  if(_k)_k.addEventListener("click",closeDrawer);
+  if(_ov)_ov.addEventListener("click",closeDrawer);
+  if(_co)_co.addEventListener("click",function(e){e.preventDefault();if(_cdDest)window.location.href=_cdDest;});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")closeDrawer();});
+  /* Quantity +/- and Remove, delegated on the items container so it keeps working after each
+     re-render. Decrement below 1 removes the line. */
+  var _items=document.getElementById("cd-items");
+  if(_items)_items.addEventListener("click",function(e){
+    var b=e.target.closest("button[data-key]");if(!b)return;
+    var key=b.getAttribute("data-key"),row=b.closest(".cd-it"),qn=row?row.querySelector(".cd-qn"):null;
+    var cur=qn?(parseInt(qn.textContent,10)||1):1;
+    if(b.classList.contains("cd-rm"))changeQty(key,0);
+    else if(b.classList.contains("cd-inc"))changeQty(key,cur+1);
+    else if(b.classList.contains("cd-dec"))changeQty(key,cur-1);
+  });
+  /* Header cart icon = non-destructive reopen. On load, show the current cart count so a
+     returning shopper sees what they already have. */
+  var _nav=document.getElementById("navCart");
+  if(_nav)_nav.addEventListener("click",function(e){e.preventDefault();openCart();});
+  fetch("/cart.js",{headers:{"Accept":"application/json"}}).then(function(r){return r.json();}).then(function(cart){updateNav(cart&&cart.item_count!=null?cart.item_count:0);}).catch(function(){});
+})();
+</script>

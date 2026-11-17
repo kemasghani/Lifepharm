@@ -1,0 +1,185 @@
+{% layout 'lp' %}
+
+<link rel="icon" type="image/png" href="https://shop.lifepharm.com/cdn/shop/files/LifePharm_-_Favicon.png?v=1724454029&width=96">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display&display=swap">
+<style>
+  body{margin:0;background:#fff;color:#181818}
+  .lp-lb{font-family:Metropolis,Montserrat,"Helvetica Neue",Arial,sans-serif!important}
+</style>
+
+<div class="lp-lb" id="lpLeaderboard">
+  <style>
+    .lp-lb{--o:#FF8F00;--o-soft:#FFF4E5;--g:#3DAE2B;--ink:#181818;--mute:#6B6B6B;--line:#ECECEC;
+      font-family:Metropolis,sans-serif;color:var(--ink);background:#fff;max-width:880px;margin:0 auto;padding:40px 16px 56px;letter-spacing:.4px}
+    .lp-lb *{box-sizing:border-box}
+    .lp-lb__note{display:inline-block;background:var(--o-soft);color:#9A5600;
+      font-size:13px;font-weight:600;padding:6px 14px;border-radius:56px;margin:0}
+    .lp-lb__top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:0 0 20px}
+    .lp-lb__logo{height:40px;width:auto;display:block}
+    .lp-lb h2,.lp-lb h3{font-family:"Playfair Display",serif;color:var(--ink);font-weight:400;line-height:1.15}
+    .lp-lb h3.lp-lb__tight{margin:0 0 6px}
+    .lp-lb h2{font-size:clamp(38px,7vw,60px);line-height:1.05;margin:0 0 14px}
+    .lp-lb h3{font-size:clamp(22px,4vw,28px);margin:0 0 14px}
+    .lp-lb__sub{color:var(--mute);margin:0 0 36px;font-size:clamp(17px,2.4vw,19px);line-height:1.5}
+    .lp-lb__tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:0 0 36px;padding:0;list-style:none}
+    .lp-lb__tiers li{display:flex;flex-direction:column;align-items:center;border:1px solid var(--line);border-radius:12px;padding:26px 10px;text-align:center}
+    .lp-lb__tiers small{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--mute)}
+    .lp-lb__tiers b{display:block;font-family:"Playfair Display",serif;font-size:34px;font-weight:400;color:var(--o);line-height:1;margin:4px 0 10px}
+    .lp-lb__tiers .pics{display:flex;justify-content:center;align-items:center;height:116px;margin:4px 0 0}
+    .lp-lb__tiers img{height:116px;width:64px;object-fit:cover}
+    .lp-lb__tiers .stack{display:flex;flex-direction:column}
+    .lp-lb__tiers img.d{width:58px;height:58px;object-fit:contain}
+    .lp-lb__tiers .pics i{font-style:normal;font-weight:700;font-size:22px;color:var(--o);margin:0 4px}
+    .lp-lb__tiers img.ipad{width:auto;max-width:100%;object-fit:contain}
+    .lp-lb__tiers span{display:block;font-size:12px;color:var(--ink);line-height:1.4}
+    .lp-lb__tiers li.big{background:var(--o-soft);border-color:#FFD9A8;justify-content:center}
+    .lp-lb__tiers li.big span{font-size:15px;font-weight:700}
+    .lp-lb__hint{font-size:15px;color:var(--ink);margin:0 0 18px;line-height:1.5}
+    .lp-lb__search{display:flex;gap:8px;margin:0 0 36px}
+    .lp-lb__search input{flex:1;min-width:0;font:inherit;font-size:16px;padding:12px 18px;border:1px solid #D6D6D6;border-radius:56px;color:var(--ink);background:#fff;outline:none}
+    .lp-lb__search input:focus{border-color:var(--o);box-shadow:0 0 0 3px var(--o-soft)}
+    .lp-lb__search button{font:inherit;font-weight:700;font-size:14px;color:#fff;background:var(--o);border:0;border-radius:56px;padding:0 24px;cursor:pointer}
+    .lp-lb__search button:hover{background:#E67F00}
+    .lp-lb__result:empty{display:none}
+    .lp-lb__result{margin:-16px 0 28px;padding:20px 22px;border-radius:12px;background:var(--o-soft);line-height:1.5;font-size:15px}
+    .lp-lb__result.miss{background:#F4F4F4}
+    .lp-lb__result strong{display:block;font-family:"Playfair Display",serif;font-weight:400;font-size:24px;line-height:1.2;margin:0 0 6px;color:var(--ink)}
+    .lp-lb__result.hit strong span{color:var(--o)}
+    .lp-lb__result p{margin:0;color:var(--ink)}
+    .lp-lb__result em{display:block;font-style:normal;font-weight:700;color:#B35C00;margin-top:8px}
+    .lp-lb__result button{margin-top:14px;font:inherit;font-size:14px;font-weight:600;background:none;border:0;padding:0;color:var(--ink);text-decoration:underline;cursor:pointer}
+    .lp-lb table{width:100%;border-collapse:collapse;font-size:15px;table-layout:fixed}
+    .lp-lb th:nth-child(1){width:12%}.lp-lb th:nth-child(2){width:22%}.lp-lb th:nth-child(3){width:22%}.lp-lb th:nth-child(4){width:18%}.lp-lb th:nth-child(5){width:26%}
+    @media(max-width:600px){.lp-lb__wrap{overflow-x:auto}.lp-lb__wrap table{min-width:540px}.lp-lb__tip>span{bottom:auto;top:calc(100% + 10px)}.lp-lb__tip>span::after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--ink)}}
+    .lp-lb th{text-align:center;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--ink);padding:12px;border-bottom:2px solid var(--ink)}
+    .lp-lb td{text-align:center;padding:14px 12px;border-bottom:1px solid var(--line)}
+    
+    .lp-lb td.rank{font-weight:700;color:var(--mute)}
+    .lp-lb td.id{font-variant-numeric:tabular-nums}
+    .lp-lb td.n{font-weight:700;font-variant-numeric:tabular-nums}
+    .lp-lb tr.top td{background:var(--o-soft)}
+    .lp-lb tr.top td.rank{color:var(--o)}
+    .lp-lb tr.hit td{background:#FFE9C7}
+    .lp-lb .yes,.lp-lb .no{display:inline-flex;width:24px;height:24px;border-radius:50%;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+    .lp-lb .yes{background:var(--o);color:#fff}
+    .lp-lb .no{background:#767676;color:#fff}
+    .lp-lb__more{display:block;margin:24px auto 0;font:inherit;font-weight:500;font-size:15px;background:#fff;color:var(--ink);border:1px solid var(--ink);border-radius:56px;padding:10px 28px;cursor:pointer}
+    .lp-lb__more:hover{background:var(--ink);color:#fff}
+    .lp-lb__foot{font-size:12px;color:var(--mute);margin-top:28px;line-height:1.6}
+    .lp-lb__foot p{margin:0 0 6px}
+    .lp-lb__details{display:table;margin:32px auto 0;font-weight:700;font-size:14px;color:#fff;background:var(--o);border-radius:56px;padding:13px 32px;text-decoration:none}
+    .lp-lb__details:hover{background:#E67F00;color:#fff}
+    @media(max-width:600px){.lp-lb__tiers{grid-template-columns:repeat(2,1fr)}.lp-lb td,.lp-lb th{padding:12px 8px}.lp-lb__search button{padding:0 18px}}
+    .lp-lb__tip{position:relative;display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;margin-left:4px;border-radius:50%;background:#fff;border:1.5px solid var(--o);color:var(--o);font-size:11px;font-weight:700;font-family:Georgia,serif;font-style:italic;text-transform:none;letter-spacing:0;cursor:help;vertical-align:1px;outline:none}
+    .lp-lb__tip>span{position:absolute;bottom:calc(100% + 10px);right:-8px;width:220px;padding:10px 12px;border-radius:8px;background:var(--ink);color:#fff;font:400 13px/1.45 Metropolis,sans-serif;letter-spacing:.2px;text-align:left;text-transform:none;font-style:normal;opacity:0;visibility:hidden;transition:opacity .15s;z-index:5;pointer-events:none}
+    .lp-lb__tip>span::after{content:"";position:absolute;top:100%;right:12px;border:6px solid transparent;border-top-color:var(--ink)}
+    .lp-lb__tip:hover>span,.lp-lb__tip:focus>span{opacity:1;visibility:visible}
+  </style>
+
+
+  <div class="lp-lb__top">
+    <p class="lp-lb__note">Updated every Monday</p>
+    <img class="lp-lb__logo" src="https://shop.lifepharm.com/cdn/shop/files/LifePharm_logo_web.png?v=1724454028&amp;width=320" alt="LifePharm" width="140" height="40">
+  </div>
+  <h2>Gut Defense System Leaderboard</h2>
+  <p class="lp-lb__sub">Climb the leaderboard with every personal Gut Defense Pack sale from October 12 to December 12, 2026.</p>
+
+  <h3>Your Rewards</h3>
+  <ul class="lp-lb__tiers">
+    <li><small>Refer</small><b>2</b><div class="pics"><img src="https://cdn.shopify.com/s/files/1/0885/0128/9269/files/cellnergy-bottle.png?v=1782146397&amp;width=240" alt="Cellnergy Hydration System" loading="lazy"><i>+</i><div class="stack"><img class="d" src="https://cdn.shopify.com/s/files/1/0885/0128/9269/files/CellnergyBottle-Replacement-Box-Filter1500x1500.jpg?v=1782758408&amp;width=240" alt="Cellnergy Diffuser Replacement" loading="lazy"><img class="d" src="https://cdn.shopify.com/s/files/1/0885/0128/9269/files/CellnergyBottle-Replacement-Box-Filter1500x1500.jpg?v=1782758408&amp;width=240" alt="" loading="lazy"></div></div></li>
+    <li><small>Refer</small><b>4</b><div class="pics"><img src="https://cdn.shopify.com/s/files/1/0885/0128/9269/files/cellnergy-bottle.png?v=1782146397&amp;width=240" alt="Cellnergy Hydration System" loading="lazy"><i>+</i><div class="stack"><img class="d" src="https://cdn.shopify.com/s/files/1/0885/0128/9269/files/CellnergyBottle-Replacement-Box-Filter1500x1500.jpg?v=1782758408&amp;width=240" alt="Cellnergy Diffuser Replacement" loading="lazy"><img class="d" src="https://cdn.shopify.com/s/files/1/0885/0128/9269/files/CellnergyBottle-Replacement-Box-Filter1500x1500.jpg?v=1782758408&amp;width=240" alt="" loading="lazy"></div></div></li>
+    <li><small>Refer</small><b>6</b><div class="pics"><img src="https://cdn.shopify.com/s/files/1/0885/0128/9269/files/cellnergy-bottle.png?v=1782146397&amp;width=240" alt="Cellnergy Hydration System" loading="lazy"><i>+</i><div class="stack"><img class="d" src="https://cdn.shopify.com/s/files/1/0885/0128/9269/files/CellnergyBottle-Replacement-Box-Filter1500x1500.jpg?v=1782758408&amp;width=240" alt="Cellnergy Diffuser Replacement" loading="lazy"><img class="d" src="https://cdn.shopify.com/s/files/1/0885/0128/9269/files/CellnergyBottle-Replacement-Box-Filter1500x1500.jpg?v=1782758408&amp;width=240" alt="" loading="lazy"></div></div></li>
+    <li class="big"><small>Refer</small><b>10</b><div class="pics"><img class="ipad" src="https://cdn.shopify.com/s/files/1/0885/0128/9269/files/ipad-11.png" alt="iPad 11" loading="lazy"></div><span>iPad 11</span></li>
+  </ul>
+
+  <h3 class="lp-lb__tight">Where Do You Stand?</h3>
+  <p class="lp-lb__hint">Enter your IBO ID to check your current ranking and see how close you are to your next milestone.</p>
+  <form class="lp-lb__search" role="search" onsubmit="return false">
+    <input type="search" inputmode="numeric" placeholder="Enter your IBO ID" aria-label="IBO ID">
+    <button type="submit">Search</button>
+  </form>
+  <div class="lp-lb__result" aria-live="polite"></div>
+
+  <div class="lp-lb__wrap"><table>
+    <thead><tr><th class="c">Place</th><th>IBO ID</th><th>Country</th><th class="r">Referrals</th><th class="c">Reward Eligible <span class="lp-lb__tip" tabindex="0" aria-describedby="lpTip">i<span role="tooltip" id="lpTip">Purchase your own Gut Defense Pack to qualify for rewards.</span></span></th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+  <button class="lp-lb__more" type="button">Show more</button>
+
+  <div class="lp-lb__foot">
+    <p>Last updated: <span class="lp-lb__date"></span>. Counts are preliminary until qualification is final on January 11, 2027.</p>
+    <p>To qualify for any reward, you must personally purchase the Gut Defense Pack during the promotion. Each reward tier can be earned once. Refunded orders do not count. Winners will be announced December 15.</p>
+  </div>
+
+  <a class="lp-lb__details" href="https://help.lifepharm.com/en-US/refer-and-earn-an-ipad-9016522" target="_blank" rel="noopener">Promotion Details</a>
+
+  <script>
+  (function(){
+    /* ===== UPDATE EVERY MONDAY =====
+       One row per IBO: [IBO ID, country code (US, DE, RO...), # personal enrollments who bought the pack, sponsor bought the pack (1 = yes, 0 = no)]
+       Order doesn't matter — the page sorts highest to lowest. */
+    var UPDATED = "Monday, October 26, 2026";
+    var DATA = [
+      ["16697238","AU",2,1],["15301333","HU",1,0],["15451427","HU",1,0],["15745042","HU",1,0],
+      ["16161689","RO",1,0],["16419653","US",1,0],["16484305","PL",1,0],["16525885","AU",1,0],
+      ["16743361","US",1,0]
+    ];
+    /* ================================ */
+
+    var TIERS = [2,4,6,10], PAGE = 25, shown = PAGE;
+    var root = document.getElementById("lpLeaderboard");
+    var body = root.querySelector("tbody"), more = root.querySelector(".lp-lb__more");
+    var input = root.querySelector("input"), out = root.querySelector(".lp-lb__result");
+    root.querySelector(".lp-lb__date").textContent = UPDATED;
+
+    DATA.sort(function(a,b){return b[2]-a[2]});
+    var names = null; try { names = new Intl.DisplayNames(["en"],{type:"region"}) } catch(e) {}
+    function country(c){ try { return (names && names.of(c)) || c } catch(e) { return c } }
+    // Straight 1, 2, 3… ranking; ties keep the order they appear in DATA
+    var rows = DATA.map(function(d){return {id:d[0],c:country(d[1]),n:d[2],p:d[3],rank:0}});
+    rows.forEach(function(r,i){r.rank = i+1});
+
+    function tr(r,hit){
+      return '<tr class="'+(r.rank<=3?'top ':'')+(hit?'hit':'')+'"><td class="c rank">'+r.rank+
+        '</td><td class="id">'+r.id+'</td><td>'+r.c+'</td><td class="r n">'+r.n+'</td><td class="c">'+
+        (r.p?'<span class="yes" aria-label="Yes">&#10003;</span>':'<span class="no" aria-label="No">&#10005;</span>')+'</td></tr>';
+    }
+    function render(list,hitId){
+      body.innerHTML = list.map(function(r){return tr(r,r.id===hitId)}).join("");
+    }
+    function showAll(){
+      render(rows.slice(0,shown));
+      more.style.display = shown < rows.length ? "" : "none";
+    }
+    var table = root.querySelector("table");
+    function esc(s){return s.replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+    function reset(){input.value="";out.className="lp-lb__result";out.innerHTML="";table.style.display="";showAll()}
+    function search(){
+      var q = input.value.replace(/\s/g,"");
+      if(!q) return reset();
+      var r = rows.filter(function(x){return x.id===q})[0];
+      var back = '<button type="button">Back to full leaderboard</button>';
+      if(r){
+        var next = TIERS.filter(function(t){return t>r.n})[0];
+        out.className = "lp-lb__result hit";
+        out.innerHTML = "<strong>You&rsquo;re ranked <span>#"+r.rank+"</span></strong><p>IBO <b>"+r.id+"</b> has <b>"+r.n+"</b> referral"+(r.n===1?"":"s")+". "+
+          (next ? "<b>"+(next-r.n)+"</b> more to reach the "+next+"-referral reward." : "You&rsquo;ve reached every milestone!")+"</p>"+
+          (r.p ? "" : "<em>Purchase your own Gut Defense Pack to qualify for rewards.</em>")+back;
+        table.style.display=""; render([r],r.id);
+      }else{
+        out.className = "lp-lb__result miss";
+        out.innerHTML = "<strong>No qualifying referrals yet</strong><p>We couldn&rsquo;t find referrals for IBO <b>"+esc(q)+"</b>. Share the Gut Defense Pack to get on the board! Updated every Monday.</p>"+back;
+        table.style.display="none";
+      }
+      more.style.display="none";
+      out.querySelector("button").addEventListener("click",reset);
+    }
+    root.querySelector("form").addEventListener("submit",search);
+    input.addEventListener("input",function(){if(!input.value)reset()});
+    more.addEventListener("click",function(){shown+=PAGE;showAll()});
+    showAll();
+  })();
+  </script>
+</div>

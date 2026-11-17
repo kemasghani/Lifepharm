@@ -1,0 +1,1330 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        "h1 {text-align: left !important;}"
+      ],
+      "settings": {
+        "content_width": "100%"
+      }
+    },
+    "image_with_text_overlay_HrG6nG": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_8H8RhG": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "THE REGENERATION COMPANY"
+          }
+        },
+        "liquid_7fEAm9": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<h1 style= \"text-align: left;\">Your Future is Built on<span style= \"color: #FF8F00;\"> Regeneration</span></h1>"
+          }
+        },
+        "richtext_DxKHLz": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p><strong>Join a Movement Fueled by Science, Purpose, and Possibility</strong>. <br/>At LifePharm, we’re more than wellness—we’re The Regeneration Company. When you become an Independent Business Owner (IBO), you’re offering something the world needs: a path to lasting health and sustainable income. <strong>Start your journey with purpose. </strong></p>"
+          }
+        },
+        "button_F97WFn": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "lg",
+            "text": "BECOME AN IBO",
+            "url": "https://mylifepharm.com/{webalias}/joinnow",
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading_8H8RhG",
+        "liquid_7fEAm9",
+        "richtext_DxKHLz",
+        "button_F97WFn"
+      ],
+      "custom_css": [
+        "@media screen and (min-width: 700px) {.content-over-media > :not(img, video, iframe, svg, video-media, picture) {max-width: 600px; }}",
+        "@media only screen and (max-width: 769px) {p {text-align: left !important; }}"
+      ],
+      "name": "Image with text overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "md",
+        "image": "shopify://shop_images/earn_header_image_4e1ef703-6c4e-4f33-8917-7b554d7a64e1.jpg",
+        "mobile_image": "shopify://shop_images/Earn_Background_1200x1600_3b7ca4dd-f878-4507-ba29-d5af42ee1568.jpg",
+        "mobile_text_position": "place-self-start text-start",
+        "desktop_text_position": "sm:place-self-center-start sm:text-start",
+        "text_color": "#181818",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "design_pack_marquee_multitext_87qWWt": {
+      "type": "design_pack_-_marquee_-_multitext",
+      "blocks": {
+        "content_8VxxLm": {
+          "type": "content",
+          "settings": {
+            "text": "    18+ CLINICAL STUDIES       |"
+          }
+        },
+        "content_qqhqW6": {
+          "type": "content",
+          "settings": {
+            "text": "    REGENERATION PATENT (SEPT 2020)       |"
+          }
+        },
+        "content_cdQfBA": {
+          "type": "content",
+          "settings": {
+            "text": "    WINNER OF THE MONDE SELECTION GOLD AWARD       |"
+          }
+        },
+        "content_Up3DBz": {
+          "type": "content",
+          "settings": {
+            "text": "    RATED 5 STARS BY DERMATEST®       |"
+          }
+        }
+      },
+      "block_order": [
+        "content_8VxxLm",
+        "content_qqhqW6",
+        "content_cdQfBA",
+        "content_Up3DBz"
+      ],
+      "custom_css": [
+        "{font-weight: 600;}"
+      ],
+      "name": "Marquee - multi-text 🎒",
+      "settings": {
+        "speed": 25,
+        "reverse_scrolling": false,
+        "scrolling_pause": false,
+        "image_size": "medium",
+        "text_size": 60,
+        "text_color": "#ffffff",
+        "background_color": "#FF8F00",
+        "fade_edges": false,
+        "inner_padding": 20,
+        "outer_margin": 0,
+        "custom_css": "",
+        "mobile_custom_css": "",
+        "anchor_id": "",
+        "override_theme_font": false,
+        "main_font": "system_ui_n4"
+      }
+    },
+    "media_with_text_RLB7Fk": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_WQwpnX": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Earn_Page_d40ac077-e722-4cff-ad5c-defd1f12adad.jpg",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "",
+            "content": "",
+            "custom_liquid": "<h2> <span class=\"h2\" style= \"color: #FF8F00;\"> Regenerate</span> Your Income</h2>\n<p>Define success on your terms—while helping others do the same. The LifePharm Opportunity is designed to reward those who share the power of cellular regeneration and sustainable wellness. \n<br><br>\nWhether you’re looking to earn extra income or build long-term legacy wealth, you can start from day one by connecting others to LifePharm’s science-backed solutions. As the global need for regeneration grows, so does the opportunity. </p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "rgba(0,0,0,0)",
+            "background_gradient": "",
+            "text_color": "#181818",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_WQwpnX"
+      ],
+      "custom_css": [
+        "{--hash-difference: 0;}",
+        "@media screen and (min-width: 700px) {.media-with-text {margin-bottom: -95px !important; }}"
+      ],
+      "name": "Media with text",
+      "settings": {
+        "full_width": true,
+        "alternate_media_position": true,
+        "spacing": "none"
+      }
+    },
+    "media_with_text_tpyMxR": {
+      "type": "media-with-text",
+      "blocks": {
+        "video_zXwxdJ": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Why LifePharm_5ab57d0d-a427-431d-b8f1-79636eb56db2.mp4",
+            "external_video_url": "",
+            "poster_image": "shopify://shop_images/LifePharmBusinessOpportunity-Thumbnail-ENG_copy.jpg",
+            "autoplay": false,
+            "media_width": 55,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "",
+            "custom_liquid": "<h2>What Does It<span Class=\"h2\" style= \"color: #FF8F00;\"> Take</span></h2>\n<p><span Class=\"h3\" style= \"color: #FF8F00;\">1. </span> Share products that activate the body’s natural ability to regenerate</p>\n<p><span Class=\"h3\" style= \"color: #FF8F00;\">2. </span>Inspire others to take control of their health—and unlock income potential</p>\n<p><span Class=\"h3\" style= \"color: #FF8F00;\">3. </span>Build a team, grow sustainably, and create lasting change </p>\n<br>\n<p><span style= \"font-weight: 500; font-size: 23px; line-height: 1.3;\">At LifePharm, our mission is bold: </span><span style= \"color: #FF8F00;\">To generate 100 millionaires by 2035 <span style= \"color: #181818;\"> - people who have transformed their health and built sustainable income through the regenerative wellness movement.</p>",
+            "content": "<p></p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#f9f9f9",
+            "background_gradient": "",
+            "text_color": "#181818",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_zXwxdJ"
+      ],
+      "custom_css": [
+        ".text-custom {padding-top: 20px;}",
+        " {--section-is-first: 0; --hash-difference: 0; --hash-difference-abs: 0; --background-differs-from-previous: 0 !important;}",
+        " {padding-top: 100px; background: #f9f9f9;}",
+        "p {text-align: left !important;}"
+      ],
+      "name": "Media with text",
+      "settings": {
+        "full_width": false,
+        "alternate_media_position": false,
+        "spacing": "none"
+      }
+    },
+    "rich_text_rg7fzk": {
+      "type": "rich-text",
+      "blocks": {
+        "liquid_yb8tU4": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<h2 class=\"h2\" style= \"text-align: center;\">LifePharm Empowers<span style= \"color: #FF8F00;\"> Regeneration.</span></h2>"
+          }
+        }
+      },
+      "block_order": [
+        "liquid_yb8tU4"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "{margin-bottom: -20px;}"
+      ],
+      "name": "Rich text - IMMUNE+++",
+      "settings": {
+        "full_width": false,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_gUjyBc": {
+      "type": "rich-text",
+      "blocks": {
+        "liquid_iGCxqz": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<h2 class=\"h2\" style= \"text-align: center;\">We’re Built Around Your<span style= \"color: #FF8F00;\"> Growth</span></h2>"
+          }
+        },
+        "richtext_RyhdHq": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>When you launch your LifePharm business, you’re backed by a complete ecosystem designed to help you thrive—wherever you are, and at every stage of your journey. <br/><br/><strong>HERE’S WHAT YOU CAN COUNT ON:</strong></p>"
+          }
+        }
+      },
+      "block_order": [
+        "liquid_iGCxqz",
+        "richtext_RyhdHq"
+      ],
+      "custom_css": [
+        "{padding-top: 60px; margin-bottom: -20px;}"
+      ],
+      "name": "Rich text - IMMUNE+++",
+      "settings": {
+        "full_width": false,
+        "content_width": "medium",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "text_with_icons_4zNgjB": {
+      "type": "text-with-icons",
+      "blocks": {
+        "item_YbN9np": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/Asset_122.png",
+            "mobile_icon_width": 80,
+            "icon_width": 72,
+            "icon_background_type": "none",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "Your Free Online Store",
+            "content": "<p>Make sales 24/7 from anywhere in the world—with no inventory required. </p>"
+          }
+        },
+        "item_HnejkF": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/Asset_116.png",
+            "mobile_icon_width": 80,
+            "icon_width": 72,
+            "icon_background_type": "none",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "Multilingual Support",
+            "content": "<p>Global service teams are here to help you and your customers with care and speed. </p>"
+          }
+        },
+        "item_QEaHYU": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/Asset_115.png",
+            "mobile_icon_width": 80,
+            "icon_width": 72,
+            "icon_background_type": "none",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "International Reach",
+            "content": "<p>Grow your business across 45+ countries with global infrastructure already in place. </p>"
+          }
+        },
+        "item_Y9LNQz": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/Asset_112.png",
+            "mobile_icon_width": 80,
+            "icon_width": 72,
+            "icon_background_type": "none",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "Exclusive IBO Tools",
+            "content": "<p>Run your business with ease using our replicated business website—personalized for you.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_YbN9np",
+        "item_HnejkF",
+        "item_QEaHYU",
+        "item_Y9LNQz"
+      ],
+      "custom_css": [
+        ".text-with-icons__item {padding: 25px 20px 25px 20px !important; background: #fff4e5; margin: 20px; border-radius: 10px; border-width: 1px; margin-top: 0px !important; margin-bottom: 0px !important;}",
+        ".h5 {font-weight: 700; align-content: flex-start; max-width: 180px; margin: auto;}",
+        "img {display: inline; margin-top: 20px; margin-bottom: 10px;}",
+        "@media only screen and (min-width: 769px) {.text-with-icons__item {min-height: 430px; }}",
+        "@media only screen and (min-width: 769px) {{padding-left: 0px; padding-right: 0px; }}"
+      ],
+      "name": "Text with icons",
+      "settings": {
+        "full_width": false,
+        "stack_on_mobile": true,
+        "title": "",
+        "heading_tag": "h5",
+        "text_alignment": "center",
+        "icon_spacing": "small",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "text_with_icons_z9wMz9": {
+      "type": "text-with-icons",
+      "blocks": {
+        "item_fKMFWn": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/Asset_119.png",
+            "mobile_icon_width": 80,
+            "icon_width": 72,
+            "icon_background_type": "none",
+            "icon_background": "#ffffff",
+            "icon_color": "",
+            "title": "Flexible Payout Options",
+            "content": "<p>Choose from weekly or monthly commissions to suit your financial goals. </p>"
+          }
+        },
+        "item_XhgnBY": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/Asset_110.png",
+            "mobile_icon_width": 80,
+            "icon_width": 72,
+            "icon_background_type": "none",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "Low Startup, High Potential",
+            "content": "<p>Get started with minimal upfront cost and maximum earning opportunity. </p>"
+          }
+        },
+        "item_z3HEdH": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/Asset_111.png",
+            "mobile_icon_width": 80,
+            "icon_width": 72,
+            "icon_background_type": "none",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "A Trusted Network",
+            "content": "<p>Join a growing community of over 500,000 IBOs—powered by a 100% debt-free company. </p>"
+          }
+        },
+        "item_taadq8": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/Asset_118.png",
+            "mobile_icon_width": 80,
+            "icon_width": 72,
+            "icon_background_type": "none",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "Free Product Training",
+            "content": "<p>Access expert-led learning on our products and proven systems to help you grow.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_fKMFWn",
+        "item_XhgnBY",
+        "item_z3HEdH",
+        "item_taadq8"
+      ],
+      "custom_css": [
+        ".text-with-icons__item {padding: 25px 20px 25px 20px !important; background: #fff4e5; margin: 20px; border-radius: 10px; border-width: 1px; margin-top: 0px !important; margin-bottom: 0px !important;}",
+        ".h5 {font-weight: 700; align-content: flex-start; max-width: 180px; margin: auto;}",
+        "img {display: inline; margin-top: 20px; margin-bottom: 10px;}",
+        "@media only screen and (min-width: 769px) {.text-with-icons__item {min-height: 430px; }}",
+        "@media only screen and (min-width: 769px) {{padding-left: 0px; padding-right: 0px; }}",
+        " {margin-top: -25px;}"
+      ],
+      "name": "Text with icons",
+      "settings": {
+        "full_width": false,
+        "stack_on_mobile": true,
+        "title": "",
+        "heading_tag": "h5",
+        "text_alignment": "center",
+        "icon_spacing": "small",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_TMGwFg": {
+      "type": "rich-text",
+      "blocks": {
+        "liquid_Hpk8zJ": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<h2 class=\"h2\" style= \"text-align: center;\">How we stack up against other<span style= \"color: #FF8F00;\"> opportunities</span></h2>"
+          }
+        },
+        "image_Wc74ig": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/comparison_lifepharm.png",
+            "width_mode": "custom",
+            "max_width": 850,
+            "mobile_max_width": 540
+          }
+        }
+      },
+      "block_order": [
+        "liquid_Hpk8zJ",
+        "image_Wc74ig"
+      ],
+      "name": "Rich text - IMMUNE+++",
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "#f9f9f9",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "multi_column_YX6nXB": {
+      "type": "multi-column",
+      "blocks": {
+        "item_F6bBfx": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/60_day_money_back_guarantee_a8c1bb57-aee9-45d6-a57d-a6816e24a1ef.png",
+            "column_size": "4",
+            "title": "Column title",
+            "heading_tag": "h4",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_FBqrGG": {
+          "type": "item",
+          "settings": {
+            "column_size": "4",
+            "title": "Column title",
+            "heading_tag": "h4",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_NfxUyc": {
+          "type": "item",
+          "settings": {
+            "column_size": "4",
+            "title": "Column title",
+            "heading_tag": "h4",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_erVdbk": {
+          "type": "item",
+          "settings": {
+            "column_size": "4",
+            "title": "Column title",
+            "heading_tag": "h4",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_VaFW4J": {
+          "type": "item",
+          "settings": {
+            "column_size": "4",
+            "title": "Column title",
+            "heading_tag": "h4",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_LWQfht": {
+          "type": "item",
+          "settings": {
+            "column_size": "4",
+            "title": "Column title",
+            "heading_tag": "h4",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_MBBPCT": {
+          "type": "item",
+          "settings": {
+            "column_size": "4",
+            "title": "Column title",
+            "heading_tag": "h4",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_kpTqEc": {
+          "type": "item",
+          "settings": {
+            "column_size": "4",
+            "title": "Column title",
+            "heading_tag": "h4",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_F6bBfx",
+        "item_FBqrGG",
+        "item_NfxUyc",
+        "item_erVdbk",
+        "item_VaFW4J",
+        "item_LWQfht",
+        "item_MBBPCT",
+        "item_kpTqEc"
+      ],
+      "disabled": true,
+      "name": "Multi-column",
+      "settings": {
+        "full_width": false,
+        "stack_on_mobile": true,
+        "gap": "medium",
+        "text_alignment": "center",
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_r7nUpj": {
+      "type": "rich-text",
+      "blocks": {
+        "liquid_qTwjkG": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<h2 class=\"h2\" style= \"text-align: left;\">Real<span style= \"color: #FF8F00;\"> People.</span><br>Real <span style= \"color: #FF8F00;\"> Regeneration.</span></h2>"
+          }
+        },
+        "richtext_XVDEKe": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>At LifePharm, we believe everyone deserves the chance to thrive. With over $100 million paid in commissions across 50+ countries, our community of Independent Business Owners is turning purpose into prosperity - reclaiming their health, building lasting income, and transforming what’s possible for their future. </p>"
+          }
+        },
+        "divider_XWKcXN": {
+          "type": "divider",
+          "settings": {}
+        },
+        "image_PCxqik": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/commissions_lifepharm.png",
+            "width_mode": "full_width",
+            "max_width": 370,
+            "mobile_max_width": 250
+          }
+        }
+      },
+      "block_order": [
+        "liquid_qTwjkG",
+        "richtext_XVDEKe",
+        "divider_XWKcXN",
+        "image_PCxqik"
+      ],
+      "custom_css": [
+        "@media only screen and (max-width: 769px) {h2 {text-align: center !important; margin: 0 20px 0 20px; }}"
+      ],
+      "name": "Rich text - IMMUNE+++",
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "start",
+        "background": "#fff4e5",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "media_with_text_3x7PnT": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_UTqg3x": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/EARN_IBO_DESKTOP.jpg",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "",
+            "content": "",
+            "custom_liquid": "<h2 class=\"h2\" style= \"text-align: right;\">The Next Generation\nof<span style= \"color: #FF8F00;\"> Regenerative Wellness</span></h2>\n<p style= \"text-align: right;\">LifePharm delivers a focused line of premium, scientifically advanced products designed to support your body’s natural renewal. Backed by real clinical research, our patented formulas target the body’s core systems—recharging and regenerating them at the cellular level. Powered by proprietary stem cell and growth factor technology, each product is crafted to spark lasting vitality from within.</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#f9f9f9",
+            "background_gradient": "",
+            "text_color": "#181818",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_UTqg3x"
+      ],
+      "custom_css": [
+        "{--background-differs-from-previous: 0;}",
+        "@media only screen and (max-width: 769px) {p, h2 {text-align: center !important; }}"
+      ],
+      "name": "Media with text",
+      "settings": {
+        "full_width": true,
+        "alternate_media_position": false,
+        "spacing": "none"
+      }
+    },
+    "rich_text_VMpB3Q": {
+      "type": "rich-text",
+      "blocks": {
+        "liquid_hPFDzy": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<h2 class=\"h2\" style= \"text-align: center;\">So Much<span style= \"color: #FF8F00;\"> More</span> Than Bonuses</h2>"
+          }
+        },
+        "richtext_YWB6WP": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>When you join LifePharm, you’re stepping into a business built for your growth, support, and long-term success. Beyond earnings, you’ll unlock a full suite of exclusive benefits designed to reward your progress and elevate your lifestyle: </p>"
+          }
+        }
+      },
+      "block_order": [
+        "liquid_hPFDzy",
+        "richtext_YWB6WP"
+      ],
+      "custom_css": [
+        "{margin-bottom: -20px;}"
+      ],
+      "name": "Rich text - IMMUNE+++",
+      "settings": {
+        "full_width": false,
+        "content_width": "medium",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "multi_column_MQ4Bbr": {
+      "type": "multi-column",
+      "blocks": {
+        "item_JhCk9g": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/comparison_mobile.png",
+            "column_size": "3",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_6wYECg": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/comparison_mobile.png",
+            "column_size": "3",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_8B7zTB": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/comparison_mobile.png",
+            "column_size": "3",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_yMjC6T": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/comparison_mobile.png",
+            "column_size": "3",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_qEfa3e": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/comparison_mobile.png",
+            "column_size": "3",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_XnQfYB": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/comparison_mobile.png",
+            "column_size": "3",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_JhCk9g",
+        "item_6wYECg",
+        "item_8B7zTB",
+        "item_yMjC6T",
+        "item_qEfa3e",
+        "item_XnQfYB"
+      ],
+      "disabled": true,
+      "name": "Multi-column",
+      "settings": {
+        "full_width": false,
+        "stack_on_mobile": true,
+        "gap": "medium",
+        "text_alignment": "center",
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "text_with_icons_tHPJiN": {
+      "type": "text-with-icons",
+      "blocks": {
+        "item_Xm7i9h": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/Asset_131.png",
+            "mobile_icon_width": 80,
+            "icon_width": 72,
+            "icon_background_type": "none",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "Exclusive Perks & Promotions",
+            "content": "<p>Get early access to limited-time offers, product bundles, and seasonal promotions created just for our IBO community.</p>"
+          }
+        },
+        "item_EjzAWm": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/Asset_132.png",
+            "mobile_icon_width": 80,
+            "icon_width": 72,
+            "icon_background_type": "none",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "Travel Incentives & Auto Bonuses",
+            "content": "<p>Qualify for all-expense-paid trips, luxury retreats, and monthly car allowances as you grow your business.</p>"
+          }
+        },
+        "item_BUHhbe": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/Asset_118.png",
+            "mobile_icon_width": 80,
+            "icon_width": 72,
+            "icon_background_type": "none",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "Free Online Training",
+            "content": "<p>Master your business at your own pace with free, world-class training on products, sales, social media, leadership, and more. </p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_Xm7i9h",
+        "item_EjzAWm",
+        "item_BUHhbe"
+      ],
+      "custom_css": [
+        ".text-with-icons__item {padding: 25px 32px 25px 32px !important; background: #fff4e5; margin: 20px; border-radius: 10px; border-width: 1px; margin-top: 0px !important; margin-bottom: 0px !important;}",
+        ".h5 {font-weight: 700; align-content: flex-start; max-width: 200px; margin: auto;}",
+        "img {display: inline; margin-top: 20px; margin-bottom: 10px;}",
+        "@media only screen and (min-width: 769px) {.text-with-icons__item {min-height: 400px; }}",
+        "@media only screen and (min-width: 769px) {{padding-left: 90px; padding-right: 90px; }}"
+      ],
+      "name": "Text with icons",
+      "settings": {
+        "full_width": false,
+        "stack_on_mobile": true,
+        "title": "",
+        "heading_tag": "h5",
+        "text_alignment": "center",
+        "icon_spacing": "small",
+        "background": "rgba(0,0,0,0)",
+        "background_gradient": "",
+        "text_color": "rgba(0,0,0,0)"
+      }
+    },
+    "text_with_icons_V3VcUw": {
+      "type": "text-with-icons",
+      "blocks": {
+        "item_EKibAJ": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/Asset_111.png",
+            "mobile_icon_width": 80,
+            "icon_width": 72,
+            "icon_background_type": "none",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "Personal Mentorship & Business Tools",
+            "content": "<p>Receive one-on-one support from experienced leaders, plus access to a Virtual Back Office, your own online storefront, and AI-powered tools.</p>"
+          }
+        },
+        "item_Ti6bhC": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/Asset_133.png",
+            "mobile_icon_width": 80,
+            "icon_width": 72,
+            "icon_background_type": "none",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "Global Community & Events",
+            "content": "<p>Join thousands of IBOs across 50+ countries—collaborate, connect, and celebrate your success at live and virtual events.</p>"
+          }
+        },
+        "item_mFGabz": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/Asset_121.png",
+            "mobile_icon_width": 80,
+            "icon_width": 72,
+            "icon_background_type": "none",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "Flexible Earnings, Real Impact",
+            "content": "<p>Choose how you work and how much you earn, all while helping others regenerate their health and unlock new possibilities.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_EKibAJ",
+        "item_Ti6bhC",
+        "item_mFGabz"
+      ],
+      "custom_css": [
+        ".text-with-icons__item {padding: 25px 32px 25px 32px !important; background: #fff4e5; margin: 20px; border-radius: 10px; border-width: 1px; margin-top: 0px !important; margin-bottom: 0px !important;}",
+        ".h5 {font-weight: 700; align-content: flex-start; max-width: 245px; margin: auto;}",
+        "img {display: inline; margin-top: 20px; margin-bottom: 10px;}",
+        "@media only screen and (min-width: 769px) {.text-with-icons__item {min-height: 400px; }}",
+        "@media only screen and (min-width: 769px) {{padding-left: 90px; padding-right: 90px; }}",
+        " {margin-top: -25px;}"
+      ],
+      "name": "Text with icons",
+      "settings": {
+        "full_width": false,
+        "stack_on_mobile": true,
+        "title": "",
+        "heading_tag": "h5",
+        "text_alignment": "center",
+        "icon_spacing": "small",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_LkTMgm": {
+      "type": "rich-text",
+      "blocks": {
+        "liquid_p6JUme": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<h2 class=\"h2\" style= \"text-align: center;\"><span style= \"color: #FF8F00;\">Success</span> Stories</h2>"
+          }
+        }
+      },
+      "block_order": [
+        "liquid_p6JUme"
+      ],
+      "custom_css": [
+        "{margin-bottom: -20px;}"
+      ],
+      "name": "Rich text - IMMUNE+++",
+      "settings": {
+        "full_width": false,
+        "content_width": "medium",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "text_with_icons_bTUQpT": {
+      "type": "text-with-icons",
+      "blocks": {
+        "item_nVdCGz": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/transparent-graphic-element.png",
+            "mobile_icon_width": 24,
+            "icon_width": 24,
+            "icon_background_type": "none",
+            "icon_background": "rgba(0,0,0,0)",
+            "icon_color": "",
+            "title": "",
+            "content": "<p>To anyone interested in joining LifePharm, try the products! Just try them—there’s no risk! Once you experience the results, you’ll want to share them, and when you do your journey to financial freedom will begin. After I researched the products and tried them for myself, I naturally started to share them. Then I started sharing other testimonials on these amazing products that I found on the internet. After awhile, I realized how much money LifePharm pays out—much more than other network marketing companies! My LifePharm Business earnings have enabled me to pay off debts, buy a new car, purchase a destination home.\" </p><p> </p><p>- Michael B.</p>"
+          }
+        },
+        "item_x3DehJ": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/transparent-graphic-element.png",
+            "mobile_icon_width": 24,
+            "icon_width": 24,
+            "icon_background_type": "circle",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "",
+            "content": "<p>Since joining LifePharm, I’ve worked consistently and passionately. The journey has been empowering, not just financially, but personally. One of the most amazing milestones? I recently bought a brand-new electric vehicle — something I never imagined was possible when I first started. To anyone just starting out: LifePharm works. The products are powerful, the opportunity is real, and if you stay consistent and believe in what you're doing, success will follow. I’m living proof of that.\"</p><p> </p><p>- Robin F.</p>"
+          }
+        },
+        "item_Y6VbWc": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/transparent-graphic-element.png",
+            "mobile_icon_width": 24,
+            "icon_width": 24,
+            "icon_background_type": "circle",
+            "icon_background": "rgba(0,0,0,0)",
+            "icon_color": "",
+            "title": "",
+            "content": "<p>“I work my LifePharm business during my free time. In five months, my earnings with LifePharm are already higher than from my regular job. I really like the LifePharm Compensation Plan, because it’s simple, efficient and pays well. I believe anyone can climb up the ranks simply by using the products daily and telling everyone about their benefits of producing overall well-being, youthful appearance, improved energy levels and cheerfulness\"</p><p><br/><br/>- Anna W.</p>"
+          }
+        },
+        "item_VnrpBW": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/transparent-graphic-element.png",
+            "mobile_icon_width": 24,
+            "icon_width": 24,
+            "icon_background_type": "circle",
+            "icon_background": "rgba(0,0,0,0)",
+            "icon_color": "",
+            "title": "",
+            "content": "<p>“It is very easy to become successful and prosperous with LifePharm. Simply use the product, tell about your results to the greatest number of people possible and believe in yourself, the company and its success. Based on my 20 years of personal experience, I can recommend LifePharm to everyone who cares about health and financial stability.”</p><p><br/><br/>- Anatoly I.</p>"
+          }
+        },
+        "item_kfgt3g": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/transparent-graphic-element.png",
+            "mobile_icon_width": 24,
+            "icon_width": 24,
+            "icon_background_type": "circle",
+            "icon_background": "rgba(0,0,0,0)",
+            "icon_color": "",
+            "title": "",
+            "content": "<p>“I want to help enable countless women to build  their own livelihoods with LifePharm and enjoy  earning residual income the same way I do — something that was new to me. In doing so, I’m also able to earn a substantial income.\"</p><p><br/><br/>- Slawomira G.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_nVdCGz",
+        "item_x3DehJ",
+        "item_Y6VbWc",
+        "item_VnrpBW",
+        "item_kfgt3g"
+      ],
+      "custom_css": [
+        ".text-with-icons__item {padding: 25px 32px !important; background: #fff4e5; margin: 0 20px !important; border-radius: 10px; border-width: 1px;}",
+        ".h5 {font-weight: 700; align-content: flex-start; max-width: 245px; margin: auto;}",
+        "img {display: inline; margin: 20px 0 10px;}",
+        "@media (min-width: 769px) {.text-with-icons__item {min-height: 200px; } {padding-left: 90px; padding-right: 90px; }}",
+        "@media (min-width: 1150px) {.text-with-icons__list {--text-with-icons-template: auto-flow 100% !important; }}"
+      ],
+      "name": "Text with icons",
+      "settings": {
+        "full_width": false,
+        "stack_on_mobile": false,
+        "title": "",
+        "heading_tag": "h5",
+        "text_alignment": "center",
+        "icon_spacing": "small",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "text_with_icons_KGz7WJ": {
+      "type": "text-with-icons",
+      "blocks": {
+        "item_UhawdA": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/transparent-graphic-element.png",
+            "mobile_icon_width": 24,
+            "icon_width": 24,
+            "icon_background_type": "circle",
+            "icon_background": "rgba(0,0,0,0)",
+            "icon_color": "",
+            "title": "",
+            "content": "<p>“After studying pharmacy at the National Institute for five years, I worked in that profession for more than 20 years. In that time, the money I earned did not give my family financial freedom. I came into network marketing because I needed additional income and saw how this industry could improve my financial situation faster than in a traditional job. Instead of working 40 years and retiring, I saw that with network marketing, you can create a career quickly and make the type of income I never could in pharmacy. When LifePharm opened in Kazakhstan, I immediately took advantage of the launch and started enrolling people I knew.\" </p><p><br/><br/>- Gulzira K.</p>"
+          }
+        },
+        "item_4bDjtP": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/transparent-graphic-element.png",
+            "mobile_icon_width": 24,
+            "icon_width": 24,
+            "icon_background_type": "circle",
+            "icon_background": "rgba(0,0,0,0)",
+            "icon_color": "",
+            "title": "",
+            "content": "<p>“Working with LifePharm is my passion. I not only have financial satisfaction, but I also know that I can do so much for others. I can take care of the health of my relatives, teach people how to improve their lives and make money, all the time while helping others. With LifePharm, I am honored to help people live beautiful lives and realize their goals and dreams.”</p><p></p><p>- Jolanta K.</p>"
+          }
+        },
+        "item_LJeCFE": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/transparent-graphic-element.png",
+            "mobile_icon_width": 24,
+            "icon_width": 24,
+            "icon_background_type": "circle",
+            "icon_background": "rgba(0,0,0,0)",
+            "icon_color": "",
+            "title": "",
+            "content": "<p>“LifePharm has changed my life. I was struggling to find a job before joining LifePharm. Now I enjoy approaching the public and helping people who want to achieve good health and finances. LifePharm has provided me with a good income, and I hope one day to focus on my business full time. My target is to achieve the rank of Gold IBO before the end of the year.”</p><p></p><p>- Ripin H.</p>"
+          }
+        },
+        "item_zf4t6p": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/transparent-graphic-element.png",
+            "mobile_icon_width": 24,
+            "icon_width": 24,
+            "icon_background_type": "circle",
+            "icon_background": "rgba(0,0,0,0)",
+            "icon_color": "",
+            "title": "",
+            "content": "<p>\"LifePharm has given me a new job and sense of purpose. The way my life is structured at the moment, working full time is not an option. Looking after my two children and working with LifePharm fits together perfectly. If you enjoy working and would like to be part of something that really makes a difference to people’s health and lives, then getting involved with LifePharm could be just what you are looking for.”</p><p></p><p>- Sophie D.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_UhawdA",
+        "item_4bDjtP",
+        "item_LJeCFE",
+        "item_zf4t6p"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".text-with-icons__item {padding: 25px 32px 25px 32px !important; background: #fff4e5; margin: 20px; border-radius: 10px; border-width: 1px; margin-top: 0px !important; margin-bottom: 0px !important;}",
+        ".h5 {font-weight: 700; align-content: flex-start; max-width: 245px; margin: auto;}",
+        "img {display: inline; margin-top: 20px; margin-bottom: 10px;}",
+        "@media only screen and (min-width: 769px) {.text-with-icons__item {min-height: 200px; }}",
+        "@media only screen and (min-width: 769px) {{padding-left: 90px; padding-right: 90px; }}",
+        " {margin-top: -25px;}"
+      ],
+      "name": "Text with icons",
+      "settings": {
+        "full_width": false,
+        "stack_on_mobile": false,
+        "title": "",
+        "heading_tag": "h5",
+        "text_alignment": "center",
+        "icon_spacing": "medium",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "image_with_text_overlay_tPLgnQ": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_GtbfJw": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "THE REGENERATION COMPANY"
+          }
+        },
+        "liquid_CF3EDN": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<h2 class=\"h2\" style= \"text-align: left;\">Start Your Journey \nWith<span style= \"color: #FF8F00;\"> Purpose.</span></h2>"
+          }
+        },
+        "button_nWeUqj": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "base",
+            "text": "BECOME AN IBO",
+            "url": "https://mylifepharm.com/{webalias}/joinnow",
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading_GtbfJw",
+        "liquid_CF3EDN",
+        "button_nWeUqj"
+      ],
+      "name": "Image with text overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "sm",
+        "image": "shopify://shop_images/Start_Journey_Image_EARN.jpg",
+        "mobile_image": "shopify://shop_images/Start_Journey_Image_MOBILE.jpg",
+        "mobile_text_position": "place-self-center-start text-start",
+        "desktop_text_position": "sm:place-self-start sm:text-start",
+        "text_color": "#181818",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "rich_text_hkJgPY": {
+      "type": "rich-text",
+      "blocks": {
+        "liquid_ezTARn": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<h3 class=\"h3\" style= \"text-align: center;\">Not Sure Where To Start?<span style= \"color: #FF8F00;\"></span></h3>"
+          }
+        },
+        "richtext_FmLMHy": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Let’s get you on the path to regeneration. Our team is here to guide you.</p>"
+          }
+        },
+        "button_i8iJET": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "lg",
+            "text": "<a onclick=\"GorgiasChat.open();\">CHAT WITH US</a>",
+            "url": "",
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "liquid_ezTARn",
+        "richtext_FmLMHy",
+        "button_i8iJET"
+      ],
+      "name": "Rich text - IMMUNE+++",
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "custom_liquid_bMUECa": {
+      "type": "custom-liquid",
+      "name": "Custom Liquid",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "liquid": "<script>\n(function(){\n  function ready(fn){document.readyState!='loading'?fn():document.addEventListener('DOMContentLoaded',fn);}\n  ready(function(){\n    var section=document.getElementById('shopify-section-template--27828806451509__text_with_icons_bTUQpT');\n    if(!section) return;\n    var carousel=section.querySelector('.text-with-icons__list');\n    if(!carousel) return;\n    var wrap=carousel.closest('.text-with-icons')||carousel.parentElement;\n    if(wrap.dataset.arrowsInit) return;\n    wrap.dataset.arrowsInit='1';\n    wrap.style.position='relative';\n    function makeBtn(dir,label){\n      var b=document.createElement('button');\n      b.type='button';\n      b.setAttribute('aria-label',label);\n      b.textContent=dir<0?'\\u2039':'\\u203a';\n      b.style.position='absolute';\n      b.style.top='50%';\n      b.style[dir<0?'left':'right']='-32px';\n      b.style.transform='translateY(-50%)';\n      b.style.zIndex='5';\n      b.style.width='40px';\n      b.style.height='40px';\n      b.style.borderRadius='50%';\n      b.style.border='1px solid #ccc';\n      b.style.background='#fff';\n      b.style.fontSize='20px';\n      b.style.lineHeight='1';\n      b.style.cursor='pointer';\n      b.addEventListener('click',function(){\n        var item=carousel.querySelector('.text-with-icons__item');\n        var step=item?item.getBoundingClientRect().width+24:carousel.clientWidth;\n        carousel.scrollBy({left:dir*step,behavior:'smooth'});\n      });\n      return b;\n    }\n    wrap.appendChild(makeBtn(-1,'Previous testimonial'));\n    wrap.appendChild(makeBtn(1,'Next testimonial'));\n  });\n})();\n</script>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_overlay_HrG6nG",
+    "design_pack_marquee_multitext_87qWWt",
+    "media_with_text_RLB7Fk",
+    "media_with_text_tpyMxR",
+    "rich_text_rg7fzk",
+    "rich_text_gUjyBc",
+    "text_with_icons_4zNgjB",
+    "text_with_icons_z9wMz9",
+    "rich_text_TMGwFg",
+    "multi_column_YX6nXB",
+    "rich_text_r7nUpj",
+    "media_with_text_3x7PnT",
+    "rich_text_VMpB3Q",
+    "multi_column_MQ4Bbr",
+    "text_with_icons_tHPJiN",
+    "text_with_icons_V3VcUw",
+    "rich_text_LkTMgm",
+    "text_with_icons_bTUQpT",
+    "text_with_icons_KGz7WJ",
+    "image_with_text_overlay_tPLgnQ",
+    "rich_text_hkJgPY",
+    "custom_liquid_bMUECa"
+  ]
+}

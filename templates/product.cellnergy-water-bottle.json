@@ -1,0 +1,2728 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_html_i3rnwA": {
+      "type": "custom-html",
+      "disabled": true,
+      "name": "Custom HTML",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "html": "<div id=\"purchase-now\"></div>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "stamped_product_reviews_ugc_star_rating_badge_8VPpGa": {
+          "type": "shopify://apps/stamped-reviews/blocks/star-rating-badge/a103faaf-2125-4b0e-89fa-de5149736723",
+          "settings": {
+            "use_metafields": false,
+            "sku_tagtype": "handle",
+            "is_featured_product": false,
+            "featured_product_handle": ""
+          }
+        },
+        "liquid_nUGHYr": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{% render 'embedded-clinicianschoice' %}"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "payment_terms": {
+          "type": "payment_terms",
+          "disabled": true,
+          "settings": {}
+        },
+        "afterpay_on_site_messaging_payments_messaging_89qBqc": {
+          "type": "shopify://apps/afterpay-on-site-messaging/blocks/payments-messaging/f45a5524-d177-4475-bf59-281efd2215a8",
+          "settings": {
+            "text_align": "inherit",
+            "margin_top": 16,
+            "margin_bottom": 16,
+            "color": "",
+            "size": "md",
+            "intro_text": "or",
+            "show_interest_free": true,
+            "payment_amount_is_bold": true,
+            "show_with": true,
+            "logo_type": "badge",
+            "logo_theme": "black-on-mint",
+            "modal_link_style": "circled-info-icon",
+            "modal_theme": "mint",
+            "breakpoint": 749,
+            "text_align_mobile": "inherit",
+            "margin_top_mobile": 16,
+            "margin_bottom_mobile": 16,
+            "show_lower_limit": true,
+            "show_upper_limit": true,
+            "show_if_outside_limits": true,
+            "product": "{{product}}"
+          }
+        },
+        "liquid_TwLCLM": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "Pay with <img src=\"//shop.lifepharm.com/cdn/shop/files/Truemed-icon.png?v=1787352700&amp;width=1040\" alt=\"Pay with HSA/FSA\" srcset=\"//shop.lifepharm.com/cdn/shop/files/Truemed-icon.png?v=1787352700&amp;width=56 56w, //shop.lifepharm.com/cdn/shop/files/Truemed-icon.png?v=1787352700&amp;width=112 112w\" width=\"1040\" height=\"1040\" style=\"max-width: 25px; display: inline-block; vertical-align: top; margin-right: 5px;\" sizes=\"56px\">HSA/FSA"
+          }
+        },
+        "skio_plan_picker_pn4yd9": {
+          "type": "skio-plan-picker",
+          "settings": {
+            "form_id": "product-form-{{ product.id }}-{{ section.id }}",
+            "external_price_selector": ".price-item--regular",
+            "show_details": false,
+            "show_without_subscription": false,
+            "show_compare_price": true,
+            "legend_content": "Select subscription plan",
+            "show_legend": false,
+            "layout": "vertical",
+            "dropdownPosition": "inside",
+            "additional_frequency_label": "",
+            "start_onetime": true,
+            "onetime_first": false,
+            "group_border_radius": 8,
+            "group_border_width": 1,
+            "group_border_color": "#000000",
+            "group_border_selected_color": "#000000",
+            "group_background_color": "rgba(0,0,0,0)",
+            "selected_group_background_color": "rgba(0,0,0,0)",
+            "group_text_color": "#000000",
+            "group_selected_text_color": "#000000",
+            "show_radio_selector": true,
+            "onetime_title": "One-time",
+            "subscription_title": "Subscribe & Save",
+            "prepaid_title": "Prepaid",
+            "discount_format": "percent",
+            "discount_style": "bubble",
+            "discount_text": "Save up to [discount]",
+            "discount_color": "#ff8f00",
+            "discount_text_color": "#ffffff",
+            "additional_subscription_content": "<ul><li>You save [discount]</li><li>Skip, delay or cancel any time</li><li>Renew on your timeframe</li></ul>",
+            "selector_type": "button",
+            "button_plan_selector_width": 100,
+            "default_subscription": "",
+            "future_price_adjustments_text": "<small>Then [discount] off after the [order_count_ordinal] order</small>",
+            "element_name": "skio-plan-picker",
+            "product_handle": "",
+            "combine_groups": false,
+            "combined_group_name": "Subscription"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "rgba(0,0,0,0)",
+            "atc_button_text_color": "rgba(0,0,0,0)",
+            "payment_button_background": "#ff8f00",
+            "payment_button_text_color": "#ffffff"
+          }
+        },
+        "text_AcNgmV": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pay with HSA/FSA via Truemed</p>"
+          }
+        },
+        "badges": {
+          "type": "badges",
+          "disabled": true,
+          "settings": {}
+        },
+        "separator": {
+          "type": "separator",
+          "disabled": true,
+          "settings": {}
+        },
+        "easyflow_app_block_gr8LEC": {
+          "type": "shopify://apps/easyflow/blocks/app-block/83d04f43-e63e-4a8d-82b9-e4f0b41ef22f",
+          "settings": {}
+        },
+        "text_VjR6WU": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "{{ product.metafields.custom.product_description | metafield_tag }}"
+          }
+        },
+        "description": {
+          "type": "description",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "collapse_content": true
+          }
+        },
+        "collapsible_text_XwdWte": {
+          "type": "collapsible_text",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "LifePharm Guarantee",
+            "content": "<p>All of our products come with a 60-Day Money-Back Guarantee. </p><p>Try it, and if it doesn�t work, it's on us!�Our hassle-free return policy offers a 100% money-back guarantee within 60 days of delivery.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_DKpjzh": {
+          "type": "collapsible_text",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "The Benefit",
+            "content": "{{ product.metafields.custom.text_benefits | metafield_tag }}",
+            "page": ""
+          }
+        },
+        "collapsible_text_KbRjKK": {
+          "type": "collapsible_text",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "Ingredients",
+            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}",
+            "page": ""
+          }
+        },
+        "collapsible_text_QcYtDR": {
+          "type": "collapsible_text",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "Studies",
+            "content": "{{ product.metafields.custom.studies | metafield_tag }}",
+            "page": ""
+          }
+        },
+        "collapsible_text_PR3cy8": {
+          "type": "collapsible_text",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "Who is {{ product.title }} for?",
+            "content": "<p>{{ product.metafields.custom.value_1 | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_PDdyLw": {
+          "type": "collapsible_text",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "How to Use",
+            "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_kaarby": {
+          "type": "collapsible_text",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "Product Specification Manual",
+            "content": "{{ product.metafields.custom.cellnery_wellness_manual_warranty | metafield_tag }}",
+            "page": ""
+          }
+        },
+        "text_qkxir3": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Hear from a customer using {{ product.title }}</p>"
+          }
+        },
+        "offer_KHjNfD": {
+          "type": "offer",
+          "disabled": true,
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/icon-money-back_ad0174a0-6874-4cb0-a0fc-604dcd751295.png",
+            "icon_width": 80,
+            "title": "LifePharm Guarantee",
+            "content": "<p>Try it, and if it doesn't work, its on us! Our hassle-free return policy offers a 100% money back guarantee within 60 days of delivery.</p>",
+            "background": "#f9f9f9",
+            "text_color": "#181818"
+          }
+        },
+        "offer_UWwjX7": {
+          "type": "offer",
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/60_day_money_back_guarantee_a8c1bb57-aee9-45d6-a57d-a6816e24a1ef.png",
+            "icon_width": 72,
+            "title": "LifePharm Guarantee",
+            "content": "<p>Try it, and if it doesn't work, its on us! Our hassle-free return policy offers a 100% money back guarantee within 60 days of delivery.</p>",
+            "background": "#f9f9f9",
+            "text_color": "#181818"
+          }
+        },
+        "tolstoy_shoppable_video_ugc_stories_block_hnKrMy": {
+          "type": "shopify://apps/tolstoy/blocks/stories-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "settings": {
+            "publishId": "3ew6rhswme0cg"
+          }
+        },
+        "selleasy_lb_upsell_widget_bac_wjnxim": {
+          "type": "shopify://apps/selleasy/blocks/lb-upsell-widget-bac/790c1a03-a71f-4bc1-9869-00dad526d3c2",
+          "settings": {}
+        },
+        "selleasy_lb_upsell_widget_bl_B6H7nE": {
+          "type": "shopify://apps/selleasy/blocks/lb-upsell-widget-bl/790c1a03-a71f-4bc1-9869-00dad526d3c2",
+          "disabled": true,
+          "settings": {}
+        },
+        "associated_products_mWz6hB": {
+          "type": "associated_products",
+          "disabled": true,
+          "settings": {
+            "title": "Goes well with",
+            "stack_products": true,
+            "products_count": 3,
+            "background": "",
+            "text_color": ""
+          }
+        },
+        "offer_UnQirT": {
+          "type": "offer",
+          "disabled": true,
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-box",
+            "icon_width": 20,
+            "title": "Product Shipping",
+            "content": "<p>This product is eligible for free shipping on orders over �150</p>",
+            "background": "#f9f9f9",
+            "text_color": "#181818"
+          }
+        },
+        "offer_aJbbCW": {
+          "type": "offer",
+          "disabled": true,
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-chat",
+            "icon_width": 24,
+            "title": "Speak to our customer support",
+            "content": "<p>Have a question for us? <a href=\"/pages/contact\" title=\"Contact\">Click here</a></p>",
+            "background": "#f9f9f9",
+            "text_color": "#181818"
+          }
+        },
+        "offer_DWbnz9": {
+          "type": "offer",
+          "disabled": true,
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-coupon",
+            "icon_width": 24,
+            "title": "Shipping",
+            "content": "<p>Short content about your shipping rates or discounts.</p>",
+            "background": "#eaf2ed",
+            "text_color": "#00a341"
+          }
+        },
+        "teqnavi_ibo_price": {
+          "type": "shopify://apps/teqnavi-lifepharm/blocks/ibo-price/019bc71e-c7cd-732d-b07b-3ca8ead35448",
+          "settings": {
+            "label": "Your IBO price"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "stamped_product_reviews_ugc_star_rating_badge_8VPpGa",
+        "liquid_nUGHYr",
+        "price",
+        "teqnavi_ibo_price",
+        "variant_picker",
+        "payment_terms",
+        "afterpay_on_site_messaging_payments_messaging_89qBqc",
+        "liquid_TwLCLM",
+        "skio_plan_picker_pn4yd9",
+        "quantity_selector",
+        "buy_buttons",
+        "text_AcNgmV",
+        "badges",
+        "separator",
+        "easyflow_app_block_gr8LEC",
+        "text_VjR6WU",
+        "description",
+        "collapsible_text_XwdWte",
+        "collapsible_text_DKpjzh",
+        "collapsible_text_KbRjKK",
+        "collapsible_text_QcYtDR",
+        "collapsible_text_PR3cy8",
+        "collapsible_text_PDdyLw",
+        "collapsible_text_kaarby",
+        "text_qkxir3",
+        "offer_KHjNfD",
+        "offer_UWwjX7",
+        "tolstoy_shoppable_video_ugc_stories_block_hnKrMy",
+        "selleasy_lb_upsell_widget_bac_wjnxim",
+        "selleasy_lb_upsell_widget_bl_B6H7nE",
+        "associated_products_mWz6hB",
+        "offer_UnQirT",
+        "offer_aJbbCW",
+        "offer_DWbnz9"
+      ],
+      "custom_css": [
+        ".h2 {color: #ff8f00; margin-bottom: -20px;}",
+        "@media screen and (min-width: 700px) {.product-gallery__thumbnail-list {grid-auto-columns: 110px; }}",
+        ".product-gallery__thumbnail {border-width: 1px; border-color: #c1c1c1; border-radius: 16px; padding: 10px 10px 5px 10px;}",
+        "@media screen and (min-width: 700px) {.product-gallery__thumbnail-list {grid-auto-columns: 110px; justify-content: center; }}",
+        ".product-gallery__thumbnail-list-wrapper {color: #f7941c;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "show_fixed_add_to_cart": false,
+        "desktop_media_width": 50,
+        "desktop_media_layout": "carousel_thumbnails_bottom",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": false,
+        "enable_video_looping": true,
+        "enable_image_zoom": false,
+        "max_image_zoom_level": 2,
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "1717692639facd14b3": {
+      "type": "apps",
+      "blocks": {
+        "tolstoy_shoppable_video_ugc_stories_block_8FqwYJ": {
+          "type": "shopify://apps/tolstoy/blocks/stories-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "settings": {
+            "publishId": "3ew6rhswme0cg"
+          }
+        }
+      },
+      "block_order": [
+        "tolstoy_shoppable_video_ugc_stories_block_8FqwYJ"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "image_with_text_overlay_LT94EP": {
+      "type": "image-with-text-overlay",
+      "custom_css": [
+        "@media (min-width: 700px) {{display: none; }}"
+      ],
+      "name": "*MOBILE - Image with text overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify://shop_images/CellnergyWaterBottleHeroMOBILE_sqaured.jpg",
+        "mobile_image": "shopify://shop_images/CellnergyWaterBottleHeroMOBILE_sqaured.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
+    "image_with_text_overlay_TREiVq": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "liquid_8TAfn7": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<h2 style= \"text-align: center; color:#FFFFFF;\">Regeneration<span style= \"color: #181818;\"><BR> Begins with Water</span></h2>"
+          }
+        },
+        "richtext_YnfJyF": {
+          "type": "richtext",
+          "settings": {
+            "content": "{{ product.metafields.custom.product_description | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "liquid_8TAfn7",
+        "richtext_YnfJyF"
+      ],
+      "custom_css": [
+        "@media (min-width: 700px) {{display: none; }}"
+      ],
+      "name": "*MOBILE DESCRIPTION",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify://shop_images/CELLNERGY-BOTTLE_lifepharm.jpg",
+        "mobile_image": "shopify://shop_images/mobile_background_cellnergy_bottle.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
+    "image_with_text_overlay_D8Hptg": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "liquid_f4jjXh": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<h2 style= \"text-align: left; color:#FFFFFF;\">Regeneration<span style= \"color: #181818;\"><BR> Begins with Water</span></h2>"
+          }
+        },
+        "richtext_LfzYxR": {
+          "type": "richtext",
+          "settings": {
+            "content": "{{ product.metafields.custom.product_description | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "liquid_f4jjXh",
+        "richtext_LfzYxR"
+      ],
+      "custom_css": [
+        "@media (max-width: 700px) {{display: none; }}"
+      ],
+      "name": "Image with text overlay",
+      "settings": {
+        "full_width": false,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "lg",
+        "image": "shopify://shop_images/CELLNERGY-BOTTLE_lifepharm.jpg",
+        "mobile_image": "shopify://shop_images/mobile_background_cellnergy_bottle.jpg",
+        "mobile_text_position": "place-self-center-start text-start",
+        "desktop_text_position": "sm:place-self-center-start sm:text-start",
+        "text_color": "#181818",
+        "overlay_color": "rgba(0,0,0,0)",
+        "overlay_opacity": 0
+      }
+    },
+    "design_pack_image_with_text_xFzRCL": {
+      "type": "design_pack_-_image_with_text",
+      "blocks": {
+        "liquid_UER4R4": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<h2 style= \"text-align: default; color:#181818;     font-size: var(--text-h2);\n    line-height: 1.1; font-family: var(--heading-font-family);\n}\">The Regeneration Effect:<span style= \"color: #FF8F00;\"><BR> Before & After </span></h2>"
+          }
+        },
+        "spacer_9PErA6": {
+          "type": "spacer",
+          "settings": {
+            "size": 40
+          }
+        },
+        "fancy_heading_ePGPH6": {
+          "type": "fancy_heading",
+          "disabled": true,
+          "settings": {
+            "title": "The Regeneration Effect: [Before & After]",
+            "block_heading_color": "",
+            "block_heading_size": "",
+            "highlight_text_color": "#ff8f00",
+            "highlight_background_color": "rgba(0,0,0,0)",
+            "highlight_heading_size": "",
+            "highlight_enable_custom_font": false,
+            "highlight_custom_font": "playfair_display_n4",
+            "heading_level": "h2",
+            "custom_css": ""
+          }
+        },
+        "text_KJ4MTQ": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Your water doesn�t just hydrate you � it�s how nutrients, supplements, and minerals actually reach your cells. The quality of your water determines how much of what you do for your health actually lands.<br/><br/><strong>BEFORE (REGULAR WATER)</strong></p><ul><li>Neutral to slightly acidic (pH 6.5�7.5) � not optimized for the body�s natural alkaline state</li><li>Large, disorganized water clusters � limited cellular permeability</li><li>No active hydrogen � no antioxidant support from your water</li><li>Supplements and nutrients absorbed without an optimized delivery environment</li><li>You drink plenty. Your cells may still be thirsty.</li></ul><p><em>Standard water does the basics. But it�s not built for regeneration.</em></p><p><strong>AFTER (CELLNERGY-CONDITIONED WATER) </strong></p><ul><li>Alkaline pH 8�9.5 � naturally conditioned to support cellular balance and mineral harmony</li><li>Terahertz-restructured water clusters � smaller, more organized, designed for cellular absorption</li><li>Active molecular hydrogen � one of nature�s most studied antioxidants, delivered in every sip</li><li>An optimized hydration environment for supplements, LifePharm products, and nutrients to work harder</li><li>Smoother. Cleaner. Water that supports how your body was designed to function.*</li></ul><p><em>Better water in. Better results out. Everything you do for your health, working at full capacity.</em></p>",
+            "block_text_color": "#181818"
+          }
+        }
+      },
+      "block_order": [
+        "liquid_UER4R4",
+        "spacer_9PErA6",
+        "fancy_heading_ePGPH6",
+        "text_KJ4MTQ"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".dsgn-pck__image__wrapper {border-top-right-radius: 12px; border-bottom-right-radius: 12px;}",
+        ".dsgn-pck__justify-left {border-top-left-radius: 12px; border-bottom-left-radius: 12px;}",
+        " {padding-top: 40px;}",
+        ".DP--template--21444219961561__design_pack_image_with_text_dmbjfe .dsgn-pck__sizer {border-width: 1px; border-color: #c1c1c1; background: #f9f9f9; border-radius: 12px;}",
+        "@media only screen and (min-width: 600px) {.dsgn-pck__section {padding-top: 40px; }}"
+      ],
+      "name": "Image with text - simple ??",
+      "settings": {
+        "image": "shopify://shop_images/WATER_BOTTLE_-_BEFORE_AND_AFTER.png",
+        "image_crop": "2:3",
+        "image_link": "",
+        "image_position": "right",
+        "mobile_image": "shopify://shop_images/WATER_BOTTLE_-_BEFORE_AND_AFTER.png",
+        "show_content_below": false,
+        "text_alignment": "left",
+        "text_size": 100,
+        "text_width": 50,
+        "text_color": "#181818",
+        "text_background_color": "#f9f9f9",
+        "background_solid": "#ffffff",
+        "background_color": "",
+        "show_background_image": false,
+        "animation": "none",
+        "base_width": 95,
+        "max_width": "1500px",
+        "inner_padding": 20,
+        "outer_margin": 30,
+        "custom_css": ".prose ul,\n.list-disc {\n  list-style: unset;\n}\n.h2,\n.prose h2:not(.h0, .h1, .h2, .h3, .h4, .h5, .h6) {\n  font-size: var(--text-h2);\n  line-height: 1.2;\n  margin-top: auto;\n}\nul {\n  padding-left: 18px;\n}\nli::marker {\n  color: #ff8f00;\n  font-size: 22px;\n}\nul {\n    list-style: unset;\n}",
+        "mobile_custom_css": "{ margin-left: 2.5%;\nmargin-right: 2.5%;}",
+        "anchor_id": "",
+        "custom_classes": "",
+        "override_theme_font": false,
+        "heading_font": "serif",
+        "main_font": "system_ui_n4",
+        "enable_metafield_detect": false
+      }
+    },
+    "media_with_text_UCaJMK": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_8DzHRG": {
+          "type": "image",
+          "settings": {
+            "image": "{{ product.metafields.custom.image_benefits.value }}",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "",
+            "content": "<p>{{ product.metafields.custom.heading_benefit_1.value }}</p>{{ product.metafields.custom.text_benefits | metafield_tag }}",
+            "custom_liquid": "",
+            "link_text": "",
+            "link_url": "",
+            "background": "#fff4e5",
+            "background_gradient": "",
+            "text_color": "#181818",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        },
+        "image_4PHNF4": {
+          "type": "image",
+          "settings": {
+            "image": "{{ product.metafields.custom.image_ingredients.value }}",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "",
+            "content": "<p>{{ product.metafields.custom.heading_benefit_2.value }}</p>{{ product.metafields.custom.text_ingredients | metafield_tag }}",
+            "custom_liquid": "",
+            "link_text": "",
+            "link_url": "",
+            "background": "#fff4e5",
+            "background_gradient": "",
+            "text_color": "#181818",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_8DzHRG",
+        "image_4PHNF4"
+      ],
+      "custom_css": [
+        ".prose ul,.prose ol {row-gap: 0.2em;}",
+        ".prose ul,.list-disc {list-style: unset;}",
+        ".h2,.prose h2:not(.h0, .h1, .h2, .h3, .h4, .h5, .h6) {font-size: var(--text-h2); line-height: 1.2; margin-top: auto;}",
+        "ul {padding-left: 17px;}",
+        "li::marker {color: #ff8f00; font-size: 22px;}",
+        "@media (min-width: 1200px) {.break-all {max-width: 650px; margin: auto; }}"
+      ],
+      "settings": {
+        "full_width": true,
+        "alternate_media_position": false,
+        "spacing": "none"
+      }
+    },
+    "design_pack_v3_richtext_M6xzrK": {
+      "type": "design_pack_v3_-_richtext",
+      "blocks": {
+        "dpb_group_UwQgec": {
+          "type": "_dpb_-_group",
+          "name": "Group ??",
+          "settings": {
+            "url": "",
+            "content_direction": "column",
+            "vertical_alignment_column": "top",
+            "content_alignment": "default",
+            "horizontal_alignment_group": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "padding_type": "range",
+            "padding": "10px 20px 30px 40px",
+            "padding_top": 20,
+            "padding_bottom": 20,
+            "padding_left": 0,
+            "padding_right": 0,
+            "vertical_on_mobile": true,
+            "mobile_styles": true,
+            "mobile_padding_type": "auto",
+            "mobile_padding": "0px 0px 0px 0px",
+            "mobile_padding_top": 20,
+            "mobile_padding_bottom": 20,
+            "mobile_padding_left": 20,
+            "mobile_padding_right": 20,
+            "text_color": "",
+            "background_solid": "",
+            "background_color": "",
+            "border_radius": 0,
+            "border_style": "solid",
+            "border_width": 0,
+            "border_color": "#c1c1c1",
+            "enable_box_shadow": false,
+            "card_box_shadow_intensity": "subtle",
+            "card_box_shadow_color": "#000000",
+            "card_box_shadow_custom_value": "0 1px 4px 0 rgba(0, 0, 0, 0.33)",
+            "base_width": 100,
+            "max_width": "",
+            "horizontal_alignment": "default",
+            "hidden_on": "none",
+            "enable_custom_css": false,
+            "custom_css": "",
+            "mobile_css": ""
+          },
+          "blocks": {
+            "dpb_columns_gpCpcz": {
+              "type": "_dpb_-_columns",
+              "name": "Columns ??",
+              "settings": {
+                "gap": 30,
+                "row_gap": 30,
+                "mobile_styles": true,
+                "mobile_gap": 30,
+                "mobile_row_gap": 30,
+                "vertical_on_mobile": true,
+                "hidden_on": "none",
+                "enable_custom_css": true,
+                "custom_css": "{ border-width: 1px;\nborder-radius: 16px;\nborder-color: #c1c1c1;\n}",
+                "mobile_css": ""
+              },
+              "blocks": {
+                "dpb_sub_columns_column_9KniDU": {
+                  "type": "_dpb_sub_-_columns-column",
+                  "settings": {
+                    "url": "",
+                    "column_width": "half",
+                    "padding_type": "auto",
+                    "padding": "0px 0px 0px 0px",
+                    "padding_top": 20,
+                    "padding_bottom": 20,
+                    "padding_left": 20,
+                    "padding_right": 20,
+                    "horizontal_alignment": "default",
+                    "vertical_alignment": "middle",
+                    "mobile_styles": false,
+                    "mobile_column_width": "default",
+                    "mobile_padding_type": "default",
+                    "mobile_padding": "0px 0px 0px 0px",
+                    "mobile_padding_top": 20,
+                    "mobile_padding_bottom": 20,
+                    "mobile_padding_left": 20,
+                    "mobile_padding_right": 20,
+                    "mobile_horizontal_alignment": "default",
+                    "mobile_vertical_alignment": "default",
+                    "background_solid": "",
+                    "background_color": "",
+                    "border_radius": 16,
+                    "enable_box_shadow": false,
+                    "card_box_shadow_intensity": "subtle",
+                    "card_box_shadow_color": "#000000",
+                    "card_box_shadow_custom_value": "0 1px 4px 0 rgba(0, 0, 0, 0.33)",
+                    "border_style": "none",
+                    "border_width": 1,
+                    "border_color": "#000000",
+                    "enable_custom_css": false,
+                    "custom_css": "",
+                    "mobile_css": ""
+                  },
+                  "blocks": {
+                    "dpb_inset_image_TNKcBH": {
+                      "type": "dpb_-_inset_image",
+                      "name": "Image ??",
+                      "settings": {
+                        "inset_image": "shopify://shop_images/CellnergyBottle-Box-Bottle1500x1500.jpg",
+                        "image_crop": "none",
+                        "link": "",
+                        "external_link": false,
+                        "mobile_styles": false,
+                        "mobile_size_type": "percentage",
+                        "mobile_base_width": 80,
+                        "mobile_size_fixed": 200,
+                        "border_radius": 0,
+                        "border_width": 0,
+                        "border_color": "#000000",
+                        "button_shadow": "none",
+                        "button_shadow_color": "#000000",
+                        "button_shadow_custom": "0 1px 4px rgba(0,0,0,0.08)",
+                        "size_type": "percentage",
+                        "base_width": 90,
+                        "max_width": "",
+                        "size_fixed": 300,
+                        "horizontal_alignment": "default",
+                        "hidden_on": "none",
+                        "enable_custom_css": false,
+                        "custom_css": "",
+                        "mobile_css": ""
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "dpb_inset_image_TNKcBH"
+                  ]
+                },
+                "dpb_sub_columns_column_xT36ne": {
+                  "type": "_dpb_sub_-_columns-column",
+                  "settings": {
+                    "url": "",
+                    "column_width": "half",
+                    "padding_type": "range",
+                    "padding": "0px 0px 0px 0px",
+                    "padding_top": 20,
+                    "padding_bottom": 20,
+                    "padding_left": 30,
+                    "padding_right": 30,
+                    "horizontal_alignment": "left",
+                    "vertical_alignment": "middle",
+                    "mobile_styles": true,
+                    "mobile_column_width": "default",
+                    "mobile_padding_type": "auto",
+                    "mobile_padding": "0px 0px 0px 0px",
+                    "mobile_padding_top": 20,
+                    "mobile_padding_bottom": 20,
+                    "mobile_padding_left": 20,
+                    "mobile_padding_right": 20,
+                    "mobile_horizontal_alignment": "default",
+                    "mobile_vertical_alignment": "default",
+                    "background_solid": "#f9f9f9",
+                    "background_color": "",
+                    "border_radius": 0,
+                    "enable_box_shadow": false,
+                    "card_box_shadow_intensity": "subtle",
+                    "card_box_shadow_color": "#000000",
+                    "card_box_shadow_custom_value": "0 1px 4px 0 rgba(0, 0, 0, 0.33)",
+                    "border_style": "solid",
+                    "border_width": 0,
+                    "border_color": "#c1c1c1",
+                    "enable_custom_css": false,
+                    "custom_css": "",
+                    "mobile_css": ""
+                  },
+                  "blocks": {
+                    "dpb_divider_FW8Knz": {
+                      "type": "dpb_-_divider",
+                      "name": "Divider ??",
+                      "settings": {
+                        "thickness": 0,
+                        "style": "solid",
+                        "divider_color": "#c1c1c1",
+                        "padding_top": 10,
+                        "padding_bottom": 0,
+                        "base_width": 100,
+                        "max_width": "",
+                        "horizontal_alignment": "default",
+                        "hidden_on": "mobile",
+                        "enable_custom_css": false,
+                        "custom_css": "",
+                        "mobile_css": ""
+                      },
+                      "blocks": {}
+                    },
+                    "dpb_liquid_Hqmd7b": {
+                      "type": "dpb_-_liquid",
+                      "name": "Liquid/HTML ??",
+                      "settings": {
+                        "liquid": "<h2 style= \"text-align: default; color:#FF8F00;     font-size: var(--text-h2);\n    line-height: 1.1; font-family: var(--heading-font-family);\n}\">How<span style= \"color: #181818;\"> to Use </span></h2>",
+                        "remove_external_container": false,
+                        "enable_custom_css": false,
+                        "custom_css": "",
+                        "mobile_css": "",
+                        "hidden_on": "none"
+                      },
+                      "blocks": {}
+                    },
+                    "dpb_divider_XHAzdG": {
+                      "type": "dpb_-_divider",
+                      "name": "Divider ??",
+                      "settings": {
+                        "thickness": 0,
+                        "style": "solid",
+                        "divider_color": "#c1c1c1",
+                        "padding_top": 10,
+                        "padding_bottom": 0,
+                        "base_width": 100,
+                        "max_width": "",
+                        "horizontal_alignment": "default",
+                        "hidden_on": "mobile",
+                        "enable_custom_css": false,
+                        "custom_css": "",
+                        "mobile_css": ""
+                      },
+                      "blocks": {}
+                    },
+                    "dpb_text_PA9ppQ": {
+                      "type": "dpb_-_text",
+                      "name": "Text ??",
+                      "settings": {
+                        "text": "<p><strong>Before First Use:</strong></p><p><strong>1. WASH</strong><br/>Hand wash the bottle 2�3 times with mild dish soap and clean water. Rinse thoroughly.</p><p><strong>2. RINSE THE DIFFUSER</strong><br/>Rinse the Mineral Activation Diffuser thoroughly under running water.</p><p><strong>3. INSERT + SHAKE</strong><br/>Insert the diffuser securely into the bottle and tighten. Fill the bottle with clean water, close securely, and shake well.</p><p><strong>4. EMPTY + REPEAT</strong><br/>Pour out the water and repeat the fill, shake, and empty process until the water runs clear.</p><p>Your CELLNERGY HYDRATION SYSTEM is now ready to use.</p>",
+                        "text_color": "",
+                        "enable_custom_text_size": false,
+                        "block_text_size": "30px",
+                        "mobile_block_text_size": "",
+                        "enable_custom_text_style": false,
+                        "text_style": "default",
+                        "text_transform": "default",
+                        "letter_spacing": "",
+                        "line_height": "",
+                        "enable_custom_font": false,
+                        "custom_font": "abel_n4",
+                        "enable_highlighted_text": false,
+                        "highlight_text_color": "#ffffff",
+                        "highlight_background_color": "#000000",
+                        "highlight_enable_custom_font": false,
+                        "highlight_custom_font": "abel_n4",
+                        "custom_highlight_css": "",
+                        "block_alignment": "left",
+                        "truncate_text": -1,
+                        "read_more_text": "Read more",
+                        "read_less_text": "Read less",
+                        "base_width": 100,
+                        "max_width": "",
+                        "horizontal_alignment": "default",
+                        "hidden_on": "none",
+                        "enable_custom_css": false,
+                        "custom_css": "",
+                        "mobile_css": ""
+                      },
+                      "blocks": {}
+                    },
+                    "dpb_divider_9FWEJF": {
+                      "type": "dpb_-_divider",
+                      "name": "Divider ??",
+                      "settings": {
+                        "thickness": 1,
+                        "style": "solid",
+                        "divider_color": "#c1c1c1",
+                        "padding_top": 30,
+                        "padding_bottom": 20,
+                        "base_width": 100,
+                        "max_width": "",
+                        "horizontal_alignment": "default",
+                        "hidden_on": "mobile",
+                        "enable_custom_css": false,
+                        "custom_css": "",
+                        "mobile_css": ""
+                      },
+                      "blocks": {}
+                    },
+                    "dpb_text_hgBmHt": {
+                      "type": "dpb_-_text",
+                      "name": "Text ??",
+                      "settings": {
+                        "text": "<p><strong>Daily Use:</strong></p><p><strong>FILL</strong><br/>Add filtered or purified drinking water.</p><p><strong>CONDITION</strong><br/>Allow approximately 15 minutes for mineral activation and water conditioning.</p><p><strong>DRINK</strong><br/>Enjoy throughout the day as part of your daily hydration routine.</p><p><strong>[Pro Tip:]</strong> Use your Cellnergy Hydration System daily alongside your LifePharm supplements and frequency regeneration products for compounded regenerative benefit.</p>",
+                        "text_color": "#181818",
+                        "enable_custom_text_size": false,
+                        "block_text_size": "30px",
+                        "mobile_block_text_size": "",
+                        "enable_custom_text_style": false,
+                        "text_style": "default",
+                        "text_transform": "default",
+                        "letter_spacing": "",
+                        "line_height": "",
+                        "enable_custom_font": false,
+                        "custom_font": "abel_n4",
+                        "enable_highlighted_text": true,
+                        "highlight_text_color": "#ff8f00",
+                        "highlight_background_color": "rgba(0,0,0,0)",
+                        "highlight_enable_custom_font": false,
+                        "highlight_custom_font": "abel_n4",
+                        "custom_highlight_css": ".dsgn-pck__fancy { padding-left: 0px;}",
+                        "block_alignment": "default",
+                        "truncate_text": -1,
+                        "read_more_text": "Read more",
+                        "read_less_text": "Read less",
+                        "base_width": 100,
+                        "max_width": "",
+                        "horizontal_alignment": "default",
+                        "hidden_on": "none",
+                        "enable_custom_css": false,
+                        "custom_css": "",
+                        "mobile_css": ""
+                      },
+                      "blocks": {}
+                    },
+                    "dpb_divider_jXhcEk": {
+                      "type": "dpb_-_divider",
+                      "name": "Divider ??",
+                      "settings": {
+                        "thickness": 1,
+                        "style": "solid",
+                        "divider_color": "#c1c1c1",
+                        "padding_top": 30,
+                        "padding_bottom": 20,
+                        "base_width": 100,
+                        "max_width": "",
+                        "horizontal_alignment": "default",
+                        "hidden_on": "mobile",
+                        "enable_custom_css": false,
+                        "custom_css": "",
+                        "mobile_css": ""
+                      },
+                      "blocks": {}
+                    },
+                    "dpb_text_PariA6": {
+                      "type": "dpb_-_text",
+                      "name": "Text ??",
+                      "settings": {
+                        "text": "<p><strong>Care Instructions:</strong></p><ul><li>Hand wash with mild dish soap. Do not place in the dishwasher.</li><li>Air-dry with the lid open. Store in a dry place when not in use.</li><li>Safe for cold and warm water up to 60�C / 140�F.</li><li>Do not microwave, freeze, refrigerate or fill with boiling liquids.</li><li>Avoid contact with sharp objects.</li><li>Store at room temperature, away from heat and direct sunlight.</li><li>Use with filtered or purified drinking water only.</li><li>Replace the Mineral Activation Diffuser approximately every 2 months for optimal performance.</li></ul>",
+                        "text_color": "",
+                        "enable_custom_text_size": false,
+                        "block_text_size": "30px",
+                        "mobile_block_text_size": "",
+                        "enable_custom_text_style": false,
+                        "text_style": "default",
+                        "text_transform": "default",
+                        "letter_spacing": "",
+                        "line_height": "",
+                        "enable_custom_font": false,
+                        "custom_font": "abel_n4",
+                        "enable_highlighted_text": false,
+                        "highlight_text_color": "#ff8f00",
+                        "highlight_background_color": "rgba(0,0,0,0)",
+                        "highlight_enable_custom_font": false,
+                        "highlight_custom_font": "abel_n4",
+                        "custom_highlight_css": ".dsgn-pck__fancy { padding-left: 0px;}",
+                        "block_alignment": "left",
+                        "truncate_text": -1,
+                        "read_more_text": "Read more",
+                        "read_less_text": "Read less",
+                        "base_width": 100,
+                        "max_width": "",
+                        "horizontal_alignment": "default",
+                        "hidden_on": "none",
+                        "enable_custom_css": false,
+                        "custom_css": "",
+                        "mobile_css": ""
+                      },
+                      "blocks": {}
+                    },
+                    "dpb_divider_BW3BgC": {
+                      "type": "dpb_-_divider",
+                      "name": "Divider ??",
+                      "settings": {
+                        "thickness": 0,
+                        "style": "solid",
+                        "divider_color": "#c1c1c1",
+                        "padding_top": 0,
+                        "padding_bottom": 20,
+                        "base_width": 100,
+                        "max_width": "",
+                        "horizontal_alignment": "default",
+                        "hidden_on": "mobile",
+                        "enable_custom_css": false,
+                        "custom_css": "",
+                        "mobile_css": ""
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "dpb_divider_FW8Knz",
+                    "dpb_liquid_Hqmd7b",
+                    "dpb_divider_XHAzdG",
+                    "dpb_text_PA9ppQ",
+                    "dpb_divider_9FWEJF",
+                    "dpb_text_hgBmHt",
+                    "dpb_divider_jXhcEk",
+                    "dpb_text_PariA6",
+                    "dpb_divider_BW3BgC"
+                  ]
+                }
+              },
+              "block_order": [
+                "dpb_sub_columns_column_9KniDU",
+                "dpb_sub_columns_column_xT36ne"
+              ]
+            }
+          },
+          "block_order": [
+            "dpb_columns_gpCpcz"
+          ]
+        }
+      },
+      "block_order": [
+        "dpb_group_UwQgec"
+      ],
+      "custom_css": [
+        "ul {padding-left: 17px;}"
+      ],
+      "name": "Richtext ??",
+      "settings": {
+        "text_size": 100,
+        "text_alignment": "left",
+        "text_color": "#121212",
+        "background_solid": "",
+        "background_color": "",
+        "show_background_image": false,
+        "animation": "none",
+        "base_width": 95,
+        "max_width": "1500px",
+        "margin_top": 0,
+        "margin_bottom": 40,
+        "padding_type": "padding_range_sliders",
+        "padding": "0px 0px 0px 0px",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_left": 0,
+        "padding_right": 0,
+        "enable_mobile_styles": true,
+        "mobile_base_width": 100,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0,
+        "mobile_padding_type": "padding_range_sliders",
+        "mobile_padding": "0px 0px 0px 0px",
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0,
+        "mobile_padding_left": 0,
+        "mobile_padding_right": 0,
+        "custom_css": ".prose ul,\n.list-disc {\n  list-style: unset;\n}\n.h2,\n.prose h2:not(.h0, .h1, .h2, .h3, .h4, .h5, .h6) {\n  font-size: var(--text-h2);\n  line-height: 1.2;\n  margin-top: auto;\n}\nul {\n  padding-left: 18px;\n}\nli::marker {\n  color: #ff8f00;\n  font-size: 22px;\n}\nul {\n    list-style: unset;\n}",
+        "mobile_custom_css": "",
+        "anchor_id": "",
+        "custom_classes": "",
+        "custom_style": "global",
+        "style_scheme": "",
+        "override_theme_font": false,
+        "heading_font": "serif",
+        "main_font": "system_ui_n4",
+        "enable_metafield_detect": false
+      }
+    },
+    "design_pack_v3_richtext_BCijrL": {
+      "type": "design_pack_v3_-_richtext",
+      "blocks": {
+        "dpb_columns_6GH7gq": {
+          "type": "_dpb_-_columns",
+          "name": "Columns ??",
+          "settings": {
+            "gap": 30,
+            "row_gap": 30,
+            "mobile_styles": true,
+            "mobile_gap": 30,
+            "mobile_row_gap": 30,
+            "vertical_on_mobile": true,
+            "hidden_on": "none",
+            "enable_custom_css": true,
+            "custom_css": "",
+            "mobile_css": ""
+          },
+          "blocks": {
+            "dpb_sub_columns_column_xGQmBQ": {
+              "type": "_dpb_sub_-_columns-column",
+              "settings": {
+                "url": "",
+                "column_width": "fourth",
+                "padding_type": "auto",
+                "padding": "0px 0px 0px 0px",
+                "padding_top": 20,
+                "padding_bottom": 20,
+                "padding_left": 20,
+                "padding_right": 20,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "top",
+                "mobile_styles": false,
+                "mobile_column_width": "default",
+                "mobile_padding_type": "default",
+                "mobile_padding": "0px 0px 0px 0px",
+                "mobile_padding_top": 20,
+                "mobile_padding_bottom": 20,
+                "mobile_padding_left": 20,
+                "mobile_padding_right": 20,
+                "mobile_horizontal_alignment": "default",
+                "mobile_vertical_alignment": "default",
+                "background_solid": "#f9f9f9",
+                "background_color": "",
+                "border_radius": 15,
+                "enable_box_shadow": false,
+                "card_box_shadow_intensity": "subtle",
+                "card_box_shadow_color": "#000000",
+                "card_box_shadow_custom_value": "0 1px 4px 0 rgba(0, 0, 0, 0.33)",
+                "border_style": "solid",
+                "border_width": 1,
+                "border_color": "#c1c1c1",
+                "enable_custom_css": false,
+                "custom_css": "",
+                "mobile_css": ""
+              },
+              "blocks": {
+                "dpb_icons_KGJgBH": {
+                  "type": "dpb_-_icons",
+                  "name": "Icons ??",
+                  "settings": {
+                    "icon_width": 100,
+                    "gap": 0,
+                    "icon_layout": "top",
+                    "icon_gap": 11,
+                    "icon_alignment": "center",
+                    "icon_size_type": "fixed",
+                    "image_size": 80,
+                    "image_size_fixed": 85,
+                    "mobile_styles": false,
+                    "mobile_icon_width": 100,
+                    "mobile_gap": 15,
+                    "mobile_icon_layout": "left",
+                    "mobile_icon_gap": 15,
+                    "mobile_icon_alignment": "center",
+                    "mobile_icon_size_type": "fixed",
+                    "mobile_image_size": 80,
+                    "mobile_image_size_fixed": 40,
+                    "base_width": 100,
+                    "max_width": "",
+                    "horizontal_alignment": "default",
+                    "hidden_on": "none",
+                    "enable_custom_css": false,
+                    "custom_css": "",
+                    "mobile_css": "",
+                    "enable_custom_font_size": false,
+                    "icon_heading_size": "",
+                    "mobile_icon_heading_size": "",
+                    "icon_text_size": "",
+                    "mobile_icon_text_size": ""
+                  },
+                  "blocks": {
+                    "dpb_sub_icons_icon_DbnFUA": {
+                      "type": "_dpb_sub_-_icons-icon",
+                      "name": "Icon 1 ??",
+                      "settings": {
+                        "icon": "shopify://shop_images/LeakFree.png",
+                        "heading": "",
+                        "text": "",
+                        "link": "",
+                        "text_color": "",
+                        "background_solid": "",
+                        "background_color": "",
+                        "border_radius": 0,
+                        "border_style": "none",
+                        "border_width": 1,
+                        "border_color": "#000000"
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "dpb_sub_icons_icon_DbnFUA"
+                  ]
+                },
+                "dpb_text_Djxatg": {
+                  "type": "dpb_-_text",
+                  "name": "Text ??",
+                  "settings": {
+                    "text": "<h3><strong>[LEAK FREE]</strong></h3><p>Precision-sealed lid technology prevents spills and leaks, so you can toss it in your bag with confidence.</p>",
+                    "text_color": "",
+                    "enable_custom_text_size": false,
+                    "block_text_size": "30px",
+                    "mobile_block_text_size": "",
+                    "enable_custom_text_style": false,
+                    "text_style": "default",
+                    "text_transform": "default",
+                    "letter_spacing": "",
+                    "line_height": "",
+                    "enable_custom_font": false,
+                    "custom_font": "abel_n4",
+                    "enable_highlighted_text": true,
+                    "highlight_text_color": "#ff8f00",
+                    "highlight_background_color": "rgba(0,0,0,0)",
+                    "highlight_enable_custom_font": false,
+                    "highlight_custom_font": "abel_n4",
+                    "custom_highlight_css": "",
+                    "block_alignment": "default",
+                    "truncate_text": -1,
+                    "read_more_text": "Read more",
+                    "read_less_text": "Read less",
+                    "base_width": 100,
+                    "max_width": "",
+                    "horizontal_alignment": "default",
+                    "hidden_on": "none",
+                    "enable_custom_css": false,
+                    "custom_css": "",
+                    "mobile_css": ""
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "dpb_icons_KGJgBH",
+                "dpb_text_Djxatg"
+              ]
+            },
+            "dpb_sub_columns_column_UHgV8C": {
+              "type": "_dpb_sub_-_columns-column",
+              "settings": {
+                "url": "",
+                "column_width": "fourth",
+                "padding_type": "auto",
+                "padding": "0px 0px 0px 0px",
+                "padding_top": 20,
+                "padding_bottom": 20,
+                "padding_left": 20,
+                "padding_right": 20,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "top",
+                "mobile_styles": false,
+                "mobile_column_width": "default",
+                "mobile_padding_type": "default",
+                "mobile_padding": "0px 0px 0px 0px",
+                "mobile_padding_top": 20,
+                "mobile_padding_bottom": 20,
+                "mobile_padding_left": 20,
+                "mobile_padding_right": 20,
+                "mobile_horizontal_alignment": "default",
+                "mobile_vertical_alignment": "default",
+                "background_solid": "#f9f9f9",
+                "background_color": "",
+                "border_radius": 15,
+                "enable_box_shadow": false,
+                "card_box_shadow_intensity": "subtle",
+                "card_box_shadow_color": "#000000",
+                "card_box_shadow_custom_value": "0 1px 4px 0 rgba(0, 0, 0, 0.33)",
+                "border_style": "solid",
+                "border_width": 1,
+                "border_color": "#c1c1c1",
+                "enable_custom_css": false,
+                "custom_css": "",
+                "mobile_css": ""
+              },
+              "blocks": {
+                "dpb_icons_VCEcrC": {
+                  "type": "dpb_-_icons",
+                  "name": "Icons ??",
+                  "settings": {
+                    "icon_width": 100,
+                    "gap": 0,
+                    "icon_layout": "top",
+                    "icon_gap": 11,
+                    "icon_alignment": "center",
+                    "icon_size_type": "fixed",
+                    "image_size": 80,
+                    "image_size_fixed": 85,
+                    "mobile_styles": false,
+                    "mobile_icon_width": 100,
+                    "mobile_gap": 15,
+                    "mobile_icon_layout": "left",
+                    "mobile_icon_gap": 15,
+                    "mobile_icon_alignment": "center",
+                    "mobile_icon_size_type": "fixed",
+                    "mobile_image_size": 80,
+                    "mobile_image_size_fixed": 40,
+                    "base_width": 100,
+                    "max_width": "",
+                    "horizontal_alignment": "default",
+                    "hidden_on": "none",
+                    "enable_custom_css": false,
+                    "custom_css": "",
+                    "mobile_css": "",
+                    "enable_custom_font_size": false,
+                    "icon_heading_size": "",
+                    "mobile_icon_heading_size": "",
+                    "icon_text_size": "",
+                    "mobile_icon_text_size": ""
+                  },
+                  "blocks": {
+                    "dpb_sub_icons_icon_bVKWbJ": {
+                      "type": "_dpb_sub_-_icons-icon",
+                      "name": "Icon 1 ??",
+                      "settings": {
+                        "icon": "shopify://shop_images/Lightweight.png",
+                        "heading": "",
+                        "text": "",
+                        "link": "",
+                        "text_color": "",
+                        "background_solid": "",
+                        "background_color": "",
+                        "border_radius": 0,
+                        "border_style": "none",
+                        "border_width": 1,
+                        "border_color": "#000000"
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "dpb_sub_icons_icon_bVKWbJ"
+                  ]
+                },
+                "dpb_text_mx7VzE": {
+                  "type": "dpb_-_text",
+                  "name": "Text ??",
+                  "settings": {
+                    "text": "<h3><strong>[LIGHTWEIGHT]</strong></h3><p>Designed for effortless portability - easy to carry in your gym bag, backpack, or daily commute without weighing you down.</p>",
+                    "text_color": "",
+                    "enable_custom_text_size": false,
+                    "block_text_size": "30px",
+                    "mobile_block_text_size": "",
+                    "enable_custom_text_style": false,
+                    "text_style": "default",
+                    "text_transform": "default",
+                    "letter_spacing": "",
+                    "line_height": "",
+                    "enable_custom_font": false,
+                    "custom_font": "abel_n4",
+                    "enable_highlighted_text": true,
+                    "highlight_text_color": "#ff8f00",
+                    "highlight_background_color": "rgba(0,0,0,0)",
+                    "highlight_enable_custom_font": false,
+                    "highlight_custom_font": "abel_n4",
+                    "custom_highlight_css": "",
+                    "block_alignment": "default",
+                    "truncate_text": -1,
+                    "read_more_text": "Read more",
+                    "read_less_text": "Read less",
+                    "base_width": 100,
+                    "max_width": "",
+                    "horizontal_alignment": "default",
+                    "hidden_on": "none",
+                    "enable_custom_css": false,
+                    "custom_css": "",
+                    "mobile_css": ""
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "dpb_icons_VCEcrC",
+                "dpb_text_mx7VzE"
+              ]
+            },
+            "dpb_sub_columns_column_khmLeX": {
+              "type": "_dpb_sub_-_columns-column",
+              "settings": {
+                "url": "",
+                "column_width": "fourth",
+                "padding_type": "auto",
+                "padding": "0px 0px 0px 0px",
+                "padding_top": 20,
+                "padding_bottom": 20,
+                "padding_left": 20,
+                "padding_right": 20,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "top",
+                "mobile_styles": false,
+                "mobile_column_width": "default",
+                "mobile_padding_type": "default",
+                "mobile_padding": "0px 0px 0px 0px",
+                "mobile_padding_top": 20,
+                "mobile_padding_bottom": 20,
+                "mobile_padding_left": 20,
+                "mobile_padding_right": 20,
+                "mobile_horizontal_alignment": "default",
+                "mobile_vertical_alignment": "default",
+                "background_solid": "#f9f9f9",
+                "background_color": "",
+                "border_radius": 15,
+                "enable_box_shadow": false,
+                "card_box_shadow_intensity": "subtle",
+                "card_box_shadow_color": "#000000",
+                "card_box_shadow_custom_value": "0 1px 4px 0 rgba(0, 0, 0, 0.33)",
+                "border_style": "solid",
+                "border_width": 1,
+                "border_color": "#c1c1c1",
+                "enable_custom_css": false,
+                "custom_css": "",
+                "mobile_css": ""
+              },
+              "blocks": {
+                "dpb_icons_DPYqQN": {
+                  "type": "dpb_-_icons",
+                  "name": "Icons ??",
+                  "settings": {
+                    "icon_width": 100,
+                    "gap": 0,
+                    "icon_layout": "top",
+                    "icon_gap": 11,
+                    "icon_alignment": "center",
+                    "icon_size_type": "fixed",
+                    "image_size": 80,
+                    "image_size_fixed": 85,
+                    "mobile_styles": false,
+                    "mobile_icon_width": 100,
+                    "mobile_gap": 15,
+                    "mobile_icon_layout": "left",
+                    "mobile_icon_gap": 15,
+                    "mobile_icon_alignment": "center",
+                    "mobile_icon_size_type": "fixed",
+                    "mobile_image_size": 80,
+                    "mobile_image_size_fixed": 40,
+                    "base_width": 100,
+                    "max_width": "",
+                    "horizontal_alignment": "default",
+                    "hidden_on": "none",
+                    "enable_custom_css": false,
+                    "custom_css": "",
+                    "mobile_css": "",
+                    "enable_custom_font_size": false,
+                    "icon_heading_size": "",
+                    "mobile_icon_heading_size": "",
+                    "icon_text_size": "",
+                    "mobile_icon_text_size": ""
+                  },
+                  "blocks": {
+                    "dpb_sub_icons_icon_qdUtEA": {
+                      "type": "_dpb_sub_-_icons-icon",
+                      "name": "Icon 1 ??",
+                      "settings": {
+                        "icon": "shopify://shop_images/StainResistant.png",
+                        "heading": "",
+                        "text": "",
+                        "link": "",
+                        "text_color": "",
+                        "background_solid": "",
+                        "background_color": "",
+                        "border_radius": 0,
+                        "border_style": "none",
+                        "border_width": 1,
+                        "border_color": "#000000"
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "dpb_sub_icons_icon_qdUtEA"
+                  ]
+                },
+                "dpb_text_kdFAQN": {
+                  "type": "dpb_-_text",
+                  "name": "Text ??",
+                  "settings": {
+                    "text": "<h3><strong>[STAIN & ODOR RESISTANT]</strong></h3><p>Advanced material resists lingering smells and discoloration, keeping your bottle fresh and clean over time.</p>",
+                    "text_color": "",
+                    "enable_custom_text_size": false,
+                    "block_text_size": "30px",
+                    "mobile_block_text_size": "",
+                    "enable_custom_text_style": false,
+                    "text_style": "default",
+                    "text_transform": "default",
+                    "letter_spacing": "",
+                    "line_height": "",
+                    "enable_custom_font": false,
+                    "custom_font": "abel_n4",
+                    "enable_highlighted_text": true,
+                    "highlight_text_color": "#ff8f00",
+                    "highlight_background_color": "rgba(0,0,0,0)",
+                    "highlight_enable_custom_font": false,
+                    "highlight_custom_font": "abel_n4",
+                    "custom_highlight_css": "",
+                    "block_alignment": "default",
+                    "truncate_text": -1,
+                    "read_more_text": "Read more",
+                    "read_less_text": "Read less",
+                    "base_width": 100,
+                    "max_width": "",
+                    "horizontal_alignment": "default",
+                    "hidden_on": "none",
+                    "enable_custom_css": false,
+                    "custom_css": "",
+                    "mobile_css": ""
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "dpb_icons_DPYqQN",
+                "dpb_text_kdFAQN"
+              ]
+            },
+            "dpb_sub_columns_column_mfyy3V": {
+              "type": "_dpb_sub_-_columns-column",
+              "settings": {
+                "url": "",
+                "column_width": "fourth",
+                "padding_type": "auto",
+                "padding": "0px 0px 0px 0px",
+                "padding_top": 20,
+                "padding_bottom": 20,
+                "padding_left": 20,
+                "padding_right": 20,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "top",
+                "mobile_styles": false,
+                "mobile_column_width": "default",
+                "mobile_padding_type": "default",
+                "mobile_padding": "0px 0px 0px 0px",
+                "mobile_padding_top": 20,
+                "mobile_padding_bottom": 20,
+                "mobile_padding_left": 20,
+                "mobile_padding_right": 20,
+                "mobile_horizontal_alignment": "default",
+                "mobile_vertical_alignment": "default",
+                "background_solid": "#f9f9f9",
+                "background_color": "",
+                "border_radius": 15,
+                "enable_box_shadow": false,
+                "card_box_shadow_intensity": "subtle",
+                "card_box_shadow_color": "#000000",
+                "card_box_shadow_custom_value": "0 1px 4px 0 rgba(0, 0, 0, 0.33)",
+                "border_style": "solid",
+                "border_width": 1,
+                "border_color": "#c1c1c1",
+                "enable_custom_css": false,
+                "custom_css": "",
+                "mobile_css": ""
+              },
+              "blocks": {
+                "dpb_icons_Y8ELpa": {
+                  "type": "dpb_-_icons",
+                  "name": "Icons ??",
+                  "settings": {
+                    "icon_width": 100,
+                    "gap": 0,
+                    "icon_layout": "top",
+                    "icon_gap": 11,
+                    "icon_alignment": "center",
+                    "icon_size_type": "fixed",
+                    "image_size": 80,
+                    "image_size_fixed": 85,
+                    "mobile_styles": false,
+                    "mobile_icon_width": 100,
+                    "mobile_gap": 15,
+                    "mobile_icon_layout": "left",
+                    "mobile_icon_gap": 15,
+                    "mobile_icon_alignment": "center",
+                    "mobile_icon_size_type": "fixed",
+                    "mobile_image_size": 80,
+                    "mobile_image_size_fixed": 40,
+                    "base_width": 100,
+                    "max_width": "",
+                    "horizontal_alignment": "default",
+                    "hidden_on": "none",
+                    "enable_custom_css": false,
+                    "custom_css": "",
+                    "mobile_css": "",
+                    "enable_custom_font_size": false,
+                    "icon_heading_size": "",
+                    "mobile_icon_heading_size": "",
+                    "icon_text_size": "",
+                    "mobile_icon_text_size": ""
+                  },
+                  "blocks": {
+                    "dpb_sub_icons_icon_BBwTqR": {
+                      "type": "_dpb_sub_-_icons-icon",
+                      "name": "Icon 1 ??",
+                      "settings": {
+                        "icon": "shopify://shop_images/PushButtonOpen.png",
+                        "heading": "",
+                        "text": "",
+                        "link": "",
+                        "text_color": "",
+                        "background_solid": "",
+                        "background_color": "",
+                        "border_radius": 0,
+                        "border_style": "none",
+                        "border_width": 1,
+                        "border_color": "#000000"
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "dpb_sub_icons_icon_BBwTqR"
+                  ]
+                },
+                "dpb_text_MK88rH": {
+                  "type": "dpb_-_text",
+                  "name": "Text ??",
+                  "settings": {
+                    "text": "<h3><strong>[PUSH BUTTON OPENING]</strong></h3><p>One-touch push button design for quick, effortless access�perfect for workouts, driving, or staying hydrated on the move.</p>",
+                    "text_color": "",
+                    "enable_custom_text_size": false,
+                    "block_text_size": "30px",
+                    "mobile_block_text_size": "",
+                    "enable_custom_text_style": false,
+                    "text_style": "default",
+                    "text_transform": "default",
+                    "letter_spacing": "",
+                    "line_height": "",
+                    "enable_custom_font": false,
+                    "custom_font": "abel_n4",
+                    "enable_highlighted_text": true,
+                    "highlight_text_color": "#ff8f00",
+                    "highlight_background_color": "rgba(0,0,0,0)",
+                    "highlight_enable_custom_font": false,
+                    "highlight_custom_font": "abel_n4",
+                    "custom_highlight_css": "",
+                    "block_alignment": "default",
+                    "truncate_text": -1,
+                    "read_more_text": "Read more",
+                    "read_less_text": "Read less",
+                    "base_width": 100,
+                    "max_width": "",
+                    "horizontal_alignment": "default",
+                    "hidden_on": "none",
+                    "enable_custom_css": false,
+                    "custom_css": "",
+                    "mobile_css": ""
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "dpb_icons_Y8ELpa",
+                "dpb_text_MK88rH"
+              ]
+            },
+            "dpb_sub_columns_column_qAK6iM": {
+              "type": "_dpb_sub_-_columns-column",
+              "settings": {
+                "url": "",
+                "column_width": "fourth",
+                "padding_type": "auto",
+                "padding": "0px 0px 0px 0px",
+                "padding_top": 20,
+                "padding_bottom": 20,
+                "padding_left": 20,
+                "padding_right": 20,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "top",
+                "mobile_styles": false,
+                "mobile_column_width": "default",
+                "mobile_padding_type": "default",
+                "mobile_padding": "0px 0px 0px 0px",
+                "mobile_padding_top": 20,
+                "mobile_padding_bottom": 20,
+                "mobile_padding_left": 20,
+                "mobile_padding_right": 20,
+                "mobile_horizontal_alignment": "default",
+                "mobile_vertical_alignment": "default",
+                "background_solid": "#f9f9f9",
+                "background_color": "",
+                "border_radius": 15,
+                "enable_box_shadow": false,
+                "card_box_shadow_intensity": "subtle",
+                "card_box_shadow_color": "#000000",
+                "card_box_shadow_custom_value": "0 1px 4px 0 rgba(0, 0, 0, 0.33)",
+                "border_style": "solid",
+                "border_width": 1,
+                "border_color": "#c1c1c1",
+                "enable_custom_css": false,
+                "custom_css": "",
+                "mobile_css": ""
+              },
+              "blocks": {
+                "dpb_icons_P7bktW": {
+                  "type": "dpb_-_icons",
+                  "name": "Icons ??",
+                  "settings": {
+                    "icon_width": 100,
+                    "gap": 0,
+                    "icon_layout": "top",
+                    "icon_gap": 11,
+                    "icon_alignment": "center",
+                    "icon_size_type": "fixed",
+                    "image_size": 80,
+                    "image_size_fixed": 85,
+                    "mobile_styles": false,
+                    "mobile_icon_width": 100,
+                    "mobile_gap": 15,
+                    "mobile_icon_layout": "left",
+                    "mobile_icon_gap": 15,
+                    "mobile_icon_alignment": "center",
+                    "mobile_icon_size_type": "fixed",
+                    "mobile_image_size": 80,
+                    "mobile_image_size_fixed": 40,
+                    "base_width": 100,
+                    "max_width": "",
+                    "horizontal_alignment": "default",
+                    "hidden_on": "none",
+                    "enable_custom_css": false,
+                    "custom_css": "",
+                    "mobile_css": "",
+                    "enable_custom_font_size": false,
+                    "icon_heading_size": "",
+                    "mobile_icon_heading_size": "",
+                    "icon_text_size": "",
+                    "mobile_icon_text_size": ""
+                  },
+                  "blocks": {
+                    "dpb_sub_icons_icon_geANzc": {
+                      "type": "_dpb_sub_-_icons-icon",
+                      "name": "Icon 1 ??",
+                      "settings": {
+                        "icon": "shopify://shop_images/BPAfree.png",
+                        "heading": "",
+                        "text": "",
+                        "link": "",
+                        "text_color": "",
+                        "background_solid": "",
+                        "background_color": "",
+                        "border_radius": 0,
+                        "border_style": "none",
+                        "border_width": 1,
+                        "border_color": "#000000"
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "dpb_sub_icons_icon_geANzc"
+                  ]
+                },
+                "dpb_text_D6A8GM": {
+                  "type": "dpb_-_text",
+                  "name": "Text ??",
+                  "settings": {
+                    "text": "<h3><strong>[BPA FREE]</strong></h3><p>Made from high-quality, BPA-free materials to ensure every sip is clean, safe, and free from harmful chemicals.</p>",
+                    "text_color": "",
+                    "enable_custom_text_size": false,
+                    "block_text_size": "30px",
+                    "mobile_block_text_size": "",
+                    "enable_custom_text_style": false,
+                    "text_style": "default",
+                    "text_transform": "default",
+                    "letter_spacing": "",
+                    "line_height": "",
+                    "enable_custom_font": false,
+                    "custom_font": "abel_n4",
+                    "enable_highlighted_text": true,
+                    "highlight_text_color": "#ff8f00",
+                    "highlight_background_color": "rgba(0,0,0,0)",
+                    "highlight_enable_custom_font": false,
+                    "highlight_custom_font": "abel_n4",
+                    "custom_highlight_css": "",
+                    "block_alignment": "default",
+                    "truncate_text": -1,
+                    "read_more_text": "Read more",
+                    "read_less_text": "Read less",
+                    "base_width": 100,
+                    "max_width": "",
+                    "horizontal_alignment": "default",
+                    "hidden_on": "none",
+                    "enable_custom_css": false,
+                    "custom_css": "",
+                    "mobile_css": ""
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "dpb_icons_P7bktW",
+                "dpb_text_D6A8GM"
+              ]
+            },
+            "dpb_sub_columns_column_iGMcNr": {
+              "type": "_dpb_sub_-_columns-column",
+              "settings": {
+                "url": "",
+                "column_width": "fourth",
+                "padding_type": "auto",
+                "padding": "0px 0px 0px 0px",
+                "padding_top": 20,
+                "padding_bottom": 20,
+                "padding_left": 20,
+                "padding_right": 20,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "top",
+                "mobile_styles": false,
+                "mobile_column_width": "default",
+                "mobile_padding_type": "default",
+                "mobile_padding": "0px 0px 0px 0px",
+                "mobile_padding_top": 20,
+                "mobile_padding_bottom": 20,
+                "mobile_padding_left": 20,
+                "mobile_padding_right": 20,
+                "mobile_horizontal_alignment": "default",
+                "mobile_vertical_alignment": "default",
+                "background_solid": "#f9f9f9",
+                "background_color": "",
+                "border_radius": 15,
+                "enable_box_shadow": false,
+                "card_box_shadow_intensity": "subtle",
+                "card_box_shadow_color": "#000000",
+                "card_box_shadow_custom_value": "0 1px 4px 0 rgba(0, 0, 0, 0.33)",
+                "border_style": "solid",
+                "border_width": 1,
+                "border_color": "#c1c1c1",
+                "enable_custom_css": false,
+                "custom_css": "",
+                "mobile_css": ""
+              },
+              "blocks": {
+                "dpb_icons_DWima4": {
+                  "type": "dpb_-_icons",
+                  "name": "Icons ??",
+                  "settings": {
+                    "icon_width": 100,
+                    "gap": 0,
+                    "icon_layout": "top",
+                    "icon_gap": 11,
+                    "icon_alignment": "center",
+                    "icon_size_type": "fixed",
+                    "image_size": 80,
+                    "image_size_fixed": 85,
+                    "mobile_styles": false,
+                    "mobile_icon_width": 100,
+                    "mobile_gap": 15,
+                    "mobile_icon_layout": "left",
+                    "mobile_icon_gap": 15,
+                    "mobile_icon_alignment": "center",
+                    "mobile_icon_size_type": "fixed",
+                    "mobile_image_size": 80,
+                    "mobile_image_size_fixed": 40,
+                    "base_width": 100,
+                    "max_width": "",
+                    "horizontal_alignment": "default",
+                    "hidden_on": "none",
+                    "enable_custom_css": false,
+                    "custom_css": "",
+                    "mobile_css": "",
+                    "enable_custom_font_size": false,
+                    "icon_heading_size": "",
+                    "mobile_icon_heading_size": "",
+                    "icon_text_size": "",
+                    "mobile_icon_text_size": ""
+                  },
+                  "blocks": {
+                    "dpb_sub_icons_icon_NC888i": {
+                      "type": "_dpb_sub_-_icons-icon",
+                      "name": "Icon 1 ??",
+                      "settings": {
+                        "icon": "shopify://shop_images/ShatterProof.png",
+                        "heading": "",
+                        "text": "",
+                        "link": "",
+                        "text_color": "",
+                        "background_solid": "",
+                        "background_color": "",
+                        "border_radius": 0,
+                        "border_style": "none",
+                        "border_width": 1,
+                        "border_color": "#000000"
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "dpb_sub_icons_icon_NC888i"
+                  ]
+                },
+                "dpb_text_K8RzbW": {
+                  "type": "dpb_-_text",
+                  "name": "Text ??",
+                  "settings": {
+                    "text": "<h3><strong>[SHATTER PROOF]</strong></h3><p>Built with durable, impact-resistant materials to withstand drops and everyday use without cracking or breaking.</p>",
+                    "text_color": "",
+                    "enable_custom_text_size": false,
+                    "block_text_size": "30px",
+                    "mobile_block_text_size": "",
+                    "enable_custom_text_style": false,
+                    "text_style": "default",
+                    "text_transform": "default",
+                    "letter_spacing": "",
+                    "line_height": "",
+                    "enable_custom_font": false,
+                    "custom_font": "abel_n4",
+                    "enable_highlighted_text": true,
+                    "highlight_text_color": "#ff8f00",
+                    "highlight_background_color": "rgba(0,0,0,0)",
+                    "highlight_enable_custom_font": false,
+                    "highlight_custom_font": "abel_n4",
+                    "custom_highlight_css": "",
+                    "block_alignment": "default",
+                    "truncate_text": -1,
+                    "read_more_text": "Read more",
+                    "read_less_text": "Read less",
+                    "base_width": 100,
+                    "max_width": "",
+                    "horizontal_alignment": "default",
+                    "hidden_on": "none",
+                    "enable_custom_css": false,
+                    "custom_css": "",
+                    "mobile_css": ""
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "dpb_icons_DWima4",
+                "dpb_text_K8RzbW"
+              ]
+            },
+            "dpb_sub_columns_column_JUKWrB": {
+              "type": "_dpb_sub_-_columns-column",
+              "settings": {
+                "url": "",
+                "column_width": "fourth",
+                "padding_type": "auto",
+                "padding": "0px 0px 0px 0px",
+                "padding_top": 20,
+                "padding_bottom": 20,
+                "padding_left": 20,
+                "padding_right": 20,
+                "horizontal_alignment": "center",
+                "vertical_alignment": "top",
+                "mobile_styles": false,
+                "mobile_column_width": "default",
+                "mobile_padding_type": "default",
+                "mobile_padding": "0px 0px 0px 0px",
+                "mobile_padding_top": 20,
+                "mobile_padding_bottom": 20,
+                "mobile_padding_left": 20,
+                "mobile_padding_right": 20,
+                "mobile_horizontal_alignment": "default",
+                "mobile_vertical_alignment": "default",
+                "background_solid": "#f9f9f9",
+                "background_color": "",
+                "border_radius": 15,
+                "enable_box_shadow": false,
+                "card_box_shadow_intensity": "subtle",
+                "card_box_shadow_color": "#000000",
+                "card_box_shadow_custom_value": "0 1px 4px 0 rgba(0, 0, 0, 0.33)",
+                "border_style": "solid",
+                "border_width": 1,
+                "border_color": "#c1c1c1",
+                "enable_custom_css": false,
+                "custom_css": "",
+                "mobile_css": ""
+              },
+              "blocks": {
+                "dpb_icons_dRxX7D": {
+                  "type": "dpb_-_icons",
+                  "name": "Icons ??",
+                  "settings": {
+                    "icon_width": 100,
+                    "gap": 0,
+                    "icon_layout": "top",
+                    "icon_gap": 11,
+                    "icon_alignment": "center",
+                    "icon_size_type": "fixed",
+                    "image_size": 80,
+                    "image_size_fixed": 85,
+                    "mobile_styles": false,
+                    "mobile_icon_width": 100,
+                    "mobile_gap": 15,
+                    "mobile_icon_layout": "left",
+                    "mobile_icon_gap": 15,
+                    "mobile_icon_alignment": "center",
+                    "mobile_icon_size_type": "fixed",
+                    "mobile_image_size": 80,
+                    "mobile_image_size_fixed": 40,
+                    "base_width": 100,
+                    "max_width": "",
+                    "horizontal_alignment": "default",
+                    "hidden_on": "none",
+                    "enable_custom_css": false,
+                    "custom_css": "",
+                    "mobile_css": "",
+                    "enable_custom_font_size": false,
+                    "icon_heading_size": "",
+                    "mobile_icon_heading_size": "",
+                    "icon_text_size": "",
+                    "mobile_icon_text_size": ""
+                  },
+                  "blocks": {
+                    "dpb_sub_icons_icon_3acGht": {
+                      "type": "_dpb_sub_-_icons-icon",
+                      "name": "Icon 1 ??",
+                      "settings": {
+                        "icon": "shopify://shop_images/carry_loop_water_bottle_lifepharm.png",
+                        "heading": "",
+                        "text": "",
+                        "link": "",
+                        "text_color": "",
+                        "background_solid": "",
+                        "background_color": "",
+                        "border_radius": 0,
+                        "border_style": "none",
+                        "border_width": 1,
+                        "border_color": "#000000"
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "dpb_sub_icons_icon_3acGht"
+                  ]
+                },
+                "dpb_text_d4eYgB": {
+                  "type": "dpb_-_text",
+                  "name": "Text ??",
+                  "settings": {
+                    "text": "<h3><strong>[CARRY LOOP]</strong></h3><p>Integrated carry loop for easy grip and on-the-go convenience�clip it, hold it, or hang it wherever you need.</p>",
+                    "text_color": "",
+                    "enable_custom_text_size": false,
+                    "block_text_size": "30px",
+                    "mobile_block_text_size": "",
+                    "enable_custom_text_style": false,
+                    "text_style": "default",
+                    "text_transform": "default",
+                    "letter_spacing": "",
+                    "line_height": "",
+                    "enable_custom_font": false,
+                    "custom_font": "abel_n4",
+                    "enable_highlighted_text": true,
+                    "highlight_text_color": "#ff8f00",
+                    "highlight_background_color": "rgba(0,0,0,0)",
+                    "highlight_enable_custom_font": false,
+                    "highlight_custom_font": "abel_n4",
+                    "custom_highlight_css": "",
+                    "block_alignment": "default",
+                    "truncate_text": -1,
+                    "read_more_text": "Read more",
+                    "read_less_text": "Read less",
+                    "base_width": 100,
+                    "max_width": "",
+                    "horizontal_alignment": "default",
+                    "hidden_on": "none",
+                    "enable_custom_css": false,
+                    "custom_css": "",
+                    "mobile_css": ""
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "dpb_icons_dRxX7D",
+                "dpb_text_d4eYgB"
+              ]
+            }
+          },
+          "block_order": [
+            "dpb_sub_columns_column_xGQmBQ",
+            "dpb_sub_columns_column_UHgV8C",
+            "dpb_sub_columns_column_khmLeX",
+            "dpb_sub_columns_column_mfyy3V",
+            "dpb_sub_columns_column_qAK6iM",
+            "dpb_sub_columns_column_iGMcNr",
+            "dpb_sub_columns_column_JUKWrB"
+          ]
+        }
+      },
+      "block_order": [
+        "dpb_columns_6GH7gq"
+      ],
+      "custom_css": [
+        ".dsgn-pck__inner-block-container {justify-content: center;}"
+      ],
+      "name": "Richtext ??",
+      "settings": {
+        "text_size": 80,
+        "text_alignment": "center",
+        "text_color": "#181818",
+        "background_solid": "",
+        "background_color": "",
+        "show_background_image": false,
+        "animation": "none",
+        "base_width": 95,
+        "max_width": "1500px",
+        "margin_top": 20,
+        "margin_bottom": 0,
+        "padding_type": "padding_range_sliders",
+        "padding": "0px 0px 0px 0px",
+        "padding_top": 20,
+        "padding_bottom": 40,
+        "padding_left": 0,
+        "padding_right": 0,
+        "enable_mobile_styles": true,
+        "mobile_base_width": 100,
+        "mobile_margin_top": 40,
+        "mobile_margin_bottom": 40,
+        "mobile_padding_type": "padding_range_sliders",
+        "mobile_padding": "0px 0px 0px 0px",
+        "mobile_padding_top": 20,
+        "mobile_padding_bottom": 40,
+        "mobile_padding_left": 20,
+        "mobile_padding_right": 20,
+        "custom_css": ".dsgn-pck__fancy { padding-left: 0px; }",
+        "mobile_custom_css": "",
+        "anchor_id": "",
+        "custom_classes": "",
+        "custom_style": "global",
+        "style_scheme": "",
+        "override_theme_font": false,
+        "heading_font": "serif",
+        "main_font": "system_ui_n4",
+        "enable_metafield_detect": false
+      }
+    },
+    "timeline_rPwewV": {
+      "type": "timeline",
+      "blocks": {
+        "slide_Hzj9Vp": {
+          "type": "slide",
+          "name": "Phase 4",
+          "settings": {
+            "image": "{{ product.metafields.custom.phase_4_image.value }}",
+            "navigation_label": "{{ product.metafields.custom.phase_4_label.value }}",
+            "subheading": "",
+            "title": "{{ product.metafields.custom.phase_4_heading.value }}",
+            "content": "{{ product.metafields.custom.phase_4_content | metafield_tag }}"
+          }
+        },
+        "slide_VVAtmd": {
+          "type": "slide",
+          "name": "Phase 1",
+          "settings": {
+            "image": "{{ product.metafields.custom.phase_1_image.value }}",
+            "navigation_label": "{{ product.metafields.custom.phase_1_nav_label.value }}",
+            "subheading": "",
+            "title": "{{ product.metafields.custom.phase_1_heading.value }}",
+            "content": "{{ product.metafields.custom.phase_1_content | metafield_tag }}"
+          }
+        },
+        "slide_gheRD3": {
+          "type": "slide",
+          "name": "Phase 2",
+          "settings": {
+            "image": "{{ product.metafields.custom.phase_2_image.value }}",
+            "navigation_label": "{{ product.metafields.custom.phase_2_nav_label.value }}",
+            "subheading": "",
+            "title": "{{ product.metafields.custom.phase_2_heading.value }}",
+            "content": "{{ product.metafields.custom.phase_2_content | metafield_tag }}"
+          }
+        },
+        "slide_RGVyTB": {
+          "type": "slide",
+          "name": "Phase 3",
+          "settings": {
+            "image": "{{ product.metafields.custom.phase_3_image.value }}",
+            "navigation_label": "{{ product.metafields.custom.phase_3_nav_label.value }}",
+            "subheading": "",
+            "title": "{{ product.metafields.custom.phase_3_heading.value }}",
+            "content": "{{ product.metafields.custom.phase_3_content | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "slide_Hzj9Vp",
+        "slide_VVAtmd",
+        "slide_gheRD3",
+        "slide_RGVyTB"
+      ],
+      "custom_css": [
+        ".timeline__nav-item[aria-current=\"true\"]:before {border-color: #ff8f00; background-color: #ff8f00;}",
+        ".h2,.prose h2:not(.h0, .h1, .h2, .h3, .h4, .h5, .h6) {font-size: var(--text-h3); line-height: 1.3; margin-top: auto;}",
+        "@media only screen and (min-width: 600px) {.bg-custom {border-width: 1px; border-color: #c1c1c1; margin-bottom: 10px; margin-left: 2.5%; margin-right: 2.5%; max-width: 1500px; margin: auto; margin-top: 80px; margin-bottom: 15px; width: 95%; }}"
+      ],
+      "settings": {
+        "full_width": false,
+        "background": "#f9f9f9",
+        "background_gradient": "linear-gradient(167deg, rgba(249, 249, 249, 1) 28%, rgba(255, 255, 255, 1) 45%, rgba(255, 255, 255, 1) 70%)",
+        "text_color": "rgba(0,0,0,0)"
+      }
+    },
+    "rich_text_7EHfFb": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_GkKmn7": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>*<em>Individual results may vary. These statements have not been evaluated by the Food and Drug Administration.</em></p>"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_GkKmn7"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "#b1b1b1"
+      }
+    },
+    "faq_R6AxTY": {
+      "type": "faq",
+      "blocks": {
+        "item_cwR4yx": {
+          "type": "item",
+          "settings": {
+            "title": "HOW IT WORKS",
+            "content": "<p><strong>How does the CELLNERGY Bottle work?</strong><br/>The bottle uses a built-in mineral diffuser to condition your water with three technologies: mineral-based alkalization (pH 8�9.5), molecular hydrogen infusion, and terahertz-frequency water restructuring. Fill with filtered water, wait 15 minutes, and it�s ready to drink.*</p><p><strong>What makes CELLNERGY different from a regular water bottle?</strong><br/>Standard bottles hold water. The CELLNERGY BOTTLE conditions it. The mineral diffuser actively changes the water�s pH, antioxidant profile, and molecular structure � so what reaches your cells is fundamentally different from what goes in.</p><p><strong>What pH does the CELLNERGY Bottle produce?</strong><br/>The CELLNERGY Bottle conditions water to an alkaline pH of approximately 8�9.5. Most tap and filtered water sits between pH 6.5 and 7.5 � neutral to slightly acidic.</p><p><strong>Does alkaline water change my body�s pH?</strong><br/>No. Your body tightly regulates blood pH on its own. CELLNERGY-conditioned water is not intended to alter blood pH � it�s designed to support hydration efficiency and internal mineral balance as part of a healthy lifestyle.*</p><p><strong>Why is pH 8�9.5 water beneficial?</strong><br/>Alkaline water in this range may support more efficient hydration and mineral balance compared to neutral or slightly acidic water � helping water interact more effectively with cells, supporting nutrient transport, cellular performance, and overall vitality.*</p><p><strong>Will I notice a taste difference?</strong><br/>Most users do. CELLNERGY-conditioned water is often described as smoother, cleaner, and lighter. The taste is not flavored or sweetened � it�s the result of a changed mineral and molecular profile.</p>"
+          }
+        },
+        "item_GWPzif": {
+          "type": "item",
+          "settings": {
+            "title": "SAFETY & MATERIALS",
+            "content": "<p><strong>Is the CELLNERGY BOTTLE safe?</strong><br/>Yes. The bottle is made from BPA-free, medical-grade Tritan� � designed for clean, safe everyday hydration. It�s suitable for cold and warm water up to 60�C / 140�F.</p><p><strong>Is alkaline water safe to drink daily</strong>?<br/>Yes. Alkaline water in the pH 8�9.5 range is widely consumed as part of daily hydration routines. If you have a preexisting medical condition or are on medication, we recommend consulting your physician.</p>"
+          }
+        },
+        "item_6YRbPr": {
+          "type": "item",
+          "settings": {
+            "title": "USAGE",
+            "content": "<p><strong>What type of water should I use?</strong><br/>Filtered or purified water is recommended. It allows the conditioning technologies to work most effectively and gives you the cleanest taste.</p><p><strong>How long does conditioning take?</strong><br/>Allow approximately 15 minutes after filling for optimal conditioning. You can then drink throughout the day.</p><p><strong>How often should I use it?</strong><br/>Daily use delivers the best results � especially when taken alongside LifePharm supplements or other frequency regeneration products.</p><p>Can I use it with hot beverages?<br/>The CELLNERGY BOTTLE is designed for cold and warm water only, up to 60�C / 140�F. It is not suitable for boiling or hot liquids.</p>"
+          }
+        },
+        "item_t7gEpk": {
+          "type": "item",
+          "settings": {
+            "title": "MINERAL DIFFUSER",
+            "content": "<p><strong>Do I need to replace the mineral diffuser?</strong><br/>Yes � we recommend replacing it every 2 months. After approximately 2 months of daily use, mineral output declines and the conditioning performance drops. Replacement diffusers are sold separately.</p><p><strong>What happens if I don�t replace it?</strong><br/>Performance gradually returns to that of a regular water bottle. The minerals don�t expire dangerously � they simply stop conditioning. A fresh diffuser immediately restores full performance.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_cwR4yx",
+        "item_GWPzif",
+        "item_6YRbPr",
+        "item_t7gEpk"
+      ],
+      "custom_css": [
+        "@media only screen and (min-width: 600px) {{margin-bottom: -40px !important; }}",
+        ".prose ul,.prose ol {row-gap: 1.4em;}",
+        ".prose ul,.list-disc {list-style: square;}",
+        ".bg-custom {border-width: 1px; border-color: #c1c1c1;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "FAQs",
+        "content": "",
+        "team_avatar_width": 100,
+        "support_hours": "",
+        "answer_time": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "#f9f9f9",
+        "accordion_text_color": ""
+      }
+    },
+    "rich_text_Pcf7H6": {
+      "type": "rich-text",
+      "blocks": {
+        "liquid_kfxdYr": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<h2 style= \"color:#181818; line-height: 1.2;\">Want to Know <span style= \"color: #FF8F00;\"> More? <span style= \"color: #181818;\"></span></h2>"
+          }
+        },
+        "richtext_PAhje7": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Discover the science behind frequency regeneration and how the CELLNERGY system supports your body from the inside out.</p>"
+          }
+        },
+        "button_Nnw4Mw": {
+          "type": "button",
+          "settings": {
+            "style": "outline",
+            "size": "base",
+            "text": "EXPLORE THE SCIENCE",
+            "url": "shopify://pages/science",
+            "background": "#181818",
+            "text_color": ""
+          }
+        },
+        "button_cdVjCT": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "base",
+            "text": "BUY NOW",
+            "url": "#purchase-now",
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "liquid_kfxdYr",
+        "richtext_PAhje7",
+        "button_Nnw4Mw",
+        "button_cdVjCT"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "#fff4e5",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "17128952497cac699c": {
+      "type": "apps",
+      "blocks": {
+        "stamped_product_reviews_ugc_main_widget_q7NdzJ": {
+          "type": "shopify://apps/stamped-reviews/blocks/main-widget/a103faaf-2125-4b0e-89fa-de5149736723",
+          "settings": {
+            "animation": true,
+            "tags_exclude": "",
+            "tags_include": "",
+            "search": "",
+            "linkify": true,
+            "use_metafields": false,
+            "sku_tagtype": "handle"
+          }
+        }
+      },
+      "block_order": [
+        "stamped_product_reviews_ugc_main_widget_q7NdzJ"
+      ],
+      "custom_css": [],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "recommendations_count": 6,
+        "products": [],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": false,
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 5,
+        "subheading": "",
+        "title": "You may also like",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
+    "feature_chart_eKhRpt": {
+      "type": "feature-chart",
+      "blocks": {
+        "headings_DfxDEN": {
+          "type": "headings",
+          "settings": {
+            "heading_1": "{{ product.metafields.custom.header_1.value }}",
+            "heading_2": "{{ product.metafields.custom.header_2.value }}",
+            "heading_3": "{{ product.metafields.custom.header_3.value }}",
+            "heading_4": "{{ product.metafields.custom.header_4.value }}",
+            "heading_5": "{{ product.metafields.custom.header_5.value }}",
+            "heading_6": "{{ product.metafields.custom.header_6.value }}",
+            "heading_7": "{{ product.metafields.custom.header_tech_spec.value }}",
+            "heading_8": "",
+            "heading_9": "",
+            "heading_10": "",
+            "heading_11": "",
+            "heading_12": "",
+            "heading_13": "",
+            "heading_14": "",
+            "heading_15": "",
+            "heading_16": "",
+            "heading_17": "",
+            "heading_18": "",
+            "heading_19": "",
+            "heading_20": ""
+          }
+        },
+        "values_JYMQEF": {
+          "type": "values",
+          "settings": {
+            "product": "",
+            "value_1": "<p>{{ product.metafields.custom.value_1 | metafield_tag }}</p>",
+            "value_2": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>",
+            "value_3": "<p>{{ product.metafields.custom.value_3 | metafield_tag }}</p>",
+            "value_4": "<p>{{ product.metafields.custom.value_4 | metafield_tag }}</p>",
+            "value_5": "<p>{{ product.metafields.custom.value_5 | metafield_tag }}</p>",
+            "value_6": "<p>{{ product.metafields.custom.value_6 | metafield_tag }}</p>",
+            "value_7": "<p>{{ product.metafields.custom.tech_spec_text | metafield_tag }}</p>",
+            "value_8": "",
+            "value_9": "",
+            "value_10": "",
+            "value_11": "",
+            "value_12": "",
+            "value_13": "",
+            "value_14": "",
+            "value_15": "",
+            "value_16": "",
+            "value_17": "",
+            "value_18": "",
+            "value_19": "",
+            "value_20": "",
+            "view_button_background": "",
+            "view_button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "headings_DfxDEN",
+        "values_JYMQEF"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".section-stack__intro {flex: 1 0 530px; max-width: 750px; width: auto;}",
+        ".section-stack__main {flex: 1 1 450px; min-width: 350px; width: auto;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "{{ product.metafields.custom.header_6.value }}",
+        "content": "{{ product.metafields.custom.product_description | metafield_tag }}",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "start",
+        "max_rows": 6,
+        "view_all_text": "View all",
+        "view_less_text": "View less",
+        "view_product": "View",
+        "viewing_product": "",
+        "show_product_swatch": true,
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "rgba(0,0,0,0)",
+        "heading_gradient": "linear-gradient(151deg, rgba(255, 143, 0, 1) 8%, rgba(255, 143, 0, 1) 47%, rgba(247, 188, 93, 1) 81%)",
+        "button_background": "",
+        "button_text_color": "",
+        "chart_background": "#f9f9f9",
+        "chart_text_color": "",
+        "chart_true_false_color": ""
+      }
+    },
+    "scrolling_text_gnHJtw": {
+      "type": "scrolling-text",
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "text": "60 Day Money Back Guarantee",
+        "text_size": "medium",
+        "text_style": "fill",
+        "scrolling_mode": "auto",
+        "scrolling_speed": 10,
+        "background": "#f9f9f9",
+        "background_gradient": "linear-gradient(168deg, rgba(255, 143, 0, 1) 10%, rgba(255, 162, 44, 1) 53%, rgba(248, 189, 113, 1) 94%)",
+        "text_color": "#ffffff",
+        "text_gradient": ""
+      }
+    },
+    "before_after_image_ieK6Jg": {
+      "type": "before-after-image",
+      "disabled": true,
+      "custom_css": [
+        ".section-stack__intro {flex: 1 0 530px; max-width: 750px; width: auto;}",
+        ".section-stack__main {flex: 1 1 450px; min-width: 320px; max-width: 750px; width: auto;}",
+        ".text-center {text-align: center;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "{{ product.metafields.custom.heading_before_after.value }}",
+        "content": "{{ product.metafields.custom.content_before_after | metafield_tag }}",
+        "before_image": "{{ product.metafields.custom.image_1_before_after.value }}",
+        "after_image": "{{ product.metafields.custom.image_2_before_after.value }}",
+        "expand_image": false,
+        "text_position": "center",
+        "before_after_text_position": "top",
+        "before_text": "Before",
+        "after_text": "After",
+        "drag_initial_position": 60,
+        "background": "#f9f9f9",
+        "background_gradient": "",
+        "text_color": "#181818",
+        "before_text_color": "#ffffff",
+        "after_text_color": "#ffffff",
+        "drag_cursor_background": "#ffffff",
+        "drag_cursor_color": "#ff8f00"
+      }
+    },
+    "images_with_text_scrolling_AqDYAM": {
+      "type": "images-with-text-scrolling",
+      "blocks": {
+        "item_KfeJAP": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Laminine_europe_120.jpg",
+            "icon": "none",
+            "icon_width": 48,
+            "title": "Healthy balance",
+            "content": "<ul><li>Promotes healthy balance of microflora and pH for better nutrient absorption, a stronger immune system, less respiratory infections, and improved mood*</li></ul>"
+          }
+        },
+        "item_qzWWYc": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Laminine_europe_120.jpg",
+            "icon": "none",
+            "icon_width": 48,
+            "title": "Reduce toxins",
+            "content": "<p>Improves regularity for reducing toxins in blood, supports less indigestion, bloating, cramping, constipation, and diarrhea*</p><ul><li>Contains full range of digestive enzymes to break down nutrients for complete digestion and assimilation*</li></ul>"
+          }
+        },
+        "item_3x9E7r": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Laminine_europe_120.jpg",
+            "icon": "none",
+            "icon_width": 48,
+            "title": "Supports weight management",
+            "content": "<p>Helps digest fats, improve metabolism, and supports elimination of accumulated waste*Supports weight management and helps reduce fat accumulation*</p>"
+          }
+        },
+        "item_mVLJqK": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Laminine_europe_120.jpg",
+            "icon": "none",
+            "icon_width": 48,
+            "title": "Complete digestion",
+            "content": "<p>Contains full range of digestive enzymes to break down nutrients for complete digestion and assimilation*</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_KfeJAP",
+        "item_qzWWYc",
+        "item_3x9E7r",
+        "item_mVLJqK"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": false,
+        "show_counter": true,
+        "desktop_image_effect": "reveal",
+        "image_position": "start",
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": ""
+      }
+    },
+    "custom_html_rD7gEb": {
+      "type": "custom-html",
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "html": "<div class=\"cozy-video-gallery\" id=\"cozy-video-gallery12322\"><!-- ALWAYS KEEP THIS EMPTY --></div>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "custom_html_i3rnwA",
+    "main",
+    "1717692639facd14b3",
+    "image_with_text_overlay_LT94EP",
+    "image_with_text_overlay_TREiVq",
+    "image_with_text_overlay_D8Hptg",
+    "design_pack_image_with_text_xFzRCL",
+    "media_with_text_UCaJMK",
+    "design_pack_v3_richtext_M6xzrK",
+    "design_pack_v3_richtext_BCijrL",
+    "timeline_rPwewV",
+    "rich_text_7EHfFb",
+    "faq_R6AxTY",
+    "rich_text_Pcf7H6",
+    "17128952497cac699c",
+    "related-products",
+    "feature_chart_eKhRpt",
+    "scrolling_text_gnHJtw",
+    "before_after_image_ieK6Jg",
+    "images_with_text_scrolling_AqDYAM",
+    "custom_html_rD7gEb"
+  ]
+}

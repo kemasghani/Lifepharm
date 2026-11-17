@@ -1,0 +1,150 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        "h1 {text-align: left !important;}"
+      ],
+      "settings": {
+        "content_width": "100%"
+      }
+    },
+    "multi_column_nxWLPk": {
+      "type": "multi-column",
+      "blocks": {
+        "item_wprVgh": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/image.png",
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_hWNjzN": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/crowd-right.avif",
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_wprVgh",
+        "item_hWNjzN"
+      ],
+      "name": "Multi-column",
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": true,
+        "gap": "small",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "multi_column_XqhX8m": {
+      "type": "multi-column",
+      "blocks": {
+        "item_NEb7N3": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/laminine.webp",
+            "column_size": "3",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_d7agEN": {
+          "type": "item",
+          "settings": {
+            "column_size": "1.5",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<p>$125 per month* ($4.67/day) & 3 Friends<br/>Within 14 Days<br/><br/><strong>WHAT YOU GET</strong></p><ul><li>Monthly Eco Bottle of Laminine - $150</li><li>Monthly Cash Bonus - $75</li><li>Promotional Monthly Bonus - $125 (Only Until September 31st, 2025)</li></ul><p><strong>TOTAL VALUE - $350</strong></p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_NEb7N3",
+        "item_d7agEN"
+      ],
+      "custom_css": [
+        "h2 {color: #f18a00; text-align: left;}"
+      ],
+      "name": "Multi-column",
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": true,
+        "gap": "small",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "How LifeFunds Works",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "17544276674e4693b9": {
+      "type": "apps",
+      "blocks": {
+        "toki_loyalty_block_landing_page_sections_UawmWP": {
+          "type": "shopify://apps/toki-loyalty/blocks/block-landing-page-sections/22635295-e17c-4ef6-b61c-f95d0a982eaf",
+          "settings": {
+            "designId": "d9c1c78c-e857-4144-8ea2-d48488411a72",
+            "moduleType": "get_started_section"
+          }
+        }
+      },
+      "block_order": [
+        "toki_loyalty_block_landing_page_sections_UawmWP"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "multi_column_nxWLPk",
+    "multi_column_XqhX8m",
+    "17544276674e4693b9"
+  ]
+}

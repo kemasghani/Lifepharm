@@ -1,0 +1,1195 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        "h1 {text-align: left !important;}"
+      ],
+      "settings": {
+        "content_width": "100%"
+      }
+    },
+    "media_with_text_Vxdhq4": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_BmyfFW": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/IMMUNE-Bottle-Box.webp",
+            "media_width": 45,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "",
+            "content": "<h1>Because Vitamin C<br/>Alone Isn't Enough...</h1><h5>Vitamin C alone is only half the battle. IMMUNE+++ contains Vitamin C plus adaptogens, functional mushrooms, antioxidants, and herbs scientifically proven to increase white blood cells and T cells — your body's first line of defense against viruses and bacteria.</h5>",
+            "link_text": "TRY IMMUNE+++",
+            "link_url": "shopify://products/immune",
+            "background": "rgba(0,0,0,0)",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "#e5e5e5",
+            "button_text_color": "#181818"
+          }
+        }
+      },
+      "block_order": [
+        "image_BmyfFW"
+      ],
+      "custom_css": [
+        ".section-full {background-color: #f2cd00; padding-top: 0; padding-bottom: 0;}",
+        ".section-full .media-with-text__media img {object-fit: contain;}",
+        ".section-full .prose h1 {color: #000;}"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "none"
+      }
+    },
+    "multi_column_KRaHy9": {
+      "type": "multi-column",
+      "blocks": {
+        "item_Qf49TV": {
+          "type": "item",
+          "settings": {
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<ul><li><strong>Do you want to avoid coughing & sneezing during bad weather? <br/>​</strong></li><li><strong>Are you susceptible to exhaustion, fevers, and headaches? <br/>​</strong></li><li><strong>Do you want to avoid having low energy and feeling weak? <br/><br/></strong></li><li><strong>​Do you want to strengthen the protection of your body from viruses and bacteria?</strong></li></ul>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_Rf8AU6": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/immune-honey.webp",
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_Qf49TV",
+        "item_Rf8AU6"
+      ],
+      "custom_css": [
+        ".section-full .prose ul li {font-size: 20px;}",
+        ".section-full .section-header {display: block; text-align: center;}",
+        ".section-full {padding-top: 50px;}",
+        ".section-full .section-header .prose h2 strong {color: #f8c707;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": true,
+        "gap": "medium",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "",
+        "content": "<h2>Who Needs <strong>IMMUNE+++</strong>?</h2>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "rgba(0,0,0,0)"
+      }
+    },
+    "rich_text_A46XhR": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_rbAx6d": {
+          "type": "heading",
+          "settings": {
+            "text": "There is a solution for this, and it's proven by science.",
+            "heading_tag": "h3",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "image_3CNNwf": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/color-dots.webp",
+            "width_mode": "custom",
+            "max_width": 250,
+            "mobile_max_width": 200
+          }
+        }
+      },
+      "block_order": [
+        "heading_rbAx6d",
+        "image_3CNNwf"
+      ],
+      "custom_css": [
+        ".section-full img {margin-top: 25px;}",
+        ".section-full {padding-bottom: 10px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_YpBr8D": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_UrCNrV": {
+          "type": "richtext",
+          "settings": {
+            "content": "<h5>“I took two IMMUNE+++ in the morning and two at night. After 3.5 days, my congestion cleared up. After seven days, I no longer had a sore throat or watery eyes.”</h5><h3>Karen M.</h3>"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_UrCNrV"
+      ],
+      "custom_css": [
+        ".section-full {background-image: url(https://cdn.shopify.com/s/files/1/0790/7665/5396/files/text-bg-1.webp?v=1724774518); padding-top: 70px; padding-bottom: 70px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "media_with_text_DnxEfW": {
+      "type": "media-with-text",
+      "blocks": {
+        "video_M3LxkR": {
+          "type": "video",
+          "settings": {
+            "external_video_url": "https://youtu.be/yd2cAqF_T6U",
+            "poster_image": "shopify://shop_images/Screenshot_2024-08-27_111620.png",
+            "autoplay": false,
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "",
+            "content": "<h3>Introducing <strong>IMMUNE+++</strong></h3><h6>This holistic scientist formulated <strong>immune-boosting </strong>supplement is designed for people who need to protect and strengthen their immune systems to fight off the daily exposure viruses, germs, bacteria, and illness. </h6><h6></h6><h6><br/>What other supplements get wrong.</h6><h6></h6><h6><br/>Although most people's strategy of boosting immune system function is taking a daily Vitamin C supplement and maybe Zinc...</h6>",
+            "link_text": "",
+            "link_url": "",
+            "background": "rgba(0,0,0,0)",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_M3LxkR"
+      ],
+      "custom_css": [
+        ".section-full {background-color: #2b66b3; padding-top: 40px; padding-bottom: 20px;}",
+        ".section-full video-media::part(play-button) {display: none;}",
+        ".section-full .media-with-text__media img {object-fit: contain;}",
+        ".section-full .media-with-text__content {padding: 30px 30px 30px 0;}",
+        ".section-full .prose h3 strong {color: #f8c707;}"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "none"
+      }
+    },
+    "rich_text_y6mckP": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_p6DbFb": {
+          "type": "richtext",
+          "settings": {
+            "content": "<h6>Research is now confirming the powerful effects of several herbs and botanicals that can enhance the overall effect and provide our bodies with a much more effective defense system against nasty intruders.</h6><h6><strong><br/>And... The Effectiveness Of These Immune-Enhancing Qualities Are Multiplied When Taken Together.</strong></h6><h6><br/>This is exactly why we created IMMUNE+++. </h6><h6><br/>It has undergone extensive scientific testing and shown impressive immune boosting support over and over again.</h6>"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_p6DbFb"
+      ],
+      "custom_css": [
+        ".section-full {padding-top: 0; padding-bottom: 60px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "start",
+        "background": "#2b66b3",
+        "background_gradient": "",
+        "text_color": "#ffffff"
+      }
+    },
+    "multi_column_yjtGbk": {
+      "type": "multi-column",
+      "blocks": {
+        "spacer_3AdddE": {
+          "type": "spacer",
+          "settings": {
+            "column_size": "12"
+          }
+        },
+        "spacer_etGy7b": {
+          "type": "spacer",
+          "settings": {
+            "column_size": "12"
+          }
+        },
+        "item_DqDXwN": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/IMMUNE-Bottle-Box.webp",
+            "column_size": "3",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_jTECUU": {
+          "type": "item",
+          "settings": {
+            "column_size": "3",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<h3>Strengthen Your Body's<br/>Self-Defense Systems</h3>",
+            "link_url": "shopify://products/immune",
+            "link_text": "TRY IMMUNE+++",
+            "link_style": "button"
+          }
+        }
+      },
+      "block_order": [
+        "spacer_3AdddE",
+        "spacer_etGy7b",
+        "item_DqDXwN",
+        "item_jTECUU"
+      ],
+      "custom_css": [
+        ".section-full {padding-top: 0px; padding-bottom: 50px;}",
+        ".section-full .prose .button {background: #ffcf0c; color: #000;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": true,
+        "gap": "medium",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "background": "#2b66b3",
+        "background_gradient": "",
+        "text_color": "#ffffff"
+      }
+    },
+    "multi_column_iwgbXd": {
+      "type": "multi-column",
+      "blocks": {
+        "item_jMnUnT": {
+          "type": "item",
+          "settings": {
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<h3><strong>Support Your Body's Own<br/>Natural Defense System</strong></h3><h6>Many health information sources tend to focus on the importance of antibodies when discussing enhancing the immune system. <br/><br/>But it's actually the white blood cells that make up the first line of defense and do the work of eliminating foreign invaders.<br/><br/>White blood cells contain large eating cells called Macrophages or Phagocytes which recognize, engulf and destroy the invader. These are critical to our safety, health, and well-being.<br/><br/><strong>Supporting white blood cells as our first-line defense, is the main purpose of IMMUNE+++</strong>. It is loaded with the most powerful, science-backed, immunity-boosting ingredients yet discovered.</h6>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_6Wr3yn": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/custom_immune-on.webp",
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_jMnUnT",
+        "item_6Wr3yn"
+      ],
+      "custom_css": [
+        ".section-full .prose h3 {color: #2b66b3;}",
+        ".section-full {padding-bottom: 25px; padding-top: 70px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": false,
+        "gap": "medium",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_nwRCmB": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_kABEPV": {
+          "type": "richtext",
+          "settings": {
+            "content": "<h6><strong>What is in one IMMUNE+++ tablet?</strong></h6><h6>While 1 IMMUNE+++ = the amount of Vitamin C in 8 oranges...​<br/><br/>IMMUNE+++ is <strong>MUCH MORE</strong> than another Vitamin C supplement.<br/>medicinal<br/></h6><h6>Each tablet contains extracts of powerful phytochemicals from fruits, functional mushrooms and herbs specifically known for immune-enhancing properties.​</h6><h6>The American Cancer Society recommends 6-7 servings of fruits and vegetables/day. <br/><br/>Of course, some are better than others. But it can be hard to make sure, every day, we get enough of these. </h6><h6>Taking a single tablet of IMMUNE+++ is similar to eating <strong>9-10 servings of nutrient-packed plants specifically beneficial for immune system support.</strong></h6><h6></h6>"
+          }
+        },
+        "image_iBNRGF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/immune-banner.webp",
+            "width_mode": "full_width",
+            "max_width": 600,
+            "mobile_max_width": 400
+          }
+        }
+      },
+      "block_order": [
+        "richtext_kABEPV",
+        "image_iBNRGF"
+      ],
+      "custom_css": [
+        ".section-full {padding-bottom: 70px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_fXXTeD": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_QygcaP": {
+          "type": "richtext",
+          "settings": {
+            "content": "<h5>“People around me at work are down and out with the flu. Some have had it for two months—it’s the type that comes back after you think it’s gone! IMMUNE+++ has really helped me not get sick. I didn’t have to miss any days of work, and I feel great!”</h5><h3>Roxane H.</h3>"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_QygcaP"
+      ],
+      "custom_css": [
+        ".section-full {background-image: url(https://cdn.shopify.com/s/files/1/0790/7665/5396/files/text-bg-1.webp?v=1724774518); padding-top: 70px; padding-bottom: 70px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "multi_column_tdNfqb": {
+      "type": "multi-column",
+      "blocks": {
+        "item_aT7PBe": {
+          "type": "item",
+          "settings": {
+            "column_size": "2",
+            "title": "The First + is",
+            "heading_tag": "h5",
+            "content": "<h3><strong>OPTI-SHIELD BLEND</strong></h3><h3></h3><h6><strong>Opti-Shield Blend</strong> is a carefully chosen blend of the ancient Chinese mushrooms Reishi, Maitake and Turkey Tail form a <strong>powerful immune-boosting</strong> combo which increases the number of T-cells, B-cells, and Natural Killer cells and their <strong>potency</strong> in our body.</h6><h6>IMMUNE+++ was recently evaluated in a clinical study, after which white blood cell counts were found to be significantly higher, while the number of T cells showed an extremely noteworthy increase. </h6><h6><strong>*Higher cytotoxicity = faster and more effective NK cells</strong></h6><h6><strong><br/></strong>References:<br/><a href=\"https://www.ncbi.nlm.nih.gov/pubmed/17895634?ref=retaildirect\" title=\"https://www.ncbi.nlm.nih.gov/pubmed/17895634?ref=retaildirect\">https://www.ncbi.nlm.nih.gov/pubmed/17895634<br/></a><a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5302426/?ref=retaildirect\" title=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5302426/?ref=retaildirect\">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5302426/<br/></a><a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2475648/?ref=retaildirect\" title=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2475648/?ref=retaildirect\">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2475648/</a></h6>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_RCnjUn": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/immune-running.webp",
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_aT7PBe",
+        "item_RCnjUn"
+      ],
+      "custom_css": [
+        ".section-full .v-stack {gap: 0;}",
+        ".section-full .prose h3 {color: #f8c707;}",
+        ".section-full {padding-top: 50px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": true,
+        "gap": "medium",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_rkhfL7": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_b9RGtF": {
+          "type": "richtext",
+          "settings": {
+            "content": "<h5>“I love natural stuff—I’m someone who can’t take antibiotics. I actually had a lingering cold since before Christmas. It went on and on. Then I took IMMUNE+++ twice a day for 7 days during the last week of January. This is the only thing that has helped me finally feel a lot better. I've been telling everyone about this product, and I’m ready to reorder IMMUNE+++.”</h5><h3>Kristy T.</h3>"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_b9RGtF"
+      ],
+      "custom_css": [
+        ".section-full {background-image: url(https://cdn.shopify.com/s/files/1/0790/7665/5396/files/text-bg-1.webp?v=1724774518); padding-top: 70px; padding-bottom: 70px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "multi_column_dGTED6": {
+      "type": "multi-column",
+      "blocks": {
+        "item_cPTgYK": {
+          "type": "item",
+          "settings": {
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<h5><strong>Life-C Vitamin C vs Other Blends of Vitamin C</strong></h5><h6>Life-C vitamin C found in IMMUNE+++ is very different than other types of vitamin C because it has lipid carriers which help it cross the lining of the gastrointestinal tract and increase its absorption. </h6><h6>This helps it get into the bloodstream faster where it circulates throughout the body.</h6><h6>Laboratory studies have shown the Life-C blend of vitamin C absorbs more easily into the body than other forms of vitamin C.</h6><h6>Life-C vitamin C can enter cells more efficiently where it’s needed most, making it more beneficial than other forms of vitamin C.</h6>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_UH4BE3": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/immune-ingredients.webp",
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_KULbDK": {
+          "type": "item",
+          "settings": {
+            "column_size": "1.5",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<h3>The Importance of <strong>Vitamin C</strong> to Immune Cells</h3>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_cxKmYK": {
+          "type": "item",
+          "settings": {
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<h6>Immune cells need up to 40 times more vitamin C than other cells in the body. But sadly, the average person does not get nearly enough vitamin C to sustain a healthy immune system or immune response.</h6><h6><strong>Human Clinical Studies Conducted with Life-C Vitamin C<br/></strong>● Indicates better initial absorption when it is consumed.</h6><h6></h6><h6><br/>● Shows that Life-C lipid metabolites stay in the bloodstream longer, and remain at higher levels than other forms of vitamin C.</h6><h6></h6><h6><br/>● Shows an increase in indicators of a balanced immune system.</h6><h6><br/>● Demonstrates it protects cells from degeneration caused by free radical damage.</h6><h6><br/>References:<br/><a href=\"https://www.ncbi.nlm.nih.gov/pubmed/29099763?ref=retaildirect\" title=\"https://www.ncbi.nlm.nih.gov/pubmed/29099763?ref=retaildirect\">https://www.ncbi.nlm.nih.gov/pubmed/29099763<br/></a><a href=\"https://www.ncbi.nlm.nih.gov/pubmed/19263912?ref=retaildirect\" title=\"https://www.ncbi.nlm.nih.gov/pubmed/19263912?ref=retaildirect\">https://www.ncbi.nlm.nih.gov/pubmed/19263912</a></h6>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_jBfmWM": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/immune-lifetime.webp",
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_cPTgYK",
+        "item_UH4BE3",
+        "item_KULbDK",
+        "item_cxKmYK",
+        "item_jBfmWM"
+      ],
+      "custom_css": [
+        ".section-full .prose h3 strong {color: #f8c707;}",
+        ".section-full .section-header {text-align: center; display: block;}",
+        ".section-full {padding-top: 50px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": true,
+        "gap": "medium",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "",
+        "content": "<h5><strong>The Second + is</strong></h5><h3><strong>LIFE-C VITAMIN C BLEND</strong></h3><h5>Human beings are one of the few species in the world which lack the necessary enzyme to create our own vitamin C. Because of this, we're completely dependent on vitamin C from the foods and supplements we take in.</h5>",
+        "background": "#f4f4f4",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_gGUTXx": {
+      "type": "rich-text",
+      "blocks": {
+        "button_kDRiXn": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "xl",
+            "text": "TRY IMMUNE+++",
+            "url": "shopify://products/immune",
+            "background": "#f8c707",
+            "text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "button_kDRiXn"
+      ],
+      "custom_css": [
+        ".section-full {padding-bottom: 70px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "#f4f4f4",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "multi_column_WQeLtd": {
+      "type": "multi-column",
+      "blocks": {
+        "item_nJezP3": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/camu-camu.webp",
+            "column_size": "3",
+            "title": "Camu Camu",
+            "heading_tag": "h4",
+            "content": "<h6>60 times More Vitamin C Per Serving Than Oranges </h6>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_VcyLPr": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Acerola.webp",
+            "column_size": "3",
+            "title": "Acerola ",
+            "heading_tag": "h4",
+            "content": "<h6>Anti-inflammatory Benefits & Vitamin C Powerhouse</h6>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_nPxTjY": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Ashwagandha.webp",
+            "column_size": "3",
+            "title": "Ashwagandha ",
+            "heading_tag": "h4",
+            "content": "<h6>Increase Immunity To Colds & Infections </h6>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "spacer_kRVxc7": {
+          "type": "spacer",
+          "settings": {
+            "column_size": "6"
+          }
+        },
+        "item_iBmabz": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Sea_Buckthorn.webp",
+            "column_size": "3",
+            "title": "Sea Buckthorn",
+            "heading_tag": "h4",
+            "content": "<h6>Protects Against Infections</h6>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_ee8M99": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Pomegranate.webp",
+            "column_size": "3",
+            "title": "Pomegranate",
+            "heading_tag": "h4",
+            "content": "<h6>Vitamin C and immune support</h6>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_nJezP3",
+        "item_VcyLPr",
+        "item_nPxTjY",
+        "spacer_kRVxc7",
+        "item_iBmabz",
+        "item_ee8M99"
+      ],
+      "custom_css": [
+        ".section-full .prose h3 strong {color: #f8c707;}",
+        ".section-full .section-header {display: block; text-align: center;}",
+        ".section-full {padding-top: 50px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": true,
+        "gap": "large",
+        "text_alignment": "center",
+        "subheading": "",
+        "title": "",
+        "content": "<h5><strong>The Third + is</strong></h5><h3><strong>HERB AND BOTANICAL BLEND</strong></h3><h5>Our specialized blend of herbs and botanicals generates a <strong>powerhouse of immunity to colds, infections and viruses </strong></h5>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "rgba(0,0,0,0)"
+      }
+    },
+    "rich_text_ryeJBa": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_jrmcAP": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p><strong>References:<br/></strong><a href=\"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5752086/?ref=retaildirect\">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5752086/<br/></a><a href=\"https://www.sciencedirect.com/science/article/pii/S0308814610001172?ref=retaildirect\">https://www.sciencedirect.com/science/article/pii/S0308814610001172<br/></a><a href=\"https://www.ncbi.nlm.nih.gov/pubmed/16713218?ref=retaildirect\">https://www.ncbi.nlm.nih.gov/pubmed/16713218<br/></a><a href=\"https://www.ncbi.nlm.nih.gov/pubmed/23439798?ref=retaildirect\">https://www.ncbi.nlm.nih.gov/pubmed/23439798<br/></a><a href=\"https://www.ncbi.nlm.nih.gov/pubmed/22473853?ref=retaildirect\">https://www.ncbi.nlm.nih.gov/pubmed/22473853<br/></a><a href=\"https://www.ncbi.nlm.nih.gov/pubmed/11052704?ref=retaildirect\">https://www.ncbi.nlm.nih.gov/pubmed/11052704</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_jrmcAP"
+      ],
+      "custom_css": [
+        ".section-full {padding-bottom: 60px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_mkJxA6": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_6NfQaj": {
+          "type": "richtext",
+          "settings": {
+            "content": "<h5>“I was suffering from a stomach virus and experienced such a deep fatigue that I could barely get out of bed. I started to notice my energy coming back on day two of taking IMMUNE+++. I also began to sleep better and get more rest. I felt the effects of the IMMUNE+++ very quickly.”</h5><h3>Michael C.</h3>"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_6NfQaj"
+      ],
+      "custom_css": [
+        ".section-full {background-image: url(https://cdn.shopify.com/s/files/1/0790/7665/5396/files/text-bg-1.webp?v=1724774518); padding-top: 70px; padding-bottom: 70px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "multi_column_Q4jWaw": {
+      "type": "multi-column",
+      "blocks": {
+        "item_bYJDVM": {
+          "type": "item",
+          "settings": {
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<h5><strong>“Healthy Immunity, Healthy Life”</strong> <br/>Recovery Plan</h5><h6>● Take IMMUNE+++ Once A Day<br/>● Develop A Stronger, More Robust Immune System<br/>● Enjoy A Healthier Life</h6><h6><br/></h6><h6>By building stronger immunity against viruses, colds, and infections you can enjoy:<br/>● Fewer Colds & Flus<br/>● More Energy<br/>● Healthier Skin<br/>● Better Mental Clarity & Focus<br/>● Reduced Inflammation</h6>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_8bg7DU": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/IMMUNE-Bottle-Box.webp",
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_bYJDVM",
+        "item_8bg7DU"
+      ],
+      "custom_css": [
+        ".section-full .multi-column {align-items: center;}",
+        ".section-full .prose h5 strong {color: #2b66b3;}",
+        ".section-full .section-header {display: block; text-align: center;}",
+        ".section-full {padding-top: 50px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": true,
+        "gap": "small",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "",
+        "content": "<h4><strong>Together, this powerful combination of ingredients supports healthy immune function,<br/>boosts immune health and immune response and reduces inflammation.</strong></h4>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_rryWRy": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_cckhft": {
+          "type": "richtext",
+          "settings": {
+            "content": "<h4>When you choose the IMMUNE+++ <br/><strong>“Healthy Immunity, Healthy Life”</strong> <br/>Recovery Plan You’ll Receive a 30-Day<br/>Supply</h4>"
+          }
+        },
+        "button_jArgTG": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "xl",
+            "text": "ORDER NOW",
+            "url": "shopify://products/immune",
+            "background": "#f8c707",
+            "text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_cckhft",
+        "button_jArgTG"
+      ],
+      "custom_css": [
+        ".section-full .prose h4 strong {color: #2b66b3;}",
+        ".section-full {padding-bottom: 50px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "multi_column_VC9EmL": {
+      "type": "multi-column",
+      "blocks": {
+        "item_ALLVae": {
+          "type": "item",
+          "settings": {
+            "column_size": "3",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<h6>“I was sick for a whole week and had been drained of energy. Then my bottle of IMMUNE+++ arrived. Within three or four days, I felt better.” </h6><h6><strong><br/>Hilary S.</strong></h6>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_e9QAJK": {
+          "type": "item",
+          "settings": {
+            "column_size": "3",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<h6>\"Recently I had debilitating head discomfort accompanied by chills, loss of appetite and nausea. On the second day of taking IMMUNE+++, I could already feel my temperature normalizing and by the third morning, the terrible head discomfort was gone. I continued to take IMMUNE+++ for a total of seven days and my winter aches and discomforts did not come back.\"</h6><h6><strong><br/>R. S.</strong></h6>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_qJ4wjX": {
+          "type": "item",
+          "settings": {
+            "column_size": "3",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<h6>\"I was suffering from a stomach virus and experienced such a deep fatigue that I could barely get out of bed. I started to notice my energy coming back on day two of taking IMMUNE+++. I also began to sleep better and get more rest. I felt the effects of the IMMUNE+++ very quickly.\"</h6><h6><strong><br/>Michael C.</strong></h6>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_ALLVae",
+        "item_e9QAJK",
+        "item_qJ4wjX"
+      ],
+      "custom_css": [
+        ".section-full {background-image: url(https://cdn.shopify.com/s/files/1/0790/7665/5396/files/text-bg-1.webp?v=1724774518); padding-top: 60px;}",
+        ".section-full .section-header {display: block; text-align: center;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": false,
+        "gap": "medium",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "",
+        "content": "<h2><strong>Testimonials</strong></h2>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "media_with_text_KHJJcX": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_8YGmWP": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/batch.webp",
+            "media_width": 30,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "",
+            "content": "<h5><strong>Our Industry-Leading 60-Day \"Hassle-Free\" Unconditional Money-Back Guarantee</strong></h5><h6><strong>We’re so sure you’ll love IMMUNE+++, you’re covered by our FULL 60-day money-back guarantee.</strong></h6><p><br/>We want you to have plenty of time to experience the renewed energy, pain-free mobility, and youthful appearance that comes with taking IMMUNE+++. If you’re not happy for any reason whatsoever, just let us know, and we’ll cheerfully process your return.</p>",
+            "link_text": "TRY IT RISK-FREE",
+            "link_url": "shopify://products/immune",
+            "background": "rgba(0,0,0,0)",
+            "background_gradient": "",
+            "text_color": "#000000",
+            "text_gradient": "",
+            "button_background": "#f8c707",
+            "button_text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "image_8YGmWP"
+      ],
+      "custom_css": [
+        ".section-full .media-with-text__media img {object-fit: contain;}"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "none"
+      }
+    },
+    "multi_column_BpnMqf": {
+      "type": "multi-column",
+      "blocks": {
+        "item_VT7iTQ": {
+          "type": "item",
+          "settings": {
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<h6><strong>A.</strong> You can continue down the frustrating path of short-term, quick fix solutions that only mask the real problem.</h6>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_mWQcYk": {
+          "type": "item",
+          "settings": {
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<h6><strong>B. </strong>Or experience IMMUNE+++ 100% Risk-Free and join our vibrant community of people who’ve taken charge of their health.</h6>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_eCUDVM": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/IMMUNE-Bottle-Box.webp",
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_JttDdn": {
+          "type": "item",
+          "settings": {
+            "column_size": "2",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "<h4>When you choose the IMMUNE+++ </h4><h4><strong>“Healthy Immunity, Healthy Life” </strong></h4><h4>Program you’ll receive:</h4><h4>A 30 Day Supply of IMMUNE+++ </h4>",
+            "link_url": "shopify://products/immune",
+            "link_text": "TRY IMMUNE+++",
+            "link_style": "button"
+          }
+        }
+      },
+      "block_order": [
+        "item_VT7iTQ",
+        "item_mWQcYk",
+        "item_eCUDVM",
+        "item_JttDdn"
+      ],
+      "custom_css": [
+        ".section-full .section-header {display: block; text-align: center;}",
+        ".section-full .prose h4 strong {color: #2b66b3;}",
+        ".section-full .multi-column {align-items: center;}",
+        ".section-full {padding-top: 60px; padding-bottom: 60px;}",
+        ".section-full .prose .button {background: #ffd20e; color: #000;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": false,
+        "gap": "medium",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "",
+        "content": "<h3><strong>Two Paths:</strong></h3><h4>We’ve come to a fork in the road...</h4>",
+        "background": "#eaeaea",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_izd9t7": {
+      "type": "rich-text",
+      "blocks": {
+        "image_w4JLEe": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/color-dots.webp",
+            "width_mode": "custom",
+            "max_width": 250,
+            "mobile_max_width": 200
+          }
+        }
+      },
+      "block_order": [
+        "image_w4JLEe"
+      ],
+      "custom_css": [
+        ".section-full {padding-bottom: 40px; padding-top: 40px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "#eaeaea",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "faq_qK97ay": {
+      "type": "faq",
+      "blocks": {
+        "item_RJYHDM": {
+          "type": "item",
+          "settings": {
+            "title": "How do I take IMMUNE+++?",
+            "content": "<p>The suggested daily usage for IMMUNE+++ is 1 to 2 tablets daily and is best taken right before a meal.</p>"
+          }
+        },
+        "item_QMJF46": {
+          "type": "item",
+          "settings": {
+            "title": "How many tablets are in each bottle of IMMUNE+++? ",
+            "content": "<p>Each bottle of IMMUNE+++ contains 30 tablets.</p>"
+          }
+        },
+        "item_RA4UUW": {
+          "type": "item",
+          "settings": {
+            "title": "Will taking IMMUNE+++ and LAMININE together boost its effects?",
+            "content": "<p>Evidence indicates that taking IMMUNE+++ and LAMININE together for 12 weeks had a significant effect on important immune system components. <a href=\"https://www.lifepharm.com/media/pdf/ScienceArticles/I-ACN-Study.pdf?ref=retaildirect\">Read the entire study</a></p>"
+          }
+        },
+        "item_fnUjdq": {
+          "type": "item",
+          "settings": {
+            "title": "Are there any adverse reactions for IMMUNE+++?",
+            "content": "<p>There are no documented cases of adverse reactions to IMMUNE+++. When taken as recommended, IMMUNE+++ is safe and effective. </p>"
+          }
+        },
+        "item_97XWnU": {
+          "type": "item",
+          "settings": {
+            "title": "Am I getting too much Vitamin C from IMMUNE+++?",
+            "content": "<p>The recommended daily value of Vitamin C varies from 85 mg to 2,000 mg per day, the upper range being well above the levels in IMMUNE+++. Additionally, because Vitamin C is water-soluble, the body will eliminate any Vitamin C it doesn’t use.</p>"
+          }
+        },
+        "item_9LcdGr": {
+          "type": "item",
+          "settings": {
+            "title": "Can I take more over-the-counter forms of Vitamin C and receive the same benefit as I would from IMMUNE+++?",
+            "content": "<p>IMMUNE+++ is a combination of the Opti-Shield Blend, Life-C Blend and an Herb and Botanical Blend, so it is not just another Vitamin C product. The Vitamin C that is in IMMUNE+++ is fueled by a unique delivery system that makes it more potent and effective than common Vitamin C products on the market today.</p>"
+          }
+        },
+        "item_Mejdmr": {
+          "type": "item",
+          "settings": {
+            "title": "For how long do I need to take IMMUNE+++ before I notice results?",
+            "content": "<p>The effects of IMMUNE+++ will vary by individual. Some may feel positive benefits in a short period of time and others may have to take the product longer to notice a change.</p>"
+          }
+        },
+        "item_a8eR8p": {
+          "type": "item",
+          "settings": {
+            "title": "If I have a difficult time swallowing supplements, can I grind up IMMUNE+++ and put it in food or beverages?",
+            "content": "<p>The recommended daily value of Vitamin C varies from 85 mg to 2,000 mg per day, the upper range being well above the levels in IMMUNE+++. Additionally, because Vitamin C is water-soluble, the body will eliminate any Vitamin C it doesn’t use.</p>"
+          }
+        },
+        "item_3YL7k4": {
+          "type": "item",
+          "settings": {
+            "title": "If I’m already not feeling well, can I take more IMMUNE+++?",
+            "content": "<p>IMMUNE+++ is not intended to treat, cure or prevent any condition. It is a natural dietary supplement whose ingredients are well-known for boosting the body’s immune defense and response to illness-causing organisms. If you are feeling unwell, it’s best to speak with your physician.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_RJYHDM",
+        "item_QMJF46",
+        "item_RA4UUW",
+        "item_fnUjdq",
+        "item_97XWnU",
+        "item_9LcdGr",
+        "item_Mejdmr",
+        "item_a8eR8p",
+        "item_3YL7k4"
+      ],
+      "custom_css": [
+        ".section-full .prose h3 strong {color: #f8c707;}",
+        ".section-full .accordion__content {background-color: #fff; padding: 15px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "",
+        "content": "<h3>Some Common Questions about <strong>IMMUNE+++</strong></h3><p>Want to give IMMUNE+++ a try but still have questions about this amazing supplement? Here we’ll address some of the most common inquiries about this natural superfood.</p>",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "button_text": "TRY IMMUNE+++",
+        "button_url": "shopify://products/immune",
+        "text_position": "center",
+        "background": "#eaeaea",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "#f8c707",
+        "button_text_color": "#000000",
+        "accordion_background": "#eaeaea",
+        "accordion_text_color": "rgba(0,0,0,0)"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "media_with_text_Vxdhq4",
+    "multi_column_KRaHy9",
+    "rich_text_A46XhR",
+    "rich_text_YpBr8D",
+    "media_with_text_DnxEfW",
+    "rich_text_y6mckP",
+    "multi_column_yjtGbk",
+    "multi_column_iwgbXd",
+    "rich_text_nwRCmB",
+    "rich_text_fXXTeD",
+    "multi_column_tdNfqb",
+    "rich_text_rkhfL7",
+    "multi_column_dGTED6",
+    "rich_text_gGUTXx",
+    "multi_column_WQeLtd",
+    "rich_text_ryeJBa",
+    "rich_text_mkJxA6",
+    "multi_column_Q4jWaw",
+    "rich_text_rryWRy",
+    "multi_column_VC9EmL",
+    "media_with_text_KHJJcX",
+    "multi_column_BpnMqf",
+    "rich_text_izd9t7",
+    "faq_qK97ay"
+  ]
+}

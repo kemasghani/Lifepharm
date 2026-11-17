@@ -1,0 +1,600 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [
+        "h1 {text-align: left !important;}"
+      ],
+      "settings": {
+        "content_width": "100%"
+      }
+    },
+    "image_with_text_overlay_HrG6nG": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_8H8RhG": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "THE REGENERATION COMPANY"
+          }
+        },
+        "liquid_7fEAm9": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<h1 style= \"text-align: left;\">Refer and<span style= \"color: #FF8F00;\"> Earn up to $10,000 a month</span></h1>"
+          }
+        },
+        "richtext_DxKHLz": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p><strong>Our Ambassador </strong>has gifted you a 37% introductory offer, for a year's supply of our LAMININE Annual Supply</p>"
+          }
+        },
+        "button_F97WFn": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "lg",
+            "text": "GET STARTED",
+            "url": "#gather-inline-97f8b027d1946206fd10",
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading_8H8RhG",
+        "liquid_7fEAm9",
+        "richtext_DxKHLz",
+        "button_F97WFn"
+      ],
+      "custom_css": [
+        "@media screen and (min-width: 700px) {.content-over-media > :not(img, video, iframe, svg, video-media, picture) {max-width: 600px; }}",
+        "@media only screen and (max-width: 769px) {p {text-align: left !important; }}"
+      ],
+      "name": "Image with text overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "md",
+        "image": "shopify://shop_images/earn_header_image_4e1ef703-6c4e-4f33-8917-7b554d7a64e1.jpg",
+        "mobile_image": "shopify://shop_images/Earn_Background_1200x1600_3b7ca4dd-f878-4507-ba29-d5af42ee1568.jpg",
+        "mobile_text_position": "place-self-start text-start",
+        "desktop_text_position": "sm:place-self-center-start sm:text-start",
+        "text_color": "#181818",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "design_pack_marquee_multitext_87qWWt": {
+      "type": "design_pack_-_marquee_-_multitext",
+      "blocks": {
+        "content_8VxxLm": {
+          "type": "content",
+          "settings": {
+            "text": "    18+ CLINICAL STUDIES       |"
+          }
+        },
+        "content_qqhqW6": {
+          "type": "content",
+          "settings": {
+            "text": "    REGENERATION PATENT (SEPT 2020)       |"
+          }
+        },
+        "content_cdQfBA": {
+          "type": "content",
+          "settings": {
+            "text": "    WINNER OF THE MONDE SELECTION GOLD AWARD       |"
+          }
+        },
+        "content_Up3DBz": {
+          "type": "content",
+          "settings": {
+            "text": "    RATED 5 STARS BY DERMATEST®       |"
+          }
+        }
+      },
+      "block_order": [
+        "content_8VxxLm",
+        "content_qqhqW6",
+        "content_cdQfBA",
+        "content_Up3DBz"
+      ],
+      "custom_css": [
+        "{font-weight: 600;}"
+      ],
+      "name": "Marquee - multi-text 🎒",
+      "settings": {
+        "speed": 25,
+        "reverse_scrolling": false,
+        "scrolling_pause": false,
+        "image_size": "medium",
+        "text_size": 60,
+        "text_color": "#ffffff",
+        "background_color": "#FF8F00",
+        "fade_edges": false,
+        "inner_padding": 20,
+        "outer_margin": 0,
+        "custom_css": "",
+        "mobile_custom_css": "",
+        "anchor_id": "",
+        "override_theme_font": false,
+        "main_font": "system_ui_n4"
+      }
+    },
+    "media_with_text_RLB7Fk": {
+      "type": "media-with-text",
+      "custom_css": [
+        "{--hash-difference: 0;}",
+        "@media screen and (min-width: 700px) {.media-with-text {margin-bottom: -95px !important; }}"
+      ],
+      "name": "Media with text",
+      "settings": {
+        "full_width": true,
+        "alternate_media_position": true,
+        "spacing": "none"
+      }
+    },
+    "custom_html_piQzVV": {
+      "type": "custom-html",
+      "name": "Custom HTML",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "html": "<div id=\"gather-inline-97f8b027d1946206fd10\" class=\"gather-resize\" style=\"max-width: 600px; height: auto; margin: auto;\"></div>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "17598969631b39b7d4": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_300753b_iTMerN": {
+          "type": "ai_gen_block_300753b",
+          "settings": {
+            "hero_title": "Program Details",
+            "hero_subtitle": "The Lifepharm Ambassador program provides two earning tracks, both designed to get you the level of earnings and support that best suits you.",
+            "hero_title_size": 44,
+            "subtitle_size": 18,
+            "hero_bg_color_1": "#667eea",
+            "hero_bg_color_2": "#764ba2",
+            "title_gradient_1": "#ff8f00",
+            "title_gradient_2": "#ff6f00",
+            "text_color": "#000000",
+            "fast_track_badge": "FAST TRACK",
+            "fast_track_title": "14-Day Fast Track",
+            "fast_track_description": "Accelerated path to maximum earnings with premium support and exclusive bonuses.",
+            "fast_track_feature_1": "Priority support & training",
+            "fast_track_feature_2": "Exclusive marketing materials",
+            "fast_track_feature_3": "Higher commission rates",
+            "standard_track_badge": "STANDARD",
+            "standard_track_title": "Standard Track",
+            "standard_track_description": "Steady growth path with comprehensive training and ongoing support for sustainable success.",
+            "standard_track_feature_1": "Complete training program",
+            "standard_track_feature_2": "Marketing toolkit included",
+            "standard_track_feature_3": "Community support access",
+            "earning_structure_title": "Six-Level Earning Structure",
+            "level_1_amount": "Up to $250 / month",
+            "level_1_description": "Starter level",
+            "level_2_amount": "Up to $500 / month",
+            "level_2_description": "Bronze ambassador",
+            "level_3_amount": "Up to $1,000 / month",
+            "level_3_description": "Silver ambassador",
+            "level_4_amount": "Up to $2,000 / month",
+            "level_4_description": "Gold ambassador",
+            "level_5_amount": "$4,000 / month",
+            "level_5_description": "Platinum ambassador",
+            "level_6_amount": "Up to $10,000",
+            "level_6_description": "Diamond ambassador",
+            "process_title": "Simple 3-Step Process",
+            "step_1_title": "Purchase Annual Supply",
+            "step_1_description": "Invest in your health and business with our premium Annual Supply package.",
+            "step_2_title": "Refer 3 Friends",
+            "step_2_description": "Share the LifePharm experience with friends and family who value their health.",
+            "step_3_title": "Earn Rewards",
+            "step_3_description": "Start earning monthly commissions and build your path to financial freedom.",
+            "benefits_title": "Ambassador Benefits",
+            "benefit_1_title": "Monthly Payouts",
+            "benefit_1_description": "Receive guaranteed monthly payments directly to your account.",
+            "benefit_2_title": "Unlimited Potential",
+            "benefit_2_description": "No caps on your earning potential - the sky's the limit.",
+            "benefit_3_title": "Exclusive Training",
+            "benefit_3_description": "Access to premium training materials and ongoing support.",
+            "cta_text": "Start Your Ambassador Journey",
+            "cta_link": "#gather-inline-97f8b027d1946206fd10",
+            "cta_font_size": 18,
+            "cta_bg_1": "#ff8f00",
+            "cta_bg_2": "#ff6f00",
+            "cta_text_color": "#ffffff",
+            "testimonial_quote": "",
+            "testimonial_author": "",
+            "faq_title": "Frequently Asked Questions",
+            "faq_1_question": "How do I join and refer?",
+            "faq_1_answer": "You qualify to enrol into the referral program as an annual supply customer.",
+            "faq_2_question": "What is a qualified referral?",
+            "faq_2_answer": "When your referred friend uses your code, or the email address they accepted the invitation with, to make a purchase, this will be recorded as a successful referral.",
+            "faq_3_question": "What support do I receive?",
+            "faq_3_answer": "You'll receive a comprehensive guide email, marketing materials and dedicated support team access.",
+            "faq_4_question": "What does my friend get?",
+            "faq_4_answer": "They will receive an introductory discount (e.g., $20 off) applied to their first purchase via a unique code.",
+            "faq_5_question": "How does the earning structure work?",
+            "faq_5_answer": "You qualify for Level 1 when you refer 3 qualifying customers. When you do so within 14 days, you earn $250 (Fast Track), and if you achieve this after 14 days, you earn $125 (Standard Track).  Level 2: When each of those 3 customers also qualifies for Level 1, you'll earn $500 on the Fast Track and $250 on the Standard Track. This structure extends to 6 levels, where you can earn up to $10,000 on the Fast Track and $5,000 on the Standard Track.",
+            "section_title_size": 36,
+            "card_bg_color": "#ffffff",
+            "card_text_color": "#333333",
+            "badge_color": "#ff8f00",
+            "badge_text_color": "#ffffff",
+            "success_color": "#28a745",
+            "level_bg_color": "#f8f9fa",
+            "level_hover_border": "#ff8f00",
+            "level_number_bg": "#ff8f00",
+            "level_number_text": "#ffffff",
+            "amount_color": "#ff8f00",
+            "step_icon_bg_1": "#ff8f00",
+            "step_icon_bg_2": "#ff6f00",
+            "step_icon_color": "#ffffff",
+            "benefits_bg_color": "#f8f9fa",
+            "benefits_text_color": "#333333",
+            "benefit_icon_color": "#ff8f00",
+            "testimonial_bg_color": "#f8f9fa",
+            "testimonial_text_color": "#333333",
+            "testimonial_author_color": "#ff8f00",
+            "faq_bg_color": "#ffffff",
+            "faq_text_color": "#333333"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_300753b_iTMerN"
+      ],
+      "settings": {}
+    },
+    "rich_text_rg7fzk": {
+      "type": "rich-text",
+      "blocks": {
+        "liquid_yb8tU4": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<h2 class=\"h2\" style= \"text-align: center;\">LifePharm Empowers<span style= \"color: #FF8F00;\"> Regeneration.</span></h2>"
+          }
+        }
+      },
+      "block_order": [
+        "liquid_yb8tU4"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "{margin-bottom: -20px;}"
+      ],
+      "name": "Rich text - IMMUNE+++",
+      "settings": {
+        "full_width": false,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "multi_column_YX6nXB": {
+      "type": "multi-column",
+      "blocks": {
+        "item_F6bBfx": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/60_day_money_back_guarantee_a8c1bb57-aee9-45d6-a57d-a6816e24a1ef.png",
+            "column_size": "4",
+            "title": "Column title",
+            "heading_tag": "h4",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_FBqrGG": {
+          "type": "item",
+          "settings": {
+            "column_size": "4",
+            "title": "Column title",
+            "heading_tag": "h4",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_NfxUyc": {
+          "type": "item",
+          "settings": {
+            "column_size": "4",
+            "title": "Column title",
+            "heading_tag": "h4",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_erVdbk": {
+          "type": "item",
+          "settings": {
+            "column_size": "4",
+            "title": "Column title",
+            "heading_tag": "h4",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_VaFW4J": {
+          "type": "item",
+          "settings": {
+            "column_size": "4",
+            "title": "Column title",
+            "heading_tag": "h4",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_LWQfht": {
+          "type": "item",
+          "settings": {
+            "column_size": "4",
+            "title": "Column title",
+            "heading_tag": "h4",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_MBBPCT": {
+          "type": "item",
+          "settings": {
+            "column_size": "4",
+            "title": "Column title",
+            "heading_tag": "h4",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_kpTqEc": {
+          "type": "item",
+          "settings": {
+            "column_size": "4",
+            "title": "Column title",
+            "heading_tag": "h4",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_F6bBfx",
+        "item_FBqrGG",
+        "item_NfxUyc",
+        "item_erVdbk",
+        "item_VaFW4J",
+        "item_LWQfht",
+        "item_MBBPCT",
+        "item_kpTqEc"
+      ],
+      "disabled": true,
+      "name": "Multi-column",
+      "settings": {
+        "full_width": false,
+        "stack_on_mobile": true,
+        "gap": "medium",
+        "text_alignment": "center",
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_r7nUpj": {
+      "type": "rich-text",
+      "blocks": {
+        "liquid_qTwjkG": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<h2 class=\"h2\" style= \"text-align: left;\">Real<span style= \"color: #FF8F00;\"> People.</span><br>Real <span style= \"color: #FF8F00;\"> Regeneration.</span></h2>"
+          }
+        },
+        "richtext_XVDEKe": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>At LifePharm, we believe everyone deserves the chance to thrive. With over $100 million paid in commissions across 50+ countries, our community of Independent Business Owners is turning purpose into prosperity - reclaiming their health, building lasting income, and transforming what’s possible for their future. </p>"
+          }
+        },
+        "divider_XWKcXN": {
+          "type": "divider",
+          "settings": {}
+        },
+        "image_PCxqik": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/commissions_lifepharm.png",
+            "width_mode": "full_width",
+            "max_width": 370,
+            "mobile_max_width": 250
+          }
+        }
+      },
+      "block_order": [
+        "liquid_qTwjkG",
+        "richtext_XVDEKe",
+        "divider_XWKcXN",
+        "image_PCxqik"
+      ],
+      "custom_css": [
+        "@media only screen and (max-width: 769px) {h2 {text-align: center !important; margin: 0 20px 0 20px; }}"
+      ],
+      "name": "Rich text - IMMUNE+++",
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "start",
+        "background": "#fff4e5",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "media_with_text_3x7PnT": {
+      "type": "media-with-text",
+      "custom_css": [
+        "{--background-differs-from-previous: 0;}",
+        "@media only screen and (max-width: 769px) {p, h2 {text-align: center !important; }}"
+      ],
+      "name": "Media with text",
+      "settings": {
+        "full_width": true,
+        "alternate_media_position": false,
+        "spacing": "none"
+      }
+    },
+    "multi_column_MQ4Bbr": {
+      "type": "multi-column",
+      "blocks": {
+        "item_JhCk9g": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/comparison_mobile.png",
+            "column_size": "3",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_6wYECg": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/comparison_mobile.png",
+            "column_size": "3",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_8B7zTB": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/comparison_mobile.png",
+            "column_size": "3",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_yMjC6T": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/comparison_mobile.png",
+            "column_size": "3",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_qEfa3e": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/comparison_mobile.png",
+            "column_size": "3",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_XnQfYB": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/comparison_mobile.png",
+            "column_size": "3",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_JhCk9g",
+        "item_6wYECg",
+        "item_8B7zTB",
+        "item_yMjC6T",
+        "item_qEfa3e",
+        "item_XnQfYB"
+      ],
+      "disabled": true,
+      "name": "Multi-column",
+      "settings": {
+        "full_width": false,
+        "stack_on_mobile": true,
+        "gap": "medium",
+        "text_alignment": "center",
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_overlay_HrG6nG",
+    "design_pack_marquee_multitext_87qWWt",
+    "media_with_text_RLB7Fk",
+    "custom_html_piQzVV",
+    "17598969631b39b7d4",
+    "rich_text_rg7fzk",
+    "multi_column_YX6nXB",
+    "rich_text_r7nUpj",
+    "media_with_text_3x7PnT",
+    "multi_column_MQ4Bbr"
+  ]
+}

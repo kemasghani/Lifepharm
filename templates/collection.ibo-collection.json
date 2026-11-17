@@ -1,0 +1,167 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "collection-banner",
+      "disabled": true,
+      "custom_css": [
+        ".h1 {font-weight: 600 !important;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "show_collection_title": true,
+        "show_collection_description": true,
+        "show_collection_image": true,
+        "collection_title_size": "h1",
+        "image_size": "md",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "featured_product": "",
+        "featured_product_heading": "Featured product",
+        "text_color": "#ffffff",
+        "overlay_color": "#181818",
+        "overlay_opacity": 20
+      }
+    },
+    "image_with_text_overlay_nExUhN": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "liquid_yycKq3": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<h1 style= \"text-align: left;\"><span style= \"color: #FF8F00;\"> IBO</span> Collection</h1>"
+          }
+        }
+      },
+      "block_order": [
+        "liquid_yycKq3"
+      ],
+      "custom_css": [
+        "@media screen and (min-width: 700px) {.sm\\:text-start {text-align: start; padding-bottom: 230px !important; }}",
+        "@media screen and (max-width: 700px) {.sm\\:text-start {text-align: start; padding-top: 20px !important; }}"
+      ],
+      "name": "Image with text overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify://shop_images/ProductPageHeaderImage_22b486b1-41b9-48a6-ac69-8d8720289578.jpg",
+        "mobile_image": "shopify://shop_images/Shop_All_-_Mobile_LifePharm_1223f17e-cc94-4402-ab02-9f51d9a7b586.jpg",
+        "mobile_text_position": "place-self-start-center text-center",
+        "desktop_text_position": "sm:place-self-start-center sm:text-center",
+        "text_color": "#181818",
+        "overlay_color": "#f9f9f9",
+        "overlay_opacity": 0
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "custom_css": [
+        "d.product-card__image {border-radius: 6px;}",
+        ".button {background-color: #ff8f00;}",
+        ".text-custom {text-align: start; padding-top: 20px;}",
+        ".text-center {text-align: left;}",
+        ".removable-facet {background: #f5f5f5;}",
+        ".bold {font-weight: 600; font-size: 16px;}",
+        ".text-subdued {font-size: 15px; color: #181818;}",
+        ".product-card {border-width: 1px; border-color: #e9e9e9; padding-bottom: 25px; background: #f9f9f9; border-radius: 25px;}",
+        ".collection__top-bar {padding-left: 70px !important;}",
+        ".stamped-badge {font-size: 15px; padding-top: 12px; color: #5d5d5d;}"
+      ],
+      "settings": {
+        "products_per_page": 24,
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 4,
+        "filter_layout": "drawer",
+        "show_sort_by": false,
+        "show_filters": true,
+        "show_filter_group_name": true,
+        "show_filter_values_count": false,
+        "open_first_filter_group": false
+      }
+    },
+    "image_with_text_overlay_nh6CMq": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_X7XXtB": {
+          "type": "heading",
+          "settings": {
+            "text": "Unsure Where to Begin?",
+            "heading_tag": "h2"
+          }
+        },
+        "richtext_wh4Enb": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>We're here and ready to help with advice</p>"
+          }
+        },
+        "button_ekgtnG": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "lg",
+            "text": "<a onclick=\"GorgiasChat.open();\">Chat with our team</a>",
+            "url": "",
+            "background": "#ff8f00",
+            "text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "heading_X7XXtB",
+        "richtext_wh4Enb",
+        "button_ekgtnG"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "sm",
+        "image": "shopify://shop_images/home_page_2_lifepharm_copy.jpg",
+        "mobile_image": "shopify://shop_images/collection_where_to_begin_mobile.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center-start sm:text-start",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
+    "custom_liquid_KkMxCr": {
+      "type": "custom-liquid",
+      "custom_css": [
+        ".collection__top-bar {padding-left: 70px !important;}"
+      ],
+      "name": "Custom Liquid",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "liquid": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "image_with_text_overlay_nExUhN",
+    "main",
+    "image_with_text_overlay_nh6CMq",
+    "custom_liquid_KkMxCr"
+  ]
+}

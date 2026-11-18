@@ -300,6 +300,8 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
   .shopify-section--main-product .product-gallery--desktop-carousel .product-gallery__media:not(#lp-none) { aspect-ratio: 1; display: grid; place-items: center; border-radius: 0; }
   .shopify-section--main-product .product-gallery--desktop-carousel .product-gallery__media > :is(img, .media, video) { width: 100%; height: 100%; object-fit: contain; }
   .shopify-section--main-product .product-gallery--desktop-carousel .product-gallery__cursor { display: none; }
+  /* Impact hides the native cursor on any parent of a custom-cursor (:has(> custom-cursor) { cursor: none }); with the custom one hidden, bring a cursor back. A click still moves to the next image. */
+  .shopify-section--main-product .product-gallery--desktop-carousel :has(> .product-gallery__cursor) { cursor: pointer; }
   .shopify-section--main-product .product-gallery__thumbnail-list-wrapper { display: block; }
   .shopify-section--main-product .product-gallery__thumbnail-list-wrapper > button { display: none; }
   .shopify-section--main-product .product-gallery__thumbnail-list:not(#lp-none) { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 5 * .5rem) / 6); gap: .5rem; margin: 0; padding: 0; align-items: stretch; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x proximity; }

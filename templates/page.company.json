@@ -319,6 +319,15 @@
             "role": "Europa Sales Manager",
             "bio": "<p>With a background in technical sciences and 15 years in multilevel marketing, Katalin has built high-performing teams and scaled networks of thousands. Since 2010, she’s led market expansion and growth strategies on the corporate side. Known for systemizing success and aligning teams under a shared vision, Katalin empowers others to replicate results and thrive in network marketing as a speaker and motivator.</p>"
           }
+        },
+        "daniel_west": {
+          "type": "person",
+          "settings": {
+            "image": "shopify://shop_images/Daniel_Profile.jpg",
+            "name": "Daniel West",
+            "role": "Senior Manager, Global Field Development",
+            "bio": "<p>With nearly 19 years of experience in the network marketing industry, including approximately 16 years dedicated to field development, Daniel brings a wealth of knowledge and a passion for helping others succeed.</p><p>Now, he's bringing that same passion to LifePharm, with a commitment to supporting our global IBO community and helping more people work toward their goals.</p>"
+          }
         }
       },
       "block_order": [
@@ -326,6 +335,7 @@
         "b1",
         "b2",
         "b3",
+        "daniel_west",
         "b6"
       ]
     },

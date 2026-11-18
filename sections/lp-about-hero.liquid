@@ -1,0 +1,67 @@
+<section class="lp-ab-hero" aria-labelledby="lp-ab-hero-{{ section.id }}">
+  <div class="container lp-ab-hero__grid">
+    <div class="lp-ab-hero__copy">
+      {%- if section.settings.eyebrow != blank -%}<p class="lp-eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      <h1 id="lp-ab-hero-{{ section.id }}" class="h1 lp-ab-hero__title">{{ section.settings.heading }}</h1>
+      {%- if section.settings.text != blank -%}<div class="lp-ab-hero__text">{{ section.settings.text }}</div>{%- endif -%}
+      {%- if section.blocks.size > 0 -%}
+        <ul class="lp-ab-hero__facts" role="list">
+          {%- for block in section.blocks -%}
+            <li {{ block.shopify_attributes }}><strong>{{ block.settings.value | escape }}</strong><span>{{ block.settings.label | escape }}</span></li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+    <div class="lp-ab-hero__media">
+      {%- if section.settings.image != blank -%}
+        {%- assign hero_alt = section.settings.image.alt | default: section.settings.image_alt -%}
+        {{ section.settings.image | image_url: width: 1600 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '600,900,1200,1600', sizes: '(min-width: 1000px) 46vw, 92vw', class: 'lp-ab-hero__img', alt: hero_alt }}
+      {%- else -%}
+        {{ 'lifestyle-2' | placeholder_svg_tag: 'lp-ab-hero__img' }}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+.lp-ab-hero { padding-block: clamp(2.5rem, 6vw, 5.5rem) var(--lp-section-gap); background: rgb(var(--lp-ivory)); }
+.lp-ab-hero__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+.lp-ab-hero__copy { display: grid; gap: 1.25rem; max-width: 34rem; }
+.lp-ab-hero__title { margin: 0; text-wrap: balance; }
+.lp-ab-hero__title em { font-style: normal; color: rgb(var(--lp-amber)); }
+.lp-ab-hero__text { font-size: clamp(1rem, 1.2vw, 1.125rem); line-height: 1.65; color: rgb(var(--lp-muted)); }
+.lp-ab-hero__text p { margin: 0; }
+.lp-ab-hero__facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: .75rem 0 0; padding: 1.25rem 0 0; list-style: none; border-top: 1px solid var(--lp-hairline); }
+.lp-ab-hero__facts li { display: grid; gap: .2rem; }
+.lp-ab-hero__facts strong { font-family: var(--lp-serif); font-weight: 400; font-size: clamp(1.375rem, 2vw, 1.75rem); line-height: 1.1; color: rgb(var(--lp-ink)); }
+.lp-ab-hero__facts span { font-size: .8125rem; color: rgb(var(--lp-muted)); }
+.lp-ab-hero__media { position: relative; border-radius: var(--lp-radius-lg); overflow: hidden; aspect-ratio: 5 / 4; background: rgb(var(--lp-sand)); box-shadow: var(--lp-shadow-2); }
+.lp-ab-hero__img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 999px) {
+  .lp-ab-hero__grid { grid-template-columns: 1fr; }
+  .lp-ab-hero__media { order: -1; aspect-ratio: 4 / 3; border-radius: var(--lp-radius); }
+  .lp-ab-hero__copy { max-width: none; }
+}
+@media (max-width: 480px) { .lp-ab-hero__facts { gap: .5rem; } .lp-ab-hero__facts strong { font-size: 1.25rem; } }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "LP About: hero",
+  "class": "lp-ab-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our Purpose" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Making Optimal Well-Being <em>Attainable for All</em></p>" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "image_alt", "label": "Image alt text" }
+  ],
+  "blocks": [
+    { "type": "fact", "name": "Fact", "limit": 3, "settings": [
+      { "type": "text", "id": "value", "label": "Value", "default": "2011" },
+      { "type": "text", "id": "label", "label": "Label", "default": "Founded" }
+    ] }
+  ],
+  "presets": [{ "name": "LP About: hero" }]
+}
+{% endschema %}

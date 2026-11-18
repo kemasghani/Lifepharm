@@ -311,24 +311,6 @@
             "bio": "<p>With a Bachelor of Science Degree in Business Administration and a concentration in Marketing from UC Riverside, Letisha is quickly becoming an integral part of the family business. She is assisting with product development, emerging social media research and marketing. As Wicky Suyanto’s eldest daughter, Letisha has quickly followed her father’s footsteps in pursuing her passion in health and beauty.</p>"
           }
         },
-        "b4": {
-          "type": "person",
-          "settings": {
-            "image": "shopify://shop_images/Kimberly_Purdy_Lloyd_3eb18f9a-0611-452d-91ef-7b4a251f5604.jpg",
-            "name": "Kimberly Purdy Lloyd",
-            "role": "Executive Research and Development Scientist",
-            "bio": "<p>Extensive and ongoing research is an absolute necessity for LifePharm. Kimberly Purdy Lloyd has a career path of formidable experience in dietary supplement and specialty skincare formulations. She joined the Dietary Supplement industry with specialties in Wound Care and Cosmetic Formulations, developing clinical and basic research protocols and peer publishes results.</p>"
-          }
-        },
-        "b5": {
-          "type": "person",
-          "settings": {
-            "image": "shopify://shop_images/Bonnie-Siddons-Mirror.jpg",
-            "name": "Bonnie Siddons",
-            "role": "Marketing Manager",
-            "bio": "<p>With a passion for branding and strategic marketing, Bonnie guides in shaping the messaging and visual identity of LifePharm. She brings extensive experience in&nbsp;brand development, content strategy, and creative direction, ensuring all marketing initiatives reflect the company’s commitment to&nbsp;quality, trust, and innovation. Her deep understanding of consumer engagement and storytelling enables her to craft campaigns and educational materials that empower IBOs to succeed.</p>"
-          }
-        },
         "b6": {
           "type": "person",
           "settings": {
@@ -344,8 +326,6 @@
         "b1",
         "b2",
         "b3",
-        "b4",
-        "b5",
         "b6"
       ]
     },

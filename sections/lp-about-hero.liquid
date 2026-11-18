@@ -14,7 +14,8 @@
     </div>
     <div class="lp-ab-hero__media">
       {%- if section.settings.image != blank -%}
-        {{ section.settings.image | image_url: width: 1600 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '600,900,1200,1600', sizes: '(min-width: 1000px) 46vw, 92vw', class: 'lp-ab-hero__img', alt: section.settings.image.alt | default: section.settings.image_alt }}
+        {%- assign hero_alt = section.settings.image.alt | default: section.settings.image_alt -%}
+        {{ section.settings.image | image_url: width: 1600 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '600,900,1200,1600', sizes: '(min-width: 1000px) 46vw, 92vw', class: 'lp-ab-hero__img', alt: hero_alt }}
       {%- else -%}
         {{ 'lifestyle-2' | placeholder_svg_tag: 'lp-ab-hero__img' }}
       {%- endif -%}

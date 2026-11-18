@@ -20,15 +20,15 @@
         "b1": {
           "type": "fact",
           "settings": {
-            "value": "USA",
-            "label": "Made in the USA"
+            "value": "1929",
+            "label": "Where the research began"
           }
         },
         "b2": {
           "type": "fact",
           "settings": {
-            "value": "NSF",
-            "label": "Fully NSF tested"
+            "value": "U.S. Patent",
+            "label": "LAMIDERM APEX formula"
           }
         }
       },

@@ -2,7 +2,7 @@
   <div class="container lp-ab-story__grid">
     <figure class="lp-ab-story__portrait" data-lp-reveal>
       {%- if section.settings.image != blank -%}
-        {{ section.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '400,600,800,1000', sizes: '(min-width: 1000px) 34vw, 80vw', class: 'lp-ab-story__img' }}
+        {{ section.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '400,600,800,1000', sizes: '(min-width: 1000px) 384px, min(352px, 90vw)', class: 'lp-ab-story__img' }}
       {%- else -%}
         {{ 'image' | placeholder_svg_tag: 'lp-ab-story__img' }}
       {%- endif -%}
@@ -25,9 +25,10 @@
 
 {% stylesheet %}
 .lp-ab-story { padding-block: var(--lp-section-gap); background: #fff; }
-.lp-ab-story__grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 6rem); align-items: center; }
+.lp-ab-story__grid { display: grid; grid-template-columns: minmax(0, 24rem) minmax(0, 36rem); justify-content: center; gap: clamp(2rem, 6vw, 5rem); align-items: center; }
 .lp-ab-story__portrait { margin: 0; display: grid; gap: .75rem; }
-.lp-ab-story__img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--lp-radius-lg); background: rgb(var(--lp-sand)); }
+/* Keep the portrait's own ratio (head and shoulders, like the team cards) instead of a tall crop that zooms into the face */
+.lp-ab-story__img { width: 100%; height: auto; object-fit: cover; border-radius: var(--lp-radius-lg); background: rgb(var(--lp-sand)); }
 .lp-ab-story__portrait figcaption { font-size: .8125rem; color: rgb(var(--lp-muted)); }
 .lp-ab-story__copy { display: grid; gap: 1.25rem; max-width: 36rem; }
 .lp-ab-story__copy h2 { margin: 0; text-wrap: balance; }
@@ -40,7 +41,7 @@
 .lp-ab-story__quote footer { margin-top: 1rem; font-size: .75rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgb(var(--lp-muted)); }
 @media (max-width: 999px) {
   .lp-ab-story__grid { grid-template-columns: 1fr; }
-  .lp-ab-story__portrait { max-width: 26rem; }
+  .lp-ab-story__portrait { max-width: 22rem; }
 }
 {% endstylesheet %}
 

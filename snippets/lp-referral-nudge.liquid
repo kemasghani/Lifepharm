@@ -4,11 +4,22 @@
   and the shopper has not ticked "Don't show this again". "Add My Referrer" opens the app's own enroller search,
   so attribution logic stays in the app. Logic: initReferralCheckout in assets/lp-premium.js.
 
+  Not rendered for a logged-in customer who already exists in Exigo (customer metafield Exigo.CustomerId).
+  Exigo credits every order to the customer's existing enroller and ignores the order's Referral for them
+  (verified 2026-11-19 against 228 orders), so asking would suggest a choice that has no effect.
+  With no dialog, initReferralCheckout exits, so the drawer "Referred by" row and the Referrer Name write are skipped too.
+
   @example
   {% render 'lp-referral-nudge' %}
 {% enddoc %}
 
-{%- unless request.design_mode -%}
+{%- liquid
+  assign lp_has_enroller = false
+  if customer and customer.metafields.Exigo.CustomerId.value != blank
+    assign lp_has_enroller = true
+  endif
+-%}
+{%- unless request.design_mode or lp_has_enroller -%}
 <dialog class="lp-refq" data-lp-refq aria-labelledby="lp-refq-title" aria-describedby="lp-refq-text">
   <button type="button" class="lp-refq__close" data-lp-refq-close aria-label="{{ 'general.accessibility.close' | t | escape }}">
     <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M1 1l10 10M11 1 1 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>

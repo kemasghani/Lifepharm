@@ -57,7 +57,10 @@
             <li><a href="{{ link.url }}" class="lp-menu__link">{{ link.title | escape }}</a></li>
           {%- endif -%}
         {%- endfor -%}
-        <li class="lp-menu__ref" hidden><button type="button" class="lp-menu__link lp-menu__link--btn" data-lp-menu-ref>Were you referred by someone?</button></li>
+        {%- comment -%} Existing Exigo customers keep their enroller, so the referral question is not offered to them {%- endcomment -%}
+        {%- unless customer and customer.metafields.Exigo.CustomerId.value != blank -%}
+          <li class="lp-menu__ref" hidden><button type="button" class="lp-menu__link lp-menu__link--btn" data-lp-menu-ref>Were you referred by someone?</button></li>
+        {%- endunless -%}
         <li><a href="{{ routes.search_url }}" class="lp-menu__link" aria-controls="search-drawer">{{ 'header.general.search' | t }}</a></li>
         {%- if shop.customer_accounts_enabled -%}
           <li><a href="{{ routes.account_url }}" class="lp-menu__link">{{ 'header.general.account' | t }}</a></li>

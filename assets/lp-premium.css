@@ -860,3 +860,10 @@ body:has(.shopify-section--main-product) .shopify-section--text-with-icons:not(#
 @keyframes lp-row-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .lp-ship, .lp-ship * { transition: none !important; animation: none !important; } }
 .lp-csum__free { display: inline-flex; align-items: center; gap: .4rem; }
+
+/* About page (lp-about-*): shared section heading */
+.lp-ab-head { display: grid; gap: .75rem; justify-items: center; text-align: center; max-width: 44rem; margin: 0 auto clamp(2rem, 4vw, 3.25rem); }
+.lp-ab-head h2 { margin: 0; text-wrap: balance; }
+.lp-ab-head h2 em { font-style: normal; color: rgb(var(--lp-amber)); }
+.lp-ab-head__text { font-size: 1.0625rem; line-height: 1.65; color: rgb(var(--lp-muted)); }
+.lp-ab-head__text p { margin: 0; }

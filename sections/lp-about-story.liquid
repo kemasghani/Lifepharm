@@ -1,0 +1,61 @@
+<section class="lp-ab-story" aria-labelledby="lp-ab-story-{{ section.id }}">
+  <div class="container lp-ab-story__grid">
+    <figure class="lp-ab-story__portrait" data-lp-reveal>
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '400,600,800,1000', sizes: '(min-width: 1000px) 34vw, 80vw', class: 'lp-ab-story__img' }}
+      {%- else -%}
+        {{ 'image' | placeholder_svg_tag: 'lp-ab-story__img' }}
+      {%- endif -%}
+      {%- if section.settings.caption != blank -%}<figcaption>{{ section.settings.caption | escape }}</figcaption>{%- endif -%}
+    </figure>
+    <div class="lp-ab-story__copy">
+      {%- if section.settings.eyebrow != blank -%}<p class="lp-eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      <h2 id="lp-ab-story-{{ section.id }}" class="h1">{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<div class="lp-ab-story__text">{{ section.settings.text }}</div>{%- endif -%}
+      {%- if section.settings.quote != blank -%}
+        <blockquote class="lp-ab-story__quote">
+          <svg class="lp-ab-story__mark" width="40" height="32" viewBox="0 0 40 32" aria-hidden="true" focusable="false"><path fill="currentColor" d="M0 32V19.2C0 8.4 6.1 1.9 16.3 0l1.6 4.4C12 6.1 9 9.6 8.7 14.4H16V32H0Zm22 0V19.2C22 8.4 28.1 1.9 38.3 0l1.6 4.4C34 6.1 31 9.6 30.7 14.4H38V32H22Z"/></svg>
+          <p>{{ section.settings.quote | escape }}</p>
+          {%- if section.settings.quote_author != blank -%}<footer>{{ section.settings.quote_author | escape }}</footer>{%- endif -%}
+        </blockquote>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+.lp-ab-story { padding-block: var(--lp-section-gap); background: #fff; }
+.lp-ab-story__grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 6rem); align-items: center; }
+.lp-ab-story__portrait { margin: 0; display: grid; gap: .75rem; }
+.lp-ab-story__img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--lp-radius-lg); background: rgb(var(--lp-sand)); }
+.lp-ab-story__portrait figcaption { font-size: .8125rem; color: rgb(var(--lp-muted)); }
+.lp-ab-story__copy { display: grid; gap: 1.25rem; max-width: 36rem; }
+.lp-ab-story__copy h2 { margin: 0; text-wrap: balance; }
+.lp-ab-story__copy h2 em { font-style: normal; color: rgb(var(--lp-amber)); }
+.lp-ab-story__text { font-size: 1.0625rem; line-height: 1.7; color: rgb(var(--lp-muted)); }
+.lp-ab-story__text p { margin: 0 0 .75rem; }
+.lp-ab-story__quote { position: relative; margin: .75rem 0 0; padding: 1.75rem 0 0; border-top: 1px solid var(--lp-hairline); }
+.lp-ab-story__mark { color: rgb(var(--lp-amber)); margin-bottom: .75rem; }
+.lp-ab-story__quote p { margin: 0; font-family: var(--lp-serif); font-weight: 400; font-size: clamp(1.375rem, 2.2vw, 1.875rem); line-height: 1.35; color: rgb(var(--lp-ink)); text-wrap: pretty; }
+.lp-ab-story__quote footer { margin-top: 1rem; font-size: .75rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgb(var(--lp-muted)); }
+@media (max-width: 999px) {
+  .lp-ab-story__grid { grid-template-columns: 1fr; }
+  .lp-ab-story__portrait { max-width: 26rem; }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "LP About: founder story",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Portrait" },
+    { "type": "text", "id": "caption", "label": "Caption" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "How It Started" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Health and Wealth, <em>Hand in Hand</em></p>" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "textarea", "id": "quote", "label": "Quote" },
+    { "type": "text", "id": "quote_author", "label": "Quote author" }
+  ],
+  "presets": [{ "name": "LP About: founder story" }]
+}
+{% endschema %}

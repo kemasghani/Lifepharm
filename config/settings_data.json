@@ -124,6 +124,56 @@
         "type": "shopify://apps/design-packs/blocks/design_packs/1efa8e58-6fa1-4c9a-9c0a-e71446c20785",
         "disabled": false,
         "settings": {}
+      },
+      "6444166244322975299": {
+        "type": "shopify://apps/teqnavi-lifepharm/blocks/sync-engine/019bc71e-c7cd-732d-b07b-3ca8ead35448",
+        "disabled": false,
+        "settings": {
+          "enable_sync": true,
+          "enable_logging": false,
+          "enable_silent_login": false,
+          "session_mode": "time_based",
+          "session_expiry_hours": 168,
+          "allow_override": true,
+          "override_only_if_expired": false,
+          "default_webalias": "RetailDirect",
+          "referral_parameter": "ref",
+          "url_format": "parameter",
+          "app_proxy_path": "/apps/teqnavi"
+        }
+      },
+      "5837924392476713577": {
+        "type": "shopify://apps/teqnavi-lifepharm/blocks/enrollment-handler/019bc71e-c7cd-732d-b07b-3ca8ead35448",
+        "disabled": false,
+        "settings": {
+          "enabled": true,
+          "enrollment_tag": "enrollment-kit",
+          "enrollment_collection_handles": "",
+          "ibo_pack_tag": "IBO packs",
+          "fallback_enrollment_variant_ids": "",
+          "fallback_enrollment_product_ids": "10456066752821",
+          "redirect_to_cart": true,
+          "custom_redirect_url": "",
+          "enable_logging": true,
+          "enrollment_type_source": "static",
+          "default_enrollment_type": "IBO",
+          "enrollment_type_tag_prefix": "enrollment-type:",
+          "enrollment_type_metafield_key": "enrollment_type",
+          "multiple_kit_behavior": "replace",
+          "multiple_kit_error_message": "You can only have one enrollment kit in your cart.",
+          "type_conflict_resolution": "last",
+          "type_priority_order": "IBO",
+          "enable_line_item_properties": true,
+          "line_item_key_1": "enrollmentkit",
+          "line_item_value_1": "true",
+          "line_item_key_2": "",
+          "line_item_value_2": "",
+          "enable_cart_attributes": true,
+          "cart_attr_key_1": "IsEnrollment",
+          "cart_attr_value_1": "true",
+          "cart_attr_key_2": "",
+          "cart_attr_value_2": ""
+        }
       }
     },
     "product_card_background": "#ffffff",

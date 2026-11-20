@@ -1,9 +1,10 @@
 {%- comment -%}
   PDP summary under the rating: short lead + "Ideal for" benefits.
   Benefits come from metafield custom.value_1 (comma list). Each one gets the brand's orange circle icon
-  when a keyword matches (Files and assets: lp-benefit-*.png, cut from Dropbox ICONS 2024; brain, bone,
-  sugar and hair drawn in the same style because the set has none). Long or sentence-like
-  values fall back to plain text.
+  (assets/lp-benefit-*.png, cut from Dropbox ICONS 2024; brain, bone, sugar and hair drawn in the same style
+  because the set has none). All icons live in theme assets so every store gets them (they were once Files on
+  the UK store only, which left US and EU blank). Unmatched terms get the regenerate icon so the row stays even.
+  Long or sentence-like values fall back to plain text.
 {%- endcomment -%}
 {%- liquid
   assign lp_mf = product.metafields.custom
@@ -46,34 +47,24 @@
                 assign term = t | strip
                 assign k = term | downcase
                 assign icon = ''
-                assign from_asset = false
                 if k contains 'brain' or k contains 'cognit' or k contains 'memory' or k contains 'focus'
                   assign icon = 'brain'
-                  assign from_asset = true
                 elsif k contains 'bone'
                   assign icon = 'bone'
-                  assign from_asset = true
                 elsif k contains 'sugar' or k contains 'glucose'
                   assign icon = 'sugar'
-                  assign from_asset = true
                 elsif k contains 'hair'
                   assign icon = 'hair'
-                  assign from_asset = true
                 elsif k contains 'nail'
                   assign icon = 'beauty'
-                  assign from_asset = true
                 elsif k contains 'hydrat' or k contains 'moistur'
                   assign icon = 'hydration'
-                  assign from_asset = true
                 elsif k contains 'elastic' or k contains 'firm'
                   assign icon = 'elasticity'
-                  assign from_asset = true
                 elsif k contains 'spot' or k contains 'pigment' or k contains 'tone'
                   assign icon = 'skin-renewal'
-                  assign from_asset = true
                 elsif k contains 'immun'
                   assign icon = 'immune'
-                  assign from_asset = true
                 elsif k contains 'aging' or k contains 'ageing' or k contains 'young' or k contains 'youth'
                   assign icon = 'healthy-aging'
                 elsif k contains 'joint' or k contains 'mobility'
@@ -92,17 +83,13 @@
                   assign icon = 'skin'
                 elsif k contains 'weight'
                   assign icon = 'weight'
-                elsif k contains 'cell' or k contains 'regenerat'
+                else
                   assign icon = 'regenerate'
                 endif
                 assign icon_file = 'lp-benefit-' | append: icon | append: '.png'
               -%}
               <li class="lp-ideal__item">
-                {%- if from_asset -%}
-                  <img src="{{ icon_file | asset_url }}" class="lp-ideal__icon" width="44" height="44" alt="" loading="eager" decoding="async">
-                {%- elsif icon != '' and images[icon_file] != blank -%}
-                  {{ images[icon_file] | image_url: width: 192 | image_tag: width: 44, height: 44, widths: '96,144,192', sizes: '44px', loading: 'eager', alt: '', class: 'lp-ideal__icon' }}
-                {%- endif -%}
+                <img src="{{ icon_file | asset_url }}" class="lp-ideal__icon" width="44" height="44" alt="" loading="eager" decoding="async">
                 <span class="lp-ideal__text">{{ term | escape }}</span>
               </li>
             {%- endfor -%}

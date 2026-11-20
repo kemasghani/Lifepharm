@@ -160,7 +160,7 @@ STAND = [
     ])),
 
     ('lp_why', section('lp-pdp-split', {
-        'image': IMG('CellnergyStand-Full-Shorter.png'), 'caption': 'Cellnergy Wellness Stand with the Wellness Device', 'image_fit': 'contain',
+        'image': IMG('CellnergyStand-Full-Shorter.png'), 'caption': 'Stand with the Wellness Device', 'image_fit': 'contain',
         'media_position': 'end', 'background': 'none', 'eyebrow': 'Why It Matters',
         'heading': 'Consistency Is What Creates Results',
         'text': '<p>The research behind Cellnergy is built on consistent, daily use. The stand removes the biggest barrier to that consistency: holding the device in position for a full session, every day.</p><p>People who complete full, uninterrupted sessions are the ones who feel the difference. The stand makes that the default, not the exception.</p>',

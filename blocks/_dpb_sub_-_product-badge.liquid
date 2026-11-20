@@ -189,6 +189,8 @@
 
 {% capture js_scripts %}
   <script>
+    /* Block scope: the badge block can render more than once per page; a bare class declaration threw "Identifier 'dpProductBadge' has already been declared" (QA 2026-11-21). */
+    {
     class dpProductBadge extends HTMLElement {
       constructor() {
         super();
@@ -250,6 +252,7 @@
 
     if (!customElements.get('dp-product-badge')) {
       customElements.define('dp-product-badge', dpProductBadge);
+    }
     }
   </script>
 {% endcapture %}

@@ -804,10 +804,9 @@
         "s1": {
           "type": "step",
           "settings": {
-            "image": "shopify://shop_images/lp-home-step-choose.jpg",
-            "video": "shopify://files/videos/lp-home-step-choose.mp4",
+            "image": "shopify://shop_images/lp-home-step-choose-range.jpg",
             "title": "Choose Your Routine",
-            "text": "<p>Start with LAMININE, our best seller, or build a routine across nutritionals and skincare. Subscribe and save 25%.</p>"
+            "text": "<p>Build a routine across nutritionals, skincare and Cellnergy devices. Subscribe and save 25%.</p>"
           }
         },
         "s2": {

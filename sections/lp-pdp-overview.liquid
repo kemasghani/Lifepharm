@@ -10,7 +10,7 @@
   <div class="container">
     <div class="lp-ov__grid{% if section.settings.image == blank %} lp-ov__grid--solo{% endif %}">
       {%- if section.settings.image != blank -%}
-        <figure class="lp-ov__media" data-lp-reveal>
+        <figure class="lp-ov__media lp-ov__media--{{ section.settings.image_fit }}" data-lp-reveal>
           {{ section.settings.image | image_url: width: 1800 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 45vw, 100vw', widths: '600,800,1000,1200,1500,1800', class: 'lp-ov__img', alt: section.settings.caption }}
           {%- if section.settings.caption != blank -%}<figcaption class="lp-ov__caption">{{ section.settings.caption | escape }}</figcaption>{%- endif -%}
         </figure>
@@ -67,6 +67,7 @@
 }
 .lp-ov__media { position: relative; margin: 0; overflow: hidden; border-radius: var(--lp-radius-lg); aspect-ratio: 1; background: rgb(var(--lp-sand)); }
 .lp-ov__img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.lp-ov__media--contain .lp-ov__img { object-fit: contain; padding: clamp(1.5rem, 5vw, 3.5rem); }
 .lp-ov__caption { position: absolute; inset-inline-start: 1rem; inset-block-end: 1rem; padding: .4rem .85rem; border-radius: 999px; background: rgb(255 255 255 / .9); color: rgb(var(--lp-ink)); font-size: .8125rem; font-weight: 600; line-height: 1.3; backdrop-filter: blur(6px); }
 .lp-ov__content { display: grid; gap: clamp(1.1rem, 2vw, 1.5rem); }
 .lp-ov__head { display: grid; gap: .75rem; }
@@ -100,6 +101,9 @@
   "settings": [
     { "type": "image_picker", "id": "image", "label": "Image" },
     { "type": "text", "id": "caption", "label": "Image caption", "info": "Also used as the image's alt text" },
+    { "type": "select", "id": "image_fit", "label": "Image fit", "default": "cover", "options": [
+      { "value": "cover", "label": "Fill the frame" }, { "value": "contain", "label": "Show the whole image" }
+    ] },
     { "type": "select", "id": "media_position", "label": "Image position on desktop", "default": "start", "options": [
       { "value": "start", "label": "Left" }, { "value": "end", "label": "Right" }
     ] },

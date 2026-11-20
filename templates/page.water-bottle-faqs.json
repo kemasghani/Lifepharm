@@ -301,7 +301,7 @@
             "style": "outline",
             "size": "xl",
             "text": "Contact Us",
-            "url": "shopify://pages/contact-1772819671",
+            "url": "/pages/contact",
             "background": "",
             "text_color": ""
           }

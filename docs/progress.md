@@ -24,6 +24,14 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 
 ---
 
+## 2026-11-21 · pdp-004 · Cellnergy device PDPs rebuilt on all stores
+
+- Done: replaced the legacy Impact sections under the buy box (spec table, text walls, guarantee marquee, slider timeline) on `product.cellnergy-footcharge` and `product.cellnergy-wellness-stand` with new reusable sections `lp-pdp-overview` (image, stats, chips), `lp-pdp-cards` (image / numbered / icon cards, mobile side-scroll) and `lp-pdp-split` (image with steps, notes, detail rows); `lp-pdp-timeline` now accepts Phase blocks (Laminine still uses metafields). Copy cleaned of em dashes and softened ("helps maintain muscle tone", not "prevent atrophy"). Same templates on master, uk, us, eu.
+- Evidence: `./init.sh --full` READY; Playwright on UK/US/EU drafts, both products, 390 and 1440: no broken images, no horizontal scroll, no page errors.
+- Next: Letisha review of the two pages.
+
+---
+
 ## 2026-11-20 · harness-001 · Harness adopted
 
 - Done: added `init.sh`, `tools/harness/check_theme.py` (JSON validity, 25-section limit, range/select/checkbox vs schema, em dash and amber-deep warnings, secret scan) and `theme_check_ratchet.py` (13 accepted vendor errors). Wrote PROJECT_HISTORY, LESSONS, DECISIONS, feature_list, QUALITY_SCORE, tech-debt and `docs/knowledge/`. Moved `claudedocs/` plans into `docs/exec-plans/`. Rescued `sync_branch.py`, `port_templates.py`, `files_upload.py`, `replace_file.py` from old scratchpads into `tools/store-audit/`.

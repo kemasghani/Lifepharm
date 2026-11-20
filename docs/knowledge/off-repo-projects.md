@@ -4,7 +4,7 @@ Pointers only, so a session in this repo knows these exist. Their own docs are t
 
 | Project | Where | Status | Notes |
 |---|---|---|---|
-| Exigo → Klaviyo service (lpsync) | Private repo `LifePharm/lifepharm-marketing`, folder `exigo-klaviyo-integration/` | In progress (`int-002`); Klaviyo flows are drafts only | Replaces the HubSpot IBO workflows (V5 doc is the reference spec, HubSpot is not running). Plan: `claudedocs/workflow_exigo_klaviyo_middleware.md` (local only, not committed: contains infrastructure details). Never set flows live without LifePharm sign-off. |
+| Exigo → Klaviyo service (lpsync) | Private repo `LifePharm/lifepharm-marketing`, folder `exigo-klaviyo-integration/` | In progress (`int-002`); Klaviyo flows are drafts only | Replaces the HubSpot IBO workflows (V5 doc is the reference spec, HubSpot is not running). Has its own harness there: `exigo-klaviyo-integration/CLAUDE.md`, `init.sh`, `docs/` (progress, decisions, lessons, history, original plan). Start there for any lpsync work. Never set flows live without LifePharm sign-off. |
 | Checkout referral block | `~/Documents/lifepharm-checkout-referral` | Built, not deployed (`ref-002`) | Checkout UI extension for the "Developer Lifepharm" app |
 | HyperFrames films | `~/Documents/Lifepharm-*-film`, `~/Documents/Lifepharm-freedelivery-icon` | Done | Source for the play-once MP4s in `assets/` |
 | Exigo API docs crawler | `docs/exigo-api/tools/` (in this repo) | Done | Refresh: see CLAUDE.md section 6 |

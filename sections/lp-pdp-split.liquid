@@ -32,6 +32,12 @@
           </ol>
         {%- endif -%}
 
+        {%- for block in notes -%}
+          <p class="lp-split__note" {{ block.shopify_attributes }}>
+            <span class="lp-split__note-icon" aria-hidden="true">{% render 'lp-icon', name: block.settings.icon, size: 16 %}</span>
+            <span>{{ block.settings.text | escape }}</span>
+          </p>
+        {%- endfor -%}
         {%- if rows.size > 0 -%}
           <dl class="lp-split__rows">
             {%- for block in rows -%}
@@ -42,13 +48,6 @@
             {%- endfor -%}
           </dl>
         {%- endif -%}
-
-        {%- for block in notes -%}
-          <p class="lp-split__note" {{ block.shopify_attributes }}>
-            <span class="lp-split__note-icon" aria-hidden="true">{% render 'lp-icon', name: block.settings.icon, size: 16 %}</span>
-            <span>{{ block.settings.text | escape }}</span>
-          </p>
-        {%- endfor -%}
       </div>
     </div>
   </div>

@@ -2,6 +2,14 @@
 
 Shopify **Impact 7.0.1** theme for uk.lifepharm.com. Every change in this file is a standing rule. If a request conflicts with a rule, point it out before acting.
 
+## 0. Harness (start and end every session here)
+
+The repo is the system of record; the map is `docs/README.md`. The GitHub repo is **public**: never commit secrets, IPs, account ids, personal emails, sales figures or customer data.
+
+- **Start:** run `./init.sh`, read the snapshot and top entry of `docs/progress.md`, pick **one** feature in `docs/feature_list.json` and set it `in_progress`, then read the matching `docs/knowledge/` page and `docs/LESSONS.md` section.
+- **During:** record decisions in `docs/DECISIONS.md` (append; reversals say "supersedes"), new pitfalls in `docs/LESSONS.md` (a lesson hit twice becomes a check in `tools/harness/check_theme.py`), deferred work in `docs/tech-debt.md`. Multi-session work gets a plan in `docs/exec-plans/active/`. A script used twice goes into `tools/`, never only a scratchpad.
+- **Done means:** `./init.sh --full` passes, pushed, verified on the draft (390px and 1440px, no horizontal scroll, no new JS errors, title-case sweep), evidence written into `docs/feature_list.json`, new entry on top of `docs/progress.md`. Milestones also go into `docs/PROJECT_HISTORY.md`.
+
 ## 1. Workflow and safety
 
 - This repo syncs through GitHub to the **draft theme "Lifepharm/master" (ID 189821452674)**. Pushing to `master` updates the draft only.
@@ -11,7 +19,7 @@ Shopify **Impact 7.0.1** theme for uk.lifepharm.com. Every change in this file i
 - In `config/settings_data.json`, edit only the `"current"` block, never the presets.
 - `.env` holds an admin token for the **US** store. It is read-only for reference and never committed.
 - Shopify work: use the `shopify-plugin:*` skills and validate against the live schema (see the global CLAUDE.md).
-- After changes: run theme check, push, then verify on the draft preview at 390px and 1440px. Check for no horizontal scroll and no JS errors.
+- After changes: run `./init.sh --full` (theme guard + theme-check ratchet), push, then verify on the draft preview at 390px and 1440px. Check for no horizontal scroll and no JS errors.
 
 ## 2. Brand guideline (LifePharm Quick Style Guide 2024)
 

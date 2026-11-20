@@ -1,0 +1,66 @@
+# Lessons Learned
+
+Every time something cost us time, it goes here once, as a rule. This is the project's learning record: read the section for the area you are about to touch.
+
+**Format:** `L-NNN · date · Symptom → Cause → Rule · Enforced by`.
+"Enforced by" says whether a machine checks it (`init.sh`), a doc reminds us, or nothing yet. **If a lesson is hit twice, promote it to a check** in `tools/harness/check_theme.py`.
+
+Add new lessons at the end of their section with the next free number.
+
+---
+
+## A. Shopify sync and deploy
+
+- **L-001** · 2026-11-10 · Template edit never appeared on the draft → a JSON template held more than 25 sections; Shopify rejects the whole file **silently** → keep templates at 25 sections or fewer; product templates sit at 20 to 23, so remove disabled legacy sections before adding. · `init.sh` (FAIL above 25, WARN at 24).
+- **L-002** · 2026-11-10 · Same silent rejection → one setting outside its schema range (`input_border_radius` max 10) → validate every range, select and checkbox value against its schema. `shopify theme check` does not catch this. · `init.sh` (range/select/checkbox checks on templates, section groups, settings_data).
+- **L-003** · 2026-11-10 · Template rejected → empty image or url values written as `""` → omit the key instead of writing an empty string. · doc.
+- **L-004** · 2026-11-11 · A "disabled" app section in a section group kept rendering → Shopify drops `disabled` on app sections inside groups → remove the app section from the group instead. · doc.
+- **L-005** · 2026-11-14 · Second of two quick pushes never reached the draft → Shopify's GitHub sync applied the first and skipped the second → leave a minute between pushes; confirm with the Admin API `theme(id:).files(filenames:)` before assuming a rejection. · doc.
+- **L-006** · 2026-11-10 · curl on the preview showed the live theme → `preview_theme_id` needs a cookie jar, and the first answer is a 302 → `curl -L -c jar -b jar "...?preview_theme_id=..."`; poll for a marker string, sync takes 1 to 10 minutes. · doc.
+- **L-007** · 2026-11-18 · US/EU pages showed only a title → branches started as a UK copy and lacked live-only templates → after creating a store branch, run `tools/store-audit/port_templates.py` (read-only on live, never overwrites). · doc.
+- **L-008** · 2026-11-20 · Referral attributes differed between draft and live → US/EU drafts lacked the Teqnavi app embeds → any branch sync must keep each store's own app embeds (`sync_branch.py` does). · doc.
+
+## B. Liquid, CSS and JS
+
+- **L-010** · 2026-11-18 · `class` silently missing on images → a filter inside `image_tag` arguments (`alt: x | default: y`) drops the other args → assign first, then pass the variable. · doc.
+- **L-011** · 2026-11-12 · Variant image script compared the wrong id → the product form has an input named `id`, so `form.id` and `detail.formId` return an element → use `form.getAttribute('id')`. · doc.
+- **L-012** · 2026-11-18 · Page froze after a referrer was set → a MutationObserver wrote text into the subtree it watched → never write DOM unconditionally inside an observer on the same subtree; compare first. · doc.
+- **L-013** · 2026-11-18 · Share Your Cart stopped working after a quantity change → its jQuery handler was bound to the element, which the drawer re-render replaces → delegate events from a stable ancestor. · doc.
+- **L-014** · 2026-11-11 · Quick add did not update the drawer → the request must bundle the theme's cart sections like the theme does → reuse the theme's section-rendering list. · doc.
+- **L-015** · 2026-11-18 · Button styles ignored → Impact's button reset beats plain class selectors → style as `button.x:not(#lp-none)`. · doc.
+- **L-016** · 2026-11-17 · News styles missing on some pages → Dawn loads a section's `{% stylesheet %}` only where that section renders; Dawn's root is 62.5% → shared styles go in `assets/lp-news.css`; scale rem by 1.6. · doc.
+- **L-017** · 2026-11-18 · Odd character in About copy → merchant text contained a hidden `\x03` → strip control characters when pasting client copy. · doc.
+
+## C. Design process and client
+
+- **L-020** · 2026-11-13 · 13 commits in one day flipping trust-tile icons (PNG, SVG, line icons and back) → iterating in code on an open visual question → for icon or style direction, show two or three options side by side (one screenshot) and get a pick before committing. · doc.
+- **L-021** · 2026-11-11 · Homepage rebuilt as a Laminine landing page was rejected ("it became like a PDP") → the homepage has its own job → keep the homepage a brand homepage; push the hero product inside it. · doc.
+- **L-022** · 2026-11-11 to 11-18 · Referral UI changed form four times (bar, slide-in, removed, slide-in, checkout dialog) → requirements flipped as the business learned → follow the latest instruction, record each change in [DECISIONS.md](DECISIONS.md), keep CLAUDE.md section 5 current. · doc.
+- **L-023** · 2026-11-12 · Dark panels rejected twice (#414042, then #888B8D) → client wants light and bright → no dark or mid-grey surfaces; cream first. · CLAUDE.md section 7.
+- **L-024** · 2026-11-14 · Client asked for #FF8F00 on eyebrows although it is about 2.2:1 on ivory → client choice beats the AA default here → apply it, state the trade-off once, do not silently revert. · CLAUDE.md, DECISIONS D-010.
+- **L-025** · 2026-11-12 · Mockup-only designs led to cropped artwork → ask for source files (XD, original artwork, video) whenever only a mockup exists. · CLAUDE.md section 7.
+
+## D. QA and verification
+
+- **L-030** · 2026-11-17 · Client had to point out "Still unsure?" in sentence case → only h1/h2 get CSS capitalize; h3, summaries, tabs and labels slip through → write title case at the source; before handing over, sweep the rendered page (h1 to h6, `[role=tab]`, summary, button, label under 12 words) and flag lowercase non-minor words. Leave quoted study titles, form labels, sentences and metafield text alone. · doc (candidate for a scripted sweep, see tech debt).
+- **L-031** · 2026-11-11 · 390px screenshots were wrong → headless Chrome `--window-size` renders too wide → use Playwright with `channel="chrome"`, `wait_until="load"`, never `networkidle`. · doc.
+- **L-032** · 2026-11-18 · Storefront started answering 429 and a Cloudflare challenge → heavy Playwright runs against uk/shop domains → use the Admin API for ids and data; keep browser runs short. · doc.
+- **L-033** · 2026-11-11 · Console errors blamed on the theme → `e is not a function` comes from Stamped.io; `addEventListener` null on /collections/all also happens on live → compare with the live theme before fixing "our" error. · doc.
+- **L-034** · 2026-11-12 · Done claimed before the draft had synced → always verify on the draft preview at 390px and 1440px: no horizontal scroll, no new JS errors. · CLAUDE.md section 1, `init.sh` reminder.
+
+## E. Data, integrations and tooling
+
+- **L-040** · 2026-11-17 · Secrets printed to the terminal → `source .env` in zsh echoes lines with hyphenated keys as "command not found" → never source `.env`; parse only the keys you need (as `tools/store-audit/shopify.py` does). Never name a zsh loop variable `path`. · doc.
+- **L-041** · 2026-11-18 · Exigo calls began failing with "IP not allowed" → the developer's ISP address rotates (mobile CGNAT) → run Exigo calls only from the whitelisted static egress host (details in private notes). · doc.
+- **L-042** · 2026-11-18 · Assumed an order's referral moves commission → verified in Exigo: credit follows the customer's enroller; the referral counts only for new customers → do not show referral prompts to existing Exigo customers. · CLAUDE.md section 5.
+- **L-043** · 2026-11-11 · Order history stopped at 60 days → the app lacks `read_all_orders` → state the window in any sales analysis. · doc.
+- **L-044** · 2026-11-18 · Exigo `DequeueCustomerEvents` pops events for good → never call it while exploring. · doc.
+- **L-045** · 2026-11-20 · Useful scripts (`sync_branch.py`, `port_templates.py`, Files upload) lived only in session scratchpads and nearly vanished → any script used twice goes into `tools/` in the same session. · this file.
+- **L-046** · 2026-11-20 · Repo is **public** on GitHub → anything committed is published → no secrets, IPs, account ids, personal emails or customer data in commits; private facts stay in the developer's private notes. · `init.sh` secret scan.
+
+## F. Assets and imagery
+
+- **L-050** · 2026-11-11 · Grey rectangle under a composite product → the box PNG had a baked-in shadow → strip low-alpha pixels in the bottom area before compositing. · doc.
+- **L-051** · 2026-11-13 · AI "collection" shots had garbled small print → check every AI image's labels at full resolution; single-product shots are usually clean. · doc.
+- **L-052** · 2026-11-15 · Dropbox zips broke mid-download → the archive is too large → fetch one month folder at a time (`dl=1` on the subfolder); a truncated zip still extracts with `bsdtar -xf`. · doc.
+- **L-053** · 2026-11-18 · Replacing an image changed its URL → use `fileUpdate(originalSource)` to keep the filename (`tools/store-audit/replace_file.py`). · doc.

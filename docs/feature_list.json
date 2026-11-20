@@ -1,0 +1,263 @@
+{
+  "project": "LifePharm theme redesign (UK, US, EU) + News",
+  "last_updated": "2026-11-20",
+  "rules": {
+    "single_active_feature": true,
+    "passing_requires_evidence": true,
+    "do_not_skip_verification": true,
+    "nothing_is_live_without_owner_approval": true
+  },
+  "status_legend": {
+    "not_started": "Work has not begun.",
+    "in_progress": "The current active task. Only one at a time.",
+    "blocked": "Cannot continue until the documented blocker is resolved (see 'blocker').",
+    "awaiting_client": "Built and verified on the draft; waiting for Letisha or the owner to approve or answer.",
+    "passing": "Built, verified on the draft preview (390px and 1440px, no horizontal scroll, no new JS errors), evidence recorded.",
+    "live": "Published on a live theme or live in production."
+  },
+  "verification_default": [
+    "./init.sh --full passes",
+    "Pushed and confirmed synced on the draft (marker string or Admin API theme file read)",
+    "Checked on the draft preview at 390px and 1440px: no horizontal scroll, no new JS errors",
+    "Title-case sweep on changed pages (LESSONS L-030)"
+  ],
+  "features": [
+    {
+      "id": "harness-001",
+      "area": "process",
+      "title": "Adopt the harness (system-of-record docs, init.sh, theme guard, ratchet)",
+      "status": "passing",
+      "stores": ["all"],
+      "verification": ["./init.sh --full exits 0", "Guard catches an injected out-of-range setting", "Docs linked from CLAUDE.md"],
+      "evidence": ["2026-11-20: init.sh --full READY; guard FAILs on input_border_radius=99 in a scratch copy; theme-check baseline 13 vendor errors"],
+      "notes": "See docs/README.md."
+    },
+    {
+      "id": "home-001",
+      "area": "homepage",
+      "title": "Brand homepage on the high-converting anatomy",
+      "user_visible_behavior": "Hero with three benefits, one button and trust chips in the first viewport; How It Works steps; product tabs; science; daily life gallery; categories; promos; FAQ; guarantee close.",
+      "status": "passing",
+      "stores": ["uk", "us", "eu"],
+      "verification": ["Trust chips visible at 1280x720 and 390px without scrolling", "Default checks"],
+      "evidence": ["6ad97b3", "ef1405a", "a43f6d4", "05c9fc9", "7fa41db"],
+      "client_approval": "iterating",
+      "notes": "Tolstoy reviews carousel renders empty (cause unknown, also before the revamp)."
+    },
+    {
+      "id": "nav-001",
+      "area": "navigation",
+      "title": "Mega menu, mobile menu, language selector and footer",
+      "user_visible_behavior": "Orange title-case menu headlines; Weglot language list in a dialog; sand footer with dark-grey logo and orange headings.",
+      "status": "passing",
+      "stores": ["uk", "us", "eu"],
+      "verification": ["Menu open hides the sticky add-to-cart", "Language switch keeps the URL", "Default checks"],
+      "evidence": ["3df6474", "c44f8bc", "a07b540", "0f3edc3"]
+    },
+    {
+      "id": "pdp-001",
+      "area": "pdp",
+      "title": "Editorial metafield-driven product page",
+      "user_visible_behavior": "One layout for every product from product.metafields.custom.*; timeline cards, formula, comparison chart full width, reviews restyled.",
+      "status": "passing",
+      "stores": ["uk", "us", "eu"],
+      "verification": ["Laminine, Omega, Lamiderm Apex and a one-time-purchase product render without empty sections", "Default checks"],
+      "evidence": ["b01d188", "440d009", "7acc104", "2edf1e5"]
+    },
+    {
+      "id": "pdp-002",
+      "area": "pdp",
+      "title": "Compact buy box",
+      "user_visible_behavior": "3-column size cards with per-unit price and savings chips, Skio plan picker, six trust tiles, How to Use accordion, Ideal-for brand icons, real reviewer photos beside the rating (Laminine).",
+      "status": "passing",
+      "stores": ["uk", "us", "eu"],
+      "verification": ["Variant change updates price, main image and rating row", "Default checks"],
+      "evidence": ["d69f5a5", "eca4287", "26c2e6c", "2e25930", "67a4aab", "50c6c0f", "ec852fb"]
+    },
+    {
+      "id": "pdp-003",
+      "area": "pdp",
+      "title": "Sticky add-to-cart (one component, all breakpoints)",
+      "status": "passing",
+      "stores": ["uk", "us", "eu"],
+      "verification": ["Never covers an open menu; chat launcher moves with the bar", "Default checks"],
+      "evidence": ["c573259", "f371928", "7df2403"]
+    },
+    {
+      "id": "sci-001",
+      "area": "content",
+      "title": "Science + Our Studies merged story page",
+      "status": "passing",
+      "stores": ["uk", "us", "eu"],
+      "verification": ["Both /pages/science and /pages/our-studies render the same stack", "Study filter opens on the first product, no All tab"],
+      "evidence": ["e7deebb", "485b93e", "ed1676e"],
+      "notes": "New studies go into BOTH templates."
+    },
+    {
+      "id": "sci-002",
+      "area": "content",
+      "title": "Rest of the Dropbox science mockup (How Regeneration Works, Efficacy, timeline)",
+      "status": "blocked",
+      "blocker": "Needs the original hero artwork and the 7:17 video from Letisha",
+      "stores": ["uk", "us", "eu"],
+      "verification": ["Matches the mockup sections", "Default checks"],
+      "evidence": []
+    },
+    {
+      "id": "sci-003",
+      "area": "launch",
+      "title": "Redirect /pages/our-studies to /pages/science#studies and repoint the footer link",
+      "status": "blocked",
+      "blocker": "Do at publish time, owner action in admin",
+      "stores": ["uk", "us", "eu"],
+      "verification": ["Old URL 301s to the anchor on the live store"],
+      "evidence": []
+    },
+    {
+      "id": "co-001",
+      "area": "content",
+      "title": "Company page revamp with history timeline and team",
+      "status": "passing",
+      "stores": ["uk", "us", "eu"],
+      "verification": ["Team bios open in a dialog; last row centred", "Default checks"],
+      "evidence": ["99954b5", "46feec7", "3feb93e", "65d26f8"],
+      "notes": "Timeline icons were cut from a mockup; replace with originals if Letisha sends the XD files."
+    },
+    {
+      "id": "coll-001",
+      "area": "collection",
+      "title": "Collection banner and product-card hover photos",
+      "status": "passing",
+      "stores": ["uk", "us", "eu"],
+      "verification": ["Hover photo fades in where lp-hover-<handle>.jpg exists", "Phone banner 390x480 keeps the range in frame"],
+      "evidence": ["40b44d2", "23e4b8c", "740fb34"],
+      "notes": "No lifestyle photo exists for CELLNERGY WELLNESS STAND (needs a new generation, ask first: credits)."
+    },
+    {
+      "id": "cart-001",
+      "area": "cart",
+      "title": "Cart drawer revamp with free-delivery component and Share Your Cart",
+      "status": "passing",
+      "stores": ["uk", "us", "eu"],
+      "verification": ["Crossing the threshold plays the truck clip once per session", "Share Your Cart keeps working after quantity changes", "Default checks"],
+      "evidence": ["23c539f", "4e46fed", "f150e0b", "9a49bbc"],
+      "notes": "Share link takes about 0.9 s: latency of the external lpshopify API."
+    },
+    {
+      "id": "ref-001",
+      "area": "referral",
+      "title": "Referral question as a checkout confirmation dialog",
+      "user_visible_behavior": "Pressing Checkout asks 'Were You Referred by Someone?' unless a referrer is set, the shopper opted out, or they are an existing Exigo customer.",
+      "status": "passing",
+      "stores": ["uk", "us", "eu"],
+      "verification": ["Guest: dialog opens; Add My Referrer -> app search -> reload -> confirmed state", "Skip reaches /checkouts/", "Logged-in Exigo customer: no dialog, no menu entry"],
+      "evidence": ["e36733d", "bc2593a", "f3886c2", "842b6b2"],
+      "notes": "Depends on the Teqnavi app block in sections/header-group.json."
+    },
+    {
+      "id": "ref-002",
+      "area": "referral",
+      "title": "Checkout UI extension showing the referrer in checkout and thank-you",
+      "status": "blocked",
+      "blocker": "Needs a person to run `shopify app config link` + `shopify app deploy` on the Developer Lifepharm app, and owner approval before placing the block (changes the live checkout)",
+      "stores": ["uk", "us", "eu"],
+      "verification": ["Validated with the Shopify validator (done)", "Block visible in a test checkout"],
+      "evidence": ["Project ~/Documents/lifepharm-checkout-referral (outside this repo)"]
+    },
+    {
+      "id": "ms-001",
+      "area": "multi-store",
+      "title": "Branch-per-store model, store-audit tools, US/EU drafts in sync with master",
+      "status": "passing",
+      "stores": ["us", "eu", "uk"],
+      "verification": ["audit.py --store <x> exits 0 for enabled sections", "US/EU drafts render home, PDP, cart, Join Us"],
+      "evidence": ["27b7c4e", "8846b93", "2026-11-18 sync + port_templates", "2026-11-20 Teqnavi embeds on us/eu"],
+      "notes": "Every code change: push master, then sync uk/us/eu (tools/store-audit/sync_branch.py)."
+    },
+    {
+      "id": "ms-002",
+      "area": "multi-store",
+      "title": "UK cutover: connect the UK draft to the `uk` branch instead of `master`",
+      "status": "not_started",
+      "stores": ["uk"],
+      "verification": ["audit.py --store uk clean", "UK draft renders identical to today"],
+      "evidence": []
+    },
+    {
+      "id": "ms-003",
+      "area": "multi-store",
+      "title": "Impact 7.2.0 upgrade",
+      "status": "blocked",
+      "blocker": "Owner must add Impact 7.2.0 to a theme library first",
+      "stores": ["uk", "us", "eu"],
+      "verification": ["Diff vendor files 7.0.1 -> 7.2.0, re-run guard and ratchet"],
+      "evidence": []
+    },
+    {
+      "id": "launch-001",
+      "area": "launch",
+      "title": "Publish the redesign on the live UK, US and EU themes",
+      "status": "blocked",
+      "blocker": "Owner approval in chat (CLAUDE.md section 1)",
+      "stores": ["uk", "us", "eu"],
+      "verification": ["Pre-publish: audit per store, apps embeds present, redirects ready (sci-003)", "Post-publish: orders, Skio, Teqnavi referral and GA4 purchase events checked"],
+      "evidence": []
+    },
+    {
+      "id": "news-001",
+      "area": "news",
+      "title": "News store editorial redesign (Dawn) on the `news` branch",
+      "status": "awaiting_client",
+      "stores": ["news"],
+      "verification": ["Unpublished theme renders home, blog, article (Bloggle template), search"],
+      "evidence": ["news branch ad8074f"]
+    },
+    {
+      "id": "apps-001",
+      "area": "apps",
+      "title": "Apps audit and removal proposal",
+      "status": "awaiting_client",
+      "stores": ["uk", "us", "eu", "news"],
+      "verification": ["Letisha decides Keep / Remove / Decide per app"],
+      "evidence": ["docs/multi-store/LifePharm-Shopify-Apps-What-Is-Running-2026-11-17.pdf"]
+    },
+    {
+      "id": "an-001",
+      "area": "analytics",
+      "title": "GA4 single property for four stores",
+      "status": "live",
+      "stores": ["uk", "us", "eu", "news"],
+      "verification": ["Realtime shows all four hostnames; purchase only from web orders"],
+      "evidence": ["docs/exec-plans/active/workflow_ga4_multistore.md"],
+      "notes": "Open items in the plan: link Search Console, BigQuery export, UTM on IBO links, internal IP filter, verify purchase events."
+    },
+    {
+      "id": "an-002",
+      "area": "analytics",
+      "title": "Microsoft Clarity per store",
+      "status": "live",
+      "stores": ["uk", "us", "eu", "news"],
+      "verification": ["Tag present on each storefront"],
+      "evidence": ["2026-11-16 tags verified"]
+    },
+    {
+      "id": "int-001",
+      "area": "integrations",
+      "title": "Exigo order, customer and referral sync understood and documented",
+      "status": "passing",
+      "stores": ["uk", "us", "eu"],
+      "verification": ["Findings checked against Exigo data"],
+      "evidence": ["docs/knowledge/integrations.md", "docs/multi-store/exigo-referral-credit-check-2026-11-19.csv"]
+    },
+    {
+      "id": "int-002",
+      "area": "integrations",
+      "title": "Exigo to Klaviyo service (lpsync)",
+      "status": "in_progress",
+      "stores": ["us", "eu", "uk"],
+      "verification": ["Tracked in the private marketing repo (PR #180), not here"],
+      "evidence": [],
+      "notes": "Off-repo. Pointer only: docs/knowledge/off-repo-projects.md."
+    }
+  ]
+}

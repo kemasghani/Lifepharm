@@ -60,7 +60,7 @@ def rebuild(name, new_sections):
 
 FOOTCHARGE = [
     ('lp_overview', section('lp-pdp-overview', {
-        'image': IMG('lp-hover-cellnergy-footcharge.jpg'), 'caption': 'Cellnergy FootCharge', 'media_position': 'start',
+        'image': IMG('CellnergyFOOTCHARGE-withbox.png'), 'image_fit': 'contain', 'caption': 'Cellnergy FootCharge and its box', 'media_position': 'start',
         'eyebrow': 'Why FootCharge', 'heading': 'Regeneration From the Ground Up',
         'text': '<p>Cellnergy FootCharge brings full-body regeneration from the ground up by stimulating the nerve-rich zones in your feet. It combines CellWave™ Bioactivation, Terahertz Resonance and Infrared Thermotherapy to help restore neuromuscular communication, support circulation and support cellular energy production.</p><p>Whether you’re dealing with fatigue, numbness or stress, it helps your body rebalance through a daily, drug-free ritual.</p>',
         'chips_label': 'Regenerative Support For',
@@ -119,7 +119,7 @@ FOOTCHARGE = [
     }, [
         ('phase', {'image': IMG('AdobeStock_1273796619.jpg'), 'label': '1 to 30 minutes', 'title': 'Warmth and Relief',
                    'text': '<p>As soon as your feet are on the pads, gentle warmth and bioactivation begin. Low-frequency stimulation and infrared heat help awaken tired nerves and soothe tension, so you may feel immediate relief and deep relaxation.*</p>'}),
-        ('phase', {'image': IMG('CellnergyFootCharge-Foot-TopView.jpg'), 'label': '1 to 3 days', 'title': 'Steadier and More Rested',
+        ('phase', {'image': IMG('lp-hover-cellnergy-footcharge.jpg'), 'label': '1 to 3 days', 'title': 'Steadier and More Rested',
                    'text': '<p>Continued use helps reawaken dormant nerve pathways and support microcirculation. You may notice less numbness, more stable movement, quicker reactions and more restorative sleep.*</p>'}),
         ('phase', {'image': IMG('CellnergyFootCharge-Photo-SideView.jpg'), 'label': '1 month and beyond', 'title': 'A Daily Ritual That Lasts',
                    'text': '<p>Over time, FootCharge helps support cellular energy, nerve pathways and coordination from the ground up. You may feel less discomfort, less stress and steadier energy through the day, without the crash.*</p>'}),
@@ -140,7 +140,7 @@ FOOTCHARGE = [
 
 STAND = [
     ('lp_overview', section('lp-pdp-overview', {
-        'image': IMG('lp-hover-cellnergy-wellness-stand.jpg'), 'caption': 'Cellnergy Wellness Stand', 'media_position': 'start',
+        'image': IMG('lp-hover-cellnergy-wellness-stand.jpg'), 'image_fit': 'cover', 'caption': 'Cellnergy Wellness Stand', 'media_position': 'start',
         'eyebrow': 'Hands-Free Therapy', 'heading': 'Your Therapy. Hands-Free. Exactly Where You Need It.',
         'text': '<p>The Cellnergy Wellness Stand holds your device at the precise height and angle you need, completely hands-free. It folds away for storage or travel and is built from coated steel that won’t rust.</p><p>Already own the Cellnergy Wellness Device? The stand changes how, and where, you use it every day.</p>',
         'chips_label': '', 'chips': '', 'note_label': '', 'note': '',

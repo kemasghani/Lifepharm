@@ -309,6 +309,7 @@
       "type": "lp-pdp-overview",
       "settings": {
         "image": "shopify://shop_images/lp-hover-cellnergy-wellness-stand.jpg",
+        "image_fit": "cover",
         "caption": "Cellnergy Wellness Stand",
         "media_position": "start",
         "eyebrow": "Hands-Free Therapy",

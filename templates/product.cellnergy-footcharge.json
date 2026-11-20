@@ -470,8 +470,8 @@
     "lp_how": {
       "type": "lp-pdp-split",
       "settings": {
-        "image": "shopify://shop_images/CellnergyFootCharge-Foot-TopView.jpg",
-        "caption": "Bare feet, flat on the pads",
+        "image": "shopify://shop_images/lp-pdp-footcharge-seated.jpg",
+        "caption": "Sit down, bare feet flat on the pads",
         "image_fit": "cover",
         "media_position": "start",
         "background": "none",
@@ -581,7 +581,7 @@
         "phase_3": {
           "type": "phase",
           "settings": {
-            "image": "shopify://shop_images/CellnergyFootCharge-Photo-SideView.jpg",
+            "image": "shopify://shop_images/lp-pdp-footcharge-seated-wide.jpg",
             "label": "1 month and beyond",
             "title": "A Daily Ritual That Lasts",
             "text": "<p>Over time, FootCharge helps support cellular energy, nerve pathways and coordination from the ground up. You may feel less discomfort, less stress and steadier energy through the day, without the crash.*</p>"

@@ -423,7 +423,7 @@
       "type": "lp-pdp-split",
       "settings": {
         "image": "shopify://shop_images/CellnergyStand-Full-Shorter.png",
-        "caption": "Cellnergy Wellness Stand with the Wellness Device",
+        "caption": "Stand with the Wellness Device",
         "image_fit": "contain",
         "media_position": "end",
         "background": "none",

@@ -1,0 +1,136 @@
+{%- liquid
+  assign steps = section.blocks | where: 'type', 'step'
+  assign rows = section.blocks | where: 'type', 'row'
+  assign notes = section.blocks | where: 'type', 'note'
+-%}
+
+<section class="lp-split lp-split--{{ section.settings.media_position }} lp-split--bg-{{ section.settings.background }}">
+  <div class="container">
+    <div class="lp-split__grid{% if section.settings.image == blank %} lp-split__grid--solo{% endif %}">
+      {%- if section.settings.image != blank -%}
+        <figure class="lp-split__media lp-split__media--{{ section.settings.image_fit }}" data-lp-reveal>
+          {{ section.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 45vw, 100vw', widths: '600,800,1000,1200,1600', class: 'lp-split__img', alt: section.settings.caption }}
+          {%- if section.settings.caption != blank -%}<figcaption class="lp-split__caption">{{ section.settings.caption | escape }}</figcaption>{%- endif -%}
+        </figure>
+      {%- endif -%}
+
+      <div class="lp-split__content">
+        <header class="lp-split__head">
+          {%- if section.settings.eyebrow != blank -%}<p class="lp-eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+          {%- if section.settings.heading != blank -%}<h2 class="h1 lp-split__title">{{ section.settings.heading }}</h2>{%- endif -%}
+        </header>
+        {%- if section.settings.text != blank -%}<div class="lp-split__text">{{ section.settings.text }}</div>{%- endif -%}
+
+        {%- if steps.size > 0 -%}
+          <ol class="lp-split__steps" role="list">
+            {%- for block in steps -%}
+              <li class="lp-split__step" {{ block.shopify_attributes }}>
+                <span class="lp-split__step-num" aria-hidden="true">{{ forloop.index }}</span>
+                <div class="lp-split__step-text">{{ block.settings.text }}</div>
+              </li>
+            {%- endfor -%}
+          </ol>
+        {%- endif -%}
+
+        {%- if rows.size > 0 -%}
+          <dl class="lp-split__rows">
+            {%- for block in rows -%}
+              <div class="lp-split__row" {{ block.shopify_attributes }}>
+                <dt>{{ block.settings.label | escape }}</dt>
+                <dd>{{ block.settings.value }}</dd>
+              </div>
+            {%- endfor -%}
+          </dl>
+        {%- endif -%}
+
+        {%- for block in notes -%}
+          <p class="lp-split__note" {{ block.shopify_attributes }}>
+            <span class="lp-split__note-icon" aria-hidden="true">{% render 'lp-icon', name: block.settings.icon, size: 16 %}</span>
+            <span>{{ block.settings.text | escape }}</span>
+          </p>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+.lp-split { padding-block: var(--lp-section-gap); }
+.lp-split--bg-sand { background: rgb(var(--lp-sand)); }
+.lp-split--bg-white { background: #fff; }
+.lp-split__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(1.75rem, 4.5vw, 5rem); align-items: center; }
+@media (min-width: 1000px) {
+  .lp-split__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .lp-split--end .lp-split__media { order: 2; }
+  .lp-split__grid--solo { grid-template-columns: minmax(0, 1fr); max-width: 52rem; margin-inline: auto; }
+}
+.lp-split__media { position: relative; margin: 0; overflow: hidden; border-radius: var(--lp-radius-lg); aspect-ratio: 4 / 5; background: rgb(var(--lp-sand)); }
+.lp-split--bg-sand .lp-split__media { background: rgb(var(--lp-ivory)); }
+@media (max-width: 999px) { .lp-split__media { aspect-ratio: 4 / 3; } }
+.lp-split__img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.lp-split__media--contain .lp-split__img { object-fit: contain; padding: clamp(1.5rem, 4vw, 3rem); }
+.lp-split__caption { position: absolute; inset-inline-start: 1rem; inset-block-end: 1rem; padding: .4rem .85rem; border-radius: 999px; background: rgb(255 255 255 / .9); color: rgb(var(--lp-ink)); font-size: .8125rem; font-weight: 600; line-height: 1.3; }
+.lp-split__content { display: grid; gap: clamp(1.1rem, 2vw, 1.5rem); }
+.lp-split__head { display: grid; gap: .75rem; }
+.lp-split__title { max-width: 16ch; letter-spacing: -.02em; text-wrap: balance; }
+.lp-split__text { color: rgb(var(--lp-ink) / .82); font-size: 1.0625rem; line-height: 1.7; max-width: 60ch; }
+.lp-split__text p { margin: 0; }
+.lp-split__text p + p { margin-block-start: .85rem; }
+.lp-split__text strong { color: rgb(var(--lp-ink)); font-weight: 600; }
+.lp-split__steps { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; counter-reset: none; }
+.lp-split__step { position: relative; display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 1rem; padding-block: .8rem; }
+.lp-split__step:not(:last-child)::before { content: ""; position: absolute; inset-inline-start: 17.5px; inset-block-start: calc(.8rem + 40px); inset-block-end: calc(4px - .8rem); width: 1px; background: rgb(var(--lp-ink) / .14); }
+.lp-split__step-num { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: rgb(var(--lp-amber)); color: #1f1e20; font-size: .875rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+.lp-split__step-text { align-self: center; color: rgb(var(--lp-ink)); font-size: 1rem; line-height: 1.6; }
+.lp-split__step-text p { margin: 0; }
+.lp-split__rows { display: grid; margin: 0; border-top: 1px solid var(--lp-hairline); }
+.lp-split__row { display: grid; grid-template-columns: minmax(0, 1fr); gap: .3rem; padding-block: .95rem; border-bottom: 1px solid var(--lp-hairline); }
+@media (min-width: 700px) { .lp-split__row { grid-template-columns: minmax(0, 11rem) minmax(0, 1fr); gap: 1.5rem; } }
+.lp-split__row dt { font-size: .9375rem; font-weight: 600; color: rgb(var(--lp-ink)); }
+.lp-split__row dd { margin: 0; color: rgb(var(--lp-ink) / .82); font-size: .9375rem; line-height: 1.6; }
+.lp-split__row dd p { margin: 0; }
+.lp-split__row dd p + p { margin-block-start: .35rem; }
+.lp-split__note { display: flex; align-items: flex-start; gap: .6rem; margin: 0; padding: .85rem 1rem; border-radius: var(--lp-radius-sm); background: rgb(var(--lp-sand) / .75); color: rgb(var(--lp-ink)); font-size: .875rem; line-height: 1.55; }
+.lp-split--bg-sand .lp-split__note { background: #fff; }
+.lp-split__note-icon { flex: none; display: grid; place-items: center; margin-block-start: .1rem; color: rgb(var(--lp-amber)); }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "LP · PDP image and text",
+  "tag": "div",
+  "class": "lp-pdp-section",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "caption", "label": "Image caption", "info": "Also used as the image's alt text" },
+    { "type": "select", "id": "image_fit", "label": "Image fit", "default": "cover", "options": [
+      { "value": "cover", "label": "Fill the frame" }, { "value": "contain", "label": "Show the whole image" }
+    ] },
+    { "type": "select", "id": "media_position", "label": "Image position on desktop", "default": "start", "options": [
+      { "value": "start", "label": "Left" }, { "value": "end", "label": "Right" }
+    ] },
+    { "type": "select", "id": "background", "label": "Background", "default": "none", "options": [
+      { "value": "none", "label": "Page (ivory)" }, { "value": "sand", "label": "Sand" }, { "value": "white", "label": "White" }
+    ] },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading" },
+    { "type": "richtext", "id": "text", "label": "Text" }
+  ],
+  "blocks": [
+    { "type": "step", "name": "Step", "settings": [ { "type": "richtext", "id": "text", "label": "Text" } ] },
+    { "type": "row", "name": "Detail row", "settings": [
+      { "type": "text", "id": "label", "label": "Label" },
+      { "type": "richtext", "id": "value", "label": "Value" }
+    ] },
+    { "type": "note", "name": "Note", "settings": [
+      { "type": "select", "id": "icon", "label": "Icon", "default": "sparkle", "options": [
+        { "value": "sparkle", "label": "Sparkle" }, { "value": "drop", "label": "Drop" }, { "value": "clock", "label": "Clock" },
+        { "value": "shield", "label": "Shield" }, { "value": "check", "label": "Check" }, { "value": "bulb", "label": "Tip" }
+      ] },
+      { "type": "text", "id": "text", "label": "Text" }
+    ] }
+  ],
+  "presets": [ { "name": "LP · PDP image and text" } ],
+  "enabled_on": { "templates": ["product"] }
+}
+{% endschema %}

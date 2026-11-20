@@ -1,0 +1,51 @@
+# Progress Log
+
+Session-to-session continuity. **Read the snapshot and the top entry at the start of every session; update both before ending one.** Newest entry first. Keep entries short: what changed, evidence, what is next. Long-form history goes to [PROJECT_HISTORY.md](PROJECT_HISTORY.md) at milestones.
+
+## Snapshot (overwrite each session)
+
+- **Active feature:** none in this repo. Off-repo: `int-002` lpsync (private marketing repo).
+- **Theme state:** `master` = UK draft 189821452674; `us`, `eu`, `uk` branches equal to master in design; US draft 193373995317, EU draft 168919728345; News redesign on `news` (unpublished 190930518311). Nothing published.
+- **Waiting on Letisha / owner:** apps Keep/Remove decisions (`apps-001`), News review (`news-001`), science hero artwork + video (`sci-002`), checkout extension deploy approval (`ref-002`), publish approval (`launch-001`), Impact 7.2.0 in a library (`ms-003`).
+- **Known risks:** see [tech-debt.md](tech-debt.md) (top: customer data in public CSVs).
+- **Next suggested step:** pick one `not_started` or newly requested item; run `./init.sh` first.
+
+## Entry template
+
+```
+## YYYY-MM-DD · <feature id> · <one-line summary>
+- Done: ...
+- Evidence: commits, ./init.sh --full result, draft checks (390/1440), screenshots
+- Decisions: D-NNN added? (docs/DECISIONS.md)
+- Lessons: L-NNN added? (docs/LESSONS.md)
+- Next: ...
+- Blockers: ...
+```
+
+---
+
+## 2026-11-21 · pdp-004 · Cellnergy device PDPs rebuilt on all stores
+
+- Done: replaced the legacy Impact sections under the buy box (spec table, text walls, guarantee marquee, slider timeline) on `product.cellnergy-footcharge` and `product.cellnergy-wellness-stand` with new reusable sections `lp-pdp-overview` (image, stats, chips), `lp-pdp-cards` (image / numbered / icon cards, mobile side-scroll) and `lp-pdp-split` (image with steps, notes, detail rows); `lp-pdp-timeline` now accepts Phase blocks (Laminine still uses metafields). Copy cleaned of em dashes and softened ("helps maintain muscle tone", not "prevent atrophy"). Same templates on master, uk, us, eu.
+- Evidence: `./init.sh --full` READY; Playwright on UK/US/EU drafts, both products, 390 and 1440: no broken images, no horizontal scroll, no page errors.
+- Next: Letisha review of the two pages.
+
+---
+
+## 2026-11-20 · harness-001 · Harness adopted
+
+- Done: added `init.sh`, `tools/harness/check_theme.py` (JSON validity, 25-section limit, range/select/checkbox vs schema, em dash and amber-deep warnings, secret scan) and `theme_check_ratchet.py` (13 accepted vendor errors). Wrote PROJECT_HISTORY, LESSONS, DECISIONS, feature_list, QUALITY_SCORE, tech-debt and `docs/knowledge/`. Moved `claudedocs/` plans into `docs/exec-plans/`. Rescued `sync_branch.py`, `port_templates.py`, `files_upload.py`, `replace_file.py` from old scratchpads into `tools/store-audit/`.
+- Evidence: `./init.sh --full` READY; guard FAILs on an injected `input_border_radius: 99` in a scratch copy (the 2026-11-10 incident).
+- Decisions: D-006.
+- Lessons: L-045 (scripts in scratchpads), L-046 (public repo).
+- Next: owner decision on the public CSVs (tech debt TD-001).
+
+## 2026-11-20 · ms-001 · Teqnavi embeds on US/EU branches
+
+- Done: copied Sync Engine and Enrollment Handler app embeds into `config/settings_data.json` on `us` and `eu` with live settings; draft cart attributes now match live plus `Referrer Name`.
+- Lessons: L-008.
+
+## 2026-11-19 · ref-001 · Referral prompt skipped for existing Exigo customers
+
+- Done: dialog and mobile-menu entry not rendered when `customer.metafields.Exigo.CustomerId` is set (842b6b2). Company page team edits; PDP gallery cursor restored.
+- Evidence: Exigo credit check CSV (228 orders).

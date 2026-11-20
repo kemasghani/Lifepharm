@@ -1,0 +1,128 @@
+{%- liquid
+  assign chips = section.settings.chips | split: ','
+  assign has_chips = false
+  if section.settings.chips != blank
+    assign has_chips = true
+  endif
+-%}
+
+<section class="lp-ov lp-ov--{{ section.settings.media_position }}">
+  <div class="container">
+    <div class="lp-ov__grid{% if section.settings.image == blank %} lp-ov__grid--solo{% endif %}">
+      {%- if section.settings.image != blank -%}
+        <figure class="lp-ov__media" data-lp-reveal>
+          {{ section.settings.image | image_url: width: 1800 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 45vw, 100vw', widths: '600,800,1000,1200,1500,1800', class: 'lp-ov__img', alt: section.settings.caption }}
+          {%- if section.settings.caption != blank -%}<figcaption class="lp-ov__caption">{{ section.settings.caption | escape }}</figcaption>{%- endif -%}
+        </figure>
+      {%- endif -%}
+
+      <div class="lp-ov__content">
+        <header class="lp-ov__head">
+          {%- if section.settings.eyebrow != blank -%}<p class="lp-eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+          {%- if section.settings.heading != blank -%}<h2 class="h1 lp-ov__title">{{ section.settings.heading }}</h2>{%- endif -%}
+        </header>
+        {%- if section.settings.text != blank -%}<div class="lp-ov__text">{{ section.settings.text }}</div>{%- endif -%}
+
+        {%- if section.blocks.size > 0 -%}
+          <dl class="lp-ov__stats" style="--lp-ov-n: {{ section.blocks.size | at_most: 4 }}">
+            {%- for block in section.blocks -%}
+              <div class="lp-ov__stat" {{ block.shopify_attributes }}>
+                <dt class="lp-ov__stat-label">{{ block.settings.label | escape }}</dt>
+                <dd class="lp-ov__stat-value">{{ block.settings.value | escape }}</dd>
+              </div>
+            {%- endfor -%}
+          </dl>
+        {%- endif -%}
+
+        {%- if has_chips -%}
+          <div class="lp-ov__chips-wrap">
+            {%- if section.settings.chips_label != blank -%}<p class="lp-ov__chips-label">{{ section.settings.chips_label | escape }}</p>{%- endif -%}
+            <ul class="lp-ov__chips" role="list">
+              {%- for chip in chips -%}
+                {%- assign chip_text = chip | strip -%}
+                {%- if chip_text != blank -%}<li class="lp-ov__chip">{{ chip_text | escape }}</li>{%- endif -%}
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.note != blank -%}
+          <p class="lp-ov__note">
+            {%- if section.settings.note_label != blank -%}<strong>{{ section.settings.note_label | escape }}</strong> {% endif -%}
+            {{- section.settings.note | escape -}}
+          </p>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+.lp-ov { padding-block: var(--lp-section-gap); }
+.lp-ov__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(1.75rem, 4.5vw, 5rem); align-items: center; }
+@media (min-width: 1000px) {
+  .lp-ov__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .lp-ov--end .lp-ov__media { order: 2; }
+  .lp-ov__grid--solo { grid-template-columns: minmax(0, 1fr); max-width: 52rem; margin-inline: auto; }
+}
+.lp-ov__media { position: relative; margin: 0; overflow: hidden; border-radius: var(--lp-radius-lg); aspect-ratio: 1; background: rgb(var(--lp-sand)); }
+.lp-ov__img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.lp-ov__caption { position: absolute; inset-inline-start: 1rem; inset-block-end: 1rem; padding: .4rem .85rem; border-radius: 999px; background: rgb(255 255 255 / .9); color: rgb(var(--lp-ink)); font-size: .8125rem; font-weight: 600; line-height: 1.3; backdrop-filter: blur(6px); }
+.lp-ov__content { display: grid; gap: clamp(1.1rem, 2vw, 1.5rem); }
+.lp-ov__head { display: grid; gap: .75rem; }
+.lp-ov__title { max-width: 16ch; letter-spacing: -.02em; text-wrap: balance; }
+.lp-ov__text { color: rgb(var(--lp-ink) / .82); font-size: 1.0625rem; line-height: 1.7; max-width: 60ch; }
+.lp-ov__text p { margin: 0; }
+.lp-ov__text p + p { margin-block-start: .85rem; }
+.lp-ov__stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: .25rem 0 0; border-block: 1px solid var(--lp-hairline); }
+@media (min-width: 700px) { .lp-ov__stats { grid-template-columns: repeat(var(--lp-ov-n, 4), minmax(0, 1fr)); } }
+.lp-ov__stat { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: .35rem; padding: 1.1rem .75rem 1.1rem 0; }
+.lp-ov__stat + .lp-ov__stat { padding-inline-start: 1rem; border-inline-start: 1px solid var(--lp-hairline); }
+@media (max-width: 699px) {
+  .lp-ov__stat:nth-child(odd) { padding-inline-start: 0; border-inline-start: 0; }
+  .lp-ov__stat:nth-child(n + 3) { border-block-start: 1px solid var(--lp-hairline); }
+}
+.lp-ov__stat-value { margin: 0; font-family: var(--heading-font-family); font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 400; line-height: 1; letter-spacing: -.02em; color: rgb(var(--lp-ink)); }
+.lp-ov__stat-label { margin: 0; font-size: .8125rem; font-weight: 600; line-height: 1.35; color: rgb(var(--lp-muted)); }
+.lp-ov__chips-wrap { display: grid; gap: .65rem; }
+.lp-ov__chips-label { margin: 0; font-size: .75rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgb(var(--lp-ink)); }
+.lp-ov__chips { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0; padding: 0; list-style: none; }
+.lp-ov__chip { padding: .45rem .9rem; border-radius: 999px; background: rgb(var(--lp-sand)); color: rgb(var(--lp-ink)); font-size: .875rem; font-weight: 600; line-height: 1.3; }
+.lp-ov__note { margin: 0; font-size: .8125rem; line-height: 1.55; color: rgb(var(--lp-muted)); }
+.lp-ov__note strong { color: rgb(var(--lp-ink)); font-weight: 600; }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "LP · PDP overview",
+  "tag": "div",
+  "class": "lp-pdp-section",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "caption", "label": "Image caption", "info": "Also used as the image's alt text" },
+    { "type": "select", "id": "media_position", "label": "Image position on desktop", "default": "start", "options": [
+      { "value": "start", "label": "Left" }, { "value": "end", "label": "Right" }
+    ] },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "text", "id": "chips_label", "label": "Chips label", "default": "Supports" },
+    { "type": "textarea", "id": "chips", "label": "Chips", "info": "Separate with commas" },
+    { "type": "text", "id": "note_label", "label": "Note label" },
+    { "type": "text", "id": "note", "label": "Note" }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "limit": 4,
+      "settings": [
+        { "type": "text", "id": "value", "label": "Value", "default": "10" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Intensity levels" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "LP · PDP overview" } ],
+  "enabled_on": { "templates": ["product"] }
+}
+{% endschema %}

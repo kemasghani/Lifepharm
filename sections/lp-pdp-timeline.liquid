@@ -3,12 +3,16 @@
   assign phases = '1,2,3' | split: ','
   assign has_phase = false
   assign phase_count = 0
-  for n in phases
-    assign content_key = 'phase_' | append: n | append: '_content'
-    if mf[content_key] != blank
-      assign phase_count = phase_count | plus: 1
-    endif
-  endfor
+  if section.blocks.size > 0
+    assign phase_count = section.blocks.size
+  else
+    for n in phases
+      assign content_key = 'phase_' | append: n | append: '_content'
+      if mf[content_key] != blank
+        assign phase_count = phase_count | plus: 1
+      endif
+    endfor
+  endif
   if phase_count > 0
     assign has_phase = true
   endif
@@ -25,6 +29,31 @@
     </header>
 
     <ol class="lp-tl__cols" role="list" style="--lp-tl-n: {{ phase_count }}">
+      {%- for block in section.blocks -%}
+        {%- capture panel_id -%}lp-tl-{{ section.id }}-{{ forloop.index }}{%- endcapture -%}
+        <li class="lp-tl__card" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <div class="lp-tl__card-media">
+              {{ block.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 30vw, 100vw', widths: '400,600,800,1000', alt: block.settings.label }}
+            </div>
+          {%- endif -%}
+          <div class="lp-tl__card-body">
+            <span class="lp-tl__card-label">{{ block.settings.label | escape }}</span>
+            <h3 class="lp-tl__panel-title">
+              <button type="button" class="lp-tl__toggle" aria-expanded="false" aria-controls="{{ panel_id }}" data-lp-tl-toggle>
+                <span class="lp-tl__toggle-text">{{ block.settings.title | default: block.settings.label | escape }}</span>
+                <span class="lp-tl__chev" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+              </button>
+            </h3>
+            <div class="lp-tl__panel" id="{{ panel_id }}">
+              <div class="lp-tl__panel-inner">
+                <div class="lp-tl__item-text">{{ block.settings.text }}</div>
+              </div>
+            </div>
+          </div>
+        </li>
+      {%- endfor -%}
+      {%- if section.blocks.size == 0 -%}
       {%- for n in phases -%}
         {%- liquid
           assign content_key = 'phase_' | append: n | append: '_content'
@@ -66,6 +95,7 @@
           </div>
         </li>
       {%- endfor -%}
+      {%- endif -%}
     </ol>
 
   </div>
@@ -127,11 +157,24 @@
   "tag": "div",
   "class": "lp-pdp-section",
   "settings": [
-    { "type": "paragraph", "content": "Phases and images come from the product's timeline metafields (phase 1 to 3). How to Use lives in the buy-box accordion." },
+    { "type": "paragraph", "content": "Phases and images come from the product's timeline metafields (phase 1 to 3). Add Phase blocks to write the phases here instead." },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "What to expect" },
     { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Benefits that <em>build over time</em>" },
     { "type": "text", "id": "subheading", "label": "Subheading", "default": "Take it daily and the benefits build. Here’s what to look for, and when." },
     { "type": "text", "id": "next_label", "label": "Next step label", "default": "What comes next" }
+  ],
+  "blocks": [
+    {
+      "type": "phase",
+      "name": "Phase",
+      "limit": 4,
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "label", "label": "Label", "default": "1 to 3 days" },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "richtext", "id": "text", "label": "Text" }
+      ]
+    }
   ],
   "presets": [ { "name": "LP · PDP results timeline" } ],
   "enabled_on": { "templates": ["product"] }

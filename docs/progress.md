@@ -24,6 +24,14 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 
 ---
 
+## 2026-11-21 · review · Letisha fixes: Ideal For icons, PDP gallery, home steps, FootCharge photos
+
+- Done: Ideal For icons moved from UK-only Files into theme assets (US/EU were blank and uneven); PDP gallery panel white, PNG packshots smaller (sand + multiply read as a grey/beige cast); How It Works centred with larger, darker type, step 1 shows the full range (`lp-home-step-choose-range.jpg`) and drops "Start with LAMININE"; FootCharge How to Use and 1-month phase use seated photos (`lp-pdp-footcharge-seated*.jpg`, cut from product image 05 with the baked text removed). All stores.
+- Evidence: init.sh --full READY; Playwright US/EU 390 and 1440: 4/4 icons on one row, panel rgb(255,255,255), no horizontal scroll, no page errors; seated images load on US/EU.
+- Lessons: store-specific Files referenced from shared theme code break other stores; shared icons belong in assets.
+
+---
+
 ## 2026-11-21 · pdp-004 · Cellnergy device PDPs rebuilt on all stores
 
 - Done: replaced the legacy Impact sections under the buy box (spec table, text walls, guarantee marquee, slider timeline) on `product.cellnergy-footcharge` and `product.cellnergy-wellness-stand` with new reusable sections `lp-pdp-overview` (image, stats, chips), `lp-pdp-cards` (image / numbered / icon cards, mobile side-scroll) and `lp-pdp-split` (image with steps, notes, detail rows); `lp-pdp-timeline` now accepts Phase blocks (Laminine still uses metafields). Copy cleaned of em dashes and softened ("helps maintain muscle tone", not "prevent atrophy"). Same templates on master, uk, us, eu.

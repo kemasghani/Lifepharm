@@ -874,3 +874,12 @@ body:has(.shopify-section--main-product) .shopify-section--text-with-icons:not(#
 .lp-ab-head h2 em { font-style: normal; color: rgb(var(--lp-amber)); }
 .lp-ab-head__text { font-size: 1.0625rem; line-height: 1.65; color: rgb(var(--lp-muted)); }
 .lp-ab-head__text p { margin: 0; }
+
+/* ---------- No sideways scroll (QA 2026-11-21) ----------
+   Long study URLs in merchant rich text pushed /pages/immune and /pages/laminine-for-joint-pain to 559px and 742px wide
+   at 390px; a bleeding logo list added 20px on /pages/laminine-for-pets. URLs now wrap, and main clips anything else
+   that bleeds. overflow-x: clip does not create a scroll container, so sticky elements inside main keep working. */
+.prose, .rte, .rich-text { overflow-wrap: break-word; }
+.prose a, .rte a, .rich-text a { overflow-wrap: anywhere; }
+main#main { overflow-x: clip; }
+

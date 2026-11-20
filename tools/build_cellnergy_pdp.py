@@ -119,7 +119,7 @@ FOOTCHARGE = [
     }, [
         ('phase', {'image': IMG('AdobeStock_1273796619.jpg'), 'label': '1 to 30 minutes', 'title': 'Warmth and Relief',
                    'text': '<p>As soon as your feet are on the pads, gentle warmth and bioactivation begin. Low-frequency stimulation and infrared heat help awaken tired nerves and soothe tension, so you may feel immediate relief and deep relaxation.*</p>'}),
-        ('phase', {'image': IMG('lp-hover-cellnergy-footcharge.jpg'), 'label': '1 to 3 days', 'title': 'Steadier and More Rested',
+        ('phase', {'image': IMG('lp-pdp-footcharge-rested.jpg'), 'label': '1 to 3 days', 'title': 'Steadier and More Rested',
                    'text': '<p>Continued use helps reawaken dormant nerve pathways and support microcirculation. You may notice less numbness, more stable movement, quicker reactions and more restorative sleep.*</p>'}),
         ('phase', {'image': IMG('lp-pdp-footcharge-seated-wide.jpg'), 'label': '1 month and beyond', 'title': 'A Daily Ritual That Lasts',
                    'text': '<p>Over time, FootCharge helps support cellular energy, nerve pathways and coordination from the ground up. You may feel less discomfort, less stress and steadier energy through the day, without the crash.*</p>'}),

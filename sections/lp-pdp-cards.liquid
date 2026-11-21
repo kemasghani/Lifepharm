@@ -18,10 +18,20 @@
 
     <ol class="lp-cards__list" role="list" style="--lp-cards-cols: {{ cols }}" {% if style == 'image' %}data-lp-reveal{% endif %}>
       {%- for block in section.blocks -%}
+        {%- liquid
+          assign lp_img = block.settings.image
+          if lp_img == blank and block.settings.mf_image != blank
+            assign lp_img = product.metafields.custom[block.settings.mf_image].value
+          endif
+          if lp_img == blank and block.settings.media_index > 0
+            assign lp_mi = block.settings.media_index | minus: 1
+            assign lp_img = product.media[lp_mi].preview_image
+          endif
+        -%}
         <li class="lp-cards__card" {{ block.shopify_attributes }}>
-          {%- if style == 'image' and block.settings.image != blank -%}
+          {%- if style == 'image' and lp_img != blank -%}
             <div class="lp-cards__media">
-              {{ block.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 30vw, 85vw', widths: '400,600,800,1000', alt: block.settings.title }}
+              {{ lp_img | image_url: width: 1000 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 30vw, 85vw', widths: '400,600,800,1000', alt: block.settings.title }}
             </div>
           {%- endif -%}
           <div class="lp-cards__body">
@@ -103,6 +113,8 @@
       "name": "Card",
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Image", "info": "Used by the Image on top style" },
+        { "type": "text", "id": "mf_image", "label": "Or image from product metafield", "info": "Key in the custom namespace" },
+        { "type": "range", "id": "media_index", "label": "Or product image number", "min": 0, "max": 12, "step": 1, "default": 0 },
         { "type": "select", "id": "icon", "label": "Icon", "info": "Used by the Icon style", "default": "sparkle", "options": [
           { "value": "sparkle", "label": "Sparkle" }, { "value": "bolt", "label": "Energy" }, { "value": "heart", "label": "Heart" },
           { "value": "moon", "label": "Moon" }, { "value": "leaf", "label": "Leaf" }, { "value": "drop", "label": "Drop" },

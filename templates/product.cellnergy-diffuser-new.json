@@ -25,7 +25,8 @@
             "sku_tagtype": "handle",
             "is_featured_product": false,
             "featured_product_handle": ""
-          }
+          },
+          "disabled": true
         },
         "liquid_jmNQFi": {
           "type": "liquid",
@@ -37,14 +38,15 @@
           "type": "price",
           "settings": {
             "show_taxes_notice": false
-          }
+          },
+          "disabled": true
         },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
             "hide_sold_out_variants": false,
             "stack_blocks": true,
-            "selector_style": "block",
+            "selector_style": "lp_card",
             "swatch_selector_style": "swatch",
             "variant_image_options": "",
             "size_chart_page": ""
@@ -379,22 +381,42 @@
           "settings": {
             "label": "Your IBO price"
           }
+        },
+        "lp_rating": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{% render 'lp-rating-row', product: product %}"
+          }
+        },
+        "lp_summary": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{% render 'lp-pdp-summary', product: product %}"
+          }
+        },
+        "lp_price": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{%- assign lp_v = product.selected_or_first_available_variant -%}{%- assign lp_base = lp_v.compare_at_price | default: lp_v.price -%}<div class=\"lp-pdp-price\" aria-live=\"polite\"><span class=\"lp-pdp-price__now price-item--regular\">{{ lp_v.price | money }}</span><s class=\"lp-pdp-price__was\" data-base=\"{{ lp_base | money_without_currency }}\" {% unless lp_v.compare_at_price > lp_v.price %}hidden{% endunless %}>{{ lp_base | money }}</s><span class=\"lp-pdp-price__tag\" hidden></span></div>"
+          }
         }
       },
       "block_order": [
         "title",
-        "stamped_product_reviews_ugc_star_rating_badge_8VPpGa",
-        "liquid_jmNQFi",
-        "price",
+        "badges",
+        "lp_rating",
+        "lp_summary",
+        "lp_price",
         "teqnavi_ibo_price",
         "variant_picker",
+        "stamped_product_reviews_ugc_star_rating_badge_8VPpGa",
+        "price",
         "affirm_pay_over_time_messaging_product_block_nBatVc",
         "afterpay_on_site_messaging_payments_messaging_GjakRE",
         "payment_terms",
         "liquid_bg4cqy",
         "skio_plan_picker_pn4yd9",
         "quantity_selector",
-        "badges",
         "separator",
         "easyflow_app_block_gr8LEC",
         "text_VjR6WU",
@@ -407,6 +429,7 @@
         "collapsible_text_PDdyLw",
         "collapsible_text_kaarby",
         "buy_buttons",
+        "liquid_jmNQFi",
         "text_NmWLhb",
         "text_qkxir3",
         "offer_KHjNfD",

@@ -546,7 +546,10 @@
         "eyebrow": "What to Expect",
         "heading": "Benefits That Build Over Time",
         "subheading": "Use it daily and the benefits build. Here’s what to look for, and when.",
-        "next_label": "What comes next"
+        "next_label": "What comes next",
+        "image_1": "shopify://shop_images/lp-tl-cream-1.jpg",
+        "image_2": "shopify://shop_images/lp-tl-cream-2.jpg",
+        "image_3": "shopify://shop_images/lp-tl-cream-3.jpg"
       }
     },
     "lp_faq": {

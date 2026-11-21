@@ -34,7 +34,14 @@
         {%- liquid
           assign lp_img = block.settings.image
           if lp_img == blank and block.settings.mf_image != blank
-            assign lp_img = product.metafields.custom[block.settings.mf_image].value
+            assign lp_keys = block.settings.mf_image | split: ','
+            for lp_key in lp_keys
+              assign lp_k = lp_key | strip
+              if product.metafields.custom[lp_k] != blank
+                assign lp_img = product.metafields.custom[lp_k].value
+                break
+              endif
+            endfor
           endif
         -%}
         <li class="lp-tl__card" {{ block.shopify_attributes }}>
@@ -176,7 +183,7 @@
       "limit": 4,
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "text", "id": "mf_image", "label": "Or image from product metafield", "info": "Key in the custom namespace, for example phase_1_image" },
+        { "type": "text", "id": "mf_image", "label": "Or image from product metafield", "info": "Key in the custom namespace, for example phase_1_image. Separate several keys with commas to fall back in order." },
         { "type": "text", "id": "label", "label": "Label", "default": "1 to 3 days" },
         { "type": "text", "id": "title", "label": "Title" },
         { "type": "richtext", "id": "text", "label": "Text" }

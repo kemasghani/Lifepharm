@@ -62,7 +62,7 @@
             "hide_sold_out_variants": false,
             "stack_blocks": true,
             "selector_style": "lp_card",
-            "lp_badges": "Family Pack: Free bottle",
+            "lp_badges": "",
             "swatch_selector_style": "swatch",
             "variant_image_options": "",
             "size_chart_page": ""

@@ -636,7 +636,7 @@
     const sync = () => {
       const bar = host.querySelector('.product-quick-add');
       const on = !!bar && bar.classList.contains('is-visible');
-      if (on) root.style.setProperty('--lp-sticky-h', `${Math.round(bar.getBoundingClientRect().height) + 10}px`);
+      if (on) root.style.setProperty('--lp-sticky-h', `${Math.round(bar.offsetHeight + parseFloat(getComputedStyle(bar).bottom || 0)) + 10}px`);
       root.classList.toggle('lp-sticky-on', on);
     };
     new MutationObserver(sync).observe(host, { subtree: true, childList: true, attributes: true, attributeFilter: ['class'] });

@@ -914,3 +914,19 @@ main#main { overflow-x: clip; }
 /* Sticky Add to Cart stays out of the way of drawers, dialogs and the open menu. */
 html:has(x-drawer[open], cart-drawer[open], dialog[open]) .product-quick-add:not(#lp-none) { visibility: hidden !important; opacity: 0 !important; pointer-events: none !important; }
 @media (prefers-reduced-motion: reduce) { .product-quick-add { transition: none !important; } }
+
+/* Sticky bar for an older audience: no product name (it is on the page), a large, high-contrast price. */
+.lp-sticky__info { align-content: center; }
+.lp-sticky__price { align-items: baseline; column-gap: .5rem; }
+.lp-sticky__price strong:not(#lp-none) { font-size: 1.5rem; font-weight: 800; line-height: 1.1; letter-spacing: -.015em; color: rgb(var(--lp-ink)); }
+.lp-sticky__variant:not(#lp-none) { font-size: .9375rem; color: rgb(var(--lp-ink) / .8); }
+.lp-sticky__unit:not(#lp-none) { font-size: .875rem; }
+.lp-sticky__note:not(#lp-none) { font-size: .8125rem; }
+@media (max-width: 699px) { .lp-sticky__price strong:not(#lp-none) { font-size: 1.375rem; } }
+@media (min-width: 1000px) {
+  .shopify-section--main-product .section--tight { --calculated-section-spacing-block-start: 16px; }
+  .shopify-section--main-product .product-info__title { font-size: clamp(2.1rem, 3.1vw, 3rem); }
+  .shopify-section--main-product .product-info > .product-info__block-item[data-block-id="lp_summary"] { --product-info-block-spacing: .625rem; }
+  .shopify-section--main-product .lp-vcard__media:not(#lp-none) { height: 4.25rem; }
+  .shopify-section--main-product .product-info__block-item[data-block-type="buy-buttons"] { margin-block-start: 0; }
+}

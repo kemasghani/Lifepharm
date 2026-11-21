@@ -79,7 +79,8 @@
           endif
           assign p_heading = mf[heading_key].value | split: '<p' | first | strip_html | strip
           assign p_label = mf[label_key].value | default: p_heading
-          assign p_image = mf[image_key].value
+          assign ov_key = 'image_' | append: n
+          assign p_image = section.settings[ov_key] | default: mf[image_key].value
           if p_image == blank
             assign media_index = forloop.index | plus: 2
             assign p_image = product.media[media_index].preview_image
@@ -174,7 +175,12 @@
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "What to expect" },
     { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Benefits that <em>build over time</em>" },
     { "type": "text", "id": "subheading", "label": "Subheading", "default": "Take it daily and the benefits build. Here’s what to look for, and when." },
-    { "type": "text", "id": "next_label", "label": "Next step label", "default": "What comes next" }
+    { "type": "text", "id": "next_label", "label": "Next step label", "default": "What comes next" },
+    { "type": "header", "content": "Phase images (metafield mode)" },
+    { "type": "paragraph", "content": "Optional. Replaces the image from the product's phase metafield." },
+    { "type": "image_picker", "id": "image_1", "label": "Phase 1 image" },
+    { "type": "image_picker", "id": "image_2", "label": "Phase 2 image" },
+    { "type": "image_picker", "id": "image_3", "label": "Phase 3 image" }
   ],
   "blocks": [
     {

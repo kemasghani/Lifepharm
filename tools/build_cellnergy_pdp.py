@@ -237,7 +237,7 @@ WELLNESS = [
         ('row', {'label': 'Power', 'value': '<p>110–127V or 220–240V, 50/60Hz, 900W input</p>'}),
         ('row', {'label': 'Warranty', 'value': '<p>One year from the date of purchase</p>'}),
     ])),
-    ('lp_timeline', section('lp-pdp-timeline', TIMELINE_HEAD)),
+    ('lp_timeline', section('lp-pdp-timeline', dict(TIMELINE_HEAD, image_1=IMG('lp-tl-wellness-1.jpg'), image_2=IMG('lp-tl-wellness-2.jpg'), image_3=IMG('lp-tl-wellness-3.jpg')))),
     ('lp_faq', section('lp-pdp-faq', FAQ_HEAD, [
         ('item', {'question': 'What Settings Does the Device Have?', 'answer': '<p>There are four settings: 0 is off, 1 is high speed with low heat, 2 is low speed with high heat, and 3 is medium speed with high heat.</p>'}),
         ('item', {'question': 'Can I Use It on My Scalp?', 'answer': '<p>Yes. Hold it 20 to 30 cm from your scalp, as long as there are no open wounds.</p>'}),
@@ -276,7 +276,7 @@ POWER_CREAM = [
         ('row', {'label': 'Free from', 'value': '<p>Parabens, phthalates and sulfates. Hypoallergenic.</p>'}),
         ('row', {'label': 'Certifications', 'value': '<p>ISO 9001</p>'}),
     ])),
-    ('lp_timeline', section('lp-pdp-timeline', TIMELINE_HEAD)),
+    ('lp_timeline', section('lp-pdp-timeline', dict(TIMELINE_HEAD, image_1=IMG('lp-tl-cream-1.jpg'), image_2=IMG('lp-tl-cream-2.jpg'), image_3=IMG('lp-tl-cream-3.jpg')))),
     ('lp_faq', section('lp-pdp-faq', FAQ_HEAD, [
         ('item', {'question': 'What Is ThermalWave Technology?', 'answer': '<p>A blend of a natural sensory agent and infrared minerals that makes the cream self-warming. It creates a soothing warmth on your skin and joints and helps stimulate blood flow.*</p>'}),
         ('item', {'question': 'Where Do the Growth Factors Come From?', 'answer': '<p>From fertilised avian eggs sourced from a USDA-inspected farm in the USA. The hens are raised cage-free on high-quality whole grains, and no chemicals or extreme heat are used in processing.</p>'}),
@@ -336,7 +336,7 @@ HYDRATION = [
 
 DIFFUSER = [
     ('lp_overview', section('lp-pdp-overview', {
-        'media_index': 1, 'image_fit': 'contain', 'caption': 'Cellnergy Mineral Activation Diffuser', 'media_position': 'start',
+        'image': IMG('lp-pdp-diffuser-hero.jpg'), 'image_fit': 'cover', 'caption': 'Cellnergy Mineral Activation Diffuser', 'media_position': 'start',
         'eyebrow': 'Why Replace It', 'heading': 'Keep Every Sip at Its Best',
         'text': '<p>Your Cellnergy Hydration System depends on one thing: fresh minerals. Over time the diffuser’s output declines and your water slowly returns to ordinary.</p><p>A fresh Mineral Activation Diffuser restores hydrogen output, alkaline balance and water structuring within 15 minutes of your first fill.</p>',
         'chips_label': '', 'chips': '', 'note_label': 'Fits:', 'note': 'Cellnergy Hydration System',
@@ -369,10 +369,10 @@ DIFFUSER = [
     ])),
     ('lp_timeline', section('lp-pdp-timeline', {'eyebrow': 'What to Expect', 'heading': 'The Life of a Diffuser',
                                                 'subheading': 'Here’s what happens to your water over time, and when to swap.', 'next_label': 'What comes next'}, [
-        ('phase', {'mf_image': 'phase_1_image,image_benefits', 'label': 'Day 1', 'title': 'Full Performance Restored', 'text': '<p>Fresh minerals are active within 15 minutes. Hydrogen output, alkaline balance and water structuring are all back.</p>'}),
-        ('phase', {'mf_image': 'phase_2_image,image_benefits', 'label': 'Months 1 to 2', 'title': 'Peak Hydration', 'text': '<p>Every sip delivers hydrogen-rich, alkaline, structured water to support your daily routine.*</p>'}),
-        ('phase', {'mf_image': 'phase_3_image,image_benefits', 'label': 'Month 3', 'title': 'Output Begins to Decline', 'text': '<p>Performance drops gradually and quietly: hydrogen falls and the pH drifts. Most people do not notice for weeks.</p>'}),
-        ('phase', {'mf_image': 'phase_5_image,image_benefits', 'label': 'Replace now', 'title': 'Back to Full Performance', 'text': '<p>Swap the diffuser and fill the bottle. Fifteen minutes later, your water is working as designed again.</p>'}),
+        ('phase', {'image': IMG('lp-tl-diffuser-1.jpg'), 'label': 'Day 1', 'title': 'Full Performance Restored', 'text': '<p>Fresh minerals are active within 15 minutes. Hydrogen output, alkaline balance and water structuring are all back.</p>'}),
+        ('phase', {'image': IMG('lp-tl-diffuser-2.jpg'), 'label': 'Months 1 to 2', 'title': 'Peak Hydration', 'text': '<p>Every sip delivers hydrogen-rich, alkaline, structured water to support your daily routine.*</p>'}),
+        ('phase', {'image': IMG('lp-tl-diffuser-3.jpg'), 'label': 'Month 3', 'title': 'Output Begins to Decline', 'text': '<p>Performance drops gradually and quietly: hydrogen falls and the pH drifts. Most people do not notice for weeks.</p>'}),
+        ('phase', {'image': IMG('lp-tl-diffuser-4.jpg'), 'label': 'Replace now', 'title': 'Back to Full Performance', 'text': '<p>Swap the diffuser and fill the bottle. Fifteen minutes later, your water is working as designed again.</p>'}),
     ])),
     ('lp_faq', section('lp-pdp-faq', dict(FAQ_HEAD, button_label=''), [
         ('item', {'question': 'How Often Should I Replace It?', 'answer': '<p>About every 2 months of daily use, when mineral output starts to decline.</p>'}),

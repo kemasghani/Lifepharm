@@ -1291,7 +1291,10 @@
       "settings": {
         "eyebrow": "What to expect",
         "heading": "Benefits that <em>build over time</em>",
-        "subheading": "Take it daily and the benefits build. Here’s what to look for, and when."
+        "subheading": "Take it daily and the benefits build. Here’s what to look for, and when.",
+        "image_1": "shopify://shop_images/lp-tl-laminine-1.jpg",
+        "image_2": "shopify://shop_images/lp-tl-laminine-2.jpg",
+        "image_3": "shopify://shop_images/lp-tl-laminine-3.jpg"
       }
     },
     "lp_pdp_formula": {

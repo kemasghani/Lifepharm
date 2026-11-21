@@ -410,11 +410,137 @@
         "input_text_color": ""
       }
     },
+    "lp_pdp_highlights": {
+      "type": "lp-pdp-highlights",
+      "settings": {
+        "eyebrow": "Why it works",
+        "heading": "Support that works with your body, not against it.",
+        "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
+      }
+    },
+    "lp_pdp_timeline": {
+      "type": "lp-pdp-timeline",
+      "settings": {
+        "eyebrow": "What to expect",
+        "heading": "Benefits that <em>build over time</em>",
+        "subheading": "Take it daily and the benefits build. Here’s what to look for, and when."
+      }
+    },
+    "before_after_image_ieK6Jg": {
+      "type": "before-after-image",
+      "custom_css": [
+        ".section-stack__intro {flex: 1 0 530px; max-width: 750px; width: auto;}",
+        ".section-stack__main {flex: 1 1 450px; min-width: 320px; max-width: 750px; width: auto;}",
+        ".text-center {text-align: center;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "{{ product.metafields.custom.heading_before_after.value }}",
+        "content": "<p>{{ product.metafields.custom.content_before_after | metafield_tag }}</p>",
+        "before_image": "{{ product.metafields.custom.image_1_before_after.value }}",
+        "after_image": "{{ product.metafields.custom.image_2_before_after.value }}",
+        "expand_image": false,
+        "text_position": "center",
+        "before_after_text_position": "top",
+        "before_text": "Before",
+        "after_text": "After",
+        "drag_initial_position": 60,
+        "background": "#f3efe7",
+        "background_gradient": "",
+        "text_color": "#15171b",
+        "before_text_color": "#ffffff",
+        "after_text_color": "#ffffff",
+        "drag_cursor_background": "#ffffff",
+        "drag_cursor_color": "#b06200"
+      }
+    },
+    "lp_pdp_formula": {
+      "type": "lp-pdp-formula",
+      "settings": {
+        "eyebrow": "The formula",
+        "full_list_label": "Full ingredient list",
+        "studies_label": "Scientific studies"
+      }
+    },
+    "lp_pdp_compare": {
+      "type": "lp-pdp-compare",
+      "settings": {
+        "eyebrow": "A higher standard",
+        "prefix": "How",
+        "suffix": "compares",
+        "text": "<p>Held to standards many brands never publish, and backed by our 60-day money-back guarantee.</p>",
+        "feature_label": "Feature",
+        "other_label": "Typical brands",
+        "other_value": "Not always",
+        "guarantee_row": "60-Day Money-Back Guarantee"
+      }
+    },
+    "17128952497cac699c": {
+      "type": "apps",
+      "blocks": {
+        "stamped_product_reviews_ugc_main_widget_q7NdzJ": {
+          "type": "shopify://apps/stamped-reviews/blocks/main-widget/a103faaf-2125-4b0e-89fa-de5149736723",
+          "settings": {
+            "animation": true,
+            "tags_exclude": "",
+            "tags_include": "",
+            "search": "",
+            "linkify": true,
+            "use_metafields": false,
+            "sku_tagtype": "handle"
+          }
+        }
+      },
+      "block_order": [
+        "stamped_product_reviews_ugc_main_widget_q7NdzJ"
+      ],
+      "custom_css": [],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "lp_pdp_faq": {
+      "type": "lp-pdp-faq",
+      "blocks": {
+        "faq_guarantee": {
+          "type": "item",
+          "settings": {
+            "question": "What If It Doesn't Work for Me?",
+            "answer": "<p>Then you don’t pay for it. Every LifePharm product comes with a 60-day money-back guarantee. Let us know within 60 days of delivery and we’ll refund you in full.</p>"
+          }
+        },
+        "faq_shipping": {
+          "type": "item",
+          "settings": {
+            "question": "Do You Offer Free Delivery?",
+            "answer": "<p>Yes. Orders over €150 ship free.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_guarantee",
+        "faq_shipping"
+      ],
+      "settings": {
+        "heading": "Still deciding? Start here.",
+        "button_label": "View all FAQs",
+        "contact_label": "Contact us",
+        "q_who": "Who is [product] for?",
+        "q_how": "How do I take [product]?",
+        "q_when": "When will I notice a difference?"
+      }
+    },
     "1717692639facd14b3": {
       "type": "apps",
       "blocks": {
         "tolstoy_shoppable_video_ugc_stories_block_8FqwYJ": {
-          "type": "shopify://apps/tolstoy-ads-image-video/blocks/stories-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "type": "shopify://apps/tolstoy/blocks/stories-block/06fa8282-42ff-403e-b67c-1936776aed11",
           "settings": {
             "publishId": "3ew6rhswme0cg"
           }
@@ -522,18 +648,6 @@
         "accordion_text_color": ""
       }
     },
-    "custom_liquid_XMpJDx": {
-      "type": "custom-liquid",
-      "settings": {
-        "full_width": true,
-        "remove_vertical_spacing": false,
-        "remove_horizontal_spacing": false,
-        "liquid": "",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
     "feature_chart_eKhRpt": {
       "type": "feature-chart",
       "blocks": {
@@ -595,6 +709,7 @@
         "headings_DfxDEN",
         "values_JYMQEF"
       ],
+      "disabled": true,
       "custom_css": [
         ".section-stack__intro {flex: 1 0 530px; max-width: 750px; width: auto;}",
         ".section-stack__main {flex: 1 1 450px; min-width: 350px; width: auto;}"
@@ -627,6 +742,7 @@
     },
     "scrolling_text_gnHJtw": {
       "type": "scrolling-text",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "text": "60 Day Money Back Guarantee",
@@ -638,251 +754,6 @@
         "background_gradient": "linear-gradient(168deg, rgba(255, 143, 0, 1) 10%, rgba(255, 162, 44, 1) 53%, rgba(248, 189, 113, 1) 94%)",
         "text_color": "#ffffff",
         "text_gradient": ""
-      }
-    },
-    "before_after_image_ieK6Jg": {
-      "type": "before-after-image",
-      "disabled": true,
-      "custom_css": [
-        ".section-stack__intro {flex: 1 0 530px; max-width: 750px; width: auto;}",
-        ".section-stack__main {flex: 1 1 450px; min-width: 320px; max-width: 750px; width: auto;}",
-        ".text-center {text-align: center;}"
-      ],
-      "settings": {
-        "full_width": true,
-        "subheading": "",
-        "title": "{{ product.metafields.custom.heading_before_after.value }}",
-        "content": "{{ product.metafields.custom.content_before_after | metafield_tag }}",
-        "before_image": "{{ product.metafields.custom.image_1_before_after.value }}",
-        "after_image": "{{ product.metafields.custom.image_2_before_after.value }}",
-        "expand_image": false,
-        "text_position": "center",
-        "before_after_text_position": "top",
-        "before_text": "Before",
-        "after_text": "After",
-        "drag_initial_position": 60,
-        "background": "#f9f9f9",
-        "background_gradient": "",
-        "text_color": "#181818",
-        "before_text_color": "#ffffff",
-        "after_text_color": "#ffffff",
-        "drag_cursor_background": "#ffffff",
-        "drag_cursor_color": "#ff8f00"
-      }
-    },
-    "ss_before_after_image_3_bTbK7J": {
-      "type": "ss-before-after-image-3",
-      "blocks": {
-        "slide_x8iJp4": {
-          "type": "slide",
-          "settings": {
-            "before_image": "shopify://shop_images/Before_v2_web.jpg",
-            "after_image": "shopify://shop_images/After_v2_web.jpg",
-            "customer": "Reduced Forehead Wrinkles and Fine Lines",
-            "text": "<p>Using LAMIDERM twice a day for 6 weeks helped reduce appearance of forehead wrinkles and fine lines.</p>",
-            "product_label": "This result example uses:",
-            "product": "lamiderm-apex-smart-serum",
-            "bottom_title": "",
-            "bottom_text": "<p><em>*Results are from a 6 week clinical study, participants are aged between 45 and 65, results may vary.</em></p>"
-          }
-        },
-        "slide_peczgn": {
-          "type": "slide",
-          "settings": {
-            "before_image": "shopify://shop_images/image-3-before_web.jpg",
-            "after_image": "shopify://shop_images/image-3-after_web.jpg",
-            "customer": "Reduced Appearance of Crow’s Feet",
-            "text": "<p>Using LAMIDERM twice a day for 6 weeks helped reduce appearance of crow’s feet</p>",
-            "product_label": "This result example uses:",
-            "product": "lamiderm-apex-smart-serum",
-            "bottom_title": "",
-            "bottom_text": "<p><em>*Results are from a 6 week clinical study, participants are aged between 45 and 65, results may vary.</em></p>"
-          }
-        },
-        "slide_64t7Fj": {
-          "type": "slide",
-          "settings": {
-            "before_image": "shopify://shop_images/image-2-before_web.jpg",
-            "after_image": "shopify://shop_images/image-2-after_web.jpg",
-            "customer": "Reduced Dark Spots",
-            "text": "<p>Using LAMIDERM twice a day for 6 weeks helped reduce dark spots</p>",
-            "product_label": "This result example uses:",
-            "product": "lamiderm-apex-smart-serum",
-            "bottom_title": "",
-            "bottom_text": "<p><em>*Results are from a 6 week clinical study, participants are aged between 45 and 65, results may vary.</em></p>"
-          }
-        }
-      },
-      "block_order": [
-        "slide_x8iJp4",
-        "slide_peczgn",
-        "slide_64t7Fj"
-      ],
-      "settings": {
-        "heading": "<p>Real People, Real Results</p>",
-        "heading_custom": true,
-        "heading_font": "playfair_display_n4",
-        "heading_size": 46,
-        "heading_size_mobile": 30,
-        "heading_height": 150,
-        "heading_align": "center",
-        "heading_align_mobile": "center",
-        "sub_heading": "",
-        "sub_heading_custom": false,
-        "sub_heading_font": "josefin_sans_n4",
-        "sub_heading_size": 32,
-        "sub_heading_size_mobile": 26,
-        "sub_heading_height": 150,
-        "sub_heading_align": "center",
-        "sub_heading_align_mobile": "center",
-        "sub_heading_mt": 12,
-        "slider_mt": 54,
-        "slider_mt_mobile": 20,
-        "images_gap": 16,
-        "images_gap_mobile": 16,
-        "image_radius": 6,
-        "image_border_thickness": 0,
-        "image_ratio": "square",
-        "image_ratio_mobile": "portrait",
-        "badge_before": "WEEK 1",
-        "badge_after": "WEEK 6",
-        "badge_custom": true,
-        "badge_font": "lato_n4",
-        "badge_size": 12,
-        "badge_size_mobile": 10,
-        "badge_height": 100,
-        "badge_padding_vertical": 10,
-        "badge_padding_vertical_mobile": 4,
-        "badge_padding_horizontal": 30,
-        "badge_padding_horizontal_mobile": 16,
-        "badge_radius": 6,
-        "badge_border_thickness": 0,
-        "content_padding_vertical": 0,
-        "content_padding_vertical_mobile": 0,
-        "content_padding_horizontal": 80,
-        "content_padding_horizontal_mobile": 0,
-        "customer_custom": true,
-        "customer_font": "lato_i4",
-        "customer_size": 26,
-        "customer_size_mobile": 22,
-        "customer_height": 130,
-        "customer_align": "left",
-        "customer_align_mobile": "center",
-        "text_custom": true,
-        "text_font": "lato_n4",
-        "text_size": 16,
-        "text_size_mobile": 14,
-        "text_height": 160,
-        "text_align": "left",
-        "text_align_mobile": "center",
-        "text_mt": 8,
-        "product_label_custom": true,
-        "product_label_font": "lato_n4",
-        "product_label_size": 14,
-        "product_label_size_mobile": 14,
-        "product_label_height": 100,
-        "product_label_align": "left",
-        "product_label_align_mobile": "center",
-        "product_label_mt": 40,
-        "product_custom": true,
-        "product_font": "lato_n4",
-        "product_size": 14,
-        "product_size_mobile": 14,
-        "product_height": 100,
-        "product_align": "left",
-        "product_align_mobile": "center",
-        "product_mt": 6,
-        "arrow_size": 40,
-        "arrow_size_mobile": 40,
-        "arrow_icon_size": 40,
-        "arrow_icon_size_mobile": 50,
-        "arrow_border_thickness": 0,
-        "arrow_show_desktop": true,
-        "arrow_show_mobile": false,
-        "dots_size": 15,
-        "dots_size_mobile": 15,
-        "dots_mt": 25,
-        "dots_show_desktop": true,
-        "dots_show_mobile": true,
-        "bottom_mt": 28,
-        "bottom_align": "center",
-        "bottom_align_mobile": "center",
-        "bottom_border_thickness": 0,
-        "bottom_title_custom": true,
-        "bottom_title_font": "lato_n4",
-        "bottom_title_size": 30,
-        "bottom_title_size_mobile": 30,
-        "bottom_title_height": 100,
-        "bottom_text_custom": false,
-        "bottom_text_font": "lato_n4",
-        "bottom_text_size": 14,
-        "bottom_text_size_mobile": 14,
-        "bottom_text_height": 150,
-        "image_border_color": "#181818",
-        "badge_color": "#181818",
-        "badge_bg_color": "#f4f4f4",
-        "badge_border_color": "#181818",
-        "customer_color": "#ff8f00",
-        "text_color": "#181818",
-        "product_label_color": "#181818",
-        "product_color": "#5b5b5b",
-        "arrow_color": "#7e7e7e",
-        "arrow_hover_color": "#181818",
-        "arrow_bg_color": "rgba(0,0,0,0)",
-        "arrow_bg_hover_color": "",
-        "arrow_border_color": "#ffffff",
-        "arrow_border_hover_color": "#ffffff",
-        "dots_color": "#181818",
-        "bottom_border_color": "#cec7c3",
-        "bottom_title_color": "#8b8b8b",
-        "bottom_text_color": "#8b8b8b",
-        "heading_color": "#181818",
-        "sub_heading_color": "#181818",
-        "background_color": "#f9f9f9",
-        "background_gradient": "",
-        "border_color": "#000000",
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "padding_top": 100,
-        "padding_bottom": 80,
-        "padding_horizontal": 5,
-        "padding_horizontal_mobile": 1.5,
-        "full_width": false,
-        "content_width": 100,
-        "border_thickness": 0,
-        "lazy": true
-      }
-    },
-    "scrolling_text_bihmkB": {
-      "type": "scrolling-text",
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "text": "Feeling young • Joint Pain • Sleep • Stress",
-        "text_size": "medium",
-        "text_style": "fill",
-        "scrolling_mode": "auto",
-        "scrolling_speed": 10,
-        "background": "#f9f9f9",
-        "background_gradient": "linear-gradient(168deg, rgba(255, 143, 0, 1) 10%, rgba(252, 184, 0, 1) 65%, rgba(255, 255, 255, 1) 100%)",
-        "text_color": "#ffffff",
-        "text_gradient": ""
-      }
-    },
-    "scrolling_text_GKpgyU": {
-      "type": "scrolling-text",
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "text": "Making optimal well-being attainable for all.",
-        "text_size": "medium",
-        "text_style": "fill",
-        "scrolling_mode": "auto",
-        "scrolling_speed": 10,
-        "background": "rgba(0,0,0,0)",
-        "background_gradient": "",
-        "text_color": "#ffffff",
-        "text_gradient": "linear-gradient(144deg, rgba(255, 228, 49, 1), rgba(249, 32, 32, 1) 100%)"
       }
     },
     "media_with_text_UCaJMK": {
@@ -898,7 +769,7 @@
             "icon": "none",
             "icon_width": 48,
             "subheading": "",
-            "title": "What Makes LAMIDERM APEX Different?",
+            "title": "Get the Benefit",
             "content": "{{ product.metafields.custom.text_benefits | metafield_tag }}",
             "link_text": "",
             "link_url": "",
@@ -920,8 +791,8 @@
             "icon": "none",
             "icon_width": 48,
             "subheading": "",
-            "title": "Key Ingredients That Set Us Apart",
-            "content": "<p>{{ product.metafields.custom.text_ingredients | metafield_tag }}</p>",
+            "title": "{{ product.metafields.custom.header_7.value }}",
+            "content": "{{ product.metafields.custom.text_ingredients | metafield_tag }}",
             "link_text": "",
             "link_url": "",
             "background": "#f9f9f9",
@@ -937,6 +808,7 @@
         "image_8DzHRG",
         "image_4PHNF4"
       ],
+      "disabled": true,
       "custom_css": [
         ".prose ul,.prose ol {row-gap: 1.4em;}",
         ".prose ul,.list-disc {list-style: square;}"
@@ -986,6 +858,7 @@
         "slide_VVAtmd",
         "slide_gheRD3"
       ],
+      "disabled": true,
       "custom_css": [
         ".subheading {font-weight: 700; color: #ff8f00 !important; margin-top: 10px !important; font-style: italic; font-size: large;}",
         ".timeline__nav-item[aria-current=\"true\"]:before {border-color: #ff8f00; background-color: #ff8f00;}"
@@ -1000,25 +873,44 @@
     "faq_XwdKmx": {
       "type": "faq",
       "blocks": {
+        "item_TkNQcT": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "title": "{{ product.metafields.custom.header_1.value }}",
+            "content": "<p>{{ product.metafields.custom.value_1 | metafield_tag }}</p>"
+          }
+        },
+        "item_bUCdd8": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "title": "{{ product.metafields.custom.header_2.value }}",
+            "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>"
+          }
+        },
+        "item_nCDBHn": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "title": "{{ product.metafields.custom.header_3.value }}",
+            "content": "<p>{{ product.metafields.custom.value_3 | metafield_tag }}</p>"
+          }
+        },
+        "item_89mDbk": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "title": "{{ product.metafields.custom.header_4.value }}",
+            "content": "<p>{{ product.metafields.custom.value_4 | metafield_tag }}</p>"
+          }
+        },
         "item_GkamQw": {
           "type": "item",
+          "disabled": true,
           "settings": {
-            "title": "Clinically Proven Results",
-            "content": "<p>LAMIDERM APEX has been shown to help:</p><ul><li><strong>Reduce Wrinkles by 350%*</strong></li><li><strong>Improve Skin Elasticity by 50%*</strong></li><li><strong>Fade Discoloration by 57%*</strong></li><li><strong>Provide Deep Hydration for 72 Hours*</strong></li></ul><p>Experience the future of skincare—powered by innovation and backed by science.</p><p><em>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent disease.</em></p>"
-          }
-        },
-        "item_aCW7K8": {
-          "type": "item",
-          "settings": {
-            "title": "Why Your Skin Needs a Renewal",
-            "content": "<p>Over time, your skin’s natural repair processes slow down, leading to visible signs of aging. Traditional serums and creams only address surface-level concerns, but they don’t tackle the root cause: <strong>cellular slowdown</strong>.</p><p><strong>LAMIDERM APEX</strong> works differently. It can help:</p><ul><li>Reawaken dormant skin cells.</li><li>Trigger natural collagen production.</li><li>Reactivate your skin’s intelligence system to work as it did when you were younger.</li></ul><p>The result? Skin that looks, feels, and functions better—naturally.</p>"
-          }
-        },
-        "item_rbjAR8": {
-          "type": "item",
-          "settings": {
-            "title": "How to Use LAMIDERM APEX Smart Serum",
-            "content": "<p>Incorporating LAMIDERM APEX into your routine is simple:</p><p><strong>Apply Morning and Night</strong>: After cleansing, pat your skin dry and apply 1-2 pumps on your face, neck, and décolletage evenly. Pat the serum into your skin to help with absorption.</p><p><strong>Follow with Moisturizer</strong>: For best results, pair with a hydrating cream to lock in the benefits.</p><p><strong>See Results in 4 Weeks</strong>: With consistent use, you’ll notice visibly smoother, firmer, and more radiant skin.</p>"
+            "title": "{{ product.metafields.custom.header_5.value }}",
+            "content": "<p>{{ product.metafields.custom.value_5 | metafield_tag }}</p>"
           }
         },
         "item_dGiG9D": {
@@ -1037,12 +929,15 @@
         }
       },
       "block_order": [
+        "item_TkNQcT",
+        "item_bUCdd8",
+        "item_nCDBHn",
+        "item_89mDbk",
         "item_GkamQw",
-        "item_aCW7K8",
-        "item_rbjAR8",
         "item_dGiG9D",
         "item_GKixzh"
       ],
+      "disabled": true,
       "custom_css": [
         "{margin-bottom: -25px !important;}",
         ".prose ul,.prose ol {row-gap: 1.4em;}",
@@ -1094,7 +989,7 @@
             "style": "outline",
             "size": "xl",
             "text": "View FAQs",
-            "url": "{{ product.metafields.custom.faq_url.value }}",
+            "url": "shopify://pages/lamiderm-apex-faqs",
             "background": "",
             "text_color": ""
           }
@@ -1105,6 +1000,7 @@
         "richtext_PAhje7",
         "button_Nnw4Mw"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "content_width": "small",
@@ -1222,7 +1118,7 @@
             "image": "shopify://shop_images/Laminine_europe_120.jpg",
             "icon": "none",
             "icon_width": 48,
-            "title": "Healthy balance",
+            "title": "Healthy Balance",
             "content": "<ul><li>Promotes healthy balance of microflora and pH for better nutrient absorption, a stronger immune system, less respiratory infections, and improved mood*</li></ul>"
           }
         },
@@ -1232,7 +1128,7 @@
             "image": "shopify://shop_images/Laminine_europe_120.jpg",
             "icon": "none",
             "icon_width": 48,
-            "title": "Reduce toxins",
+            "title": "Reduce Toxins",
             "content": "<p>Improves regularity for reducing toxins in blood, supports less indigestion, bloating, cramping, constipation, and diarrhea*</p><ul><li>Contains full range of digestive enzymes to break down nutrients for complete digestion and assimilation*</li></ul>"
           }
         },
@@ -1242,7 +1138,7 @@
             "image": "shopify://shop_images/Laminine_europe_120.jpg",
             "icon": "none",
             "icon_width": 48,
-            "title": "Supports weight management",
+            "title": "Supports Weight Management",
             "content": "<p>Helps digest fats, improve metabolism, and supports elimination of accumulated waste*Supports weight management and helps reduce fat accumulation*</p>"
           }
         },
@@ -1252,7 +1148,7 @@
             "image": "shopify://shop_images/Laminine_europe_120.jpg",
             "icon": "none",
             "icon_width": 48,
-            "title": "Complete digestion",
+            "title": "Complete Digestion",
             "content": "<p>Contains full range of digestive enzymes to break down nutrients for complete digestion and assimilation*</p>"
           }
         }
@@ -1289,7 +1185,7 @@
         "products_per_row_mobile": "1",
         "products_per_row_desktop": 5,
         "subheading": "",
-        "title": "You may also like",
+        "title": "You May Also Like",
         "content": "",
         "background": "",
         "background_gradient": "",
@@ -1298,35 +1194,6 @@
         "heading_gradient": "",
         "product_card_background": "",
         "product_card_text_color": ""
-      }
-    },
-    "17128952497cac699c": {
-      "type": "apps",
-      "blocks": {
-        "stamped_product_reviews_ugc_main_widget_q7NdzJ": {
-          "type": "shopify://apps/stamped-reviews/blocks/main-widget/a103faaf-2125-4b0e-89fa-de5149736723",
-          "settings": {
-            "animation": true,
-            "tags_exclude": "",
-            "tags_include": "",
-            "search": "",
-            "linkify": true,
-            "use_metafields": false,
-            "sku_tagtype": "handle"
-          }
-        }
-      },
-      "block_order": [
-        "stamped_product_reviews_ugc_main_widget_q7NdzJ"
-      ],
-      "custom_css": [],
-      "settings": {
-        "full_width": true,
-        "remove_vertical_spacing": false,
-        "remove_horizontal_spacing": false,
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
       }
     },
     "custom_html_rD7gEb": {
@@ -1362,7 +1229,7 @@
           "settings": {
             "title": "Tab 1",
             "content": "<p>Use this text to share information about your brand with your customers.</p>",
-            "page": "shorts-1772819695"
+            "page": "shorts"
           }
         },
         "tab_PWP6ty": {
@@ -1406,15 +1273,17 @@
   },
   "order": [
     "main",
+    "lp_pdp_highlights",
+    "lp_pdp_timeline",
+    "before_after_image_ieK6Jg",
+    "lp_pdp_formula",
+    "lp_pdp_compare",
+    "17128952497cac699c",
+    "lp_pdp_faq",
     "1717692639facd14b3",
     "faq_3eWR6f",
-    "custom_liquid_XMpJDx",
     "feature_chart_eKhRpt",
     "scrolling_text_gnHJtw",
-    "before_after_image_ieK6Jg",
-    "ss_before_after_image_3_bTbK7J",
-    "scrolling_text_bihmkB",
-    "scrolling_text_GKpgyU",
     "media_with_text_UCaJMK",
     "timeline_rPwewV",
     "faq_XwdKmx",
@@ -1422,7 +1291,6 @@
     "faq_R6AxTY",
     "images_with_text_scrolling_AqDYAM",
     "related-products",
-    "17128952497cac699c",
     "custom_html_rD7gEb",
     "1712987483b4ce0d98",
     "tabs_WnLmDB"

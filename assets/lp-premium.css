@@ -236,7 +236,7 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
 /* ---------- PDP v2 (editorial buy box) ---------- */
 /* Gallery panel is pure white: the packshots are transparent PNGs, so a tinted panel read as a grey/beige cast (Letisha, 2026-11-21).
    Packshots (.lp-gm--pack, set in snippets/product-gallery.liquid for PNG images) sit smaller inside the frame; lifestyle photos stay full bleed. */
-.shopify-section--main-product .product-gallery__media { background: #fff; border-radius: var(--lp-radius-lg); box-shadow: inset 0 0 0 1px var(--lp-hairline); }
+.shopify-section--main-product .product-gallery__media { background: #fff; border-radius: var(--lp-radius-lg); box-shadow: inset 0 0 0 1px rgb(var(--lp-stone)), 0 1px 2px rgb(var(--lp-ink) / .04); }
 .shopify-section--main-product .product-gallery__media.lp-gm--pack > :is(img, .media) { padding: 12%; object-fit: contain; }
 @media (min-width: 1000px) { .shopify-section--main-product .product-gallery__media.lp-gm--pack > :is(img, .media) { padding: 15%; } }
 @media (min-width: 1000px) { .shopify-section--main-product .product { column-gap: clamp(2.5rem, 4vw, 5rem); } }
@@ -300,7 +300,7 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
 }
 @media (min-width: 1000px) {
   .shopify-section--main-product .product-gallery--desktop-carousel { gap: .75rem; }
-  .shopify-section--main-product .product-gallery--desktop-carousel .product-gallery__media:not(#lp-none) { aspect-ratio: 1; display: grid; place-items: center; border-radius: 0; }
+  .shopify-section--main-product .product-gallery--desktop-carousel .product-gallery__media:not(#lp-none) { aspect-ratio: 1; display: grid; place-items: center; border-radius: var(--lp-radius); }
   .shopify-section--main-product .product-gallery--desktop-carousel .product-gallery__media > :is(img, .media, video) { width: 100%; height: 100%; object-fit: contain; }
   .shopify-section--main-product .product-gallery--desktop-carousel .product-gallery__cursor { display: none; }
   /* Impact hides the native cursor on any parent of a custom-cursor (:has(> custom-cursor) { cursor: none }); with the custom one hidden, bring a cursor back. A click still moves to the next image. */
@@ -311,10 +311,11 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
   .shopify-section--main-product .product-gallery__thumbnail-list::-webkit-scrollbar { display: none; }
   /* More than six images: the seventh is cut so it is clear the row scrolls */
   .shopify-section--main-product .product-gallery__thumbnail-list:has(> .product-gallery__thumbnail:nth-child(7)):not(#lp-none) { grid-auto-columns: calc((100% - 6 * .5rem) / 6.5); }
-  .shopify-section--main-product .product-gallery__thumbnail:not(#lp-none) { display: block; aspect-ratio: 1; padding: 4px; border-radius: 0; border: 1.5px solid transparent; background: #fff; cursor: pointer; scroll-snap-align: start; transition: border-color 200ms ease-out; }
+  .shopify-section--main-product .product-gallery__thumbnail:not(#lp-none) { display: block; aspect-ratio: 1; padding: 4px; border-radius: var(--lp-radius-sm); border: 1px solid rgb(var(--lp-stone)); background: #fff; overflow: hidden; cursor: pointer; scroll-snap-align: start; transition: border-color 200ms ease-out; }
   .shopify-section--main-product .product-gallery__thumbnail::after { display: none; }
-  .shopify-section--main-product .product-gallery__thumbnail img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 0 !important; background: rgb(var(--lp-sand)); mix-blend-mode: multiply; transition: opacity 200ms ease-out; }
-  .shopify-section--main-product .product-gallery__thumbnail[aria-current="true"] { border-color: rgb(var(--lp-ink)); }
+  .shopify-section--main-product .product-gallery__thumbnail img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 8px !important; background: #fff; mix-blend-mode: multiply; transition: opacity 200ms ease-out; }
+  .shopify-section--main-product .product-gallery__thumbnail[aria-current="true"] { border-color: rgb(var(--lp-ink)); box-shadow: 0 0 0 .5px rgb(var(--lp-ink)); }
+  .shopify-section--main-product .product-gallery__thumbnail[aria-current="false"]:hover { border-color: #b9b2a6; }
   .shopify-section--main-product .product-gallery__thumbnail[aria-current="false"]:hover img { opacity: .8; }
   .shopify-section--main-product .product-gallery__thumbnail:focus-visible { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 2px; }
 }

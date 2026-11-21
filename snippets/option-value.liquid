@@ -210,7 +210,12 @@ Color swatch specific parameters:
       endif
     -%}
     <{{ option_value_tag }} class="lp-vcard {% if disabled %}is-disabled{% endif %} {% if selected and option_value_tag == 'a' %}is-selected{% endif %}" {{ attributes }}>
-      {%- if badge != blank -%}<span class="lp-vcard__badge{% if badge_tone == 0 %} lp-vcard__badge--amber{% endif %}">{{ badge | escape }}</span>{%- endif -%}
+      {%- comment -%} The saving sits as a badge on the card's top edge, so the card body stays short. A custom badge (lp_badges) only shows when there is no saving. {%- endcomment -%}
+      {%- if save_amount >= 100 -%}
+        <span class="lp-vcard__badge lp-vcard__badge--amber">Save {{ save_amount | money_without_trailing_zeros }}</span>
+      {%- elsif badge != blank -%}
+        <span class="lp-vcard__badge{% if badge_tone == 0 %} lp-vcard__badge--amber{% endif %}">{{ badge | escape }}</span>
+      {%- endif -%}
       <span class="lp-vcard__media">
         {%- if card_image != blank -%}
           {{- card_image | image_url: width: 320 | image_tag: loading: 'lazy', sizes: '120px', widths: '160,240,320', alt: '' -}}
@@ -226,9 +231,6 @@ Color swatch specific parameters:
             <strong>{{ variant.price | money }}</strong>
           {%- endif -%}
         </span>
-        {%- if save_amount >= 100 -%}
-          <span class="lp-vcard__save">Save {{ save_amount | money_without_trailing_zeros }}</span>
-        {%- endif -%}
       {%- endif -%}
       {%- if disabled -%}<span class="lp-vcard__soldout">{{ 'product.general.sold_out_button' | t }}</span>{%- endif -%}
     </{{ option_value_tag }}>

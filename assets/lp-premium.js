@@ -603,12 +603,38 @@
   else initReferralCheckout();
 
 
+  /* Sticky Add to Cart: shown whenever the page's own Add to Cart is off screen (below it on first load on mobile, or
+     scrolled past it), hidden while that button, the footer, a drawer or the menu is on screen. One rule, no flicker:
+     the state is recomputed from IntersectionObserver entries, and a hidden bar is inert so it never takes focus. */
+  if (!customElements.get('lp-sticky-atc')) {
+    customElements.define('lp-sticky-atc', class extends HTMLElement {
+      connectedCallback() {
+        this.form = document.getElementById(this.getAttribute('form'));
+        this.footer = document.querySelector('.footer, footer');
+        if (!this.form) return;
+        this.seen = new Map();
+        this.io = new IntersectionObserver((entries) => {
+          entries.forEach((e) => this.seen.set(e.target, e.isIntersecting));
+          this.update();
+        });
+        this.io.observe(this.form);
+        if (this.footer) this.io.observe(this.footer);
+      }
+      disconnectedCallback() { this.io && this.io.disconnect(); }
+      update() {
+        const show = this.seen.get(this.form) === false && !this.seen.get(this.footer);
+        this.classList.toggle('is-visible', show);
+        this.toggleAttribute('inert', !show);
+      }
+    });
+  }
+
   const initStickyOffset = () => {
-    const host = document.querySelector('product-quick-add')?.closest('product-rerender') || document.querySelector('product-quick-add')?.parentElement;
+    const host = document.querySelector('.product-quick-add')?.closest('product-rerender') || document.querySelector('.product-quick-add')?.parentElement;
     if (!host) return;
     const root = document.documentElement;
     const sync = () => {
-      const bar = host.querySelector('product-quick-add');
+      const bar = host.querySelector('.product-quick-add');
       const on = !!bar && bar.classList.contains('is-visible');
       if (on) root.style.setProperty('--lp-sticky-h', `${Math.round(bar.getBoundingClientRect().height) + 10}px`);
       root.classList.toggle('lp-sticky-on', on);

@@ -109,7 +109,7 @@
 {%- if section.settings.show_fixed_add_to_cart and product.available and buy_buttons_block != blank -%}
   <product-rerender id="{{ product_form_id }}-sticky-bar" observe-form="{{ product_form_id }}">
     {%- if product.selected_or_first_available_variant.available -%}
-      <product-quick-add form="{{ product_form_id }}" class="product-quick-add">
+      <lp-sticky-atc form="{{ product_form_id }}" class="product-quick-add" inert>
         {%- assign button_label = 'product.general.add_to_cart_button' | t -%}
 
         {%- liquid
@@ -142,7 +142,7 @@
             {%- render 'button', type: 'submit', content: button_label, form: product_form_id, background: buy_buttons_block.settings.atc_button_background, text_color: buy_buttons_block.settings.atc_button_text_color, secondary: true, stretch: true, size: 'lg' -%}
           </buy-buttons>
         </div>
-      </product-quick-add>
+      </lp-sticky-atc>
     {%- endif -%}
   </product-rerender>
 {%- endif -%}

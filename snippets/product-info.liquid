@@ -262,8 +262,7 @@ Supported variables
           {%- endif -%}
 
         {%- when 'quantity_selector' -%}
-          {%- assign lp_has_buy = section.blocks | where: 'type', 'buy_buttons' | first -%}
-          {%- if product.available and lp_has_buy == blank -%}
+          {%- if product.available -%}
             {%- assign variant = product.selected_or_first_available_variant -%}
 
             <div class="product-info__quantity-selector">

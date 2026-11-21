@@ -4,7 +4,7 @@
 Order at the top of the `main` section:
     title, badges, rating row, summary + Ideal For, IBO price (app, if present), variant picker, then the rest.
 The price lives inside the Add to Cart button (snippets/buy-buttons.liquid), so the theme price block, the
-lp_price row, the separator and the Stamped star badge are disabled. Cellnergy templates use variant cards
+lp_price row, the separator, the quantity stepper and the Stamped star badge are disabled. Cellnergy templates use variant cards
 (lp_card). The Clinicians' Choice badge moves under the buy buttons.
 
 Run from a checkout root (master or a worktree):  python3 tools/normalize_buybox.py
@@ -77,10 +77,15 @@ def main():
         bb = [i for i, k in enumerate(rest) if blocks[k]['type'] == 'buy_buttons']
         at = bb[0] + 1 if bb else len(rest)
         rest = rest[:at] + pay + rest[at:]
-        # Skio: plans side by side, legend kept for screen readers only.
+        # Skio: plans stacked (side by side breaks around the frequency list), legend for screen readers only.
         for k in rest:
             if 'skio' in blocks[k]['type']:
-                blocks[k].setdefault('settings', {}).update({'show_legend': False, 'layout': 'horizontal'})
+                blocks[k].setdefault('settings', {}).update({'show_legend': False, 'layout': 'vertical'})
+        # No quantity stepper on product pages: quantity is changed in the cart.
+        for k in rest:
+            if blocks[k]['type'] == 'quantity_selector':
+                blocks[k]['disabled'] = True
+        main_sec.setdefault('settings', {})['show_fixed_add_to_cart'] = True  # sticky Add to Cart on every PDP
         main_sec['block_order'] = head + rest
 
         open(path, 'w').write(header + json.dumps(data, indent=2, ensure_ascii=False) + '\n')

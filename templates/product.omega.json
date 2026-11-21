@@ -1090,7 +1090,8 @@
         "background": "",
         "background_gradient": "",
         "text_color": ""
-      }
+      },
+      "disabled": true
     },
     "17128952497cac699c": {
       "type": "apps",

@@ -1,4 +1,12 @@
 {%- liquid
+  assign lp_img = section.settings.image
+  if lp_img == blank and section.settings.mf_image != blank
+    assign lp_img = product.metafields.custom[section.settings.mf_image].value
+  endif
+  if lp_img == blank and section.settings.media_index > 0
+    assign lp_mi = section.settings.media_index | minus: 1
+    assign lp_img = product.media[lp_mi].preview_image
+  endif
   assign steps = section.blocks | where: 'type', 'step'
   assign rows = section.blocks | where: 'type', 'row'
   assign notes = section.blocks | where: 'type', 'note'
@@ -6,10 +14,10 @@
 
 <section class="lp-split lp-split--{{ section.settings.media_position }} lp-split--bg-{{ section.settings.background }}">
   <div class="container">
-    <div class="lp-split__grid{% if section.settings.image == blank %} lp-split__grid--solo{% endif %}">
-      {%- if section.settings.image != blank -%}
+    <div class="lp-split__grid{% if lp_img == blank %} lp-split__grid--solo{% endif %}">
+      {%- if lp_img != blank -%}
         <figure class="lp-split__media lp-split__media--{{ section.settings.image_fit }}" data-lp-reveal>
-          {{ section.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 45vw, 100vw', widths: '600,800,1000,1200,1600', class: 'lp-split__img', alt: section.settings.caption }}
+          {{ lp_img | image_url: width: 1600 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 45vw, 100vw', widths: '600,800,1000,1200,1600', class: 'lp-split__img', alt: section.settings.caption }}
           {%- if section.settings.caption != blank -%}<figcaption class="lp-split__caption">{{ section.settings.caption | escape }}</figcaption>{%- endif -%}
         </figure>
       {%- endif -%}
@@ -102,6 +110,8 @@
   "class": "lp-pdp-section",
   "settings": [
     { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "mf_image", "label": "Or image from product metafield", "info": "Key in the custom namespace, for example image_benefits. Used when no image is picked." },
+    { "type": "range", "id": "media_index", "label": "Or product image number", "min": 0, "max": 12, "step": 1, "default": 0, "info": "0 = none. Used when no image or metafield image is set." },
     { "type": "text", "id": "caption", "label": "Image caption", "info": "Also used as the image's alt text" },
     { "type": "select", "id": "image_fit", "label": "Image fit", "default": "cover", "options": [
       { "value": "cover", "label": "Fill the frame" }, { "value": "contain", "label": "Show the whole image" }

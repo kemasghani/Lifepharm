@@ -9,19 +9,6 @@
  */
 {
   "sections": {
-    "custom_liquid_Ef4CLa": {
-      "type": "custom-liquid",
-      "name": "Custom Liquid",
-      "settings": {
-        "full_width": true,
-        "remove_vertical_spacing": true,
-        "remove_horizontal_spacing": true,
-        "liquid": "<div id=\"purchase-now\"></div>",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
     "main": {
       "type": "main-product",
       "blocks": {
@@ -456,2456 +443,282 @@
         "input_text_color": ""
       }
     },
-    "1717692639facd14b3": {
-      "type": "apps",
-      "blocks": {
-        "tolstoy_shoppable_video_ugc_stories_block_8FqwYJ": {
-          "type": "shopify://apps/tolstoy/blocks/stories-block/06fa8282-42ff-403e-b67c-1936776aed11",
-          "settings": {
-            "publishId": "3ew6rhswme0cg"
-          }
-        }
+    "lp_overview": {
+      "type": "lp-pdp-overview",
+      "settings": {
+        "media_index": 1,
+        "image_fit": "contain",
+        "caption": "Cellnergy Mineral Activation Diffuser",
+        "media_position": "start",
+        "eyebrow": "Why Replace It",
+        "heading": "Keep Every Sip at Its Best",
+        "text": "<p>Your Cellnergy Hydration System depends on one thing: fresh minerals. Over time the diffuser’s output declines and your water slowly returns to ordinary.</p><p>A fresh Mineral Activation Diffuser restores hydrogen output, alkaline balance and water structuring within 15 minutes of your first fill.</p>",
+        "chips_label": "",
+        "chips": "",
+        "note_label": "Fits:",
+        "note": "Cellnergy Hydration System"
       },
-      "block_order": [
-        "tolstoy_shoppable_video_ugc_stories_block_8FqwYJ"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "remove_vertical_spacing": false,
-        "remove_horizontal_spacing": false,
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
-    "image_with_text_overlay_LT94EP": {
-      "type": "image-with-text-overlay",
-      "custom_css": [
-        "@media (min-width: 700px) {{display: none; }}"
-      ],
-      "name": "*MOBILE - Image with text overlay",
-      "settings": {
-        "full_width": true,
-        "allow_transparent_header": false,
-        "enable_parallax": false,
-        "image_size": "auto",
-        "image": "shopify://shop_images/CellnergyWaterFilterHeroMOBILE_sqaured.jpg",
-        "mobile_image": "shopify://shop_images/CellnergyWaterFilterHeroMOBILE_sqaured.jpg",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0
-      }
-    },
-    "image_with_text_overlay_TREiVq": {
-      "type": "image-with-text-overlay",
       "blocks": {
-        "liquid_8TAfn7": {
-          "type": "liquid",
+        "stat_1": {
+          "type": "stat",
           "settings": {
-            "liquid": "<h2 style= \"text-align: center; color:#181818; line-height: 1.2;\">Frequency <span style= \"color: #ffffff;\">Regeneration Begins<span style= \"color: #181818;\"> With the Water You Drink</span></h2>"
+            "value": "15 min",
+            "label": "Back to full performance"
           }
         },
-        "richtext_YnfJyF": {
-          "type": "richtext",
+        "stat_2": {
+          "type": "stat",
           "settings": {
-            "content": "{{ product.metafields.custom.product_description | metafield_tag }}"
-          }
-        }
-      },
-      "block_order": [
-        "liquid_8TAfn7",
-        "richtext_YnfJyF"
-      ],
-      "custom_css": [
-        "@media (min-width: 700px) {{display: none; }}"
-      ],
-      "name": "*MOBILE DESCRIPTION",
-      "settings": {
-        "full_width": true,
-        "allow_transparent_header": false,
-        "enable_parallax": false,
-        "image_size": "auto",
-        "image": "shopify://shop_images/CELLNERGY-BOTTLE_lifepharm.jpg",
-        "mobile_image": "shopify://shop_images/mobile_background_cellnergy_bottle.jpg",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0
-      }
-    },
-    "image_with_text_overlay_D8Hptg": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "liquid_f4jjXh": {
-          "type": "liquid",
-          "settings": {
-            "liquid": "<h2 style= \"text-align: left; color:#181818; line-height: 1.2;\">Frequency <span style= \"color: #ffffff;\">Regeneration Begins<span style= \"color: #181818;\"> With the Water You Drink</span></h2>"
+            "value": "3",
+            "label": "Mineral technologies"
           }
         },
-        "richtext_LfzYxR": {
-          "type": "richtext",
+        "stat_3": {
+          "type": "stat",
           "settings": {
-            "content": "{{ product.metafields.custom.product_description | metafield_tag }}"
+            "value": "2 months",
+            "label": "Of daily use"
           }
         }
       },
       "block_order": [
-        "liquid_f4jjXh",
-        "richtext_LfzYxR"
-      ],
-      "custom_css": [
-        "@media (max-width: 700px) {{display: none; }}"
-      ],
-      "name": "Image with text overlay",
-      "settings": {
-        "full_width": true,
-        "allow_transparent_header": false,
-        "enable_parallax": false,
-        "image_size": "auto",
-        "image": "shopify://shop_images/CellnergyWaterFilterHeroImage.jpg",
-        "mobile_text_position": "place-self-center-start text-start",
-        "desktop_text_position": "sm:place-self-center-start sm:text-start",
-        "text_color": "#181818",
-        "overlay_color": "rgba(0,0,0,0)",
-        "overlay_opacity": 0
-      }
+        "stat_1",
+        "stat_2",
+        "stat_3"
+      ]
     },
-    "feature_chart_eKhRpt": {
-      "type": "feature-chart",
+    "lp_tech": {
+      "type": "lp-pdp-cards",
+      "settings": {
+        "style": "icon",
+        "columns": 3,
+        "background": "none",
+        "eyebrow": "The Minerals",
+        "heading": "Three Technologies, Restored in 15 Minutes",
+        "text": "<p>The same mineral blend as your original diffuser, active from the first fill. No break-in period.</p>",
+        "disclaimer": ""
+      },
       "blocks": {
-        "headings_DfxDEN": {
-          "type": "headings",
+        "card_1": {
+          "type": "card",
           "settings": {
-            "heading_1": "{{ product.metafields.custom.header_1.value }}",
-            "heading_2": "{{ product.metafields.custom.header_2.value }}",
-            "heading_3": "{{ product.metafields.custom.header_3.value }}",
-            "heading_4": "{{ product.metafields.custom.header_4.value }}",
-            "heading_5": "{{ product.metafields.custom.header_5.value }}",
-            "heading_6": "{{ product.metafields.custom.header_6.value }}",
-            "heading_7": "{{ product.metafields.custom.header_tech_spec.value }}",
-            "heading_8": "",
-            "heading_9": "",
-            "heading_10": "",
-            "heading_11": "",
-            "heading_12": "",
-            "heading_13": "",
-            "heading_14": "",
-            "heading_15": "",
-            "heading_16": "",
-            "heading_17": "",
-            "heading_18": "",
-            "heading_19": "",
-            "heading_20": ""
+            "icon": "bolt",
+            "label": "Hydrogen",
+            "title": "Active Hydrogen Minerals",
+            "text": "<p>Restore molecular hydrogen output, with antioxidant support from your very first sip.*</p>"
           }
         },
-        "values_JYMQEF": {
-          "type": "values",
+        "card_2": {
+          "type": "card",
           "settings": {
-            "product": "",
-            "value_1": "<p>{{ product.metafields.custom.value_1 | metafield_tag }}</p>",
-            "value_2": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>",
-            "value_3": "<p>{{ product.metafields.custom.value_3 | metafield_tag }}</p>",
-            "value_4": "<p>{{ product.metafields.custom.value_4 | metafield_tag }}</p>",
-            "value_5": "<p>{{ product.metafields.custom.value_5 | metafield_tag }}</p>",
-            "value_6": "<p>{{ product.metafields.custom.value_6 | metafield_tag }}</p>",
-            "value_7": "<p>{{ product.metafields.custom.tech_spec_text | metafield_tag }}</p>",
-            "value_8": "",
-            "value_9": "",
-            "value_10": "",
-            "value_11": "",
-            "value_12": "",
-            "value_13": "",
-            "value_14": "",
-            "value_15": "",
-            "value_16": "",
-            "value_17": "",
-            "value_18": "",
-            "value_19": "",
-            "value_20": "",
-            "view_button_background": "",
-            "view_button_text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "headings_DfxDEN",
-        "values_JYMQEF"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".section-stack__intro {flex: 1 0 530px; max-width: 750px; width: auto;}",
-        ".section-stack__main {flex: 1 1 450px; min-width: 350px; width: auto;}"
-      ],
-      "settings": {
-        "full_width": true,
-        "subheading": "",
-        "title": "{{ product.metafields.custom.header_6.value }}",
-        "content": "{{ product.metafields.custom.product_description | metafield_tag }}",
-        "button_text": "",
-        "button_url": "",
-        "text_position": "start",
-        "max_rows": 6,
-        "view_all_text": "View all",
-        "view_less_text": "View less",
-        "view_product": "View",
-        "viewing_product": "",
-        "show_product_swatch": true,
-        "background": "#ffffff",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "rgba(0,0,0,0)",
-        "heading_gradient": "linear-gradient(151deg, rgba(255, 143, 0, 1) 8%, rgba(255, 143, 0, 1) 47%, rgba(247, 188, 93, 1) 81%)",
-        "button_background": "",
-        "button_text_color": "",
-        "chart_background": "#f9f9f9",
-        "chart_text_color": "",
-        "chart_true_false_color": ""
-      }
-    },
-    "design_pack_v3_richtext_gzHeYj": {
-      "type": "design_pack_v3_-_richtext",
-      "blocks": {
-        "dpb_group_6TKhkp": {
-          "type": "_dpb_-_group",
-          "name": "Group ??",
-          "settings": {
-            "url": "",
-            "content_direction": "column",
-            "vertical_alignment_column": "top",
-            "content_alignment": "default",
-            "horizontal_alignment_group": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "padding_type": "range",
-            "padding": "10px 20px 30px 40px",
-            "padding_top": 40,
-            "padding_bottom": 40,
-            "padding_left": 50,
-            "padding_right": 50,
-            "vertical_on_mobile": true,
-            "mobile_styles": true,
-            "mobile_padding_type": "auto",
-            "mobile_padding": "0px 0px 0px 0px",
-            "mobile_padding_top": 20,
-            "mobile_padding_bottom": 20,
-            "mobile_padding_left": 20,
-            "mobile_padding_right": 20,
-            "text_color": "#000000",
-            "background_solid": "#f9f9f9",
-            "background_color": "",
-            "border_radius": 12,
-            "border_style": "solid",
-            "border_width": 1,
-            "border_color": "#c1c1c1",
-            "enable_box_shadow": false,
-            "card_box_shadow_intensity": "subtle",
-            "card_box_shadow_color": "#000000",
-            "card_box_shadow_custom_value": "0 1px 4px 0 rgba(0, 0, 0, 0.33)",
-            "base_width": 90,
-            "max_width": "",
-            "horizontal_alignment": "default",
-            "hidden_on": "none",
-            "enable_custom_css": true,
-            "custom_css": "",
-            "mobile_css": ""
-          },
-          "blocks": {
-            "dpb_heading_kzRRRc": {
-              "type": "dpb_-_heading",
-              "name": "Heading ??",
-              "settings": {
-                "title": "{{ closest.product.metafields.custom.vs_header.value }}",
-                "block_heading_color": "",
-                "enable_custom_heading_size": true,
-                "block_heading_size": "",
-                "mobile_block_heading_size": "",
-                "enable_custom_text_style": true,
-                "text_style": "default",
-                "text_transform": "default",
-                "letter_spacing": "",
-                "line_height": "",
-                "enable_custom_font": true,
-                "custom_font": "playfair_display_n4",
-                "enable_highlighted_text": false,
-                "highlight_text_color": "#ffffff",
-                "highlight_background_color": "#000000",
-                "highlight_heading_size": "",
-                "highlight_mobile_heading_size": "",
-                "highlight_enable_custom_font": false,
-                "highlight_custom_font": "abel_n4",
-                "custom_highlight_css": "",
-                "enable_rough_notation": false,
-                "annotation_type": "underline",
-                "bracket_side": "left-right",
-                "annotation_color": "#000000",
-                "annotation_stroke_width": 2,
-                "annotation_duration": 800,
-                "annotation_delay": 0,
-                "annotation_padding": 5,
-                "text_alignment": "default",
-                "base_width": 100,
-                "max_width": "",
-                "horizontal_alignment": "default",
-                "hidden_on": "none",
-                "heading_level": "h2",
-                "enable_custom_css": true,
-                "custom_css": "h1, h2, h3, h4, h5, h6 {\n    font-weight: inherit;\n    font-size: var(--text-h2);\n    font-family: 'Playfair Display';\n}",
-                "mobile_css": ""
-              },
-              "blocks": {}
-            },
-            "dpb_columns_bAyXgd": {
-              "type": "_dpb_-_columns",
-              "name": "Columns ??",
-              "settings": {
-                "gap": 30,
-                "row_gap": 30,
-                "mobile_styles": true,
-                "mobile_gap": 30,
-                "mobile_row_gap": 0,
-                "vertical_on_mobile": true,
-                "hidden_on": "none",
-                "enable_custom_css": true,
-                "custom_css": "",
-                "mobile_css": ""
-              },
-              "blocks": {
-                "dpb_sub_columns_column_HzdULx": {
-                  "type": "_dpb_sub_-_columns-column",
-                  "settings": {
-                    "url": "",
-                    "column_width": "half",
-                    "padding_type": "range",
-                    "padding": "0px 0px 0px 0px",
-                    "padding_top": 20,
-                    "padding_bottom": 20,
-                    "padding_left": 30,
-                    "padding_right": 30,
-                    "horizontal_alignment": "left",
-                    "vertical_alignment": "top",
-                    "mobile_styles": true,
-                    "mobile_column_width": "default",
-                    "mobile_padding_type": "auto",
-                    "mobile_padding": "0px 0px 0px 0px",
-                    "mobile_padding_top": 20,
-                    "mobile_padding_bottom": 20,
-                    "mobile_padding_left": 20,
-                    "mobile_padding_right": 20,
-                    "mobile_horizontal_alignment": "default",
-                    "mobile_vertical_alignment": "default",
-                    "background_solid": "#f9f9f9",
-                    "background_color": "",
-                    "border_radius": 0,
-                    "enable_box_shadow": false,
-                    "card_box_shadow_intensity": "subtle",
-                    "card_box_shadow_color": "#000000",
-                    "card_box_shadow_custom_value": "0 1px 4px 0 rgba(0, 0, 0, 0.33)",
-                    "border_style": "solid",
-                    "border_width": 0,
-                    "border_color": "#c1c1c1",
-                    "enable_custom_css": true,
-                    "custom_css": "",
-                    "mobile_css": ""
-                  },
-                  "blocks": {
-                    "dpb_divider_YkUCaF": {
-                      "type": "dpb_-_divider",
-                      "name": "Divider ??",
-                      "settings": {
-                        "thickness": 0,
-                        "style": "solid",
-                        "divider_color": "#c1c1c1",
-                        "padding_top": 10,
-                        "padding_bottom": 0,
-                        "base_width": 100,
-                        "max_width": "",
-                        "horizontal_alignment": "default",
-                        "hidden_on": "mobile",
-                        "enable_custom_css": false,
-                        "custom_css": "",
-                        "mobile_css": ""
-                      },
-                      "blocks": {}
-                    },
-                    "dpb_text_PLmGTt": {
-                      "type": "dpb_-_text",
-                      "settings": {
-                        "text": "<p>{{ closest.product.metafields.custom.vs_option_1 | metafield_tag }}</p>",
-                        "text_color": "",
-                        "enable_custom_text_size": false,
-                        "block_text_size": "30px",
-                        "mobile_block_text_size": "",
-                        "enable_custom_text_style": false,
-                        "text_style": "default",
-                        "text_transform": "default",
-                        "letter_spacing": "",
-                        "line_height": "",
-                        "enable_custom_font": false,
-                        "custom_font": "abel_n4",
-                        "enable_highlighted_text": false,
-                        "highlight_text_color": "#ffffff",
-                        "highlight_background_color": "#000000",
-                        "highlight_enable_custom_font": false,
-                        "highlight_custom_font": "abel_n4",
-                        "custom_highlight_css": "",
-                        "block_alignment": "left",
-                        "truncate_text": -1,
-                        "read_more_text": "Read more",
-                        "read_less_text": "Read less",
-                        "base_width": 100,
-                        "max_width": "",
-                        "horizontal_alignment": "default",
-                        "hidden_on": "none",
-                        "enable_custom_css": false,
-                        "custom_css": "",
-                        "mobile_css": ""
-                      },
-                      "blocks": {}
-                    },
-                    "dpb_divider_6wYaKy": {
-                      "type": "dpb_-_divider",
-                      "name": "Divider ??",
-                      "settings": {
-                        "thickness": 0,
-                        "style": "solid",
-                        "divider_color": "#c1c1c1",
-                        "padding_top": 0,
-                        "padding_bottom": 20,
-                        "base_width": 100,
-                        "max_width": "",
-                        "horizontal_alignment": "default",
-                        "hidden_on": "mobile",
-                        "enable_custom_css": false,
-                        "custom_css": "",
-                        "mobile_css": ""
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "dpb_divider_YkUCaF",
-                    "dpb_text_PLmGTt",
-                    "dpb_divider_6wYaKy"
-                  ]
-                },
-                "dpb_sub_columns_column_RkM8cN": {
-                  "type": "_dpb_sub_-_columns-column",
-                  "settings": {
-                    "url": "",
-                    "column_width": "half",
-                    "padding_type": "range",
-                    "padding": "0px 0px 0px 0px",
-                    "padding_top": 20,
-                    "padding_bottom": 20,
-                    "padding_left": 30,
-                    "padding_right": 30,
-                    "horizontal_alignment": "left",
-                    "vertical_alignment": "top",
-                    "mobile_styles": true,
-                    "mobile_column_width": "default",
-                    "mobile_padding_type": "auto",
-                    "mobile_padding": "0px 0px 0px 0px",
-                    "mobile_padding_top": 20,
-                    "mobile_padding_bottom": 20,
-                    "mobile_padding_left": 20,
-                    "mobile_padding_right": 20,
-                    "mobile_horizontal_alignment": "default",
-                    "mobile_vertical_alignment": "default",
-                    "background_solid": "#f9f9f9",
-                    "background_color": "",
-                    "border_radius": 0,
-                    "enable_box_shadow": false,
-                    "card_box_shadow_intensity": "subtle",
-                    "card_box_shadow_color": "#000000",
-                    "card_box_shadow_custom_value": "0 1px 4px 0 rgba(0, 0, 0, 0.33)",
-                    "border_style": "none",
-                    "border_width": 0,
-                    "border_color": "#c1c1c1",
-                    "enable_custom_css": true,
-                    "custom_css": "",
-                    "mobile_css": ""
-                  },
-                  "blocks": {
-                    "dpb_divider_eAM9Ny": {
-                      "type": "dpb_-_divider",
-                      "name": "Divider ??",
-                      "settings": {
-                        "thickness": 0,
-                        "style": "solid",
-                        "divider_color": "#c1c1c1",
-                        "padding_top": 10,
-                        "padding_bottom": 0,
-                        "base_width": 100,
-                        "max_width": "",
-                        "horizontal_alignment": "default",
-                        "hidden_on": "mobile",
-                        "enable_custom_css": false,
-                        "custom_css": "",
-                        "mobile_css": ""
-                      },
-                      "blocks": {}
-                    },
-                    "dpb_text_6LKpyd": {
-                      "type": "dpb_-_text",
-                      "settings": {
-                        "text": "{{ closest.product.metafields.custom.vs_option_2 | metafield_tag }}",
-                        "text_color": "",
-                        "enable_custom_text_size": false,
-                        "block_text_size": "30px",
-                        "mobile_block_text_size": "",
-                        "enable_custom_text_style": false,
-                        "text_style": "default",
-                        "text_transform": "default",
-                        "letter_spacing": "",
-                        "line_height": "",
-                        "enable_custom_font": false,
-                        "custom_font": "abel_n4",
-                        "enable_highlighted_text": false,
-                        "highlight_text_color": "#ffffff",
-                        "highlight_background_color": "#000000",
-                        "highlight_enable_custom_font": false,
-                        "highlight_custom_font": "abel_n4",
-                        "custom_highlight_css": "",
-                        "block_alignment": "left",
-                        "truncate_text": -1,
-                        "read_more_text": "Read more",
-                        "read_less_text": "Read less",
-                        "base_width": 100,
-                        "max_width": "",
-                        "horizontal_alignment": "default",
-                        "hidden_on": "none",
-                        "enable_custom_css": false,
-                        "custom_css": "",
-                        "mobile_css": ""
-                      },
-                      "blocks": {}
-                    },
-                    "dpb_divider_zVdjEX": {
-                      "type": "dpb_-_divider",
-                      "name": "Divider ??",
-                      "settings": {
-                        "thickness": 0,
-                        "style": "solid",
-                        "divider_color": "#c1c1c1",
-                        "padding_top": 0,
-                        "padding_bottom": 20,
-                        "base_width": 100,
-                        "max_width": "",
-                        "horizontal_alignment": "default",
-                        "hidden_on": "mobile",
-                        "enable_custom_css": false,
-                        "custom_css": "",
-                        "mobile_css": ""
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "dpb_divider_eAM9Ny",
-                    "dpb_text_6LKpyd",
-                    "dpb_divider_zVdjEX"
-                  ]
-                }
-              },
-              "block_order": [
-                "dpb_sub_columns_column_HzdULx",
-                "dpb_sub_columns_column_RkM8cN"
-              ]
-            }
-          },
-          "block_order": [
-            "dpb_heading_kzRRRc",
-            "dpb_columns_bAyXgd"
-          ]
-        }
-      },
-      "block_order": [
-        "dpb_group_6TKhkp"
-      ],
-      "name": "Richtext ??",
-      "settings": {
-        "text_size": 100,
-        "text_alignment": "center",
-        "text_color": "#121212",
-        "background_solid": "",
-        "background_color": "",
-        "show_background_image": false,
-        "animation": "none",
-        "base_width": 95,
-        "max_width": "1500px",
-        "margin_top": 70,
-        "margin_bottom": 0,
-        "padding_type": "padding_range_sliders",
-        "padding": "0px 0px 0px 0px",
-        "padding_top": 40,
-        "padding_bottom": 30,
-        "padding_left": 0,
-        "padding_right": 0,
-        "enable_mobile_styles": true,
-        "mobile_base_width": 100,
-        "mobile_margin_top": 20,
-        "mobile_margin_bottom": 0,
-        "mobile_padding_type": "padding_range_sliders",
-        "mobile_padding": "0px 0px 0px 0px",
-        "mobile_padding_top": 40,
-        "mobile_padding_bottom": 20,
-        "mobile_padding_left": 0,
-        "mobile_padding_right": 0,
-        "custom_css": "ul  {\n  padding-left: 0;\n}\nli::marker {\n  color: #FF8F00;\nfont-size:22px;\n}",
-        "mobile_custom_css": "",
-        "anchor_id": "",
-        "custom_classes": "",
-        "custom_style": "global",
-        "style_scheme": "",
-        "override_theme_font": false,
-        "heading_font": "serif",
-        "main_font": "system_ui_n4",
-        "enable_metafield_detect": false
-      }
-    },
-    "media_with_text_WMFAg8": {
-      "type": "media-with-text",
-      "blocks": {
-        "image_Edh9Uf": {
-          "type": "image",
-          "settings": {
-            "image": "{{ product.metafields.custom.image_benefits.value }}",
-            "media_width": 50,
-            "media_position": "end",
-            "text_position": "place-self-center-start text-start",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "",
-            "title": "",
-            "content": "<p>{{ product.metafields.custom.heading_benefit_1.value }}</p>{{ product.metafields.custom.text_benefits | metafield_tag }}",
-            "custom_liquid": "",
-            "link_text": "",
-            "link_url": "",
-            "background": "#fff4e5",
-            "background_gradient": "",
-            "text_color": "#181818",
-            "text_gradient": "",
-            "button_background": "",
-            "button_text_color": ""
+            "icon": "drop",
+            "label": "Alkaline",
+            "title": "Alkaline Mineral Blend",
+            "text": "<p>Re-establishes a higher alkaline pH on the first fill, for smoother-tasting water.</p>"
           }
         },
-        "image_9VQHWf": {
-          "type": "image",
+        "card_3": {
+          "type": "card",
           "settings": {
-            "image": "{{ product.metafields.custom.image_ingredients.value }}",
-            "media_width": 50,
-            "media_position": "start",
-            "text_position": "place-self-center-start text-start",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "",
-            "title": "",
-            "content": "<p>{{ product.metafields.custom.heading_benefit_2.value }}</p>{{ product.metafields.custom.text_ingredients | metafield_tag }}",
-            "custom_liquid": "",
-            "link_text": "",
-            "link_url": "",
-            "background": "#fff4e5",
-            "background_gradient": "",
-            "text_color": "#181818",
-            "text_gradient": "",
-            "button_background": "",
-            "button_text_color": ""
+            "icon": "cell",
+            "label": "Structuring",
+            "title": "Terahertz-Compatible Minerals",
+            "text": "<p>Restore the mineral and frequency synergy your bottle was designed for.</p>"
           }
         }
       },
       "block_order": [
-        "image_Edh9Uf",
-        "image_9VQHWf"
-      ],
-      "custom_css": [
-        ".prose ul,.prose ol {row-gap: 0.2em;}",
-        ".prose ul,.list-disc {list-style: unset;}",
-        ".h2,.prose h2:not(.h0, .h1, .h2, .h3, .h4, .h5, .h6) {font-size: var(--text-h2); line-height: 1.2; margin-top: auto;}",
-        "ul {padding-left: 17px;}",
-        "li::marker {color: #ff8f00; font-size: 22px;}",
-        "@media (min-width: 1200px) {.break-all {max-width: 650px; margin: auto; }}"
-      ],
-      "settings": {
-        "full_width": true,
-        "alternate_media_position": false,
-        "spacing": "none"
-      }
+        "card_1",
+        "card_2",
+        "card_3"
+      ]
     },
-    "design_pack_v3_richtext_NEeR67": {
-      "type": "design_pack_v3_-_richtext",
-      "blocks": {
-        "dpb_group_4k8tmq": {
-          "type": "_dpb_-_group",
-          "name": "Group ??",
-          "settings": {
-            "url": "",
-            "content_direction": "column",
-            "vertical_alignment_column": "top",
-            "content_alignment": "default",
-            "horizontal_alignment_group": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "padding_type": "range",
-            "padding": "10px 20px 30px 40px",
-            "padding_top": 20,
-            "padding_bottom": 20,
-            "padding_left": 0,
-            "padding_right": 0,
-            "vertical_on_mobile": true,
-            "mobile_styles": true,
-            "mobile_padding_type": "auto",
-            "mobile_padding": "0px 0px 0px 0px",
-            "mobile_padding_top": 0,
-            "mobile_padding_bottom": 0,
-            "mobile_padding_left": 0,
-            "mobile_padding_right": 0,
-            "text_color": "#000000",
-            "background_solid": "",
-            "background_color": "",
-            "border_radius": 0,
-            "border_style": "solid",
-            "border_width": 0,
-            "border_color": "#c1c1c1",
-            "enable_box_shadow": false,
-            "card_box_shadow_intensity": "subtle",
-            "card_box_shadow_color": "#000000",
-            "card_box_shadow_custom_value": "0 1px 4px 0 rgba(0, 0, 0, 0.33)",
-            "base_width": 100,
-            "max_width": "",
-            "horizontal_alignment": "default",
-            "hidden_on": "none",
-            "enable_custom_css": false,
-            "custom_css": "",
-            "mobile_css": ""
-          },
-          "blocks": {
-            "dpb_columns_Xi7Dzz": {
-              "type": "_dpb_-_columns",
-              "name": "Columns ??",
-              "settings": {
-                "gap": 30,
-                "row_gap": 30,
-                "mobile_styles": true,
-                "mobile_gap": 30,
-                "mobile_row_gap": 30,
-                "vertical_on_mobile": true,
-                "hidden_on": "none",
-                "enable_custom_css": true,
-                "custom_css": "{ border-width: 1px;\nborder-radius: 16px;\nborder-color: #c1c1c1;\n}",
-                "mobile_css": ""
-              },
-              "blocks": {
-                "dpb_sub_columns_column_d6aKwL": {
-                  "type": "_dpb_sub_-_columns-column",
-                  "settings": {
-                    "url": "",
-                    "column_width": "half",
-                    "padding_type": "auto",
-                    "padding": "0px 0px 0px 0px",
-                    "padding_top": 20,
-                    "padding_bottom": 20,
-                    "padding_left": 20,
-                    "padding_right": 20,
-                    "horizontal_alignment": "default",
-                    "vertical_alignment": "middle",
-                    "mobile_styles": false,
-                    "mobile_column_width": "default",
-                    "mobile_padding_type": "default",
-                    "mobile_padding": "0px 0px 0px 0px",
-                    "mobile_padding_top": 20,
-                    "mobile_padding_bottom": 20,
-                    "mobile_padding_left": 20,
-                    "mobile_padding_right": 20,
-                    "mobile_horizontal_alignment": "default",
-                    "mobile_vertical_alignment": "default",
-                    "background_solid": "",
-                    "background_color": "",
-                    "border_radius": 16,
-                    "enable_box_shadow": false,
-                    "card_box_shadow_intensity": "subtle",
-                    "card_box_shadow_color": "#000000",
-                    "card_box_shadow_custom_value": "0 1px 4px 0 rgba(0, 0, 0, 0.33)",
-                    "border_style": "none",
-                    "border_width": 1,
-                    "border_color": "#c1c1c1",
-                    "enable_custom_css": false,
-                    "custom_css": "",
-                    "mobile_css": ""
-                  },
-                  "blocks": {
-                    "dpb_inset_image_WEUhF8": {
-                      "type": "dpb_-_inset_image",
-                      "name": "Image ??",
-                      "settings": {
-                        "inset_image": "shopify://shop_images/CellnergyBottle-Replacement-Box-Filter1500x1500.png",
-                        "image_crop": "none",
-                        "link": "",
-                        "external_link": false,
-                        "mobile_styles": false,
-                        "mobile_size_type": "percentage",
-                        "mobile_base_width": 80,
-                        "mobile_size_fixed": 200,
-                        "border_radius": 0,
-                        "border_width": 0,
-                        "border_color": "#000000",
-                        "button_shadow": "none",
-                        "button_shadow_color": "#000000",
-                        "button_shadow_custom": "0 1px 4px rgba(0,0,0,0.08)",
-                        "size_type": "percentage",
-                        "base_width": 90,
-                        "max_width": "",
-                        "size_fixed": 300,
-                        "horizontal_alignment": "default",
-                        "hidden_on": "none",
-                        "enable_custom_css": false,
-                        "custom_css": "",
-                        "mobile_css": ""
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "dpb_inset_image_WEUhF8"
-                  ]
-                },
-                "dpb_sub_columns_column_kUjJPx": {
-                  "type": "_dpb_sub_-_columns-column",
-                  "settings": {
-                    "url": "",
-                    "column_width": "half",
-                    "padding_type": "range",
-                    "padding": "0px 0px 0px 0px",
-                    "padding_top": 20,
-                    "padding_bottom": 20,
-                    "padding_left": 30,
-                    "padding_right": 30,
-                    "horizontal_alignment": "left",
-                    "vertical_alignment": "middle",
-                    "mobile_styles": true,
-                    "mobile_column_width": "default",
-                    "mobile_padding_type": "auto",
-                    "mobile_padding": "0px 0px 0px 0px",
-                    "mobile_padding_top": 20,
-                    "mobile_padding_bottom": 20,
-                    "mobile_padding_left": 20,
-                    "mobile_padding_right": 20,
-                    "mobile_horizontal_alignment": "default",
-                    "mobile_vertical_alignment": "default",
-                    "background_solid": "#f9f9f9",
-                    "background_color": "",
-                    "border_radius": 0,
-                    "enable_box_shadow": false,
-                    "card_box_shadow_intensity": "subtle",
-                    "card_box_shadow_color": "#000000",
-                    "card_box_shadow_custom_value": "0 1px 4px 0 rgba(0, 0, 0, 0.33)",
-                    "border_style": "solid",
-                    "border_width": 0,
-                    "border_color": "#c1c1c1",
-                    "enable_custom_css": true,
-                    "custom_css": "{ border-top-right-radius: 16px; \nborder-bottom-right-radius: 16px;}",
-                    "mobile_css": "{ border-radius: 0 0 16px 16px;}"
-                  },
-                  "blocks": {
-                    "dpb_divider_xYY9JA": {
-                      "type": "dpb_-_divider",
-                      "name": "Divider ??",
-                      "settings": {
-                        "thickness": 0,
-                        "style": "solid",
-                        "divider_color": "#c1c1c1",
-                        "padding_top": 10,
-                        "padding_bottom": 0,
-                        "base_width": 100,
-                        "max_width": "",
-                        "horizontal_alignment": "default",
-                        "hidden_on": "mobile",
-                        "enable_custom_css": false,
-                        "custom_css": "",
-                        "mobile_css": ""
-                      },
-                      "blocks": {}
-                    },
-                    "dpb_liquid_Cr7qJD": {
-                      "type": "dpb_-_liquid",
-                      "name": "Liquid/HTML ??",
-                      "settings": {
-                        "liquid": "<h2 style= \"text-align: default; color:#FF8F00;     font-size: var(--text-h2);\n    line-height: 1.1; font-family: var(--heading-font-family);\n}\">How<span style= \"color: #181818;\"> to Use </span></h2>",
-                        "remove_external_container": false,
-                        "enable_custom_css": false,
-                        "custom_css": "",
-                        "mobile_css": "",
-                        "hidden_on": "none"
-                      },
-                      "blocks": {}
-                    },
-                    "dpb_divider_YgHNJJ": {
-                      "type": "dpb_-_divider",
-                      "name": "Divider ??",
-                      "settings": {
-                        "thickness": 0,
-                        "style": "solid",
-                        "divider_color": "#c1c1c1",
-                        "padding_top": 10,
-                        "padding_bottom": 0,
-                        "base_width": 100,
-                        "max_width": "",
-                        "horizontal_alignment": "default",
-                        "hidden_on": "mobile",
-                        "enable_custom_css": false,
-                        "custom_css": "",
-                        "mobile_css": ""
-                      },
-                      "blocks": {}
-                    },
-                    "dpb_text_MLrnRc": {
-                      "type": "dpb_-_text",
-                      "settings": {
-                        "text": "<p><strong>{{ closest.product.metafields.custom.header_1.value }}</strong></p><p>{{ closest.product.metafields.custom.value_1 | metafield_tag }}</p>",
-                        "text_color": "",
-                        "enable_custom_text_size": false,
-                        "block_text_size": "30px",
-                        "mobile_block_text_size": "",
-                        "enable_custom_text_style": false,
-                        "text_style": "default",
-                        "text_transform": "default",
-                        "letter_spacing": "",
-                        "line_height": "",
-                        "enable_custom_font": false,
-                        "custom_font": "abel_n4",
-                        "enable_highlighted_text": false,
-                        "highlight_text_color": "#ffffff",
-                        "highlight_background_color": "#000000",
-                        "highlight_enable_custom_font": false,
-                        "highlight_custom_font": "abel_n4",
-                        "custom_highlight_css": "",
-                        "block_alignment": "left",
-                        "truncate_text": -1,
-                        "read_more_text": "Read more",
-                        "read_less_text": "Read less",
-                        "base_width": 100,
-                        "max_width": "",
-                        "horizontal_alignment": "default",
-                        "hidden_on": "none",
-                        "enable_custom_css": false,
-                        "custom_css": "",
-                        "mobile_css": ""
-                      },
-                      "blocks": {}
-                    },
-                    "dpb_divider_TeaRf9": {
-                      "type": "dpb_-_divider",
-                      "name": "Divider ??",
-                      "settings": {
-                        "thickness": 1,
-                        "style": "solid",
-                        "divider_color": "#c1c1c1",
-                        "padding_top": 40,
-                        "padding_bottom": 30,
-                        "base_width": 100,
-                        "max_width": "",
-                        "horizontal_alignment": "default",
-                        "hidden_on": "mobile",
-                        "enable_custom_css": false,
-                        "custom_css": "",
-                        "mobile_css": ""
-                      },
-                      "blocks": {}
-                    },
-                    "dpb_text_eJi6PU": {
-                      "type": "dpb_-_text",
-                      "settings": {
-                        "text": "<p><strong>{{ closest.product.metafields.custom.header_2.value }}</strong></p><ul><li>Rinse diffuser under running water after each refill. </li><li>Hand wash bottle with mild soap,<br/>do not put in dishwasher. </li><li>Safe with cold and warm water. </li></ul>",
-                        "text_color": "",
-                        "enable_custom_text_size": false,
-                        "block_text_size": "30px",
-                        "mobile_block_text_size": "",
-                        "enable_custom_text_style": false,
-                        "text_style": "default",
-                        "text_transform": "default",
-                        "letter_spacing": "",
-                        "line_height": "",
-                        "enable_custom_font": false,
-                        "custom_font": "abel_n4",
-                        "enable_highlighted_text": false,
-                        "highlight_text_color": "#ffffff",
-                        "highlight_background_color": "#000000",
-                        "highlight_enable_custom_font": false,
-                        "highlight_custom_font": "abel_n4",
-                        "custom_highlight_css": "",
-                        "block_alignment": "left",
-                        "truncate_text": -1,
-                        "read_more_text": "Read more",
-                        "read_less_text": "Read less",
-                        "base_width": 100,
-                        "max_width": "",
-                        "horizontal_alignment": "default",
-                        "hidden_on": "none",
-                        "enable_custom_css": false,
-                        "custom_css": "",
-                        "mobile_css": ""
-                      },
-                      "blocks": {}
-                    },
-                    "dpb_divider_r4FCCj": {
-                      "type": "dpb_-_divider",
-                      "name": "Divider ??",
-                      "disabled": true,
-                      "settings": {
-                        "thickness": 1,
-                        "style": "solid",
-                        "divider_color": "#c1c1c1",
-                        "padding_top": 40,
-                        "padding_bottom": 30,
-                        "base_width": 100,
-                        "max_width": "",
-                        "horizontal_alignment": "default",
-                        "hidden_on": "mobile",
-                        "enable_custom_css": false,
-                        "custom_css": "",
-                        "mobile_css": ""
-                      },
-                      "blocks": {}
-                    },
-                    "dpb_text_aFwHxT": {
-                      "type": "dpb_-_text",
-                      "disabled": true,
-                      "settings": {
-                        "text": "<p><strong>{{ closest.product.metafields.custom.header_3.value }}</strong></p><p>{{ closest.product.metafields.custom.value_3 | metafield_tag }}</p>",
-                        "text_color": "",
-                        "enable_custom_text_size": false,
-                        "block_text_size": "30px",
-                        "mobile_block_text_size": "",
-                        "enable_custom_text_style": false,
-                        "text_style": "default",
-                        "text_transform": "default",
-                        "letter_spacing": "",
-                        "line_height": "",
-                        "enable_custom_font": false,
-                        "custom_font": "abel_n4",
-                        "enable_highlighted_text": false,
-                        "highlight_text_color": "#ffffff",
-                        "highlight_background_color": "#000000",
-                        "highlight_enable_custom_font": false,
-                        "highlight_custom_font": "abel_n4",
-                        "custom_highlight_css": "",
-                        "block_alignment": "left",
-                        "truncate_text": -1,
-                        "read_more_text": "Read more",
-                        "read_less_text": "Read less",
-                        "base_width": 100,
-                        "max_width": "",
-                        "horizontal_alignment": "default",
-                        "hidden_on": "none",
-                        "enable_custom_css": false,
-                        "custom_css": "",
-                        "mobile_css": ""
-                      },
-                      "blocks": {}
-                    },
-                    "dpb_divider_H8nND3": {
-                      "type": "dpb_-_divider",
-                      "name": "Divider ??",
-                      "disabled": true,
-                      "settings": {
-                        "thickness": 1,
-                        "style": "solid",
-                        "divider_color": "#c1c1c1",
-                        "padding_top": 40,
-                        "padding_bottom": 30,
-                        "base_width": 100,
-                        "max_width": "",
-                        "horizontal_alignment": "default",
-                        "hidden_on": "mobile",
-                        "enable_custom_css": false,
-                        "custom_css": "",
-                        "mobile_css": ""
-                      },
-                      "blocks": {}
-                    },
-                    "dpb_text_x4TNbH": {
-                      "type": "dpb_-_text",
-                      "disabled": true,
-                      "settings": {
-                        "text": "<p><strong>{{ closest.product.metafields.custom.header_4.value }}</strong></p><p>{{ closest.product.metafields.custom.value_4 | metafield_tag }}</p>",
-                        "text_color": "",
-                        "enable_custom_text_size": false,
-                        "block_text_size": "30px",
-                        "mobile_block_text_size": "",
-                        "enable_custom_text_style": false,
-                        "text_style": "default",
-                        "text_transform": "default",
-                        "letter_spacing": "",
-                        "line_height": "",
-                        "enable_custom_font": false,
-                        "custom_font": "abel_n4",
-                        "enable_highlighted_text": false,
-                        "highlight_text_color": "#ffffff",
-                        "highlight_background_color": "#000000",
-                        "highlight_enable_custom_font": false,
-                        "highlight_custom_font": "abel_n4",
-                        "custom_highlight_css": "",
-                        "block_alignment": "left",
-                        "truncate_text": -1,
-                        "read_more_text": "Read more",
-                        "read_less_text": "Read less",
-                        "base_width": 100,
-                        "max_width": "",
-                        "horizontal_alignment": "default",
-                        "hidden_on": "none",
-                        "enable_custom_css": false,
-                        "custom_css": "",
-                        "mobile_css": ""
-                      },
-                      "blocks": {}
-                    },
-                    "dpb_divider_GMdkeV": {
-                      "type": "dpb_-_divider",
-                      "name": "Divider ??",
-                      "settings": {
-                        "thickness": 0,
-                        "style": "solid",
-                        "divider_color": "#c1c1c1",
-                        "padding_top": 0,
-                        "padding_bottom": 20,
-                        "base_width": 100,
-                        "max_width": "",
-                        "horizontal_alignment": "default",
-                        "hidden_on": "mobile",
-                        "enable_custom_css": false,
-                        "custom_css": "",
-                        "mobile_css": ""
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "dpb_divider_xYY9JA",
-                    "dpb_liquid_Cr7qJD",
-                    "dpb_divider_YgHNJJ",
-                    "dpb_text_MLrnRc",
-                    "dpb_divider_TeaRf9",
-                    "dpb_text_eJi6PU",
-                    "dpb_divider_r4FCCj",
-                    "dpb_text_aFwHxT",
-                    "dpb_divider_H8nND3",
-                    "dpb_text_x4TNbH",
-                    "dpb_divider_GMdkeV"
-                  ]
-                }
-              },
-              "block_order": [
-                "dpb_sub_columns_column_d6aKwL",
-                "dpb_sub_columns_column_kUjJPx"
-              ]
-            }
-          },
-          "block_order": [
-            "dpb_columns_Xi7Dzz"
-          ]
-        }
+    "lp_compare": {
+      "type": "lp-pdp-cards",
+      "settings": {
+        "style": "icon",
+        "columns": 2,
+        "background": "sand",
+        "eyebrow": "The Difference",
+        "heading": "Fresh Diffuser vs. Depleted Diffuser",
+        "text": "",
+        "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
       },
-      "block_order": [
-        "dpb_group_4k8tmq"
-      ],
-      "custom_css": [
-        "ul {padding-left: 17px;}"
-      ],
-      "name": "Richtext ??",
-      "settings": {
-        "text_size": 100,
-        "text_alignment": "left",
-        "text_color": "#121212",
-        "background_solid": "",
-        "background_color": "",
-        "show_background_image": false,
-        "animation": "none",
-        "base_width": 95,
-        "max_width": "1500px",
-        "margin_top": 0,
-        "margin_bottom": 40,
-        "padding_type": "padding_range_sliders",
-        "padding": "0px 0px 0px 0px",
-        "padding_top": 20,
-        "padding_bottom": 20,
-        "padding_left": 0,
-        "padding_right": 0,
-        "enable_mobile_styles": true,
-        "mobile_base_width": 100,
-        "mobile_margin_top": 0,
-        "mobile_margin_bottom": 0,
-        "mobile_padding_type": "padding_range_sliders",
-        "mobile_padding": "0px 0px 0px 0px",
-        "mobile_padding_top": 0,
-        "mobile_padding_bottom": 0,
-        "mobile_padding_left": 0,
-        "mobile_padding_right": 0,
-        "custom_css": ".prose ul,\n.list-disc {\n  list-style: unset;\n}\n.h2,\n.prose h2:not(.h0, .h1, .h2, .h3, .h4, .h5, .h6) {\n  font-size: var(--text-h2);\n  line-height: 1.2;\n  margin-top: auto;\n}\nul {\n  padding-left: 18px;\n}\nli::marker {\n  color: #ff8f00;\n  font-size: 22px;\n}\nul {\n    list-style: unset;\n}",
-        "mobile_custom_css": "",
-        "anchor_id": "",
-        "custom_classes": "",
-        "custom_style": "global",
-        "style_scheme": "",
-        "override_theme_font": false,
-        "heading_font": "serif",
-        "main_font": "system_ui_n4",
-        "enable_metafield_detect": false
-      }
-    },
-    "design_pack_v3_richtext_KFx7Y6": {
-      "type": "design_pack_v3_-_richtext",
       "blocks": {
-        "dpb_columns_h7RPxJ": {
-          "type": "_dpb_-_columns",
-          "name": "Columns ??",
+        "card_1": {
+          "type": "card",
           "settings": {
-            "gap": 30,
-            "row_gap": 30,
-            "mobile_styles": true,
-            "mobile_gap": 30,
-            "mobile_row_gap": 30,
-            "vertical_on_mobile": true,
-            "hidden_on": "none",
-            "enable_custom_css": true,
-            "custom_css": "",
-            "mobile_css": ""
-          },
-          "blocks": {
-            "dpb_sub_columns_column_XyzYMb": {
-              "type": "_dpb_sub_-_columns-column",
-              "settings": {
-                "url": "",
-                "column_width": "third",
-                "padding_type": "auto",
-                "padding": "0px 0px 0px 0px",
-                "padding_top": 20,
-                "padding_bottom": 20,
-                "padding_left": 20,
-                "padding_right": 20,
-                "horizontal_alignment": "center",
-                "vertical_alignment": "top",
-                "mobile_styles": false,
-                "mobile_column_width": "default",
-                "mobile_padding_type": "auto",
-                "mobile_padding": "0px 0px 0px 0px",
-                "mobile_padding_top": 20,
-                "mobile_padding_bottom": 20,
-                "mobile_padding_left": 20,
-                "mobile_padding_right": 20,
-                "mobile_horizontal_alignment": "default",
-                "mobile_vertical_alignment": "default",
-                "background_solid": "#f9f9f9",
-                "background_color": "",
-                "border_radius": 15,
-                "enable_box_shadow": false,
-                "card_box_shadow_intensity": "subtle",
-                "card_box_shadow_color": "#000000",
-                "card_box_shadow_custom_value": "0 1px 4px 0 rgba(0, 0, 0, 0.33)",
-                "border_style": "solid",
-                "border_width": 1,
-                "border_color": "#c1c1c1",
-                "enable_custom_css": false,
-                "custom_css": "",
-                "mobile_css": ""
-              },
-              "blocks": {
-                "dpb_icons_KVADXC": {
-                  "type": "dpb_-_icons",
-                  "name": "Icons ??",
-                  "settings": {
-                    "icon_width": 100,
-                    "gap": 0,
-                    "icon_layout": "top",
-                    "icon_gap": 11,
-                    "icon_alignment": "center",
-                    "icon_size_type": "fixed",
-                    "image_size": 80,
-                    "image_size_fixed": 85,
-                    "mobile_styles": false,
-                    "mobile_icon_width": 100,
-                    "mobile_gap": 15,
-                    "mobile_icon_layout": "left",
-                    "mobile_icon_gap": 15,
-                    "mobile_icon_alignment": "center",
-                    "mobile_icon_size_type": "fixed",
-                    "mobile_image_size": 80,
-                    "mobile_image_size_fixed": 40,
-                    "base_width": 100,
-                    "max_width": "",
-                    "horizontal_alignment": "default",
-                    "hidden_on": "none",
-                    "enable_custom_css": false,
-                    "custom_css": "",
-                    "mobile_css": "",
-                    "enable_custom_font_size": false,
-                    "icon_heading_size": "",
-                    "mobile_icon_heading_size": "",
-                    "icon_text_size": "",
-                    "mobile_icon_text_size": ""
-                  },
-                  "blocks": {
-                    "dpb_sub_icons_icon_qLqCUF": {
-                      "type": "_dpb_sub_-_icons-icon",
-                      "name": "Icon 1 ??",
-                      "settings": {
-                        "icon": "shopify://shop_images/HydrogenRestored_d54e1e03-6205-4ed9-897d-5dc610bd690f.png",
-                        "heading": "",
-                        "text": "",
-                        "link": "",
-                        "text_color": "",
-                        "background_solid": "",
-                        "background_color": "",
-                        "border_radius": 0,
-                        "border_style": "none",
-                        "border_width": 1,
-                        "border_color": "#000000"
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "dpb_sub_icons_icon_qLqCUF"
-                  ]
-                },
-                "dpb_text_TafpNT": {
-                  "type": "dpb_-_text",
-                  "settings": {
-                    "text": "<p><strong>[Hydrogen Restored]</strong></p>",
-                    "text_color": "",
-                    "enable_custom_text_size": false,
-                    "block_text_size": "30px",
-                    "mobile_block_text_size": "",
-                    "enable_custom_text_style": true,
-                    "text_style": "default",
-                    "text_transform": "uppercase",
-                    "letter_spacing": "",
-                    "line_height": "",
-                    "enable_custom_font": false,
-                    "custom_font": "lato_n7",
-                    "enable_highlighted_text": true,
-                    "highlight_text_color": "#ff8f00",
-                    "highlight_background_color": "rgba(0,0,0,0)",
-                    "highlight_enable_custom_font": false,
-                    "highlight_custom_font": "abel_n4",
-                    "custom_highlight_css": "",
-                    "block_alignment": "center",
-                    "truncate_text": -1,
-                    "read_more_text": "Read more",
-                    "read_less_text": "Read less",
-                    "base_width": 90,
-                    "max_width": "",
-                    "horizontal_alignment": "default",
-                    "hidden_on": "none",
-                    "enable_custom_css": false,
-                    "custom_css": "",
-                    "mobile_css": ""
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "dpb_icons_KVADXC",
-                "dpb_text_TafpNT"
-              ]
-            },
-            "dpb_sub_columns_column_zaEH7x": {
-              "type": "_dpb_sub_-_columns-column",
-              "settings": {
-                "url": "",
-                "column_width": "third",
-                "padding_type": "auto",
-                "padding": "0px 0px 0px 0px",
-                "padding_top": 20,
-                "padding_bottom": 20,
-                "padding_left": 20,
-                "padding_right": 20,
-                "horizontal_alignment": "center",
-                "vertical_alignment": "top",
-                "mobile_styles": false,
-                "mobile_column_width": "default",
-                "mobile_padding_type": "default",
-                "mobile_padding": "0px 0px 0px 0px",
-                "mobile_padding_top": 20,
-                "mobile_padding_bottom": 20,
-                "mobile_padding_left": 20,
-                "mobile_padding_right": 20,
-                "mobile_horizontal_alignment": "default",
-                "mobile_vertical_alignment": "default",
-                "background_solid": "#f9f9f9",
-                "background_color": "",
-                "border_radius": 15,
-                "enable_box_shadow": false,
-                "card_box_shadow_intensity": "subtle",
-                "card_box_shadow_color": "#000000",
-                "card_box_shadow_custom_value": "0 1px 4px 0 rgba(0, 0, 0, 0.33)",
-                "border_style": "solid",
-                "border_width": 1,
-                "border_color": "#c1c1c1",
-                "enable_custom_css": false,
-                "custom_css": "",
-                "mobile_css": ""
-              },
-              "blocks": {
-                "dpb_icons_7xM96B": {
-                  "type": "dpb_-_icons",
-                  "name": "Icons ??",
-                  "settings": {
-                    "icon_width": 100,
-                    "gap": 0,
-                    "icon_layout": "top",
-                    "icon_gap": 11,
-                    "icon_alignment": "center",
-                    "icon_size_type": "fixed",
-                    "image_size": 80,
-                    "image_size_fixed": 85,
-                    "mobile_styles": false,
-                    "mobile_icon_width": 100,
-                    "mobile_gap": 15,
-                    "mobile_icon_layout": "left",
-                    "mobile_icon_gap": 15,
-                    "mobile_icon_alignment": "center",
-                    "mobile_icon_size_type": "fixed",
-                    "mobile_image_size": 80,
-                    "mobile_image_size_fixed": 40,
-                    "base_width": 100,
-                    "max_width": "",
-                    "horizontal_alignment": "default",
-                    "hidden_on": "none",
-                    "enable_custom_css": false,
-                    "custom_css": "",
-                    "mobile_css": "",
-                    "enable_custom_font_size": false,
-                    "icon_heading_size": "",
-                    "mobile_icon_heading_size": "",
-                    "icon_text_size": "",
-                    "mobile_icon_text_size": ""
-                  },
-                  "blocks": {
-                    "dpb_sub_icons_icon_AmhW6N": {
-                      "type": "_dpb_sub_-_icons-icon",
-                      "name": "Icon 1 ??",
-                      "settings": {
-                        "icon": "shopify://shop_images/AlkalinePH_d734c6d0-7c47-4534-b0a7-bb94a3864c98.png",
-                        "heading": "",
-                        "text": "",
-                        "link": "",
-                        "text_color": "",
-                        "background_solid": "",
-                        "background_color": "",
-                        "border_radius": 0,
-                        "border_style": "none",
-                        "border_width": 1,
-                        "border_color": "#000000"
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "dpb_sub_icons_icon_AmhW6N"
-                  ]
-                },
-                "dpb_text_LTBKHQ": {
-                  "type": "dpb_-_text",
-                  "settings": {
-                    "text": "<p><strong>[Alkaline pH]</strong></p>",
-                    "text_color": "",
-                    "enable_custom_text_size": false,
-                    "block_text_size": "30px",
-                    "mobile_block_text_size": "",
-                    "enable_custom_text_style": true,
-                    "text_style": "default",
-                    "text_transform": "uppercase",
-                    "letter_spacing": "",
-                    "line_height": "",
-                    "enable_custom_font": false,
-                    "custom_font": "abel_n4",
-                    "enable_highlighted_text": true,
-                    "highlight_text_color": "#ff8f00",
-                    "highlight_background_color": "rgba(0,0,0,0)",
-                    "highlight_enable_custom_font": false,
-                    "highlight_custom_font": "abel_n4",
-                    "custom_highlight_css": "",
-                    "block_alignment": "center",
-                    "truncate_text": -1,
-                    "read_more_text": "Read more",
-                    "read_less_text": "Read less",
-                    "base_width": 90,
-                    "max_width": "",
-                    "horizontal_alignment": "default",
-                    "hidden_on": "none",
-                    "enable_custom_css": false,
-                    "custom_css": "",
-                    "mobile_css": ""
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "dpb_icons_7xM96B",
-                "dpb_text_LTBKHQ"
-              ]
-            },
-            "dpb_sub_columns_column_p8PUYr": {
-              "type": "_dpb_sub_-_columns-column",
-              "settings": {
-                "url": "",
-                "column_width": "third",
-                "padding_type": "auto",
-                "padding": "0px 0px 0px 0px",
-                "padding_top": 20,
-                "padding_bottom": 20,
-                "padding_left": 20,
-                "padding_right": 20,
-                "horizontal_alignment": "center",
-                "vertical_alignment": "top",
-                "mobile_styles": false,
-                "mobile_column_width": "default",
-                "mobile_padding_type": "default",
-                "mobile_padding": "0px 0px 0px 0px",
-                "mobile_padding_top": 20,
-                "mobile_padding_bottom": 20,
-                "mobile_padding_left": 20,
-                "mobile_padding_right": 20,
-                "mobile_horizontal_alignment": "default",
-                "mobile_vertical_alignment": "default",
-                "background_solid": "#f9f9f9",
-                "background_color": "",
-                "border_radius": 15,
-                "enable_box_shadow": false,
-                "card_box_shadow_intensity": "subtle",
-                "card_box_shadow_color": "#000000",
-                "card_box_shadow_custom_value": "0 1px 4px 0 rgba(0, 0, 0, 0.33)",
-                "border_style": "solid",
-                "border_width": 1,
-                "border_color": "#c1c1c1",
-                "enable_custom_css": false,
-                "custom_css": "",
-                "mobile_css": ""
-              },
-              "blocks": {
-                "dpb_icons_M7a8YX": {
-                  "type": "dpb_-_icons",
-                  "name": "Icons ??",
-                  "settings": {
-                    "icon_width": 100,
-                    "gap": 0,
-                    "icon_layout": "top",
-                    "icon_gap": 11,
-                    "icon_alignment": "center",
-                    "icon_size_type": "fixed",
-                    "image_size": 80,
-                    "image_size_fixed": 85,
-                    "mobile_styles": false,
-                    "mobile_icon_width": 100,
-                    "mobile_gap": 15,
-                    "mobile_icon_layout": "left",
-                    "mobile_icon_gap": 15,
-                    "mobile_icon_alignment": "center",
-                    "mobile_icon_size_type": "fixed",
-                    "mobile_image_size": 80,
-                    "mobile_image_size_fixed": 40,
-                    "base_width": 100,
-                    "max_width": "",
-                    "horizontal_alignment": "default",
-                    "hidden_on": "none",
-                    "enable_custom_css": false,
-                    "custom_css": "",
-                    "mobile_css": "",
-                    "enable_custom_font_size": false,
-                    "icon_heading_size": "",
-                    "mobile_icon_heading_size": "",
-                    "icon_text_size": "",
-                    "mobile_icon_text_size": ""
-                  },
-                  "blocks": {
-                    "dpb_sub_icons_icon_XazDNU": {
-                      "type": "_dpb_sub_-_icons-icon",
-                      "name": "Icon 1 ??",
-                      "settings": {
-                        "icon": "shopify://shop_images/StructuredWater_7c17cfa5-41a3-4519-bcf6-20cf601047c2.png",
-                        "heading": "",
-                        "text": "",
-                        "link": "",
-                        "text_color": "",
-                        "background_solid": "",
-                        "background_color": "",
-                        "border_radius": 0,
-                        "border_style": "none",
-                        "border_width": 1,
-                        "border_color": "#000000"
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "dpb_sub_icons_icon_XazDNU"
-                  ]
-                },
-                "dpb_text_MQ4YMa": {
-                  "type": "dpb_-_text",
-                  "settings": {
-                    "text": "<p><strong>[Structured Water]</strong></p>",
-                    "text_color": "",
-                    "enable_custom_text_size": false,
-                    "block_text_size": "30px",
-                    "mobile_block_text_size": "",
-                    "enable_custom_text_style": true,
-                    "text_style": "default",
-                    "text_transform": "uppercase",
-                    "letter_spacing": "",
-                    "line_height": "",
-                    "enable_custom_font": false,
-                    "custom_font": "abel_n4",
-                    "enable_highlighted_text": true,
-                    "highlight_text_color": "#ff8f00",
-                    "highlight_background_color": "rgba(0,0,0,0)",
-                    "highlight_enable_custom_font": false,
-                    "highlight_custom_font": "abel_n4",
-                    "custom_highlight_css": "",
-                    "block_alignment": "center",
-                    "truncate_text": -1,
-                    "read_more_text": "Read more",
-                    "read_less_text": "Read less",
-                    "base_width": 90,
-                    "max_width": "",
-                    "horizontal_alignment": "default",
-                    "hidden_on": "none",
-                    "enable_custom_css": false,
-                    "custom_css": "",
-                    "mobile_css": ""
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "dpb_icons_M7a8YX",
-                "dpb_text_MQ4YMa"
-              ]
-            },
-            "dpb_sub_columns_column_w8PPXK": {
-              "type": "_dpb_sub_-_columns-column",
-              "settings": {
-                "url": "",
-                "column_width": "third",
-                "padding_type": "auto",
-                "padding": "0px 0px 0px 0px",
-                "padding_top": 20,
-                "padding_bottom": 20,
-                "padding_left": 20,
-                "padding_right": 20,
-                "horizontal_alignment": "center",
-                "vertical_alignment": "top",
-                "mobile_styles": false,
-                "mobile_column_width": "default",
-                "mobile_padding_type": "default",
-                "mobile_padding": "0px 0px 0px 0px",
-                "mobile_padding_top": 20,
-                "mobile_padding_bottom": 20,
-                "mobile_padding_left": 20,
-                "mobile_padding_right": 20,
-                "mobile_horizontal_alignment": "default",
-                "mobile_vertical_alignment": "default",
-                "background_solid": "#f9f9f9",
-                "background_color": "",
-                "border_radius": 15,
-                "enable_box_shadow": false,
-                "card_box_shadow_intensity": "subtle",
-                "card_box_shadow_color": "#000000",
-                "card_box_shadow_custom_value": "0 1px 4px 0 rgba(0, 0, 0, 0.33)",
-                "border_style": "solid",
-                "border_width": 1,
-                "border_color": "#c1c1c1",
-                "enable_custom_css": false,
-                "custom_css": "",
-                "mobile_css": ""
-              },
-              "blocks": {
-                "dpb_icons_WcRe4t": {
-                  "type": "dpb_-_icons",
-                  "name": "Icons ??",
-                  "settings": {
-                    "icon_width": 100,
-                    "gap": 0,
-                    "icon_layout": "top",
-                    "icon_gap": 11,
-                    "icon_alignment": "center",
-                    "icon_size_type": "fixed",
-                    "image_size": 80,
-                    "image_size_fixed": 85,
-                    "mobile_styles": false,
-                    "mobile_icon_width": 100,
-                    "mobile_gap": 15,
-                    "mobile_icon_layout": "left",
-                    "mobile_icon_gap": 15,
-                    "mobile_icon_alignment": "center",
-                    "mobile_icon_size_type": "fixed",
-                    "mobile_image_size": 80,
-                    "mobile_image_size_fixed": 40,
-                    "base_width": 100,
-                    "max_width": "",
-                    "horizontal_alignment": "default",
-                    "hidden_on": "none",
-                    "enable_custom_css": false,
-                    "custom_css": "",
-                    "mobile_css": "",
-                    "enable_custom_font_size": false,
-                    "icon_heading_size": "",
-                    "mobile_icon_heading_size": "",
-                    "icon_text_size": "",
-                    "mobile_icon_text_size": ""
-                  },
-                  "blocks": {
-                    "dpb_sub_icons_icon_xYETQH": {
-                      "type": "_dpb_sub_-_icons-icon",
-                      "name": "Icon 1 ??",
-                      "settings": {
-                        "icon": "shopify://shop_images/RegenerationSupport_40cde712-6227-4735-b114-d92eabc8f331.png",
-                        "heading": "",
-                        "text": "",
-                        "link": "",
-                        "text_color": "",
-                        "background_solid": "",
-                        "background_color": "",
-                        "border_radius": 0,
-                        "border_style": "none",
-                        "border_width": 1,
-                        "border_color": "#000000"
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "dpb_sub_icons_icon_xYETQH"
-                  ]
-                },
-                "dpb_text_Kzmyfy": {
-                  "type": "dpb_-_text",
-                  "settings": {
-                    "text": "<p><strong>[Regeneration Support]</strong></p>",
-                    "text_color": "",
-                    "enable_custom_text_size": false,
-                    "block_text_size": "30px",
-                    "mobile_block_text_size": "",
-                    "enable_custom_text_style": true,
-                    "text_style": "default",
-                    "text_transform": "uppercase",
-                    "letter_spacing": "",
-                    "line_height": "",
-                    "enable_custom_font": false,
-                    "custom_font": "abel_n4",
-                    "enable_highlighted_text": true,
-                    "highlight_text_color": "#ff8f00",
-                    "highlight_background_color": "rgba(0,0,0,0)",
-                    "highlight_enable_custom_font": false,
-                    "highlight_custom_font": "abel_n4",
-                    "custom_highlight_css": "",
-                    "block_alignment": "center",
-                    "truncate_text": -1,
-                    "read_more_text": "Read more",
-                    "read_less_text": "Read less",
-                    "base_width": 90,
-                    "max_width": "",
-                    "horizontal_alignment": "default",
-                    "hidden_on": "none",
-                    "enable_custom_css": false,
-                    "custom_css": "",
-                    "mobile_css": ""
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "dpb_icons_WcRe4t",
-                "dpb_text_Kzmyfy"
-              ]
-            },
-            "dpb_sub_columns_column_3rYMrP": {
-              "type": "_dpb_sub_-_columns-column",
-              "settings": {
-                "url": "",
-                "column_width": "third",
-                "padding_type": "auto",
-                "padding": "0px 0px 0px 0px",
-                "padding_top": 20,
-                "padding_bottom": 20,
-                "padding_left": 20,
-                "padding_right": 20,
-                "horizontal_alignment": "center",
-                "vertical_alignment": "top",
-                "mobile_styles": false,
-                "mobile_column_width": "default",
-                "mobile_padding_type": "default",
-                "mobile_padding": "0px 0px 0px 0px",
-                "mobile_padding_top": 20,
-                "mobile_padding_bottom": 20,
-                "mobile_padding_left": 20,
-                "mobile_padding_right": 20,
-                "mobile_horizontal_alignment": "default",
-                "mobile_vertical_alignment": "default",
-                "background_solid": "#f9f9f9",
-                "background_color": "",
-                "border_radius": 15,
-                "enable_box_shadow": false,
-                "card_box_shadow_intensity": "subtle",
-                "card_box_shadow_color": "#000000",
-                "card_box_shadow_custom_value": "0 1px 4px 0 rgba(0, 0, 0, 0.33)",
-                "border_style": "solid",
-                "border_width": 1,
-                "border_color": "#c1c1c1",
-                "enable_custom_css": false,
-                "custom_css": "",
-                "mobile_css": ""
-              },
-              "blocks": {
-                "dpb_icons_MaGF3D": {
-                  "type": "dpb_-_icons",
-                  "name": "Icons ??",
-                  "settings": {
-                    "icon_width": 100,
-                    "gap": 0,
-                    "icon_layout": "top",
-                    "icon_gap": 11,
-                    "icon_alignment": "center",
-                    "icon_size_type": "fixed",
-                    "image_size": 80,
-                    "image_size_fixed": 85,
-                    "mobile_styles": false,
-                    "mobile_icon_width": 100,
-                    "mobile_gap": 15,
-                    "mobile_icon_layout": "left",
-                    "mobile_icon_gap": 15,
-                    "mobile_icon_alignment": "center",
-                    "mobile_icon_size_type": "fixed",
-                    "mobile_image_size": 80,
-                    "mobile_image_size_fixed": 40,
-                    "base_width": 100,
-                    "max_width": "",
-                    "horizontal_alignment": "default",
-                    "hidden_on": "none",
-                    "enable_custom_css": false,
-                    "custom_css": "",
-                    "mobile_css": "",
-                    "enable_custom_font_size": false,
-                    "icon_heading_size": "",
-                    "mobile_icon_heading_size": "",
-                    "icon_text_size": "",
-                    "mobile_icon_text_size": ""
-                  },
-                  "blocks": {
-                    "dpb_sub_icons_icon_tCrxMx": {
-                      "type": "_dpb_sub_-_icons-icon",
-                      "name": "Icon 1 ??",
-                      "settings": {
-                        "icon": "shopify://shop_images/AntioxidentDefense_79cb79b4-ee57-4f33-8990-e51a6a2b7288.png",
-                        "heading": "",
-                        "text": "",
-                        "link": "",
-                        "text_color": "",
-                        "background_solid": "",
-                        "background_color": "",
-                        "border_radius": 0,
-                        "border_style": "none",
-                        "border_width": 1,
-                        "border_color": "#000000"
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "dpb_sub_icons_icon_tCrxMx"
-                  ]
-                },
-                "dpb_text_x9rgr8": {
-                  "type": "dpb_-_text",
-                  "settings": {
-                    "text": "<p><strong>[Antioxidant Defense]</strong></p>",
-                    "text_color": "",
-                    "enable_custom_text_size": false,
-                    "block_text_size": "30px",
-                    "mobile_block_text_size": "",
-                    "enable_custom_text_style": true,
-                    "text_style": "default",
-                    "text_transform": "uppercase",
-                    "letter_spacing": "",
-                    "line_height": "",
-                    "enable_custom_font": false,
-                    "custom_font": "abel_n4",
-                    "enable_highlighted_text": true,
-                    "highlight_text_color": "#ff8f00",
-                    "highlight_background_color": "rgba(0,0,0,0)",
-                    "highlight_enable_custom_font": false,
-                    "highlight_custom_font": "abel_n4",
-                    "custom_highlight_css": "",
-                    "block_alignment": "center",
-                    "truncate_text": -1,
-                    "read_more_text": "Read more",
-                    "read_less_text": "Read less",
-                    "base_width": 90,
-                    "max_width": "",
-                    "horizontal_alignment": "default",
-                    "hidden_on": "none",
-                    "enable_custom_css": false,
-                    "custom_css": "",
-                    "mobile_css": ""
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "dpb_icons_MaGF3D",
-                "dpb_text_x9rgr8"
-              ]
-            },
-            "dpb_sub_columns_column_Jq4zJJ": {
-              "type": "_dpb_sub_-_columns-column",
-              "settings": {
-                "url": "",
-                "column_width": "third",
-                "padding_type": "auto",
-                "padding": "0px 0px 0px 0px",
-                "padding_top": 20,
-                "padding_bottom": 20,
-                "padding_left": 20,
-                "padding_right": 20,
-                "horizontal_alignment": "center",
-                "vertical_alignment": "top",
-                "mobile_styles": false,
-                "mobile_column_width": "default",
-                "mobile_padding_type": "default",
-                "mobile_padding": "0px 0px 0px 0px",
-                "mobile_padding_top": 20,
-                "mobile_padding_bottom": 20,
-                "mobile_padding_left": 20,
-                "mobile_padding_right": 20,
-                "mobile_horizontal_alignment": "default",
-                "mobile_vertical_alignment": "default",
-                "background_solid": "#f9f9f9",
-                "background_color": "",
-                "border_radius": 15,
-                "enable_box_shadow": false,
-                "card_box_shadow_intensity": "subtle",
-                "card_box_shadow_color": "#000000",
-                "card_box_shadow_custom_value": "0 1px 4px 0 rgba(0, 0, 0, 0.33)",
-                "border_style": "solid",
-                "border_width": 1,
-                "border_color": "#c1c1c1",
-                "enable_custom_css": false,
-                "custom_css": "",
-                "mobile_css": ""
-              },
-              "blocks": {
-                "dpb_icons_r8MPPB": {
-                  "type": "dpb_-_icons",
-                  "name": "Icons ??",
-                  "settings": {
-                    "icon_width": 100,
-                    "gap": 0,
-                    "icon_layout": "top",
-                    "icon_gap": 11,
-                    "icon_alignment": "center",
-                    "icon_size_type": "fixed",
-                    "image_size": 80,
-                    "image_size_fixed": 85,
-                    "mobile_styles": false,
-                    "mobile_icon_width": 100,
-                    "mobile_gap": 15,
-                    "mobile_icon_layout": "left",
-                    "mobile_icon_gap": 15,
-                    "mobile_icon_alignment": "center",
-                    "mobile_icon_size_type": "fixed",
-                    "mobile_image_size": 80,
-                    "mobile_image_size_fixed": 40,
-                    "base_width": 100,
-                    "max_width": "",
-                    "horizontal_alignment": "default",
-                    "hidden_on": "none",
-                    "enable_custom_css": false,
-                    "custom_css": "",
-                    "mobile_css": "",
-                    "enable_custom_font_size": false,
-                    "icon_heading_size": "",
-                    "mobile_icon_heading_size": "",
-                    "icon_text_size": "",
-                    "mobile_icon_text_size": ""
-                  },
-                  "blocks": {
-                    "dpb_sub_icons_icon_JmjnDP": {
-                      "type": "_dpb_sub_-_icons-icon",
-                      "name": "Icon 1 ??",
-                      "settings": {
-                        "icon": "shopify://shop_images/Replace3Months_69b59fb4-3669-40f1-85bd-8a99f99b950e.png",
-                        "heading": "",
-                        "text": "",
-                        "link": "",
-                        "text_color": "",
-                        "background_solid": "",
-                        "background_color": "",
-                        "border_radius": 0,
-                        "border_style": "none",
-                        "border_width": 1,
-                        "border_color": "#000000"
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "dpb_sub_icons_icon_JmjnDP"
-                  ]
-                },
-                "dpb_text_9QAM6W": {
-                  "type": "dpb_-_text",
-                  "settings": {
-                    "text": "<p><strong>[Replace Every 3 Months]</strong></p>",
-                    "text_color": "",
-                    "enable_custom_text_size": false,
-                    "block_text_size": "30px",
-                    "mobile_block_text_size": "",
-                    "enable_custom_text_style": true,
-                    "text_style": "default",
-                    "text_transform": "uppercase",
-                    "letter_spacing": "",
-                    "line_height": "",
-                    "enable_custom_font": false,
-                    "custom_font": "abel_n4",
-                    "enable_highlighted_text": true,
-                    "highlight_text_color": "#ff8f00",
-                    "highlight_background_color": "rgba(0,0,0,0)",
-                    "highlight_enable_custom_font": false,
-                    "highlight_custom_font": "abel_n4",
-                    "custom_highlight_css": "",
-                    "block_alignment": "center",
-                    "truncate_text": -1,
-                    "read_more_text": "Read more",
-                    "read_less_text": "Read less",
-                    "base_width": 90,
-                    "max_width": "",
-                    "horizontal_alignment": "default",
-                    "hidden_on": "none",
-                    "enable_custom_css": false,
-                    "custom_css": "",
-                    "mobile_css": ""
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "dpb_icons_r8MPPB",
-                "dpb_text_9QAM6W"
-              ]
-            },
-            "dpb_sub_columns_column_9xFqKg": {
-              "type": "_dpb_sub_-_columns-column",
-              "disabled": true,
-              "settings": {
-                "url": "",
-                "column_width": "fourth",
-                "padding_type": "auto",
-                "padding": "0px 0px 0px 0px",
-                "padding_top": 20,
-                "padding_bottom": 20,
-                "padding_left": 20,
-                "padding_right": 20,
-                "horizontal_alignment": "center",
-                "vertical_alignment": "top",
-                "mobile_styles": false,
-                "mobile_column_width": "default",
-                "mobile_padding_type": "default",
-                "mobile_padding": "0px 0px 0px 0px",
-                "mobile_padding_top": 20,
-                "mobile_padding_bottom": 20,
-                "mobile_padding_left": 20,
-                "mobile_padding_right": 20,
-                "mobile_horizontal_alignment": "default",
-                "mobile_vertical_alignment": "default",
-                "background_solid": "#f9f9f9",
-                "background_color": "",
-                "border_radius": 15,
-                "enable_box_shadow": false,
-                "card_box_shadow_intensity": "subtle",
-                "card_box_shadow_color": "#000000",
-                "card_box_shadow_custom_value": "0 1px 4px 0 rgba(0, 0, 0, 0.33)",
-                "border_style": "solid",
-                "border_width": 1,
-                "border_color": "#c1c1c1",
-                "enable_custom_css": false,
-                "custom_css": "",
-                "mobile_css": ""
-              },
-              "blocks": {
-                "dpb_icons_WyBq9f": {
-                  "type": "dpb_-_icons",
-                  "name": "Icons ??",
-                  "settings": {
-                    "icon_width": 100,
-                    "gap": 0,
-                    "icon_layout": "top",
-                    "icon_gap": 11,
-                    "icon_alignment": "center",
-                    "icon_size_type": "fixed",
-                    "image_size": 80,
-                    "image_size_fixed": 85,
-                    "mobile_styles": false,
-                    "mobile_icon_width": 100,
-                    "mobile_gap": 15,
-                    "mobile_icon_layout": "left",
-                    "mobile_icon_gap": 15,
-                    "mobile_icon_alignment": "center",
-                    "mobile_icon_size_type": "fixed",
-                    "mobile_image_size": 80,
-                    "mobile_image_size_fixed": 40,
-                    "base_width": 100,
-                    "max_width": "",
-                    "horizontal_alignment": "default",
-                    "hidden_on": "none",
-                    "enable_custom_css": false,
-                    "custom_css": "",
-                    "mobile_css": "",
-                    "enable_custom_font_size": false,
-                    "icon_heading_size": "",
-                    "mobile_icon_heading_size": "",
-                    "icon_text_size": "",
-                    "mobile_icon_text_size": ""
-                  },
-                  "blocks": {
-                    "dpb_sub_icons_icon_xiCP9Y": {
-                      "type": "_dpb_sub_-_icons-icon",
-                      "name": "Icon 1 ??",
-                      "settings": {
-                        "icon": "shopify://shop_images/carry_loop_water_bottle_lifepharm.png",
-                        "heading": "",
-                        "text": "",
-                        "link": "",
-                        "text_color": "",
-                        "background_solid": "",
-                        "background_color": "",
-                        "border_radius": 0,
-                        "border_style": "none",
-                        "border_width": 1,
-                        "border_color": "#000000"
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "dpb_sub_icons_icon_xiCP9Y"
-                  ]
-                },
-                "dpb_text_48UXHe": {
-                  "type": "dpb_-_text",
-                  "settings": {
-                    "text": "<h3><strong>[CARRY LOOP]</strong></h3><p>Integrated carry loop for easy grip and on-the-go convenience, clip it, hold it, or hang it wherever you need.</p>",
-                    "text_color": "",
-                    "enable_custom_text_size": false,
-                    "block_text_size": "30px",
-                    "mobile_block_text_size": "",
-                    "enable_custom_text_style": false,
-                    "text_style": "default",
-                    "text_transform": "default",
-                    "letter_spacing": "",
-                    "line_height": "",
-                    "enable_custom_font": false,
-                    "custom_font": "abel_n4",
-                    "enable_highlighted_text": true,
-                    "highlight_text_color": "#ff8f00",
-                    "highlight_background_color": "rgba(0,0,0,0)",
-                    "highlight_enable_custom_font": false,
-                    "highlight_custom_font": "abel_n4",
-                    "custom_highlight_css": "",
-                    "block_alignment": "center",
-                    "truncate_text": -1,
-                    "read_more_text": "Read more",
-                    "read_less_text": "Read less",
-                    "base_width": 90,
-                    "max_width": "",
-                    "horizontal_alignment": "default",
-                    "hidden_on": "none",
-                    "enable_custom_css": false,
-                    "custom_css": "",
-                    "mobile_css": ""
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "dpb_icons_WyBq9f",
-                "dpb_text_48UXHe"
-              ]
-            }
-          },
-          "block_order": [
-            "dpb_sub_columns_column_XyzYMb",
-            "dpb_sub_columns_column_zaEH7x",
-            "dpb_sub_columns_column_p8PUYr",
-            "dpb_sub_columns_column_w8PPXK",
-            "dpb_sub_columns_column_3rYMrP",
-            "dpb_sub_columns_column_Jq4zJJ",
-            "dpb_sub_columns_column_9xFqKg"
-          ]
-        }
-      },
-      "block_order": [
-        "dpb_columns_h7RPxJ"
-      ],
-      "custom_css": [
-        ".dsgn-pck__inner-block-container {justify-content: center;}"
-      ],
-      "name": "Richtext ??",
-      "settings": {
-        "text_size": 80,
-        "text_alignment": "center",
-        "text_color": "#181818",
-        "background_solid": "",
-        "background_color": "",
-        "show_background_image": false,
-        "animation": "none",
-        "base_width": 95,
-        "max_width": "1500px",
-        "margin_top": 20,
-        "margin_bottom": 0,
-        "padding_type": "padding_range_sliders",
-        "padding": "0px 0px 0px 0px",
-        "padding_top": 20,
-        "padding_bottom": 40,
-        "padding_left": 0,
-        "padding_right": 0,
-        "enable_mobile_styles": true,
-        "mobile_base_width": 100,
-        "mobile_margin_top": 40,
-        "mobile_margin_bottom": 40,
-        "mobile_padding_type": "padding_range_sliders",
-        "mobile_padding": "0px 0px 0px 0px",
-        "mobile_padding_top": 20,
-        "mobile_padding_bottom": 40,
-        "mobile_padding_left": 20,
-        "mobile_padding_right": 20,
-        "custom_css": ".dsgn-pck__fancy { padding-left: 0px; }",
-        "mobile_custom_css": "",
-        "anchor_id": "",
-        "custom_classes": "",
-        "custom_style": "global",
-        "style_scheme": "",
-        "override_theme_font": false,
-        "heading_font": "serif",
-        "main_font": "system_ui_n4",
-        "enable_metafield_detect": false
-      }
-    },
-    "timeline_PKjtaM": {
-      "type": "timeline",
-      "blocks": {
-        "slide_axQjHF": {
-          "type": "slide",
-          "name": "phase 1",
-          "settings": {
-            "image": "{{ product.metafields.custom.phase_1_image.value }}",
-            "navigation_label": "{{ product.metafields.custom.phase_1_nav_label.value }}",
-            "subheading": "",
-            "title": "{{ product.metafields.custom.phase_1_heading.value }}",
-            "content": "<p>{{ product.metafields.custom.phase_1_content | metafield_tag }}</p>"
+            "icon": "check",
+            "title": "With a Fresh Diffuser",
+            "text": "<p>Full hydrogen output from the first fill. Alkaline balance restored straight away. Water structuring back at its best, so your supplements and daily habits get the hydration support they were designed for.*</p>"
           }
         },
-        "slide_qtyRLm": {
-          "type": "slide",
-          "name": "Phase 2",
+        "card_2": {
+          "type": "card",
           "settings": {
-            "image": "{{ product.metafields.custom.phase_2_image.value }}",
-            "navigation_label": "{{ product.metafields.custom.phase_2_nav_label.value }}",
-            "subheading": "",
-            "title": "{{ product.metafields.custom.phase_2_heading.value }}",
-            "content": "{{ product.metafields.custom.phase_2_content | metafield_tag }}"
-          }
-        },
-        "slide_e6Y6L8": {
-          "type": "slide",
-          "name": "Phase 3",
-          "settings": {
-            "image": "{{ product.metafields.custom.phase_3_image.value }}",
-            "navigation_label": "{{ product.metafields.custom.phase_3_nav_label.value }}",
-            "subheading": "",
-            "title": "{{ product.metafields.custom.phase_3_heading.value }}",
-            "content": "{{ product.metafields.custom.phase_3_content | metafield_tag }}"
-          }
-        },
-        "slide_JVrURe": {
-          "type": "slide",
-          "name": "Phase 4",
-          "settings": {
-            "image": "{{ product.metafields.custom.phase_4_image.value }}",
-            "navigation_label": "{{ product.metafields.custom.phase_4_label.value }}",
-            "subheading": "",
-            "title": "{{ product.metafields.custom.phase_4_heading.value }}",
-            "content": "{{ product.metafields.custom.phase_4_content | metafield_tag }}"
-          }
-        },
-        "slide_mDiAhi": {
-          "type": "slide",
-          "name": "Phase 5",
-          "settings": {
-            "image": "{{ product.metafields.custom.phase_5_image.value }}",
-            "navigation_label": "{{ product.metafields.custom.phase_5_label.value }}",
-            "subheading": "",
-            "title": "{{ product.metafields.custom.phase_5_heading.value }}",
-            "content": "{{ product.metafields.custom.phase_5_content | metafield_tag }}"
+            "icon": "refresh",
+            "title": "With a Depleted Diffuser",
+            "text": "<p>Hydrogen output drops close to zero and the pH drifts back to neutral. Structuring fades, and you are left with ordinary water from a premium bottle.</p>"
           }
         }
       },
       "block_order": [
-        "slide_axQjHF",
-        "slide_qtyRLm",
-        "slide_e6Y6L8",
-        "slide_JVrURe",
-        "slide_mDiAhi"
-      ],
-      "custom_css": [
-        ".timeline__nav-item[aria-current=\"true\"]:before {border-color: #ff8f00; background-color: #ff8f00;}",
-        ".h2,.prose h2:not(.h0, .h1, .h2, .h3, .h4, .h5, .h6) {font-size: var(--text-h3); line-height: 1.3; margin-top: auto;}",
-        "@media only screen and (min-width: 600px) {.bg-custom {border-width: 1px; border-color: #c1c1c1; margin-bottom: 10px; margin-left: 2.5%; margin-right: 2.5%; max-width: 1500px; margin: auto; margin-top: 80px; margin-bottom: 15px; width: 95%; }}"
-      ],
-      "settings": {
-        "full_width": false,
-        "background": "#f9f9f9",
-        "background_gradient": "",
-        "text_color": "rgba(0,0,0,0)"
-      }
+        "card_1",
+        "card_2"
+      ]
     },
-    "rich_text_7EHfFb": {
-      "type": "rich-text",
+    "lp_how": {
+      "type": "lp-pdp-split",
+      "settings": {
+        "mf_image": "image_ingredients",
+        "caption": "Swap, rinse, fill",
+        "image_fit": "cover",
+        "media_position": "start",
+        "background": "none",
+        "eyebrow": "How to Replace",
+        "heading": "Swap It in a Minute",
+        "text": ""
+      },
       "blocks": {
-        "richtext_GkKmn7": {
-          "type": "richtext",
+        "step_1": {
+          "type": "step",
           "settings": {
-            "content": "<p>*<em>Individual results may vary. These statements have not been evaluated by the Food and Drug Administration.</em></p>"
+            "text": "<p>Remove the old diffuser from the base of your bottle.</p>"
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "text": "<p>Rinse the new diffuser under running water for 30 seconds.</p>"
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "text": "<p>Insert it securely into the base and tighten.</p>"
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "text": "<p>Fill with filtered or purified water, wait 15 minutes, and enjoy.</p>"
+          }
+        },
+        "note_5": {
+          "type": "note",
+          "settings": {
+            "icon": "drop",
+            "text": "Rinse the diffuser under running water after each refill. Hand wash the bottle only, never in the dishwasher."
           }
         }
       },
       "block_order": [
-        "richtext_GkKmn7"
-      ],
-      "name": "Rich text",
-      "settings": {
-        "full_width": true,
-        "content_width": "small",
-        "text_position": "center",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "#b1b1b1"
-      }
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4",
+        "note_5"
+      ]
     },
-    "faq_NGmEQ9": {
-      "type": "faq",
+    "lp_timeline": {
+      "type": "lp-pdp-timeline",
+      "settings": {
+        "eyebrow": "What to Expect",
+        "heading": "The Life of a Diffuser",
+        "subheading": "Here’s what happens to your water over time, and when to swap.",
+        "next_label": "What comes next"
+      },
       "blocks": {
-        "item_NFmV6H": {
+        "phase_1": {
+          "type": "phase",
+          "settings": {
+            "mf_image": "phase_1_image",
+            "label": "Day 1",
+            "title": "Full Performance Restored",
+            "text": "<p>Fresh minerals are active within 15 minutes. Hydrogen output, alkaline balance and water structuring are all back.</p>"
+          }
+        },
+        "phase_2": {
+          "type": "phase",
+          "settings": {
+            "mf_image": "phase_2_image",
+            "label": "Months 1 to 2",
+            "title": "Peak Hydration",
+            "text": "<p>Every sip delivers hydrogen-rich, alkaline, structured water to support your daily routine.*</p>"
+          }
+        },
+        "phase_3": {
+          "type": "phase",
+          "settings": {
+            "mf_image": "phase_3_image",
+            "label": "Month 3",
+            "title": "Output Begins to Decline",
+            "text": "<p>Performance drops gradually and quietly: hydrogen falls and the pH drifts. Most people do not notice for weeks.</p>"
+          }
+        },
+        "phase_4": {
+          "type": "phase",
+          "settings": {
+            "mf_image": "phase_5_image",
+            "label": "Replace now",
+            "title": "Back to Full Performance",
+            "text": "<p>Swap the diffuser and fill the bottle. Fifteen minutes later, your water is working as designed again.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "phase_1",
+        "phase_2",
+        "phase_3",
+        "phase_4"
+      ]
+    },
+    "lp_faq": {
+      "type": "lp-pdp-faq",
+      "settings": {
+        "heading": "Still Deciding? Start Here.",
+        "button_label": "",
+        "contact_label": "Contact Us",
+        "q_who": "",
+        "q_how": "",
+        "q_when": ""
+      },
+      "blocks": {
+        "item_1": {
           "type": "item",
           "settings": {
-            "title": "HOW IT WORKS",
-            "content": "<p><strong>How does the CELLNERGY Bottle work?</strong><br/>The bottle uses a built-in mineral diffuser to condition your water with three technologies: mineral-based alkalization (pH 8–9.5), molecular hydrogen infusion, and terahertz-frequency water restructuring. Fill with filtered water, wait 15 minutes, and it’s ready to drink.*</p><p><strong>What makes CELLNERGY different from a regular water bottle?</strong><br/>Standard bottles hold water. The CELLNERGY BOTTLE conditions it. The mineral diffuser actively changes the water’s pH, antioxidant profile, and molecular structure, so what reaches your cells is fundamentally different from what goes in.</p><p><strong>What pH does the CELLNERGY Bottle produce?</strong><br/>The CELLNERGY Bottle conditions water to an alkaline pH of approximately 8–9.5. Most tap and filtered water sits between pH 6.5 and 7.5, neutral to slightly acidic.</p><p><strong>Does alkaline water change my body’s pH?</strong><br/>No. Your body tightly regulates blood pH on its own. CELLNERGY-conditioned water is not intended to alter blood pH, it’s designed to support hydration efficiency and internal mineral balance as part of a healthy lifestyle.*</p><p><strong>Why is pH 8–9.5 water beneficial?</strong><br/>Alkaline water in this range may support more efficient hydration and mineral balance compared to neutral or slightly acidic water, helping water interact more effectively with cells, supporting nutrient transport, cellular performance, and overall vitality.*</p><p><strong>Will I notice a taste difference?</strong><br/>Most users do. CELLNERGY-conditioned water is often described as smoother, cleaner, and lighter. The taste is not flavored or sweetened, it’s the result of a changed mineral and molecular profile.</p>"
+            "question": "How Often Should I Replace It?",
+            "answer": "<p>About every 2 months of daily use, when mineral output starts to decline.</p>"
           }
         },
-        "item_dHhpNt": {
+        "item_2": {
           "type": "item",
           "settings": {
-            "title": "SAFETY & MATERIALS",
-            "content": "<p><strong>Is the CELLNERGY BOTTLE safe?</strong><br/>Yes. The bottle is made from BPA-free, medical-grade Tritan™, designed for clean, safe everyday hydration. It’s suitable for cold and warm water up to 60°C / 140°F.</p><p><strong>Is alkaline water safe to drink daily</strong>?<br/>Yes. Alkaline water in the pH 8–9.5 range is widely consumed as part of daily hydration routines. If you have a preexisting medical condition or are on medication, we recommend consulting your physician.</p>"
+            "question": "What Happens If I Don’t Replace It?",
+            "answer": "<p>The minerals do not expire dangerously; they simply stop conditioning. Your water gradually returns to that of a regular bottle until you fit a fresh diffuser.</p>"
           }
         },
-        "item_ift9ki": {
+        "item_3": {
           "type": "item",
           "settings": {
-            "title": "USAGE",
-            "content": "<p><strong>What type of water should I use?</strong><br/>Filtered or purified water is recommended. It allows the conditioning technologies to work most effectively and gives you the cleanest taste.</p><p><strong>How long does conditioning take?</strong><br/>Allow approximately 15 minutes after filling for optimal conditioning. You can then drink throughout the day.</p><p><strong>How often should I use it?</strong><br/>Daily use delivers the best results, especially when taken alongside LifePharm supplements or other frequency regeneration products.</p><p>Can I use it with hot beverages?<br/>The CELLNERGY BOTTLE is designed for cold and warm water only, up to 60°C / 140°F. It is not suitable for boiling or hot liquids.</p>"
+            "question": "Which Bottle Does It Fit?",
+            "answer": "<p>The Cellnergy Hydration System.</p>"
           }
         },
-        "item_MhzLPR": {
+        "item_4": {
           "type": "item",
           "settings": {
-            "title": "MINERAL DIFFUSER",
-            "content": "<p><strong>Do I need to replace the mineral diffuser?</strong><br/>Yes, we recommend replacing it every 2 months. After approximately 2 months of daily use, mineral output declines and the conditioning performance drops. Replacement diffusers are sold separately.</p><p><strong>What happens if I don’t replace it?</strong><br/>Performance gradually returns to that of a regular water bottle. The minerals don’t expire dangerously, they simply stop conditioning. A fresh diffuser immediately restores full performance.</p>"
+            "question": "What If It Isn’t Right for Me?",
+            "answer": "<p>Then you don’t pay for it. Every LifePharm product comes with a 60-day money-back guarantee. Let us know within 60 days of delivery and we’ll refund you in full.</p>"
           }
         }
       },
       "block_order": [
-        "item_NFmV6H",
-        "item_dHhpNt",
-        "item_ift9ki",
-        "item_MhzLPR"
-      ],
-      "custom_css": [
-        "@media only screen and (min-width: 600px) {{margin-bottom: -40px !important; }}",
-        ".prose ul,.prose ol {row-gap: 1.4em;}",
-        ".prose ul,.list-disc {list-style: square;}",
-        ".bg-custom {border-width: 1px; border-color: #c1c1c1;}"
-      ],
-      "settings": {
-        "full_width": true,
-        "subheading": "",
-        "title": "FAQs",
-        "content": "",
-        "team_avatar_width": 100,
-        "support_hours": "",
-        "answer_time": "",
-        "button_text": "",
-        "button_url": "{{ product.metafields.custom.faq_url.value }}",
-        "text_position": "center",
-        "background": "#ffffff",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "button_background": "",
-        "button_text_color": "",
-        "accordion_background": "#f9f9f9",
-        "accordion_text_color": ""
-      }
-    },
-    "rich_text_wThMFy": {
-      "type": "rich-text",
-      "blocks": {
-        "liquid_4mbwcF": {
-          "type": "liquid",
-          "settings": {
-            "liquid": "<h2 style= \"color:#181818; line-height: 1.2;\">Never Miss a <span style= \"color: #FF8F00;\">Replacement. <span style= \"color: #181818;\"> Never Miss a Beat.</span></h2>"
-          }
-        },
-        "richtext_P37PF6": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>Subscribe & Save, your new diffuser arrives every 3 months, automatically. Consistent performance. No reminders. No gaps in your regeneration. </p>"
-          }
-        },
-        "button_xeKHJp": {
-          "type": "button",
-          "settings": {
-            "style": "fill",
-            "size": "lg",
-            "text": "SUBSCRIBE & SAVE",
-            "url": "#purchase-now",
-            "background": "",
-            "text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "liquid_4mbwcF",
-        "richtext_P37PF6",
-        "button_xeKHJp"
-      ],
-      "settings": {
-        "full_width": true,
-        "content_width": "small",
-        "text_position": "center",
-        "background": "#fff4e5",
-        "background_gradient": "",
-        "text_color": ""
-      }
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4"
+      ]
     },
     "17128952497cac699c": {
       "type": "apps",
@@ -2935,175 +748,16 @@
         "background_gradient": "",
         "text_color": ""
       }
-    },
-    "related-products": {
-      "type": "related-products",
-      "disabled": true,
-      "settings": {
-        "recommendations_count": 6,
-        "products": [],
-        "full_width": true,
-        "stack_products": false,
-        "show_progress_bar": false,
-        "products_per_row_mobile": "1",
-        "products_per_row_desktop": 5,
-        "subheading": "",
-        "title": "You may also like",
-        "content": "",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
-      }
-    },
-    "scrolling_text_gnHJtw": {
-      "type": "scrolling-text",
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "text": "60 Day Money Back Guarantee",
-        "text_size": "medium",
-        "text_style": "fill",
-        "scrolling_mode": "auto",
-        "scrolling_speed": 10,
-        "background": "#f9f9f9",
-        "background_gradient": "linear-gradient(168deg, rgba(255, 143, 0, 1) 10%, rgba(255, 162, 44, 1) 53%, rgba(248, 189, 113, 1) 94%)",
-        "text_color": "#ffffff",
-        "text_gradient": ""
-      }
-    },
-    "before_after_image_ieK6Jg": {
-      "type": "before-after-image",
-      "disabled": true,
-      "custom_css": [
-        ".section-stack__intro {flex: 1 0 530px; max-width: 750px; width: auto;}",
-        ".section-stack__main {flex: 1 1 450px; min-width: 320px; max-width: 750px; width: auto;}",
-        ".text-center {text-align: center;}"
-      ],
-      "settings": {
-        "full_width": true,
-        "subheading": "",
-        "title": "{{ product.metafields.custom.heading_before_after.value }}",
-        "content": "{{ product.metafields.custom.content_before_after | metafield_tag }}",
-        "before_image": "{{ product.metafields.custom.image_1_before_after.value }}",
-        "after_image": "{{ product.metafields.custom.image_2_before_after.value }}",
-        "expand_image": false,
-        "text_position": "center",
-        "before_after_text_position": "top",
-        "before_text": "Before",
-        "after_text": "After",
-        "drag_initial_position": 60,
-        "background": "#f9f9f9",
-        "background_gradient": "",
-        "text_color": "#181818",
-        "before_text_color": "#ffffff",
-        "after_text_color": "#ffffff",
-        "drag_cursor_background": "#ffffff",
-        "drag_cursor_color": "#ff8f00"
-      }
-    },
-    "images_with_text_scrolling_AqDYAM": {
-      "type": "images-with-text-scrolling",
-      "blocks": {
-        "item_KfeJAP": {
-          "type": "item",
-          "settings": {
-            "image": "shopify://shop_images/Laminine_europe_120.jpg",
-            "icon": "none",
-            "icon_width": 48,
-            "title": "Healthy balance",
-            "content": "<ul><li>Promotes healthy balance of microflora and pH for better nutrient absorption, a stronger immune system, less respiratory infections, and improved mood*</li></ul>"
-          }
-        },
-        "item_qzWWYc": {
-          "type": "item",
-          "settings": {
-            "image": "shopify://shop_images/Laminine_europe_120.jpg",
-            "icon": "none",
-            "icon_width": 48,
-            "title": "Reduce toxins",
-            "content": "<p>Improves regularity for reducing toxins in blood, supports less indigestion, bloating, cramping, constipation, and diarrhea*</p><ul><li>Contains full range of digestive enzymes to break down nutrients for complete digestion and assimilation*</li></ul>"
-          }
-        },
-        "item_3x9E7r": {
-          "type": "item",
-          "settings": {
-            "image": "shopify://shop_images/Laminine_europe_120.jpg",
-            "icon": "none",
-            "icon_width": 48,
-            "title": "Supports weight management",
-            "content": "<p>Helps digest fats, improve metabolism, and supports elimination of accumulated waste*Supports weight management and helps reduce fat accumulation*</p>"
-          }
-        },
-        "item_mVLJqK": {
-          "type": "item",
-          "settings": {
-            "image": "shopify://shop_images/Laminine_europe_120.jpg",
-            "icon": "none",
-            "icon_width": 48,
-            "title": "Complete digestion",
-            "content": "<p>Contains full range of digestive enzymes to break down nutrients for complete digestion and assimilation*</p>"
-          }
-        }
-      },
-      "block_order": [
-        "item_KfeJAP",
-        "item_qzWWYc",
-        "item_3x9E7r",
-        "item_mVLJqK"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "stack_on_mobile": false,
-        "show_counter": true,
-        "desktop_image_effect": "reveal",
-        "image_position": "start",
-        "background": "#ffffff",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": ""
-      }
-    },
-    "custom_html_rD7gEb": {
-      "type": "custom-html",
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "remove_vertical_spacing": false,
-        "remove_horizontal_spacing": false,
-        "html": "<div class=\"cozy-video-gallery\" id=\"cozy-video-gallery12322\"><!-- ALWAYS KEEP THIS EMPTY --></div>",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
     }
   },
   "order": [
-    "custom_liquid_Ef4CLa",
     "main",
-    "1717692639facd14b3",
-    "image_with_text_overlay_LT94EP",
-    "image_with_text_overlay_TREiVq",
-    "image_with_text_overlay_D8Hptg",
-    "feature_chart_eKhRpt",
-    "design_pack_v3_richtext_gzHeYj",
-    "media_with_text_WMFAg8",
-    "design_pack_v3_richtext_NEeR67",
-    "design_pack_v3_richtext_KFx7Y6",
-    "timeline_PKjtaM",
-    "rich_text_7EHfFb",
-    "faq_NGmEQ9",
-    "rich_text_wThMFy",
-    "17128952497cac699c",
-    "related-products",
-    "scrolling_text_gnHJtw",
-    "before_after_image_ieK6Jg",
-    "images_with_text_scrolling_AqDYAM",
-    "custom_html_rD7gEb"
+    "lp_overview",
+    "lp_tech",
+    "lp_compare",
+    "lp_how",
+    "lp_timeline",
+    "lp_faq",
+    "17128952497cac699c"
   ]
 }

@@ -620,7 +620,7 @@
         "phase_1": {
           "type": "phase",
           "settings": {
-            "mf_image": "phase_4_image",
+            "mf_image": "phase_4_image,image_benefits",
             "label": "Day 1",
             "title": "A Noticeably Different Sip",
             "text": "<p>Most people notice a smoother, cleaner, lighter taste from the very first glass.*</p>"
@@ -629,7 +629,7 @@
         "phase_2": {
           "type": "phase",
           "settings": {
-            "mf_image": "phase_1_image",
+            "mf_image": "phase_1_image,image_benefits",
             "label": "Week 1",
             "title": "Feeling Genuinely Hydrated",
             "text": "<p>Many people feel more refreshed and satisfied after drinking, with a lighter sensation that stays through the day.*</p>"
@@ -638,7 +638,7 @@
         "phase_3": {
           "type": "phase",
           "settings": {
-            "mf_image": "phase_2_image",
+            "mf_image": "phase_2_image,image_benefits",
             "label": "Month 1",
             "title": "Steadier Energy, Clearer Days",
             "text": "<p>With daily use, steadier energy through the day becomes noticeable and the afternoon dip eases.*</p>"
@@ -647,7 +647,7 @@
         "phase_4": {
           "type": "phase",
           "settings": {
-            "mf_image": "phase_3_image",
+            "mf_image": "phase_3_image,image_benefits",
             "label": "Month 2 and beyond",
             "title": "A Foundation for Everything Else",
             "text": "<p>Many people report quicker recovery after exercise, clearer focus and healthier-looking skin, as hydration supports the rest of their routine.*</p>"

@@ -604,14 +604,28 @@
 
 
   /* Sticky Add to Cart: shown whenever the page's own Add to Cart is off screen (below it on first load on mobile, or
-     scrolled past it), hidden while that button, the footer, a drawer or the menu is on screen. One rule, no flicker:
-     the state is recomputed from IntersectionObserver entries, and a hidden bar is inert so it never takes focus. */
+     scrolled past it), hidden while that button, the footer, a drawer or the menu is on screen. A hidden bar is inert.
+     A variant change replaces the whole bar (product-rerender), so nothing outside may hold a reference to it: the
+     element itself publishes its state (html.lp-sticky-on and --lp-sticky-h, used to lift the chat bubble), and a
+     replacement that arrives while the bar is showing appears at once instead of fading out and in again. */
+  const syncStickyState = () => {
+    const root = document.documentElement;
+    const bar = document.querySelector('lp-sticky-atc.is-visible');
+    if (bar) root.style.setProperty('--lp-sticky-h', `${Math.round(bar.offsetHeight + (parseFloat(getComputedStyle(bar).bottom) || 0)) + 10}px`);
+    root.classList.toggle('lp-sticky-on', !!bar);
+  };
   if (!customElements.get('lp-sticky-atc')) {
     customElements.define('lp-sticky-atc', class extends HTMLElement {
       connectedCallback() {
         this.form = document.getElementById(this.getAttribute('form'));
         this.footer = document.querySelector('.shopify-section--footer, .footer') || document.querySelector('body > footer, #shopify-section-footer');
         if (!this.form) return;
+        if (document.documentElement.classList.contains('lp-sticky-on')) {
+          this.style.transition = 'none';
+          this.classList.add('is-visible');
+          this.removeAttribute('inert');
+          requestAnimationFrame(() => requestAnimationFrame(() => { this.style.transition = ''; }));
+        }
         this.seen = new Map();
         this.io = new IntersectionObserver((entries) => {
           entries.forEach((e) => this.seen.set(e.target, e.isIntersecting));
@@ -620,31 +634,21 @@
         this.io.observe(this.form);
         if (this.footer) this.io.observe(this.footer);
       }
-      disconnectedCallback() { this.io && this.io.disconnect(); }
+      disconnectedCallback() {
+        this.io && this.io.disconnect();
+        // Replaced by a re-render: the new bar takes over. Removed for good (sold out): clear the state.
+        requestAnimationFrame(() => { if (!document.querySelector('lp-sticky-atc')) syncStickyState(); });
+      }
       update() {
+        if (!this.seen.has(this.form)) return;
         const show = this.seen.get(this.form) === false && !this.seen.get(this.footer);
         this.classList.toggle('is-visible', show);
         this.toggleAttribute('inert', !show);
+        syncStickyState();
       }
     });
   }
-
-  const initStickyOffset = () => {
-    const host = document.querySelector('.product-quick-add')?.closest('product-rerender') || document.querySelector('.product-quick-add')?.parentElement;
-    if (!host) return;
-    const root = document.documentElement;
-    const sync = () => {
-      const bar = host.querySelector('.product-quick-add');
-      const on = !!bar && bar.classList.contains('is-visible');
-      if (on) root.style.setProperty('--lp-sticky-h', `${Math.round(bar.offsetHeight + parseFloat(getComputedStyle(bar).bottom || 0)) + 10}px`);
-      root.classList.toggle('lp-sticky-on', on);
-    };
-    new MutationObserver(sync).observe(host, { subtree: true, childList: true, attributes: true, attributeFilter: ['class'] });
-    window.addEventListener('resize', sync, { passive: true });
-    sync();
-  };
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initStickyOffset, { once: true });
-  else initStickyOffset();
+  window.addEventListener('resize', syncStickyState, { passive: true });
 
   const whenIdle = (fn) => (window.requestIdleCallback ? requestIdleCallback(fn, { timeout: 2500 }) : setTimeout(fn, 1200));
   if (document.readyState === 'complete') whenIdle(startLazyVideos);

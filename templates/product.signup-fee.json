@@ -26,11 +26,13 @@
           "type": "price",
           "settings": {
             "show_taxes_notice": false
-          }
+          },
+          "disabled": true
         },
         "separator": {
           "type": "separator",
-          "settings": {}
+          "settings": {},
+          "disabled": true
         },
         "stamped_product_reviews_ugc_star_rating_badge_8VPpGa": {
           "type": "shopify://apps/stamped-reviews/blocks/star-rating-badge/a103faaf-2125-4b0e-89fa-de5149736723",
@@ -39,7 +41,8 @@
             "sku_tagtype": "handle",
             "is_featured_product": false,
             "featured_product_handle": ""
-          }
+          },
+          "disabled": true
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -247,16 +250,30 @@
           "settings": {
             "label": "Your IBO price"
           }
+        },
+        "lp_rating": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{% render 'lp-rating-row', product: product %}"
+          }
+        },
+        "lp_summary": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{% render 'lp-pdp-summary', product: product %}"
+          }
         }
       },
       "block_order": [
         "title",
         "badges",
-        "price",
+        "lp_rating",
+        "lp_summary",
         "teqnavi_ibo_price",
+        "variant_picker",
+        "price",
         "separator",
         "stamped_product_reviews_ugc_star_rating_badge_8VPpGa",
-        "variant_picker",
         "payment_terms",
         "quantity_selector",
         "text_VjR6WU",

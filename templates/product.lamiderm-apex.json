@@ -362,7 +362,8 @@
           "type": "liquid",
           "settings": {
             "liquid": "{%- assign lp_v = product.selected_or_first_available_variant -%}{%- assign lp_base = lp_v.compare_at_price | default: lp_v.price -%}<div class=\"lp-pdp-price\" aria-live=\"polite\"><span class=\"lp-pdp-price__now price-item--regular\">{{ lp_v.price | money }}</span><s class=\"lp-pdp-price__was\" data-base=\"{{ lp_base | money_without_currency }}\" {% unless lp_v.compare_at_price > lp_v.price %}hidden{% endunless %}>{{ lp_base | money }}</s><span class=\"lp-pdp-price__tag\" hidden></span></div>"
-          }
+          },
+          "disabled": true
         },
         "lp_rating": {
           "type": "liquid",
@@ -375,13 +376,13 @@
         "lp_eyebrow",
         "title",
         "badges",
+        "lp_rating",
+        "lp_summary",
+        "variant_picker",
         "price",
         "separator",
-        "lp_rating",
         "stamped_product_reviews_ugc_star_rating_badge_8VPpGa",
-        "lp_summary",
         "lp_price",
-        "variant_picker",
         "payment_terms",
         "skio_plan_picker_faeeGw",
         "quantity_selector",
@@ -391,11 +392,11 @@
         "collapsible_text_PR3cy8",
         "collapsible_text_kaarby",
         "buy_buttons",
+        "liquid_4FciyW",
         "collapsible_text_DKpjzh",
         "collapsible_text_KbRjKK",
         "collapsible_text_PDdyLw",
         "collapsible_text_XwdWte",
-        "liquid_4FciyW",
         "text_zKnHjQ",
         "lp_ugc_title",
         "tolstoy_shoppable_video_ugc_stories_block_hnKrMy",

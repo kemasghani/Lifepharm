@@ -104,7 +104,7 @@
             "discount_text": "Save [discount]",
             "discount_color": "#e8890c",
             "discount_text_color": "#15171b",
-            "additional_subscription_content": "<ul><li>Save [discount] on your subscription</li><li>Skip, delay or cancel any time</li><li>Delivered on your schedule</li></ul>",
+            "additional_subscription_content": "<p>Save [discount], skip or cancel any time</p>",
             "selector_type": "dropdown",
             "button_plan_selector_width": 100,
             "default_subscription": "",

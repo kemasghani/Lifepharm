@@ -491,7 +491,7 @@
         "phase_1": {
           "type": "phase",
           "settings": {
-            "mf_image": "phase_1_image",
+            "mf_image": "phase_1_image,image_benefits",
             "label": "Day 1",
             "title": "Full Performance Restored",
             "text": "<p>Fresh minerals are active within 15 minutes. Hydrogen output, alkaline balance and water structuring are all back.</p>"
@@ -500,7 +500,7 @@
         "phase_2": {
           "type": "phase",
           "settings": {
-            "mf_image": "phase_2_image",
+            "mf_image": "phase_2_image,image_benefits",
             "label": "Months 1 to 2",
             "title": "Peak Hydration",
             "text": "<p>Every sip delivers hydrogen-rich, alkaline, structured water to support your daily routine.*</p>"
@@ -509,7 +509,7 @@
         "phase_3": {
           "type": "phase",
           "settings": {
-            "mf_image": "phase_3_image",
+            "mf_image": "phase_3_image,image_benefits",
             "label": "Month 3",
             "title": "Output Begins to Decline",
             "text": "<p>Performance drops gradually and quietly: hydrogen falls and the pH drifts. Most people do not notice for weeks.</p>"
@@ -518,7 +518,7 @@
         "phase_4": {
           "type": "phase",
           "settings": {
-            "mf_image": "phase_5_image",
+            "mf_image": "phase_5_image,image_benefits",
             "label": "Replace now",
             "title": "Back to Full Performance",
             "text": "<p>Swap the diffuser and fill the bottle. Fifteen minutes later, your water is working as designed again.</p>"

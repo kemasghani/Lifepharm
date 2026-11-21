@@ -1,7 +1,14 @@
 {%- liquid
   assign lp_img = section.settings.image
   if lp_img == blank and section.settings.mf_image != blank
-    assign lp_img = product.metafields.custom[section.settings.mf_image].value
+    assign lp_keys = section.settings.mf_image | split: ','
+    for lp_key in lp_keys
+      assign lp_k = lp_key | strip
+      if product.metafields.custom[lp_k] != blank
+        assign lp_img = product.metafields.custom[lp_k].value
+        break
+      endif
+    endfor
   endif
   if lp_img == blank and section.settings.media_index > 0
     assign lp_mi = section.settings.media_index | minus: 1

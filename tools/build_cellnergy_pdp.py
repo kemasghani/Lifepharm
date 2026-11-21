@@ -319,10 +319,10 @@ HYDRATION = [
         ('row', {'label': 'Material', 'value': '<p>BPA-free, medical-grade Tritan™</p>'}),
     ])),
     ('lp_timeline', section('lp-pdp-timeline', dict(TIMELINE_HEAD, subheading='Drink from it daily and the difference builds. Here’s what to look for, and when.'), [
-        ('phase', {'mf_image': 'phase_4_image', 'label': 'Day 1', 'title': 'A Noticeably Different Sip', 'text': '<p>Most people notice a smoother, cleaner, lighter taste from the very first glass.*</p>'}),
-        ('phase', {'mf_image': 'phase_1_image', 'label': 'Week 1', 'title': 'Feeling Genuinely Hydrated', 'text': '<p>Many people feel more refreshed and satisfied after drinking, with a lighter sensation that stays through the day.*</p>'}),
-        ('phase', {'mf_image': 'phase_2_image', 'label': 'Month 1', 'title': 'Steadier Energy, Clearer Days', 'text': '<p>With daily use, steadier energy through the day becomes noticeable and the afternoon dip eases.*</p>'}),
-        ('phase', {'mf_image': 'phase_3_image', 'label': 'Month 2 and beyond', 'title': 'A Foundation for Everything Else', 'text': '<p>Many people report quicker recovery after exercise, clearer focus and healthier-looking skin, as hydration supports the rest of their routine.*</p>'}),
+        ('phase', {'mf_image': 'phase_4_image,image_benefits', 'label': 'Day 1', 'title': 'A Noticeably Different Sip', 'text': '<p>Most people notice a smoother, cleaner, lighter taste from the very first glass.*</p>'}),
+        ('phase', {'mf_image': 'phase_1_image,image_benefits', 'label': 'Week 1', 'title': 'Feeling Genuinely Hydrated', 'text': '<p>Many people feel more refreshed and satisfied after drinking, with a lighter sensation that stays through the day.*</p>'}),
+        ('phase', {'mf_image': 'phase_2_image,image_benefits', 'label': 'Month 1', 'title': 'Steadier Energy, Clearer Days', 'text': '<p>With daily use, steadier energy through the day becomes noticeable and the afternoon dip eases.*</p>'}),
+        ('phase', {'mf_image': 'phase_3_image,image_benefits', 'label': 'Month 2 and beyond', 'title': 'A Foundation for Everything Else', 'text': '<p>Many people report quicker recovery after exercise, clearer focus and healthier-looking skin, as hydration supports the rest of their routine.*</p>'}),
     ])),
     ('lp_faq', section('lp-pdp-faq', FAQ_HEAD, [
         ('item', {'question': 'How Does It Work?', 'answer': '<p>A built-in mineral diffuser conditions your water with mineral alkalisation (pH 8 to 9.5), molecular hydrogen and terahertz-frequency restructuring. Fill it with filtered water, wait 15 minutes, and it is ready to drink.*</p>'}),
@@ -369,10 +369,10 @@ DIFFUSER = [
     ])),
     ('lp_timeline', section('lp-pdp-timeline', {'eyebrow': 'What to Expect', 'heading': 'The Life of a Diffuser',
                                                 'subheading': 'Here’s what happens to your water over time, and when to swap.', 'next_label': 'What comes next'}, [
-        ('phase', {'mf_image': 'phase_1_image', 'label': 'Day 1', 'title': 'Full Performance Restored', 'text': '<p>Fresh minerals are active within 15 minutes. Hydrogen output, alkaline balance and water structuring are all back.</p>'}),
-        ('phase', {'mf_image': 'phase_2_image', 'label': 'Months 1 to 2', 'title': 'Peak Hydration', 'text': '<p>Every sip delivers hydrogen-rich, alkaline, structured water to support your daily routine.*</p>'}),
-        ('phase', {'mf_image': 'phase_3_image', 'label': 'Month 3', 'title': 'Output Begins to Decline', 'text': '<p>Performance drops gradually and quietly: hydrogen falls and the pH drifts. Most people do not notice for weeks.</p>'}),
-        ('phase', {'mf_image': 'phase_5_image', 'label': 'Replace now', 'title': 'Back to Full Performance', 'text': '<p>Swap the diffuser and fill the bottle. Fifteen minutes later, your water is working as designed again.</p>'}),
+        ('phase', {'mf_image': 'phase_1_image,image_benefits', 'label': 'Day 1', 'title': 'Full Performance Restored', 'text': '<p>Fresh minerals are active within 15 minutes. Hydrogen output, alkaline balance and water structuring are all back.</p>'}),
+        ('phase', {'mf_image': 'phase_2_image,image_benefits', 'label': 'Months 1 to 2', 'title': 'Peak Hydration', 'text': '<p>Every sip delivers hydrogen-rich, alkaline, structured water to support your daily routine.*</p>'}),
+        ('phase', {'mf_image': 'phase_3_image,image_benefits', 'label': 'Month 3', 'title': 'Output Begins to Decline', 'text': '<p>Performance drops gradually and quietly: hydrogen falls and the pH drifts. Most people do not notice for weeks.</p>'}),
+        ('phase', {'mf_image': 'phase_5_image,image_benefits', 'label': 'Replace now', 'title': 'Back to Full Performance', 'text': '<p>Swap the diffuser and fill the bottle. Fifteen minutes later, your water is working as designed again.</p>'}),
     ])),
     ('lp_faq', section('lp-pdp-faq', dict(FAQ_HEAD, button_label=''), [
         ('item', {'question': 'How Often Should I Replace It?', 'answer': '<p>About every 2 months of daily use, when mineral output starts to decline.</p>'}),

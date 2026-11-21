@@ -21,7 +21,14 @@
         {%- liquid
           assign lp_img = block.settings.image
           if lp_img == blank and block.settings.mf_image != blank
-            assign lp_img = product.metafields.custom[block.settings.mf_image].value
+            assign lp_keys = block.settings.mf_image | split: ','
+            for lp_key in lp_keys
+              assign lp_k = lp_key | strip
+              if product.metafields.custom[lp_k] != blank
+                assign lp_img = product.metafields.custom[lp_k].value
+                break
+              endif
+            endfor
           endif
           if lp_img == blank and block.settings.media_index > 0
             assign lp_mi = block.settings.media_index | minus: 1
@@ -113,7 +120,7 @@
       "name": "Card",
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Image", "info": "Used by the Image on top style" },
-        { "type": "text", "id": "mf_image", "label": "Or image from product metafield", "info": "Key in the custom namespace" },
+        { "type": "text", "id": "mf_image", "label": "Or image from product metafield", "info": "Key in the custom namespace; separate several with commas" },
         { "type": "range", "id": "media_index", "label": "Or product image number", "min": 0, "max": 12, "step": 1, "default": 0 },
         { "type": "select", "id": "icon", "label": "Icon", "info": "Used by the Icon style", "default": "sparkle", "options": [
           { "value": "sparkle", "label": "Sparkle" }, { "value": "bolt", "label": "Energy" }, { "value": "heart", "label": "Heart" },

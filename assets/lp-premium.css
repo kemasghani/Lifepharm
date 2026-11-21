@@ -929,4 +929,6 @@ html:has(x-drawer[open], cart-drawer[open], dialog[open]) .product-quick-add:not
   .shopify-section--main-product .product-info > .product-info__block-item[data-block-id="lp_summary"] { --product-info-block-spacing: .625rem; }
   .shopify-section--main-product .lp-vcard__media:not(#lp-none) { height: 4.25rem; }
   .shopify-section--main-product .product-info__block-item[data-block-type="buy-buttons"] { margin-block-start: 0; }
+  .shopify-section--main-product .lp-ideal { gap: .4rem; margin-top: 0; }
+  .shopify-section--main-product .product-info > .product-info__block-item:is([data-block-type="title"], [data-block-id="lp_rating"]) { --product-info-block-spacing: .5rem; }
 }

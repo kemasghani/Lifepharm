@@ -600,9 +600,9 @@
         "heading": "Still Deciding? Start Here.",
         "button_label": "View All FAQs",
         "contact_label": "Contact Us",
-        "q_who": "Who is [product] for?",
-        "q_how": "How do I use [product]?",
-        "q_when": "When will I notice a difference?"
+        "q_who": "",
+        "q_how": "",
+        "q_when": ""
       },
       "blocks": {
         "item_1": {
@@ -637,7 +637,7 @@
           "type": "item",
           "settings": {
             "question": "What Is the Warranty?",
-            "answer": "<p>FootCharge comes with a one-year warranty from the date of purchase. If your device develops a fault in that time, contact our Customer Service team. The warranty does not cover damage from not following the instruction manual, mishandling, or repair by an unauthorised party.</p>"
+            "answer": "<p>Your device comes with a one-year warranty from the date of purchase. If it develops a fault in that time, contact our Customer Service team. The warranty does not cover damage from not following the instruction manual, mishandling, or repair by an unauthorised party.</p>"
           }
         },
         "item_6": {

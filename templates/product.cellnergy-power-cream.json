@@ -376,733 +376,229 @@
         "input_text_color": ""
       }
     },
-    "1717692639facd14b3": {
-      "type": "apps",
+    "lp_overview": {
+      "type": "lp-pdp-overview",
+      "settings": {
+        "mf_image": "image_ingredients",
+        "image_fit": "cover",
+        "caption": "Cellnergy Power Cream",
+        "media_position": "start",
+        "eyebrow": "Why Power Cream",
+        "heading": "Relief That Doesn’t Wait",
+        "text": "<p>Cellnergy Power Cream is a self-warming cream for achy joints and tired muscles. Its ThermalWave Technology pairs Bio-Active Growth Factors with a natural warming agent and infrared minerals, for a comforting warmth that helps ease joint discomfort and supports relaxation.*</p><p>Apply twice a day, or on the back of the neck and upper back before bed to help you unwind.</p>",
+        "chips_label": "Supports",
+        "chips": "Joint comfort, Circulation, Deep sleep, Relaxation",
+        "note_label": "",
+        "note": ""
+      },
       "blocks": {
-        "tolstoy_shoppable_video_ugc_stories_block_8FqwYJ": {
-          "type": "shopify://apps/tolstoy-ads-image-video/blocks/stories-block/06fa8282-42ff-403e-b67c-1936776aed11",
+        "stat_1": {
+          "type": "stat",
           "settings": {
-            "publishId": "3ew6rhswme0cg"
+            "value": "3",
+            "label": "Active technologies"
+          }
+        },
+        "stat_2": {
+          "type": "stat",
+          "settings": {
+            "value": "2×",
+            "label": "A day"
+          }
+        },
+        "stat_3": {
+          "type": "stat",
+          "settings": {
+            "value": "1–60 min",
+            "label": "Gentle warming"
           }
         }
       },
       "block_order": [
-        "tolstoy_shoppable_video_ugc_stories_block_8FqwYJ"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "remove_vertical_spacing": false,
-        "remove_horizontal_spacing": false,
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
+        "stat_1",
+        "stat_2",
+        "stat_3"
+      ]
     },
-    "faq_3eWR6f": {
-      "type": "faq",
+    "lp_tech": {
+      "type": "lp-pdp-cards",
+      "settings": {
+        "style": "icon",
+        "columns": 3,
+        "background": "sand",
+        "eyebrow": "The Formula",
+        "heading": "Three Technologies in One Cream",
+        "text": "",
+        "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
+      },
       "blocks": {
-        "item_LDTLn3": {
-          "type": "item",
+        "card_1": {
+          "type": "card",
           "settings": {
-            "title": "{{ product.metafields.custom.header_1.value }}",
-            "content": "<p>{{ product.metafields.custom.value_1 | metafield_tag }}</p>"
+            "icon": "cell",
+            "label": "Growth factors",
+            "title": "Egg Bioactive Growth Factors",
+            "text": "<p>A proprietary blend including FGF-2, designed to help reactivate dormant stem cells and support the body’s natural repair.*</p>"
           }
         },
-        "item_k39pAi": {
-          "type": "item",
+        "card_2": {
+          "type": "card",
           "settings": {
-            "title": "{{ product.metafields.custom.header_2.value }}",
-            "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>"
+            "icon": "sparkle",
+            "label": "Self-warming",
+            "title": "ThermalWave Technology",
+            "text": "<p>A natural warming agent and infrared minerals help soothe achy joints, stimulate blood flow and promote cellular activity.*</p>"
           }
         },
-        "item_A7aCVj": {
-          "type": "item",
+        "card_3": {
+          "type": "card",
           "settings": {
-            "title": "{{ product.metafields.custom.header_3.value }}",
-            "content": "<p>{{ product.metafields.custom.value_3 | metafield_tag }}</p>"
-          }
-        },
-        "item_jYbRAc": {
-          "type": "item",
-          "settings": {
-            "title": "{{ product.metafields.custom.header_4.value }}",
-            "content": "<p>{{ product.metafields.custom.value_4 | metafield_tag }}</p>"
-          }
-        },
-        "item_rjVDCn": {
-          "type": "item",
-          "settings": {
-            "title": "{{ product.metafields.custom.header_5.value }}",
-            "content": "<p>{{ product.metafields.custom.value_5 | metafield_tag }}</p>"
-          }
-        },
-        "item_rp6E3r": {
-          "type": "item",
-          "settings": {
-            "title": "Ingredients",
-            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}"
-          }
-        },
-        "item_AYTreE": {
-          "type": "item",
-          "settings": {
-            "title": "Scientific Studies",
-            "content": "{{ product.metafields.custom.studies | metafield_tag }}"
+            "icon": "leaf",
+            "label": "Joint support",
+            "title": "Joint Support Formula",
+            "text": "<p>Hyaluronic acid, vitamins A and C, ceramides, arnica and hemp to support joint comfort.*</p>"
           }
         }
       },
       "block_order": [
-        "item_LDTLn3",
-        "item_k39pAi",
-        "item_A7aCVj",
-        "item_jYbRAc",
-        "item_rjVDCn",
-        "item_rp6E3r",
-        "item_AYTreE"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".prose ul,.prose ol {row-gap: 1.4em;}",
-        ".prose ul,.list-disc {list-style: square;}"
-      ],
-      "settings": {
-        "full_width": true,
-        "subheading": "",
-        "title": "{{ product.metafields.custom.header_6.value }}",
-        "content": "{{ product.metafields.custom.product_description | metafield_tag }}",
-        "team_avatar_width": 100,
-        "support_hours": "",
-        "answer_time": "",
-        "button_text": "",
-        "button_url": "",
-        "text_position": "start",
-        "background": "#ffffff",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "linear-gradient(141deg, rgba(255, 143, 0, 1) 10%, rgba(255, 143, 0, 1) 53%, rgba(248, 189, 113, 1) 85%)",
-        "button_background": "",
-        "button_text_color": "",
-        "accordion_background": "#f9f9f9",
-        "accordion_text_color": ""
-      }
+        "card_1",
+        "card_2",
+        "card_3"
+      ]
     },
-    "custom_liquid_XMpJDx": {
-      "type": "custom-liquid",
+    "lp_how": {
+      "type": "lp-pdp-split",
       "settings": {
-        "full_width": true,
-        "remove_vertical_spacing": false,
-        "remove_horizontal_spacing": false,
-        "liquid": "",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
-    "feature_chart_eKhRpt": {
-      "type": "feature-chart",
+        "mf_image": "image_benefits",
+        "caption": "Massage in until absorbed",
+        "image_fit": "contain",
+        "media_position": "start",
+        "background": "none",
+        "eyebrow": "How to Use",
+        "heading": "Twice a Day, Where You Need It",
+        "text": ""
+      },
       "blocks": {
-        "headings_DfxDEN": {
-          "type": "headings",
+        "step_1": {
+          "type": "step",
           "settings": {
-            "heading_1": "{{ product.metafields.custom.header_1.value }}",
-            "heading_2": "{{ product.metafields.custom.header_2.value }}",
-            "heading_3": "{{ product.metafields.custom.header_3.value }}",
-            "heading_4": "{{ product.metafields.custom.header_4.value }}",
-            "heading_5": "{{ product.metafields.custom.header_5.value }}",
-            "heading_6": "{{ product.metafields.custom.header_6.value }}",
-            "heading_7": "{{ product.metafields.custom.header_tech_spec.value }}",
-            "heading_8": "",
-            "heading_9": "",
-            "heading_10": "",
-            "heading_11": "",
-            "heading_12": "",
-            "heading_13": "",
-            "heading_14": "",
-            "heading_15": "",
-            "heading_16": "",
-            "heading_17": "",
-            "heading_18": "",
-            "heading_19": "",
-            "heading_20": ""
+            "text": "<p>Apply a generous amount to the areas that need it, such as knees, shoulders or lower back.</p>"
           }
         },
-        "values_JYMQEF": {
-          "type": "values",
+        "step_2": {
+          "type": "step",
           "settings": {
-            "product": "",
-            "value_1": "<p>{{ product.metafields.custom.value_1 | metafield_tag }}</p>",
-            "value_2": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>",
-            "value_3": "<p>{{ product.metafields.custom.value_3 | metafield_tag }}</p>",
-            "value_4": "<p>{{ product.metafields.custom.value_4 | metafield_tag }}</p>",
-            "value_5": "<p>{{ product.metafields.custom.value_5 | metafield_tag }}</p>",
-            "value_6": "<p>{{ product.metafields.custom.value_6 | metafield_tag }}</p>",
-            "value_7": "<p>{{ product.metafields.custom.tech_spec_text | metafield_tag }}</p>",
-            "value_8": "",
-            "value_9": "",
-            "value_10": "",
-            "value_11": "",
-            "value_12": "",
-            "value_13": "",
-            "value_14": "",
-            "value_15": "",
-            "value_16": "",
-            "value_17": "",
-            "value_18": "",
-            "value_19": "",
-            "value_20": "",
-            "view_button_background": "",
-            "view_button_text_color": ""
+            "text": "<p>Massage gently until the cream is fully absorbed.</p>"
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "text": "<p>Repeat morning and evening.</p>"
+          }
+        },
+        "note_4": {
+          "type": "note",
+          "settings": {
+            "icon": "sparkle",
+            "text": "Pro tip: for better sleep, apply to the back of your neck and upper back before bed."
+          }
+        },
+        "row_5": {
+          "type": "row",
+          "settings": {
+            "label": "Free from",
+            "value": "<p>Parabens, phthalates and sulfates. Hypoallergenic.</p>"
+          }
+        },
+        "row_6": {
+          "type": "row",
+          "settings": {
+            "label": "Certifications",
+            "value": "<p>ISO 9001</p>"
           }
         }
       },
       "block_order": [
-        "headings_DfxDEN",
-        "values_JYMQEF"
-      ],
-      "custom_css": [
-        ".section-stack__intro {flex: 1 0 530px; max-width: 750px; width: auto;}",
-        ".section-stack__main {flex: 1 1 450px; min-width: 350px; width: auto;}"
-      ],
+        "step_1",
+        "step_2",
+        "step_3",
+        "note_4",
+        "row_5",
+        "row_6"
+      ]
+    },
+    "lp_timeline": {
+      "type": "lp-pdp-timeline",
       "settings": {
-        "full_width": true,
-        "subheading": "",
-        "title": "{{ product.metafields.custom.header_6.value }}",
-        "content": "{{ product.metafields.custom.product_description | metafield_tag }}",
-        "button_text": "",
-        "button_url": "",
-        "text_position": "start",
-        "max_rows": 6,
-        "view_all_text": "View all",
-        "view_less_text": "View less",
-        "view_product": "View",
-        "viewing_product": "",
-        "show_product_swatch": true,
-        "background": "#ffffff",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "rgba(0,0,0,0)",
-        "heading_gradient": "linear-gradient(151deg, rgba(255, 143, 0, 1) 8%, rgba(255, 143, 0, 1) 47%, rgba(247, 188, 93, 1) 81%)",
-        "button_background": "",
-        "button_text_color": "",
-        "chart_background": "#f9f9f9",
-        "chart_text_color": "",
-        "chart_true_false_color": ""
+        "eyebrow": "What to Expect",
+        "heading": "Benefits That Build Over Time",
+        "subheading": "Use it daily and the benefits build. Here’s what to look for, and when.",
+        "next_label": "What comes next"
       }
     },
-    "scrolling_text_gnHJtw": {
-      "type": "scrolling-text",
+    "lp_faq": {
+      "type": "lp-pdp-faq",
       "settings": {
-        "full_width": true,
-        "text": "60 Day Money Back Guarantee",
-        "text_size": "medium",
-        "text_style": "fill",
-        "scrolling_mode": "auto",
-        "scrolling_speed": 10,
-        "background": "#f9f9f9",
-        "background_gradient": "linear-gradient(168deg, rgba(255, 143, 0, 1) 10%, rgba(255, 162, 44, 1) 53%, rgba(248, 189, 113, 1) 94%)",
-        "text_color": "#ffffff",
-        "text_gradient": ""
-      }
-    },
-    "before_after_image_ieK6Jg": {
-      "type": "before-after-image",
-      "disabled": true,
-      "custom_css": [
-        ".section-stack__intro {flex: 1 0 530px; max-width: 750px; width: auto;}",
-        ".section-stack__main {flex: 1 1 450px; min-width: 320px; max-width: 750px; width: auto;}",
-        ".text-center {text-align: center;}"
-      ],
-      "settings": {
-        "full_width": true,
-        "subheading": "",
-        "title": "{{ product.metafields.custom.heading_before_after.value }}",
-        "content": "{{ product.metafields.custom.content_before_after | metafield_tag }}",
-        "before_image": "{{ product.metafields.custom.image_1_before_after.value }}",
-        "after_image": "{{ product.metafields.custom.image_2_before_after.value }}",
-        "expand_image": false,
-        "text_position": "center",
-        "before_after_text_position": "top",
-        "before_text": "Before",
-        "after_text": "After",
-        "drag_initial_position": 60,
-        "background": "#f9f9f9",
-        "background_gradient": "",
-        "text_color": "#181818",
-        "before_text_color": "#ffffff",
-        "after_text_color": "#ffffff",
-        "drag_cursor_background": "#ffffff",
-        "drag_cursor_color": "#ff8f00"
-      }
-    },
-    "scrolling_text_bihmkB": {
-      "type": "scrolling-text",
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "text": "Feeling young • Joint Pain • Sleep • Stress",
-        "text_size": "medium",
-        "text_style": "fill",
-        "scrolling_mode": "auto",
-        "scrolling_speed": 10,
-        "background": "#f9f9f9",
-        "background_gradient": "linear-gradient(168deg, rgba(255, 143, 0, 1) 10%, rgba(252, 184, 0, 1) 65%, rgba(255, 255, 255, 1) 100%)",
-        "text_color": "#ffffff",
-        "text_gradient": ""
-      }
-    },
-    "scrolling_text_GKpgyU": {
-      "type": "scrolling-text",
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "text": "Making optimal well-being attainable for all.",
-        "text_size": "medium",
-        "text_style": "fill",
-        "scrolling_mode": "auto",
-        "scrolling_speed": 10,
-        "background": "rgba(0,0,0,0)",
-        "background_gradient": "",
-        "text_color": "#ffffff",
-        "text_gradient": "linear-gradient(144deg, rgba(255, 228, 49, 1), rgba(249, 32, 32, 1) 100%)"
-      }
-    },
-    "media_with_text_UCaJMK": {
-      "type": "media-with-text",
+        "heading": "Still Deciding? Start Here.",
+        "button_label": "View All FAQs",
+        "contact_label": "Contact Us",
+        "q_who": "",
+        "q_how": "",
+        "q_when": ""
+      },
       "blocks": {
-        "image_8DzHRG": {
-          "type": "image",
+        "item_1": {
+          "type": "item",
           "settings": {
-            "image": "{{ product.metafields.custom.image_benefits.value }}",
-            "media_width": 50,
-            "media_position": "end",
-            "text_position": "place-self-center-start text-start",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "",
-            "title": "Get the Benefit",
-            "content": "{{ product.metafields.custom.text_benefits | metafield_tag }}",
-            "link_text": "",
-            "link_url": "",
-            "background": "#f9f9f9",
-            "background_gradient": "",
-            "text_color": "#181818",
-            "text_gradient": "",
-            "button_background": "",
-            "button_text_color": ""
+            "question": "What Is ThermalWave Technology?",
+            "answer": "<p>A blend of a natural sensory agent and infrared minerals that makes the cream self-warming. It creates a soothing warmth on your skin and joints and helps stimulate blood flow.*</p>"
           }
         },
-        "image_4PHNF4": {
-          "type": "image",
+        "item_2": {
+          "type": "item",
           "settings": {
-            "image": "{{ product.metafields.custom.image_ingredients.value }}",
-            "media_width": 50,
-            "media_position": "start",
-            "text_position": "place-self-center-start text-start",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "",
-            "title": "{{ product.metafields.custom.header_7.value }}",
-            "content": "{{ product.metafields.custom.text_ingredients | metafield_tag }}",
-            "link_text": "",
-            "link_url": "",
-            "background": "#f9f9f9",
-            "background_gradient": "",
-            "text_color": "#181818",
-            "text_gradient": "",
-            "button_background": "",
-            "button_text_color": ""
+            "question": "Where Do the Growth Factors Come From?",
+            "answer": "<p>From fertilised avian eggs sourced from a USDA-inspected farm in the USA. The hens are raised cage-free on high-quality whole grains, and no chemicals or extreme heat are used in processing.</p>"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "question": "Can I Use It With Other Creams or Supplements?",
+            "answer": "<p>Yes. It does not interfere with other creams, medication or supplements. It also pairs well with the Cellnergy Wellness device and LAMININE.</p>"
+          }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {
+            "question": "Who Should Not Use It?",
+            "answer": "<p>It is suitable for anyone over 12. If you are pregnant, nursing or have a medical condition, please speak to your physician first.</p>"
+          }
+        },
+        "item_5": {
+          "type": "item",
+          "settings": {
+            "question": "Full List of Ingredients",
+            "answer": "{{ product.metafields.custom.ingredients | metafield_tag }}"
+          }
+        },
+        "item_6": {
+          "type": "item",
+          "settings": {
+            "question": "What If It Isn’t Right for Me?",
+            "answer": "<p>Then you don’t pay for it. Every LifePharm product comes with a 60-day money-back guarantee. Let us know within 60 days of delivery and we’ll refund you in full.</p>"
           }
         }
       },
       "block_order": [
-        "image_8DzHRG",
-        "image_4PHNF4"
-      ],
-      "custom_css": [
-        ".prose ul,.prose ol {row-gap: 1.4em;}",
-        ".prose ul,.list-disc {list-style: square;}"
-      ],
-      "settings": {
-        "full_width": false,
-        "alternate_media_position": false,
-        "spacing": "none"
-      }
-    },
-    "timeline_rPwewV": {
-      "type": "timeline",
-      "blocks": {
-        "slide_Hzj9Vp": {
-          "type": "slide",
-          "settings": {
-            "image": "{{ product.metafields.custom.phase_1_image.value }}",
-            "navigation_label": "{{ product.metafields.custom.phase_1_nav_label.value }}",
-            "subheading": "{{ product.metafields.custom.phase_1_sub_heading.value }}",
-            "title": "{{ product.metafields.custom.phase_1_heading.value }}",
-            "content": "{{ product.metafields.custom.phase_1_content | metafield_tag }}"
-          }
-        },
-        "slide_VVAtmd": {
-          "type": "slide",
-          "settings": {
-            "image": "{{ product.metafields.custom.phase_2_image.value }}",
-            "navigation_label": "{{ product.metafields.custom.phase_2_nav_label.value }}",
-            "subheading": "{{ product.metafields.custom.phase_2_sub_heading.value }}",
-            "title": "{{ product.metafields.custom.phase_2_heading.value }}",
-            "content": "{{ product.metafields.custom.phase_2_content | metafield_tag }}"
-          }
-        },
-        "slide_gheRD3": {
-          "type": "slide",
-          "settings": {
-            "image": "{{ product.metafields.custom.phase_3_image.value }}",
-            "navigation_label": "{{ product.metafields.custom.phase_3_nav_label.value }}",
-            "subheading": "{{ product.metafields.custom.phase_3_sub_heading.value }}",
-            "title": "{{ product.metafields.custom.phase_3_heading.value }}",
-            "content": "{{ product.metafields.custom.phase_3_content | metafield_tag }}"
-          }
-        }
-      },
-      "block_order": [
-        "slide_Hzj9Vp",
-        "slide_VVAtmd",
-        "slide_gheRD3"
-      ],
-      "custom_css": [
-        ".subheading {font-weight: 700; color: #ff8f00 !important; margin-top: 10px !important; font-style: italic; font-size: large;}",
-        ".timeline__nav-item[aria-current=\"true\"]:before {border-color: #181818; background-color: #181818;}"
-      ],
-      "settings": {
-        "full_width": false,
-        "background": "#f9f9f9",
-        "background_gradient": "linear-gradient(167deg, rgba(249, 249, 249, 1) 28%, rgba(255, 255, 255, 1) 45%, rgba(255, 255, 255, 1) 70%)",
-        "text_color": "rgba(0,0,0,0)"
-      }
-    },
-    "faq_XwdKmx": {
-      "type": "faq",
-      "blocks": {
-        "item_TkNQcT": {
-          "type": "item",
-          "disabled": true,
-          "settings": {
-            "title": "{{ product.metafields.custom.header_1.value }}",
-            "content": "<p>{{ product.metafields.custom.value_1 | metafield_tag }}</p>"
-          }
-        },
-        "item_bUCdd8": {
-          "type": "item",
-          "disabled": true,
-          "settings": {
-            "title": "{{ product.metafields.custom.header_2.value }}",
-            "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>"
-          }
-        },
-        "item_nCDBHn": {
-          "type": "item",
-          "disabled": true,
-          "settings": {
-            "title": "{{ product.metafields.custom.header_3.value }}",
-            "content": "<p>{{ product.metafields.custom.value_3 | metafield_tag }}</p>"
-          }
-        },
-        "item_89mDbk": {
-          "type": "item",
-          "disabled": true,
-          "settings": {
-            "title": "{{ product.metafields.custom.header_4.value }}",
-            "content": "<p>{{ product.metafields.custom.value_4 | metafield_tag }}</p>"
-          }
-        },
-        "item_GkamQw": {
-          "type": "item",
-          "disabled": true,
-          "settings": {
-            "title": "{{ product.metafields.custom.header_5.value }}",
-            "content": "<p>{{ product.metafields.custom.value_5 | metafield_tag }}</p>"
-          }
-        },
-        "item_dGiG9D": {
-          "type": "item",
-          "settings": {
-            "title": "Full List of Ingredients",
-            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}"
-          }
-        },
-        "item_GKixzh": {
-          "type": "item",
-          "settings": {
-            "title": "Scientific Studies",
-            "content": "{{ product.metafields.custom.studies | metafield_tag }}"
-          }
-        }
-      },
-      "block_order": [
-        "item_TkNQcT",
-        "item_bUCdd8",
-        "item_nCDBHn",
-        "item_89mDbk",
-        "item_GkamQw",
-        "item_dGiG9D",
-        "item_GKixzh"
-      ],
-      "custom_css": [
-        "{margin-bottom: -25px !important;}",
-        ".prose ul,.prose ol {row-gap: 1.4em;}",
-        ".prose ul,.list-disc {list-style: square;}"
-      ],
-      "settings": {
-        "full_width": true,
-        "subheading": "",
-        "title": "",
-        "content": "",
-        "team_avatar_width": 100,
-        "support_hours": "",
-        "answer_time": "",
-        "button_text": "",
-        "button_url": "{{ product.metafields.custom.faq_url.value }}",
-        "text_position": "center",
-        "background": "#ffffff",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "linear-gradient(141deg, rgba(255, 143, 0, 1) 10%, rgba(255, 143, 0, 1) 53%, rgba(248, 189, 113, 1) 85%)",
-        "button_background": "",
-        "button_text_color": "",
-        "accordion_background": "#f9f9f9",
-        "accordion_text_color": ""
-      }
-    },
-    "rich_text_Pcf7H6": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_bQF4EJ": {
-          "type": "heading",
-          "settings": {
-            "text": "Want to Know More?",
-            "heading_tag": "h2",
-            "text_color": "",
-            "gradient": "linear-gradient(158deg, rgba(255, 143, 0, 1) 14%, rgba(255, 143, 0, 1) 46%, rgba(248, 189, 113, 1) 70%)"
-          }
-        },
-        "richtext_PAhje7": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>Check out some of the most popular questions and concerns</p>"
-          }
-        },
-        "button_Nnw4Mw": {
-          "type": "button",
-          "settings": {
-            "style": "outline",
-            "size": "xl",
-            "text": "View FAQs",
-            "url": "{{ product.metafields.custom.faq_url.value }}",
-            "background": "",
-            "text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "heading_bQF4EJ",
-        "richtext_PAhje7",
-        "button_Nnw4Mw"
-      ],
-      "settings": {
-        "full_width": true,
-        "content_width": "small",
-        "text_position": "center",
-        "background": "#ffffff",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
-    "faq_R6AxTY": {
-      "type": "faq",
-      "blocks": {
-        "item_FpL8DC": {
-          "type": "item",
-          "disabled": true,
-          "settings": {
-            "title": "{{ product.metafields.custom.header_1.value }}",
-            "content": "<p>{{ product.metafields.custom.value_1 | metafield_tag }}</p>"
-          }
-        },
-        "item_F8Bjwm": {
-          "type": "item",
-          "disabled": true,
-          "settings": {
-            "title": "{{ product.metafields.custom.header_2.value }}",
-            "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>"
-          }
-        },
-        "item_apWUnJ": {
-          "type": "item",
-          "disabled": true,
-          "settings": {
-            "title": "Question",
-            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
-          }
-        },
-        "item_TzgqEH": {
-          "type": "item",
-          "disabled": true,
-          "settings": {
-            "title": "{{ product.metafields.custom.header_3.value }}",
-            "content": "<p>{{ product.metafields.custom.value_3 | metafield_tag }}</p>"
-          }
-        },
-        "item_AyRJw3": {
-          "type": "item",
-          "disabled": true,
-          "settings": {
-            "title": "{{ product.metafields.custom.header_4.value }}",
-            "content": "<p>{{ product.metafields.custom.value_4 | metafield_tag }}</p>"
-          }
-        },
-        "item_BcYpi6": {
-          "type": "item",
-          "disabled": true,
-          "settings": {
-            "title": "{{ product.metafields.custom.header_5.value }}",
-            "content": "<p>{{ product.metafields.custom.value_5 | metafield_tag }}</p>"
-          }
-        },
-        "item_GWPzif": {
-          "type": "item",
-          "settings": {
-            "title": "Full List of Ingredients",
-            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}"
-          }
-        },
-        "item_6YRbPr": {
-          "type": "item",
-          "settings": {
-            "title": "Scientific Studies",
-            "content": "{{ product.metafields.custom.studies | metafield_tag }}"
-          }
-        }
-      },
-      "block_order": [
-        "item_FpL8DC",
-        "item_F8Bjwm",
-        "item_apWUnJ",
-        "item_TzgqEH",
-        "item_AyRJw3",
-        "item_BcYpi6",
-        "item_GWPzif",
-        "item_6YRbPr"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "subheading": "",
-        "title": "Want to Know More?",
-        "content": "<p>Check out some of the most popular questions and concerns about {{ product.title }}</p>",
-        "team_avatar_width": 100,
-        "support_hours": "",
-        "answer_time": "",
-        "button_text": "View FAQs",
-        "button_url": "{{ product.metafields.custom.faq_url.value }}",
-        "text_position": "center",
-        "background": "#ffffff",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "linear-gradient(141deg, rgba(255, 143, 0, 1) 10%, rgba(255, 143, 0, 1) 53%, rgba(248, 189, 113, 1) 85%)",
-        "button_background": "",
-        "button_text_color": "",
-        "accordion_background": "#f9f9f9",
-        "accordion_text_color": ""
-      }
-    },
-    "images_with_text_scrolling_AqDYAM": {
-      "type": "images-with-text-scrolling",
-      "blocks": {
-        "item_KfeJAP": {
-          "type": "item",
-          "settings": {
-            "image": "shopify://shop_images/Laminine_europe_120.jpg",
-            "icon": "none",
-            "icon_width": 48,
-            "title": "Healthy balance",
-            "content": "<ul><li>Promotes healthy balance of microflora and pH for better nutrient absorption, a stronger immune system, less respiratory infections, and improved mood*</li></ul>"
-          }
-        },
-        "item_qzWWYc": {
-          "type": "item",
-          "settings": {
-            "image": "shopify://shop_images/Laminine_europe_120.jpg",
-            "icon": "none",
-            "icon_width": 48,
-            "title": "Reduce toxins",
-            "content": "<p>Improves regularity for reducing toxins in blood, supports less indigestion, bloating, cramping, constipation, and diarrhea*</p><ul><li>Contains full range of digestive enzymes to break down nutrients for complete digestion and assimilation*</li></ul>"
-          }
-        },
-        "item_3x9E7r": {
-          "type": "item",
-          "settings": {
-            "image": "shopify://shop_images/Laminine_europe_120.jpg",
-            "icon": "none",
-            "icon_width": 48,
-            "title": "Supports weight management",
-            "content": "<p>Helps digest fats, improve metabolism, and supports elimination of accumulated waste*Supports weight management and helps reduce fat accumulation*</p>"
-          }
-        },
-        "item_mVLJqK": {
-          "type": "item",
-          "settings": {
-            "image": "shopify://shop_images/Laminine_europe_120.jpg",
-            "icon": "none",
-            "icon_width": 48,
-            "title": "Complete digestion",
-            "content": "<p>Contains full range of digestive enzymes to break down nutrients for complete digestion and assimilation*</p>"
-          }
-        }
-      },
-      "block_order": [
-        "item_KfeJAP",
-        "item_qzWWYc",
-        "item_3x9E7r",
-        "item_mVLJqK"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "stack_on_mobile": false,
-        "show_counter": true,
-        "desktop_image_effect": "reveal",
-        "image_position": "start",
-        "background": "#ffffff",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": ""
-      }
-    },
-    "related-products": {
-      "type": "related-products",
-      "disabled": true,
-      "settings": {
-        "recommendations_count": 6,
-        "products": [],
-        "full_width": true,
-        "stack_products": false,
-        "show_progress_bar": false,
-        "products_per_row_mobile": "1",
-        "products_per_row_desktop": 5,
-        "subheading": "",
-        "title": "You may also like",
-        "content": "",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
-      }
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4",
+        "item_5",
+        "item_6"
+      ]
     },
     "17128952497cac699c": {
       "type": "apps",
@@ -1132,102 +628,15 @@
         "background_gradient": "",
         "text_color": ""
       }
-    },
-    "custom_html_rD7gEb": {
-      "type": "custom-html",
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "remove_vertical_spacing": false,
-        "remove_horizontal_spacing": false,
-        "html": "<div class=\"cozy-video-gallery\" id=\"cozy-video-gallery12322\"><!-- ALWAYS KEEP THIS EMPTY --></div>",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
-    "1712987483b4ce0d98": {
-      "type": "apps",
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "remove_vertical_spacing": false,
-        "remove_horizontal_spacing": false,
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
-    "tabs_WnLmDB": {
-      "type": "tabs",
-      "blocks": {
-        "tab_GJxRBy": {
-          "type": "tab",
-          "settings": {
-            "title": "Tab 1",
-            "content": "<p>Use this text to share information about your brand with your customers.</p>",
-            "page": "shorts-1772819695"
-          }
-        },
-        "tab_PWP6ty": {
-          "type": "tab",
-          "settings": {
-            "title": "Tab 2",
-            "content": "{{ product.metafields.custom.studies | metafield_tag }}",
-            "page": ""
-          }
-        },
-        "tab_iRnXUa": {
-          "type": "tab",
-          "settings": {
-            "title": "Tab 3",
-            "content": "<p>Share information about your shipping rates, return policy or contact information.</p>",
-            "page": ""
-          }
-        }
-      },
-      "block_order": [
-        "tab_GJxRBy",
-        "tab_PWP6ty",
-        "tab_iRnXUa"
-      ],
-      "disabled": true,
-      "custom_css": [],
-      "settings": {
-        "full_width": false,
-        "content_size": "medium",
-        "subheading": "Subheading",
-        "title": "Heading",
-        "text_alignment": "center",
-        "first_tab_open": true,
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": ""
-      }
     }
   },
   "order": [
     "main",
-    "1717692639facd14b3",
-    "faq_3eWR6f",
-    "custom_liquid_XMpJDx",
-    "feature_chart_eKhRpt",
-    "scrolling_text_gnHJtw",
-    "before_after_image_ieK6Jg",
-    "scrolling_text_bihmkB",
-    "scrolling_text_GKpgyU",
-    "media_with_text_UCaJMK",
-    "timeline_rPwewV",
-    "faq_XwdKmx",
-    "rich_text_Pcf7H6",
-    "faq_R6AxTY",
-    "images_with_text_scrolling_AqDYAM",
-    "related-products",
-    "17128952497cac699c",
-    "custom_html_rD7gEb",
-    "1712987483b4ce0d98",
-    "tabs_WnLmDB"
+    "lp_overview",
+    "lp_tech",
+    "lp_how",
+    "lp_timeline",
+    "lp_faq",
+    "17128952497cac699c"
   ]
 }

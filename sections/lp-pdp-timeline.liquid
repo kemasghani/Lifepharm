@@ -31,10 +31,16 @@
     <ol class="lp-tl__cols" role="list" style="--lp-tl-n: {{ phase_count }}">
       {%- for block in section.blocks -%}
         {%- capture panel_id -%}lp-tl-{{ section.id }}-{{ forloop.index }}{%- endcapture -%}
+        {%- liquid
+          assign lp_img = block.settings.image
+          if lp_img == blank and block.settings.mf_image != blank
+            assign lp_img = product.metafields.custom[block.settings.mf_image].value
+          endif
+        -%}
         <li class="lp-tl__card" {{ block.shopify_attributes }}>
-          {%- if block.settings.image != blank -%}
+          {%- if lp_img != blank -%}
             <div class="lp-tl__card-media">
-              {{ block.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 30vw, 100vw', widths: '400,600,800,1000', alt: block.settings.label }}
+              {{ lp_img | image_url: width: 1000 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 30vw, 100vw', widths: '400,600,800,1000', alt: block.settings.label }}
             </div>
           {%- endif -%}
           <div class="lp-tl__card-body">
@@ -170,6 +176,7 @@
       "limit": 4,
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "mf_image", "label": "Or image from product metafield", "info": "Key in the custom namespace, for example phase_1_image" },
         { "type": "text", "id": "label", "label": "Label", "default": "1 to 3 days" },
         { "type": "text", "id": "title", "label": "Title" },
         { "type": "richtext", "id": "text", "label": "Text" }

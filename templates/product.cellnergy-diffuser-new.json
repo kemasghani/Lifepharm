@@ -196,7 +196,7 @@
             "icon": "none",
             "icon_width": 20,
             "title": "LifePharm Guarantee",
-            "content": "<p>All of our products come with a 60-Day Money-Back Guarantee. </p><p>Try it, and if it doesn�t work, it's on us!�Our hassle-free return policy offers a 100% money-back guarantee within 60 days of delivery.</p>",
+            "content": "<p>All of our products come with a 60-Day Money-Back Guarantee. </p><p>Try it, and if it doesn’t work, it's on us! Our hassle-free return policy offers a 100% money-back guarantee within 60 days of delivery.</p>",
             "page": ""
           }
         },
@@ -354,7 +354,7 @@
             "icon": "picto-box",
             "icon_width": 20,
             "title": "Product Shipping",
-            "content": "<p>This product is eligible for free shipping on orders over �150</p>",
+            "content": "<p>This product is eligible for free shipping on orders over $150</p>",
             "background": "#f9f9f9",
             "text_color": "#181818"
           }
@@ -433,7 +433,6 @@
         "offer_DWbnz9"
       ],
       "custom_css": [
-        ".h2 {color: #ff8f00; margin-bottom: -20px;}",
         "@media screen and (min-width: 700px) {.product-gallery__thumbnail-list {grid-auto-columns: 110px; }}",
         ".product-gallery__thumbnail {border-width: 1px; border-color: #c1c1c1; border-radius: 16px; padding: 10px 10px 5px 10px;}",
         "@media screen and (min-width: 700px) {.product-gallery__thumbnail-list {grid-auto-columns: 110px; justify-content: center; }}",
@@ -1425,7 +1424,7 @@
                     "dpb_text_eJi6PU": {
                       "type": "dpb_-_text",
                       "settings": {
-                        "text": "<p><strong>{{ closest.product.metafields.custom.header_2.value }}</strong></p><ul><li>Rinse diffuser under running water after each refill. </li><li>Hand wash bottle with mild soap�<br/>do not put in dishwasher. </li><li>Safe with cold and warm water. </li></ul>",
+                        "text": "<p><strong>{{ closest.product.metafields.custom.header_2.value }}</strong></p><ul><li>Rinse diffuser under running water after each refill. </li><li>Hand wash bottle with mild soap,<br/>do not put in dishwasher. </li><li>Safe with cold and warm water. </li></ul>",
                         "text_color": "",
                         "enable_custom_text_size": false,
                         "block_text_size": "30px",
@@ -2603,7 +2602,7 @@
                 "dpb_text_48UXHe": {
                   "type": "dpb_-_text",
                   "settings": {
-                    "text": "<h3><strong>[CARRY LOOP]</strong></h3><p>Integrated carry loop for easy grip and on-the-go convenience�clip it, hold it, or hang it wherever you need.</p>",
+                    "text": "<h3><strong>[CARRY LOOP]</strong></h3><p>Integrated carry loop for easy grip and on-the-go convenience, clip it, hold it, or hang it wherever you need.</p>",
                     "text_color": "",
                     "enable_custom_text_size": false,
                     "block_text_size": "30px",
@@ -2808,28 +2807,28 @@
           "type": "item",
           "settings": {
             "title": "HOW IT WORKS",
-            "content": "<p><strong>How does the CELLNERGY Bottle work?</strong><br/>The bottle uses a built-in mineral diffuser to condition your water with three technologies: mineral-based alkalization (pH 8�9.5), molecular hydrogen infusion, and terahertz-frequency water restructuring. Fill with filtered water, wait 15 minutes, and it�s ready to drink.*</p><p><strong>What makes CELLNERGY different from a regular water bottle?</strong><br/>Standard bottles hold water. The CELLNERGY BOTTLE conditions it. The mineral diffuser actively changes the water�s pH, antioxidant profile, and molecular structure � so what reaches your cells is fundamentally different from what goes in.</p><p><strong>What pH does the CELLNERGY Bottle produce?</strong><br/>The CELLNERGY Bottle conditions water to an alkaline pH of approximately 8�9.5. Most tap and filtered water sits between pH 6.5 and 7.5 � neutral to slightly acidic.</p><p><strong>Does alkaline water change my body�s pH?</strong><br/>No. Your body tightly regulates blood pH on its own. CELLNERGY-conditioned water is not intended to alter blood pH � it�s designed to support hydration efficiency and internal mineral balance as part of a healthy lifestyle.*</p><p><strong>Why is pH 8�9.5 water beneficial?</strong><br/>Alkaline water in this range may support more efficient hydration and mineral balance compared to neutral or slightly acidic water � helping water interact more effectively with cells, supporting nutrient transport, cellular performance, and overall vitality.*</p><p><strong>Will I notice a taste difference?</strong><br/>Most users do. CELLNERGY-conditioned water is often described as smoother, cleaner, and lighter. The taste is not flavored or sweetened � it�s the result of a changed mineral and molecular profile.</p>"
+            "content": "<p><strong>How does the CELLNERGY Bottle work?</strong><br/>The bottle uses a built-in mineral diffuser to condition your water with three technologies: mineral-based alkalization (pH 8–9.5), molecular hydrogen infusion, and terahertz-frequency water restructuring. Fill with filtered water, wait 15 minutes, and it’s ready to drink.*</p><p><strong>What makes CELLNERGY different from a regular water bottle?</strong><br/>Standard bottles hold water. The CELLNERGY BOTTLE conditions it. The mineral diffuser actively changes the water’s pH, antioxidant profile, and molecular structure, so what reaches your cells is fundamentally different from what goes in.</p><p><strong>What pH does the CELLNERGY Bottle produce?</strong><br/>The CELLNERGY Bottle conditions water to an alkaline pH of approximately 8–9.5. Most tap and filtered water sits between pH 6.5 and 7.5, neutral to slightly acidic.</p><p><strong>Does alkaline water change my body’s pH?</strong><br/>No. Your body tightly regulates blood pH on its own. CELLNERGY-conditioned water is not intended to alter blood pH, it’s designed to support hydration efficiency and internal mineral balance as part of a healthy lifestyle.*</p><p><strong>Why is pH 8–9.5 water beneficial?</strong><br/>Alkaline water in this range may support more efficient hydration and mineral balance compared to neutral or slightly acidic water, helping water interact more effectively with cells, supporting nutrient transport, cellular performance, and overall vitality.*</p><p><strong>Will I notice a taste difference?</strong><br/>Most users do. CELLNERGY-conditioned water is often described as smoother, cleaner, and lighter. The taste is not flavored or sweetened, it’s the result of a changed mineral and molecular profile.</p>"
           }
         },
         "item_dHhpNt": {
           "type": "item",
           "settings": {
             "title": "SAFETY & MATERIALS",
-            "content": "<p><strong>Is the CELLNERGY BOTTLE safe?</strong><br/>Yes. The bottle is made from BPA-free, medical-grade Tritan� � designed for clean, safe everyday hydration. It�s suitable for cold and warm water up to 60�C / 140�F.</p><p><strong>Is alkaline water safe to drink daily</strong>?<br/>Yes. Alkaline water in the pH 8�9.5 range is widely consumed as part of daily hydration routines. If you have a preexisting medical condition or are on medication, we recommend consulting your physician.</p>"
+            "content": "<p><strong>Is the CELLNERGY BOTTLE safe?</strong><br/>Yes. The bottle is made from BPA-free, medical-grade Tritan™, designed for clean, safe everyday hydration. It’s suitable for cold and warm water up to 60°C / 140°F.</p><p><strong>Is alkaline water safe to drink daily</strong>?<br/>Yes. Alkaline water in the pH 8–9.5 range is widely consumed as part of daily hydration routines. If you have a preexisting medical condition or are on medication, we recommend consulting your physician.</p>"
           }
         },
         "item_ift9ki": {
           "type": "item",
           "settings": {
             "title": "USAGE",
-            "content": "<p><strong>What type of water should I use?</strong><br/>Filtered or purified water is recommended. It allows the conditioning technologies to work most effectively and gives you the cleanest taste.</p><p><strong>How long does conditioning take?</strong><br/>Allow approximately 15 minutes after filling for optimal conditioning. You can then drink throughout the day.</p><p><strong>How often should I use it?</strong><br/>Daily use delivers the best results � especially when taken alongside LifePharm supplements or other frequency regeneration products.</p><p>Can I use it with hot beverages?<br/>The CELLNERGY BOTTLE is designed for cold and warm water only, up to 60�C / 140�F. It is not suitable for boiling or hot liquids.</p>"
+            "content": "<p><strong>What type of water should I use?</strong><br/>Filtered or purified water is recommended. It allows the conditioning technologies to work most effectively and gives you the cleanest taste.</p><p><strong>How long does conditioning take?</strong><br/>Allow approximately 15 minutes after filling for optimal conditioning. You can then drink throughout the day.</p><p><strong>How often should I use it?</strong><br/>Daily use delivers the best results, especially when taken alongside LifePharm supplements or other frequency regeneration products.</p><p>Can I use it with hot beverages?<br/>The CELLNERGY BOTTLE is designed for cold and warm water only, up to 60°C / 140°F. It is not suitable for boiling or hot liquids.</p>"
           }
         },
         "item_MhzLPR": {
           "type": "item",
           "settings": {
             "title": "MINERAL DIFFUSER",
-            "content": "<p><strong>Do I need to replace the mineral diffuser?</strong><br/>Yes � we recommend replacing it every 2 months. After approximately 2 months of daily use, mineral output declines and the conditioning performance drops. Replacement diffusers are sold separately.</p><p><strong>What happens if I don�t replace it?</strong><br/>Performance gradually returns to that of a regular water bottle. The minerals don�t expire dangerously � they simply stop conditioning. A fresh diffuser immediately restores full performance.</p>"
+            "content": "<p><strong>Do I need to replace the mineral diffuser?</strong><br/>Yes, we recommend replacing it every 2 months. After approximately 2 months of daily use, mineral output declines and the conditioning performance drops. Replacement diffusers are sold separately.</p><p><strong>What happens if I don’t replace it?</strong><br/>Performance gradually returns to that of a regular water bottle. The minerals don’t expire dangerously, they simply stop conditioning. A fresh diffuser immediately restores full performance.</p>"
           }
         }
       },
@@ -2879,7 +2878,7 @@
         "richtext_P37PF6": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Subscribe & Save�your new diffuser arrives every 3 months, automatically. Consistent performance. No reminders. No gaps in your regeneration. </p>"
+            "content": "<p>Subscribe & Save, your new diffuser arrives every 3 months, automatically. Consistent performance. No reminders. No gaps in your regeneration. </p>"
           }
         },
         "button_xeKHJp": {

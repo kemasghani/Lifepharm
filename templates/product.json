@@ -75,7 +75,7 @@
             "show_compare_price": true,
             "legend_content": "Purchase options",
             "show_legend": false,
-            "layout": "horizontal",
+            "layout": "vertical",
             "dropdownPosition": "inside",
             "additional_frequency_label": "",
             "start_onetime": false,

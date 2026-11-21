@@ -69,7 +69,7 @@
             "show_compare_price": true,
             "legend_content": "Select subscription plan",
             "show_legend": false,
-            "layout": "horizontal",
+            "layout": "vertical",
             "dropdownPosition": "inside",
             "additional_frequency_label": "",
             "start_onetime": true,
@@ -104,7 +104,8 @@
         },
         "quantity_selector": {
           "type": "quantity_selector",
-          "settings": {}
+          "settings": {},
+          "disabled": true
         },
         "text_VjR6WU": {
           "type": "text",
@@ -350,7 +351,7 @@
       ],
       "settings": {
         "full_width": true,
-        "show_fixed_add_to_cart": false,
+        "show_fixed_add_to_cart": true,
         "desktop_media_width": 50,
         "desktop_media_layout": "carousel_thumbnails_left",
         "mobile_media_size": "expanded",

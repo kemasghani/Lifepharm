@@ -470,7 +470,8 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
 .lp-pdp-price--atc .lp-pdp-price__now { font-size: inherit; font-weight: 700; line-height: inherit; letter-spacing: inherit; color: inherit; }
 .lp-pdp-price--atc .lp-pdp-price__was { font-size: .86em; font-weight: 500; color: inherit; opacity: .55; }
 .lp-pdp-price--atc .lp-pdp-price__tag { display: none !important; }
-@media (max-width: 380px) { .lp-atc { gap: .6rem; } .lp-pdp-price--atc .lp-pdp-price__was { display: none; } }
+@media (max-width: 420px) { .lp-atc { gap: .6rem; } .lp-atc__label, .lp-pdp-price--atc { font-size: .9375rem; } }
+@media (max-width: 380px) { .lp-pdp-price--atc .lp-pdp-price__was { display: none; } }
 .variant-picker__option-values--cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .65rem; padding-block-start: .9rem; }
 .lp-vcard { position: relative; min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; align-content: start; gap: .2rem; padding: .9rem .6rem 1rem; border-radius: 16px; background: #fff; box-shadow: inset 0 0 0 1.5px rgb(var(--lp-stone)); text-align: center; cursor: pointer; transition: box-shadow var(--lp-dur-2) var(--lp-ease), background-color var(--lp-dur-2) var(--lp-ease), transform var(--lp-dur-1) var(--lp-ease); -webkit-tap-highlight-color: transparent; }
 @media (hover: hover) { .lp-vcard:hover { box-shadow: inset 0 0 0 1.5px #b9b2a6; } }
@@ -894,18 +895,8 @@ body:has(.shopify-section--main-product) .shopify-section--text-with-icons:not(#
 main#main { overflow-x: clip; }
 
 
-/* Compact buy box (2026-11-21): the price lives in Add to Cart, quantity shares its row, cards and benefit icons are
+/* Compact buy box (2026-11-21): the price lives in Add to Cart, no quantity stepper, cards and benefit icons are
    tighter, so Add to Cart sits in the first viewport at 1440x900 without shrinking type below the brand sizes. */
-.lp-buyrow { display: flex; align-items: stretch; gap: .625rem; }
-.lp-buyrow > buy-buttons { flex: 1 1 auto; min-width: 0; }
-.lp-buyrow__qty:not(#lp-none) { flex: none; height: auto; min-height: 58px; width: 7.75rem; border-radius: var(--rounded-button, 999px); box-shadow: inset 0 0 0 1px rgb(var(--lp-stone)); background: #fff; }
-.lp-buyrow__qty .quantity-selector__input { width: 2.5ch; font-weight: 600; font-variant-numeric: tabular-nums; }
-.lp-buyrow__qty .quantity-selector__button { flex: 1; min-width: 44px; }
-@media (max-width: 420px) {
-  .lp-buyrow__qty:not(#lp-none) { width: 6.5rem; }
-  .lp-buyrow .lp-atc { gap: .55rem; }
-  .lp-buyrow .lp-atc__label, .lp-buyrow .lp-pdp-price--atc { font-size: .875rem; letter-spacing: .04em; }
-}
 .lp-ideal { gap: .5rem; margin-top: .15rem; }
 .lp-ideal__item { width: 4.5rem; gap: .3rem; }
 .lp-ideal__icon { width: 40px; height: 40px; }
@@ -915,3 +906,7 @@ main#main { overflow-x: clip; }
   .shopify-section--main-product .lp-vcard__media { aspect-ratio: auto; height: 5.25rem; margin-block-end: .25rem; }
   .shopify-section--main-product .variant-picker__option-values--cards { padding-block-start: .6rem; }
 }
+
+/* Sticky Add to Cart stays out of the way of drawers, dialogs and the open menu. */
+html:has(x-drawer[open], cart-drawer[open], dialog[open]) .product-quick-add:not(#lp-none) { visibility: hidden !important; opacity: 0 !important; pointer-events: none !important; }
+@media (prefers-reduced-motion: reduce) { .product-quick-add { transition: none !important; } }

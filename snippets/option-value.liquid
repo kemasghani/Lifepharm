@@ -169,6 +169,10 @@ Color swatch specific parameters:
       elsif unit_word == 'tablets'
         assign unit_label = 'tablet'
       endif
+      # Cellnergy sizes count devices or bottles, not capsules: show the pack price instead of a unit price.
+      if variant.product.handle contains 'cellnergy'
+        assign unit_label = ''
+      endif
 
       # Savings against the dearest unit price of the product (the single bottle). Laminine's Family Pack is
       # 9 x 30-count bottles plus 1 free (as its pack image shows), so 300 capsules.

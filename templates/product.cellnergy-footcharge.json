@@ -17,11 +17,13 @@
           "type": "price",
           "settings": {
             "show_taxes_notice": false
-          }
+          },
+          "disabled": true
         },
         "separator": {
           "type": "separator",
-          "settings": {}
+          "settings": {},
+          "disabled": true
         },
         "stamped_product_reviews_ugc_star_rating_badge_8VPpGa": {
           "type": "shopify://apps/stamped-reviews/blocks/star-rating-badge/a103faaf-2125-4b0e-89fa-de5149736723",
@@ -44,7 +46,7 @@
           "settings": {
             "hide_sold_out_variants": false,
             "stack_blocks": true,
-            "selector_style": "block",
+            "selector_style": "lp_card",
             "swatch_selector_style": "swatch",
             "variant_image_options": "",
             "size_chart_page": ""
@@ -246,17 +248,30 @@
           "settings": {
             "liquid": "{% render 'lp-rating-row', product: product %}"
           }
+        },
+        "lp_summary": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{% render 'lp-pdp-summary', product: product %}"
+          }
+        },
+        "lp_price": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{%- assign lp_v = product.selected_or_first_available_variant -%}{%- assign lp_base = lp_v.compare_at_price | default: lp_v.price -%}<div class=\"lp-pdp-price\" aria-live=\"polite\"><span class=\"lp-pdp-price__now price-item--regular\">{{ lp_v.price | money }}</span><s class=\"lp-pdp-price__was\" data-base=\"{{ lp_base | money_without_currency }}\" {% unless lp_v.compare_at_price > lp_v.price %}hidden{% endunless %}>{{ lp_base | money }}</s><span class=\"lp-pdp-price__tag\" hidden></span></div>"
+          }
         }
       },
       "block_order": [
         "title",
         "badges",
+        "lp_rating",
+        "lp_summary",
+        "lp_price",
+        "variant_picker",
         "price",
         "separator",
-        "lp_rating",
         "stamped_product_reviews_ugc_star_rating_badge_8VPpGa",
-        "liquid_FCeMyQ",
-        "variant_picker",
         "payment_terms",
         "quantity_selector",
         "text_VjR6WU",
@@ -269,6 +284,7 @@
         "collapsible_text_PDdyLw",
         "collapsible_text_kaarby",
         "buy_buttons",
+        "liquid_FCeMyQ",
         "text_qkxir3",
         "tolstoy_shoppable_video_ugc_stories_block_hnKrMy",
         "offer_KHjNfD",

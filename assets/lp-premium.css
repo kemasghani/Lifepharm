@@ -893,3 +893,25 @@ body:has(.shopify-section--main-product) .shopify-section--text-with-icons:not(#
 .prose a, .rte a, .rich-text a { overflow-wrap: anywhere; }
 main#main { overflow-x: clip; }
 
+
+/* Compact buy box (2026-11-21): the price lives in Add to Cart, quantity shares its row, cards and benefit icons are
+   tighter, so Add to Cart sits in the first viewport at 1440x900 without shrinking type below the brand sizes. */
+.lp-buyrow { display: flex; align-items: stretch; gap: .625rem; }
+.lp-buyrow > buy-buttons { flex: 1 1 auto; min-width: 0; }
+.lp-buyrow__qty:not(#lp-none) { flex: none; height: auto; min-height: 58px; width: 7.75rem; border-radius: var(--rounded-button, 999px); box-shadow: inset 0 0 0 1px rgb(var(--lp-stone)); background: #fff; }
+.lp-buyrow__qty .quantity-selector__input { width: 2.5ch; font-weight: 600; font-variant-numeric: tabular-nums; }
+.lp-buyrow__qty .quantity-selector__button { flex: 1; min-width: 44px; }
+@media (max-width: 420px) {
+  .lp-buyrow__qty:not(#lp-none) { width: 6.5rem; }
+  .lp-buyrow .lp-atc { gap: .55rem; }
+  .lp-buyrow .lp-atc__label, .lp-buyrow .lp-pdp-price--atc { font-size: .875rem; letter-spacing: .04em; }
+}
+.lp-ideal { gap: .5rem; margin-top: .15rem; }
+.lp-ideal__item { width: 4.5rem; gap: .3rem; }
+.lp-ideal__icon { width: 40px; height: 40px; }
+@media (min-width: 1000px) {
+  .shopify-section--main-product .section--tight { --calculated-section-spacing-block-start: 24px; }
+  .shopify-section--main-product .lp-vcard { padding: .7rem .5rem .8rem; }
+  .shopify-section--main-product .lp-vcard__media { aspect-ratio: auto; height: 5.25rem; margin-block-end: .25rem; }
+  .shopify-section--main-product .variant-picker__option-values--cards { padding-block-start: .6rem; }
+}

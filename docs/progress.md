@@ -24,6 +24,11 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 
 ---
 
+## 2026-11-21 · pdp-005 · Cellnergy buy box follows LAMININE; white product area; visible gallery borders
+- Done: every Cellnergy template (FootCharge, Wellness, Stand, Power Cream, Hydration, Diffuser) now runs title, rating, summary + Ideal For, big price with hairline, IBO price, variant cards (lp_card), then the rest (`tools/normalize_cellnergy_buybox.py`). Theme price, separator and Stamped badge blocks disabled; Clinicians' Choice moved under the buy buttons. Cellnergy cards show the pack price, not "per capsule". Main product section background is #ffffff on every product template, all branches. Gallery image and thumbnails get a 1px stone outline (drawn above full-bleed photos), rounded corners, white thumbnail fill.
+- Evidence: ./init.sh --full READY; draft checks 1440/390 on US Wellness, Hydration, Diffuser, LAMININE, EU Power Cream, UK LAMININE: white bg, cards and Save chips correct, no h-scroll, no new JS errors.
+- Next: Power Cream template suffix on UK/US and UK footer Join Us link still await owner approval.
+
 ## 2026-11-21 · qa-001 · Full-coverage QA on UK, US, EU drafts + Cellnergy PDP family
 
 - Done: `tools/qa/site_qa.py` (every published product, collection, page, blog, article; 390 and 1440; rate-limit aware), `tools/qa/e2e_flows.py` (menu, language, search, quick add, PDP add/qty/remove, cart, referral question, Shopify checkout; never places an order), `tools/qa/data_qa.py` (Admin API data completeness), `tools/qa/fix_mojibake.py`. Fixed: sideways scroll from long rich-text URLs (main clips overflow), duplicate `dpProductBadge` declaration, US Get Started featured a deleted product, EU Diffuser PDP had no price, dead Contact/Science links (EU, UK), U+FFFD "?" symbols in copied US/EU content, orange `.h2` override on 6 product templates, empty-cart copy, Winston/Wickson titles. All Cellnergy PDPs (Wellness, Power Cream, Hydration, Diffuser, FootCharge, Stand) share the FootCharge layout via `tools/build_cellnergy_pdp.py`; LP sections take images from metafields (comma fallbacks) or product media.

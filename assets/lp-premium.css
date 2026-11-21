@@ -236,7 +236,7 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
 /* ---------- PDP v2 (editorial buy box) ---------- */
 /* Gallery panel is pure white: the packshots are transparent PNGs, so a tinted panel read as a grey/beige cast (Letisha, 2026-11-21).
    Packshots (.lp-gm--pack, set in snippets/product-gallery.liquid for PNG images) sit smaller inside the frame; lifestyle photos stay full bleed. */
-.shopify-section--main-product .product-gallery__media { background: #fff; border-radius: var(--lp-radius-lg); box-shadow: inset 0 0 0 1px rgb(var(--lp-stone)), 0 1px 2px rgb(var(--lp-ink) / .04); }
+.shopify-section--main-product .product-gallery__media { background: #fff; border-radius: var(--lp-radius-lg); box-shadow: 0 1px 2px rgb(var(--lp-ink) / .04); outline: 1px solid rgb(var(--lp-stone)); outline-offset: -1px; }
 .shopify-section--main-product .product-gallery__media.lp-gm--pack > :is(img, .media) { padding: 12%; object-fit: contain; }
 @media (min-width: 1000px) { .shopify-section--main-product .product-gallery__media.lp-gm--pack > :is(img, .media) { padding: 15%; } }
 @media (min-width: 1000px) { .shopify-section--main-product .product { column-gap: clamp(2.5rem, 4vw, 5rem); } }

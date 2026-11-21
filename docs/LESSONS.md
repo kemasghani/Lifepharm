@@ -46,6 +46,7 @@ Add new lessons at the end of their section with the next free number.
 - **L-031** · 2026-11-11 · 390px screenshots were wrong → headless Chrome `--window-size` renders too wide → use Playwright with `channel="chrome"`, `wait_until="load"`, never `networkidle`. · doc.
 - **L-032** · 2026-11-18 · Storefront started answering 429 and a Cloudflare challenge → heavy Playwright runs against uk/shop domains → use the Admin API for ids and data; keep browser runs short. · doc.
 - **L-033** · 2026-11-11 · Console errors blamed on the theme → `e is not a function` comes from Stamped.io; `addEventListener` null on /collections/all also happens on live → compare with the live theme before fixing "our" error. · doc.
+- **L-035** · 2026-11-21 · Full QA crawl got the IP a Cloudflare challenge (429) for ~30 min on uk.lifepharm.com, and EU's cart API returned 429 mid-run → crawl one tab at a time with delays (`tools/qa/site_qa.py` does), light HTML checks for same-template pages, and pace cart-heavy E2E runs. · `tools/qa/`.
 - **L-034** · 2026-11-12 · Done claimed before the draft had synced → always verify on the draft preview at 390px and 1440px: no horizontal scroll, no new JS errors. · CLAUDE.md section 1, `init.sh` reminder.
 
 ## E. Data, integrations and tooling
@@ -63,4 +64,5 @@ Add new lessons at the end of their section with the next free number.
 - **L-050** · 2026-11-11 · Grey rectangle under a composite product → the box PNG had a baked-in shadow → strip low-alpha pixels in the bottom area before compositing. · doc.
 - **L-051** · 2026-11-13 · AI "collection" shots had garbled small print → check every AI image's labels at full resolution; single-product shots are usually clean. · doc.
 - **L-052** · 2026-11-15 · Dropbox zips broke mid-download → the archive is too large → fetch one month folder at a time (`dl=1` on the subfolder); a truncated zip still extracts with `bsdtar -xf`. · doc.
+- **L-054** · 2026-11-21 · "Ideal For" icons blank on US/EU → the icons were Files on the UK store only, referenced from shared theme code → shared images belong in `assets/`; store Files only for store content. · doc.
 - **L-053** · 2026-11-18 · Replacing an image changed its URL → use `fileUpdate(originalSource)` to keep the filename (`tools/store-audit/replace_file.py`). · doc.

@@ -903,8 +903,12 @@ main#main { overflow-x: clip; }
 @media (min-width: 1000px) {
   .shopify-section--main-product .section--tight { --calculated-section-spacing-block-start: 24px; }
   .shopify-section--main-product .lp-vcard { padding: .7rem .5rem .8rem; }
-  .shopify-section--main-product .lp-vcard__media { aspect-ratio: auto; height: 5.25rem; margin-block-end: .25rem; }
+  .shopify-section--main-product .lp-vcard__media { aspect-ratio: auto; height: 4.75rem; margin-block-end: .25rem; }
   .shopify-section--main-product .variant-picker__option-values--cards { padding-block-start: .6rem; }
+}
+@media (min-width: 1200px) {
+  .shopify-section--main-product .lp-ideal__item { width: auto; min-width: 4.5rem; }
+  .shopify-section--main-product .lp-ideal__text { white-space: nowrap; }
 }
 
 /* Sticky Add to Cart stays out of the way of drawers, dialogs and the open menu. */

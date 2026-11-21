@@ -104,7 +104,7 @@
             "discount_text": "Save up to [discount]",
             "discount_color": "#ff8f00",
             "discount_text_color": "#ffffff",
-            "additional_subscription_content": "<ul><li>You save [discount]</li><li>Skip, delay or cancel any time</li><li>Renew on your timeframe</li></ul>",
+            "additional_subscription_content": "<p>Save [discount], skip or cancel any time</p>",
             "selector_type": "button",
             "button_plan_selector_width": 100,
             "default_subscription": "",

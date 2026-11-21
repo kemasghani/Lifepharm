@@ -56,6 +56,9 @@ def main():
             blocks[k]['disabled'] = True
 
         vp = find(lambda k, b: b['type'] == 'variant_picker' and not b.get('disabled'))
+        for k in vp:  # the pack image already says "free bottle"; the card badge is the saving
+            if blocks[k].get('settings', {}).get('lp_badges'):
+                blocks[k]['settings']['lp_badges'] = ''
         if t in CARDS:
             for k in vp:
                 blocks[k].setdefault('settings', {})['selector_style'] = 'lp_card'

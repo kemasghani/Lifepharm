@@ -72,7 +72,12 @@ Supported variables
                     if product.compare_at_price_varies or variant.compare_at_price == blank
                       echo 'product.general.on_sale_badge' | t
                     else
-                      echo 'product.general.discount_badge_html' | t: savings: savings
+                      # LP: cards are narrow (two columns on mobile), so they show the short form, "Save $113":
+                      # the part after " - " of the store's badge text, with whole amounts.
+                      if settings.discount_mode != 'percentage'
+                        assign savings = variant.compare_at_price | minus: variant.price | money_without_trailing_zeros
+                      endif
+                      echo 'product.general.discount_badge_html' | t: savings: savings | split: ' - ' | last
                     endif
                   endif
                 -%}

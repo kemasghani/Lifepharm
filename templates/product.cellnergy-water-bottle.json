@@ -253,7 +253,6 @@
         "offer_aJbbCW"
       ],
       "custom_css": [
-        ".h2 {color: #ff8f00; margin-bottom: -20px;}",
         "@media screen and (min-width: 700px) {.product-gallery__thumbnail-list {grid-auto-columns: 110px; }}",
         ".product-gallery__thumbnail {border-width: 1px; border-color: #c1c1c1; border-radius: 16px; padding: 10px 10px 5px 10px;}",
         "@media screen and (min-width: 700px) {.product-gallery__thumbnail-list {grid-auto-columns: 110px; justify-content: center; }}",

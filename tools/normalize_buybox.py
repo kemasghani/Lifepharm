@@ -80,7 +80,10 @@ def main():
         # Skio: plans stacked (side by side breaks around the frequency list), legend for screen readers only.
         for k in rest:
             if 'skio' in blocks[k]['type']:
-                blocks[k].setdefault('settings', {}).update({'show_legend': False, 'layout': 'vertical'})
+                st = blocks[k].setdefault('settings', {})
+                st.update({'show_legend': False, 'layout': 'vertical'})
+                if '<ul>' in st.get('additional_subscription_content', ''):
+                    st['additional_subscription_content'] = '<p>Save [discount], skip or cancel any time</p>'
         # No quantity stepper on product pages: quantity is changed in the cart.
         for k in rest:
             if blocks[k]['type'] == 'quantity_selector':

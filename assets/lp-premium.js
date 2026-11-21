@@ -610,7 +610,7 @@
     customElements.define('lp-sticky-atc', class extends HTMLElement {
       connectedCallback() {
         this.form = document.getElementById(this.getAttribute('form'));
-        this.footer = document.querySelector('.footer, footer');
+        this.footer = document.querySelector('.shopify-section--footer, .footer') || document.querySelector('body > footer, #shopify-section-footer');
         if (!this.form) return;
         this.seen = new Map();
         this.io = new IntersectionObserver((entries) => {

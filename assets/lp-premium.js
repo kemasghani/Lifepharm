@@ -173,6 +173,12 @@
     const was = box.querySelector('.lp-pdp-price__was');
     const tag = box.querySelector('.lp-pdp-price__tag');
     if (!now || !was) return;
+    // A variant change swaps in a server-rendered button with the one-time price; let Skio write its plan price again.
+    if (box.classList.contains('lp-pdp-price--atc') && !box.dataset.lpSkio) {
+      box.dataset.lpSkio = '1';
+      const picker = document.querySelector('.shopify-section--main-product skio-plan-picker');
+      if (picker && typeof picker.updateExternalPrice === 'function' && picker.selectedVariant) picker.updateExternalPrice();
+    }
     const toNum = (t) => parseFloat((t || '').replace(/[^0-9.,]/g, '').replace(/,(?=\d{3}\b)/g, '').replace(',', '.')) || 0;
     const a = toNum(now.textContent), b = toNum(was.dataset.base || was.textContent);
     const discounted = a > 0 && b > a + 0.001;

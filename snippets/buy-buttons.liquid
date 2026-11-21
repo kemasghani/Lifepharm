@@ -40,10 +40,30 @@ Supported variables
     {%- assign button_disabled = true -%}
   {%- elsif product.selected_or_first_available_variant.available -%}
     {%- if product.template_suffix contains 'pre-order' -%}
-      {%- capture button_content -%}{{ 'product.general.pre_order_button' | t }}{%- endcapture -%}
+      {%- capture lp_atc_label -%}{{ 'product.general.pre_order_button' | t }}{%- endcapture -%}
     {%- else -%}
-      {%- capture button_content -%}{{ 'product.general.add_to_cart_button' | t }}{%- endcapture -%}
+      {%- capture lp_atc_label -%}{{ 'product.general.add_to_cart_button' | t }}{%- endcapture -%}
     {%- endif -%}
+    {%- comment -%}
+      LP: the selected variant's price sits inside the button (label, hairline, price), so the buy box needs no
+      separate price row. The variant re-render replaces this button with the new variant's price; Skio writes the
+      subscription price into .price-item--regular, and lp-premium.js shows the struck base price when lower.
+    {%- endcomment -%}
+    {%- assign lp_v = product.selected_or_first_available_variant -%}
+    {%- assign lp_base = lp_v.compare_at_price | default: lp_v.price -%}
+    {%- capture button_content -%}
+      <span class="lp-atc">
+        <span class="lp-atc__label">{{ lp_atc_label }}</span>
+        {%- if lp_v.price > 0 -%}
+          <span class="lp-atc__sep" aria-hidden="true"></span>
+          <span class="lp-pdp-price lp-pdp-price--atc">
+            <span class="lp-pdp-price__now price-item--regular">{{ lp_v.price | money }}</span>
+            <s class="lp-pdp-price__was" data-base="{{ lp_base | money_without_currency }}" {% unless lp_v.compare_at_price > lp_v.price %}hidden{% endunless %}>{{ lp_base | money }}</s>
+            <span class="lp-pdp-price__tag" hidden></span>
+          </span>
+        {%- endif -%}
+      </span>
+    {%- endcapture -%}
   {%- else -%}
     {%- capture button_content -%}{{ 'product.general.sold_out_button' | t }}{%- endcapture -%}
     {%- assign button_disabled = true -%}

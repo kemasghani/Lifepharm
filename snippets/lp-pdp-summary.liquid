@@ -1,10 +1,11 @@
 {%- comment -%}
   PDP summary under the rating: short lead + "Ideal for" benefits.
   Benefits come from metafield custom.value_1 (comma list). Each one gets the brand's orange circle icon
-  (assets/lp-benefit-*.png, cut from Dropbox ICONS 2024; brain, bone, sugar and hair drawn in the same style
-  because the set has none). All icons live in theme assets so every store gets them (they were once Files on
-  the UK store only, which left US and EU blank). Unmatched terms get the regenerate icon so the row stays even.
-  Long or sentence-like values fall back to plain text.
+  (assets/lp-benefit-*.png, cut from Dropbox ICONS 2024; brain, bone, sugar, hair, circulation, foot, handsfree,
+  travel and face drawn in the same style because the set has none). All icons live in theme assets so every
+  store gets them. Unmatched terms get the regenerate icon so the row stays even.
+  When value_1 is empty or holds something else (Hydration and Diffuser keep wash steps there), a theme default
+  per product handle is used, so every product shows the row without touching merchant data.
 {%- endcomment -%}
 {%- liquid
   assign lp_mf = product.metafields.custom
@@ -22,6 +23,37 @@
     assign lp_s_class = 'lp-pdp-summary__lead lp-pdp-summary__lead--tagline'
   endif
   assign lp_ideal = lp_mf.value_1.value | strip | remove: '.'
+  assign lp_first = lp_ideal | slice: 0
+  assign lp_br = lp_ideal | newline_to_br
+  if lp_br contains '<br' or lp_ideal contains ':' or '0123456789' contains lp_first
+    assign lp_ideal = ''
+  endif
+  if lp_ideal == blank
+    case product.handle
+      when 'cellnergy-footcharge', 'cellnergy-footcharge-v2', 'cellnergy-footcharge-ibo'
+        assign lp_ideal = 'Circulation, Foot comfort, Joint pain, Restful sleep, Feeling young'
+      when 'cellnergy-wellness-stand'
+        assign lp_ideal = 'Hands-free sessions, Joint pain, Stress, Travel'
+      when 'cellnergy-hydration-system', 'cellnergy-diffuser-replacement', 'cellnergy-diffuser-replacement-jzfq'
+        assign lp_ideal = 'Daily hydration, Energy, Digestive health, Feeling young'
+      when 'jade-roller-and-gua-sha-set'
+        assign lp_ideal = 'Skin health, Facial massage, Relaxation'
+      when 'gut-defense-system'
+        assign lp_ideal = 'Digestive health, Daily hydration, Energy, Weight management'
+      when 'laminine-activation'
+        assign lp_ideal = 'Healthy aging, Joint mobility, Restful sleep, Stress resilience, Overall vitality'
+      when 'powerhouse'
+        assign lp_ideal = 'Healthy aging, Heart health, Digestive health, Immune health, Overall vitality'
+      when 'brain-regeneration-pack'
+        assign lp_ideal = 'Brain health, Memory, Heart health, Joint pain'
+      when 'stamina-power-pack'
+        assign lp_ideal = 'Stamina, Heart health, Healthy aging, Restful sleep'
+      when 'recharge-renew-regenerate', 'rapid-regeneration-pack'
+        assign lp_ideal = 'Circulation, Healthy aging, Heart health, Restful sleep, Overall vitality'
+      when 'cellnergy-wellness-north-america', 'cellnergy-wellness-rest-of-world'
+        assign lp_ideal = 'Joint pain, Skin health, Sleep, Stress, Feeling young'
+    endcase
+  endif
   assign lp_terms = lp_ideal | replace: ', and ', ',' | replace: ' and ', ',' | replace: ' & ', ',' | split: ','
   assign lp_as_icons = true
   if lp_terms.size < 1 or lp_terms.size > 6
@@ -34,9 +66,9 @@
     endif
   endfor
 -%}
-{%- if lp_s != blank -%}
+{%- if lp_s != blank or lp_ideal != blank -%}
   <div class="lp-pdp-summary">
-    <p class="{{ lp_s_class }}">{{ lp_s | escape }}</p>
+    {%- if lp_s != blank -%}<p class="{{ lp_s_class }}">{{ lp_s | escape }}</p>{%- endif -%}
     {%- if lp_ideal != blank -%}
       {%- if lp_as_icons -%}
         <div class="lp-ideal">
@@ -47,7 +79,17 @@
                 assign term = t | strip
                 assign k = term | downcase
                 assign icon = ''
-                if k contains 'brain' or k contains 'cognit' or k contains 'memory' or k contains 'focus'
+                if k contains 'circulat' or k contains 'blood flow'
+                  assign icon = 'circulation'
+                elsif k contains 'foot' or k contains 'feet'
+                  assign icon = 'foot'
+                elsif k contains 'hands-free' or k contains 'hands free'
+                  assign icon = 'handsfree'
+                elsif k contains 'travel'
+                  assign icon = 'travel'
+                elsif k contains 'facial' or k contains 'massage' or k contains 'puff'
+                  assign icon = 'face'
+                elsif k contains 'brain' or k contains 'cognit' or k contains 'memory' or k contains 'focus'
                   assign icon = 'brain'
                 elsif k contains 'bone'
                   assign icon = 'bone'
@@ -71,7 +113,7 @@
                   assign icon = 'joint'
                 elsif k contains 'sleep'
                   assign icon = 'sleep'
-                elsif k contains 'stress' or k contains 'mood'
+                elsif k contains 'stress' or k contains 'mood' or k contains 'relax'
                   assign icon = 'stress'
                 elsif k contains 'vitality' or k contains 'energy' or k contains 'stamina' or k contains 'fatigue'
                   assign icon = 'energy'
@@ -96,7 +138,7 @@
           </ul>
         </div>
       {%- else -%}
-        <p class="lp-pdp-summary__meta"><span>Ideal for</span> {{ lp_mf.value_1.value | strip | escape }}</p>
+        <p class="lp-pdp-summary__meta"><span>Ideal for</span> {{ lp_ideal | escape }}</p>
       {%- endif -%}
     {%- endif -%}
   </div>

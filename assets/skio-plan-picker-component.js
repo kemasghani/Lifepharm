@@ -577,12 +577,12 @@ position: relative;
     css`
       /* LifePharm premium skin */
       :host { max-width: none; --lp-ink: #414042; --lp-muted: #6b6a6c; --lp-stone: #d9d4ca; --lp-warm: #fbf6ee; --lp-amber: #ff8f00; --lp-amber-deep: #a65a00; }
-      .skio-plan-picker { gap: .75rem; margin-bottom: 0; color: var(--lp-ink); font-size: 15px; }
+      .skio-plan-picker { gap: .625rem; margin-bottom: 0; color: var(--lp-ink); font-size: 15px; }
       legend { padding: 0; margin: 0 0 .65rem; font-size: 15px; font-weight: 400; color: var(--lp-muted); }
       .group-container { border: 1.5px solid var(--lp-stone); border-radius: 16px; background: #fff; transition: border-color .25s cubic-bezier(.22,1,.36,1), background-color .25s cubic-bezier(.22,1,.36,1), box-shadow .25s cubic-bezier(.22,1,.36,1); }
       .group-container:hover { border-color: #b9b2a6; }
       .group-container--selected, .group-container--selected:hover { border-color: var(--lp-ink); background: var(--lp-warm); box-shadow: 0 10px 28px -16px rgba(21,23,27,.35); }
-      .group-label { padding: 18px 18px; gap: 12px; }
+      .group-label { padding: 14px 16px; gap: 8px; }
       .group-topline { flex-direction: row; align-items: center; gap: 12px; font-weight: 600; }
       .group-container--selected .group-topline { font-weight: 600; }
       .group-title-container { flex: 1 1 auto; gap: 12px; min-width: 0; }

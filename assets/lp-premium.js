@@ -627,15 +627,16 @@
           requestAnimationFrame(() => requestAnimationFrame(() => { this.style.transition = ''; }));
         }
         this.seen = new Map();
-        this.io = new IntersectionObserver((entries) => {
-          entries.forEach((e) => this.seen.set(e.target, e.isIntersecting));
-          this.update();
-        });
+        const note = (entries) => { entries.forEach((e) => this.seen.set(e.target, e.isIntersecting)); this.update(); };
+        // The page's button counts as on screen once 48px of it is in view, not at the first pixel.
+        this.io = new IntersectionObserver(note, { rootMargin: '0px 0px -48px 0px' });
         this.io.observe(this.form);
-        if (this.footer) this.io.observe(this.footer);
+        this.footerIo = new IntersectionObserver(note);
+        if (this.footer) this.footerIo.observe(this.footer);
       }
       disconnectedCallback() {
         this.io && this.io.disconnect();
+        this.footerIo && this.footerIo.disconnect();
         // Replaced by a re-render: the new bar takes over. Removed for good (sold out): clear the state.
         requestAnimationFrame(() => { if (!document.querySelector('lp-sticky-atc')) syncStickyState(); });
       }

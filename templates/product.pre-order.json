@@ -81,11 +81,11 @@
         "lp_summary",
         "variant_picker",
         "price",
-        "payment_terms",
         "separator",
         "description",
         "quantity_selector",
-        "buy_buttons"
+        "buy_buttons",
+        "payment_terms"
       ],
       "settings": {
         "full_width": true,

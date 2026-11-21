@@ -96,6 +96,25 @@ Supported variables
       </gift-card-recipient>
     {%- endif -%}
 
+    {%- comment -%}
+      LP: when the section has a Quantity block, its stepper sits on the same row as Add to Cart (compact buy box).
+      It lives outside <buy-buttons>, so the variant re-render (which swaps <buy-buttons>) keeps the chosen quantity.
+      snippets/product-info.liquid skips the separate Quantity block in that case.
+    {%- endcomment -%}
+    {%- assign lp_qty_block = section.blocks | where: 'type', 'quantity_selector' | first -%}
+    {%- assign lp_inline_qty = false -%}
+    {%- if lp_qty_block != blank and product.available and recipient_feature_active == false -%}
+      {%- assign lp_inline_qty = true -%}
+    {%- endif -%}
+    {%- if lp_inline_qty -%}
+      {%- assign lp_qv = product.selected_or_first_available_variant -%}
+      <div class="lp-buyrow">
+        <quantity-selector class="quantity-selector lp-buyrow__qty">
+          <button type="button" tabindex="-1" class="quantity-selector__button" aria-label="{{ 'product.quantity.decrease_quantity' | t }}">{% render 'icon' with 'minus', width: 10, height: 2 %}</button>
+          <input id="{{ form_id }}-quantity" type="number" is="quantity-input" inputmode="numeric" class="quantity-selector__input" name="quantity" form="{{ form_id }}" value="{{ lp_qv.quantity_rule.min | default: 1 }}" step="{{ lp_qv.quantity_rule.increment }}" min="{{ lp_qv.quantity_rule.min }}" {% if lp_qv.quantity_rule.max != nil %}max="{{ lp_qv.quantity_rule.max }}"{% endif %} autocomplete="off" aria-label="{{ 'product.quantity.label' | t }}">
+          <button type="button" tabindex="-1" class="quantity-selector__button" aria-label="{{ 'product.quantity.increase_quantity' | t }}">{% render 'icon' with 'plus', width: 10, height: 10 %}</button>
+        </quantity-selector>
+    {%- endif -%}
     <buy-buttons class="buy-buttons {% if show_payment_button %}buy-buttons--multiple{% endif %}" template="{{ product.template_suffix | escape }}" form="{{ form_id }}">
       {% if product.title == "OMNIA" %}
         <p class="preorder-notice">
@@ -124,5 +143,6 @@ Supported variables
         </style>
       {%- endif -%}
     </buy-buttons>
+    {%- if lp_inline_qty -%}</div>{%- endif -%}
   </div>
 {%- endform -%}

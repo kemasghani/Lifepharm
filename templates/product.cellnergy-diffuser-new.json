@@ -25,7 +25,8 @@
             "sku_tagtype": "handle",
             "is_featured_product": false,
             "featured_product_handle": ""
-          }
+          },
+          "disabled": true
         },
         "liquid_6MPLpe": {
           "type": "liquid",
@@ -45,7 +46,7 @@
           "settings": {
             "hide_sold_out_variants": false,
             "stack_blocks": true,
-            "selector_style": "block",
+            "selector_style": "lp_card",
             "swatch_selector_style": "swatch",
             "variant_image_options": "",
             "size_chart_page": ""
@@ -251,16 +252,22 @@
           "settings": {
             "liquid": "{%- assign lp_v = product.selected_or_first_available_variant -%}{%- assign lp_base = lp_v.compare_at_price | default: lp_v.price -%}<div class=\"lp-pdp-price\" aria-live=\"polite\"><span class=\"lp-pdp-price__now price-item--regular\">{{ lp_v.price | money }}</span><s class=\"lp-pdp-price__was\" data-base=\"{{ lp_base | money_without_currency }}\" {% unless lp_v.compare_at_price > lp_v.price %}hidden{% endunless %}>{{ lp_base | money }}</s><span class=\"lp-pdp-price__tag\" hidden></span></div>"
           }
+        },
+        "lp_summary": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{% render 'lp-pdp-summary', product: product %}"
+          }
         }
       },
       "block_order": [
         "title",
         "lp_rating",
-        "stamped_product_reviews_ugc_star_rating_badge_8VPpGa",
-        "liquid_6MPLpe",
-        "price_8BcN9i",
+        "lp_summary",
         "lp_price",
         "variant_picker",
+        "stamped_product_reviews_ugc_star_rating_badge_8VPpGa",
+        "price_8BcN9i",
         "payment_terms",
         "skio_plan_picker_bNeDtW",
         "quantity_selector",
@@ -273,6 +280,7 @@
         "collapsible_text_PDdyLw",
         "collapsible_text_kaarby",
         "buy_buttons",
+        "liquid_6MPLpe",
         "offer_DWbnz9",
         "tolstoy_shoppable_video_quiz_stories_block_8Q3CqK",
         "associated_products_mWz6hB",

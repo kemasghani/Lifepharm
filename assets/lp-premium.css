@@ -462,6 +462,15 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
 .lp-pdp-price__now { font-size: clamp(1.75rem, 2.4vw, 2.125rem); font-weight: 600; letter-spacing: -.02em; line-height: 1; color: rgb(var(--lp-ink)); }
 .lp-pdp-price__was { font-size: 1.125rem; color: rgb(var(--lp-muted) / .8); }
 .lp-pdp-price__tag { align-self: center; padding: .3rem .6rem; border-radius: 999px; background: rgb(var(--lp-amber) / .14); color: rgb(var(--lp-amber)); font-size: .75rem; font-weight: 700; letter-spacing: .04em; }
+/* Price inside Add to Cart: label | price (struck base price when a subscription or sale is lower). One line, tabular figures, no layout jump between variants. */
+.lp-atc { display: inline-flex; align-items: center; justify-content: center; gap: .85rem; min-width: 0; }
+.lp-atc__label { white-space: nowrap; }
+.lp-atc__sep { flex: none; width: 1px; height: 1.15em; background: currentColor; opacity: .28; }
+.lp-pdp-price--atc { display: inline-flex; flex-wrap: nowrap; align-items: baseline; gap: .45rem; padding: 0; border: 0; letter-spacing: .02em; text-transform: none; white-space: nowrap; }
+.lp-pdp-price--atc .lp-pdp-price__now { font-size: inherit; font-weight: 700; line-height: inherit; letter-spacing: inherit; color: inherit; }
+.lp-pdp-price--atc .lp-pdp-price__was { font-size: .86em; font-weight: 500; color: inherit; opacity: .55; }
+.lp-pdp-price--atc .lp-pdp-price__tag { display: none !important; }
+@media (max-width: 380px) { .lp-atc { gap: .6rem; } .lp-pdp-price--atc .lp-pdp-price__was { display: none; } }
 .variant-picker__option-values--cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .65rem; padding-block-start: .9rem; }
 .lp-vcard { position: relative; min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; align-content: start; gap: .2rem; padding: .9rem .6rem 1rem; border-radius: 16px; background: #fff; box-shadow: inset 0 0 0 1.5px rgb(var(--lp-stone)); text-align: center; cursor: pointer; transition: box-shadow var(--lp-dur-2) var(--lp-ease), background-color var(--lp-dur-2) var(--lp-ease), transform var(--lp-dur-1) var(--lp-ease); -webkit-tap-highlight-color: transparent; }
 @media (hover: hover) { .lp-vcard:hover { box-shadow: inset 0 0 0 1.5px #b9b2a6; } }

@@ -17,7 +17,8 @@
           "type": "price",
           "settings": {
             "show_taxes_notice": false
-          }
+          },
+          "disabled": true
         },
         "payment_terms": {
           "type": "payment_terms",
@@ -25,7 +26,8 @@
         },
         "separator": {
           "type": "separator",
-          "settings": {}
+          "settings": {},
+          "disabled": true
         },
         "description": {
           "type": "description",
@@ -58,16 +60,30 @@
             "payment_button_background": "",
             "payment_button_text_color": ""
           }
+        },
+        "lp_rating": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{% render 'lp-rating-row', product: product %}"
+          }
+        },
+        "lp_summary": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{% render 'lp-pdp-summary', product: product %}"
+          }
         }
       },
       "block_order": [
         "title",
         "badges",
+        "lp_rating",
+        "lp_summary",
+        "variant_picker",
         "price",
         "payment_terms",
         "separator",
         "description",
-        "variant_picker",
         "quantity_selector",
         "buy_buttons"
       ],

@@ -48,7 +48,8 @@
         },
         "quantity_selector": {
           "type": "quantity_selector",
-          "settings": {}
+          "settings": {},
+          "disabled": true
         },
         "buy_buttons": {
           "type": "buy_buttons",

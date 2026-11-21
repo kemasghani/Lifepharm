@@ -66,7 +66,8 @@
         },
         "quantity_selector": {
           "type": "quantity_selector",
-          "settings": {}
+          "settings": {},
+          "disabled": true
         },
         "buy_buttons": {
           "type": "buy_buttons",
@@ -113,7 +114,7 @@
       ],
       "settings": {
         "full_width": true,
-        "show_fixed_add_to_cart": false,
+        "show_fixed_add_to_cart": true,
         "desktop_media_width": 50,
         "desktop_media_layout": "carousel_thumbnails_bottom",
         "mobile_media_size": "expanded",

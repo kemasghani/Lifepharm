@@ -1,8 +1,13 @@
 {% doc %}
-  Collection filter bar. Every filter option is a chip that is always on screen and applies as soon as it is chosen:
-  no drawer, no accordion and no Apply button. Chips are plain links (url_to_add / url_to_remove), so they work
-  without JavaScript; with it, the theme's facet-link refreshes the section in place.
-  A price range filter keeps the theme's own drawer, opened from a chip.
+  Collection filters. They sit on the page with no box around them, as the heading of the product grid.
+
+  Phones and tablets: one line with a Filter button and a rail of quick chips (the filter with the most choices),
+  then the result count and the sort list. The Filter button opens a sheet that shows every choice at once; a choice
+  applies straight away and the sheet's button reads "Show N products".
+  Desktop: every filter is a labelled row of chips, then a hairline, the result count and the sort list.
+
+  Chips are plain links (url_to_add / url_to_remove), so they work without JavaScript; with it, the theme's
+  facet-link refreshes the section in place. A price range filter keeps the theme's own drawer.
 
   @param {object} results - The collection whose filters, sort options and counts are shown
   @param {boolean} [show_filters] - Show the filter chips
@@ -36,99 +41,148 @@
 
   assign selected_sort = results.sort_by | default: results.default_sort_by
   assign sort_shortlist = 'manual,best-selling,price-ascending,price-descending' | split: ','
+  assign groups = ''
+  assign quick_chips = ''
+  assign quick_label = ''
+  assign quick_size = 0
 -%}
 
 {%- capture check_icon -%}
-  <svg class="lp-chip__tick" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+  <svg class="lp-chip__tick" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+{%- endcapture -%}
+{%- capture close_icon -%}
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="m3.5 3.5 9 9m0-9-9 9"/></svg>
 {%- endcapture -%}
 
+{%- if show_filters -%}
+  {%- for filter in results.filters -%}
+    {%- comment -%}A filter with one choice left and nothing chosen cannot narrow the list (a single product type, or "In stock" when everything is in stock), so it is left out.{%- endcomment -%}
+    {%- assign selectable = 0 -%}
+    {%- if filter.type == 'list' -%}
+      {%- for value in filter.values -%}
+        {%- if value.count > 0 -%}{%- assign selectable = selectable | plus: 1 -%}{%- endif -%}
+      {%- endfor -%}
+      {%- if filter.active_values.size == 0 and selectable < 2 -%}{%- continue -%}{%- endif -%}
+    {%- endif -%}
+
+    {%- capture chips -%}
+      {%- case filter.type -%}
+        {%- when 'list' -%}
+          {%- for value in filter.values -%}
+            {%- capture chip_key -%}{{ value.param_name }}={{ value.value }}{%- endcapture -%}
+            <li>
+              {%- if value.active -%}
+                <a class="lp-chip is-active" href="{{ value.url_to_remove }}" is="facet-link" rel="nofollow" aria-current="true" data-no-instant data-lp-chip="{{ chip_key | escape }}">
+                  {{- check_icon -}}
+                  <span class="lp-chip__text">{{ value.label | escape }}</span>
+                  {%- if show_counts -%}<span class="lp-chip__count" aria-hidden="true">{{ value.count }}</span>{%- endif -%}
+                  <span class="sr-only">, {{ 'collection.faceting.remove_filter' | t: name: value.label | escape }}</span>
+                </a>
+              {%- elsif value.count == 0 -%}
+                <span class="lp-chip is-disabled" aria-disabled="true">
+                  <span class="lp-chip__text">{{ value.label | escape }}</span>
+                </span>
+              {%- else -%}
+                <a class="lp-chip" href="{{ value.url_to_add }}" is="facet-link" rel="nofollow" data-no-instant data-lp-chip="{{ chip_key | escape }}">
+                  <span class="lp-chip__text">{{ value.label | escape }}</span>
+                  {%- if show_counts -%}
+                    <span class="lp-chip__count" aria-hidden="true">{{ value.count }}</span>
+                    <span class="sr-only">, {{ 'collection.products_count' | t: count: value.count }}</span>
+                  {%- endif -%}
+                </a>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+
+        {%- when 'boolean' -%}
+          <li>
+            {%- if filter.true_value.active -%}
+              <a class="lp-chip is-active" href="{{ filter.true_value.url_to_remove }}" is="facet-link" rel="nofollow" aria-current="true" data-no-instant data-lp-chip="{{ filter.param_name | escape }}">
+                {{- check_icon -}}
+                <span class="lp-chip__text">{{ filter.label | escape }}</span>
+                <span class="sr-only">, {{ 'collection.faceting.remove_filter' | t: name: filter.label | escape }}</span>
+              </a>
+            {%- else -%}
+              <a class="lp-chip" href="{{ filter.true_value.url_to_add }}" is="facet-link" rel="nofollow" data-no-instant data-lp-chip="{{ filter.param_name | escape }}">
+                <span class="lp-chip__text">{{ filter.label | escape }}</span>
+              </a>
+            {%- endif -%}
+          </li>
+
+        {%- when 'price_range' -%}
+          <li>
+            {%- if filter.min_value.value != blank or filter.max_value.value != blank -%}
+              <button type="button" class="lp-chip is-active" aria-controls="facets-drawer" aria-expanded="false">
+                {{- check_icon -}}
+                <span class="lp-chip__text">{{ filter.min_value.value | default: 0 | money_without_trailing_zeros }} - {{ filter.max_value.value | default: filter.range_max | money_without_trailing_zeros }}</span>
+              </button>
+            {%- else -%}
+              <button type="button" class="lp-chip" aria-controls="facets-drawer" aria-expanded="false">
+                <span class="lp-chip__text">{{ 'collection.faceting.price_filter_from' | t }}</span>
+              </button>
+            {%- endif -%}
+          </li>
+      {%- endcase -%}
+    {%- endcapture -%}
+
+    {%- capture groups -%}
+      {{- groups -}}
+      <div class="lp-fgroup" role="group" aria-label="{{ filter.label | escape }}">
+        <p class="lp-fgroup__label" aria-hidden="true">{{ filter.label | escape }}</p>
+        <ul class="lp-fgroup__chips" role="list">{{ chips }}</ul>
+      </div>
+    {%- endcapture -%}
+
+    {%- comment -%}The quick rail on phones is the filter with the most choices (the health concerns on every store).{%- endcomment -%}
+    {%- if selectable > quick_size -%}
+      {%- assign quick_size = selectable -%}
+      {%- assign quick_chips = chips -%}
+      {%- assign quick_label = filter.label -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+{%- assign groups = groups | strip -%}
+
 <div class="lp-filters" data-lp-filters>
-  {%- if show_filters and results.filters.size > 0 -%}
+  {%- if groups != blank -%}
+    <div class="lp-filters__bar">
+      <button type="button" class="lp-chip lp-filters__open"{% if has_price %} aria-controls="facets-drawer"{% else %} data-lp-fsheet-open aria-haspopup="dialog"{% endif %} aria-expanded="false">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h10m4 0h2M4 17h2m4 0h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg>
+        <span>{{ 'collection.faceting.filter_button' | t }}</span>
+        {%- if active_count > 0 -%}<span class="lp-filters__badge">{{ active_count }}<span class="sr-only"> {{ 'collection.faceting.filters' | t | downcase }}</span></span>{%- endif -%}
+      </button>
+      {%- if active_count > 0 -%}
+        <a class="lp-filters__reset" href="{{ clear_url }}" is="facet-link" rel="nofollow" data-no-instant data-lp-chip="clear" aria-label="{{ 'collection.faceting.clear_filters' | t }}">{{ close_icon }}</a>
+      {%- endif -%}
+      {%- if quick_chips != blank -%}
+        <ul class="lp-filters__rail" role="list" aria-label="{{ quick_label | escape }}" data-lp-rail>{{ quick_chips }}</ul>
+      {%- endif -%}
+    </div>
+
+    <div class="lp-filters__rows">{{ groups }}</div>
+
     {%- if has_price -%}
       <facet-drawer header-bordered id="facets-drawer" class="facets-drawer drawer" open-from="left">
         <p class="h5" slot="header">{{ 'collection.faceting.filters' | t }}</p>
         {%- render 'facets-vertical', results: results, show_filters: true, show_sort_by: false, update_on_change: false -%}
       </facet-drawer>
-    {%- endif -%}
-
-    {%- capture groups -%}
-      {%- for filter in results.filters -%}
-        {%- comment -%}A group with one choice left and nothing chosen cannot narrow the list (a single product type, or "In stock" when everything is in stock), so it is left out.{%- endcomment -%}
-        {%- if filter.type == 'list' and filter.active_values.size == 0 -%}
-          {%- assign selectable = 0 -%}
-          {%- for value in filter.values -%}
-            {%- if value.count > 0 -%}{%- assign selectable = selectable | plus: 1 -%}{%- endif -%}
-          {%- endfor -%}
-          {%- if selectable < 2 -%}{%- continue -%}{%- endif -%}
-        {%- endif -%}
-        {%- capture group_id -%}lp-filter-{{ forloop.index }}{%- endcapture -%}
-        <div class="lp-filters__group" role="group" aria-labelledby="{{ group_id }}">
-          <p class="lp-filters__label" id="{{ group_id }}">{{ filter.label | escape }}</p>
-          <ul class="lp-filters__rail" role="list" data-lp-rail="{{ filter.param_name | escape }}">
-            {%- case filter.type -%}
-              {%- when 'list' -%}
-                {%- for value in filter.values -%}
-                  {%- capture chip_key -%}{{ value.param_name }}={{ value.value }}{%- endcapture -%}
-                  <li>
-                    {%- if value.active -%}
-                      <a class="lp-chip is-active" href="{{ value.url_to_remove }}" is="facet-link" rel="nofollow" aria-current="true" data-no-instant data-lp-chip="{{ chip_key | escape }}">
-                        {{- check_icon -}}
-                        <span class="lp-chip__text">{{ value.label | escape }}</span>
-                        {%- if show_counts -%}<span class="lp-chip__count" aria-hidden="true">{{ value.count }}</span>{%- endif -%}
-                        <span class="sr-only">, {{ 'collection.faceting.remove_filter' | t: name: value.label | escape }}</span>
-                      </a>
-                    {%- elsif value.count == 0 -%}
-                      <span class="lp-chip is-disabled" aria-disabled="true">
-                        <span class="lp-chip__text">{{ value.label | escape }}</span>
-                      </span>
-                    {%- else -%}
-                      <a class="lp-chip" href="{{ value.url_to_add }}" is="facet-link" rel="nofollow" data-no-instant data-lp-chip="{{ chip_key | escape }}">
-                        <span class="lp-chip__text">{{ value.label | escape }}</span>
-                        {%- if show_counts -%}
-                          <span class="lp-chip__count" aria-hidden="true">{{ value.count }}</span>
-                          <span class="sr-only">, {{ 'collection.products_count' | t: count: value.count }}</span>
-                        {%- endif -%}
-                      </a>
-                    {%- endif -%}
-                  </li>
-                {%- endfor -%}
-
-              {%- when 'boolean' -%}
-                <li>
-                  {%- if filter.true_value.active -%}
-                    <a class="lp-chip is-active" href="{{ filter.true_value.url_to_remove }}" is="facet-link" rel="nofollow" aria-current="true" data-no-instant data-lp-chip="{{ filter.param_name | escape }}">
-                      {{- check_icon -}}
-                      <span class="lp-chip__text">{{ filter.label | escape }}</span>
-                      <span class="sr-only">, {{ 'collection.faceting.remove_filter' | t: name: filter.label | escape }}</span>
-                    </a>
-                  {%- else -%}
-                    <a class="lp-chip" href="{{ filter.true_value.url_to_add }}" is="facet-link" rel="nofollow" data-no-instant data-lp-chip="{{ filter.param_name | escape }}">
-                      <span class="lp-chip__text">{{ filter.label | escape }}</span>
-                    </a>
-                  {%- endif -%}
-                </li>
-
-              {%- when 'price_range' -%}
-                <li>
-                  {%- if filter.min_value.value != blank or filter.max_value.value != blank -%}
-                    <button type="button" class="lp-chip is-active" aria-controls="facets-drawer" aria-expanded="false">
-                      {{- check_icon -}}
-                      <span class="lp-chip__text">{{ filter.min_value.value | default: 0 | money_without_trailing_zeros }} - {{ filter.max_value.value | default: filter.range_max | money_without_trailing_zeros }}</span>
-                    </button>
-                  {%- else -%}
-                    <button type="button" class="lp-chip" aria-controls="facets-drawer" aria-expanded="false">
-                      <span class="lp-chip__text">{{ 'collection.faceting.price_filter_from' | t }}</span>
-                    </button>
-                  {%- endif -%}
-                </li>
-            {%- endcase -%}
-          </ul>
+    {%- else -%}
+      <dialog class="lp-fsheet" data-lp-fsheet aria-labelledby="lp-fsheet-title" tabindex="-1">
+        <div class="lp-fsheet__head">
+          <p class="lp-fsheet__title" id="lp-fsheet-title">{{ 'collection.faceting.filters' | t }}</p>
+          <button type="button" class="lp-fsheet__close" data-lp-fsheet-close>
+            <span class="sr-only">{{ 'general.accessibility.close' | t }}</span>
+            {{- close_icon -}}
+          </button>
         </div>
-      {%- endfor -%}
-    {%- endcapture -%}
-    {%- assign groups = groups | strip -%}
-    {%- if groups != blank -%}
-      <div class="lp-filters__panel">{{ groups }}</div>
+        <div class="lp-fsheet__body">{{ groups }}</div>
+        <div class="lp-fsheet__foot">
+          {%- if active_count > 0 -%}
+            <a class="lp-filters__clear" href="{{ clear_url }}" is="facet-link" rel="nofollow" data-no-instant data-lp-chip="clear">{{ 'collection.faceting.clear_filters' | t }}</a>
+          {%- endif -%}
+          <button type="button" class="button lp-fsheet__show" data-lp-fsheet-close data-lp-fsheet-results>{{ 'collection.faceting.show_results' | t: count: results.products_count }}</button>
+        </div>
+      </dialog>
     {%- endif -%}
   {%- endif -%}
 
@@ -142,7 +196,7 @@
     </p>
 
     {%- if active_count > 0 -%}
-      <a class="lp-filters__clear" href="{{ clear_url }}" is="facet-link" rel="nofollow" data-no-instant data-lp-chip="clear">{{ 'collection.faceting.clear_filters' | t }}</a>
+      <a class="lp-filters__clear lp-filters__clear--inline" href="{{ clear_url }}" is="facet-link" rel="nofollow" data-no-instant data-lp-chip="clear">{{ 'collection.faceting.clear_filters' | t }}</a>
     {%- endif -%}
 
     {%- if show_sort_by -%}
@@ -183,7 +237,7 @@
               <option value="{{ option.value | escape }}"{% if option.value == selected_sort %} selected{% endif %}>{{ option_label | escape }}</option>
             {%- endfor -%}
           </select>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </span>
         <noscript><button type="submit" class="lp-chip">{{ 'collection.faceting.apply_filters' | t }}</button></noscript>
       </form>
@@ -192,51 +246,88 @@
 </div>
 
 {% stylesheet %}
-/* Collection filter bar: a white card of chips, then one line with the result count, Clear all and the sort control */
-.lp-filters { display: grid; grid-column: 1 / -1; gap: .875rem; min-width: 0; }
-.lp-filters__panel { display: grid; min-width: 0; border: 1px solid rgb(var(--lp-stone) / .75); border-radius: var(--lp-radius); background: #fff; overflow: hidden; }
-.lp-filters__group { display: grid; gap: .5rem; min-width: 0; padding-block: .875rem; }
-.lp-filters__group + .lp-filters__group { border-block-start: 1px solid var(--lp-hairline); }
-.lp-filters__label { margin: 0; padding-inline: 1rem; font-size: .6875rem; font-weight: 800; line-height: 1.2; letter-spacing: .1em; text-transform: uppercase; color: rgb(var(--lp-muted)); }
-/* Mobile: one row that scrolls sideways; the last chip in view is cut off, which shows there is more */
-.lp-filters__rail { display: flex; gap: .5rem; margin: 0; padding: 2px 0 2px 1rem; list-style: none; overflow-x: auto; overscroll-behavior-x: contain; scroll-padding-inline: 1rem; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+/* Collection filters: no box. They read as the heading of the product grid. */
+.lp-filters { display: grid; grid-column: 1 / -1; gap: .375rem; min-width: 0; scroll-margin-top: calc(var(--sticky-area-height, 0px) + 1rem); }
+.collection.collection--filters-bar { row-gap: 1rem; }
+
+/* Chip: a quiet white pill, like the product cards on the cream page. The touch area is 44px tall whatever the pill's height. */
+.lp-filters .lp-chip { position: relative; display: inline-flex; align-items: center; gap: .375rem; min-height: 38px; padding: 0 .875rem; border: 1px solid rgb(var(--lp-stone)); border-radius: 999px; background: #fff; color: rgb(var(--lp-ink)); font: inherit; font-size: .8125rem; font-weight: 600; line-height: 1; letter-spacing: .005em; white-space: nowrap; text-decoration: none; text-transform: none; cursor: pointer; transition: background-color 160ms ease-out, border-color 160ms ease-out, box-shadow 160ms ease-out; }
+.lp-filters .lp-chip::after { content: ""; position: absolute; inset: -4px 0; }
+.lp-filters .lp-chip:lang(en) .lp-chip__text { text-transform: capitalize; }
+@media (hover: hover) { .lp-filters .lp-chip:not(.is-active, .is-disabled):hover { border-color: rgb(var(--lp-ink) / .55); } }
+.lp-filters .lp-chip:focus-visible, .lp-filters__clear:focus-visible, .lp-filters__reset:focus-visible, .lp-sort__select:focus-visible, .lp-fsheet__close:focus-visible { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 2px; }
+/* Chosen: amber outline, a light amber wash and a tick (three cues, never colour alone) */
+.lp-filters .lp-chip.is-active { border-color: rgb(var(--lp-amber)); background: rgb(255 243 224); box-shadow: inset 0 0 0 1px rgb(var(--lp-amber)); }
+.lp-filters .lp-chip.is-disabled { border-color: rgb(var(--lp-stone) / .55); background: transparent; color: rgb(var(--lp-ink) / .38); cursor: default; }
+.lp-chip__tick { flex: none; margin-inline-start: -.125rem; color: rgb(var(--lp-amber)); }
+.lp-chip__count { font-size: .6875rem; font-weight: 400; font-variant-numeric: tabular-nums; color: rgb(var(--lp-muted)); }
+
+/* Phones and tablets: Filter button, then quick chips that run off the right edge of the screen */
+.lp-filters__bar { display: flex; align-items: center; min-width: 0; margin-inline-end: calc(-1 * var(--container-gutter, 1.25rem)); }
+.lp-filters .lp-filters__open { flex: none; gap: .5rem; min-height: 40px; padding-inline: .875rem 1rem; border-color: rgb(var(--lp-ink) / .7); }
+.lp-filters__badge { display: grid; place-items: center; min-width: 18px; height: 18px; margin-inline-end: -.25rem; padding: 0 5px; border-radius: 999px; background: rgb(var(--lp-amber)); color: #1f1e20; font-size: .6875rem; font-weight: 700; line-height: 1; }
+/* Clear all: a round button beside Filter, outside the rail, so the chips do not jump when it appears */
+.lp-filters__reset { position: relative; flex: none; display: grid; place-items: center; width: 36px; height: 36px; margin-inline-start: .375rem; border-radius: 999px; background: rgb(var(--lp-ink) / .06); color: rgb(var(--lp-ink)); transition: background-color 160ms ease-out; }
+.lp-filters__reset::after { content: ""; position: absolute; inset: -4px; }
+@media (hover: hover) { .lp-filters__reset:hover { background: rgb(var(--lp-ink) / .1); } }
+.lp-filters__rail { flex: 1; display: flex; align-items: center; gap: .5rem; min-width: 0; margin: 0; padding: 4px 0 4px .625rem; list-style: none; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; -webkit-overflow-scrolling: touch; -webkit-mask-image: linear-gradient(to right, transparent, #000 .625rem); mask-image: linear-gradient(to right, transparent, #000 .625rem); }
 .lp-filters__rail::-webkit-scrollbar { display: none; }
 .lp-filters__rail > li { flex: none; }
-/* Space after the last chip, so it does not touch the card edge at the end of the scroll */
-.lp-filters__rail > li:last-child { padding-inline-end: 1rem; }
-.lp-filters .lp-chip { display: inline-flex; align-items: center; gap: .4rem; min-height: 44px; padding: 0 1rem; border: 1px solid rgb(var(--lp-stone)); border-radius: 999px; background: rgb(var(--lp-ivory)); color: rgb(var(--lp-ink)); font: inherit; font-size: .875rem; font-weight: 600; line-height: 1; letter-spacing: 0; white-space: nowrap; text-decoration: none; text-transform: none; cursor: pointer; transition: background-color 160ms ease-out, border-color 160ms ease-out, box-shadow 160ms ease-out; }
-.lp-filters .lp-chip:lang(en) .lp-chip__text { text-transform: capitalize; }
-@media (hover: hover) { .lp-filters .lp-chip:not(.is-active, .is-disabled):hover { border-color: rgb(var(--lp-amber)); background: #fff; box-shadow: 0 0 0 1px rgb(var(--lp-amber)); } }
-.lp-filters .lp-chip:focus-visible, .lp-filters__clear:focus-visible, .lp-sort__select:focus-visible { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 2px; }
-.lp-filters .lp-chip.is-active { border-color: rgb(var(--lp-amber)); background: rgb(var(--lp-amber)); color: #1f1e20; }
-.lp-filters .lp-chip.is-disabled { border-style: dashed; background: transparent; color: rgb(var(--lp-ink) / .45); cursor: default; }
-.lp-chip__tick { flex: none; margin-inline-start: -.2rem; }
-.lp-chip__count { font-size: .75rem; font-weight: 400; font-variant-numeric: tabular-nums; color: rgb(var(--lp-muted)); }
-.lp-chip.is-active .lp-chip__count { color: inherit; }
+.lp-filters__rail > li:last-child { padding-inline-end: var(--container-gutter, 1.25rem); }
+.lp-filters__rows { display: none; }
+html:not(.lp-js) .lp-filters__open { display: none; }
 
-.lp-filters__foot { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem 1rem; min-height: 44px; }
-.lp-filters__count { margin: 0; font-size: .9375rem; color: rgb(var(--lp-muted)); }
-.lp-filters__clear { display: inline-flex; align-items: center; min-height: 44px; font-size: .875rem; font-weight: 600; color: rgb(var(--lp-ink)); text-decoration: underline; text-decoration-color: rgb(var(--lp-amber)); text-decoration-thickness: 2px; text-underline-offset: 4px; }
-.lp-sort { display: flex; align-items: center; gap: .625rem; margin-inline-start: auto; }
+/* Every filter, labelled (desktop rows and the sheet) */
+.lp-fgroup { display: grid; gap: .75rem; min-width: 0; }
+.lp-fgroup__label { margin: 0; font-size: .6875rem; font-weight: 800; line-height: 1.2; letter-spacing: .1em; text-transform: uppercase; color: rgb(var(--lp-muted)); }
+.lp-fgroup__chips { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0; padding: 0; list-style: none; }
+
+/* Count and sort: one quiet line that belongs to the grid under it */
+.lp-filters__foot { display: flex; align-items: center; gap: 1rem; min-height: 44px; }
+.lp-filters__count { margin: 0; font-size: .875rem; color: rgb(var(--lp-muted)); white-space: nowrap; }
+.lp-filters__clear { display: inline-flex; align-items: center; min-height: 44px; font-size: .875rem; font-weight: 600; color: rgb(var(--lp-ink)); white-space: nowrap; text-decoration: underline; text-decoration-color: rgb(var(--lp-amber)); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.lp-filters__clear--inline { display: none; }
+.lp-sort { display: flex; align-items: center; gap: .375rem; min-width: 0; margin-inline-start: auto; }
 .lp-sort__label { font-size: .875rem; color: rgb(var(--lp-muted)); white-space: nowrap; }
-.lp-sort__field { position: relative; display: inline-flex; }
-/* 16px on phones so iOS does not zoom the page when the list opens */
-.lp-sort__select { -webkit-appearance: none; appearance: none; min-height: 44px; max-width: 100%; padding: 0 2.5rem 0 1rem; border: 1px solid rgb(var(--lp-stone)); border-radius: 999px; background: #fff; color: rgb(var(--lp-ink)); font: inherit; font-size: 1rem; font-weight: 600; line-height: 1.2; cursor: pointer; transition: border-color 160ms ease-out; }
-@media (hover: hover) { .lp-sort__select:hover { border-color: rgb(var(--lp-amber)); } }
-.lp-sort__field svg { position: absolute; top: 50%; right: 1rem; transform: translateY(-50%); pointer-events: none; color: rgb(var(--lp-ink)); }
-/* Phones: the count and the sort list share one line, so the "Sort by" words are for screen readers only */
+.lp-sort__field { position: relative; display: inline-flex; align-items: center; min-width: 0; }
+/* 16px on phones so iOS does not zoom the page when the list opens. field-sizing keeps the list as wide as the chosen option, so the words "Sort by" sit next to it. */
+.lp-sort__select { -webkit-appearance: none; appearance: none; min-height: 44px; max-width: 100%; padding: 0 1.25rem 0 .25rem; border: 0; border-radius: 8px; background: transparent; color: rgb(var(--lp-ink)); font: inherit; font-size: 1rem; font-weight: 600; line-height: 1.2; text-align-last: right; field-sizing: content; cursor: pointer; }
+.lp-sort__field svg { position: absolute; top: 50%; right: 0; transform: translateY(-50%); pointer-events: none; color: rgb(var(--lp-ink)); }
 @media (max-width: 479px) { .lp-sort__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); } }
 
+/* The sheet: every choice at once. Bottom sheet on phones, a centred card on tablets. */
+.lp-fsheet { position: fixed; inset: auto 0 0 0; display: flex; flex-direction: column; width: 100%; max-width: none; max-height: 86dvh; margin: 0; padding: 0 0 env(safe-area-inset-bottom); overflow: hidden; border: 0; border-radius: 1.25rem 1.25rem 0 0; background: #fff; color: rgb(var(--lp-ink)); box-shadow: 0 -12px 40px -16px rgb(var(--lp-ink) / .3); transform: translateY(100%); transition: transform 320ms var(--lp-ease); }
+.lp-fsheet:not([open]) { display: none; }
+.lp-fsheet:focus { outline: none; }
+.lp-fsheet::backdrop { background: rgb(31 30 32 / .4); opacity: 0; transition: opacity 240ms ease-out; }
+.lp-fsheet.is-open { transform: none; }
+.lp-fsheet.is-open::backdrop { opacity: 1; }
+.lp-fsheet.is-instant, .lp-fsheet.is-instant::backdrop { transition: none; }
+.lp-fsheet__head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .625rem .625rem .625rem 1.25rem; border-block-end: 1px solid var(--lp-hairline); }
+.lp-fsheet__title { margin: 0; font-size: 1.0625rem; font-weight: 600; }
+.lp-fsheet__close { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 999px; color: rgb(var(--lp-muted)); cursor: pointer; transition: background-color 150ms ease-out, color 150ms ease-out; }
+.lp-fsheet__close:hover { background: rgb(var(--lp-ink) / .05); color: rgb(var(--lp-ink)); }
+.lp-fsheet__body { flex: 1; display: grid; align-content: start; gap: 1.5rem; padding: 1.25rem; overflow-y: auto; overscroll-behavior: contain; transition: opacity 160ms ease-out; }
+.is-loading .lp-fsheet__body { opacity: .5; pointer-events: none; }
+.lp-fsheet .lp-chip { min-height: 44px; padding-inline: 1rem; font-size: .875rem; }
+.lp-fsheet .lp-chip::after { content: none; }
+.lp-fsheet__foot { display: flex; align-items: center; gap: 1.25rem; padding: .875rem 1.25rem; border-block-start: 1px solid var(--lp-hairline); }
+.lp-fsheet__foot .lp-fsheet__show { flex: 1; min-height: 52px; }
+@media (min-width: 700px) {
+  .lp-fsheet { inset: 50% auto auto 50%; width: min(34rem, calc(100vw - 3rem)); max-height: min(42rem, 86dvh); padding-bottom: 0; border-radius: 1.25rem; box-shadow: var(--lp-shadow-3); opacity: 0; transform: translate(-50%, calc(-50% + 16px)); transition: transform 280ms var(--lp-ease), opacity 200ms ease-out; }
+  .lp-fsheet.is-open { opacity: 1; transform: translate(-50%, -50%); }
+}
+
 @media (min-width: 1000px) {
-  /* Desktop: the label sits beside its chips and every chip is in view, wrapping onto a second line */
-  .lp-filters__group { grid-template-columns: 11rem minmax(0, 1fr); align-items: start; gap: 1.5rem; padding: 1rem 1.5rem; }
-  .lp-filters__label { padding-inline: 0; padding-block-start: .95rem; }
-  .lp-filters__rail { flex-wrap: wrap; padding: 0; overflow: visible; }
-  .lp-filters__rail > li:last-child { padding-inline-end: 0; }
+  /* Desktop: every chip in view, the label beside its row, a hairline, then the count and sort line */
+  .lp-filters { gap: .5rem; }
+  .lp-filters__bar { display: none; }
+  .lp-filters__rows { display: grid; gap: .875rem; padding-block-end: 1.25rem; border-block-end: 1px solid var(--lp-hairline); }
+  .lp-filters__rows .lp-fgroup { grid-template-columns: 11rem minmax(0, 1fr); align-items: start; gap: 1.5rem; }
+  .lp-filters__rows .lp-fgroup__label { padding-block-start: .8125rem; }
+  .lp-filters__clear--inline { display: inline-flex; }
   .lp-sort__select { font-size: .875rem; }
 }
-@media (min-width: 1000px) and (pointer: fine) {
-  .lp-filters .lp-chip { min-height: 40px; }
-  .lp-filters__label { padding-block-start: .85rem; }
-}
+html:not(.lp-js) .lp-filters__rows { display: grid; gap: 1rem; }
+@media (prefers-reduced-motion: reduce) { .lp-fsheet, .lp-fsheet::backdrop { transition: none; } }
 {% endstylesheet %}

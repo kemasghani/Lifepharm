@@ -190,7 +190,7 @@
     if (unit && a > 0) {
       const count = Number(unit.dataset.count) || 0;
       const symbol = (now.textContent.trim().match(/^[^0-9]*/) || [''])[0];
-      const text = count ? ` ${symbol}${(a / count).toFixed(2)} / ${unit.dataset.unit}` : '';
+      const text = count ? `${symbol}${(a / count).toFixed(2)} / ${unit.dataset.unit}` : '';
       if (unit.textContent !== text) unit.textContent = text;
     }
   });

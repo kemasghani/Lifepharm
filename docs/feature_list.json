@@ -89,6 +89,30 @@
       ]
     },
     {
+      "id": "nav-002",
+      "area": "navigation",
+      "title": "Shopping links open what their label says",
+      "user_visible_behavior": "Shop best sellers opens all products sorted by best selling. Shop menu category links open the whole collection. The product FAQ button stays on the shopper's own store. The collections page names each card after its collection.",
+      "status": "passing",
+      "stores": [
+        "uk",
+        "us",
+        "eu"
+      ],
+      "verification": [
+        "Home hero and guarantee buttons go to /collections/all?sort_by=best-selling",
+        "No menu link carries a tag filter (/collections/<handle>/<tags>)",
+        "View all FAQs on a product page is a relative /pages/ link",
+        "Collections page: View all products is not an absolute UK link"
+      ],
+      "evidence": [
+        "08305e5",
+        "2ba0a3a",
+        "2026-11-22 link audit of the UK draft (home, menu, collections, cart, 404, search, science, product pages) and the check script on UK, US and EU"
+      ],
+      "notes": "Open items that need admin, not theme (TD-011 to TD-013, TD-015): the UK main menu item Nutritionals is saved with a tag filter; the UK Shop All collection lacks CELLNERGY FOOTCHARGE; US collections are titled Cell Regeneration and Skin Regeneration while the redesign calls them Nutritionals and Skin Health; product FAQ metafields carry the US address."
+    },
+    {
       "id": "pdp-001",
       "area": "pdp",
       "title": "Editorial metafield-driven product page",
@@ -275,6 +299,35 @@
         "740fb34"
       ],
       "notes": "No lifestyle photo exists for CELLNERGY WELLNESS STAND (needs a new generation, ask first: credits)."
+    },
+    {
+      "id": "coll-002",
+      "area": "collection",
+      "title": "Collection filters: chips on the page, Filter sheet on phones, sort",
+      "user_visible_behavior": "No drawer and no box. Desktop: every filter is a labelled row of chips above the grid, then a hairline, the result count, Clear all and Sort by. Phones and tablets: a Filter button with a count, a rail of quick chips that runs off the screen edge, then the count and the sort list; Filter opens a sheet with every choice and a Show N products button. A choice applies at once.",
+      "status": "passing",
+      "stores": [
+        "uk",
+        "us",
+        "eu"
+      ],
+      "verification": [
+        "A chip filters at once and shows N of M products; chips with no match are greyed out",
+        "Phone: the tapped chip does not move when the count badge and the clear button appear",
+        "Filter sheet stays open after a choice with new counts; Show N products, Escape and the backdrop close it",
+        "Sort list changes the order and keeps the chosen filters; /collections/all?sort_by=best-selling opens with Best Sellers chosen",
+        "Keyboard: focus stays on the chip after the section refreshes",
+        "Default checks"
+      ],
+      "evidence": [
+        "0d7410b",
+        "2ba0a3a",
+        "2b84462",
+        "a749c9e",
+        "tools/qa/collection_filters_check.py",
+        "2026-11-22 UK, US and EU drafts at 1440x900 and 390x844: all steps of the check script pass, no horizontal scroll, no new JS errors"
+      ],
+      "notes": "The search page still uses the theme's own filter drawer (TD-014). A price range filter, if one is ever added in Search & Discovery, opens the theme's drawer from a chip (not tested: no store has one)."
     },
     {
       "id": "cart-001",

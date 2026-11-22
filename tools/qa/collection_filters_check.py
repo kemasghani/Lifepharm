@@ -1,6 +1,7 @@
-"""Draft check of the collection filter bar and the shopping links, at 1440 and 390. Read-only: it never submits a cart form.
-It clicks chips, uses the keyboard, clears, sorts, lands on the Best Sellers link, then reads the home, menu, FAQ and
-collections-page links. Output: <outdir>/<store>-filters.json plus screenshots.
+"""Draft check of the collection filters and the shopping links, at 1440 and 390. Read-only: it never submits a cart form.
+Desktop: chip rows (mouse and keyboard), Clear all, sort. Phone: quick rail, Filter sheet (choice keeps it open,
+Show N products, Escape), round clear button, sort. Then the Best Sellers landing, a category page, and the home,
+menu, FAQ and collections-page links. Output: <outdir>/<store>-filters.json plus screenshots.
 
 Usage: uv run --no-project --with playwright python tools/qa/collection_filters_check.py <outdir> [base_url theme_id]
        (default: the UK draft). Set LP_CHROME to a browser binary if system Chrome is not installed."""
@@ -13,33 +14,39 @@ TAG = BASE.split('//')[1].split('.')[0]
 UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Safari/537.36'
 LAUNCH = {'executable_path': os.environ['LP_CHROME']} if os.environ.get('LP_CHROME') else {'channel': 'chrome'}
 NOISE = ['e is not a function', 'shouldShowBanner', 'stamped', 'tolstoy', 'klaviyo', 'ResizeObserver loop', 'Script error', 'weglot', 'clarity',
-         'intelligems', 'triplewhale', 'pandectes', 'skio', 'gorgias', 'Failed to load resource', 'unload is not allowed']
+         'intelligems', 'triplewhale', 'pandectes', 'skio', 'gorgias', 'Failed to load resource', 'unload is not allowed', 'shop.app', 'Failed to fetch']
 
 STATE = r"""
 () => {
   const bar = document.querySelector('[data-lp-filters]');
   const t = (el) => el ? el.textContent.replace(/\s+/g, ' ').trim() : null;
-  if (!bar) return { bar: false, theme: window.Shopify && Shopify.theme && Shopify.theme.id };
+  if (!bar || !bar.querySelector('.lp-filters__bar, .lp-filters__foot')) return { bar: false, theme: window.Shopify && Shopify.theme && Shopify.theme.id };
+  const shown = (el) => !!el && el.offsetParent !== null;
   const box = (el) => { const b = el.getBoundingClientRect(); return { x: Math.round(b.left), y: Math.round(b.top), w: Math.round(b.width), h: Math.round(b.height) }; };
-  const chips = [...bar.querySelectorAll('.lp-chip')];
-  const sel = bar.querySelector('[data-lp-sort]');
+  const rows = bar.querySelector('.lp-filters__rows'), rail = bar.querySelector('[data-lp-rail]'), dialog = bar.querySelector('[data-lp-fsheet]');
+  const scope = dialog && dialog.open ? dialog : shown(rows) ? rows : bar.querySelector('.lp-filters__bar');
+  const chips = scope ? [...scope.querySelectorAll('.lp-chip:not(.lp-filters__open)')] : [];
+  const sel = bar.querySelector('[data-lp-sort]'), opener = bar.querySelector('.lp-filters__open'), badge = bar.querySelector('.lp-filters__badge');
   return {
-    bar: true, theme: Shopify.theme.id, url: location.pathname + location.search.replace(/&?preview_theme_id=\d+/, ''),
-    vw: innerWidth, hscroll: document.documentElement.scrollWidth > innerWidth + 1,
-    groups: [...bar.querySelectorAll('.lp-filters__group')].map(g => { const rail = g.querySelector('.lp-filters__rail'); return {
-      label: t(g.querySelector('.lp-filters__label')), chips: g.querySelectorAll('.lp-chip').length,
-      railScrolls: rail.scrollWidth > rail.clientWidth + 1, scrollLeft: Math.round(rail.scrollLeft), rows: new Set([...g.querySelectorAll('.lp-chip')].map(c => Math.round(c.getBoundingClientRect().top))).size }; }),
-    chipMinH: Math.min(...chips.map(c => Math.round(c.getBoundingClientRect().height))), chipMinW: Math.min(...chips.map(c => Math.round(c.getBoundingClientRect().width))),
+    bar: true, v2: !!bar.querySelector('.lp-filters__bar'), theme: Shopify.theme.id, url: location.pathname + location.search.replace(/&?preview_theme_id=\d+/, ''),
+    vw: innerWidth, hscroll: document.documentElement.scrollWidth > innerWidth + 1, htmlOverflow: document.documentElement.style.overflow,
+    layout: shown(rows) ? 'rows' : 'bar',
+    groups: shown(rows) ? [...rows.querySelectorAll('.lp-fgroup')].map(g => ({ label: t(g.querySelector('.lp-fgroup__label')), chips: g.querySelectorAll('.lp-chip').length,
+      rows: new Set([...g.querySelectorAll('.lp-chip')].map(c => Math.round(c.getBoundingClientRect().top))).size })) : null,
+    rail: shown(rail) ? { label: rail.getAttribute('aria-label'), chips: rail.querySelectorAll('.lp-chip').length, scrolls: rail.scrollWidth > rail.clientWidth + 1, scrollLeft: Math.round(rail.scrollLeft), right: Math.round(rail.getBoundingClientRect().right) } : null,
+    opener: shown(opener) ? { h: box(opener).h, badge: badge ? parseInt(badge.textContent, 10) : 0, expanded: opener.getAttribute('aria-expanded') } : null,
+    reset: shown(bar.querySelector('.lp-filters__reset')),
+    sheet: dialog ? { open: dialog.open, groups: [...dialog.querySelectorAll('.lp-fgroup')].map(g => t(g.querySelector('.lp-fgroup__label')) + ':' + g.querySelectorAll('.lp-chip').length), button: t(dialog.querySelector('.lp-fsheet__show')), clear: !!dialog.querySelector('.lp-filters__clear'), scrollTop: Math.round(dialog.querySelector('.lp-fsheet__body').scrollTop), box: dialog.open ? box(dialog) : null } : null,
+    chipMinH: chips.length ? Math.min(...chips.map(c => Math.round(c.getBoundingClientRect().height))) : null,
     active: chips.filter(c => c.classList.contains('is-active')).map(c => t(c.querySelector('.lp-chip__text'))),
-    disabled: chips.filter(c => c.classList.contains('is-disabled')).map(c => t(c.querySelector('.lp-chip__text'))),
-    sample: chips.slice(0, 4).map(c => ({ text: c.querySelector('.lp-chip__text').innerText, count: t(c.querySelector('.lp-chip__count')), transform: getComputedStyle(c.querySelector('.lp-chip__text')).textTransform })),
-    activeStyle: (() => { const a = chips.find(c => c.classList.contains('is-active')); if (!a) return null; const cs = getComputedStyle(a); return { bg: cs.backgroundColor, color: cs.color }; })(),
-    count: t(bar.querySelector('.lp-filters__count')), clear: !!bar.querySelector('.lp-filters__clear'),
+    disabled: chips.filter(c => c.classList.contains('is-disabled')).length,
+    sample: chips.slice(0, 3).map(c => c.querySelector('.lp-chip__text').innerText + ' ' + (t(c.querySelector('.lp-chip__count')) || '')),
+    count: t(bar.querySelector('.lp-filters__count')), clearInline: shown(bar.querySelector('.lp-filters__clear--inline')),
+    foot: box(bar.querySelector('.lp-filters__foot')),
     sort: sel ? { value: sel.value, options: [...sel.options].map(o => o.value + '=' + o.text), box: box(sel), font: getComputedStyle(sel).fontSize } : null,
-    panel: bar.querySelector('.lp-filters__panel') ? box(bar.querySelector('.lp-filters__panel')) : null, foot: box(bar.querySelector('.lp-filters__foot')),
     cards: [...document.querySelectorAll('product-list product-card')].map(c => c.getAttribute('handle')),
     oldUi: { drawer: !!document.querySelector('#facets-drawer'), topbar: !!document.querySelector('.collection__top-bar'), floating: !!document.querySelector('.facets__floating-filter') },
-    focus: document.activeElement ? (document.activeElement.dataset.lpChip || document.activeElement.id || document.activeElement.tagName) : null,
+    focus: document.activeElement ? (document.activeElement.dataset.lpChip || document.activeElement.id || document.activeElement.className.toString().slice(0, 40) || document.activeElement.tagName) : null,
   };
 }
 """
@@ -68,89 +75,93 @@ async def main():
                 await page.wait_for_function("!document.querySelector('.shopify-section--main-collection').classList.contains('is-loading')", timeout=30000)
                 await page.wait_for_timeout(900)
 
-            async def shot(name, focus_bar=True):
-                if focus_bar:
-                    await page.evaluate("document.querySelector('[data-lp-filters]').scrollIntoView({block: 'start'}); window.scrollBy(0, -140)")
+            async def step(name):
+                out['steps'][name] = await page.evaluate(STATE)
+                return out['steps'][name]
+
+            async def shot(name, to_bar=True):
+                if to_bar:
+                    await page.evaluate("document.querySelector('[data-lp-filters]').scrollIntoView({block: 'start'}); window.scrollBy(0, -90)")
                     await page.wait_for_timeout(400)
                 await page.screenshot(path=f'{OUT}/{TAG}-{name}-{w}.png')
 
             for attempt in range(8):
                 out['status'] = await go('/collections/all')
                 st = await page.evaluate(STATE)
-                if st.get('bar'):
+                if st.get('bar') and st.get('v2'):
                     break
                 await asyncio.sleep(25)
             out['steps']['load'] = st
-            if not st.get('bar'):
+            if not (st.get('bar') and st.get('v2')):
                 res.append(out); await ctx.close(); continue
             await shot('filters-default')
 
-            # 1. choose a health chip
-            # the group with the most choices (the health concern list on every store)
-            sizes = await page.evaluate("[...document.querySelectorAll('.lp-filters__group')].map(g => g.querySelectorAll('a.lp-chip').length)")
-            big = sizes.index(max(sizes))
-            out['group_sizes'] = sizes
-            first = page.locator('.lp-filters__group').nth(big).locator('a.lp-chip').nth(2)
-            out['picked1'] = (await first.locator('.lp-chip__text').inner_text())
-            await first.click(); await settle()
-            out['steps']['one_chip'] = await page.evaluate(STATE)
-            await shot('filters-one')
-            # 2. add a chip from the last group, with the keyboard
-            other = (big + 1) % len(sizes) if len(sizes) > 1 else big
-            target = page.locator('.lp-filters__group').nth(other).locator('a.lp-chip:not(.is-active)').first
-            if await target.count():
-                await target.focus(); await page.keyboard.press('Enter'); await settle()
-                out['steps']['two_groups_keyboard'] = await page.evaluate(STATE)
-            # 3. clear all
-            if await page.locator('.lp-filters__clear').count():
-                await page.locator('.lp-filters__clear').click(); await settle()
-            out['steps']['cleared'] = await page.evaluate(STATE)
-            # 4. far end of a rail keeps its place (mobile)
-            if w < 1000:
-                rail = page.locator('.lp-filters__rail').nth(big)
-                await rail.evaluate('r => r.scrollTo({ left: r.scrollWidth, behavior: "instant" })')
-                await page.wait_for_timeout(500)
+            if w >= 1000:
+                sizes = await page.evaluate("[...document.querySelectorAll('.lp-filters__rows .lp-fgroup')].map(g => g.querySelectorAll('a.lp-chip').length)")
+                big = sizes.index(max(sizes)); other = (big + 1) % len(sizes)
+                group = lambda i: page.locator('.lp-filters__rows .lp-fgroup').nth(i)
+                await group(big).locator('a.lp-chip').nth(2).click(); await settle()
+                await step('one_chip'); await shot('filters-one')
+                if len(sizes) > 1:
+                    await group(other).locator('a.lp-chip:not(.is-active)').first.focus(); await page.keyboard.press('Enter'); await settle()
+                    await step('second_group_by_keyboard')
+                await page.locator('.lp-filters__clear--inline').click(); await settle()
+                await step('cleared')
+            else:
+                rail = page.locator('[data-lp-rail]')
+                chip = rail.locator('a.lp-chip').nth(1)
+                before = (await chip.bounding_box())['x']
+                await chip.tap(); await settle()
+                s = await step('rail_chip')
+                s['chip_moved_px'] = round((await rail.locator('a.lp-chip.is-active').first.bounding_box())['x'] - before)
+                await shot('filters-one')
+                # the sheet: opens, a choice keeps it open with new counts, Show closes it
+                await page.locator('[data-lp-fsheet-open]').tap(); await page.wait_for_timeout(700)
+                await step('sheet_open'); await page.screenshot(path=f'{OUT}/{TAG}-sheet-{w}.png')
+                await page.evaluate("document.querySelector('.lp-fsheet__body').scrollTop = 60")
+                await page.locator('.lp-fsheet .lp-fgroup').last.locator('a.lp-chip:not(.is-active)').first.tap(); await settle()
+                await step('sheet_choice'); await page.screenshot(path=f'{OUT}/{TAG}-sheet-chosen-{w}.png')
+                await page.locator('.lp-fsheet__show').tap(); await page.wait_for_timeout(1300)
+                await step('sheet_shown')
+                await page.locator('[data-lp-fsheet-open]').tap(); await page.wait_for_timeout(700)
+                await page.keyboard.press('Escape'); await page.wait_for_timeout(900)
+                await step('sheet_escape')
+                await page.locator('.lp-filters__reset').tap(); await settle()
+                await step('cleared')
+                # far end of the rail keeps its place
+                await rail.evaluate('r => r.scrollTo({ left: r.scrollWidth, behavior: "instant" })'); await page.wait_for_timeout(500)
                 tail = rail.locator('a.lp-chip').last
-                out['picked_tail'] = await tail.locator('.lp-chip__text').inner_text()
-                await tail.click(); await settle()
-                out['steps']['tail_chip'] = await page.evaluate(STATE)
-                await shot('filters-tail')
-                await page.locator('.lp-filters__clear').click(); await settle()
-            # 5. sort
+                before = (await tail.bounding_box())['x']
+                await tail.tap(); await settle()
+                s = await step('rail_tail_chip')
+                s['chip_moved_px'] = round((await rail.locator('a.lp-chip.is-active').first.bounding_box())['x'] - before)
+                await page.locator('.lp-filters__reset').tap(); await settle()
+
             await page.select_option('[data-lp-sort]', 'best-selling'); await settle()
-            out['steps']['sorted_best'] = await page.evaluate(STATE)
-            await shot('filters-sorted')
+            await step('sorted_best'); await shot('filters-sorted')
             await page.select_option('[data-lp-sort]', 'price-ascending'); await settle()
-            s = await page.evaluate(STATE)
-            s['prices'] = await page.evaluate("[...document.querySelectorAll('product-list product-card .price-list')].map(p => p.textContent.replace(/\\s+/g, ' ').trim().slice(0, 40))")
-            out['steps']['sorted_price'] = s
-            # 6. chip plus sort keeps both
-            await page.locator('.lp-filters__group').nth(big).locator('a.lp-chip').nth(1).click(); await settle()
-            out['steps']['chip_after_sort'] = await page.evaluate(STATE)
+            s = await step('sorted_price')
+            s['prices'] = await page.evaluate("[...document.querySelectorAll('product-list product-card .price-list')].map(p => (p.textContent.match(/[\\d.,]+/) || [''])[0])")
+            first_chip = page.locator('.lp-filters__rows a.lp-chip, [data-lp-rail] a.lp-chip').locator('visible=true').first
+            await first_chip.click(); await settle()
+            await step('chip_after_sort')
 
-            # direct landing from the Best Sellers buttons
             out['best_status'] = await go('/collections/all?sort_by=best-selling')
-            out['steps']['landing_best'] = await page.evaluate(STATE)
-            await page.screenshot(path=f'{OUT}/{TAG}-landing-best-{w}.png')
-            # category page
+            await step('landing_best')
             await go('/collections/nutritionals')
-            out['steps']['nutritionals'] = await page.evaluate(STATE)
-            await shot('filters-nutritionals')
+            await step('category'); await shot('filters-category')
 
-            # shopping links
             await go('/')
             out['links'] = await page.evaluate(r"""
             () => { const t = (el) => (el.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 50);
               const pick = (sel) => [...document.querySelectorAll(sel)].map(a => t(a) + ' -> ' + a.getAttribute('href'));
               return { hero: pick('[id$="lp_home_hero"] a.button'), guarantee: pick('[id$="lp_guarantee"] a.button'),
-                menuNutritionals: [...document.querySelectorAll('a[href*="/collections/nutritionals"]')].map(a => t(a) + ' -> ' + a.getAttribute('href')).filter((v, i, a) => a.indexOf(v) === i),
-                shopAll: [...document.querySelectorAll('a.lp-menu__cta')].map(a => t(a) + ' -> ' + a.getAttribute('href')),
-                megaHeads: [...document.querySelectorAll('.mega-menu__nav > li > a')].map(a => t(a) + ' -> ' + a.getAttribute('href')),
+                shopAll: pick('a.lp-menu__cta'), megaHeads: pick('.mega-menu__nav > li > a'),
                 taggedLinks: [...document.querySelectorAll('a[href*="/collections/"]')].filter(a => new URL(a.href).pathname.split('/').filter(Boolean).length > 2).map(a => t(a) + ' -> ' + a.getAttribute('href')).filter((v, i, a) => a.indexOf(v) === i) }; }""")
             await go('/products/laminine')
             out['faq_button'] = await page.evaluate("[...document.querySelectorAll('.lp-faq__actions a')].map(a => (a.textContent || '').trim() + ' -> ' + a.getAttribute('href'))")
             await go('/collections')
-            out['collections_page'] = await page.evaluate(r"""() => [...document.querySelectorAll('main a[href*="/collections/"]')].map(a => (a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 40) + ' -> ' + a.getAttribute('href'))""")
+            out['collections_page'] = await page.evaluate(r"""() => [...document.querySelectorAll('main a[href*="/collections/"]')].map(a => (a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 40) + ' -> ' + a.getAttribute('href')).filter((v, i, a) => a.indexOf(v) === i)""")
             out['errors'] = sorted(set(e for e in errs if not any(n.lower() in e.lower() for n in NOISE)))
             out['noise'] = len(errs)
             res.append(out)

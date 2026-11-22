@@ -30,6 +30,7 @@ Add new lessons at the end of their section with the next free number.
 - **L-015** · 2026-11-18 · Button styles ignored → Impact's button reset beats plain class selectors → style as `button.x:not(#lp-none)`. · doc.
 - **L-016** · 2026-11-17 · News styles missing on some pages → Dawn loads a section's `{% stylesheet %}` only where that section renders; Dawn's root is 62.5% → shared styles go in `assets/lp-news.css`; scale rem by 1.6. · doc.
 - **L-017** · 2026-11-18 · Odd character in About copy → merchant text contained a hidden `\x03` → strip control characters when pasting client copy. · doc.
+- **L-057** · 2026-11-22 · Filter sheet closed and chips jumped after every choice → the theme's `facet:update` replaces every child of the section (DOMParser, then replaceChildren), so an open dialog, scroll positions and focus are gone, and `<noscript>` content comes back as real elements → keep that state in JS and restore it in a MutationObserver on the section (`initFilterBar` in `assets/lp-premium.js`). · doc.
 
 ## C. Design process and client
 
@@ -48,6 +49,7 @@ Add new lessons at the end of their section with the next free number.
 - **L-033** · 2026-11-11 · Console errors blamed on the theme → `e is not a function` comes from Stamped.io; `addEventListener` null on /collections/all also happens on live → compare with the live theme before fixing "our" error. · doc.
 - **L-035** · 2026-11-21 · Full QA crawl got the IP a Cloudflare challenge (429) for ~30 min on uk.lifepharm.com, and EU's cart API returned 429 mid-run → crawl one tab at a time with delays (`tools/qa/site_qa.py` does), light HTML checks for same-template pages, and pace cart-heavy E2E runs. · `tools/qa/`.
 - **L-034** · 2026-11-12 · Done claimed before the draft had synced → always verify on the draft preview at 390px and 1440px: no horizontal scroll, no new JS errors. · CLAUDE.md section 1, `init.sh` reminder.
+- **L-056** · 2026-11-22 · Menu "Nutritionals" showed one product, "Shop best sellers" opened a category, UK "View all FAQs" opened the US store → nobody had read each label against its destination (a menu item saved with a tag filter, store addresses hard-coded in templates and metafields) → after link or menu work run `tools/qa/collection_filters_check.py` on each store and read the links block. · tool.
 
 ## E. Data, integrations and tooling
 

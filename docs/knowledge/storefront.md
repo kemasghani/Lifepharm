@@ -27,7 +27,7 @@ Where each part of the redesign lives and what it depends on. Rules for look and
 - **Science** (`page.science.json` and `page.our-studies.json`, same stack): `lp-sci-hero`, `lp-sci-intro`, `lp-sci-chapters` (#how-it-works), `lp-sci-studies` (#studies, product filter chips, first product open), `lp-sci-standard`. Add a study as a `study` block in **both** templates; its products field must match a filter name.
 - **Company / About Us** (`/pages/company`, `page.company.json`; `/pages/about` is unused): `lp-about-*` sections (hero facts, founder story, credo, values, team with bio dialog, logos) plus `lp-history` (milestone `event` blocks: image, date, text).
 - **Join Us** (`page.join-us.json`): identical on all branches. US and EU render it on page handle `join-us-1724800657`; UK on `join-us`.
-- **Collection**: banner `lp-collection-all-products.jpg` (+ `-mobile-v3.jpg`, 390x480 box). Product-card hover photo from Files `lp-hover-<handle>.jpg` (`snippets/product-card.liquid`), else the second media.
+- **Collection**: banner `lp-collection-all-products.jpg` (+ `-mobile-v3.jpg`, 390x480 box). Product-card hover photo from Files `lp-hover-<handle>.jpg` (`snippets/product-card.liquid`), else the second media. Filters: `snippets/lp-collection-filters.liquid` (layout "Filter bar" in `main-collection`; D-048): chip links built from `collection.filters`, a Filter sheet (`<dialog>`) under 1000px, a short sort list; state is kept across the section refresh by `initFilterBar` in `assets/lp-premium.js`. Filter names and values come from Search & Discovery; a filter that cannot narrow the list is not shown. Check with `tools/qa/collection_filters_check.py`.
 
 ## Cart drawer
 

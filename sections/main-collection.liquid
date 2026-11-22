@@ -78,7 +78,10 @@
   {%- else -%}
     {%- paginate collection.products by section.settings.products_per_page -%}
       <div class="collection {% if show_filters %}collection--filters-{{ section.settings.filter_layout | escape }}{% endif %}">
-        {%- if show_filters or section.settings.show_sort_by -%}
+        {%- if section.settings.filter_layout == 'bar' -%}
+          {%- comment -%}LifePharm filter bar: chips that are always on screen and apply at once. It replaces the drawer, the top bar and the floating mobile button.{%- endcomment -%}
+          {%- render 'lp-collection-filters', results: collection, show_filters: show_filters, show_sort_by: section.settings.show_sort_by, show_counts: section.settings.show_filter_values_count -%}
+        {%- elsif show_filters or section.settings.show_sort_by -%}
           {%- comment -%}
           IMPLEMENTATION NOTE: we have to output the drawer no matter what, as it is used on mobile (all the time) or desktop (when in drawer mode)
           {%- endcomment -%}
@@ -138,11 +141,13 @@
             </div>
           {%- else -%}
             <div class="v-stack gap-6">
-              <div class="v-stack gap-4 md:hidden">
-                {%- comment -%}We have to duplicate some information on mobile and tablet here{%- endcomment -%}
-                <p class="text-center">{{ 'collection.products_count' | t: count: collection.products_count }}</p>
-                {%- render 'active-facets', results: collection -%}
-              </div>
+              {%- unless section.settings.filter_layout == 'bar' -%}
+                <div class="v-stack gap-4 md:hidden">
+                  {%- comment -%}We have to duplicate some information on mobile and tablet here{%- endcomment -%}
+                  <p class="text-center">{{ 'collection.products_count' | t: count: collection.products_count }}</p>
+                  {%- render 'active-facets', results: collection -%}
+                </div>
+              {%- endunless -%}
 
               <reveal-items selector=".product-list > *">
                 <product-list class="product-list" role="region" aria-live="polite">
@@ -647,6 +652,10 @@
         {
           "value": "drawer",
           "label": "Drawer"
+        },
+        {
+          "value": "bar",
+          "label": "Filter bar (chips, all screen sizes)"
         }
       ],
       "default": "sidebar"

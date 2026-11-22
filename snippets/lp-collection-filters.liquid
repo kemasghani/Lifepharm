@@ -51,8 +51,16 @@
       </facet-drawer>
     {%- endif -%}
 
-    <div class="lp-filters__panel">
+    {%- capture groups -%}
       {%- for filter in results.filters -%}
+        {%- comment -%}A group with one choice left and nothing chosen cannot narrow the list (a single product type, or "In stock" when everything is in stock), so it is left out.{%- endcomment -%}
+        {%- if filter.type == 'list' and filter.active_values.size == 0 -%}
+          {%- assign selectable = 0 -%}
+          {%- for value in filter.values -%}
+            {%- if value.count > 0 -%}{%- assign selectable = selectable | plus: 1 -%}{%- endif -%}
+          {%- endfor -%}
+          {%- if selectable < 2 -%}{%- continue -%}{%- endif -%}
+        {%- endif -%}
         {%- capture group_id -%}lp-filter-{{ forloop.index }}{%- endcapture -%}
         <div class="lp-filters__group" role="group" aria-labelledby="{{ group_id }}">
           <p class="lp-filters__label" id="{{ group_id }}">{{ filter.label | escape }}</p>
@@ -117,7 +125,11 @@
           </ul>
         </div>
       {%- endfor -%}
-    </div>
+    {%- endcapture -%}
+    {%- assign groups = groups | strip -%}
+    {%- if groups != blank -%}
+      <div class="lp-filters__panel">{{ groups }}</div>
+    {%- endif -%}
   {%- endif -%}
 
   <div class="lp-filters__foot">

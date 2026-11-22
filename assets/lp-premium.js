@@ -413,21 +413,78 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initProductTabs, { once: true });
   else initProductTabs();
 
-  /* Collection filter bar (snippets/lp-collection-filters.liquid). The theme re-renders the whole section after a filter
-     or sort change, so the chip rails keep their sideways scroll and the chosen chip keeps keyboard focus. */
+  /* Collection filters (snippets/lp-collection-filters.liquid). The theme re-renders the whole section after a filter or
+     sort change, so this keeps the customer's place: the chip rail's sideways scroll, keyboard focus, and the open
+     Filter sheet (it reopens at once, without its entrance, with the new counts and "Show N products"). */
   const initFilterBar = () => {
     const section = document.querySelector('.shopify-section--main-collection');
     if (!section || !section.querySelector('[data-lp-filters]')) return;
-    const scrolled = {};
+    let railLeft = null;
+    let railEdge = null;
     let focusKey = null;
+    let sheetTop = null;
+    const sheet = () => section.querySelector('[data-lp-fsheet]');
+    const openers = (expanded) => section.querySelectorAll('[data-lp-fsheet-open]').forEach((button) => button.setAttribute('aria-expanded', expanded));
+    const openSheet = (instant) => {
+      const dialog = sheet();
+      if (!dialog || dialog.open || typeof dialog.showModal !== 'function') return;
+      dialog.classList.toggle('is-instant', instant);
+      dialog.showModal();
+      doc.style.overflow = 'hidden';
+      openers('true');
+      if (instant || reduceMotion) dialog.classList.add('is-open');
+      else requestAnimationFrame(() => dialog.classList.add('is-open'));
+    };
+    const closeSheet = (toResults) => {
+      const dialog = sheet();
+      sheetTop = null;
+      if (!dialog || !dialog.open) return;
+      dialog.classList.remove('is-open', 'is-instant');
+      setTimeout(() => {
+        if (dialog.open) dialog.close();
+        doc.style.overflow = '';
+        openers('false');
+        const opener = section.querySelector('[data-lp-fsheet-open]');
+        if (opener) opener.focus({ preventScroll: true });
+        if (toResults) section.querySelector('[data-lp-filters]').scrollIntoView({ block: 'start', behavior: reduceMotion ? 'auto' : 'smooth' });
+      }, reduceMotion ? 0 : 280);
+    };
+    const rail = () => section.querySelector('[data-lp-rail]');
+    // Where the rail is now, so the chips stay still under the finger when the badge and the clear button appear beside it
+    const noteRail = () => {
+      const el = rail();
+      if (!el || el.offsetParent === null) return;
+      railLeft = el.scrollLeft;
+      railEdge = el.getBoundingClientRect().left;
+    };
+    const placeRail = () => {
+      const el = rail();
+      if (!el || el.offsetParent === null) return;
+      if (railLeft !== null) {
+        el.scrollLeft = railLeft + (el.getBoundingClientRect().left - railEdge);
+        return;
+      }
+      const active = el.querySelector('.lp-chip.is-active');
+      if (active) el.scrollLeft = Math.max(0, active.offsetLeft - el.offsetLeft - 24);
+    };
     section.addEventListener('scroll', (event) => {
-      const rail = event.target.closest?.('[data-lp-rail]');
-      if (rail) scrolled[rail.dataset.lpRail] = rail.scrollLeft;
+      if (event.target.matches?.('[data-lp-rail]')) noteRail();
     }, { capture: true, passive: true });
     section.addEventListener('click', (event) => {
+      if (event.target.closest('[data-lp-fsheet-open]')) { openSheet(false); return; }
+      const closer = event.target.closest('[data-lp-fsheet-close]');
+      if (closer) { closeSheet(closer.hasAttribute('data-lp-fsheet-results')); return; }
+      if (event.target.matches('[data-lp-fsheet]')) { closeSheet(false); return; }
       const chip = event.target.closest('[data-lp-chip]');
       focusKey = chip ? chip.dataset.lpChip : null;
+      if (chip) noteRail();
+      if (chip && chip.closest('[data-lp-fsheet]')) sheetTop = section.querySelector('.lp-fsheet__body').scrollTop;
     });
+    section.addEventListener('cancel', (event) => {
+      if (!event.target.matches('[data-lp-fsheet]')) return;
+      event.preventDefault();
+      closeSheet(false);
+    }, true);
     section.addEventListener('change', (event) => {
       const select = event.target.closest('[data-lp-sort]');
       if (!select) return;
@@ -439,16 +496,25 @@
       select.dispatchEvent(new CustomEvent('facet:update', { bubbles: true, detail: { url } }));
     });
     new MutationObserver(() => {
-      section.querySelectorAll('[data-lp-rail]').forEach((rail) => {
-        if (scrolled[rail.dataset.lpRail]) rail.scrollLeft = scrolled[rail.dataset.lpRail];
-      });
+      const reopen = sheetTop !== null;
+      if (reopen) {
+        openSheet(true);
+        const body = section.querySelector('.lp-fsheet__body');
+        if (body) body.scrollTop = sheetTop;
+      } else {
+        doc.style.overflow = '';
+      }
+      placeRail();
       if (!focusKey) return;
+      const scope = reopen ? sheet() : section;
       const target = focusKey === 'sort'
         ? section.querySelector('[data-lp-sort]')
-        : [...section.querySelectorAll('[data-lp-chip]')].find((chip) => chip.dataset.lpChip === focusKey) || section.querySelector('[data-lp-chip]');
+        : [...scope.querySelectorAll('[data-lp-chip]')].find((chip) => chip.dataset.lpChip === focusKey && chip.offsetParent !== null)
+          || (reopen ? scope.querySelector('.lp-fsheet__show') : [...scope.querySelectorAll('[data-lp-chip], [data-lp-fsheet-open]')].find((el) => el.offsetParent !== null));
       focusKey = null;
       if (target) target.focus({ preventScroll: true });
     }).observe(section, { childList: true });
+    placeRail();
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initFilterBar, { once: true });
   else initFilterBar();

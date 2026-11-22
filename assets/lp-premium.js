@@ -413,6 +413,46 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initProductTabs, { once: true });
   else initProductTabs();
 
+  /* Collection filter bar (snippets/lp-collection-filters.liquid). The theme re-renders the whole section after a filter
+     or sort change, so the chip rails keep their sideways scroll and the chosen chip keeps keyboard focus. */
+  const initFilterBar = () => {
+    const section = document.querySelector('.shopify-section--main-collection');
+    if (!section || !section.querySelector('[data-lp-filters]')) return;
+    const scrolled = {};
+    let focusKey = null;
+    section.addEventListener('scroll', (event) => {
+      const rail = event.target.closest?.('[data-lp-rail]');
+      if (rail) scrolled[rail.dataset.lpRail] = rail.scrollLeft;
+    }, { capture: true, passive: true });
+    section.addEventListener('click', (event) => {
+      const chip = event.target.closest('[data-lp-chip]');
+      focusKey = chip ? chip.dataset.lpChip : null;
+    });
+    section.addEventListener('change', (event) => {
+      const select = event.target.closest('[data-lp-sort]');
+      if (!select) return;
+      const url = new URL(window.location.href);
+      url.searchParams.set('sort_by', select.value);
+      url.searchParams.delete('page');
+      url.searchParams.set('section_id', section.id.replace('shopify-section-', ''));
+      focusKey = 'sort';
+      select.dispatchEvent(new CustomEvent('facet:update', { bubbles: true, detail: { url } }));
+    });
+    new MutationObserver(() => {
+      section.querySelectorAll('[data-lp-rail]').forEach((rail) => {
+        if (scrolled[rail.dataset.lpRail]) rail.scrollLeft = scrolled[rail.dataset.lpRail];
+      });
+      if (!focusKey) return;
+      const target = focusKey === 'sort'
+        ? section.querySelector('[data-lp-sort]')
+        : [...section.querySelectorAll('[data-lp-chip]')].find((chip) => chip.dataset.lpChip === focusKey) || section.querySelector('[data-lp-chip]');
+      focusKey = null;
+      if (target) target.focus({ preventScroll: true });
+    }).observe(section, { childList: true });
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initFilterBar, { once: true });
+  else initFilterBar();
+
   /* Referral at checkout (snippets/lp-referral-nudge.liquid). Replaces the old slide-in and floating tab.
      Pressing Checkout opens the dialog when the Teqnavi referral app is on the page and the shopper has not ticked
      "Don't show this again":

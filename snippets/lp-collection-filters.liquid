@@ -187,9 +187,11 @@
 .lp-filters__group + .lp-filters__group { border-block-start: 1px solid var(--lp-hairline); }
 .lp-filters__label { margin: 0; padding-inline: 1rem; font-size: .6875rem; font-weight: 800; line-height: 1.2; letter-spacing: .1em; text-transform: uppercase; color: rgb(var(--lp-muted)); }
 /* Mobile: one row that scrolls sideways; the last chip in view is cut off, which shows there is more */
-.lp-filters__rail { display: flex; gap: .5rem; margin: 0; padding: 2px 1rem; list-style: none; overflow-x: auto; overscroll-behavior-x: contain; scroll-padding-inline: 1rem; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.lp-filters__rail { display: flex; gap: .5rem; margin: 0; padding: 2px 0 2px 1rem; list-style: none; overflow-x: auto; overscroll-behavior-x: contain; scroll-padding-inline: 1rem; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
 .lp-filters__rail::-webkit-scrollbar { display: none; }
 .lp-filters__rail > li { flex: none; }
+/* Space after the last chip, so it does not touch the card edge at the end of the scroll */
+.lp-filters__rail > li:last-child { padding-inline-end: 1rem; }
 .lp-filters .lp-chip { display: inline-flex; align-items: center; gap: .4rem; min-height: 44px; padding: 0 1rem; border: 1px solid rgb(var(--lp-stone)); border-radius: 999px; background: rgb(var(--lp-ivory)); color: rgb(var(--lp-ink)); font: inherit; font-size: .875rem; font-weight: 600; line-height: 1; letter-spacing: 0; white-space: nowrap; text-decoration: none; text-transform: none; cursor: pointer; transition: background-color 160ms ease-out, border-color 160ms ease-out, box-shadow 160ms ease-out; }
 .lp-filters .lp-chip:lang(en) .lp-chip__text { text-transform: capitalize; }
 @media (hover: hover) { .lp-filters .lp-chip:not(.is-active, .is-disabled):hover { border-color: rgb(var(--lp-amber)); background: #fff; box-shadow: 0 0 0 1px rgb(var(--lp-amber)); } }
@@ -210,13 +212,15 @@
 .lp-sort__select { -webkit-appearance: none; appearance: none; min-height: 44px; max-width: 100%; padding: 0 2.5rem 0 1rem; border: 1px solid rgb(var(--lp-stone)); border-radius: 999px; background: #fff; color: rgb(var(--lp-ink)); font: inherit; font-size: 1rem; font-weight: 600; line-height: 1.2; cursor: pointer; transition: border-color 160ms ease-out; }
 @media (hover: hover) { .lp-sort__select:hover { border-color: rgb(var(--lp-amber)); } }
 .lp-sort__field svg { position: absolute; top: 50%; right: 1rem; transform: translateY(-50%); pointer-events: none; color: rgb(var(--lp-ink)); }
-@media (max-width: 379px) { .lp-sort__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); } }
+/* Phones: the count and the sort list share one line, so the "Sort by" words are for screen readers only */
+@media (max-width: 479px) { .lp-sort__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); } }
 
 @media (min-width: 1000px) {
   /* Desktop: the label sits beside its chips and every chip is in view, wrapping onto a second line */
   .lp-filters__group { grid-template-columns: 11rem minmax(0, 1fr); align-items: start; gap: 1.5rem; padding: 1rem 1.5rem; }
   .lp-filters__label { padding-inline: 0; padding-block-start: .95rem; }
   .lp-filters__rail { flex-wrap: wrap; padding: 0; overflow: visible; }
+  .lp-filters__rail > li:last-child { padding-inline-end: 0; }
   .lp-sort__select { font-size: .875rem; }
 }
 @media (min-width: 1000px) and (pointer: fine) {

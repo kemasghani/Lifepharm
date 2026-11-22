@@ -162,6 +162,10 @@
       "remove_filter": "Remove filter \"{{ name }}\"",
       "no_results": "No products match those filters.",
       "filtered_count": "{{ count }} of {{ total }} products",
+      "show_results": {
+        "one": "Show {{ count }} product",
+        "other": "Show {{ count }} products"
+      },
       "price_range_to": "to",
       "price_filter_from": "From price",
       "price_filter_to": "To price",

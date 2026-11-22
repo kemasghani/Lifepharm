@@ -290,8 +290,8 @@ html:not(.lp-js) .lp-filters__open { display: none; }
 .lp-sort { display: flex; align-items: center; gap: .375rem; min-width: 0; margin-inline-start: auto; }
 .lp-sort__label { font-size: .875rem; color: rgb(var(--lp-muted)); white-space: nowrap; }
 .lp-sort__field { position: relative; display: inline-flex; align-items: center; min-width: 0; }
-/* 16px on phones so iOS does not zoom the page when the list opens */
-.lp-sort__select { -webkit-appearance: none; appearance: none; min-height: 44px; max-width: 100%; padding: 0 1.25rem 0 .25rem; border: 0; border-radius: 8px; background: transparent; color: rgb(var(--lp-ink)); font: inherit; font-size: 1rem; font-weight: 600; line-height: 1.2; text-align-last: right; cursor: pointer; }
+/* 16px on phones so iOS does not zoom the page when the list opens. field-sizing keeps the list as wide as the chosen option, so the words "Sort by" sit next to it. */
+.lp-sort__select { -webkit-appearance: none; appearance: none; min-height: 44px; max-width: 100%; padding: 0 1.25rem 0 .25rem; border: 0; border-radius: 8px; background: transparent; color: rgb(var(--lp-ink)); font: inherit; font-size: 1rem; font-weight: 600; line-height: 1.2; text-align-last: right; field-sizing: content; cursor: pointer; }
 .lp-sort__field svg { position: absolute; top: 50%; right: 0; transform: translateY(-50%); pointer-events: none; color: rgb(var(--lp-ink)); }
 @media (max-width: 479px) { .lp-sort__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); } }
 

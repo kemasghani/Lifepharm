@@ -24,6 +24,13 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 
 ---
 
+## 2026-11-22 · pdp-003 · Sticky Add to Cart: one-row layout with a short Add button
+- Done: bar reads thumbnail (now on mobile too), size name with one quiet line under it (price per capsule, or "In stock"), price on the right, button "Add" (accessible name still "Add to Cart"). Guarantee chip removed from the bar. A long size name wraps to two lines instead of being cut off. Files: `sections/main-product.liquid`, `assets/lp-premium.css`, `assets/lp-premium.js`.
+- Evidence: ce869f3, 78d3434; ./init.sh --full READY; UK draft at 390x844 and 1440x900 on LAMININE, Cellnergy Wellness, OMNIA, Lamiderm Apex: one row on one axis, no cut-off text, no h-scroll, price and size follow the picker, no new JS errors.
+- Decisions: D-047.
+- Lessons: L-055 (repo folder in iCloud: evicted files make git and the checks hang).
+- Next: none for this feature.
+
 ## 2026-11-21 · pdp-006 · One compact buy box on every PDP: price in Add to Cart, Ideal For everywhere, floating sticky bar
 - Done: price moved into the Add to Cart button (per variant, Skio plan aware; `snippets/buy-buttons.liquid`, `syncPrice` in lp-premium.js); price row, quantity stepper, separator and Stamped badge disabled on every product template (`tools/normalize_buybox.py`). Ideal For shows on every product: theme defaults per handle when custom.value_1 is empty or holds other content, five new brand icons (circulation, foot, handsfree, travel, face). Variant cards: saving as a top-edge badge, no Free Bottle badge. Skio: legend hidden, one-line subscription note, rounded saving badge. Sticky Add to Cart rebuilt as `lp-sticky-atc`: visible whenever the main button is off screen, hidden at the footer and under drawers, inert when hidden; floating card, no product name, large price. Pack and IBO templates take the standard lower sections (`tools/sync_pdp_layout.py`); empty sections hide themselves.
 - Evidence: ./init.sh --full READY; drafts at 1440x900 and 390x844: Add to Cart bottom 893 (LAMININE), 907 (Omega, Digestive), 658 (Wellness), 781 (REFIVE EU); price changes with variant on Wellness, Hydration, Power Cream; no h-scroll, no new JS errors.

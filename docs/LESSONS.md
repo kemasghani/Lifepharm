@@ -58,6 +58,7 @@ Add new lessons at the end of their section with the next free number.
 - **L-044** · 2026-11-18 · Exigo `DequeueCustomerEvents` pops events for good → never call it while exploring. · doc.
 - **L-045** · 2026-11-20 · Useful scripts (`sync_branch.py`, `port_templates.py`, Files upload) lived only in session scratchpads and nearly vanished → any script used twice goes into `tools/` in the same session. · this file.
 - **L-046** · 2026-11-20 · Repo is **public** on GitHub → anything committed is published → no secrets, IPs, account ids, personal emails or customer data in commits; private facts stay in the developer's private notes. · `init.sh` secret scan.
+- **L-055** · 2026-11-22 · The working copy lives in `~/Documents`, which iCloud can offload: 21 theme files and about 800 git objects became placeholders that never downloaded, so `./init.sh`, `grep -r` and most git commands hung with no output → if a command that only reads the repo stalls, check `ls -lO` / `find . -flags +dataless` before anything else; work from a fresh `git clone` outside iCloud (same credential helper as `.git/config`), then mark the folder "Keep Downloaded" or move the repo out of iCloud. · this file.
 
 ## F. Assets and imagery
 

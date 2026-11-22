@@ -1,6 +1,6 @@
 {
   "project": "LifePharm theme redesign (UK, US, EU) + News",
-  "last_updated": "2026-11-20",
+  "last_updated": "2026-11-22",
   "rules": {
     "single_active_feature": true,
     "passing_requires_evidence": true,
@@ -147,12 +147,16 @@
       ],
       "verification": [
         "Never covers an open menu; chat launcher moves with the bar",
-        "Default checks"
+        "Default checks",
+        "One row at 390 and 1440: thumbnail, size name with a quiet line under it, price, short Add button"
       ],
       "evidence": [
         "c573259",
         "f371928",
-        "7df2403"
+        "7df2403",
+        "ce869f3",
+        "78d3434",
+        "2026-11-22 UK draft 390x844 and 1440x900 on LAMININE, Cellnergy Wellness, OMNIA, Lamiderm Apex: one row on one axis, no cut-off text, no h-scroll, price follows the selected size, no new JS errors"
       ]
     },
     {

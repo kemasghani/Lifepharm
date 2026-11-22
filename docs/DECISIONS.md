@@ -46,6 +46,7 @@ Standing rules that follow from these decisions live in [CLAUDE.md](../CLAUDE.md
 - **D-044** · 2026-11-12 · Company history timeline on About Us above leadership, icons all visible, text on click. · Letisha
 - **D-045** · 2026-11-13 · How to Use lives in one buy-box accordion; timeline strip removed. · Letisha · Say it once.
 - **D-046** · 2026-11-18 · Cart drawer has one action (Checkout); View Cart off. · developer
+- **D-047** · 2026-11-22 · Sticky Add to Cart is one row: thumbnail, size name with one quiet line under it (price per capsule, or "In stock"), price on the right, button labelled "Add" (accessible name stays "Add to Cart"). The guarantee chip left the bar. · developer · Follows the developer's reference layout; brand colours and button styling unchanged. Say it once: the guarantee is in the buy box.
 
 ## Referral (history of a requirement that changed four times)
 

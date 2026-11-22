@@ -190,7 +190,9 @@
     if (unit && a > 0) {
       const count = Number(unit.dataset.count) || 0;
       const symbol = (now.textContent.trim().match(/^[^0-9]*/) || [''])[0];
-      const text = count ? `${symbol}${(a / count).toFixed(2)} / ${unit.dataset.unit}` : '';
+      // Same decimal mark as the price beside it (EU prices read 39,00).
+      const each = (a / count).toFixed(2).replace('.', /,\d{2}\D*$/.test(now.textContent.trim()) ? ',' : '.');
+      const text = count ? `${symbol}${each} / ${unit.dataset.unit}` : '';
       if (unit.textContent !== text) unit.textContent = text;
     }
   });

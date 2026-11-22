@@ -1,0 +1,230 @@
+{% doc %}
+  Collection filter bar. Every filter option is a chip that is always on screen and applies as soon as it is chosen:
+  no drawer, no accordion and no Apply button. Chips are plain links (url_to_add / url_to_remove), so they work
+  without JavaScript; with it, the theme's facet-link refreshes the section in place.
+  A price range filter keeps the theme's own drawer, opened from a chip.
+
+  @param {object} results - The collection whose filters, sort options and counts are shown
+  @param {boolean} [show_filters] - Show the filter chips
+  @param {boolean} [show_sort_by] - Show the sort control
+  @param {boolean} [show_counts] - Show the number of matching products in each chip
+
+  @example
+  {% render 'lp-collection-filters', results: collection, show_filters: true, show_sort_by: true, show_counts: true %}
+{% enddoc %}
+
+{%- liquid
+  assign active_count = 0
+  assign has_price = false
+  if show_filters
+    for filter in results.filters
+      if filter.type == 'price_range'
+        assign has_price = true
+        if filter.min_value.value != blank or filter.max_value.value != blank
+          assign active_count = active_count | plus: 1
+        endif
+      else
+        assign active_count = active_count | plus: filter.active_values.size
+      endif
+    endfor
+  endif
+
+  assign clear_url = results.url
+  if results.sort_by != blank
+    assign clear_url = clear_url | append: '?sort_by=' | append: results.sort_by
+  endif
+
+  assign selected_sort = results.sort_by | default: results.default_sort_by
+  assign sort_shortlist = 'manual,best-selling,price-ascending,price-descending' | split: ','
+-%}
+
+{%- capture check_icon -%}
+  <svg class="lp-chip__tick" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
+{%- endcapture -%}
+
+<div class="lp-filters" data-lp-filters>
+  {%- if show_filters and results.filters.size > 0 -%}
+    {%- if has_price -%}
+      <facet-drawer header-bordered id="facets-drawer" class="facets-drawer drawer" open-from="left">
+        <p class="h5" slot="header">{{ 'collection.faceting.filters' | t }}</p>
+        {%- render 'facets-vertical', results: results, show_filters: true, show_sort_by: false, update_on_change: false -%}
+      </facet-drawer>
+    {%- endif -%}
+
+    <div class="lp-filters__panel">
+      {%- for filter in results.filters -%}
+        {%- capture group_id -%}lp-filter-{{ forloop.index }}{%- endcapture -%}
+        <div class="lp-filters__group" role="group" aria-labelledby="{{ group_id }}">
+          <p class="lp-filters__label" id="{{ group_id }}">{{ filter.label | escape }}</p>
+          <ul class="lp-filters__rail" role="list" data-lp-rail="{{ filter.param_name | escape }}">
+            {%- case filter.type -%}
+              {%- when 'list' -%}
+                {%- for value in filter.values -%}
+                  {%- capture chip_key -%}{{ value.param_name }}={{ value.value }}{%- endcapture -%}
+                  <li>
+                    {%- if value.active -%}
+                      <a class="lp-chip is-active" href="{{ value.url_to_remove }}" is="facet-link" rel="nofollow" aria-current="true" data-no-instant data-lp-chip="{{ chip_key | escape }}">
+                        {{- check_icon -}}
+                        <span class="lp-chip__text">{{ value.label | escape }}</span>
+                        {%- if show_counts -%}<span class="lp-chip__count" aria-hidden="true">{{ value.count }}</span>{%- endif -%}
+                        <span class="sr-only">, {{ 'collection.faceting.remove_filter' | t: name: value.label | escape }}</span>
+                      </a>
+                    {%- elsif value.count == 0 -%}
+                      <span class="lp-chip is-disabled" aria-disabled="true">
+                        <span class="lp-chip__text">{{ value.label | escape }}</span>
+                      </span>
+                    {%- else -%}
+                      <a class="lp-chip" href="{{ value.url_to_add }}" is="facet-link" rel="nofollow" data-no-instant data-lp-chip="{{ chip_key | escape }}">
+                        <span class="lp-chip__text">{{ value.label | escape }}</span>
+                        {%- if show_counts -%}
+                          <span class="lp-chip__count" aria-hidden="true">{{ value.count }}</span>
+                          <span class="sr-only">, {{ 'collection.products_count' | t: count: value.count }}</span>
+                        {%- endif -%}
+                      </a>
+                    {%- endif -%}
+                  </li>
+                {%- endfor -%}
+
+              {%- when 'boolean' -%}
+                <li>
+                  {%- if filter.true_value.active -%}
+                    <a class="lp-chip is-active" href="{{ filter.true_value.url_to_remove }}" is="facet-link" rel="nofollow" aria-current="true" data-no-instant data-lp-chip="{{ filter.param_name | escape }}">
+                      {{- check_icon -}}
+                      <span class="lp-chip__text">{{ filter.label | escape }}</span>
+                      <span class="sr-only">, {{ 'collection.faceting.remove_filter' | t: name: filter.label | escape }}</span>
+                    </a>
+                  {%- else -%}
+                    <a class="lp-chip" href="{{ filter.true_value.url_to_add }}" is="facet-link" rel="nofollow" data-no-instant data-lp-chip="{{ filter.param_name | escape }}">
+                      <span class="lp-chip__text">{{ filter.label | escape }}</span>
+                    </a>
+                  {%- endif -%}
+                </li>
+
+              {%- when 'price_range' -%}
+                <li>
+                  {%- if filter.min_value.value != blank or filter.max_value.value != blank -%}
+                    <button type="button" class="lp-chip is-active" aria-controls="facets-drawer" aria-expanded="false">
+                      {{- check_icon -}}
+                      <span class="lp-chip__text">{{ filter.min_value.value | default: 0 | money_without_trailing_zeros }} - {{ filter.max_value.value | default: filter.range_max | money_without_trailing_zeros }}</span>
+                    </button>
+                  {%- else -%}
+                    <button type="button" class="lp-chip" aria-controls="facets-drawer" aria-expanded="false">
+                      <span class="lp-chip__text">{{ 'collection.faceting.price_filter_from' | t }}</span>
+                    </button>
+                  {%- endif -%}
+                </li>
+            {%- endcase -%}
+          </ul>
+        </div>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+  <div class="lp-filters__foot">
+    <p class="lp-filters__count">
+      {%- if active_count > 0 -%}
+        {{- 'collection.faceting.filtered_count' | t: count: results.products_count, total: results.all_products_count -}}
+      {%- else -%}
+        {{- 'collection.products_count' | t: count: results.products_count -}}
+      {%- endif -%}
+    </p>
+
+    {%- if active_count > 0 -%}
+      <a class="lp-filters__clear" href="{{ clear_url }}" is="facet-link" rel="nofollow" data-no-instant data-lp-chip="clear">{{ 'collection.faceting.clear_filters' | t }}</a>
+    {%- endif -%}
+
+    {%- if show_sort_by -%}
+      <form class="lp-sort" method="get" action="{{ results.url }}">
+        {%- comment -%}Without JavaScript the form reloads the page, so it carries the active filters along.{%- endcomment -%}
+        {%- for filter in results.filters -%}
+          {%- if filter.type == 'price_range' -%}
+            {%- if filter.min_value.value != blank -%}<input type="hidden" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value | money_without_currency | remove: ',' }}">{%- endif -%}
+            {%- if filter.max_value.value != blank -%}<input type="hidden" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value | money_without_currency | remove: ',' }}">{%- endif -%}
+          {%- else -%}
+            {%- for value in filter.active_values -%}
+              <input type="hidden" name="{{ value.param_name }}" value="{{ value.value | escape }}">
+            {%- endfor -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        <label class="lp-sort__label" for="lp-sort">{{ 'collection.faceting.sort_by' | t }}</label>
+        <span class="lp-sort__field">
+          <select class="lp-sort__select" id="lp-sort" name="sort_by" data-lp-sort autocomplete="off">
+            {%- for option in results.sort_options -%}
+              {%- if option.name == blank -%}{%- continue -%}{%- endif -%}
+              {%- unless sort_shortlist contains option.value or option.value == selected_sort -%}{%- continue -%}{%- endunless -%}
+              {%- liquid
+                assign option_label = option.name
+                if request.locale.iso_code == 'en'
+                  case option.value
+                    when 'manual'
+                      assign option_label = 'Featured'
+                    when 'best-selling'
+                      assign option_label = 'Best Sellers'
+                    when 'price-ascending'
+                      assign option_label = 'Price: Low to High'
+                    when 'price-descending'
+                      assign option_label = 'Price: High to Low'
+                  endcase
+                endif
+              -%}
+              <option value="{{ option.value | escape }}"{% if option.value == selected_sort %} selected{% endif %}>{{ option_label | escape }}</option>
+            {%- endfor -%}
+          </select>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </span>
+        <noscript><button type="submit" class="lp-chip">{{ 'collection.faceting.apply_filters' | t }}</button></noscript>
+      </form>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+/* Collection filter bar: a white card of chips, then one line with the result count, Clear all and the sort control */
+.lp-filters { display: grid; grid-column: 1 / -1; gap: .875rem; min-width: 0; }
+.lp-filters__panel { display: grid; min-width: 0; border: 1px solid rgb(var(--lp-stone) / .75); border-radius: var(--lp-radius); background: #fff; overflow: hidden; }
+.lp-filters__group { display: grid; gap: .5rem; min-width: 0; padding-block: .875rem; }
+.lp-filters__group + .lp-filters__group { border-block-start: 1px solid var(--lp-hairline); }
+.lp-filters__label { margin: 0; padding-inline: 1rem; font-size: .6875rem; font-weight: 800; line-height: 1.2; letter-spacing: .1em; text-transform: uppercase; color: rgb(var(--lp-muted)); }
+/* Mobile: one row that scrolls sideways; the last chip in view is cut off, which shows there is more */
+.lp-filters__rail { display: flex; gap: .5rem; margin: 0; padding: 2px 0 2px 1rem; list-style: none; overflow-x: auto; overscroll-behavior-x: contain; scroll-padding-inline: 1rem; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.lp-filters__rail::-webkit-scrollbar { display: none; }
+.lp-filters__rail > li { flex: none; }
+/* Space after the last chip, so it does not touch the card edge at the end of the scroll */
+.lp-filters__rail > li:last-child { padding-inline-end: 1rem; }
+.lp-filters .lp-chip { display: inline-flex; align-items: center; gap: .4rem; min-height: 44px; padding: 0 1rem; border: 1px solid rgb(var(--lp-stone)); border-radius: 999px; background: rgb(var(--lp-ivory)); color: rgb(var(--lp-ink)); font: inherit; font-size: .875rem; font-weight: 600; line-height: 1; letter-spacing: 0; white-space: nowrap; text-decoration: none; text-transform: none; cursor: pointer; transition: background-color 160ms ease-out, border-color 160ms ease-out, box-shadow 160ms ease-out; }
+.lp-filters .lp-chip:lang(en) .lp-chip__text { text-transform: capitalize; }
+@media (hover: hover) { .lp-filters .lp-chip:not(.is-active, .is-disabled):hover { border-color: rgb(var(--lp-amber)); background: #fff; box-shadow: 0 0 0 1px rgb(var(--lp-amber)); } }
+.lp-filters .lp-chip:focus-visible, .lp-filters__clear:focus-visible, .lp-sort__select:focus-visible { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 2px; }
+.lp-filters .lp-chip.is-active { border-color: rgb(var(--lp-amber)); background: rgb(var(--lp-amber)); color: #1f1e20; }
+.lp-filters .lp-chip.is-disabled { border-style: dashed; background: transparent; color: rgb(var(--lp-ink) / .45); cursor: default; }
+.lp-chip__tick { flex: none; margin-inline-start: -.2rem; }
+.lp-chip__count { font-size: .75rem; font-weight: 400; font-variant-numeric: tabular-nums; color: rgb(var(--lp-muted)); }
+.lp-chip.is-active .lp-chip__count { color: inherit; }
+
+.lp-filters__foot { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem 1rem; min-height: 44px; }
+.lp-filters__count { margin: 0; font-size: .9375rem; color: rgb(var(--lp-muted)); }
+.lp-filters__clear { display: inline-flex; align-items: center; min-height: 44px; font-size: .875rem; font-weight: 600; color: rgb(var(--lp-ink)); text-decoration: underline; text-decoration-color: rgb(var(--lp-amber)); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.lp-sort { display: flex; align-items: center; gap: .625rem; margin-inline-start: auto; }
+.lp-sort__label { font-size: .875rem; color: rgb(var(--lp-muted)); white-space: nowrap; }
+.lp-sort__field { position: relative; display: inline-flex; }
+/* 16px on phones so iOS does not zoom the page when the list opens */
+.lp-sort__select { -webkit-appearance: none; appearance: none; min-height: 44px; max-width: 100%; padding: 0 2.5rem 0 1rem; border: 1px solid rgb(var(--lp-stone)); border-radius: 999px; background: #fff; color: rgb(var(--lp-ink)); font: inherit; font-size: 1rem; font-weight: 600; line-height: 1.2; cursor: pointer; transition: border-color 160ms ease-out; }
+@media (hover: hover) { .lp-sort__select:hover { border-color: rgb(var(--lp-amber)); } }
+.lp-sort__field svg { position: absolute; top: 50%; right: 1rem; transform: translateY(-50%); pointer-events: none; color: rgb(var(--lp-ink)); }
+/* Phones: the count and the sort list share one line, so the "Sort by" words are for screen readers only */
+@media (max-width: 479px) { .lp-sort__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); } }
+
+@media (min-width: 1000px) {
+  /* Desktop: the label sits beside its chips and every chip is in view, wrapping onto a second line */
+  .lp-filters__group { grid-template-columns: 11rem minmax(0, 1fr); align-items: start; gap: 1.5rem; padding: 1rem 1.5rem; }
+  .lp-filters__label { padding-inline: 0; padding-block-start: .95rem; }
+  .lp-filters__rail { flex-wrap: wrap; padding: 0; overflow: visible; }
+  .lp-filters__rail > li:last-child { padding-inline-end: 0; }
+  .lp-sort__select { font-size: .875rem; }
+}
+@media (min-width: 1000px) and (pointer: fine) {
+  .lp-filters .lp-chip { min-height: 40px; }
+  .lp-filters__label { padding-block-start: .85rem; }
+}
+{% endstylesheet %}

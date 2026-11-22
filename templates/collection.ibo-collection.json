@@ -83,11 +83,11 @@
         "products_per_page": 24,
         "products_per_row_mobile": "1",
         "products_per_row_desktop": 4,
-        "filter_layout": "drawer",
-        "show_sort_by": false,
+        "filter_layout": "bar",
+        "show_sort_by": true,
         "show_filters": true,
         "show_filter_group_name": true,
-        "show_filter_values_count": false,
+        "show_filter_values_count": true,
         "open_first_filter_group": false
       }
     },

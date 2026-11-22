@@ -53,7 +53,7 @@
 
     <div class="lp-filters__panel">
       {%- for filter in results.filters -%}
-        {%- capture group_id -%}lp-filter-{{ section.id }}-{{ forloop.index }}{%- endcapture -%}
+        {%- capture group_id -%}lp-filter-{{ forloop.index }}{%- endcapture -%}
         <div class="lp-filters__group" role="group" aria-labelledby="{{ group_id }}">
           <p class="lp-filters__label" id="{{ group_id }}">{{ filter.label | escape }}</p>
           <ul class="lp-filters__rail" role="list" data-lp-rail="{{ filter.param_name | escape }}">
@@ -147,9 +147,9 @@
           {%- endif -%}
         {%- endfor -%}
 
-        <label class="lp-sort__label" for="lp-sort-{{ section.id }}">{{ 'collection.faceting.sort_by' | t }}</label>
+        <label class="lp-sort__label" for="lp-sort">{{ 'collection.faceting.sort_by' | t }}</label>
         <span class="lp-sort__field">
-          <select class="lp-sort__select" id="lp-sort-{{ section.id }}" name="sort_by" data-lp-sort autocomplete="off">
+          <select class="lp-sort__select" id="lp-sort" name="sort_by" data-lp-sort autocomplete="off">
             {%- for option in results.sort_options -%}
               {%- if option.name == blank -%}{%- continue -%}{%- endif -%}
               {%- unless sort_shortlist contains option.value or option.value == selected_sort -%}{%- continue -%}{%- endunless -%}

@@ -1,6 +1,8 @@
 {%- liquid
   assign mf = product.metafields.custom
   assign faq_url = section.settings.button_url | default: mf.faq_url.value
+  # The product's FAQ link is saved with one store's address (the US one). Every store has the same FAQ pages, so the shopper stays on the store they are on.
+  assign faq_url = faq_url | remove: 'https://shop.lifepharm.com' | remove: 'https://uk.lifepharm.com' | remove: 'https://europe.lifepharm.com'
 -%}
 
 <section class="lp-faq">

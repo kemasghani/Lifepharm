@@ -115,7 +115,14 @@
             {%- endif -%}
           </ul>
 
-          <a class="button lp-menu__cta" href="{{ cat.url }}">{{ settings.lp_menu_all_label | default: 'Shop all' | escape }} {{ cat.title | escape }}</a>
+          {%- comment -%}"Shop all [category]" opens the whole collection, even if the menu item was saved with a tag filter (which showed one product){%- endcomment -%}
+          {%- liquid
+            assign cat_url = cat.url
+            if cat.type == 'collection_link' and cat.object.url != blank
+              assign cat_url = cat.object.url
+            endif
+          -%}
+          <a class="button lp-menu__cta" href="{{ cat_url }}">{{ settings.lp_menu_all_label | default: 'Shop all' | escape }} {{ cat.title | escape }}</a>
         </section>
       {%- endfor -%}
     {%- endif -%}

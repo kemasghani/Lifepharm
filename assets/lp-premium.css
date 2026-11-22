@@ -500,35 +500,31 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
 @media (max-width: 420px) { .lp-vcard__meta strong { display: block; } .lp-vcard { padding: .8rem .4rem .9rem; } .lp-vcard__name { font-size: .875rem; } .lp-vcard__meta { font-size: .75rem; } .lp-vcard__badge { font-size: .5625rem; padding: .28rem .5rem; } }
 
 /* Floating add-to-cart pill */
-/* Sticky Add to Cart (2026-11-21 redesign): a floating card with room around it, lifted off the bottom edge.
-   Thumbnail, selected size, a large price for older shoppers, the guarantee as a quiet chip, one tall button. */
+/* Sticky Add to Cart (2026-11-22 layout): a floating card lifted off the bottom edge. One row: thumbnail, the selected
+   size with a quiet line under it (price per capsule, or "In stock"), then the price and a short Add button on the right. */
 .product-quick-add:not(#lp-none) { z-index: 20; left: .75rem; right: .75rem; bottom: calc(.75rem + env(safe-area-inset-bottom)); width: auto; padding: .75rem .75rem .75rem 1rem; border: 1px solid rgb(var(--lp-stone)); border-radius: 22px; background: rgb(255 255 255 / .97); -webkit-backdrop-filter: saturate(1.2) blur(12px); backdrop-filter: saturate(1.2) blur(12px); box-shadow: 0 18px 44px -20px rgb(var(--lp-ink) / .34), 0 2px 8px -2px rgb(var(--lp-ink) / .08); transform: translateY(16px); transition: opacity 260ms cubic-bezier(.16, 1, .3, 1), transform 260ms cubic-bezier(.16, 1, .3, 1), visibility 260ms; }
 .product-quick-add.is-visible:not(#lp-none) { transform: translateY(0); }
-.lp-sticky { display: flex; align-items: center; gap: .875rem; }
+.lp-sticky { display: flex; align-items: center; gap: .625rem; }
 .lp-sticky__media { flex: none; }
-.lp-sticky__media img { display: block; width: 56px; height: 56px; padding: 4px; border-radius: 14px; object-fit: contain; background: #fff; box-shadow: inset 0 0 0 1px rgb(var(--lp-stone)); }
-.lp-sticky__info { flex: 1; min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr); align-content: center; gap: .15rem; line-height: 1.2; }
-.lp-sticky__variant { font-size: .875rem; font-weight: 500; color: rgb(var(--lp-ink) / .78); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.lp-sticky__price { display: flex; flex-wrap: nowrap; align-items: baseline; column-gap: .5rem; white-space: nowrap; min-width: 0; }
-.lp-sticky__price strong { font-size: 1.375rem; font-weight: 800; line-height: 1.1; letter-spacing: -.015em; color: rgb(var(--lp-ink)); font-variant-numeric: tabular-nums; }
-.lp-sticky__unit { font-size: .8125rem; color: rgb(var(--lp-muted)); overflow: hidden; text-overflow: ellipsis; }
-.lp-sticky__note { display: none; white-space: nowrap; }
+.lp-sticky__media img { display: block; width: 44px; height: 44px; padding: 3px; border-radius: 12px; object-fit: contain; background: #fff; box-shadow: inset 0 0 0 1px rgb(var(--lp-stone)); }
+.lp-sticky__info { flex: 1; min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr); align-content: center; gap: .2rem; line-height: 1.2; }
+.lp-sticky__title { font-size: .9375rem; font-weight: 600; color: rgb(var(--lp-ink)); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lp-sticky__sub { font-size: .8125rem; color: rgb(var(--lp-muted)); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lp-sticky__price { flex: none; font-size: 1.125rem; font-weight: 800; line-height: 1.1; letter-spacing: -.015em; color: rgb(var(--lp-ink)); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .lp-sticky buy-buttons { flex: none; }
-.lp-sticky .button { width: auto; min-width: 9.5rem; min-height: 52px; padding-block: 0; padding-inline: 1.25rem; border-radius: 14px; font-size: .9375rem; white-space: nowrap; }
+.lp-sticky .button { width: auto; min-width: 5rem; min-height: 48px; padding-block: 0; padding-inline: 1.125rem; border-radius: 14px; font-size: .9375rem; white-space: nowrap; }
 .lp-sticky .button > * { white-space: nowrap; }
+@media (max-width: 359px) { .lp-sticky__media { display: none; } }
 .product-quick-add .button { --button-background-secondary: var(--lp-amber); --button-text-secondary: 31 30 32; }
 @media screen and (min-width: 700px) {
-  .product-quick-add:not(#lp-none) { left: 50%; right: auto; bottom: 2rem; width: max-content; min-width: min(40rem, calc(100vw - 3rem)); max-width: calc(100vw - 3rem); padding: .875rem .875rem .875rem 1rem; border-radius: 26px; transform: translate(-50%, 16px); }
+  .product-quick-add:not(#lp-none) { left: 50%; right: auto; bottom: 2rem; width: max-content; min-width: min(34rem, calc(100vw - 3rem)); max-width: calc(100vw - 3rem); padding: .875rem .875rem .875rem 1rem; border-radius: 26px; transform: translate(-50%, 16px); }
   .product-quick-add.is-visible:not(#lp-none) { transform: translate(-50%, 0); }
-  .lp-sticky { gap: 1.25rem; }
-  .lp-sticky__media img { width: 64px; height: 64px; border-radius: 16px; }
-  .lp-sticky__info { grid-template-columns: minmax(0, 1fr) auto; column-gap: 1.25rem; row-gap: .2rem; }
-  .lp-sticky__variant { grid-column: 1; font-size: .9375rem; }
-  .lp-sticky__price { grid-column: 1; }
-  .lp-sticky__price strong { font-size: 1.75rem; }
-  .lp-sticky__unit { font-size: .9375rem; }
-  .lp-sticky__note { display: inline-flex; grid-column: 2; grid-row: 1 / span 2; align-self: center; padding: .5rem .875rem; border-radius: 999px; background: rgb(var(--lp-sand)); color: rgb(var(--lp-ink)); font-size: .875rem; font-weight: 600; }
-  .lp-sticky .button { min-height: 60px; padding-inline: 2.25rem; border-radius: 16px; font-size: 1.0625rem; }
+  .lp-sticky { gap: 1.125rem; }
+  .lp-sticky__media img { width: 56px; height: 56px; border-radius: 14px; }
+  .lp-sticky__title { font-size: 1.0625rem; }
+  .lp-sticky__sub { font-size: .9375rem; }
+  .lp-sticky__price { font-size: 1.5rem; }
+  .lp-sticky .button { min-width: 7rem; min-height: 56px; padding-inline: 2rem; border-radius: 16px; font-size: 1.0625rem; }
 }
 
 /* Shared editorial accordion (PDP sections) */
@@ -923,8 +919,6 @@ html:has(x-drawer[open], cart-drawer[open], dialog[open]) .product-quick-add:not
 /* Variant card saving badge: on the top edge, brand amber with dark text (7.3:1). */
 .lp-vcard__badge--amber:not(#lp-none) { background: rgb(var(--lp-amber)); color: #1f1e20; font-size: .6875rem; font-weight: 800; letter-spacing: .08em; padding: .34rem .7rem; box-shadow: 0 0 0 2px #fff; font-variant-numeric: tabular-nums; }
 .shopify-section--main-product .variant-picker__option-values--cards:not(#lp-none) { padding-block-start: .85rem; }
-
-@media (max-width: 420px) { .lp-sticky__unit { display: none; } }
 
 /* Air between the variant cards and the purchase options: the Skio saving badge sits on the box's top edge. */
 .shopify-section--main-product .product-info > .product-info__block-item[data-block-type="skio-plan-picker"] { margin-block-start: 1.5rem; }

@@ -455,8 +455,9 @@
       "hsa_fsa": "Pay with HSA/FSA via Truemed"
     },
     "proof": {
-      "included": "Includes {{ product }}, rated {{ rating }} from {{ count }} reviews",
-      "brand": "{{ count }}+ customer reviews across LifePharm products"
+      "included": "Includes {{ product }} ({{ count }} reviews)",
+      "rating": "Rated {{ rating }} out of 5",
+      "brand": "{{ count }}+ reviews across LifePharm products"
     },
     "cart": {
       "title": "Your Cart",

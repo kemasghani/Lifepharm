@@ -52,7 +52,7 @@
         "mobile_image": "shopify://shop_images/lp-home-hero-family-mobile.jpg",
         "eyebrow": "Science-led wellbeing",
         "heading": "Feel good at <em>every age</em>",
-        "rating_text": "<strong>978+</strong> verified LAMININE reviews",
+        "rating_text": "<strong>[reviews]+</strong> verified LAMININE reviews",
         "text": "",
         "button_label": "Shop best sellers",
         "button_url": "/collections/all?sort_by=best-selling",
@@ -262,7 +262,7 @@
         "s1": {
           "type": "stat",
           "settings": {
-            "value": "978",
+            "value": "[reviews]",
             "suffix": "+",
             "label": "Verified LAMININE Reviews"
           }
@@ -320,7 +320,7 @@
         "liquid_EEHxxN": {
           "type": "liquid",
           "settings": {
-            "liquid": "<p class=\"lp-eyebrow\">978+ verified reviews</p><h2>Hear it from <em>our customers</em></h2>"
+            "liquid": "{%- assign lp_rv = all_products['laminine'].metafields.stamped.reviews_count.value | default: all_products['laminine'].metafields.stamped.reviews_count | plus: 0 | divided_by: 10 | times: 10 -%}<p class=\"lp-eyebrow\">{% if lp_rv > 0 %}{{ lp_rv }}+ verified LAMININE reviews{% else %}Verified reviews{% endif %}</p><h2>Hear it from <em>our customers</em></h2>"
           }
         }
       },
@@ -379,7 +379,7 @@
         "link_url": "/policies/refund-policy",
         "image": "shopify://shop_images/lp-hf-couple-walk.jpg",
         "caption": "",
-        "rating_text": "<strong>978+</strong> verified LAMININE reviews",
+        "rating_text": "<strong>[reviews]+</strong> verified LAMININE reviews",
         "show_payment_icons": true,
         "payment_label": "Accepted payment methods"
       }
@@ -547,7 +547,7 @@
         "button_url": "shopify://collections/all",
         "secondary_label": "Explore the science",
         "secondary_url": "shopify://pages/science",
-        "rating_text": "<strong>978+</strong> verified LAMININE reviews",
+        "rating_text": "<strong>[reviews]+</strong> verified LAMININE reviews",
         "image": "shopify://shop_images/cellnergy_sqaure.jpg",
         "float_1": "60-day guarantee",
         "float_2": "Clinically studied"

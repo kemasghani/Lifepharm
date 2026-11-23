@@ -1,7 +1,9 @@
 """Draft check that the offer and the price agree on a product page, at 1440 and 390. Read-only: nothing is added to the cart.
 For every size card: select it, then compare the card's "Save" badge with the Add to Cart button
-(struck price minus price must equal the badge; no badge means no struck price). Then, where the page has a
-Subscribe & Save option, select it and check the button strikes the one-time price, as the plan picker does.
+(struck price minus price must equal the badge; no badge means no struck price), with the plan picker's
+One-time row (same struck price) and with the sticky bar (same price per unit as the size card, or "In stock"
+when the size is not sold by the unit). Then, where the page has a Subscribe & Save option, select it and
+check the button and the subscription row both strike the one-time price.
 Output: one line per size and a screenshot of the buy box for the last size.
 
 Usage: uv run --no-project --with playwright python tools/qa/pdp_price_consistency_check.py <outdir> <base_url> <theme_id> <handle> ...
@@ -18,6 +20,11 @@ STATE = r"""() => { const info = document.querySelector('.shopify-section--main-
   const cards = [...info.querySelectorAll('.lp-vcard')], sel = cards.find(c => c.classList.contains('is-selected') || (c.control && c.control.checked) || (c.previousElementSibling && c.previousElementSibling.checked));
   const badge = sel ? sel.querySelector('.lp-vcard__badge--amber') : null, now = info.querySelector('.lp-atc .lp-pdp-price__now'), was = info.querySelector('.lp-atc .lp-pdp-price__was');
   return { theme: Shopify.theme.id, cards: cards.length, selected: sel ? t(sel.querySelector('.lp-vcard__name')) : null, badge: badge && /save/i.test(badge.textContent) ? t(badge) : null, badgeAmount: badge && /save/i.test(badge.textContent) ? num(badge.textContent) : 0,
+    cardUnit: sel && /per /.test(t(sel.querySelector('.lp-vcard__meta')) || '') ? num(t(sel.querySelector('.lp-vcard__meta'))) : null,
+    sticky: t(document.querySelector('.lp-sticky__sub')), stickyUnit: (() => { const u = document.querySelector('[data-lp-sticky-unit]'); return u ? num(u.textContent) : null })(),
+    rows: (() => { const pk = info.querySelector('skio-plan-picker'), root = pk && pk.shadowRoot; if (!root) return null;
+      return [...root.querySelectorAll('.group-container')].map(g => ({ title: t(g.querySelector('.group-title')), selected: g.classList.contains('group-container--selected'), struck: g.querySelector('.skio-price s') ? num(g.querySelector('.skio-price s').textContent) : null,
+        price: (() => { const p = g.querySelector('.skio-price'); if (!p) return null; const c = p.cloneNode(true); c.querySelectorAll('s').forEach(x => x.remove()); return num(c.textContent) })() })) })(),
     now: now ? num(now.textContent) : null, was: was && !was.hidden && was.getClientRects().length ? num(was.textContent) : null, oneTime: was ? num(was.dataset.price) : null, hscroll: document.documentElement.scrollWidth > innerWidth + 1 } }"""
 
 async def main():
@@ -41,17 +48,21 @@ async def main():
                     diff = round((st['was'] or st['now']) - st['now'], 2)
                     # the badge is rounded down to a whole currency unit, a merchant compare-at price can carry cents
                     good = str(st['theme']) == TID and st['now'] and not st['hscroll'] and ((st['badgeAmount'] == 0 and st['was'] is None) or (st['was'] is not None and st['badgeAmount'] == int(diff + 1e-6))) if n else (str(st['theme']) == TID and (st['was'] is None or st['was'] > st['now']))
+                    one = next((r for r in (st['rows'] or []) if r['title'] and 'one' in r['title'].lower()), None)
+                    if n and one: good = good and one['struck'] == st['was'] and one['price'] == st['now']
+                    if n: good = good and ((st['cardUnit'] is None and st['stickyUnit'] is None and st['sticky'] == 'In stock') or (st['cardUnit'] is not None and st['stickyUnit'] == st['cardUnit']))
                     plan = None
                     if await picker.count():
                         try:
                             await picker.get_by_text(re.compile('Subscribe'), exact=False).first.click(timeout=4000); await page.wait_for_timeout(1800)
-                            sp = await page.evaluate(STATE); plan = {'now': sp['now'], 'was': sp['was'], 'oneTime': sp['oneTime']}
-                            if sp['now'] and sp['oneTime'] and sp['now'] < sp['oneTime'] - 0.001: good = good and sp['was'] == sp['oneTime']
+                            sp = await page.evaluate(STATE); sub = next((r for r in (sp['rows'] or []) if r['selected']), None)
+                            plan = {'now': sp['now'], 'was': sp['was'], 'oneTime': sp['oneTime'], 'row': [sub['struck'], sub['price']] if sub else None}
+                            if sp['now'] and sp['oneTime'] and sp['now'] < sp['oneTime'] - 0.001: good = good and sp['was'] == sp['oneTime'] and bool(sub) and sub['struck'] == sp['oneTime'] and sub['price'] == sp['now']
                             await picker.get_by_text(re.compile('One-time'), exact=False).first.click(timeout=4000); await page.wait_for_timeout(1500)
                             back = await page.evaluate(STATE); good = good and back['was'] == st['was'] and back['now'] == st['now']
                         except Exception as e: plan = {'note': 'no plan option: ' + str(e)[:50]}
                     ok = ok and bool(good)
-                    print(('PASS ' if good else 'FAIL ') + json.dumps({'viewport': name, 'handle': handle, 'size': st['selected'], 'badge': st['badge'], 'price': st['now'], 'struck': st['was'], 'struckMinusPrice': diff if st['was'] else 0, 'onPlan': plan}))
+                    print(('PASS ' if good else 'FAIL ') + json.dumps({'viewport': name, 'handle': handle, 'size': st['selected'], 'badge': st['badge'], 'price': st['now'], 'struck': st['was'], 'struckMinusPrice': diff if st['was'] else 0, 'oneTimeRow': [one['struck'], one['price']] if one else None, 'cardPerUnit': st['cardUnit'], 'sticky': st['sticky'], 'onPlan': plan}))
                 await page.evaluate("document.querySelector('.shopify-section--main-product .lp-atc')?.scrollIntoView({block: 'center'})"); await page.wait_for_timeout(300)
                 await page.screenshot(path=os.path.join(OUT, f'{TAG}-price-{handle}-{name}.png'))
             await ctx.close()

@@ -833,11 +833,13 @@ body:has(.shopify-section--main-product) .shopify-section--text-with-icons:not(#
 .lp-cempty__link { display: inline-flex; align-items: center; min-height: 44px; font-size: .875rem; font-weight: 600; color: rgb(var(--lp-ink)); text-decoration: underline; text-underline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { .cart-drawer * { transition: none !important; } }
 
-/* ---------- Buy-box dropdown content (D-066): lists sit inside the text column, markers hang in the indent ---------- */
-.shopify-section--main-product .product-info__accordion .prose :is(ul, ol) { display: grid; row-gap: .625em; margin-inline: 0; padding: 0; list-style: none; }
+/* ---------- Buy-box dropdown content (D-066): lists sit inside the text column, markers hang in the indent.
+   !important: most product templates carry merchant custom CSS scoped to the section id
+   (.prose ul { list-style: square } and a 1.4em row gap), which would otherwise win. ---------- */
+.shopify-section--main-product .product-info__accordion .prose :is(ul, ol) { display: grid; row-gap: .625em !important; margin-inline: 0; padding: 0; list-style: none !important; }
 .shopify-section--main-product .product-info__accordion .prose ul > li { position: relative; padding-inline-start: 1.375rem; }
 .shopify-section--main-product .product-info__accordion .prose ul > li::before { content: ""; position: absolute; inset-inline-start: .25rem; top: calc(.85em - 3px); width: 6px; height: 6px; border-radius: 50%; background: rgb(var(--lp-amber)); }
-.shopify-section--main-product .product-info__accordion .prose ol { counter-reset: lp-step; row-gap: .75em; }
+.shopify-section--main-product .product-info__accordion .prose ol { counter-reset: lp-step; row-gap: .75em !important; }
 .shopify-section--main-product .product-info__accordion .prose ol > li { position: relative; min-height: 1.625rem; padding-inline-start: 2.375rem; counter-increment: lp-step; }
 .shopify-section--main-product .product-info__accordion .prose ol > li::before { content: counter(lp-step); position: absolute; inset-inline-start: 0; top: calc(.85em - .8125rem); display: grid; place-items: center; width: 1.625rem; height: 1.625rem; border-radius: 50%; background: rgb(var(--lp-amber)); color: #1F1E20; font-size: .75rem; font-weight: 700; line-height: 1; }
 

@@ -86,7 +86,7 @@
     endif
   endif
 -%}
-<div class="lp-rating-row{% if proof_kind != blank %} lp-rating-row--proof{% endif %}">
+<div class="lp-rating-row{% if proof_kind != blank %} lp-rating-row--proof{% endif %}"{% if product.featured_media %} data-lp-product-image="{{ product.featured_media | image_url: width: 200 }}"{% endif %}>
   {%- if lp_face_list.size > 0 -%}
     <a class="lp-rating-row__faces" href="#shopify-product-reviews" aria-hidden="true" tabindex="-1">
       {%- for f in lp_face_list -%}

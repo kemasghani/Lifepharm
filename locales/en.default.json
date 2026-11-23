@@ -454,6 +454,9 @@
     "pay": {
       "hsa_fsa": "Pay with HSA/FSA via Truemed"
     },
+    "box": {
+      "view": "View photo: {{ item }}"
+    },
     "proof": {
       "included": "Includes {{ product }} ({{ count }} reviews)",
       "rating": "Rated {{ rating }} out of 5",

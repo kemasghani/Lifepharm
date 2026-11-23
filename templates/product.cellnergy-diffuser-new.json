@@ -122,24 +122,22 @@
         },
         "collapsible_text_DKpjzh": {
           "type": "collapsible_text",
-          "disabled": true,
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "title": "The Benefit",
-            "content": "{{ product.metafields.custom.text_benefits | metafield_tag }}",
-            "page": ""
+            "page": "",
+            "title": "Benefits",
+            "content": "{{ product.metafields.custom.text_benefits | metafield_tag }}"
           }
         },
         "collapsible_text_KbRjKK": {
           "type": "collapsible_text",
-          "disabled": true,
           "settings": {
             "icon": "none",
             "icon_width": 20,
+            "page": "",
             "title": "Ingredients",
-            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}",
-            "page": ""
+            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}"
           }
         },
         "collapsible_text_QcYtDR": {
@@ -166,13 +164,13 @@
         },
         "collapsible_text_PDdyLw": {
           "type": "collapsible_text",
-          "disabled": true,
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "title": "How to Use",
-            "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>",
-            "page": ""
+            "page": "",
+            "title": "How to Replace",
+            "lp_how_steps": false,
+            "content": "<ol><li>Remove the old diffuser from the base of your bottle.</li><li>Rinse the new diffuser under running water for 30 seconds.</li><li>Insert it securely into the base and tighten.</li><li>Fill with filtered or purified water, wait 15 minutes, and enjoy.</li></ol><p>Rinse the diffuser under running water after each refill. Hand wash the bottle only, never in the dishwasher.</p>"
           }
         },
         "collapsible_text_kaarby": {
@@ -260,6 +258,16 @@
           "settings": {
             "liquid": "{% render 'lp-pdp-summary', product: product %}"
           }
+        },
+        "collapsible_text_XwdWte": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "page": "",
+            "title": "60-Day Money-Back Guarantee",
+            "content": "<p>All of our products come with a 60-Day Money-Back Guarantee. </p><p>Try it, and if it doesn’t work, it's on us! Our hassle-free return policy offers a 100% money-back guarantee within 60 days of delivery.</p>"
+          }
         }
       },
       "block_order": [
@@ -274,15 +282,16 @@
         "quantity_selector",
         "text_VjR6WU",
         "description",
-        "collapsible_text_DKpjzh",
-        "collapsible_text_KbRjKK",
         "collapsible_text_QcYtDR",
         "collapsible_text_PR3cy8",
-        "collapsible_text_PDdyLw",
         "collapsible_text_kaarby",
         "buy_buttons",
         "payment_terms",
         "liquid_6MPLpe",
+        "collapsible_text_DKpjzh",
+        "collapsible_text_KbRjKK",
+        "collapsible_text_PDdyLw",
+        "collapsible_text_XwdWte",
         "offer_DWbnz9",
         "tolstoy_shoppable_video_quiz_stories_block_8Q3CqK",
         "associated_products_mWz6hB",
@@ -436,59 +445,6 @@
         "card_2"
       ]
     },
-    "lp_how": {
-      "type": "lp-pdp-split",
-      "settings": {
-        "mf_image": "image_ingredients",
-        "caption": "Swap, rinse, fill",
-        "image_fit": "cover",
-        "media_position": "start",
-        "background": "none",
-        "eyebrow": "How to Replace",
-        "heading": "Swap It in a Minute",
-        "text": ""
-      },
-      "blocks": {
-        "step_1": {
-          "type": "step",
-          "settings": {
-            "text": "<p>Remove the old diffuser from the base of your bottle.</p>"
-          }
-        },
-        "step_2": {
-          "type": "step",
-          "settings": {
-            "text": "<p>Rinse the new diffuser under running water for 30 seconds.</p>"
-          }
-        },
-        "step_3": {
-          "type": "step",
-          "settings": {
-            "text": "<p>Insert it securely into the base and tighten.</p>"
-          }
-        },
-        "step_4": {
-          "type": "step",
-          "settings": {
-            "text": "<p>Fill with filtered or purified water, wait 15 minutes, and enjoy.</p>"
-          }
-        },
-        "note_5": {
-          "type": "note",
-          "settings": {
-            "icon": "drop",
-            "text": "Rinse the diffuser under running water after each refill. Hand wash the bottle only, never in the dishwasher."
-          }
-        }
-      },
-      "block_order": [
-        "step_1",
-        "step_2",
-        "step_3",
-        "step_4",
-        "note_5"
-      ]
-    },
     "lp_timeline": {
       "type": "lp-pdp-timeline",
       "settings": {
@@ -624,7 +580,6 @@
     "lp_overview",
     "lp_tech",
     "lp_compare",
-    "lp_how",
     "lp_timeline",
     "lp_faq",
     "17128952497cac699c"

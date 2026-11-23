@@ -73,35 +73,32 @@
         },
         "collapsible_text_XwdWte": {
           "type": "collapsible_text",
-          "disabled": true,
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "title": "LifePharm Guarantee",
-            "content": "<p>All of our products come with a 60-Day Money-Back Guarantee. </p><p>Try it, and if it doesn’t work, it's on us! Our hassle-free return policy offers a 100% money-back guarantee within 60 days of delivery.</p>",
-            "page": ""
+            "page": "",
+            "title": "60-Day Money-Back Guarantee",
+            "content": "<p>All of our products come with a 60-Day Money-Back Guarantee. </p><p>Try it, and if it doesn’t work, it's on us! Our hassle-free return policy offers a 100% money-back guarantee within 60 days of delivery.</p>"
           }
         },
         "collapsible_text_DKpjzh": {
           "type": "collapsible_text",
-          "disabled": true,
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "title": "The Benefit",
-            "content": "{{ product.metafields.custom.text_benefits | metafield_tag }}",
-            "page": ""
+            "page": "",
+            "title": "Benefits",
+            "content": "{{ product.metafields.custom.text_benefits | metafield_tag }}"
           }
         },
         "collapsible_text_KbRjKK": {
           "type": "collapsible_text",
-          "disabled": true,
           "settings": {
             "icon": "none",
             "icon_width": 20,
+            "page": "",
             "title": "Ingredients",
-            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}",
-            "page": ""
+            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}"
           }
         },
         "collapsible_text_QcYtDR": {
@@ -128,13 +125,13 @@
         },
         "collapsible_text_PDdyLw": {
           "type": "collapsible_text",
-          "disabled": true,
           "settings": {
             "icon": "none",
             "icon_width": 20,
+            "page": "",
             "title": "How to Use",
             "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>",
-            "page": ""
+            "lp_how_steps": true
           }
         },
         "collapsible_text_kaarby": {
@@ -170,20 +167,6 @@
           "type": "shopify://apps/tolstoy-ads-image-video/blocks/stories-block/06fa8282-42ff-403e-b67c-1936776aed11",
           "settings": {
             "publishId": "3ew6rhswme0cg"
-          }
-        },
-        "offer_KHjNfD": {
-          "type": "offer",
-          "settings": {
-            "text_alignment": "start",
-            "icon_position": "aligned",
-            "icon": "picto-coupon",
-            "custom_icon": "shopify://shop_images/money_back_guarantee_b07d6484-75e3-4bec-be50-16a3a02ec712.png",
-            "icon_width": 80,
-            "title": "LifePharm Guarantee",
-            "content": "<p>Try it, and if it doesn't work, its on us! Our hassle-free return policy offers a 100% money back guarantee within 60 days of delivery.</p>",
-            "background": "#f9f9f9",
-            "text_color": "#181818"
           }
         },
         "associated_products_mWz6hB": {
@@ -256,6 +239,28 @@
             "liquid": "{%- assign lp_v = product.selected_or_first_available_variant -%}{%- assign lp_base = lp_v.compare_at_price | default: lp_v.price -%}<div class=\"lp-pdp-price\" aria-live=\"polite\"><span class=\"lp-pdp-price__now price-item--regular\">{{ lp_v.price | money }}</span><s class=\"lp-pdp-price__was\" data-base=\"{{ lp_base | money_without_currency }}\" {% unless lp_v.compare_at_price > lp_v.price %}hidden{% endunless %}>{{ lp_base | money }}</s><span class=\"lp-pdp-price__tag\" hidden></span></div>"
           },
           "disabled": true
+        },
+        "lp_box": {
+          "type": "lp_box",
+          "settings": {
+            "title": "What's in the Box",
+            "item_1": "Cellnergy Wellness Stand",
+            "media_1": 7,
+            "item_2": "Portable carry bag",
+            "media_2": 5,
+            "item_3": "Assembly hardware",
+            "media_3": 1
+          }
+        },
+        "lp_specs": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "page": "",
+            "title": "Specifications",
+            "content": "<ul><li><strong>Material:</strong> High-quality steel</li><li><strong>Surface treatment:</strong> Electrophoretic anti-rust coating</li><li><strong>Height range:</strong> 60cm to 160cm</li><li><strong>Design:</strong> Foldable tripod</li><li><strong>Compatible with:</strong> Cellnergy Wellness Device (sold separately)</li></ul>"
+          }
         }
       },
       "block_order": [
@@ -271,18 +276,19 @@
         "quantity_selector",
         "text_VjR6WU",
         "description",
-        "collapsible_text_XwdWte",
-        "collapsible_text_DKpjzh",
-        "collapsible_text_KbRjKK",
         "collapsible_text_QcYtDR",
         "collapsible_text_PR3cy8",
-        "collapsible_text_PDdyLw",
         "collapsible_text_kaarby",
         "buy_buttons",
         "payment_terms",
+        "collapsible_text_DKpjzh",
+        "collapsible_text_KbRjKK",
+        "collapsible_text_PDdyLw",
+        "lp_box",
+        "lp_specs",
+        "collapsible_text_XwdWte",
         "text_qkxir3",
         "tolstoy_shoppable_video_ugc_stories_block_hnKrMy",
-        "offer_KHjNfD",
         "associated_products_mWz6hB",
         "offer_UnQirT",
         "offer_aJbbCW",
@@ -443,71 +449,6 @@
         "text": "<p>The research behind Cellnergy is built on consistent, daily use. The stand removes the biggest barrier to that consistency: holding the device in position for a full session, every day.</p><p>People who complete full, uninterrupted sessions are the ones who feel the difference. The stand makes that the default, not the exception.</p>"
       }
     },
-    "lp_specs": {
-      "type": "lp-pdp-split",
-      "settings": {
-        "image": "shopify://shop_images/CellnergyStand-Overview.png",
-        "caption": "Stand, mount and fittings",
-        "image_fit": "contain",
-        "media_position": "start",
-        "background": "none",
-        "eyebrow": "Specifications",
-        "heading": "What’s in the Box",
-        "text": ""
-      },
-      "blocks": {
-        "row_1": {
-          "type": "row",
-          "settings": {
-            "label": "In the box",
-            "value": "<p>Cellnergy Wellness Stand, portable carry bag, assembly hardware</p>"
-          }
-        },
-        "row_2": {
-          "type": "row",
-          "settings": {
-            "label": "Material",
-            "value": "<p>High-quality steel</p>"
-          }
-        },
-        "row_3": {
-          "type": "row",
-          "settings": {
-            "label": "Surface treatment",
-            "value": "<p>Electrophoretic anti-rust coating</p>"
-          }
-        },
-        "row_4": {
-          "type": "row",
-          "settings": {
-            "label": "Height range",
-            "value": "<p>60cm to 160cm</p>"
-          }
-        },
-        "row_5": {
-          "type": "row",
-          "settings": {
-            "label": "Design",
-            "value": "<p>Foldable tripod</p>"
-          }
-        },
-        "row_6": {
-          "type": "row",
-          "settings": {
-            "label": "Compatible with",
-            "value": "<p>Cellnergy Wellness Device (sold separately)</p>"
-          }
-        }
-      },
-      "block_order": [
-        "row_1",
-        "row_2",
-        "row_3",
-        "row_4",
-        "row_5",
-        "row_6"
-      ]
-    },
     "17128952497cac699c": {
       "type": "apps",
       "blocks": {
@@ -543,7 +484,6 @@
     "lp_overview",
     "lp_features",
     "lp_why",
-    "lp_specs",
     "17128952497cac699c"
   ]
 }

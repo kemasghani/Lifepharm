@@ -73,35 +73,32 @@
         },
         "collapsible_text_XwdWte": {
           "type": "collapsible_text",
-          "disabled": true,
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "title": "LifePharm Guarantee",
-            "content": "<p>All of our products come with a 60-Day Money-Back Guarantee. </p><p>Try it, and if it doesn’t work, it's on us! Our hassle-free return policy offers a 100% money-back guarantee within 60 days of delivery.</p>",
-            "page": ""
+            "page": "",
+            "title": "60-Day Money-Back Guarantee",
+            "content": "<p>All of our products come with a 60-Day Money-Back Guarantee. </p><p>Try it, and if it doesn’t work, it's on us! Our hassle-free return policy offers a 100% money-back guarantee within 60 days of delivery.</p>"
           }
         },
         "collapsible_text_DKpjzh": {
           "type": "collapsible_text",
-          "disabled": true,
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "title": "The Benefit",
-            "content": "{{ product.metafields.custom.text_benefits | metafield_tag }}",
-            "page": ""
+            "page": "",
+            "title": "Benefits",
+            "content": "{{ product.metafields.custom.text_benefits | metafield_tag }}"
           }
         },
         "collapsible_text_KbRjKK": {
           "type": "collapsible_text",
-          "disabled": true,
           "settings": {
             "icon": "none",
             "icon_width": 20,
+            "page": "",
             "title": "Ingredients",
-            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}",
-            "page": ""
+            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}"
           }
         },
         "collapsible_text_QcYtDR": {
@@ -128,13 +125,13 @@
         },
         "collapsible_text_PDdyLw": {
           "type": "collapsible_text",
-          "disabled": true,
           "settings": {
             "icon": "none",
             "icon_width": 20,
+            "page": "",
             "title": "How to Use",
-            "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>",
-            "page": ""
+            "lp_how_steps": false,
+            "content": "<ol><li>Choose a setting: 1 for high speed and low heat, 2 for low speed and high heat, or 3 for medium speed and high heat.</li><li>Hold the device 20 to 30 cm (8 to 12 inches) away from your body.</li><li>Move it in slow sweeping or circular motions, over bare skin or clothing.</li><li>Spend 10 minutes on each area, in the morning or evening.</li></ol><p>Use in 10-minute intervals, then switch the device off for at least 5 minutes to cool down.</p><p>Not for use on open wounds, near metal implants, or during pregnancy or menstruation.</p>"
           }
         },
         "collapsible_text_kaarby": {
@@ -169,20 +166,6 @@
           "type": "shopify://apps/tolstoy-shoppable-video-quiz/blocks/stories-block/06fa8282-42ff-403e-b67c-1936776aed11",
           "settings": {
             "publishId": "3ew6rhswme0cg"
-          }
-        },
-        "offer_KHjNfD": {
-          "type": "offer",
-          "settings": {
-            "text_alignment": "start",
-            "icon_position": "aligned",
-            "icon": "picto-coupon",
-            "custom_icon": "shopify://shop_images/money_back_guarantee_b07d6484-75e3-4bec-be50-16a3a02ec712.png",
-            "icon_width": 80,
-            "title": "LifePharm Guarantee",
-            "content": "<p>Try it, and if it doesn't work, its on us! Our hassle-free return policy offers a 100% money back guarantee within 60 days of delivery.</p>",
-            "background": "#f9f9f9",
-            "text_color": "#181818"
           }
         },
         "associated_products_mWz6hB": {
@@ -255,6 +238,16 @@
             "liquid": "{%- assign lp_v = product.selected_or_first_available_variant -%}{%- assign lp_base = lp_v.compare_at_price | default: lp_v.price -%}<div class=\"lp-pdp-price\" aria-live=\"polite\"><span class=\"lp-pdp-price__now price-item--regular\">{{ lp_v.price | money }}</span><s class=\"lp-pdp-price__was\" data-base=\"{{ lp_base | money_without_currency }}\" {% unless lp_v.compare_at_price > lp_v.price %}hidden{% endunless %}>{{ lp_base | money }}</s><span class=\"lp-pdp-price__tag\" hidden></span></div>"
           },
           "disabled": true
+        },
+        "lp_specs": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "page": "",
+            "title": "Specifications",
+            "content": "<ul><li><strong>Certifications:</strong> Patent-pending, CE, UL, ISO 9001, ISO 14001, 9S Methodology</li><li><strong>Power:</strong> 110–127V or 220–240V, 50/60Hz, 900W input</li><li><strong>Warranty:</strong> One year from the date of purchase</li></ul>"
+          }
         }
       },
       "block_order": [
@@ -270,18 +263,18 @@
         "quantity_selector",
         "text_VjR6WU",
         "description",
-        "collapsible_text_XwdWte",
-        "collapsible_text_DKpjzh",
-        "collapsible_text_KbRjKK",
         "collapsible_text_QcYtDR",
         "collapsible_text_PR3cy8",
-        "collapsible_text_PDdyLw",
         "collapsible_text_kaarby",
         "buy_buttons",
         "payment_terms",
+        "collapsible_text_DKpjzh",
+        "collapsible_text_KbRjKK",
+        "collapsible_text_PDdyLw",
+        "lp_specs",
+        "collapsible_text_XwdWte",
         "text_qkxir3",
         "tolstoy_shoppable_video_ugc_stories_block_hnKrMy",
-        "offer_KHjNfD",
         "associated_products_mWz6hB",
         "offer_UnQirT",
         "offer_aJbbCW",
@@ -477,91 +470,6 @@
         "card_6"
       ]
     },
-    "lp_how": {
-      "type": "lp-pdp-split",
-      "settings": {
-        "mf_image": "image_ingredients",
-        "caption": "Hold it 20 to 30 cm from your skin",
-        "image_fit": "cover",
-        "media_position": "start",
-        "background": "none",
-        "eyebrow": "How to Use",
-        "heading": "10 Minutes on Each Area",
-        "text": ""
-      },
-      "blocks": {
-        "step_1": {
-          "type": "step",
-          "settings": {
-            "text": "<p>Choose a setting: 1 for high speed and low heat, 2 for low speed and high heat, or 3 for medium speed and high heat.</p>"
-          }
-        },
-        "step_2": {
-          "type": "step",
-          "settings": {
-            "text": "<p>Hold the device 20 to 30 cm (8 to 12 inches) away from your body.</p>"
-          }
-        },
-        "step_3": {
-          "type": "step",
-          "settings": {
-            "text": "<p>Move it in slow sweeping or circular motions, over bare skin or clothing.</p>"
-          }
-        },
-        "step_4": {
-          "type": "step",
-          "settings": {
-            "text": "<p>Spend 10 minutes on each area, in the morning or evening.</p>"
-          }
-        },
-        "note_5": {
-          "type": "note",
-          "settings": {
-            "icon": "clock",
-            "text": "Use in 10-minute intervals, then switch the device off for at least 5 minutes to cool down."
-          }
-        },
-        "note_6": {
-          "type": "note",
-          "settings": {
-            "icon": "shield",
-            "text": "Not for use on open wounds, near metal implants, or during pregnancy or menstruation."
-          }
-        },
-        "row_7": {
-          "type": "row",
-          "settings": {
-            "label": "Certifications",
-            "value": "<p>Patent-pending, CE, UL, ISO 9001, ISO 14001, 9S Methodology</p>"
-          }
-        },
-        "row_8": {
-          "type": "row",
-          "settings": {
-            "label": "Power",
-            "value": "<p>110–127V or 220–240V, 50/60Hz, 900W input</p>"
-          }
-        },
-        "row_9": {
-          "type": "row",
-          "settings": {
-            "label": "Warranty",
-            "value": "<p>One year from the date of purchase</p>"
-          }
-        }
-      },
-      "block_order": [
-        "step_1",
-        "step_2",
-        "step_3",
-        "step_4",
-        "note_5",
-        "note_6",
-        "row_7",
-        "row_8",
-        "row_9"
-      ]
-    },
     "lp_timeline": {
       "type": "lp-pdp-timeline",
       "settings": {
@@ -672,7 +580,6 @@
     "lp_overview",
     "lp_tech",
     "lp_benefits",
-    "lp_how",
     "lp_timeline",
     "lp_faq",
     "17128952497cac699c"

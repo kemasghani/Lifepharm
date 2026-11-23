@@ -86,35 +86,32 @@
         },
         "collapsible_text_XwdWte": {
           "type": "collapsible_text",
-          "disabled": true,
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "title": "LifePharm Guarantee",
-            "content": "<p>All of our products come with a 60-Day Money-Back Guarantee. </p><p>Try it, and if it doesn’t work, it's on us! Our hassle-free return policy offers a 100% money-back guarantee within 60 days of delivery.</p>",
-            "page": ""
+            "page": "",
+            "title": "60-Day Money-Back Guarantee",
+            "content": "<p>All of our products come with a 60-Day Money-Back Guarantee. </p><p>Try it, and if it doesn’t work, it's on us! Our hassle-free return policy offers a 100% money-back guarantee within 60 days of delivery.</p>"
           }
         },
         "collapsible_text_DKpjzh": {
           "type": "collapsible_text",
-          "disabled": true,
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "title": "The Benefit",
-            "content": "{{ product.metafields.custom.text_benefits | metafield_tag }}",
-            "page": ""
+            "page": "",
+            "title": "Benefits",
+            "content": "{{ product.metafields.custom.text_benefits | metafield_tag }}"
           }
         },
         "collapsible_text_KbRjKK": {
           "type": "collapsible_text",
-          "disabled": true,
           "settings": {
             "icon": "none",
             "icon_width": 20,
+            "page": "",
             "title": "Ingredients",
-            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}",
-            "page": ""
+            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}"
           }
         },
         "collapsible_text_QcYtDR": {
@@ -141,13 +138,13 @@
         },
         "collapsible_text_PDdyLw": {
           "type": "collapsible_text",
-          "disabled": true,
           "settings": {
             "icon": "none",
             "icon_width": 20,
+            "page": "",
             "title": "How to Use",
-            "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>",
-            "page": ""
+            "lp_how_steps": false,
+            "content": "<ol><li>Fill the bottle with filtered or purified drinking water.</li><li>Leave it for about 15 minutes while the minerals condition the water.</li><li>Drink throughout the day as part of your hydration routine.</li></ol><p>Before first use: wash the bottle 2–3 times with mild dish soap, rinse the diffuser, then fill, shake and empty until the water runs clear.</p><p>Replace the Mineral Activation Diffuser about every 2 months for the best performance.</p>"
           }
         },
         "collapsible_text_kaarby": {
@@ -235,6 +232,16 @@
             "liquid": "{%- assign lp_v = product.selected_or_first_available_variant -%}{%- assign lp_base = lp_v.compare_at_price | default: lp_v.price -%}<div class=\"lp-pdp-price\" aria-live=\"polite\"><span class=\"lp-pdp-price__now price-item--regular\">{{ lp_v.price | money }}</span><s class=\"lp-pdp-price__was\" data-base=\"{{ lp_base | money_without_currency }}\" {% unless lp_v.compare_at_price > lp_v.price %}hidden{% endunless %}>{{ lp_base | money }}</s><span class=\"lp-pdp-price__tag\" hidden></span></div>"
           },
           "disabled": true
+        },
+        "lp_specs": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "page": "",
+            "title": "Specifications",
+            "content": "<ul><li><strong>Care:</strong> Hand wash only and air-dry with the lid open. Do not microwave, freeze or fill with boiling liquids.</li><li><strong>Temperature:</strong> Cold and warm water up to 60°C / 140°F</li><li><strong>Material:</strong> BPA-free, medical-grade Tritan™</li></ul>"
+          }
         }
       },
       "block_order": [
@@ -249,16 +256,17 @@
         "text_qpwKPK",
         "text_VjR6WU",
         "description",
-        "collapsible_text_XwdWte",
-        "collapsible_text_DKpjzh",
-        "collapsible_text_KbRjKK",
         "collapsible_text_QcYtDR",
         "collapsible_text_PR3cy8",
-        "collapsible_text_PDdyLw",
         "collapsible_text_kaarby",
         "buy_buttons",
         "payment_terms",
         "liquid_zVwUQ4",
+        "collapsible_text_DKpjzh",
+        "collapsible_text_KbRjKK",
+        "collapsible_text_PDdyLw",
+        "lp_specs",
+        "collapsible_text_XwdWte",
         "offer_DWbnz9",
         "tolstoy_shoppable_video_quiz_stories_block_8Q3CqK",
         "associated_products_mWz6hB",
@@ -386,84 +394,6 @@
         "card_2",
         "card_3",
         "card_4"
-      ]
-    },
-    "lp_how": {
-      "type": "lp-pdp-split",
-      "settings": {
-        "mf_image": "image_ingredients",
-        "caption": "Fill, condition, drink",
-        "image_fit": "cover",
-        "media_position": "start",
-        "background": "none",
-        "eyebrow": "How to Use",
-        "heading": "Fill, Wait 15 Minutes, Drink",
-        "text": ""
-      },
-      "blocks": {
-        "step_1": {
-          "type": "step",
-          "settings": {
-            "text": "<p>Fill the bottle with filtered or purified drinking water.</p>"
-          }
-        },
-        "step_2": {
-          "type": "step",
-          "settings": {
-            "text": "<p>Leave it for about 15 minutes while the minerals condition the water.</p>"
-          }
-        },
-        "step_3": {
-          "type": "step",
-          "settings": {
-            "text": "<p>Drink throughout the day as part of your hydration routine.</p>"
-          }
-        },
-        "note_4": {
-          "type": "note",
-          "settings": {
-            "icon": "drop",
-            "text": "Before first use: wash the bottle 2–3 times with mild dish soap, rinse the diffuser, then fill, shake and empty until the water runs clear."
-          }
-        },
-        "note_5": {
-          "type": "note",
-          "settings": {
-            "icon": "clock",
-            "text": "Replace the Mineral Activation Diffuser about every 2 months for the best performance."
-          }
-        },
-        "row_6": {
-          "type": "row",
-          "settings": {
-            "label": "Care",
-            "value": "<p>Hand wash only and air-dry with the lid open. Do not microwave, freeze or fill with boiling liquids.</p>"
-          }
-        },
-        "row_7": {
-          "type": "row",
-          "settings": {
-            "label": "Temperature",
-            "value": "<p>Cold and warm water up to 60°C / 140°F</p>"
-          }
-        },
-        "row_8": {
-          "type": "row",
-          "settings": {
-            "label": "Material",
-            "value": "<p>BPA-free, medical-grade Tritan™</p>"
-          }
-        }
-      },
-      "block_order": [
-        "step_1",
-        "step_2",
-        "step_3",
-        "note_4",
-        "note_5",
-        "row_6",
-        "row_7",
-        "row_8"
       ]
     },
     "lp_timeline": {
@@ -616,7 +546,6 @@
     "main",
     "lp_overview",
     "lp_tech",
-    "lp_how",
     "lp_timeline",
     "lp_faq",
     "apps_UhARyj"

@@ -77,21 +77,36 @@
           </button>
 
           {%- if settings.lp_promo_heading != blank -%}
+            {%- comment -%}
+              Promo card: one row in the same shape as the product rows below it (picture, text, chevron) on the warm sand surface.
+              The guarantee badge is the picture and stands in for the heading, which stays as its text alternative.
+              The first sentence of the text reads as the lead line.
+            {%- endcomment -%}
+            {%- liquid
+              assign promo_parts = settings.lp_promo_text | split: '. '
+              assign promo_lead = ''
+              assign promo_rest = settings.lp_promo_text
+              if promo_parts.size > 1
+                assign promo_lead = promo_parts.first | append: '.'
+                assign promo_rest = settings.lp_promo_text | remove_first: promo_lead | strip
+              endif
+            -%}
             <a class="lp-menu__promo" href="{{ settings.lp_promo_link | default: all_url }}">
-              <span class="lp-menu__promo-copy">
-                {%- comment -%}A promo logo (the brand's 60-day guarantee badge) stands in for the heading; the heading stays as its text alternative.{%- endcomment -%}
+              <span class="lp-menu__promo-media">
                 {%- if settings.lp_promo_logo != blank -%}
-                  {{ settings.lp_promo_logo | image_url: width: 448 | image_tag: loading: 'lazy', class: 'lp-menu__promo-logo', widths: '224,336,448', sizes: '112px', alt: settings.lp_promo_heading }}
+                  {{ settings.lp_promo_logo | image_url: width: 384 | image_tag: loading: 'lazy', class: 'lp-menu__promo-logo', widths: '128,192,256,384', sizes: '64px', alt: settings.lp_promo_heading }}
+                {%- elsif settings.lp_promo_image != blank -%}
+                  {{ settings.lp_promo_image | image_url: width: 240 | image_tag: loading: 'lazy', class: 'lp-menu__promo-img', alt: '' }}
                 {%- else -%}
-                  <span class="lp-menu__promo-title">{{ settings.lp_promo_heading | escape }}</span>
+                  <img class="lp-menu__promo-img" src="{{ 'lp-menu-promo.png' | asset_url }}" alt="" width="120" height="145" loading="lazy">
                 {%- endif -%}
-                {%- if settings.lp_promo_text != blank -%}<span class="lp-menu__promo-text">{{ settings.lp_promo_text | escape }}</span>{%- endif -%}
               </span>
-              {%- if settings.lp_promo_image != blank -%}
-                {{ settings.lp_promo_image | image_url: width: 240 | image_tag: loading: 'lazy', class: 'lp-menu__promo-img', alt: '' }}
-              {%- else -%}
-                <img class="lp-menu__promo-img" src="{{ 'lp-menu-promo.png' | asset_url }}" alt="" width="120" height="145" loading="lazy">
-              {%- endif -%}
+              <span class="lp-menu__promo-copy">
+                {%- if settings.lp_promo_logo == blank -%}<span class="lp-menu__promo-title">{{ settings.lp_promo_heading | escape }}</span>{%- endif -%}
+                {%- if promo_lead != blank -%}<span class="lp-menu__promo-lead">{{ promo_lead | escape }}</span>{%- endif -%}
+                {%- if promo_rest != blank -%}<span class="lp-menu__promo-text">{{ promo_rest | escape }}</span>{%- endif -%}
+              </span>
+              <svg class="lp-menu__chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg>
             </a>
           {%- endif -%}
 
@@ -169,12 +184,17 @@
 .lp-menu__link { display: flex; align-items: center; min-height: 44px; font-size: 1rem; font-weight: 700; color: inherit; text-decoration: none; }
 .lp-menu .lp-menu__back { display: inline-flex; align-items: center; gap: .35rem; align-self: flex-start; min-height: 44px; padding: 0 .5rem 0 0; border: 0; background: none; color: rgb(var(--lp-muted)); font: inherit; font-size: .875rem; font-weight: 600; cursor: pointer; }
 .lp-menu__back:hover { color: rgb(var(--lp-ink)); }
-.lp-menu__promo { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 88px; align-items: stretch; gap: .75rem; margin-inline: -1rem; padding: 1.25rem 0 0 1.25rem; overflow: hidden; background: radial-gradient(120% 140% at 85% 30%, #1d3f9a 0%, #0b2063 45%, #061338 100%); color: #fff; text-decoration: none; }
-.lp-menu__promo-copy { display: grid; align-content: start; gap: .5rem; padding-block-end: 1.25rem; }
-.lp-menu__promo-title { font-family: var(--lp-serif); font-size: 1.625rem; line-height: 1.05; text-transform: uppercase; }
-.lp-menu__promo-logo { width: 7rem; height: auto; }
-.lp-menu__promo-text { font-size: .8125rem; line-height: 1.45; color: rgb(255 255 255 / .86); }
-.lp-menu__promo-img { align-self: end; width: 88px; height: auto; filter: drop-shadow(0 12px 18px rgb(0 0 0 / .45)); }
+.lp-menu__promo { display: grid; grid-template-columns: 80px minmax(0, 1fr) 20px; align-items: center; gap: 1rem; min-height: 104px; padding: .75rem 1rem .75rem .75rem; border-radius: 4px; background: rgb(var(--lp-sand)); color: rgb(var(--lp-ink)); text-decoration: none; transition: background-color 160ms ease-out; }
+.lp-menu__promo:hover { background: #ede8dd; }
+.lp-menu__promo:active { background: #e7e1d4; }
+.lp-menu__promo:focus-visible { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 2px; }
+.lp-menu__promo-media { display: grid; place-items: center; width: 80px; height: 80px; border-radius: 2px; background: #fff; }
+.lp-menu__promo-logo { width: 64px; height: auto; }
+.lp-menu__promo-img { width: auto; height: 68px; }
+.lp-menu__promo-copy { display: grid; gap: .25rem; min-width: 0; }
+.lp-menu__promo-title { font-size: 1rem; font-weight: 700; line-height: 1.25; }
+.lp-menu__promo-lead { font-size: .9375rem; font-weight: 700; line-height: 1.3; text-wrap: balance; }
+.lp-menu__promo-text { font-size: .8125rem; line-height: 1.45; color: rgb(var(--lp-muted)); }
 .lp-menu__product { display: grid; grid-template-columns: 64px minmax(0, 1fr) 20px; align-items: center; gap: 1rem; min-height: 88px; padding: .625rem 1rem .625rem .625rem; border: 1px solid #ececec; border-radius: 4px; color: inherit; text-decoration: none; transition: border-color 160ms ease-out, box-shadow 160ms ease-out; }
 .lp-menu__product:hover { border-color: #dcdcdc; box-shadow: 0 6px 18px -12px rgb(var(--lp-ink) / .4); }
 .lp-menu__product-media { position: relative; width: 64px; height: 64px; }

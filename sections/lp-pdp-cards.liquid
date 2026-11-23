@@ -67,6 +67,8 @@
 .lp-cards { padding-block: var(--lp-section-gap); }
 .lp-cards--bg-sand { background: rgb(var(--lp-sand)); }
 .lp-cards--bg-white { background: #fff; }
+/* A tinted band closes a little tighter than it opens: its last line is a card row or a small footnote, and a full gap under that reads as empty. */
+.lp-cards:is(.lp-cards--bg-sand, .lp-cards--bg-white) { padding-block-end: calc(var(--lp-section-gap) * .6); }
 .lp-cards__head { display: grid; justify-items: center; gap: .9rem; text-align: center; margin-block-end: clamp(2rem, 4.5vw, 3.75rem); }
 .lp-cards__title { max-width: 20ch; letter-spacing: -.02em; text-wrap: balance; text-align: center; }
 .lp-cards__intro { max-width: 60ch; color: rgb(var(--lp-muted)); line-height: 1.65; }

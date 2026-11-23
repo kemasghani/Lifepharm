@@ -31,8 +31,8 @@
     <h3 class="lp-pt__name"><a href="{{ product.url }}">{{ product.title | escape }}</a></h3>
     {%- if summary != blank -%}<p class="lp-pt__text">{{ summary }}</p>{%- endif -%}
     <p class="lp-pt__price">
-      <span>{{ variant.price | money }}</span>
       {%- if variant.compare_at_price > variant.price -%}<s>{{ variant.compare_at_price | money }}</s>{%- endif -%}
+      <span>{{ variant.price | money }}</span>
     </p>
     {%- if variant.available -%}
       <button type="button" class="button lp-pt__add" data-lp-add="{{ variant.id }}">

@@ -270,7 +270,8 @@
         "master b3bd762, 0e4855a, 573853c, e2b32fc",
         "us 832268a, eu f3ca7cd, uk 920bcad",
         "./init.sh --full READY (13 = baseline)",
-        "2026-11-23 `tools/qa/pdp_dropdowns_check.py`: US draft 18/18, UK 10/10, EU 10/10 at 1440x900 and 390x844; refund policy page 200 on all three"
+        "2026-11-23 `tools/qa/pdp_dropdowns_check.py`: US draft 18/18, UK 10/10, EU 10/10 at 1440x900 and 390x844; refund policy page 200 on all three",
+        "2026-11-23 67bc1a3: timeline keeps a full gap above its heading after a tinted band (115px at 1440, 64px at 390), band closes at 60% of the gap; measured on US, UK and EU drafts"
       ],
       "notes": "D-066, L-061, L-062. Template changes: master 5 + 9, us 15 + 19, eu 13 + 19, uk 5 + 9 (layout, then guarantee wording). TD-020, TD-021."
     },

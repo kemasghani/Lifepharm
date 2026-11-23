@@ -24,6 +24,10 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 
 ---
 
+## 2026-11-23 · pdp-009 · Space above What to Expect on device pages
+- Done: removing the large How to section (D-066) left the timeline directly under the sand cards band with no space above its heading, on every device page. The timeline now brings its own top gap after a tinted band, and a tinted cards band closes at 60% of the section gap. Pages where a plain section comes first (LAMININE and the other supplements) are unchanged.
+- Evidence: master 67bc1a3; us c8bf15f, eu 5607662, uk 087d2d2; ./init.sh --full READY (13 = baseline); measured on the drafts at 1440x900 and 390x844: space above the heading 115px / 64px, band bottom 69px / 38px (US Diffuser, Hydration System, FootCharge, Wellness; UK FootCharge; EU Wellness); LAMININE still 0 on US and UK.
+
 ## 2026-11-23 · pdp-002 · Pairs Well With no longer disappears after quick add is closed
 - Done: the rule that hides the customer-stories heading until the stories load also hid the whole "Pairs Well With" block once its quick-add drawer had been opened (the drawer nests another product's buy box inside the block). The rule now names its own block types. Found by the developer on a phone.
 - Evidence: master cad4852; us e1a2fba, eu 369fd43, uk f60e073; `tools/qa/pdp_quick_add_check.py` at 1440x900 and 390x844: US LAMININE, OMEGA+++, Wellness Stand; UK and EU LAMININE: every product opened and closed, block still shown, cart unchanged.

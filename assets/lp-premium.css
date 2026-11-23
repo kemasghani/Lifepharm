@@ -480,6 +480,10 @@ a.lp-proof .lp-proof__text { text-decoration: underline; text-decoration-color: 
 /* PDP purchase panel: price + size cards */
 .lp-pdp-price { display: flex; flex-wrap: wrap; align-items: baseline; gap: .65rem; padding-block-end: .9rem; border-bottom: 1px solid var(--lp-hairline); font-variant-numeric: tabular-nums; }
 .lp-pdp-price__now { font-size: clamp(1.75rem, 2.4vw, 2.125rem); font-weight: 600; letter-spacing: -.02em; line-height: 1; color: rgb(var(--lp-ink)); }
+/* Price order (D-067): wherever a struck original price sits beside the price to pay, the original comes first
+   and the price to pay second, as in the subscription picker. Research on sale-price position (Biswas et al.,
+   Journal of Marketing 2013) finds the lower price is easier to compare when it is on the right. */
+.price-list > compare-at-price, .lp-pdp-price__was { order: -1; }
 .lp-pdp-price__was { font-size: 1.125rem; color: rgb(var(--lp-muted) / .8); }
 .lp-pdp-price__tag { align-self: center; padding: .3rem .6rem; border-radius: 999px; background: rgb(var(--lp-amber) / .14); color: rgb(var(--lp-amber)); font-size: .75rem; font-weight: 700; letter-spacing: .04em; }
 /* Price inside Add to Cart: label | price (struck base price when a subscription or sale is lower). One line, tabular figures, no layout jump between variants. */

@@ -56,8 +56,8 @@
             <div class="lp-offer__body">
               <h3 class="lp-offer__name">{{ variant.title | escape }}</h3>
               <p class="lp-offer__price">
-                <strong>{{ price | money }}</strong>
                 {%- if variant.price > price -%}<s>{{ variant.price | money }}</s>{%- endif -%}
+                <strong>{{ price | money }}</strong>
               </p>
               <p class="lp-offer__meta">
                 {%- if alloc != blank -%}{{ section.settings.sub_label | escape }}{%- else -%}{{ section.settings.oneoff_label | escape }}{%- endif -%}

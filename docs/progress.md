@@ -6,7 +6,7 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 
 - **Active feature:** none in this repo. Off-repo: `int-002` lpsync (private marketing repo).
 - **Theme state:** `master` = UK draft 189821452674; `us`, `eu`, `uk` branches equal to master in design; US draft 193373995317, EU draft 168919728345; News redesign on `news` (unpublished 190930518311). Nothing published.
-- **Waiting on Letisha / owner:** apps Keep/Remove decisions (`apps-001`), News review (`news-001`), science hero artwork + video (`sci-002`), checkout extension deploy approval (`ref-002`), publish approval (`launch-001`), Impact 7.2.0 in a library (`ms-003`), which products Truemed accepts for the US HSA/FSA note (TD-016).
+- **Waiting on Letisha / owner:** apps Keep/Remove decisions (`apps-001`), News review (`news-001`), science hero artwork + video (`sci-002`), checkout extension deploy approval (`ref-002`), publish approval (`launch-001`), Impact 7.2.0 in a library (`ms-003`), which products Truemed accepts for the US HSA/FSA note (TD-016), Stamped review requests for the products with no reviews (TD-019).
 - **Known risks:** see [tech-debt.md](tech-debt.md) (top: customer data in public CSVs).
 - **Next suggested step:** pick one `not_started` or newly requested item; run `./init.sh` first.
 
@@ -23,6 +23,12 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 ```
 
 ---
+
+## 2026-11-23 · pdp-008, pdp-009 · No empty stars; one set of buy-box dropdowns
+- Done: (1) Rating row: a product with no reviews shows "Includes LAMININE (980 reviews)" with stars on packs, or "1,100+ reviews across LifePharm products" elsewhere, never empty stars. (2) Every product template has the same dropdowns after the buy buttons; the "LifePharm Guarantee" card, the large How to Use / How to Replace sections and the What's in the Box section are gone. What's in the Box is a new `lp_box` block with a photo per item and a viewer. Dropdown lists are indented; "return policy" links to the refund policy. Tool `tools/store-audit/pdp_dropdowns.py`; checks `tools/qa/pdp_rating_row_check.py` and `tools/qa/pdp_dropdowns_check.py`.
+- Evidence: master 7aaa372 to e2b32fc; us 832268a, eu f3ca7cd, uk 920bcad; ./init.sh --full READY (13 = baseline); rating row US 24/24, UK 8/8, EU 8/8; dropdowns US 18/18, UK 10/10, EU 10/10 at 1440x900 and 390x844. Live themes not touched.
+- Decisions: D-065, D-066. Lessons: L-060 to L-063. Debt: TD-019 to TD-021.
+- Next: Letisha: Stamped review requests for the zero-review products (TD-019); Truemed product list (TD-016).
 
 ## 2026-11-23 · pdp-007 · HSA/FSA payment note: one line from one setting
 - Done: the US product pages showed "Pay with HSA/FSA" from hand-written blocks in 6 of 20 product templates (twice on the Diffuser and Hydration System, missing on LAMININE, OMEGA+++, IMMUNE+++, DIGESTIVE+++). Now `snippets/lp-hsa-fsa.liquid` renders one line under the trust tiles, and Theme settings > Payment notes decides which products show it. 11 template blocks removed on `us`. US draft: same ten products as before. UK and EU: hidden. `sync_branch.py` keeps `lp_hsa_*` per store and takes `--root`. New check `tools/qa/pdp_payment_note_check.py`.

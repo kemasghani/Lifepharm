@@ -19,7 +19,8 @@ Where each part of the redesign lives and what it depends on. Rules for look and
 - Story sections `sections/lp-pdp-*.liquid` read `product.metafields.custom.*` (text_benefits, phase_1..3, text_ingredients, value_1..5, header_*). Merchant metafield em dashes are rendered as commas. Never edit the metafields.
 - Buy box: `snippets/lp-pdp-summary.liquid` (Ideal-for icons `lp-benefit-*.png`), size cards in `snippets/option-value.liquid` (`lp_card`, fixed 3 columns, savings chip vs single-bottle unit price), Skio plan picker, trust tiles, then the payment note `snippets/lp-hsa-fsa.liquid` (HSA/FSA line; shown per store from Theme settings > Payment notes, never from a template block; D-064), How to Use accordion.
 - Variant changes the main image: script in `snippets/product-gallery.liquid` (L-011).
-- Rating row: real reviewer faces on LAMININE only (from their Stamped photos); other PDPs show stars and count.
+- Rating row (`snippets/lp-rating-row.liquid`): real reviewer faces on LAMININE only (from their Stamped photos); other PDPs show stars and count. With no reviews it never shows empty stars: packs show "Includes <product> (N reviews)", other products the store-wide count (D-065). Counts come from `product.metafields.stamped.reviews_count` and `collections['all']`.
+- Buy-box dropdowns (D-066): Benefits, Ingredients, How to Use, What's in the Box (`lp_box` block, `snippets/lp-box-list.liquid`, photo viewer in `assets/lp-premium.js`), Specifications, 60-Day Money-Back Guarantee. Device pages keep their how-to steps and specs in the dropdown content (template JSON), not in a section. `tools/store-audit/pdp_dropdowns.py` applies the layout to a branch's product templates.
 - Product templates use 20 to 23 of 25 sections (TD-007).
 
 ## Content pages

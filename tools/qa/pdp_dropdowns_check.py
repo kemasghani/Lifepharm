@@ -5,7 +5,9 @@ dropdown, that a row opens its photo, Next moves on and Escape closes. Also hori
 Output: <outdir>/<store>-dropdowns.json plus a screenshot of the open dropdowns (and of the photo viewer).
 
 Usage: uv run --no-project --with playwright python tools/qa/pdp_dropdowns_check.py <outdir> <base_url> <theme_id> <expect> ...
-       <expect> is handle=Title|Title|... (the dropdown titles expected, in order). Set LP_CHROME if needed."""
+       <expect> is handle=Title|Title|... (the dropdown titles expected, in order), or handle=* to accept any set
+       that includes the guarantee. The guarantee dropdown must link "return policy" to /policies/refund-policy,
+       and that page must load. Set LP_CHROME if needed."""
 import asyncio, json, os, sys
 from playwright.async_api import async_playwright
 
@@ -36,7 +38,9 @@ STATE = r"""
     info: true, theme: Shopify.theme.id, path: location.pathname,
     dropdowns: acc.map(d => t(d.querySelector('summary'))), empty: acc.filter(d => !t(d.querySelector('.accordion__content')) && !d.querySelector('.accordion__content img')).map(d => t(d.querySelector('summary'))),
     card: [...info.querySelectorAll('.offer')].filter(o => o.getClientRects().length && /LifePharm Guarantee/i.test(o.textContent)).length,
-    splits, lists,
+    splits, lists, groups: info.querySelectorAll('.accordion-group').length,
+    gaps: acc.slice(1).map((d, k) => Math.round(d.getBoundingClientRect().top - acc[k].getBoundingClientRect().bottom)),
+    policy: (() => { const g = acc.find(d => /Money-Back Guarantee/.test(t(d.querySelector('summary')))), a = g && g.querySelector('.accordion__content a'); return a ? { text: t(a), href: a.getAttribute('href') } : null })(),
     box: rows.length ? { rows: rows.length, labels: rows.map(r => r.dataset.label), thumbs: rows.map(r => { const i = r.querySelector('img'); return i.complete && i.naturalWidth > 0; }),
       rowH: rows.map(r => Math.round(r.getBoundingClientRect().height)), plain: info.querySelectorAll('.lp-box__row--plain').length } : null,
     vw: innerWidth, hscroll: document.documentElement.scrollWidth > innerWidth + 1,
@@ -70,7 +74,9 @@ async def main():
                     except Exception: pass
                 st = await page.evaluate(STATE)
                 st.update(handle=handle, viewport=name, want=want)
-                good = bool(st.get('info')) and str(st.get('theme')) == TID and st['dropdowns'] == want and not st['empty'] and st['card'] == 0 and not st['hscroll']
+                titles_ok = st.get('dropdowns') == want or (want == ['*'] and '60-Day Money-Back Guarantee' in (st.get('dropdowns') or []))
+                good = bool(st.get('info')) and str(st.get('theme')) == TID and titles_ok and not st['empty'] and st['card'] == 0 and not st['hscroll']
+                good = good and st['groups'] <= 1 and all(g == 0 for g in st['gaps']) and bool(st['policy']) and st['policy']['text'] == 'return policy' and st['policy']['href'].split('?')[0] == '/policies/refund-policy'
                 good = good and not [s for s in st['splits'] if s and (s.lower().startswith('how to') or s.lower() == 'specifications')]
                 good = good and all(l['style'] == 'none' and l['liLeftVsContent'] == 0 and l['textIndent'] >= 20 and l['marker'] and 0 <= l['marker']['left'] for l in st['lists'])
                 if good and st['box']:
@@ -92,7 +98,12 @@ async def main():
                     await first.scroll_into_view_if_needed(timeout=3000); await page.evaluate("window.scrollBy(0, -90)"); await page.wait_for_timeout(300)
                     await page.screenshot(path=os.path.join(OUT, f'{TAG}-dropdowns-{handle}-{name}.png'), full_page=False)
                 except Exception: pass
-                print(('PASS ' if st['pass'] else 'FAIL ') + json.dumps({k: st.get(k) for k in ('viewport', 'handle', 'dropdowns', 'want', 'empty', 'card', 'splits', 'lists', 'box', 'viewer', 'hscroll', 'errors', 'theme', 'info')}))
+                print(('PASS ' if st['pass'] else 'FAIL ') + json.dumps({k: st.get(k) for k in ('viewport', 'handle', 'dropdowns', 'want', 'empty', 'card', 'splits', 'lists', 'groups', 'gaps', 'policy', 'box', 'viewer', 'hscroll', 'errors', 'theme', 'info')}))
+            if name == '1440':
+                resp = await page.goto(f'{BASE}/policies/refund-policy', wait_until='domcontentloaded')
+                h1 = (await page.locator('h1').first.text_content() or '').strip() if await page.locator('h1').count() else ''
+                policy_ok = bool(resp and resp.status == 200 and h1)
+                print(('PASS ' if policy_ok else 'FAIL ') + json.dumps({'policy_page': resp.status if resp else None, 'h1': h1[:60]})); ok = ok and policy_ok
             await ctx.close()
         await browser.close()
     json.dump(results, open(os.path.join(OUT, f'{TAG}-dropdowns.json'), 'w'), indent=1)

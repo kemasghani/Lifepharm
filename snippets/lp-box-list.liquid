@@ -1,0 +1,88 @@
+{% doc %}
+  Content of the "What's in the Box" buy-box dropdown: one row per item with a small photo taken
+  from the product's own gallery. Pressing a row opens that photo in a dialog (one dialog for the
+  list, with previous and next when there are several photos). A row without a photo is plain text.
+  Returns nothing when the block has no items, so the dropdown is not rendered.
+
+  @param {product} product - The product whose gallery supplies the photos
+  @param {block} block - The lp_box block (item_1..item_6, media_1..media_6 gallery positions)
+
+  @example
+  {% render 'lp-box-list', product: product, block: block %}
+{% enddoc %}
+{%- liquid
+  assign box_rows = ''
+  assign box_photos = 0
+  for n in (1..6)
+    assign item_key = 'item_' | append: n
+    assign media_key = 'media_' | append: n
+    assign item_label = block.settings[item_key] | strip
+    if item_label == blank
+      continue
+    endif
+    assign item_position = block.settings[media_key] | plus: 0
+    assign item_image = nil
+    if item_position > 0
+      assign item_index = item_position | minus: 1
+      assign item_image = product.media[item_index].preview_image
+    endif
+    capture box_row
+      if item_image
+        assign box_photos = box_photos | plus: 1
+        assign item_wide = item_image.width | at_most: 1600
+        capture item_srcset
+          echo item_image | image_url: width: 800
+          echo ' 800w, '
+          echo item_image | image_url: width: item_wide
+          echo ' '
+          echo item_wide
+          echo 'w'
+        endcapture
+        assign open_label = 'lp.box.view' | t: item: item_label
+        echo '<li class="lp-box__item"><button type="button" class="lp-box__row" data-lp-box-open aria-haspopup="dialog" aria-label="'
+        echo open_label | escape
+        echo '" data-src="'
+        echo item_image | image_url: width: 800
+        echo '" data-srcset="'
+        echo item_srcset | strip
+        echo '" data-ratio="'
+        echo item_image.aspect_ratio
+        echo '" data-label="'
+        echo item_label | escape
+        echo '"><span class="lp-box__thumb">'
+        echo item_image | image_url: width: 168 | image_tag: widths: '56, 112, 168', sizes: '56px', alt: '', loading: 'lazy'
+        echo '</span><span class="lp-box__label">'
+        echo item_label | escape
+        echo '</span><span class="lp-box__view" aria-hidden="true"></span></button></li>'
+      else
+        echo '<li class="lp-box__item"><span class="lp-box__row lp-box__row--plain"><span class="lp-box__label">'
+        echo item_label | escape
+        echo '</span></span></li>'
+      endif
+    endcapture
+    assign box_rows = box_rows | append: box_row
+  endfor
+-%}
+{%- if box_rows != blank -%}
+  <div class="lp-box" data-lp-box>
+    <ul class="lp-box__list" role="list">{{ box_rows }}</ul>
+    {%- if box_photos > 0 -%}
+      <dialog class="lp-box-dialog" data-lp-box-dialog aria-label="{{ block.settings.title | escape }}">
+        <div class="lp-box-dialog__inner">
+          <button type="button" class="lp-box-dialog__close" data-lp-box-close aria-label="{{ 'general.accessibility.close' | t | escape }}"></button>
+          <figure class="lp-box-dialog__figure">
+            <img class="lp-box-dialog__img" data-lp-box-img alt="" width="800" height="1000" decoding="async">
+            <figcaption class="lp-box-dialog__caption">
+              <span data-lp-box-caption></span>
+              {%- if box_photos > 1 -%}<span class="lp-box-dialog__count" data-lp-box-count></span>{%- endif -%}
+            </figcaption>
+          </figure>
+          {%- if box_photos > 1 -%}
+            <button type="button" class="lp-box-dialog__nav lp-box-dialog__nav--prev" data-lp-box-nav="-1" aria-label="{{ 'general.accessibility.previous' | t | escape }}"></button>
+            <button type="button" class="lp-box-dialog__nav lp-box-dialog__nav--next" data-lp-box-nav="1" aria-label="{{ 'general.accessibility.next' | t | escape }}"></button>
+          {%- endif -%}
+        </div>
+      </dialog>
+    {%- endif -%}
+  </div>
+{%- endif -%}

@@ -79,35 +79,32 @@
         },
         "collapsible_text_XwdWte": {
           "type": "collapsible_text",
-          "disabled": true,
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "title": "LifePharm Guarantee",
-            "content": "<p>All of our products come with a 60-Day Money-Back Guarantee. </p><p>Try it, and if it doesn’t work, it's on us! Our hassle-free return policy offers a 100% money-back guarantee within 60 days of delivery.</p>",
-            "page": ""
+            "page": "",
+            "title": "60-Day Money-Back Guarantee",
+            "content": "<p>All of our products come with a 60-Day Money-Back Guarantee. </p><p>Try it, and if it doesn’t work, it's on us! Our hassle-free return policy offers a 100% money-back guarantee within 60 days of delivery.</p>"
           }
         },
         "collapsible_text_DKpjzh": {
           "type": "collapsible_text",
-          "disabled": true,
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "title": "The Benefit",
-            "content": "{{ product.metafields.custom.text_benefits | metafield_tag }}",
-            "page": ""
+            "page": "",
+            "title": "Benefits",
+            "content": "{{ product.metafields.custom.text_benefits | metafield_tag }}"
           }
         },
         "collapsible_text_KbRjKK": {
           "type": "collapsible_text",
-          "disabled": true,
           "settings": {
             "icon": "none",
             "icon_width": 20,
+            "page": "",
             "title": "Ingredients",
-            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}",
-            "page": ""
+            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}"
           }
         },
         "collapsible_text_QcYtDR": {
@@ -134,13 +131,13 @@
         },
         "collapsible_text_PDdyLw": {
           "type": "collapsible_text",
-          "disabled": true,
           "settings": {
             "icon": "none",
             "icon_width": 20,
+            "page": "",
             "title": "How to Use",
-            "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>",
-            "page": ""
+            "lp_how_steps": false,
+            "content": "<ol><li>Sit comfortably and place your bare feet on the FootCharge pads.</li><li>Hold the power button for 3 seconds to turn the device on.</li><li>Choose one of the 6 smart modes.</li><li>Pick one of the 2 heat levels.</li><li>Adjust the 10 intensity levels to your comfort.</li></ol><p>Tip: moisten your feet with a damp towel first. Damp feet in full contact with the pads improve conductivity.</p><p>Each session switches off after 15 minutes. Use 15 to 30 minutes per session, up to twice daily, and no more than 60 minutes a day.</p>"
           }
         },
         "collapsible_text_kaarby": {
@@ -176,20 +173,6 @@
           "type": "shopify://apps/tolstoy-ads-image-video/blocks/stories-block/06fa8282-42ff-403e-b67c-1936776aed11",
           "settings": {
             "publishId": "3ew6rhswme0cg"
-          }
-        },
-        "offer_KHjNfD": {
-          "type": "offer",
-          "settings": {
-            "text_alignment": "start",
-            "icon_position": "aligned",
-            "icon": "picto-coupon",
-            "custom_icon": "shopify://shop_images/money_back_guarantee_b07d6484-75e3-4bec-be50-16a3a02ec712.png",
-            "icon_width": 80,
-            "title": "LifePharm Guarantee",
-            "content": "<p>Try it, and if it doesn't work, its on us! Our hassle-free return policy offers a 100% money back guarantee within 60 days of delivery.</p>",
-            "background": "#f9f9f9",
-            "text_color": "#181818"
           }
         },
         "associated_products_mWz6hB": {
@@ -262,6 +245,16 @@
             "liquid": "{%- assign lp_v = product.selected_or_first_available_variant -%}{%- assign lp_base = lp_v.compare_at_price | default: lp_v.price -%}<div class=\"lp-pdp-price\" aria-live=\"polite\"><span class=\"lp-pdp-price__now price-item--regular\">{{ lp_v.price | money }}</span><s class=\"lp-pdp-price__was\" data-base=\"{{ lp_base | money_without_currency }}\" {% unless lp_v.compare_at_price > lp_v.price %}hidden{% endunless %}>{{ lp_base | money }}</s><span class=\"lp-pdp-price__tag\" hidden></span></div>"
           },
           "disabled": true
+        },
+        "lp_specs": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "page": "",
+            "title": "Specifications",
+            "content": "<ul><li><strong>Certifications:</strong> Patent-pending, CE, UL, ISO 9001, ISO 14001, PSE, RoHS, FCC</li><li><strong>Warranty:</strong> One year from the date of purchase</li></ul>"
+          }
         }
       },
       "block_order": [
@@ -277,19 +270,19 @@
         "quantity_selector",
         "text_VjR6WU",
         "description",
-        "collapsible_text_XwdWte",
-        "collapsible_text_DKpjzh",
-        "collapsible_text_KbRjKK",
         "collapsible_text_QcYtDR",
         "collapsible_text_PR3cy8",
-        "collapsible_text_PDdyLw",
         "collapsible_text_kaarby",
         "buy_buttons",
         "payment_terms",
         "liquid_FCeMyQ",
+        "collapsible_text_DKpjzh",
+        "collapsible_text_KbRjKK",
+        "collapsible_text_PDdyLw",
+        "lp_specs",
+        "collapsible_text_XwdWte",
         "text_qkxir3",
         "tolstoy_shoppable_video_ugc_stories_block_hnKrMy",
-        "offer_KHjNfD",
         "associated_products_mWz6hB",
         "offer_UnQirT",
         "offer_aJbbCW",
@@ -485,90 +478,6 @@
         "card_6"
       ]
     },
-    "lp_how": {
-      "type": "lp-pdp-split",
-      "settings": {
-        "image": "shopify://shop_images/lp-pdp-footcharge-seated.jpg",
-        "caption": "Sit down, bare feet flat on the pads",
-        "image_fit": "cover",
-        "media_position": "start",
-        "background": "none",
-        "eyebrow": "How to Use",
-        "heading": "15 Minutes, Up to Twice a Day",
-        "text": ""
-      },
-      "blocks": {
-        "step_1": {
-          "type": "step",
-          "settings": {
-            "text": "<p>Sit comfortably and place your bare feet on the FootCharge pads.</p>"
-          }
-        },
-        "step_2": {
-          "type": "step",
-          "settings": {
-            "text": "<p>Hold the power button for 3 seconds to turn the device on.</p>"
-          }
-        },
-        "step_3": {
-          "type": "step",
-          "settings": {
-            "text": "<p>Choose one of the 6 smart modes.</p>"
-          }
-        },
-        "step_4": {
-          "type": "step",
-          "settings": {
-            "text": "<p>Pick one of the 2 heat levels.</p>"
-          }
-        },
-        "step_5": {
-          "type": "step",
-          "settings": {
-            "text": "<p>Adjust the 10 intensity levels to your comfort.</p>"
-          }
-        },
-        "note_6": {
-          "type": "note",
-          "settings": {
-            "icon": "drop",
-            "text": "Tip: moisten your feet with a damp towel first. Damp feet in full contact with the pads improve conductivity."
-          }
-        },
-        "note_7": {
-          "type": "note",
-          "settings": {
-            "icon": "clock",
-            "text": "Each session switches off after 15 minutes. Use 15 to 30 minutes per session, up to twice daily, and no more than 60 minutes a day."
-          }
-        },
-        "row_8": {
-          "type": "row",
-          "settings": {
-            "label": "Certifications",
-            "value": "<p>Patent-pending, CE, UL, ISO 9001, ISO 14001, PSE, RoHS, FCC</p>"
-          }
-        },
-        "row_9": {
-          "type": "row",
-          "settings": {
-            "label": "Warranty",
-            "value": "<p>One year from the date of purchase</p>"
-          }
-        }
-      },
-      "block_order": [
-        "step_1",
-        "step_2",
-        "step_3",
-        "step_4",
-        "step_5",
-        "note_6",
-        "note_7",
-        "row_8",
-        "row_9"
-      ]
-    },
     "lp_timeline": {
       "type": "lp-pdp-timeline",
       "settings": {
@@ -710,7 +619,6 @@
     "lp_overview",
     "lp_tech",
     "lp_modes",
-    "lp_how",
     "lp_timeline",
     "lp_faq",
     "17128952497cac699c"

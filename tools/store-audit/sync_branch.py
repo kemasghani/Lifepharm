@@ -1,9 +1,10 @@
 """Make a store branch's theme identical to master (code + data), keep that store's own app embeds,
 and localise market copy. Then run remap.py --store <store> --apply and audit.py.
-Usage: python3 tools/store-audit/sync_branch.py <us|eu|uk>  (worktree ~/Documents/Lifepharm-worktrees/<store>, must be clean)"""
+Usage: python3 tools/store-audit/sync_branch.py <us|eu|uk> [--root <worktree>]  (default worktree ~/Documents/Lifepharm-worktrees/<store>, must be clean;
+pass --root when working from a clone outside iCloud, see L-055)"""
 import json, os, re, subprocess, sys
 store = sys.argv[1]
-wt = os.path.expanduser(f'~/Documents/Lifepharm-worktrees/{store}')
+wt = os.path.abspath(sys.argv[sys.argv.index('--root') + 1]) if '--root' in sys.argv else os.path.expanduser(f'~/Documents/Lifepharm-worktrees/{store}')
 run = lambda *a: subprocess.run(a, cwd=wt, check=True, capture_output=True, text=True).stdout
 assert run('git', 'status', '--porcelain').strip() == '', 'worktree not clean'
 _b = run('git', 'show', 'HEAD:config/settings_data.json'); before = json.loads(_b[_b.index('{'):])
@@ -19,6 +20,12 @@ for k, b in theirs.items():
     if b.get('type') not in mine_types and k not in merged:
         merged[k] = b
 data['current']['blocks'] = merged
+# 1b. theme settings that are a store's own choice, not shared design: keep the store's value (or absence)
+STORE_SETTINGS = ('lp_hsa_',)  # HSA/FSA payment note: US only
+for k in [k for k in data['current'] if k.startswith(STORE_SETTINGS)]: del data['current'][k]
+kept = {k: v for k, v in before.get('current', {}).items() if k.startswith(STORE_SETTINGS)}
+data['current'].update(kept)
+print(f'store settings kept: {sorted(kept) or "none"}')
 open(p, 'w').write(prefix + json.dumps(data, indent=2, ensure_ascii=False) + '\n')
 print(f'embeds: kept {len(mine)} {store} embeds, added {len(merged) - len(mine)} from master')
 

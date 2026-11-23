@@ -319,7 +319,7 @@
     "lp_overview": {
       "type": "lp-pdp-overview",
       "settings": {
-        "image": "shopify://shop_images/CellnergyFOOTCHARGE-withbox.png",
+        "image": "shopify://shop_images/CellnergyFOOTCHARGE-withbox.jpg",
         "image_fit": "contain",
         "caption": "Cellnergy FootCharge and its box",
         "media_position": "start",

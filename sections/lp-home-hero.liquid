@@ -51,10 +51,19 @@
       {%- endif -%}
       <h1 id="lp-hh-title-{{ section.id }}" class="h0 lp-hh__title">{{ section.settings.heading }}</h1>
 
-      {%- if section.settings.rating_text != blank -%}
+      {%- liquid
+        capture lp_reviews
+          render 'lp-review-count'
+        endcapture
+        assign rating_text = section.settings.rating_text | replace: '[reviews]', lp_reviews
+        if section.settings.rating_text contains '[reviews]' and lp_reviews == blank
+          assign rating_text = blank
+        endif
+      -%}
+      {%- if rating_text != blank -%}
         <p class="lp-hh__rating">
           <span class="lp-hh__stars" aria-hidden="true">{%- for i in (1..5) -%}{% render 'lp-icon', name: 'star', size: 16 %}{%- endfor -%}</span>
-          <span>{{ section.settings.rating_text }}</span>
+          <span>{{ rating_text }}</span>
         </p>
       {%- endif -%}
 

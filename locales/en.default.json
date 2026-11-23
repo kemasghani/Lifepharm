@@ -445,11 +445,16 @@
   "lp": {
     "trust": {
       "guarantee": "60-Day Money-Back Guarantee",
-      "shipping": "Free UK Delivery Over £150",
+      "shipping": "Free Delivery Over {{ amount }}",
+      "shipping_gbp": "Free UK Delivery Over {{ amount }}",
+      "shipping_usd": "Free Shipping Over {{ amount }}",
       "tested": "Fully NSF Tested",
       "made": "Made in the USA",
       "studied": "Clinically Studied",
       "secure": "Secure, Encrypted Checkout"
+    },
+    "buy": {
+      "not_sold_separately": "Not Sold Separately"
     },
     "pay": {
       "hsa_fsa": "Pay with HSA/FSA via Truemed"

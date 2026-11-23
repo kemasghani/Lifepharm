@@ -106,7 +106,8 @@
 
 {%- assign buy_buttons_block = section.blocks | where: 'type', 'buy_buttons' | first -%}
 
-{%- if section.settings.show_fixed_add_to_cart and product.available and buy_buttons_block != blank -%}
+{%- comment -%}LP: no sticky Add to Cart for a product with no price (see buy-buttons).{%- endcomment -%}
+{%- if section.settings.show_fixed_add_to_cart and product.available and buy_buttons_block != blank and product.price_max > 0 -%}
   <product-rerender id="{{ product_form_id }}-sticky-bar" observe-form="{{ product_form_id }}">
     {%- if product.selected_or_first_available_variant.available -%}
       <lp-sticky-atc form="{{ product_form_id }}" class="product-quick-add" inert>

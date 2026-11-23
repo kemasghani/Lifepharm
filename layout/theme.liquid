@@ -24,6 +24,7 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
     {%- endif -%}
 
     <link rel="canonical" href="{{ canonical_url }}">
+    {%- if request.page_type == 'product' and product.price_max == 0 -%}<meta name="robots" content="noindex">{%- endif -%}
 
     {%- if settings.favicon -%}
       <link rel="shortcut icon" href="{{ settings.favicon | image_url: width: 96 }}">

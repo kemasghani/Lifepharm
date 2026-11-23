@@ -52,9 +52,12 @@
 
               {%- when 'heading' -%}
                 {%- if block.settings.text != blank -%}
-                  <p class="{{ block.settings.heading_tag }}" {% if settings.heading_apparition != 'none' %}reveal-on-scroll="true"{% endif %} {{ block.shopify_attributes }}>
+                  {%- comment -%}LP: a hero heading sized h1 is the page's h1 (Join Us, Contact and FAQs have the page title section switched off). The homepage keeps its own hero h1.{%- endcomment -%}
+                  {%- assign heading_element = 'p' -%}
+                  {%- if block.settings.heading_tag == 'h1' and request.page_type != 'index' -%}{%- assign heading_element = 'h1' -%}{%- endif -%}
+                  <{{ heading_element }} class="{{ block.settings.heading_tag }}" {% if settings.heading_apparition != 'none' %}reveal-on-scroll="true"{% endif %} {{ block.shopify_attributes }}>
                     {%- render 'styled-text', content: block.settings.text, apparition_effect: true -%}
-                  </p>
+                  </{{ heading_element }}>
                 {%- endif -%}
 
               {%- when 'richtext' -%}

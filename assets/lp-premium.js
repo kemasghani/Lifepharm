@@ -201,6 +201,26 @@
       const text = count ? `${symbol}${each} / ${unit.dataset.unit}` : '';
       if (unit.textContent !== text) unit.textContent = text;
     }
+    // Size cards show the price per unit for the plan in effect, the same number as the sticky bar.
+    if (box.classList.contains('lp-pdp-price--atc')) {
+      const picker = document.querySelector('.shopify-section--main-product skio-plan-picker');
+      const plan = onPlan && picker ? picker.selectedSellingPlan : null;
+      const variants = picker && picker.product && Array.isArray(picker.product.variants) ? picker.product.variants : [];
+      document.querySelectorAll('.shopify-section--main-product [data-lp-vcard-unit]').forEach((el) => {
+        const count = Number(el.dataset.count) || 0;
+        let cents = Number(el.dataset.price) || 0;
+        if (plan) {
+          const variant = variants.find((v) => String(v.id) === el.dataset.variant);
+          const allocation = variant && (variant.selling_plan_allocations || []).find((x) => String(x.selling_plan_id) === String(plan.id));
+          if (allocation && allocation.price > 0) cents = allocation.price;
+        }
+        if (!count || !cents) return;
+        if (!el.dataset.format) el.dataset.format = el.textContent.trim();
+        const each = (Math.round(cents / count) / 100).toFixed(2);
+        const text = el.dataset.format.replace(/\d[\d.,]*/, /,\d{2}\D*$/.test(el.dataset.format) ? each.replace('.', ',') : each);
+        if (el.textContent !== text) el.textContent = text;
+      });
+    }
   });
   const priceRoot = document.querySelector('.shopify-section--main-product');
   if (priceRoot) {
@@ -208,6 +228,26 @@
     new MutationObserver(() => { cancelAnimationFrame(raf); raf = requestAnimationFrame(syncPrice); }).observe(priceRoot, { childList: true, subtree: true, characterData: true });
     syncPrice();
   }
+  // Stamped keeps a hidden product thumbnail on every review, with the address saved by whichever store took the
+  // review (another store's CDN, or none). Point it at this store's own product image.
+  const ownReviewThumbs = () => {
+    const source = document.querySelector('[data-lp-product-image]');
+    const widget = document.getElementById('stamped-main-widget');
+    if (!source || !widget) return;
+    const own = new URL(source.dataset.lpProductImage, location.href).href;
+    const fix = () => widget.querySelectorAll('.stamped-review-product img').forEach((img) => {
+      const attr = img.getAttribute('src') || '';
+      let host = '';
+      try { host = attr ? new URL(attr, location.href).hostname : ''; } catch (e) {}
+      if (host === location.hostname && /\.(png|jpe?g|webp|gif|avif)(\?|$)/i.test(attr)) return;
+      img.loading = 'lazy';
+      img.src = own;
+    });
+    new MutationObserver(fix).observe(widget, { childList: true, subtree: true });
+    fix();
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ownReviewThumbs, { once: true });
+  else ownReviewThumbs();
   const watchUgc = () => document.querySelectorAll('tolstoy-stories').forEach((stories) => {
     const item = stories.closest('.product-info__block-item');
     const head = item && item.previousElementSibling && item.previousElementSibling.querySelector('.lp-pdp-subhead');

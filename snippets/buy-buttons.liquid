@@ -50,7 +50,15 @@ Supported variables
       subscription price into .price-item--regular, and lp-premium.js shows the struck base price when lower.
     {%- endcomment -%}
     {%- assign lp_v = product.selected_or_first_available_variant -%}
-    {%- assign lp_base = lp_v.compare_at_price | default: lp_v.price -%}
+    {%- comment -%}
+      LP: the struck price is the variant's reference price, the same number the size card's Save badge uses
+      (snippets/lp-variant-reference.liquid). While a subscription plan is selected, lp-premium.js compares
+      with the one-time price instead (data-price), so the button agrees with the plan picker's own saving.
+    {%- endcomment -%}
+    {%- capture lp_reference -%}{%- render 'lp-variant-reference', variant: lp_v -%}{%- endcapture -%}
+    {%- assign lp_reference = lp_reference | plus: 0 -%}
+    {%- assign lp_base = lp_v.price -%}
+    {%- if lp_reference > lp_v.price -%}{%- assign lp_base = lp_reference -%}{%- endif -%}
     {%- capture button_content -%}
       <span class="lp-atc">
         <span class="lp-atc__label">{{ lp_atc_label }}</span>
@@ -58,7 +66,7 @@ Supported variables
           <span class="lp-atc__sep" aria-hidden="true"></span>
           <span class="lp-pdp-price lp-pdp-price--atc">
             <span class="lp-pdp-price__now price-item--regular">{{ lp_v.price | money }}</span>
-            <s class="lp-pdp-price__was" data-base="{{ lp_base | money_without_currency }}" {% unless lp_v.compare_at_price > lp_v.price %}hidden{% endunless %}>{{ lp_base | money }}</s>
+            <s class="lp-pdp-price__was" data-base="{{ lp_base | money_without_currency }}" data-base-text="{{ lp_base | money | strip_html | escape }}" data-price="{{ lp_v.price | money_without_currency }}" data-price-text="{{ lp_v.price | money | strip_html | escape }}" {% unless lp_base > lp_v.price %}hidden{% endunless %}>{{ lp_base | money }}</s>
             <span class="lp-pdp-price__tag" hidden></span>
           </span>
         {%- endif -%}

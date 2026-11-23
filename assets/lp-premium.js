@@ -180,8 +180,14 @@
       if (picker && typeof picker.updateExternalPrice === 'function' && picker.selectedVariant) picker.updateExternalPrice();
     }
     const toNum = (t) => parseFloat((t || '').replace(/[^0-9.,]/g, '').replace(/,(?=\d{3}\b)/g, '').replace(',', '.')) || 0;
-    const a = toNum(now.textContent), b = toNum(was.dataset.base || was.textContent);
+    // One-time: struck price = the variant's reference (compare-at, or the same quantity at the single-bottle price).
+    // On a subscription plan (price below the one-time price): struck price = the one-time price, as in the plan picker.
+    const a = toNum(now.textContent), base = toNum(was.dataset.base || was.textContent), oneTime = toNum(was.dataset.price) || base;
+    const onPlan = a > 0 && a < oneTime - 0.001;
+    const b = onPlan ? oneTime : base;
     const discounted = a > 0 && b > a + 0.001;
+    const wasText = onPlan ? was.dataset.priceText : was.dataset.baseText;
+    if (discounted && wasText && was.textContent !== wasText) was.textContent = wasText;
     was.hidden = !discounted;
     if (tag) { tag.hidden = !discounted; if (discounted) tag.textContent = 'Save ' + Math.round((1 - a / b) * 100) + '%'; }
     const sticky = document.querySelector('[data-lp-sticky-price]');

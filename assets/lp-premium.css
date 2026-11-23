@@ -838,10 +838,10 @@ body:has(.shopify-section--main-product) .shopify-section--text-with-icons:not(#
    (.prose ul { list-style: square } and a 1.4em row gap), which would otherwise win. ---------- */
 .shopify-section--main-product .product-info__accordion .prose :is(ul, ol) { display: grid; row-gap: .625em !important; margin-inline: 0; padding: 0; list-style: none !important; }
 .shopify-section--main-product .product-info__accordion .prose ul > li { position: relative; padding-inline-start: 1.375rem; }
-.shopify-section--main-product .product-info__accordion .prose ul > li::before { content: ""; position: absolute; inset-inline-start: .25rem; top: calc(.85em - 3px); width: 6px; height: 6px; border-radius: 50%; background: rgb(var(--lp-amber)); }
+.shopify-section--main-product .product-info__accordion .prose ul > li::before { content: ""; position: absolute; inset-inline-start: .25rem; top: calc(.85em - 4.5px); width: 6px; height: 6px; border-radius: 50%; background: rgb(var(--lp-amber)); }
 .shopify-section--main-product .product-info__accordion .prose ol { counter-reset: lp-step; row-gap: .75em !important; }
 .shopify-section--main-product .product-info__accordion .prose ol > li { position: relative; min-height: 1.625rem; padding-inline-start: 2.375rem; counter-increment: lp-step; }
-.shopify-section--main-product .product-info__accordion .prose ol > li::before { content: counter(lp-step); position: absolute; inset-inline-start: 0; top: calc(.85em - .8125rem); display: grid; place-items: center; width: 1.625rem; height: 1.625rem; border-radius: 50%; background: rgb(var(--lp-amber)); color: #1F1E20; font-size: .75rem; font-weight: 700; line-height: 1; }
+.shopify-section--main-product .product-info__accordion .prose ol > li::before { content: counter(lp-step); position: absolute; inset-inline-start: 0; top: calc(.85em - .8125rem + 2.5px); display: grid; place-items: center; width: 1.625rem; height: 1.625rem; border-radius: 50%; background: rgb(var(--lp-amber)); color: #1F1E20; font-size: .75rem; font-weight: 700; line-height: 1; }
 
 /* ---------- What's in the Box dropdown (snippets/lp-box-list.liquid): photo rows that open a viewer ---------- */
 .lp-box__list { display: grid; gap: .5rem; margin: 0; padding: 0; list-style: none; }
@@ -849,7 +849,7 @@ body:has(.shopify-section--main-product) .shopify-section--text-with-icons:not(#
 .lp-box__row--plain { padding-inline-start: .875rem; }
 button.lp-box__row { cursor: pointer; transition: border-color .2s ease, box-shadow .2s ease; }
 @media (hover: hover) { button.lp-box__row:hover { border-color: rgb(var(--lp-amber)); box-shadow: 0 6px 18px rgb(var(--lp-ink) / .08); } }
-.lp-box__thumb { flex: none; display: grid; place-items: center; width: 56px; height: 56px; overflow: hidden; border-radius: 10px; background: rgb(var(--lp-sand)); }
+.lp-box__thumb { flex: none; display: block; width: 56px; height: 56px; overflow: hidden; border-radius: 10px; background: rgb(var(--lp-sand)); }
 .lp-box__thumb img { width: 100%; height: 100%; object-fit: contain; }
 .lp-box__label { flex: 1; min-width: 0; font-size: .9375rem; line-height: 1.35; font-weight: 600; }
 .lp-box__view { flex: none; width: 20px; height: 20px; background: rgb(var(--lp-amber)); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='6.5'/%3E%3Cpath d='M20 20l-4.3-4.3M11 8.4v5.2M8.4 11h5.2'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='6.5'/%3E%3Cpath d='M20 20l-4.3-4.3M11 8.4v5.2M8.4 11h5.2'/%3E%3C/svg%3E") center / contain no-repeat; }

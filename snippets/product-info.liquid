@@ -37,11 +37,16 @@ Supported variables
       endcomment
 
       assign allow_block_group = true
+      comment
+      LifePharm: the What's in the Box block (lp_box) is a dropdown too, so it joins its neighbours in one accordion group
+      (no gap, no doubled rule between it and the dropdown next to it).
+      endcomment
+      assign lp_dropdown_types = 'collapsible_text,lp_box' | split: ','
 
       if block.type == 'offer' and next_block.type == 'offer'
         assign block_group_class = 'product-info__offer-list'
         assign block_group_name = 'product-info__offer-list'
-      elsif block.type == 'collapsible_text' and next_block.type == 'collapsible_text'
+      elsif lp_dropdown_types contains block.type and lp_dropdown_types contains next_block.type
         assign block_group_class = 'accordion-group'
         assign block_group_name = 'accordion-group'
       elsif block.type == 'collapsible_text' and next_block.type == 'description' and product.description != blank and next_block.settings.collapse_content

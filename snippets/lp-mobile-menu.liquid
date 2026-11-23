@@ -79,7 +79,12 @@
           {%- if settings.lp_promo_heading != blank -%}
             <a class="lp-menu__promo" href="{{ settings.lp_promo_link | default: all_url }}">
               <span class="lp-menu__promo-copy">
-                <span class="lp-menu__promo-title">{{ settings.lp_promo_heading | escape }}</span>
+                {%- comment -%}A promo logo (the brand's 60-day guarantee badge) stands in for the heading; the heading stays as its text alternative.{%- endcomment -%}
+                {%- if settings.lp_promo_logo != blank -%}
+                  {{ settings.lp_promo_logo | image_url: width: 448 | image_tag: loading: 'lazy', class: 'lp-menu__promo-logo', widths: '224,336,448', sizes: '112px', alt: settings.lp_promo_heading }}
+                {%- else -%}
+                  <span class="lp-menu__promo-title">{{ settings.lp_promo_heading | escape }}</span>
+                {%- endif -%}
                 {%- if settings.lp_promo_text != blank -%}<span class="lp-menu__promo-text">{{ settings.lp_promo_text | escape }}</span>{%- endif -%}
               </span>
               {%- if settings.lp_promo_image != blank -%}
@@ -167,6 +172,7 @@
 .lp-menu__promo { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 88px; align-items: stretch; gap: .75rem; margin-inline: -1rem; padding: 1.25rem 0 0 1.25rem; overflow: hidden; background: radial-gradient(120% 140% at 85% 30%, #1d3f9a 0%, #0b2063 45%, #061338 100%); color: #fff; text-decoration: none; }
 .lp-menu__promo-copy { display: grid; align-content: start; gap: .5rem; padding-block-end: 1.25rem; }
 .lp-menu__promo-title { font-family: var(--lp-serif); font-size: 1.625rem; line-height: 1.05; text-transform: uppercase; }
+.lp-menu__promo-logo { width: 7rem; height: auto; }
 .lp-menu__promo-text { font-size: .8125rem; line-height: 1.45; color: rgb(255 255 255 / .86); }
 .lp-menu__promo-img { align-self: end; width: 88px; height: auto; filter: drop-shadow(0 12px 18px rgb(0 0 0 / .45)); }
 .lp-menu__product { display: grid; grid-template-columns: 64px minmax(0, 1fr) 20px; align-items: center; gap: 1rem; min-height: 88px; padding: .625rem 1rem .625rem .625rem; border: 1px solid #ececec; border-radius: 4px; color: inherit; text-decoration: none; transition: border-color 160ms ease-out, box-shadow 160ms ease-out; }

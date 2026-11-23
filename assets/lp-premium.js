@@ -971,3 +971,44 @@
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();
+
+/* What's in the Box (snippets/lp-box-list.liquid): a row opens its photo in the list's dialog.
+   One delegated listener, so it keeps working after the buy box re-renders on a variant change. */
+(function () {
+  const show = (root, index) => {
+    const rows = [...root.querySelectorAll('[data-lp-box-open]')];
+    const dialog = root.querySelector('[data-lp-box-dialog]');
+    if (!rows.length || !dialog) return;
+    const i = (index + rows.length) % rows.length, row = rows[i];
+    const img = dialog.querySelector('[data-lp-box-img]'), count = dialog.querySelector('[data-lp-box-count]');
+    img.removeAttribute('srcset');
+    img.sizes = '(min-width: 600px) 544px, 100vw';
+    img.srcset = row.dataset.srcset;
+    img.src = row.dataset.src;
+    img.alt = row.dataset.label;
+    if (Number(row.dataset.ratio) > 0) img.height = Math.round(800 / Number(row.dataset.ratio));
+    dialog.querySelector('[data-lp-box-caption]').textContent = row.dataset.label;
+    if (count) count.textContent = (i + 1) + ' / ' + rows.length;
+    dialog.dataset.index = i;
+    if (!dialog.open) dialog.showModal();
+  };
+  document.addEventListener('click', (event) => {
+    const open = event.target.closest('[data-lp-box-open]');
+    if (open) {
+      const root = open.closest('[data-lp-box]');
+      return show(root, [...root.querySelectorAll('[data-lp-box-open]')].indexOf(open));
+    }
+    const dialog = event.target.closest('[data-lp-box-dialog]');
+    if (!dialog) return;
+    const nav = event.target.closest('[data-lp-box-nav]');
+    if (nav) return show(dialog.closest('[data-lp-box]'), Number(dialog.dataset.index) + Number(nav.dataset.lpBoxNav));
+    if (event.target === dialog || event.target.closest('[data-lp-box-close]')) dialog.close();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    const dialog = document.querySelector('[data-lp-box-dialog][open]');
+    if (!dialog || !dialog.querySelector('[data-lp-box-nav]')) return;
+    event.preventDefault();
+    show(dialog.closest('[data-lp-box]'), Number(dialog.dataset.index) + (event.key === 'ArrowRight' ? 1 : -1));
+  });
+})();

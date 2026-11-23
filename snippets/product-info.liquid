@@ -353,6 +353,13 @@ Supported variables
             {%- render 'accordion', title: block.settings.title, content: accordion_content, icon: icon, icon_width: block.settings.icon_width, class: 'product-info__accordion', block: block -%}
           {%- endif -%}
 
+        {%- when 'lp_box' -%}
+          {%- capture lp_box_content -%}{%- render 'lp-box-list', product: product, block: block -%}{%- endcapture -%}
+          {%- assign lp_box_content = lp_box_content | strip -%}
+          {%- if lp_box_content != blank and block.settings.title != blank -%}
+            {%- render 'accordion', title: block.settings.title, content: lp_box_content, class: 'product-info__accordion', block: block -%}
+          {%- endif -%}
+
         {%- when 'image' -%}
           {%- if block.settings.image != blank -%}
             <div class="product-info__image">

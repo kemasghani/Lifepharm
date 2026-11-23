@@ -134,9 +134,9 @@
           "settings": {
             "icon": "none",
             "icon_width": 20,
+            "page": "",
             "title": "60-Day Money-Back Guarantee",
-            "content": "<p>All of our products come with a 60-Day Money-Back Guarantee. </p><p>Try it, and if it doesn’t work, it's on us! Our hassle-free return policy offers a 100% money-back guarantee within 60 days of delivery.</p>",
-            "page": ""
+            "content": "<p>All of our products come with a 60-Day Money-Back Guarantee. </p><p>Try it, and if it doesn’t work, it's on us! Our hassle-free return policy offers a 100% money-back guarantee within 60 days of delivery.</p>"
           }
         },
         "collapsible_text_DKpjzh": {
@@ -144,9 +144,9 @@
           "settings": {
             "icon": "none",
             "icon_width": 20,
+            "page": "",
             "title": "Benefits",
-            "content": "{{ product.metafields.custom.text_benefits | metafield_tag }}",
-            "page": ""
+            "content": "{{ product.metafields.custom.text_benefits | metafield_tag }}"
           }
         },
         "collapsible_text_KbRjKK": {
@@ -154,9 +154,9 @@
           "settings": {
             "icon": "none",
             "icon_width": 20,
+            "page": "",
             "title": "Ingredients",
-            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}",
-            "page": ""
+            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}"
           }
         },
         "collapsible_text_QcYtDR": {
@@ -186,10 +186,10 @@
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "title": "How to Use",
-            "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>",
             "page": "",
-            "lp_how_steps": true
+            "title": "How to Use",
+            "lp_how_steps": false,
+            "content": "<ol><li>Apply a generous amount to the areas that need it, such as knees, shoulders or lower back.</li><li>Massage gently until the cream is fully absorbed.</li><li>Repeat morning and evening.</li></ol><p>Pro tip: for better sleep, apply to the back of your neck and upper back before bed.</p>"
           }
         },
         "collapsible_text_kaarby": {
@@ -225,21 +225,6 @@
           "type": "shopify://apps/tolstoy/blocks/stories-block/06fa8282-42ff-403e-b67c-1936776aed11",
           "settings": {
             "publishId": "3ew6rhswme0cg"
-          }
-        },
-        "offer_KHjNfD": {
-          "type": "offer",
-          "disabled": true,
-          "settings": {
-            "text_alignment": "start",
-            "icon_position": "aligned",
-            "icon": "picto-coupon",
-            "custom_icon": "shopify://shop_images/money_back_guarantee_b07d6484-75e3-4bec-be50-16a3a02ec712.png",
-            "icon_width": 80,
-            "title": "LifePharm Guarantee",
-            "content": "<p>Try it, and if it doesn't work, its on us! Our hassle-free return policy offers a 100% money back guarantee within 60 days of delivery.</p>",
-            "background": "#f9f9f9",
-            "text_color": "#181818"
           }
         },
         "associated_products_mWz6hB": {
@@ -325,6 +310,16 @@
           "settings": {
             "liquid": "{% render 'lp-rating-row', product: product %}"
           }
+        },
+        "lp_specs": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "page": "",
+            "title": "Specifications",
+            "content": "<ul><li><strong>Free from:</strong> Parabens, phthalates and sulfates. Hypoallergenic.</li><li><strong>Certifications:</strong> ISO 9001</li></ul>"
+          }
         }
       },
       "block_order": [
@@ -351,11 +346,11 @@
         "collapsible_text_DKpjzh",
         "collapsible_text_KbRjKK",
         "collapsible_text_PDdyLw",
+        "lp_specs",
         "collapsible_text_XwdWte",
         "text_qkxir3",
         "lp_ugc_title",
         "tolstoy_shoppable_video_ugc_stories_block_hnKrMy",
-        "offer_KHjNfD",
         "associated_products_mWz6hB",
         "offer_UnQirT",
         "offer_aJbbCW",
@@ -479,68 +474,6 @@
         "card_3"
       ]
     },
-    "lp_how": {
-      "type": "lp-pdp-split",
-      "settings": {
-        "mf_image": "image_benefits",
-        "caption": "Massage in until absorbed",
-        "image_fit": "contain",
-        "media_position": "start",
-        "background": "none",
-        "eyebrow": "How to Use",
-        "heading": "Twice a Day, Where You Need It",
-        "text": ""
-      },
-      "blocks": {
-        "step_1": {
-          "type": "step",
-          "settings": {
-            "text": "<p>Apply a generous amount to the areas that need it, such as knees, shoulders or lower back.</p>"
-          }
-        },
-        "step_2": {
-          "type": "step",
-          "settings": {
-            "text": "<p>Massage gently until the cream is fully absorbed.</p>"
-          }
-        },
-        "step_3": {
-          "type": "step",
-          "settings": {
-            "text": "<p>Repeat morning and evening.</p>"
-          }
-        },
-        "note_4": {
-          "type": "note",
-          "settings": {
-            "icon": "sparkle",
-            "text": "Pro tip: for better sleep, apply to the back of your neck and upper back before bed."
-          }
-        },
-        "row_5": {
-          "type": "row",
-          "settings": {
-            "label": "Free from",
-            "value": "<p>Parabens, phthalates and sulfates. Hypoallergenic.</p>"
-          }
-        },
-        "row_6": {
-          "type": "row",
-          "settings": {
-            "label": "Certifications",
-            "value": "<p>ISO 9001</p>"
-          }
-        }
-      },
-      "block_order": [
-        "step_1",
-        "step_2",
-        "step_3",
-        "note_4",
-        "row_5",
-        "row_6"
-      ]
-    },
     "lp_timeline": {
       "type": "lp-pdp-timeline",
       "settings": {
@@ -650,7 +583,6 @@
     "main",
     "lp_overview",
     "lp_tech",
-    "lp_how",
     "lp_timeline",
     "lp_faq",
     "17128952497cac699c"

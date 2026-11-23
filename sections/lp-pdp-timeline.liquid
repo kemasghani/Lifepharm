@@ -118,6 +118,9 @@
 
 {% stylesheet %}
 .lp-tl { padding-block: 0 var(--lp-section-gap); }
+/* The gap above the timeline normally comes from the plain section before it. After a tinted band
+   (sand or white cards or split, comparison, formula) that gap belongs to the band, so the timeline brings its own. */
+.lp-pdp-section:has(> :is(.lp-cards--bg-sand, .lp-cards--bg-white, .lp-split--bg-sand, .lp-split--bg-white, .lp-cmp, .lp-fx)) + .lp-pdp-section > .lp-tl { padding-block-start: var(--lp-section-gap); }
 .lp-tl__head { display: grid; justify-items: center; gap: .9rem; text-align: center; margin-block-end: clamp(2.5rem, 5vw, 4.5rem); }
 .lp-tl__title { max-width: 18ch; letter-spacing: -.02em; text-wrap: balance; text-align: center; }
 .lp-tl__sub { color: rgb(var(--lp-muted)); margin: 0; }

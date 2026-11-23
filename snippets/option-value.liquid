@@ -194,7 +194,7 @@ Color swatch specific parameters:
         <span class="lp-vcard__meta">
           {%- if unit_qty > 0 and unit_label != blank -%}
             {%- assign unit_price = variant.price | times: 1.0 | divided_by: unit_qty | round -%}
-            <strong>{{ unit_price | money }}</strong> per {{ unit_label }}
+            <strong data-lp-vcard-unit data-variant="{{ variant.id }}" data-count="{{ unit_qty }}" data-price="{{ variant.price }}">{{ unit_price | money }}</strong> per {{ unit_label }}
           {%- else -%}
             <strong>{{ variant.price | money }}</strong>
           {%- endif -%}

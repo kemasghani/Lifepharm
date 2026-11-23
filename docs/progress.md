@@ -24,6 +24,11 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 
 ---
 
+## 2026-11-23 · pdp-001 · Reviews widget: Questions tab no longer shows the reviews as well
+- Done: pressing Questions in the Stamped widget left the review cards on screen with the questions below them, on every product page. Our forced two-column grid on the reviews list overrode Stamped's own hide. The hidden state is now forced too. Found by the developer.
+- Evidence: master b27394e; us 04f7bf4, eu 420874c, uk 28413de; `tools/qa/pdp_reviews_tabs_check.py` at 1440x900 and 390x844: US CELLNERGY WELLNESS, LAMININE, OMEGA+++, FootCharge; UK and EU LAMININE and CELLNERGY WELLNESS; Reviews, Questions, back, Write a Review and Ask a Question each show only their own list.
+- Lessons: L-065.
+
 ## 2026-11-23 · pdp-009 · Space above What to Expect on device pages
 - Done: removing the large How to section (D-066) left the timeline directly under the sand cards band with no space above its heading, on every device page. The timeline now brings its own top gap after a tinted band, and a tinted cards band closes at 60% of the section gap. Pages where a plain section comes first (LAMININE and the other supplements) are unchanged.
 - Evidence: master 67bc1a3; us c8bf15f, eu 5607662, uk 087d2d2; ./init.sh --full READY (13 = baseline); measured on the drafts at 1440x900 and 390x844: space above the heading 115px / 64px, band bottom 69px / 38px (US Diffuser, Hydration System, FootCharge, Wellness; UK FootCharge; EU Wellness); LAMININE still 0 on US and UK.

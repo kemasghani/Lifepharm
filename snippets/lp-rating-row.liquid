@@ -1,7 +1,12 @@
 {% doc %}
-  Rating row for product pages: the Stamped stars and review count. Laminine also shows three real
-  reviewers, cropped from their own Stamped review photos (assets/lp-face-laminine-*.jpg); other products
-  have no reviewer photos to use, so they show the stars only.
+  Rating row for product pages. A product with reviews shows its Stamped stars and count
+  (Laminine also shows three real reviewers, cropped from their own Stamped review photos,
+  assets/lp-face-laminine-*.jpg). A product with no reviews never shows empty stars. It shows,
+  from real Stamped data only:
+  1. a pack: the rating of the best-reviewed product listed in its "Pack contains" description,
+     labelled "Includes <product>", linking to that product's reviews;
+  2. anything else: the number of reviews across the store's products, rounded down.
+  Nothing is shown when neither is available.
 
   @param {product} product - The product being viewed
 
@@ -14,8 +19,73 @@
     assign lp_faces = 'laminine-1,laminine-2,laminine-3'
   endif
   assign lp_face_list = lp_faces | split: ','
+
+  assign rv_count = product.metafields.stamped.reviews_count.value | default: product.metafields.stamped.reviews_count | plus: 0
+  assign proof_kind = ''
+
+  if rv_count == 0
+    assign nbsp = '%C2%A0' | url_decode
+    assign pack_names = '|'
+    assign pack_lines = product.description | replace: '<br', '|<br' | replace: '</p>', '|' | replace: '</li>', '|' | replace: '•', '|' | replace: '·', '|' | strip_html | replace: '&nbsp;', '' | remove: nbsp | remove: ' ' | upcase | replace: '⁺', '+' | split: '|'
+    for pack_line in pack_lines
+      assign pack_qty = pack_line | slice: 0, 1
+      if pack_qty == blank
+        continue
+      endif
+      unless '123456789' contains pack_qty
+        continue
+      endunless
+      assign pack_name = pack_line | slice: 1, 200
+      assign pack_qty = pack_name | slice: 0, 1
+      if '0123456789' contains pack_qty
+        assign pack_name = pack_name | slice: 1, 200
+      endif
+      assign pack_names = pack_names | append: pack_name | append: '|'
+    endfor
+
+    assign proof_total = 0
+    assign lead_count = 0
+    for source in collections['all'].products limit: 50
+      assign source_count = source.metafields.stamped.reviews_count.value | default: source.metafields.stamped.reviews_count | plus: 0
+      if source_count == 0 or source.id == product.id
+        continue
+      endif
+      assign proof_total = proof_total | plus: source_count
+      if source_count < 5 or source_count <= lead_count or pack_names == '|'
+        continue
+      endif
+      assign source_name = source.title | remove: nbsp | remove: ' ' | upcase | replace: '⁺', '+'
+      assign needle_end = '|' | append: source_name | append: '|'
+      assign needle_size = '|' | append: source_name | append: '('
+      if pack_names contains needle_end or pack_names contains needle_size
+        assign lead_count = source_count
+        assign lead_title = source.title
+        assign lead_url = source.url
+        assign lead_rating = source.metafields.stamped.reviews_average.value | default: source.metafields.stamped.reviews_average | times: 1.0
+      endif
+    endfor
+
+    if lead_count > 0 and lead_rating >= 4
+      assign proof_kind = 'included'
+      assign lead_fill = lead_rating | times: 20 | round
+      assign lead_shown = lead_rating | round: 2
+    elsif proof_total >= 100
+      assign proof_kind = 'brand'
+      assign proof_step = 50
+      if proof_total >= 1000
+        assign proof_step = 100
+      endif
+      assign proof_floor = proof_total | divided_by: proof_step | times: proof_step
+      assign proof_shown = proof_floor
+      if proof_floor >= 1000
+        assign proof_thousands = proof_floor | divided_by: 1000
+        assign proof_rest = proof_floor | modulo: 1000 | prepend: '00' | slice: -3, 3
+        assign proof_shown = proof_thousands | append: ',' | append: proof_rest
+      endif
+    endif
+  endif
 -%}
-<div class="lp-rating-row">
+<div class="lp-rating-row{% if proof_kind != blank %} lp-rating-row--proof{% endif %}">
   {%- if lp_face_list.size > 0 -%}
     <a class="lp-rating-row__faces" href="#shopify-product-reviews" aria-hidden="true" tabindex="-1">
       {%- for f in lp_face_list -%}
@@ -25,4 +95,15 @@
     </a>
   {%- endif -%}
   <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-sku="{{ product.handle }}" data-product-title="{{ product.title | escape }}" data-product-type="{{ product.type | escape }}" style="display: block;"></span>
+  {%- if proof_kind == 'included' -%}
+    <a class="lp-proof lp-proof--included" href="{{ lead_url }}#stamped-main-widget">
+      <span class="lp-proof__stars" style="--lp-stars: {{ lead_fill }}%;" aria-hidden="true"></span>
+      <span class="lp-proof__text">{{ 'lp.proof.included' | t: product: lead_title, rating: lead_shown, count: lead_count }}</span>
+    </a>
+  {%- elsif proof_kind == 'brand' -%}
+    <p class="lp-proof lp-proof--brand">
+      <span class="lp-proof__mark" aria-hidden="true"></span>
+      <span class="lp-proof__text">{{ 'lp.proof.brand' | t: count: proof_shown }}</span>
+    </p>
+  {%- endif -%}
 </div>

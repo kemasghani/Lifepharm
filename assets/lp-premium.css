@@ -600,6 +600,10 @@ html.lp-scrolled .header__wrapper { box-shadow: 0 10px 30px -18px rgb(var(--lp-i
 .lp-trust-row__icon { display: grid; flex: none; place-items: center; width: 20px; height: 20px; color: rgb(var(--lp-amber)); }
 .lp-trust-row__icon svg { width: 20px; height: 20px; }
 
+/* ---------- Payment note (PDP): one line under the trust tiles, same type as the Shop Pay line below it ---------- */
+.lp-pay-note { display: flex; align-items: center; gap: .5rem; margin: 1rem 0 0; }
+.lp-pay-note__icon { flex: none; width: 24px; height: 24px; object-fit: contain; }
+
 /* =========================================================
    MOTION & LOADING SYSTEM
    ========================================================= */

@@ -1,0 +1,53 @@
+{% doc %}
+  Outputs the reference price of a variant in the shop's minor units (cents), or 0 when it has none.
+  One number feeds both the "Save" badge on the size card and the struck-through price in the Add to Cart
+  button, so the offer and the price always agree:
+  1. the merchant's compare-at price, when it is above the price;
+  2. otherwise, for a size counted in units (30 Count, 50 ml, 3 Pack), what the same quantity costs at the
+     product's dearest unit price (the single bottle), rounded down to a whole currency unit. Laminine's
+     Family Pack counts as 300 capsules (9 x 30-count bottles plus 1 free, as its pack image shows).
+  A reference less than one whole currency unit above the price is not shown.
+
+  @param {variant} variant - The variant to price
+
+  @example
+  {% capture reference %}{% render 'lp-variant-reference', variant: variant %}{% endcapture %}
+{% enddoc %}
+{%- liquid
+  assign ref_price = 0
+  if variant != blank
+    if variant.compare_at_price > variant.price
+      assign ref_price = variant.compare_at_price
+    else
+      assign ref_units = 'count,capsules,caps,ml,tablets,pack,packs'
+      assign ref_base = 0
+      assign ref_qty = 0
+      for v in variant.product.variants
+        assign v_down = v.title | downcase
+        assign v_words = v_down | split: ' '
+        assign v_qty = v_words.first | remove: ',' | plus: 0
+        assign v_word = v_words[1] | remove: '.' | strip
+        if v_down contains 'family pack' and variant.product.handle == 'laminine'
+          assign v_qty = 300
+          assign v_word = 'count'
+        endif
+        if v_qty > 0 and v_word != blank and ref_units contains v_word
+          assign v_unit = v.price | times: 1.0 | divided_by: v_qty
+          if v_unit > ref_base
+            assign ref_base = v_unit
+          endif
+          if v.id == variant.id
+            assign ref_qty = v_qty
+          endif
+        endif
+      endfor
+      if ref_qty > 0
+        assign ref_save = ref_base | times: ref_qty | minus: variant.price | divided_by: 100 | floor | times: 100
+        if ref_save >= 100
+          assign ref_price = variant.price | plus: ref_save
+        endif
+      endif
+    endif
+  endif
+  echo ref_price
+-%}

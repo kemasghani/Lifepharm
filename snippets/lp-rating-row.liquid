@@ -98,8 +98,8 @@
   <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-sku="{{ product.handle }}" data-product-title="{{ product.title | escape }}" data-product-type="{{ product.type | escape }}" style="display: block;"></span>
   {%- if proof_kind == 'included' -%}
     <a class="lp-proof lp-proof--included" href="{{ lead_url }}">
-      <span class="lp-proof__stars" style="--lp-stars: {{ lead_fill }}%;" aria-hidden="true"></span>
-      <span class="lp-proof__text">{{ 'lp.proof.included' | t: product: lead_title, rating: lead_shown, count: lead_count }}</span>
+      <span class="lp-proof__stars" style="--lp-stars: {{ lead_fill }}%;" role="img" aria-label="{{ 'lp.proof.rating' | t: rating: lead_shown }}"></span>
+      <span class="lp-proof__text">{{ 'lp.proof.included' | t: product: lead_title, count: lead_count }}</span>
     </a>
   {%- elsif proof_kind == 'brand' -%}
     <p class="lp-proof lp-proof--brand">

@@ -276,6 +276,32 @@
       "notes": "D-066, L-061, L-062. Template changes: master 5 + 9, us 15 + 19, eu 13 + 19, uk 5 + 9 (layout, then guarantee wording). TD-020, TD-021."
     },
     {
+      "id": "pdp-010",
+      "area": "pdp",
+      "title": "Offer and price agree: one reference price, one price order, one reading of the size",
+      "status": "passing",
+      "stores": [
+        "uk",
+        "us",
+        "eu"
+      ],
+      "verification": [
+        "Default checks",
+        "Save badge equals struck price minus price in the Add to Cart button and in the One-time row",
+        "On a subscription plan the button and the row strike the one-time price",
+        "Sticky bar shows the same price per unit as the size card (Family Pack included)",
+        "Struck price first, price to pay second, everywhere"
+      ],
+      "evidence": [
+        "master 9ed8db3, 72c5c4d, 127f229",
+        "us 4c64e2a, eu c8699da, uk 4192dc1",
+        "./init.sh --full READY (13 = baseline)",
+        "2026-11-23 `tools/qa/pdp_price_consistency_check.py` at 1440x900 and 390x844: US 28/28 (LAMININE, OMEGA+++, DIGESTIVE+++, LAMIDERM APEX, Power Cream, Hydration System, LAMININE Activation), UK 14/14, EU 10/10",
+        "US draft: price order checked on home, collection and DIGESTIVE+++ product page; plan badge 15px above the border, row padding 18px 20px"
+      ],
+      "notes": "D-067, L-066. No product data was changed; compare-at decision is TD-022."
+    },
+    {
       "id": "sci-001",
       "area": "content",
       "title": "Science + Our Studies merged story page",

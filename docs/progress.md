@@ -6,7 +6,7 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 
 - **Active feature:** none in this repo. Off-repo: `int-002` lpsync (private marketing repo).
 - **Theme state:** `master` = UK draft 189821452674; `us`, `eu`, `uk` branches equal to master in design; US draft 193373995317, EU draft 168919728345; News redesign on `news` (unpublished 190930518311). Nothing published.
-- **Waiting on Letisha / owner:** apps Keep/Remove decisions (`apps-001`), News review (`news-001`), science hero artwork + video (`sci-002`), checkout extension deploy approval (`ref-002`), publish approval (`launch-001`), Impact 7.2.0 in a library (`ms-003`), which products Truemed accepts for the US HSA/FSA note (TD-016), Stamped review requests for the products with no reviews (TD-019).
+- **Waiting on Letisha / owner:** apps Keep/Remove decisions (`apps-001`), News review (`news-001`), science hero artwork + video (`sci-002`), checkout extension deploy approval (`ref-002`), publish approval (`launch-001`), Impact 7.2.0 in a library (`ms-003`), which products Truemed accepts for the US HSA/FSA note (TD-016), Stamped review requests for the products with no reviews (TD-019), struck reference prices and the compare-at field (TD-022).
 - **Known risks:** see [tech-debt.md](tech-debt.md) (top: customer data in public CSVs).
 - **Next suggested step:** pick one `not_started` or newly requested item; run `./init.sh` first.
 
@@ -23,6 +23,11 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 ```
 
 ---
+
+## 2026-11-23 · pdp-010 · Offer and price agree on every product page
+- Done: the Save badge on a size card, the struck price in Add to Cart and the struck price in the plan picker's One-time row now come from one reference price; the sticky bar reads sizes like the size card (Family Pack shows $1.52 / capsule, ml products show a price per ml, Cellnergy sizes show In stock); every price row reads struck original first, price to pay second; the plan picker's Save badge sits higher and its rows have more padding. No product data was changed.
+- Evidence: master 9ed8db3, 72c5c4d, 127f229; us 4c64e2a, eu c8699da, uk 4192dc1; ./init.sh --full READY (13 = baseline); `tools/qa/pdp_price_consistency_check.py` US 28/28, UK 14/14, EU 10/10 at 1440x900 and 390x844.
+- Decisions: D-067. Lessons: L-066. Debt: TD-022 (compare-at in the admin is the developer's and LifePharm's decision).
 
 ## 2026-11-23 · pdp-001 · Reviews widget: Questions tab no longer shows the reviews as well
 - Done: pressing Questions in the Stamped widget left the review cards on screen with the questions below them, on every product page. Our forced two-column grid on the reviews list overrode Stamped's own hide. The hidden state is now forced too. Found by the developer.

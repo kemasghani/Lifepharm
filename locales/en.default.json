@@ -451,6 +451,9 @@
       "studied": "Clinically Studied",
       "secure": "Secure, Encrypted Checkout"
     },
+    "pay": {
+      "hsa_fsa": "Pay with HSA/FSA via Truemed"
+    },
     "cart": {
       "title": "Your Cart",
       "items": {

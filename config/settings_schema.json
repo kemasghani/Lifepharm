@@ -928,6 +928,55 @@
     ]
   },
   {
+    "name": "Payment notes",
+    "settings": [
+      {
+        "type": "header",
+        "content": "HSA/FSA line on product pages"
+      },
+      {
+        "type": "paragraph",
+        "content": "One line under the Add to Cart button. Choose here which products show it; product templates no longer carry their own copy."
+      },
+      {
+        "type": "select",
+        "id": "lp_hsa_mode",
+        "label": "Show on",
+        "default": "none",
+        "options": [
+          {
+            "value": "none",
+            "label": "Hidden"
+          },
+          {
+            "value": "all",
+            "label": "All products"
+          },
+          {
+            "value": "only",
+            "label": "Only the products listed below"
+          },
+          {
+            "value": "except",
+            "label": "All products except those listed below"
+          }
+        ]
+      },
+      {
+        "type": "product_list",
+        "id": "lp_hsa_products",
+        "label": "Products",
+        "limit": 50
+      },
+      {
+        "type": "image_picker",
+        "id": "lp_hsa_icon",
+        "label": "Icon",
+        "info": "Square, at least 72 x 72px"
+      }
+    ]
+  },
+  {
     "name": "Favicon",
     "settings": [
       {

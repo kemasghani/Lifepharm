@@ -9,7 +9,9 @@ For each templates/product*.json in the checkout:
 4. where the page has an lp-pdp-split section with an "In the box" row (What's in the Box), turn that row into
    the lp_box dropdown (one item per comma-separated entry; photos are set by hand afterwards, see BOX_PHOTOS),
    move the other rows into Specifications, and delete the section.
-A template that shows no guarantee card and has neither section is left alone. Idempotent.
+A template that shows no guarantee card and has neither section is left alone, except that every guarantee
+dropdown gets the standard wording, in which "return policy" links to the store's refund policy
+(/policies/refund-policy exists on the US, UK and EU stores, checked 2026-11-23). Idempotent.
 
 Usage: python3 tools/store-audit/pdp_dropdowns.py [--root <checkout>] [--apply]"""
 import argparse, glob, json, os, pathlib, re
@@ -25,7 +27,7 @@ STANDARD = {
     BENEFITS: {"title": "Benefits", "content": "{{ product.metafields.custom.text_benefits | metafield_tag }}"},
     INGREDIENTS: {"title": "Ingredients", "content": "{{ product.metafields.custom.ingredients | metafield_tag }}"},
     HOWTO: {"title": "How to Use", "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>", "lp_how_steps": True},
-    GUARANTEE: {"title": "60-Day Money-Back Guarantee", "content": "<p>All of our products come with a 60-Day Money-Back Guarantee. </p><p>Try it, and if it doesn’t work, it's on us! Our hassle-free return policy offers a 100% money-back guarantee within 60 days of delivery.</p>"},
+    GUARANTEE: {"title": "60-Day Money-Back Guarantee", "content": "<p>All of our products come with a 60-Day Money-Back Guarantee. </p><p>Try it, and if it doesn’t work, it's on us! Our hassle-free <a href=\"/policies/refund-policy\" title=\"Refund policy\">return policy</a> offers a 100% money-back guarantee within 60 days of delivery.</p>"},
 }
 plain = lambda html: re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html or "")).strip()
 
@@ -54,7 +56,10 @@ def convert(data, name=""):
     has_box = split_with(lambda s: any(b["type"] == "row" and plain(b["settings"].get("label")).lower() == "in the box" for b in s.get("blocks", {}).values()))
     already = HOWTO in blocks and not blocks[HOWTO].get("disabled") and blocks[HOWTO].get("settings", {}).get("lp_how_steps") is False
     if not (shows_card or has_how or has_box or already or BOX in blocks):
-        return notes  # a page that showed none of these (standard, funnel or legacy template) is left as it is
+        g = blocks.get(GUARANTEE)  # a page that showed none of these keeps its layout; only the guarantee wording is aligned
+        if g and g["type"] == "collapsible_text" and "60-Day Money-Back Guarantee" in (g["settings"].get("content") or "") and g["settings"].get("content") != STANDARD[GUARANTEE]["content"]:
+            g["settings"]["content"] = STANDARD[GUARANTEE]["content"]; notes.append("guarantee wording links the return policy")
+        return notes
     for bid in [b for b in order if is_card(b)]:
         del blocks[bid]; order.remove(bid); notes.append("guarantee card removed")
 

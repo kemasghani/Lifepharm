@@ -6,7 +6,7 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 
 - **Active feature:** none in this repo. Off-repo: `int-002` lpsync (private marketing repo).
 - **Theme state:** `master` = UK draft 189821452674; `us`, `eu`, `uk` branches equal to master in design; US draft 193373995317, EU draft 168919728345; News redesign on `news` (unpublished 190930518311). Nothing published.
-- **Waiting on Letisha / owner:** apps Keep/Remove decisions (`apps-001`), News review (`news-001`), science hero artwork + video (`sci-002`), checkout extension deploy approval (`ref-002`), publish approval (`launch-001`), Impact 7.2.0 in a library (`ms-003`).
+- **Waiting on Letisha / owner:** apps Keep/Remove decisions (`apps-001`), News review (`news-001`), science hero artwork + video (`sci-002`), checkout extension deploy approval (`ref-002`), publish approval (`launch-001`), Impact 7.2.0 in a library (`ms-003`), which products Truemed accepts for the US HSA/FSA note (TD-016).
 - **Known risks:** see [tech-debt.md](tech-debt.md) (top: customer data in public CSVs).
 - **Next suggested step:** pick one `not_started` or newly requested item; run `./init.sh` first.
 
@@ -23,6 +23,13 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 ```
 
 ---
+
+## 2026-11-23 · pdp-007 · HSA/FSA payment note: one line from one setting
+- Done: the US product pages showed "Pay with HSA/FSA" from hand-written blocks in 6 of 20 product templates (twice on the Diffuser and Hydration System, missing on LAMININE, OMEGA+++, IMMUNE+++, DIGESTIVE+++). Now `snippets/lp-hsa-fsa.liquid` renders one line under the trust tiles, and Theme settings > Payment notes decides which products show it. 11 template blocks removed on `us`. US draft: same ten products as before. UK and EU: hidden. `sync_branch.py` keeps `lp_hsa_*` per store and takes `--root`. New check `tools/qa/pdp_payment_note_check.py`.
+- Evidence: master f2e73a5; us 57fc9c8, eu 9d3d5b3, uk 98e1f71; ./init.sh --full READY (13 = baseline); theme check us 88, unchanged; US draft 18/18, UK 4/4, EU 2/2 at 1440x900 and 390x844. Live US theme not touched.
+- Decisions: D-064. Lessons: L-058, L-059. Debt: TD-016 to TD-018.
+- Next: Letisha to say which products Truemed accepts (TD-016), then set the list. US trust tile still says "Free UK Delivery Over £150" (TD-017).
+- Blockers: none for the build. The session ran from a clone outside iCloud; the copy in `~/Documents` is behind origin until iCloud delivers its files (TD-018).
 
 ## 2026-11-22 · coll-002, nav-002 · Collection filters redesigned; shopping links open what their label says
 - Done: (1) Link audit of the UK draft, then fixes on all three stores: both "Shop best sellers" buttons open all products sorted by best selling (they opened Nutritionals); Shop menu category links ignore a tag filter saved on the menu item (UK "Nutritionals" listed one product); the product FAQ button stays on the shopper's store (it opened the US store from UK); collections page card renamed Frequency Regeneration and its "View all products" link is no longer an absolute UK address. (2) Collection filters: the drawer is replaced by chips that apply at once. Desktop shows labelled rows; phones show a Filter button, a rail of quick chips and a sheet with every choice ("Show N products"). Sort list added (Featured, Best Sellers, price). A first version (white card with two rails) was rejected by the developer the same day and replaced. Files: `snippets/lp-collection-filters.liquid` (new), `sections/main-collection.liquid`, `assets/lp-premium.js`, `locales/en.default.json`, `snippets/mega-menu-horizontal.liquid`, `snippets/lp-mobile-menu.liquid`, `sections/lp-pdp-faq.liquid`, collection, index and list-collections templates per store.

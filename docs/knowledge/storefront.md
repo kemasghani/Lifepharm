@@ -17,7 +17,7 @@ Where each part of the redesign lives and what it depends on. Rules for look and
 ## Product page (`templates/product*.json`)
 
 - Story sections `sections/lp-pdp-*.liquid` read `product.metafields.custom.*` (text_benefits, phase_1..3, text_ingredients, value_1..5, header_*). Merchant metafield em dashes are rendered as commas. Never edit the metafields.
-- Buy box: `snippets/lp-pdp-summary.liquid` (Ideal-for icons `lp-benefit-*.png`), size cards in `snippets/option-value.liquid` (`lp_card`, fixed 3 columns, savings chip vs single-bottle unit price), Skio plan picker, trust tiles, How to Use accordion.
+- Buy box: `snippets/lp-pdp-summary.liquid` (Ideal-for icons `lp-benefit-*.png`), size cards in `snippets/option-value.liquid` (`lp_card`, fixed 3 columns, savings chip vs single-bottle unit price), Skio plan picker, trust tiles, then the payment note `snippets/lp-hsa-fsa.liquid` (HSA/FSA line; shown per store from Theme settings > Payment notes, never from a template block; D-064), How to Use accordion.
 - Variant changes the main image: script in `snippets/product-gallery.liquid` (L-011).
 - Rating row: real reviewer faces on LAMININE only (from their Stamped photos); other PDPs show stars and count.
 - Product templates use 20 to 23 of 25 sections (TD-007).

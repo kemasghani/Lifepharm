@@ -19,6 +19,7 @@ Add new lessons at the end of their section with the next free number.
 - **L-006** · 2026-11-10 · curl on the preview showed the live theme → `preview_theme_id` needs a cookie jar, and the first answer is a 302 → `curl -L -c jar -b jar "...?preview_theme_id=..."`; poll for a marker string, sync takes 1 to 10 minutes. · doc.
 - **L-007** · 2026-11-18 · US/EU pages showed only a title → branches started as a UK copy and lacked live-only templates → after creating a store branch, run `tools/store-audit/port_templates.py` (read-only on live, never overwrites). · doc.
 - **L-008** · 2026-11-20 · Referral attributes differed between draft and live → US/EU drafts lacked the Teqnavi app embeds → any branch sync must keep each store's own app embeds (`sync_branch.py` does). · doc.
+- **L-058** · 2026-11-23 · `sync_branch.py us` would have rewritten 27 data files (index, FAQ pages, product templates) for a five-file code change, because the US branch has moved on from master's data since the last full sync → for a code-only change, first confirm the touched files are identical on the store branch and on master before the change (`git diff <store> master~1 -- <file>`), then `git checkout master -- <those files>` on the store branch; keep `sync_branch.py` for a deliberate full resync. A theme setting that is one store's own choice must be listed in `STORE_SETTINGS` there, or a full sync resets it. · this file.
 
 ## B. Liquid, CSS and JS
 
@@ -61,6 +62,7 @@ Add new lessons at the end of their section with the next free number.
 - **L-045** · 2026-11-20 · Useful scripts (`sync_branch.py`, `port_templates.py`, Files upload) lived only in session scratchpads and nearly vanished → any script used twice goes into `tools/` in the same session. · this file.
 - **L-046** · 2026-11-20 · Repo is **public** on GitHub → anything committed is published → no secrets, IPs, account ids, personal emails or customer data in commits; private facts stay in the developer's private notes. · `init.sh` secret scan.
 - **L-055** · 2026-11-22 · The working copy lives in `~/Documents`, which iCloud can offload: 21 theme files and about 800 git objects became placeholders that never downloaded, so `./init.sh`, `grep -r` and most git commands hung with no output → if a command that only reads the repo stalls, check `ls -lO` / `find . -flags +dataless` before anything else; work from a fresh `git clone` outside iCloud (same credential helper as `.git/config`), then mark the folder "Keep Downloaded" or move the repo out of iCloud. · this file.
+- **L-059** · 2026-11-23 · L-055 hit a second time: `./init.sh`, `grep -r` and `git grep` hung again, and `brctl download` did not bring the files back; the storefront also answers plain `curl` with 429 → work from a clone outside iCloud straight away (copy the `credential` helper from the old `.git/config`, symlink `.env`, pass `--root` to the store-audit tools); read live pages with Playwright, never curl. The folder still needs moving out of iCloud (TD-018). · this file.
 
 ## F. Assets and imagery
 

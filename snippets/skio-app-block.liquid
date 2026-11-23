@@ -27,8 +27,20 @@
     }
   </style>
 
+  {%- comment -%}
+    LifePharm: each variant's reference price (snippets/lp-variant-reference.liquid), so the one-time row can strike
+    the same price as the Add to Cart button and match the size card's Save badge.
+  {%- endcomment -%}
+  {%- capture lp_reference_map -%}
+    {%- for lp_variant in product.variants -%}
+      {%- capture lp_variant_reference -%}{%- render 'lp-variant-reference', variant: lp_variant -%}{%- endcapture -%}
+      {%- unless forloop.first -%},{%- endunless -%}"{{ lp_variant.id }}":{{ lp_variant_reference | plus: 0 }}
+    {%- endfor -%}
+  {%- endcapture -%}
+
   <{{ block.settings.element_name }}
     key='{{ block.id }}'
+    data-lp-reference='{ {{- lp_reference_map | strip -}} }'
     options='{{ block.settings | json | escape }}'
     layout='{{ block.settings.layout }}'
     

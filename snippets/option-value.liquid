@@ -158,29 +158,13 @@ Color swatch specific parameters:
   {%- when 'lp_card' -%}
     {%- liquid
       assign card_image = variant.featured_media | default: variant.product.featured_media
-      assign name_words = label | split: ' '
-      assign unit_qty = name_words.first | remove: ',' | plus: 0
-      assign unit_word = name_words[1] | downcase | remove: '.' | strip
-      assign unit_label = ''
-      if unit_word == 'count' or unit_word == 'capsules' or unit_word == 'caps'
-        assign unit_label = 'capsule'
-      elsif unit_word == 'ml'
-        assign unit_label = 'ml'
-      elsif unit_word == 'tablets'
-        assign unit_label = 'tablet'
-      endif
-      # Cellnergy sizes count devices or bottles, not capsules: show the pack price instead of a unit price.
-      if variant.product.handle contains 'cellnergy'
-        assign unit_label = ''
-      endif
-
-      # Laminine's Family Pack is 9 x 30-count bottles plus 1 free (as its pack image shows), so 300 capsules.
-      assign label_down = label | downcase
-      if unit_qty == 0 and label_down contains 'family pack' and variant.product.handle == 'laminine'
-        assign unit_qty = 300
-        assign unit_label = 'capsule'
-        assign unit_word = 'count'
-      endif
+      # Quantity and unit of the size come from one place (snippets/lp-variant-units.liquid), shared with the sticky bar.
+      capture lp_units
+        render 'lp-variant-units', title: label, handle: variant.product.handle
+      endcapture
+      assign lp_units = lp_units | strip | split: '|'
+      assign unit_qty = lp_units[0] | plus: 0
+      assign unit_label = lp_units[1] | default: ''
       # The saving shown on the card and the struck price in the Add to Cart button come from one number
       # (snippets/lp-variant-reference.liquid): the compare-at price when the merchant set one, otherwise the
       # same quantity at the single-bottle unit price.

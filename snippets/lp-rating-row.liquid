@@ -4,7 +4,8 @@
   assets/lp-face-laminine-*.jpg). A product with no reviews never shows empty stars. It shows,
   from real Stamped data only:
   1. a pack: the rating of the best-reviewed product listed in its "Pack contains" description,
-     labelled "Includes <product>", linking to that product's reviews;
+     labelled "Includes <product>", linking to that product (no #anchor: the referral app appends
+     ?ref= after it and breaks the address);
   2. anything else: the number of reviews across the store's products, rounded down.
   Nothing is shown when neither is available.
 
@@ -96,7 +97,7 @@
   {%- endif -%}
   <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-sku="{{ product.handle }}" data-product-title="{{ product.title | escape }}" data-product-type="{{ product.type | escape }}" style="display: block;"></span>
   {%- if proof_kind == 'included' -%}
-    <a class="lp-proof lp-proof--included" href="{{ lead_url }}#stamped-main-widget">
+    <a class="lp-proof lp-proof--included" href="{{ lead_url }}">
       <span class="lp-proof__stars" style="--lp-stars: {{ lead_fill }}%;" aria-hidden="true"></span>
       <span class="lp-proof__text">{{ 'lp.proof.included' | t: product: lead_title, rating: lead_shown, count: lead_count }}</span>
     </a>

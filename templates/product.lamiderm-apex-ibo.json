@@ -82,12 +82,6 @@
           "disabled": true,
           "settings": {}
         },
-        "liquid_HDD38i": {
-          "type": "liquid",
-          "settings": {
-            "liquid": "Pay with <img src=\"//shop.lifepharm.com/cdn/shop/files/Truemed-icon.png?v=1787352700&amp;width=1040\" alt=\"Pay with HSA/FSA\" srcset=\"//shop.lifepharm.com/cdn/shop/files/Truemed-icon.png?v=1787352700&amp;width=56 56w, //shop.lifepharm.com/cdn/shop/files/Truemed-icon.png?v=1787352700&amp;width=112 112w\" width=\"1040\" height=\"1040\" style=\"max-width: 25px; display: inline-block; vertical-align: top; margin-right: 5px;\" sizes=\"56px\">HSA/FSA"
-          }
-        },
         "afterpay_on_site_messaging_payments_messaging_zadGWL": {
           "type": "shopify://apps/afterpay-on-site-messaging/blocks/payments-messaging/f45a5524-d177-4475-bf59-281efd2215a8",
           "settings": {
@@ -249,13 +243,6 @@
             "title": "Product Specification Manual",
             "content": "{{ product.metafields.custom.cellnery_wellness_manual_warranty | metafield_tag }}",
             "page": ""
-          }
-        },
-        "text_XG7FRx": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "<p>Pay with HSA/FSA via Truemed</p>"
           }
         },
         "text_zKnHjQ": {
@@ -431,7 +418,6 @@
         "payment_terms",
         "afterpay_on_site_messaging_payments_messaging_zadGWL",
         "liquid_Vpktjr",
-        "liquid_HDD38i",
         "skio_plan_picker_NRccgX",
         "text_VjR6WU",
         "description",
@@ -442,7 +428,6 @@
         "collapsible_text_PR3cy8",
         "collapsible_text_PDdyLw",
         "collapsible_text_kaarby",
-        "text_XG7FRx",
         "text_zKnHjQ",
         "tolstoy_shoppable_video_ugc_stories_block_hnKrMy",
         "offer_KHjNfD",

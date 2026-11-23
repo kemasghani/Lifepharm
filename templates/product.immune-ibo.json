@@ -82,12 +82,6 @@
           "disabled": true,
           "settings": {}
         },
-        "liquid_EkTVnf": {
-          "type": "liquid",
-          "settings": {
-            "liquid": "Pay with <img src=\"//shop.lifepharm.com/cdn/shop/files/Truemed-icon.png?v=1787352700&amp;width=1040\" alt=\"Pay with HSA/FSA\" srcset=\"//shop.lifepharm.com/cdn/shop/files/Truemed-icon.png?v=1787352700&amp;width=56 56w, //shop.lifepharm.com/cdn/shop/files/Truemed-icon.png?v=1787352700&amp;width=112 112w\" width=\"1040\" height=\"1040\" style=\"max-width: 25px; display: inline-block; vertical-align: top; margin-right: 5px;\" sizes=\"56px\">HSA/FSA"
-          }
-        },
         "afterpay_on_site_messaging_payments_messaging_wmQJCC": {
           "type": "shopify://apps/afterpay-on-site-messaging/blocks/payments-messaging/f45a5524-d177-4475-bf59-281efd2215a8",
           "settings": {
@@ -254,13 +248,6 @@
             "page": ""
           }
         },
-        "text_WB8GLP": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "<p>Pay with HSA/FSA via Truemed</p>"
-          }
-        },
         "text_qkxir3": {
           "type": "text",
           "disabled": true,
@@ -399,7 +386,6 @@
         "payment_terms",
         "afterpay_on_site_messaging_payments_messaging_wmQJCC",
         "liquid_AXFzyz",
-        "liquid_EkTVnf",
         "skio_plan_picker_pn4yd9",
         "easyflow_app_block_gr8LEC",
         "text_VjR6WU",
@@ -411,7 +397,6 @@
         "collapsible_text_PR3cy8",
         "collapsible_text_PDdyLw",
         "collapsible_text_kaarby",
-        "text_WB8GLP",
         "text_qkxir3",
         "tolstoy_shoppable_video_ugc_stories_block_hnKrMy",
         "offer_KHjNfD",

@@ -1,0 +1,43 @@
+{% doc %}
+  Renders the one-line HSA/FSA payment note under the product buy buttons.
+  Which products show it is decided in one place, Theme settings > Payment notes
+  (lp_hsa_mode, lp_hsa_products, lp_hsa_icon), never per template. Stores without
+  HSA/FSA leave the mode on "Hidden".
+
+  @param {product} product - The product shown on the page
+
+  @example
+  {% render 'lp-hsa-fsa', product: product %}
+{% enddoc %}
+{%- liquid
+  assign hsa_mode = settings.lp_hsa_mode | default: 'none'
+  assign hsa_show = false
+
+  if hsa_mode == 'all'
+    assign hsa_show = true
+  elsif hsa_mode == 'only' or hsa_mode == 'except'
+    assign hsa_handles = settings.lp_hsa_products | map: 'handle'
+    assign hsa_listed = false
+    if hsa_handles contains product.handle
+      assign hsa_listed = true
+    endif
+    if hsa_mode == 'only' and hsa_listed
+      assign hsa_show = true
+    endif
+    if hsa_mode == 'except' and hsa_listed == false
+      assign hsa_show = true
+    endif
+  endif
+
+  if product.gift_card?
+    assign hsa_show = false
+  endif
+-%}
+{%- if hsa_show -%}
+  <p class="lp-pay-note">
+    {%- if settings.lp_hsa_icon != blank -%}
+      {{- settings.lp_hsa_icon | image_url: width: 72 | image_tag: widths: '24, 48, 72', sizes: '24px', alt: '', loading: 'lazy', class: 'lp-pay-note__icon' -}}
+    {%- endif -%}
+    <span>{{ 'lp.pay.hsa_fsa' | t }}</span>
+  </p>
+{%- endif -%}

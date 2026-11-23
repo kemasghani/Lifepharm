@@ -177,7 +177,21 @@
       }
     },
     "product_card_background": "#ffffff",
-    "stagger_products_apparition": true
+    "stagger_products_apparition": true,
+    "lp_hsa_mode": "only",
+    "lp_hsa_products": [
+      "cellnergy-diffuser-replacement",
+      "cellnergy-hydration-system",
+      "brain-regeneration-pack",
+      "laminine-activation",
+      "powerhouse",
+      "recharge-renew-regenerate",
+      "stamina-power-pack",
+      "immune-120-count",
+      "lamiderm-apex-smart-serum-ibo",
+      "enrollment-kit"
+    ],
+    "lp_hsa_icon": "shopify://shop_images/Truemed-icon.png"
   },
   "presets": {
     "Impact": {

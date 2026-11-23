@@ -833,6 +833,45 @@ body:has(.shopify-section--main-product) .shopify-section--text-with-icons:not(#
 .lp-cempty__link { display: inline-flex; align-items: center; min-height: 44px; font-size: .875rem; font-weight: 600; color: rgb(var(--lp-ink)); text-decoration: underline; text-underline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { .cart-drawer * { transition: none !important; } }
 
+/* ---------- Buy-box dropdown content (D-066): lists sit inside the text column, markers hang in the indent ---------- */
+.shopify-section--main-product .product-info__accordion .prose :is(ul, ol) { display: grid; row-gap: .625em; margin-inline: 0; padding: 0; list-style: none; }
+.shopify-section--main-product .product-info__accordion .prose ul > li { position: relative; padding-inline-start: 1.375rem; }
+.shopify-section--main-product .product-info__accordion .prose ul > li::before { content: ""; position: absolute; inset-inline-start: .25rem; top: calc(.85em - 3px); width: 6px; height: 6px; border-radius: 50%; background: rgb(var(--lp-amber)); }
+.shopify-section--main-product .product-info__accordion .prose ol { counter-reset: lp-step; row-gap: .75em; }
+.shopify-section--main-product .product-info__accordion .prose ol > li { position: relative; min-height: 1.625rem; padding-inline-start: 2.375rem; counter-increment: lp-step; }
+.shopify-section--main-product .product-info__accordion .prose ol > li::before { content: counter(lp-step); position: absolute; inset-inline-start: 0; top: calc(.85em - .8125rem); display: grid; place-items: center; width: 1.625rem; height: 1.625rem; border-radius: 50%; background: rgb(var(--lp-amber)); color: #1F1E20; font-size: .75rem; font-weight: 700; line-height: 1; }
+
+/* ---------- What's in the Box dropdown (snippets/lp-box-list.liquid): photo rows that open a viewer ---------- */
+.lp-box__list { display: grid; gap: .5rem; margin: 0; padding: 0; list-style: none; }
+.lp-box__row { display: flex; align-items: center; gap: .875rem; width: 100%; min-height: 44px; padding: .5rem .875rem .5rem .5rem; border: 1px solid var(--lp-hairline); border-radius: var(--lp-radius-sm); background: #fff; color: rgb(var(--lp-ink)); text-align: start; font: inherit; }
+.lp-box__row--plain { padding-inline-start: .875rem; }
+button.lp-box__row { cursor: pointer; transition: border-color .2s ease, box-shadow .2s ease; }
+@media (hover: hover) { button.lp-box__row:hover { border-color: rgb(var(--lp-amber)); box-shadow: 0 6px 18px rgb(var(--lp-ink) / .08); } }
+.lp-box__thumb { flex: none; display: grid; place-items: center; width: 56px; height: 56px; overflow: hidden; border-radius: 10px; background: rgb(var(--lp-sand)); }
+.lp-box__thumb img { width: 100%; height: 100%; object-fit: contain; }
+.lp-box__label { flex: 1; min-width: 0; font-size: .9375rem; line-height: 1.35; font-weight: 600; }
+.lp-box__view { flex: none; width: 20px; height: 20px; background: rgb(var(--lp-amber)); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='6.5'/%3E%3Cpath d='M20 20l-4.3-4.3M11 8.4v5.2M8.4 11h5.2'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='6.5'/%3E%3Cpath d='M20 20l-4.3-4.3M11 8.4v5.2M8.4 11h5.2'/%3E%3C/svg%3E") center / contain no-repeat; }
+.lp-box-dialog { width: min(34rem, calc(100vw - 32px)); max-width: none; max-height: calc(100dvh - 32px); padding: 0; border: 0; border-radius: var(--lp-radius); background: rgb(var(--lp-ivory)); color: rgb(var(--lp-ink)); box-shadow: var(--lp-shadow-3); overflow: hidden; }
+.lp-box-dialog::backdrop { background: rgb(var(--lp-ink) / .5); }
+.lp-box-dialog[open] { animation: lp-box-in .22s cubic-bezier(.16, 1, .3, 1); }
+@keyframes lp-box-in { from { opacity: 0; transform: translateY(10px) scale(.985); } to { opacity: 1; transform: none; } }
+.lp-box-dialog__inner { position: relative; display: grid; }
+.lp-box-dialog__figure { display: grid; margin: 0; }
+.lp-box-dialog__img { display: block; width: 100%; height: min(70dvh, 34rem); object-fit: contain; padding: 1.5rem 1.5rem .5rem; background: #fff; }
+.lp-box-dialog__caption { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding: .875rem 1.25rem 1.125rem; font-size: 1rem; font-weight: 600; line-height: 1.3; }
+.lp-box-dialog__count { flex: none; font-size: .8125rem; font-weight: 500; color: rgb(var(--lp-muted)); font-variant-numeric: tabular-nums; }
+.lp-box-dialog :is(.lp-box-dialog__close, .lp-box-dialog__nav) { position: absolute; display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid rgb(var(--lp-ink) / .12); border-radius: 999px; background: #fff; color: rgb(var(--lp-ink)); cursor: pointer; transition: background-color .2s ease, border-color .2s ease; }
+.lp-box-dialog :is(.lp-box-dialog__close, .lp-box-dialog__nav)::before { content: ""; width: 20px; height: 20px; background: currentColor; }
+.lp-box-dialog__close { top: .75rem; inset-inline-end: .75rem; }
+.lp-box-dialog__close::before { -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 6l12 12M18 6L6 18'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 6l12 12M18 6L6 18'/%3E%3C/svg%3E") center / contain no-repeat; }
+.lp-box-dialog__nav { top: calc(min(70dvh, 34rem) / 2 - 22px); }
+.lp-box-dialog__nav--prev { inset-inline-start: .75rem; }
+.lp-box-dialog__nav--next { inset-inline-end: .75rem; }
+.lp-box-dialog__nav--prev::before { -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14.5 5.5L8 12l6.5 6.5'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14.5 5.5L8 12l6.5 6.5'/%3E%3C/svg%3E") center / contain no-repeat; }
+.lp-box-dialog__nav--next::before { -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9.5 5.5L16 12l-6.5 6.5'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9.5 5.5L16 12l-6.5 6.5'/%3E%3C/svg%3E") center / contain no-repeat; }
+@media (hover: hover) { .lp-box-dialog :is(.lp-box-dialog__close, .lp-box-dialog__nav):hover { background: rgb(var(--lp-sand)); border-color: transparent; } }
+@media (prefers-reduced-motion: reduce) { .lp-box-dialog[open] { animation: none; } button.lp-box__row, .lp-box-dialog :is(.lp-box-dialog__close, .lp-box-dialog__nav) { transition: none; } }
+
 /* ---------- Share Your Cart dialog (snippets/lp-share-cart.liquid) ---------- */
 .lp-share { width: min(30rem, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: 2rem 1.75rem 1.75rem; border: 0; border-radius: var(--lp-radius); background: #fff; color: rgb(var(--lp-ink)); box-shadow: var(--lp-shadow-3); }
 .lp-share::backdrop { background: rgb(var(--lp-ink) / .45); }

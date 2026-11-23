@@ -113,6 +113,27 @@
       "notes": "Open items that need admin, not theme (TD-011 to TD-013, TD-015): the UK main menu item Nutritionals is saved with a tag filter; the UK Shop All collection lacks CELLNERGY FOOTCHARGE; US collections are titled Cell Regeneration and Skin Regeneration while the redesign calls them Nutritionals and Skin Health; product FAQ metafields carry the US address."
     },
     {
+      "id": "nav-003",
+      "area": "navigation",
+      "title": "Mobile menu promo as a guarantee ticket with the 60-day badge",
+      "status": "passing",
+      "stores": [
+        "uk",
+        "us",
+        "eu"
+      ],
+      "verification": [
+        "Default checks",
+        "Badge loads from the store's own Files; arrow target is 44px; no sideways scroll at 390"
+      ],
+      "evidence": [
+        "master 8fbbda9, dc047c7, 86a1608, 3d5ba02; us 895d453, eu a397c7f, uk 315910e",
+        "./init.sh --full READY (13 = baseline)",
+        "2026-11-24 draft check at 390x844 on the three stores: ticket rendered, badge from uk / shop / europe.lifepharm.com, arrow 44x44, no sideways scroll, no JS errors"
+      ],
+      "notes": "D-075, L-071. Mobile only (the menu is hidden from 1000px)."
+    },
+    {
       "id": "pdp-001",
       "area": "pdp",
       "title": "Editorial metafield-driven product page",
@@ -569,6 +590,26 @@
         "Diff vendor files 7.0.1 -> 7.2.0, re-run guard and ratchet"
       ],
       "evidence": []
+    },
+    {
+      "id": "ms-004",
+      "area": "multi-store",
+      "title": "Staging store: branch `staging` from `us`, unpublished theme, menu and Files in place",
+      "status": "awaiting_client",
+      "stores": [
+        "staging"
+      ],
+      "verification": [
+        "audit.py --store staging: images, videos, collections, pages and menus resolve",
+        "Theme holds every file of the branch except the six legacy Design Packs files"
+      ],
+      "evidence": [
+        "origin/staging d45edb6",
+        "Theme 193151959352 on staging: 420 of 426 files",
+        "2026-11-24 audit.py --store staging: image 397 ok, video 4 ok, menu 6 ok, collection 4 ok, page 8 ok; 3 products and 19 apps not in the store",
+        "sync_files.py --from us --to staging: 66 Files copied"
+      ],
+      "notes": "D-077, L-072, TD-032, TD-033. Not checked on screen: the staging storefront is password-protected. Waiting for the developer to connect GitHub."
     },
     {
       "id": "launch-001",

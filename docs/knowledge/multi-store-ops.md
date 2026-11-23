@@ -12,6 +12,7 @@ The design spec is [../multi-store/ARCHITECTURE.md](../multi-store/ARCHITECTURE.
 | `eu` | EU | "Lifepharm/eu" 168919728345 (draft) | Teqnavi embeds |
 | `news` | News | "Lifepharm/news" 190930518311 (draft) | Dawn redesign, see [news-store.md](news-store.md) |
 | `news-dawn` | News | none | History only |
+| `staging` | Staging (staging.lifepharm.com) | "Lifepharm/staging (redesign draft)" 193151959352 (unpublished, API upload) | Starts from `us`; Files copied from the US; not connected to GitHub yet (TD-032) |
 
 Worktrees: `~/Documents/Lifepharm-worktrees/<branch>`. Run `tools/store-audit/setup-git.sh` once per clone (enables the `merge=ours` driver).
 

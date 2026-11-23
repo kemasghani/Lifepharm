@@ -5,7 +5,7 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 ## Snapshot (overwrite each session)
 
 - **Active feature:** none in this repo. Off-repo: `int-002` lpsync (private marketing repo).
-- **Theme state:** `master` = UK draft 189821452674; `us`, `eu`, `uk` branches equal to master in design; US draft 193373995317, EU draft 168919728345; News redesign on `news` (unpublished 190930518311). Nothing published.
+- **Theme state:** new `staging` branch (from `us`) with an unpublished API-uploaded theme 193151959352 on the staging store; `master` = UK draft 189821452674; `us`, `eu`, `uk` branches equal to master in design; US draft 193373995317, EU draft 168919728345; News redesign on `news` (unpublished 190930518311). Nothing published.
 - **Waiting on Letisha / owner:** owner fixes from the storefront QA (TD-023 to TD-031: the 0.00 jade roller, CELLNERGY WELLNESS 110V first on the UK and Europe, the UK footer Join Us link, which claims apply to skin care and devices, Stamped settings), apps Keep/Remove decisions (`apps-001`), News review (`news-001`), science hero artwork + video (`sci-002`), checkout extension deploy approval (`ref-002`), publish approval (`launch-001`), Impact 7.2.0 in a library (`ms-003`), which products Truemed accepts for the US HSA/FSA note (TD-016), Stamped review requests for the products with no reviews (TD-019), struck reference prices and the compare-at field (TD-022).
 - **Known risks:** see [tech-debt.md](tech-debt.md) (top: customer data in public CSVs).
 - **Next suggested step:** pick one `not_started` or newly requested item; run `./init.sh` first.
@@ -21,6 +21,15 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 - Next: ...
 - Blockers: ...
 ```
+
+---
+
+## 2026-11-24 · nav-003, ms-004 · Promo ticket in the mobile menu, team photo controls, staging store set up
+- Done: (1) Mobile menu promo redrawn as a guarantee ticket with the brand's 60-day badge (third version; the developer rejected the dark panel and a plain sand row). (2) Team section: per-person Photo zoom and Mirror the photo; Daniel West mirrored and at 120%. (3) Wellness Stand "Compatible with" links to CELLNERGY WELLNESS. (4) Store data, live at once: US refund policy typo fixed; Gut Defense System added to the `all` collection on the US and Europe. (5) Staging: branch `staging` from `us`, unpublished theme uploaded by API, header menu created, 66 Files copied from the US.
+- Evidence: master 3d5ba02 (promo), 5e79705 (team data), d16306c (stand link), 21fdc05 (store tools); us 895d453, eu a397c7f, uk 315910e; origin/staging d45edb6; ./init.sh --full READY (13 = baseline); draft checks at 390x844 and 1440x900 for the promo, the team grid, the stand link (200 on each store) and Shop All (Gut Defense System listed on the US and Europe, 15 products); staging audit: images, videos, menus, collections and pages all resolve.
+- Decisions: D-075 to D-078. Lessons: L-071, L-072. Debt: TD-032 to TD-034.
+- Next: developer connects GitHub branch `staging` on the staging store (TD-032); owner items TD-023 to TD-031.
+- Blockers: the staging storefront is password-protected, so nothing there was checked on screen.
 
 ---
 

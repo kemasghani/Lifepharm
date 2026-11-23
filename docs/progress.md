@@ -24,6 +24,11 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 
 ---
 
+## 2026-11-24 · pdp-001 · LAMININE Why It Works shows the same photo on every store
+- Done: the section showed the bottle photo on Europe and the telomere illustration on the US and UK, because it fell back to each store's own benefits image. The LAMININE template now names the bottle photo (developer's pick). Checked every product on the three stores: only LAMININE differed; DIGESTIVE+++ and REFIVE use the same photo under different file names. The gallery still differs on Europe on purpose (different label and nutrition table). No product data was changed.
+- Evidence: master 4aa28a9; us c8d5953, eu c3fde77, uk f96c1b2; ./init.sh --full READY (13 = baseline); `tools/qa/pdp_highlights_image_check.py` 6/6 on the US, UK and EU drafts at 1440x900 and 390x844.
+- Decisions: D-068. Lessons: L-067.
+
 ## 2026-11-23 · pdp-010 · Offer and price agree on every product page
 - Done: the Save badge on a size card, the struck price in Add to Cart and the struck price in the plan picker's One-time row now come from one reference price; the sticky bar reads sizes like the size card (Family Pack shows $1.52 / capsule, ml products show a price per ml, Cellnergy sizes show In stock); every price row reads struck original first, price to pay second; the plan picker's Save badge sits higher and its rows have more padding. No product data was changed.
 - Evidence: master 9ed8db3, 72c5c4d, 127f229; us 4c64e2a, eu c8699da, uk 4192dc1; ./init.sh --full READY (13 = baseline); `tools/qa/pdp_price_consistency_check.py` US 28/28, UK 14/14, EU 10/10 at 1440x900 and 390x844.

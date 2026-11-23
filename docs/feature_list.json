@@ -1,6 +1,6 @@
 {
   "project": "LifePharm theme redesign (UK, US, EU) + News",
-  "last_updated": "2026-11-23",
+  "last_updated": "2026-11-24",
   "rules": {
     "single_active_feature": true,
     "passing_requires_evidence": true,
@@ -131,7 +131,8 @@
         "b01d188",
         "440d009",
         "7acc104",
-        "2edf1e5"
+        "2edf1e5",
+        "2026-11-24: LAMININE Why It Works shows the same photo on the US, UK and EU drafts (master 4aa28a9, us c8d5953, eu c3fde77, uk f96c1b2); tools/qa/pdp_highlights_image_check.py 6/6 at 1440x900 and 390x844, no horizontal scroll, no JS errors (D-068, L-067)"
       ]
     },
     {

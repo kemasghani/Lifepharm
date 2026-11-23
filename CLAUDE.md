@@ -68,7 +68,7 @@ Source: Dropbox "Branding Resources" > `LifePharm-QuickStyleGuide-2024.pdf`. Fon
   - Fully NSF tested
   - Clinically studied
   - Free UK delivery over £150
-  - 978+ Laminine reviews
+  - LAMININE review count: the live Stamped number through the `[reviews]` placeholder (`snippets/lp-review-count.liquid`), never typed (D-071)
 - Never invent ratings, numbers or testimonials.
 - Do not edit merchant product data (metafields). Adapt presentation in the theme instead.
 

@@ -495,6 +495,30 @@
       ]
     },
     {
+      "id": "qa-001",
+      "area": "qa",
+      "title": "Storefront QA on the US, UK and Europe drafts: each market's own delivery line, claims only where they apply, no sale of a product with no price, one live review number, one price per unit, own-store review thumbnails, page h1",
+      "status": "passing",
+      "stores": [
+        "uk",
+        "us",
+        "eu"
+      ],
+      "verification": [
+        "Default checks",
+        "`tools/qa/store_claims_check.py` passes on the three drafts at 1440x900 and 390x844",
+        "`tools/qa/broken_images_check.py` passes on every published product page and the homepage of the three drafts"
+      ],
+      "evidence": [
+        "master cd51c38, 7ce8b4a; us 54d04d9, 7afcfe0; eu 69bfe99, ae401d7; uk c094b7e, 6ce37c9",
+        "./init.sh --full READY (13 = baseline) after each batch",
+        "2026-11-24 `tools/qa/store_claims_check.py us uk eu`: every check passes at 1440x900 and 390x844 (delivery line US \"Free Shipping Over $150\", UK \"Free UK Delivery Over £150\", Europe \"Free Delivery Over €150\"; hero 980+ / 970+ / 910+; LAMININE card and sticky bar 1.30 / 1.25 / 1,30 per capsule on Subscribe & Save); no sideways scroll",
+        "2026-11-24 `tools/qa/broken_images_check.py us uk eu`: 54 of 54 pages pass (23 pages failed before, all inside Stamped's hidden review thumbnails)",
+        "JS errors seen during the run are third-party and not from this change: Pandectes `shouldShowBanner` also fires on the live US theme; Stamped `e is not a function` fires with the new thumbnail code switched off (1 of 16 loads) as well as on"
+      ],
+      "notes": "D-069 to D-074, L-068 to L-070. Owner and LifePharm items from the three QA reports: TD-023 to TD-031. No product data, menu or app setting was changed."
+    },
+    {
       "id": "ms-001",
       "area": "multi-store",
       "title": "Branch-per-store model, store-audit tools, US/EU drafts in sync with master",

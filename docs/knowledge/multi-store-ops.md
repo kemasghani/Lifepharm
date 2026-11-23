@@ -31,7 +31,7 @@ Code-only change: skip the full sync and check out just the changed files from m
 
 - US collections `cell-regeneration` / `skin-regeneration` (UK/EU `nutritionals` / `skin-health`); US footer menus `company`, `shop-footer`, `support`. The remap table in `tools/store-audit/stores.json` handles these.
 - Store-only theme settings (kept by `sync_branch.py`, list `STORE_SETTINGS`): `lp_hsa_*`, the HSA/FSA payment note. US: only the listed products; UK and EU: hidden.
-- Market copy: US "Free shipping on orders over $150", EU "Free delivery on orders over €150", UK "Free UK delivery over £150".
+- Market copy: US "Free shipping on orders over $150", EU "Free delivery on orders over €150", UK "Free UK delivery over £150". The buy-box delivery tile is not typed: it is built from the store currency and the free delivery threshold (L-068).
 - Live-only templates were ported with `port_templates.py` (US 47, EU 40). Re-run it if the merchant adds templates on live (L-007).
 - All three stores lack the `product.custom.badges` metafield definition.
 - US `/pages/privacy-policy` is empty on live too; policies live at `/policies/`.

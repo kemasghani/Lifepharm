@@ -6,7 +6,7 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 
 - **Active feature:** none in this repo. Off-repo: `int-002` lpsync (private marketing repo).
 - **Theme state:** `master` = UK draft 189821452674; `us`, `eu`, `uk` branches equal to master in design; US draft 193373995317, EU draft 168919728345; News redesign on `news` (unpublished 190930518311). Nothing published.
-- **Waiting on Letisha / owner:** apps Keep/Remove decisions (`apps-001`), News review (`news-001`), science hero artwork + video (`sci-002`), checkout extension deploy approval (`ref-002`), publish approval (`launch-001`), Impact 7.2.0 in a library (`ms-003`), which products Truemed accepts for the US HSA/FSA note (TD-016), Stamped review requests for the products with no reviews (TD-019), struck reference prices and the compare-at field (TD-022).
+- **Waiting on Letisha / owner:** owner fixes from the storefront QA (TD-023 to TD-031: the 0.00 jade roller, CELLNERGY WELLNESS 110V first on the UK and Europe, the UK footer Join Us link, which claims apply to skin care and devices, Stamped settings), apps Keep/Remove decisions (`apps-001`), News review (`news-001`), science hero artwork + video (`sci-002`), checkout extension deploy approval (`ref-002`), publish approval (`launch-001`), Impact 7.2.0 in a library (`ms-003`), which products Truemed accepts for the US HSA/FSA note (TD-016), Stamped review requests for the products with no reviews (TD-019), struck reference prices and the compare-at field (TD-022).
 - **Known risks:** see [tech-debt.md](tech-debt.md) (top: customer data in public CSVs).
 - **Next suggested step:** pick one `not_started` or newly requested item; run `./init.sh` first.
 
@@ -21,6 +21,16 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 - Next: ...
 - Blockers: ...
 ```
+
+---
+
+## 2026-11-24 · qa-001 · Storefront QA fixes on the US, UK and Europe drafts
+- Done: three QA reports (one per store) were traced to their sources and the theme-side defects fixed on every store. (1) The buy-box delivery tile is built from the store's currency and free delivery threshold; the US and Europe had shown "Free UK Delivery Over £150". (2) Fully NSF Tested, Made in the USA and Clinically Studied show only on products tagged Nutritionals. (3) A product priced at zero reads Not Sold Separately, with no Add to Cart, dynamic checkout, sticky bar or quick add, and is noindex. (4) Homepage review numbers come from the live LAMININE count through `[reviews]` (980+ US, 970+ UK, 910+ Europe; the typed 978+ is gone). (5) Size cards show the price per unit for the selected plan, the same number as the sticky bar. (6) Stamped's hidden review thumbnails point at the store's own product image. (7) One h1 on the homepage; Join Us, Contact and FAQs now have one. (8) Removed the typed OMNIA "PREORDER SHIPS APRIL 2026" notice. (9) "1 review" on product tab cards; long mobile menu label wraps; share dialog links and the box dialog picture have valid addresses. No product data, menu or app setting was changed.
+- Evidence: master cd51c38, 7ce8b4a; us 54d04d9, 7afcfe0; eu 69bfe99, ae401d7; uk c094b7e, 6ce37c9; ./init.sh --full READY (13 = baseline); `tools/qa/store_claims_check.py us uk eu` passes at 1440x900 and 390x844; `tools/qa/broken_images_check.py us uk eu` 54 of 54 pages (23 failed before).
+- Decisions: D-069 to D-074 (D-071 supersedes the typed 978+ in CLAUDE.md section 3). Lessons: L-068, L-069, L-070.
+- Not defects (by design or third party): "1,100+ reviews across LifePharm products" and a pack's "Includes IMMUNE+++ (20 reviews)" (D-065); Our Studies equal to Science (sci-003, redirect at publish); filter counts above the total; Pandectes and Stamped console errors.
+- Next: the owner and LifePharm items in TD-023 to TD-031, most urgent first: unpublish the 0.00 jade roller, put 220V first on the UK and Europe, fix the UK footer Join Us link.
+- Blockers: the Chrome extension would not connect to Claude Code this session, so the checks ran with the Playwright scripts above.
 
 ---
 

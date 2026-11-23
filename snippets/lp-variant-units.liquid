@@ -1,0 +1,38 @@
+{% doc %}
+  Outputs "<quantity>|<unit>" for a size, so every place that shows a price per unit (the size card, the
+  sticky Add to Cart bar) reads the size the same way. The unit is empty when the size is not sold by the unit.
+  The quantity comes from the size name itself ("120 Count", "50 ml."): count, capsules and caps are capsules,
+  softgels are softgels, tablets are tablets, ml is ml. Two rules that the name cannot tell:
+  - Laminine's Family Pack is 9 x 30-count bottles plus 1 free (as its pack image shows): 300 capsules.
+  - Cellnergy sizes count devices or bottles, so they show the pack price, not a unit price.
+
+  @param {string} title - The size name (variant title or option value)
+  @param {string} handle - The product handle
+
+  @example
+  {% capture units %}{% render 'lp-variant-units', title: variant.title, handle: product.handle %}{% endcapture %}
+{% enddoc %}
+{%- liquid
+  assign units_down = title | downcase
+  assign units_words = units_down | split: ' '
+  assign units_qty = units_words.first | remove: ',' | plus: 0
+  assign units_word = units_words[1] | remove: '.' | strip
+  assign units_label = ''
+  if units_word == 'count' or units_word == 'capsules' or units_word == 'capsule' or units_word == 'caps'
+    assign units_label = 'capsule'
+  elsif units_word == 'softgels' or units_word == 'softgel'
+    assign units_label = 'softgel'
+  elsif units_word == 'tablets' or units_word == 'tablet'
+    assign units_label = 'tablet'
+  elsif units_word == 'ml'
+    assign units_label = 'ml'
+  endif
+  if units_down contains 'family pack' and handle == 'laminine'
+    assign units_qty = 300
+    assign units_label = 'capsule'
+  endif
+  if handle contains 'cellnergy' or units_qty < 1
+    assign units_label = ''
+  endif
+  echo units_qty | append: '|' | append: units_label
+-%}

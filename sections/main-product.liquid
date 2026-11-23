@@ -115,15 +115,15 @@
 
         {%- liquid
           assign lp_sv = product.selected_or_first_available_variant
+          # Same reading of the size as the size card (snippets/lp-variant-units.liquid), so both show the same price per unit.
+          capture lp_units
+            render 'lp-variant-units', title: lp_sv.title, handle: product.handle
+          endcapture
+          assign lp_units = lp_units | strip | split: '|'
+          assign lp_unit = lp_units[1] | default: ''
           assign lp_count = 0
-          assign lp_unit = ''
-          assign lp_title_down = lp_sv.title | downcase
-          assign lp_first = lp_sv.title | split: ' ' | first | plus: 0
-          if lp_first > 1
-            if lp_title_down contains 'count' or lp_title_down contains 'capsule' or lp_title_down contains 'softgel'
-              assign lp_count = lp_first
-              assign lp_unit = 'capsule'
-            endif
+          if lp_unit != ''
+            assign lp_count = lp_units[0] | plus: 0
           endif
         -%}
         {%- assign image = lp_sv.featured_media | default: product.featured_media -%}
@@ -139,7 +139,7 @@
             </span>
             <span class="lp-sticky__sub">
               {%- if lp_count > 0 -%}
-                <span data-lp-sticky-unit data-count="{{ lp_count }}" data-unit="{{ lp_unit }}">{{ lp_sv.price | divided_by: lp_count | money }} / {{ lp_unit }}</span>
+                <span data-lp-sticky-unit data-count="{{ lp_count }}" data-unit="{{ lp_unit }}">{{ lp_sv.price | times: 1.0 | divided_by: lp_count | round | money }} / {{ lp_unit }}</span>
               {%- else -%}
                 In stock
               {%- endif -%}

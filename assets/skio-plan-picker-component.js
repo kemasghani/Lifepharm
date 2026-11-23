@@ -899,8 +899,8 @@ position: relative;
                       <div class="group-title">${this.options?.onetime_title ? this.options?.onetime_title : 'One time purchase'}</div>
                     </div>
                     <div class="skio-price" aria-live="polite">
-                      ${this.options?.show_compare_price && this.selectedVariant?.compare_at_price > this.selectedVariant.price
-                        ? html`<s aria-hidden="true">${this.money(this.selectedVariant.compare_at_price)}</s>`
+                      ${this.options?.show_compare_price && this.lpReference() > this.selectedVariant.price
+                        ? html`<s aria-hidden="true">${this.money(this.lpReference())}</s>`
                         : ''}
                       ${this.money(this.selectedVariant.price)}
                     </div>
@@ -942,9 +942,8 @@ position: relative;
                       </div>
 
                       <div class="skio-price" aria-live="polite">
-                        ${this.options?.show_compare_price &&
-                        (this.selectedVariant?.compare_at_price > this.selectedVariant.price || this.selectedVariant.price > this.price(group.selected_selling_plan, false))
-                          ? html`<s aria-hidden="true">${this.money(this.selectedVariant.compare_at_price ? this.selectedVariant.compare_at_price : this.selectedVariant.price)}</s>`
+                        ${this.options?.show_compare_price && this.selectedVariant.price > this.price(group.selected_selling_plan, false)
+                          ? html`<s aria-hidden="true">${this.money(this.selectedVariant.price)}</s>`
                           : ''}
                         ${this.price(group.selected_selling_plan)}
                       </div>
@@ -1349,6 +1348,27 @@ position: relative;
     selectedGroup.selected_selling_plan = selectedSellingPlan
     this.selectedSellingPlanGroup = selectedGroup
     this.selectedSellingPlan = selectedSellingPlan
+  }
+
+  /**
+   * LifePharm: the reference price of the selected variant, in cents, or 0. It is the same number the size card's
+   * Save badge and the Add to Cart button use (snippets/lp-variant-reference.liquid, passed in data-lp-reference):
+   * the compare-at price when the merchant set one, otherwise the same quantity at the single-bottle price.
+   * The one-time row strikes this price. A subscription row strikes the one-time price, which is what its
+   * own "Save" label is measured against.
+   */
+  lpReference() {
+    const variant = this.selectedVariant
+    if (!variant) return 0
+    if (variant.compare_at_price > variant.price) return variant.compare_at_price
+    if (!this._lpReference) {
+      try {
+        this._lpReference = JSON.parse(this.dataset.lpReference || '{}')
+      } catch (error) {
+        this._lpReference = {}
+      }
+    }
+    return Number(this._lpReference[variant.id]) || 0
   }
 
   updateExternalPrice() {

@@ -61,6 +61,34 @@
       "currency": "USD",
       "note": "Blog-only store on Dawn. It has no products, so the commerce templates on this branch cannot resolve until the store's scope is decided.",
       "remap": {}
+    },
+    "staging": {
+      "branch": "staging",
+      "domain_env": "SHOPIFY-STORE-STAGING",
+      "storefront": "staging.lifepharm.com",
+      "currency": "USD",
+      "note": "Staging copy of the US store. Branch starts from `us`; Files are copied from the US store.",
+      "source": "us",
+      "remap": {
+        "collection": {
+          "nutritionals": "cell-regeneration",
+          "skin-health": "skin-regeneration"
+        },
+        "menu": {
+          "information": "company",
+          "main-menu-1": "shop-footer",
+          "footer-legal": "support",
+          "main-menu": "main-menu-redesign"
+        },
+        "page": {
+          "contact-1772819823": "contact",
+          "how-it-started-1772819852": "how-it-started",
+          "lamiderm-apex-faqs-1772819846": "lamiderm-apex-faqs",
+          "laminine-faqs-1772819838": "laminine-faqs",
+          "science-1772819827": "science",
+          "shorts-1772819851": "shorts"
+        }
+      }
     }
   }
 }

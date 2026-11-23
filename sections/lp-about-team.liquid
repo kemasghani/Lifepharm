@@ -8,8 +8,15 @@
     <ul class="lp-ab-team__grid" role="list" data-lp-reveal>
       {%- for block in section.blocks -%}
         <li class="lp-ab-team__card" {{ block.shopify_attributes }}>
+          {%- liquid
+            assign photo_zoom = block.settings.zoom | default: 100 | times: 0.01
+            assign photo_flip = 1
+            if block.settings.flip
+              assign photo_flip = -1
+            endif
+          -%}
           <button type="button" class="lp-ab-team__open" data-lp-bio="{{ block.id }}" aria-haspopup="dialog" {% if block.settings.bio == blank %}disabled{% endif %}>
-            <span class="lp-ab-team__photo">
+            <span class="lp-ab-team__photo" style="--lp-zoom: {{ photo_zoom }}; --lp-flip: {{ photo_flip }};">
               {%- if block.settings.image != blank -%}
                 {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '300,450,600,800', sizes: '(min-width: 1000px) 22vw, 44vw', alt: '' }}
               {%- else -%}
@@ -23,7 +30,7 @@
           {%- if block.settings.bio != blank -%}
             <template data-lp-bio-tpl="{{ block.id }}">
               <div class="lp-ab-bio__head">
-                {%- if block.settings.image != blank -%}{{ block.settings.image | image_url: width: 240 | image_tag: loading: 'lazy', alt: '', class: 'lp-ab-bio__img' }}{%- endif -%}
+                {%- if block.settings.image != blank -%}{%- assign bio_class = 'lp-ab-bio__img' -%}{%- if block.settings.flip -%}{%- assign bio_class = 'lp-ab-bio__img lp-ab-bio__img--flip' -%}{%- endif -%}{{ block.settings.image | image_url: width: 240 | image_tag: loading: 'lazy', alt: '', class: bio_class }}{%- endif -%}
                 <div><p class="lp-ab-bio__name" id="lp-ab-bio-title-{{ section.id }}">{{ block.settings.name | escape }}</p><p class="lp-ab-bio__role">{{ block.settings.role | escape }}</p></div>
               </div>
               <div class="lp-ab-bio__text">{{ block.settings.bio }}</div>
@@ -65,8 +72,9 @@
 button.lp-ab-team__open:not(#lp-none) { display: grid; gap: .25rem; width: 100%; padding: 0; border: 0; background: none; text-align: start; color: inherit; font: inherit; cursor: pointer; }
 button.lp-ab-team__open:disabled { cursor: default; }
 .lp-ab-team__photo { display: block; overflow: hidden; aspect-ratio: 4 / 5; margin-bottom: .75rem; border-radius: var(--lp-radius); background: #e9e7e3; }
-.lp-ab-team__photo img, .lp-ab-team__photo svg { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; transition: transform 700ms var(--lp-ease); }
-@media (hover: hover) { button.lp-ab-team__open:not(:disabled):hover .lp-ab-team__photo img { transform: scale(1.03); } }
+/* --lp-zoom and --lp-flip come from the person's own settings: a closer crop, or a mirrored photo so everyone faces into the row */
+.lp-ab-team__photo img, .lp-ab-team__photo svg { --lp-hover: 1; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; transform-origin: center 32%; transform: scale(calc(var(--lp-zoom, 1) * var(--lp-flip, 1) * var(--lp-hover)), calc(var(--lp-zoom, 1) * var(--lp-hover))); transition: transform 700ms var(--lp-ease); }
+@media (hover: hover) { button.lp-ab-team__open:not(:disabled):hover .lp-ab-team__photo img { --lp-hover: 1.03; } }
 .lp-ab-team__name { font-size: 1.0625rem; font-weight: 600; color: rgb(var(--lp-ink)); }
 .lp-ab-team__role { font-size: .75rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: rgb(var(--lp-muted)); }
 .lp-ab-team__more { display: inline-flex; align-items: center; gap: .35rem; min-height: 32px; margin-top: .25rem; font-size: .8125rem; font-weight: 600; color: rgb(var(--lp-ink)); text-decoration: underline; text-underline-offset: 3px; }
@@ -78,6 +86,7 @@ button.lp-ab-team__open:focus-visible { outline: 2px solid rgb(var(--lp-amber-de
 .lp-ab-bio__close { position: absolute; top: 1rem; right: 1rem; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgb(var(--lp-ink) / .12); background: #fff; color: rgb(var(--lp-ink)); cursor: pointer; }
 .lp-ab-bio__head { display: flex; align-items: center; gap: 1rem; margin: 0 3rem 1.25rem 0; }
 .lp-ab-bio__img { width: 72px; height: 72px; border-radius: 999px; object-fit: cover; object-position: center 20%; }
+.lp-ab-bio__img--flip { transform: scaleX(-1); }
 .lp-ab-bio__name { margin: 0; font-family: var(--lp-serif); font-size: 1.5rem; line-height: 1.2; }
 .lp-ab-bio__role { margin: .25rem 0 0; font-size: .75rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: rgb(var(--lp-muted)); }
 .lp-ab-bio__text { font-size: .9375rem; line-height: 1.7; color: rgb(var(--lp-muted)); }
@@ -99,6 +108,8 @@ button.lp-ab-team__open:focus-visible { outline: 2px solid rgb(var(--lp-amber-de
   "blocks": [
     { "type": "person", "name": "Person", "settings": [
       { "type": "image_picker", "id": "image", "label": "Photo" },
+      { "type": "range", "id": "zoom", "label": "Photo zoom", "min": 100, "max": 150, "step": 5, "unit": "%", "default": 100 },
+      { "type": "checkbox", "id": "flip", "label": "Mirror the photo", "info": "Turns the person to face the other way.", "default": false },
       { "type": "text", "id": "name", "label": "Name" },
       { "type": "text", "id": "role", "label": "Role" },
       { "type": "richtext", "id": "bio", "label": "Bio" }

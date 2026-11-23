@@ -31,12 +31,21 @@
         {%- endif -%}
       </div>
 
-      {%- if section.settings.rating_text != blank -%}
+      {%- liquid
+        capture lp_reviews
+          render 'lp-review-count'
+        endcapture
+        assign rating_text = section.settings.rating_text | replace: '[reviews]', lp_reviews
+        if section.settings.rating_text contains '[reviews]' and lp_reviews == blank
+          assign rating_text = blank
+        endif
+      -%}
+      {%- if rating_text != blank -%}
         <div class="lp-hero__rating" style="--lp-i: 4">
           <span class="lp-hero__stars" aria-hidden="true">
             {%- for i in (1..5) -%}{% render 'lp-icon', name: 'star', size: 16 %}{%- endfor -%}
           </span>
-          <span>{{ section.settings.rating_text }}</span>
+          <span>{{ rating_text }}</span>
         </div>
       {%- endif -%}
 
@@ -139,7 +148,7 @@
     { "type": "url", "id": "button_url", "label": "Primary button link" },
     { "type": "text", "id": "secondary_label", "label": "Secondary button label", "default": "Explore the science" },
     { "type": "url", "id": "secondary_url", "label": "Secondary button link" },
-    { "type": "inline_richtext", "id": "rating_text", "label": "Rating line", "default": "<strong>978+</strong> verified Laminine reviews" },
+    { "type": "inline_richtext", "id": "rating_text", "label": "Rating line", "default": "<strong>[reviews]+</strong> verified LAMININE reviews", "info": "[reviews] is replaced by the live LAMININE review count." },
     { "type": "header", "content": "Media" },
     { "type": "image_picker", "id": "image", "label": "Image" },
     { "type": "image_picker", "id": "mobile_image", "label": "Mobile image" },

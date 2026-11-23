@@ -13,10 +13,19 @@
             <svg viewBox="0 0 120 120" class="lp-guarantee__ring"><defs><path id="lp-seal-{{ section.id }}" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0"/></defs><text><textPath href="#lp-seal-{{ section.id }}" textLength="286" lengthAdjust="spacing">{{ section.settings.seal_text | escape }}</textPath></text></svg>
             <span class="lp-guarantee__seal-core">{{ section.settings.seal_value | escape }}</span>
           </div>
-          {%- if section.settings.rating_text != blank -%}
+          {%- liquid
+            capture lp_reviews
+              render 'lp-review-count'
+            endcapture
+            assign rating_text = section.settings.rating_text | replace: '[reviews]', lp_reviews
+            if section.settings.rating_text contains '[reviews]' and lp_reviews == blank
+              assign rating_text = blank
+            endif
+          -%}
+          {%- if rating_text != blank -%}
             <p class="lp-guarantee__rating">
               <span class="lp-guarantee__stars" aria-hidden="true">{%- for i in (1..5) -%}{% render 'lp-icon', name: 'star', size: 16 %}{%- endfor -%}</span>
-              <span>{{ section.settings.rating_text }}</span>
+              <span>{{ rating_text }}</span>
             </p>
           {%- endif -%}
         </div>

@@ -25,7 +25,7 @@
       <p class="lp-pt__rating">
         <span class="lp-pt__star" aria-hidden="true">★</span>
         <span>{{ r_value }} / {{ product.metafields.reviews.rating.value.scale_max | round: 1 }}</span>
-        {%- if product.metafields.reviews.rating_count.value > 0 -%}<span class="lp-pt__count">· {{ product.metafields.reviews.rating_count.value }} reviews</span>{%- endif -%}
+        {%- if product.metafields.reviews.rating_count.value > 0 -%}<span class="lp-pt__count">· {{ 'product.rating_count' | t: count: product.metafields.reviews.rating_count.value }}</span>{%- endif -%}
       </p>
     {%- endif -%}
     <h3 class="lp-pt__name"><a href="{{ product.url }}">{{ product.title | escape }}</a></h3>

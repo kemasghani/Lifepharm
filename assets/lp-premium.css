@@ -333,8 +333,11 @@ a.lp-proof .lp-proof__text { text-decoration: underline; text-decoration-color: 
   .shopify-section--main-product .product-gallery__thumbnail[aria-current="false"]:hover img { opacity: .8; }
   .shopify-section--main-product .product-gallery__thumbnail:focus-visible { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 2px; }
 }
-.shopify-section--main-product .product-info__block-item:has(.lp-pdp-subhead:not(.is-ready)),
-.shopify-section--main-product .product-info__block-item:has(tolstoy-stories:not(.lp-ready)) { display: none; }
+/* Scoped to the block that holds the heading or the stories themselves. Without the block type, the rule also
+   matched the "Pairs Well With" block once its quick-add drawer had loaded another product's buy box (which
+   carries the same heading), and the whole block vanished after the drawer was closed (L-064). */
+.shopify-section--main-product .product-info__block-item[data-block-type="liquid"]:has(.lp-pdp-subhead:not(.is-ready)),
+.shopify-section--main-product .product-info__block-item[data-block-type="@app"]:has(tolstoy-stories:not(.lp-ready)) { display: none; }
 .lp-pdp-subhead { margin: 0; font-size: .75rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgb(var(--lp-muted)); }
 .lp-pdp-proof { padding: 1rem 1.1rem; border-radius: var(--lp-radius-sm); background: rgb(var(--lp-sand) / .7); }
 

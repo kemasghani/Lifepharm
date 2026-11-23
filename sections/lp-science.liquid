@@ -20,6 +20,10 @@
         <dl class="lp-science__stats">
           {%- for block in section.blocks -%}
             {%- assign value = block.settings.value | strip -%}
+            {%- if value == '[reviews]' -%}
+              {%- capture value -%}{%- render 'lp-review-count' -%}{%- endcapture -%}
+              {%- if value == blank -%}{%- continue -%}{%- endif -%}
+            {%- endif -%}
             {%- assign numeric = value | remove: ',' | remove: '.' -%}
             {%- assign numeric_check = numeric | plus: 0 | append: '' -%}
             <div class="lp-stat" {{ block.shopify_attributes }}>

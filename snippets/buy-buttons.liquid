@@ -38,6 +38,11 @@ Supported variables
   {%- if product.selected_or_first_available_variant == nil -%}
     {%- capture button_content -%}{{ 'product.general.unavailable_button' | t }}{%- endcapture -%}
     {%- assign button_disabled = true -%}
+  {%- elsif product.price_max == 0 and product.gift_card? == false -%}
+    {%- comment -%}LP: a product with no price is a gift or a placeholder; it is never sold from its own page.{%- endcomment -%}
+    {%- capture button_content -%}{{ 'lp.buy.not_sold_separately' | t }}{%- endcapture -%}
+    {%- assign button_disabled = true -%}
+    {%- assign show_payment_button = false -%}
   {%- elsif product.selected_or_first_available_variant.available -%}
     {%- if product.template_suffix contains 'pre-order' -%}
       {%- capture lp_atc_label -%}{{ 'product.general.pre_order_button' | t }}{%- endcapture -%}

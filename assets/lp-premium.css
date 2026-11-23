@@ -621,6 +621,7 @@ a.lp-proof .lp-proof__text { text-decoration: underline; text-decoration-color: 
   line-height: 1.3;
   font-weight: 500;
 }
+.lp-trust-row__item:last-child:nth-child(odd) { grid-column: 1 / -1; }
 .lp-trust-row__icon { display: grid; flex: none; place-items: center; width: 20px; height: 20px; color: rgb(var(--lp-amber)); }
 .lp-trust-row__icon svg { width: 20px; height: 20px; }
 

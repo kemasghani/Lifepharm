@@ -1,0 +1,21 @@
+{% doc %}
+  Outputs a product's live Stamped review count, rounded down to the nearest ten, as a plain number
+  (980 for 984). Outputs nothing when the product has no reviews. Sections use it to fill the
+  [reviews] placeholder in their copy, so a review number is never typed by hand and every page of a
+  store shows the same one.
+
+  @param {string} [handle] - Handle of the product to count, "laminine" when left out
+
+  @example
+  {% capture lp_reviews %}{% render 'lp-review-count' %}{% endcapture %}
+  {{ section.settings.rating_text | replace: '[reviews]', lp_reviews }}
+{% enddoc %}
+{%- liquid
+  assign source_handle = handle | default: 'laminine'
+  assign source = all_products[source_handle]
+  assign total = source.metafields.stamped.reviews_count.value | default: source.metafields.stamped.reviews_count | plus: 0
+  assign shown = total | divided_by: 10 | times: 10
+  if shown > 0
+    echo shown
+  endif
+-%}

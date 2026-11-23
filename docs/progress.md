@@ -24,6 +24,11 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 
 ---
 
+## 2026-11-23 · pdp-002 · Pairs Well With no longer disappears after quick add is closed
+- Done: the rule that hides the customer-stories heading until the stories load also hid the whole "Pairs Well With" block once its quick-add drawer had been opened (the drawer nests another product's buy box inside the block). The rule now names its own block types. Found by the developer on a phone.
+- Evidence: master cad4852; us e1a2fba, eu 369fd43, uk f60e073; `tools/qa/pdp_quick_add_check.py` at 1440x900 and 390x844: US LAMININE, OMEGA+++, Wellness Stand; UK and EU LAMININE: every product opened and closed, block still shown, cart unchanged.
+- Lessons: L-064.
+
 ## 2026-11-23 · pdp-008, pdp-009 · No empty stars; one set of buy-box dropdowns
 - Done: (1) Rating row: a product with no reviews shows "Includes LAMININE (980 reviews)" with stars on packs, or "1,100+ reviews across LifePharm products" elsewhere, never empty stars. (2) Every product template has the same dropdowns after the buy buttons; the "LifePharm Guarantee" card, the large How to Use / How to Replace sections and the What's in the Box section are gone. What's in the Box is a new `lp_box` block with a photo per item and a viewer. Dropdown lists are indented; "return policy" links to the refund policy. Tool `tools/store-audit/pdp_dropdowns.py`; checks `tools/qa/pdp_rating_row_check.py` and `tools/qa/pdp_dropdowns_check.py`.
 - Evidence: master 7aaa372 to e2b32fc; us 832268a, eu f3ca7cd, uk 920bcad; ./init.sh --full READY (13 = baseline); rating row US 24/24, UK 8/8, EU 8/8; dropdowns US 18/18, UK 10/10, EU 10/10 at 1440x900 and 390x844. Live themes not touched.

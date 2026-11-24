@@ -1,0 +1,45 @@
+# Lighthouse on a GitHub runner: a datacentre Linux machine with two CPU cores and no GPU, close to the machines
+# PageSpeed Insights uses. Started by hand (Actions > Lighthouse lab > Run workflow). It measures one address several
+# times and keeps the full trace of any run whose first paint is late (docs/tech-debt.md, TD-039). No secrets, read-only.
+name: Lighthouse lab
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: Public page to measure
+        default: https://staging.lifepharm.com/
+      runs:
+        description: Number of runs
+        default: "8"
+      trace_over:
+        description: Keep the trace when the observed first paint is later than this (ms)
+        default: "1500"
+
+permissions:
+  contents: read
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run Lighthouse
+        env:
+          PAGE_URL: ${{ inputs.url }}
+          RUNS: ${{ inputs.runs }}
+          TRACE_OVER: ${{ inputs.trace_over }}
+          LP_CHROME_FLAGS: --headless=new --no-first-run --no-sandbox
+        run: python3 tools/perf/lh_run.py "$PAGE_URL" --runs "$RUNS" --label ci --out out --trace-over "$TRACE_OVER" | tee out-summary.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lighthouse-lab
+          path: |
+            out
+            out-summary.txt
+          retention-days: 7

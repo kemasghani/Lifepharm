@@ -458,6 +458,7 @@
     },
     "seo": {
       "collection_description": "Shop {{ title }} from LifePharm, with a 60-day money-back guarantee on every order.",
+      "home_description": "LifePharm is the home of LAMININE: science-led supplements that support your body's natural renewal, with a 60-day money-back guarantee.",
       "pages": {
         "science": {
           "title": "The Science Behind LAMININE | LifePharm",

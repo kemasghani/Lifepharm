@@ -6,7 +6,13 @@
       {%- for block in section.blocks -%}
         <li class="lp-press__item" {{ block.shopify_attributes }}>
           {%- if block.settings.logo != blank -%}
-            {%- capture logo -%}{{ block.settings.logo | image_url: width: 320 | image_tag: loading: 'lazy', class: 'lp-press__logo', alt: block.settings.logo.alt | default: block.settings.name, widths: '160,240,320', sizes: '160px' }}{%- endcapture -%}
+            {%- liquid
+              assign logo_alt = block.settings.logo.alt | default: block.settings.name
+              if logo_alt == blank
+                assign logo_alt = block.settings.logo | image_url: width: 320 | split: '/' | last | split: '?' | first | split: '.' | first | replace: '_', ' ' | replace: '-', ' ' | remove: ' copy'
+              endif
+            -%}
+            {%- capture logo -%}{{ block.settings.logo | image_url: width: 320 | image_tag: loading: 'lazy', class: 'lp-press__logo', alt: logo_alt, widths: '160,240,320', sizes: '160px' }}{%- endcapture -%}
             {%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}" target="_blank" rel="noopener">{{ logo }}</a>{%- else -%}{{ logo }}{%- endif -%}
           {%- endif -%}
         </li>

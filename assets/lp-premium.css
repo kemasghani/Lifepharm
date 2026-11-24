@@ -996,3 +996,6 @@ html:has(x-drawer[open], cart-drawer[open], dialog[open]) .product-quick-add:not
 /* Product card badges never spill out of a narrow card. */
 .product-card__badge-list:not(#lp-none) { max-width: calc(100% - 2 * var(--product-card-badge-spacing, .5rem)); justify-items: start; }
 .product-card__badge-list .badge { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ---------- Reviews page: the Stamped widget loads late; hold its space so the footer does not jump (CLS) ---------- */
+.lp-t-page-reviews #stamped-main-widget { min-height: 100vh; }

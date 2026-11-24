@@ -1,7 +1,7 @@
 {% doc %}
   Rating row for product pages. A product with reviews shows its Stamped stars and count
   (Laminine also shows three real reviewers, cropped from their own Stamped review photos,
-  assets/lp-face-laminine-*.webp, 96px). A product with no reviews never shows empty stars. It shows,
+  assets/lp-face-laminine-*.jpg, 96px). A product with no reviews never shows empty stars. It shows,
   from real Stamped data only:
   1. a pack: the rating of the best-reviewed product listed in its "Pack contains" description,
      labelled "Includes <product>", linking to that product (no #anchor: the referral app appends
@@ -90,7 +90,7 @@
   {%- if lp_face_list.size > 0 -%}
     <a class="lp-rating-row__faces" href="#shopify-product-reviews" aria-hidden="true" tabindex="-1">
       {%- for f in lp_face_list -%}
-        {%- assign face_file = 'lp-face-' | append: f | append: '.webp' -%}
+        {%- assign face_file = 'lp-face-' | append: f | append: '.jpg' -%}
         <img src="{{ face_file | asset_url }}" width="32" height="32" alt="" loading="eager" decoding="async">
       {%- endfor -%}
     </a>

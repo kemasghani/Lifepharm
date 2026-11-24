@@ -579,7 +579,7 @@
         "2026-11-24 US draft, eight pages after a full scroll: phone 9526 KB to 6106 KB, desktop 9434 KB to 7679 KB; two product pages still above the phone budget (1.1 MB), about a third of it third-party",
         "Lighthouse 12.8.2 mobile, US draft, before D-082: performance 39 / 49, accessibility 89, best practices 75, SEO 85 / 92"
       ],
-      "notes": "D-081, D-082, L-073, L-075. Not finished: D-082 is unverified and staging is behind (TD-037); third-party cost is TD-036; News is TD-038.",
+      "notes": "D-081, D-082, L-073, L-075. Not finished: D-082 is unverified on every store, staging included (TD-037); third-party cost is TD-036; News is TD-038.",
       "blocker": "Verification of the last batch: the storefronts stopped answering the test machine (TD-037). Then the app decisions in TD-036."
     },
     {

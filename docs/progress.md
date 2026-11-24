@@ -4,7 +4,7 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 
 ## Snapshot (overwrite each session)
 
-- **Active feature:** `perf-001` in progress: first-view speed is in (D-083, D-084); waiting for a hand-run PageSpeed report (TD-039). Off-repo: `int-002` lpsync (private marketing repo).
+- **Active feature:** `perf-001` in progress: first-view speed is in (D-083 to D-087); PageSpeed's late first paint is open and needs an API key to chase (TD-039). Off-repo: `int-002` lpsync (private marketing repo).
 - **Theme state:** `staging` branch (from `us`): API-uploaded theme 193151959352 is **published on the staging store** (D-079), the only store where the redesign is live; `master` = UK draft 189821452674; `us`, `eu`, `uk` branches equal to master in design; US draft 193373995317, EU draft 168919728345; News redesign on `news` (unpublished 190930518311). Nothing published.
 - **Waiting on Letisha / owner:** owner fixes from the storefront QA (TD-023 to TD-031: the 0.00 jade roller, CELLNERGY WELLNESS 110V first on the UK and Europe, the UK footer Join Us link, which claims apply to skin care and devices, Stamped settings), apps Keep/Remove decisions (`apps-001`), News review (`news-001`), science hero artwork + video (`sci-002`), checkout extension deploy approval (`ref-002`), publish approval (`launch-001`), Impact 7.2.0 in a library (`ms-003`), which products Truemed accepts for the US HSA/FSA note (TD-016), Stamped review requests for the products with no reviews (TD-019), struck reference prices and the compare-at field (TD-022).
 - **Known risks:** see [tech-debt.md](tech-debt.md) (top: customer data in public CSVs).
@@ -23,6 +23,13 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 ```
 
 ---
+
+## 2026-11-25 · perf-001 · The developer's third PageSpeed run fell back to 69: same late first paint as the first report
+- Done: read the report (FCP 2.5 s, LCP 6.8 s, TBT 0; observed first paint 2.4 s). It is the pattern of the first report, so not caused by D-085/D-086. Tried to reproduce it on software rendering, a slowed and saturated machine, and a GitHub runner (`.github/workflows/lighthouse-lab.yml`, new): never seen. `psi_run.py --api` added for a PageSpeed API key.
+- Evidence: three PageSpeed reports saved in `tools/perf/reports/`; runner medians on staging: new headless 89.5 (eight runs), old headless shell 80.5 (ten runs). The laptop median of 98 is not what a datacentre machine gives; the honest range for the page as it is now is high 80s to about 90 when the lab paints on time.
+- Also: Teqnavi's connector fix is live (their message via Letisha); `docs/knowledge/integrations.md` updated. D-055 can be relaxed after a test order confirms it.
+- Next: a PageSpeed API key in `.env` (TD-039), then the elimination runs. Test order for the Teqnavi fix.
+- Blockers: no way to run PageSpeed from here without the key.
 
 ## 2026-11-25 · perf-001 · Why PageSpeed mobile said 68, and the first-view fixes
 - Done: (1) read the developer's PageSpeed report from its raw data: mobile 68 is LCP 7.4 s (1 of 25 points), FCP 2.5 s, SI 5.6 s; TBT and CLS are full marks. (2) Layout: viewport first in `<head>`, no preload for the unused settings fonts, `custom.css` inline, Design Packs styles only where used. (3) Homepage hero: phone photo announced in the Link header with device-based sizes, three-step `<picture>`. (4) Country options wait in a template. (5) `tools/perf/`: `lh_run.py`, `psi_run.py`, `hero_requests.py`. Plan picker label "One-Time Purchase" in title case on all stores (0e7ae18).

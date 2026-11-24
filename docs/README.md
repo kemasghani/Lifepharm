@@ -56,5 +56,6 @@ The repository is the system of record. If a fact is not in here (or in CLAUDE.m
 | `python3 tools/perf/lh_run.py URL --runs 5` | Lighthouse mobile on this machine, each run and the median; compare medians, never single runs (L-078) |
 | `uv run --no-project --with playwright python tools/perf/psi_run.py --report <PageSpeed link>` | Read a PageSpeed report: what the score is made of, simulated and observed |
 | `uv run --no-project --with playwright python tools/perf/hero_requests.py URL` | One hero file per device, and how sharp (D-083, L-077) |
+| GitHub > Actions > "Lighthouse lab" > Run workflow | Lighthouse on a datacentre Linux machine (closer to PageSpeed than a laptop); keeps the trace of a run whose first paint is late |
 
 Harness model: [walkinglabs/learn-harness-engineering](https://github.com/walkinglabs/learn-harness-engineering) (instructions, state, verification, scope, lifecycle).

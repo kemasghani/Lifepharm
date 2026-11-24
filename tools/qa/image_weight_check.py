@@ -72,10 +72,13 @@ async def run(stores):
                         if kind in ('image/png', 'image/jpeg') and size > 40 * 1024: flags.append('old format')
                         rows.append({'file': img['src'].split('/')[-1].split('?')[0][:52], 'host': img['src'].split('/')[2], 'kb': round(size / 1024), 'type': kind.replace('image/', ''), 'natural': img['natural'], 'shown': img['shown'], 'need': need, 'where': img['where'], 'loading': img['loading'], 'sizes': img['sizes'], 'flags': flags})
                     total = round(sum(size for _, size in seen.values()) / 1024)
+                    in_img = {img['src'] for img in await page.evaluate(IMAGES)}
+                    other = sorted(((size, kind, url) for url, (kind, size) in seen.items() if url not in in_img), reverse=True)
                     flagged = [r for r in rows if r['flags']]
                     bad = total > BUDGET[view]
                     over += bad
-                    report.setdefault(store, {}).setdefault(view, {})[path] = {'total_kb': total, 'images': len(seen), 'rows': rows}
+                    report.setdefault(store, {}).setdefault(view, {})[path] = {'total_kb': total, 'images': len(seen), 'rows': rows,
+                        'not_in_img': [{'kb': round(size / 1024), 'type': kind.replace('image/', ''), 'host': url.split('/')[2], 'file': url.split('/')[-1].split('?')[0][:60]} for size, kind, url in other[:12]], 'not_in_img_kb': round(sum(x[0] for x in other) / 1024)}
                     print(f"{'FAIL' if bad else 'PASS'} {store} {view:7} {path:38} images {len(seen):3} · {total:5} KB (budget {BUDGET[view]}) · flagged {len(flagged)}")
                     for r in sorted(flagged, key=lambda r: -r['kb'])[:8]:
                         print(f"       {r['kb']:4} KB {r['type']:5} {r['natural']:5}px for {r['shown']:4}px slot (needs {r['need']:4})  {','.join(r['flags']):28} {r['where'][:26]:26} {r['file']}")

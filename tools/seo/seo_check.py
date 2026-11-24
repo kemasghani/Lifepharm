@@ -68,7 +68,7 @@ PAGE = r"""async () => {
     images: imgs.length, noAltAttr: imgs.filter(i => !i.hasAttribute('alt')).length, emptyAlt: imgs.filter(i => i.getAttribute('alt') === '').length,
     noSize: imgs.filter(i => !(i.getAttribute('width') && i.getAttribute('height')) && !i.closest('svg')).length,
     eagerBelow: imgs.filter(i => i.getAttribute('loading') !== 'lazy' && i.getBoundingClientRect().top + scrollY > innerHeight * 2).length,
-    links: links.length, internal: internal.length, emptyLinks: links.filter(a => !(a.innerText || '').trim() && !a.getAttribute('aria-label') && !a.querySelector('img[alt]:not([alt=""]), svg[aria-label], svg title')).length,
+    links: links.length, internal: internal.length, emptyLinks: links.filter(a => !(a.textContent || '').trim() && !a.getAttribute('aria-label') && a.getAttribute('aria-hidden') !== 'true' && !a.querySelector('img[alt]:not([alt=""]), svg[aria-label], svg title')).length,
     hashLinks: links.filter(a => a.getAttribute('href') === '#').length, mixed: res.filter(r => r.name.startsWith('http://')).length,
     dom: document.getElementsByTagName('*').length, blocking: qa('head script[src]:not([async]):not([defer]):not([type="module"])').length,
     ttfb: Math.round(nav.responseStart || 0), load: Math.round(nav.loadEventEnd || 0), transfer: Math.round(res.reduce((a, r) => a + (r.transferSize || 0), nav.transferSize || 0) / 1024), requests: res.length, thirdParties: origin3p.size,
@@ -122,12 +122,16 @@ def findings_for(store, base, pages, site):
         rows = [p for p in pages if (group is None or p['kind'] in group)]
         return [p['path'] for p in rows if test(p)], len(rows)
     host = base.split('//')[1]
+    # A page whose canonical names another page on this store declares itself a copy; it is judged as that page, not twice.
+    def copy_of(p): return bool(p['canonical']) and host in p['canonical'] and p['canonical'].split(host)[1].split('?')[0].rstrip('/') != p['path'].rstrip('/')
+    copies = [p['path'] for p in pages if copy_of(p)]
+    if copies: F.append({'category': 'Technical SEO', 'severity': 'Info', 'finding': 'Page names another page as its canonical (a declared copy, left out of the on-page checks)', 'pages': copies, 'share': 0})
+    pages = [p for p in pages if not copy_of(p)]
 
     # Technical SEO
     a, n = where(lambda p: p['status'] != 200); a and add('Technical SEO', 'High', 'Page does not answer 200', a, n)
     a, n = where(lambda p: not p['canonical']); a and add('Technical SEO', 'High', 'No canonical link', a, n)
     a, n = where(lambda p: p['canonical'] and host not in p['canonical']); a and add('Technical SEO', 'High', 'Canonical points at another host', a, n)
-    a, n = where(lambda p: p['canonical'] and host in p['canonical'] and p['canonical'].split(host)[1].split('?')[0].rstrip('/') != p['path'].rstrip('/')); a and add('Technical SEO', 'Medium', 'Canonical is not the page itself', a, n)
     a, n = where(lambda p: 'noindex' in p['robots'].lower(), ('home', 'product', 'collection', 'page')); a and add('Technical SEO', 'Critical' if LIVE else 'Info', 'robots meta says noindex' + ('' if LIVE else ' (draft preview; confirm on the live theme)'), a, n)
     a, n = where(lambda p: not p['lang']); a and add('Technical SEO', 'Medium', 'html element has no lang', a, n)
     a, n = where(lambda p: 'width=device-width' not in p['viewport']); a and add('Technical SEO', 'High', 'No mobile viewport meta', a, n)

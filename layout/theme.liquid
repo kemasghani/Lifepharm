@@ -18,11 +18,49 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
     <meta name="theme-color" content="{{ settings.header_background }}">
 
     {%- comment -%}LP: a title that does not already name the brand gets it as a suffix ("Science | LifePharm"), so no page shows a one-word title in search results.{%- endcomment -%}
-    <title>{% if page_title == blank %}{{ shop.name }}{% else %}{{ page_title }}{% if current_page != 1 %} &ndash; {{ 'general.page' | t: page: current_page }}{% endif %}{% if page_title.size < 52 %}{% unless page_title contains 'LifePharm' %} | LifePharm{% endunless %}{% endif %}{% endif %}</title>
+    {%- comment -%}LP: the main pages have a written search title and description (locales, lp.seo.pages), used until the merchant sets their own in the page's SEO fields.{%- endcomment -%}
+    {%- liquid
+      assign lp_seo_title = ''
+      assign lp_seo_description = ''
+      assign lp_seo_alias = ''
+      if request.page_type == 'page' and page_title == page.title
+        case template.suffix
+          when 'science'
+            assign lp_seo_title = 'lp.seo.pages.science.title' | t
+            assign lp_seo_description = 'lp.seo.pages.science.description' | t
+          when 'our-studies'
+            assign lp_seo_title = 'lp.seo.pages.science.title' | t
+            assign lp_seo_description = 'lp.seo.pages.science.description' | t
+          when 'company'
+            assign lp_seo_title = 'lp.seo.pages.company.title' | t
+            assign lp_seo_description = 'lp.seo.pages.company.description' | t
+          when 'join-us'
+            assign lp_seo_title = 'lp.seo.pages.join_us.title' | t
+            assign lp_seo_description = 'lp.seo.pages.join_us.description' | t
+          when 'contact'
+            assign lp_seo_title = 'lp.seo.pages.contact.title' | t
+            assign lp_seo_description = 'lp.seo.pages.contact.description' | t
+          when 'faq'
+            assign lp_seo_title = 'lp.seo.pages.faq.title' | t
+            assign lp_seo_description = 'lp.seo.pages.faq.description' | t
+          when 'reviews'
+            assign lp_seo_title = 'lp.seo.pages.reviews.title' | t
+            assign lp_seo_description = 'lp.seo.pages.reviews.description' | t
+        endcase
+      endif
+      # Our Studies shows the Science page (the two were merged); it names Science as the original.
+      if request.page_type == 'page' and template.suffix == 'our-studies'
+        assign lp_seo_alias = shop.url | append: routes.root_url | append: 'pages/science' | replace: '//pages', '/pages'
+      endif
+    -%}
+    <title>{% if lp_seo_title != blank %}{{ lp_seo_title }}{% elsif page_title == blank %}{{ shop.name }}{% else %}{{ page_title }}{% if current_page != 1 %} &ndash; {{ 'general.page' | t: page: current_page }}{% endif %}{% if page_title.size < 52 %}{% unless page_title contains 'LifePharm' %} | LifePharm{% if request.page_type == 'collection' and page_title.size < 30 %} Official Store{% endif %}{% endunless %}{% endif %}{% endif %}</title>
 
     {%- comment -%}LP: a collection with no description of its own gets one line made of real facts; a description longer than a search result shows is cut at a word.{%- endcomment -%}
     {%- liquid
       assign lp_meta_description = page_description
+      if lp_seo_description != blank and page_description.size < 50
+        assign lp_meta_description = lp_seo_description
+      endif
       if lp_meta_description == blank and request.page_type == 'collection'
         assign lp_meta_description = 'lp.seo.collection_description' | t: title: collection.title
       endif
@@ -32,7 +70,7 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
       <meta name="description" content="{{ lp_meta_description | escape }}">
     {%- endif -%}
 
-    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="canonical" href="{{ lp_seo_alias | default: canonical_url }}">
     {%- if request.page_type == 'product' and product.price_max == 0 -%}<meta name="robots" content="noindex">{%- endif -%}
 
     {%- if settings.favicon -%}

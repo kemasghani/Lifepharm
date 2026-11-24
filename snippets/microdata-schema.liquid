@@ -9,6 +9,28 @@ managed at the theme level.
   <script type="application/ld+json">
     {{- product | structured_data -}}
   </script>
+  {%- comment -%}LP: Shopify's own product data carries no rating. This second node has the same @id, so it adds the product's real review rating (the reviews are shown on this page). Nothing is output for a product with no reviews.{%- endcomment -%}
+  {%- liquid
+    assign lp_rating = product.metafields.reviews.rating.value
+    assign lp_rating_count = product.metafields.reviews.rating_count.value | plus: 0
+  -%}
+  {%- if lp_rating != blank and lp_rating_count > 0 -%}
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org/",
+        "@type": {% if product.has_only_default_variant %}"Product"{% else %}"ProductGroup"{% endif %},
+        "@id": {{ product.url | append: '#product' | json }},
+        "name": {{ product.title | json }},
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": {{ lp_rating.rating | json }},
+          "bestRating": {{ lp_rating.scale_max | json }},
+          "worstRating": {{ lp_rating.scale_min | json }},
+          "reviewCount": {{ lp_rating_count | json }}
+        }
+      }
+    </script>
+  {%- endif -%}
 {%- elsif request.page_type == 'article' -%}
   <script type="application/ld+json">
     {{- article | structured_data -}}

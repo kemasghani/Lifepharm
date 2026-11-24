@@ -17,10 +17,19 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
     <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="theme-color" content="{{ settings.header_background }}">
 
-    <title>{% if page_title == blank %}{{ shop.name }}{% else %}{{ page_title }}{% if current_page != 1 %} &ndash; {{ 'general.page' | t: page: current_page }}{% endif %}{% endif %}</title>
+    {%- comment -%}LP: a title that does not already name the brand gets it as a suffix ("Science | LifePharm"), so no page shows a one-word title in search results.{%- endcomment -%}
+    <title>{% if page_title == blank %}{{ shop.name }}{% else %}{{ page_title }}{% if current_page != 1 %} &ndash; {{ 'general.page' | t: page: current_page }}{% endif %}{% if page_title.size < 52 %}{% unless page_title contains 'LifePharm' %} | LifePharm{% endunless %}{% endif %}{% endif %}</title>
 
-    {%- if page_description -%}
-      <meta name="description" content="{{ page_description | escape }}">
+    {%- comment -%}LP: a collection with no description of its own gets one line made of real facts; a description longer than a search result shows is cut at a word.{%- endcomment -%}
+    {%- liquid
+      assign lp_meta_description = page_description
+      if lp_meta_description == blank and request.page_type == 'collection'
+        assign lp_meta_description = 'lp.seo.collection_description' | t: title: collection.title
+      endif
+      assign lp_meta_description = lp_meta_description | strip_html | strip_newlines | strip | truncatewords: 26
+    -%}
+    {%- if lp_meta_description != blank -%}
+      <meta name="description" content="{{ lp_meta_description | escape }}">
     {%- endif -%}
 
     <link rel="canonical" href="{{ canonical_url }}">
@@ -226,7 +235,7 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
       </head>
 
 
-  <body class="{% if settings.zoom_image_on_hover %}zoom-image--enabled{% endif %}">
+  <body class="{% if settings.zoom_image_on_hover %}zoom-image--enabled{% endif %} lp-t-{{ template.name | handle }}{% if template.suffix != blank %} lp-t-{{ template.name | handle }}-{{ template.suffix | handle }}{% endif %}">
     {%- render 'shadow-dom-templates' -%}
 
     <a href="#main" class="skip-to-content sr-only">{{ 'general.accessibility.skip_to_content' | t }}</a>

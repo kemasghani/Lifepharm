@@ -27,21 +27,17 @@
                 2nd source  a narrower viewport on a large device (fold-out phone, tablet in split view, small desktop window): the phone photo up to 1400px.
                 img         phones: the phone photo up to 800px, which is 2x or more on every phone (the widest slot is 390px).
 
-              preload: true on the img also announces the phone photo in a Link header, so on a phone the download starts when the
-              response headers arrive, not when the parser reaches this tag behind half of the HTML. What shapes it (measured on the
-              staging store, L-077):
-                - A Link header cannot carry a media condition, and Chrome reads it before the phone viewport applies (the phone still
-                  counts as 980px wide), so vw and min-width pick the wrong file. The sizes use only what is known at that moment:
-                  the device width.
-                - Shopify sends the header only for the srcset it builds itself (widths), not for a custom srcset.
-                - A device that will not use the img (520px device width and up) resolves the hint to 1px: it fetches the 50px file,
-                  about 2 KB, and nothing else. The img itself never meets that rule, because the 2nd source takes those devices.
-              On a phone the hint and the img are the same tag with the same sizes and srcset, so one file is fetched once.
+              The photo is the largest thing in the first view and this tag sits behind half of the HTML, so the two common cases
+              (phone, desktop) are preloaded from the top of <head>: the comment below carries two link tags, and layout/theme.liquid
+              prints what is between the lp-head markers right after the viewport tag (D-085). A link tag can do what Shopify's
+              preload header cannot (L-077): carry fetchpriority and a media condition, and be read after the viewport is known.
+              Each link repeats the srcset and sizes of the source it stands for, so the preloaded file is the file the picture uses.
             {%- endcomment -%}
             {%- liquid
               assign hero_m = section.settings.mobile_image
               assign hero_d = section.settings.image
 
+              assign hero_p_srcset = ''
               assign hero_m_srcset = ''
               assign hero_m_ladder = '400,480,560,640,720,800,1000,1200,1400' | split: ','
               for w in hero_m_ladder
@@ -50,8 +46,12 @@
                   break
                 endif
                 assign hero_m_srcset = hero_m | image_url: width: hero_w | append: ' ' | append: hero_w | append: 'w, ' | prepend: hero_m_srcset
+                if hero_w <= 800
+                  assign hero_p_srcset = hero_m_srcset
+                endif
               endfor
               assign hero_m_srcset = hero_m_srcset | strip | remove_last: ','
+              assign hero_p_srcset = hero_p_srcset | strip | remove_last: ','
 
               comment
                 Desktop photo: the ladder stops at the file's own width, and that width is the last candidate, so a large screen gets
@@ -72,11 +72,13 @@
                 assign hero_d_srcset = hero_d | image_url: width: hero_d.width | append: ' ' | append: hero_d.width | append: 'w, ' | prepend: hero_d_srcset
               endif
               assign hero_d_srcset = hero_d_srcset | strip | remove_last: ','
+              assign hero_d_sizes = '(min-width: 1000px) 50vw, 100vw'
             -%}
+            <!--lp-head <link rel="preload" as="image" fetchpriority="high" media="(max-width: 699.98px) and (max-device-width: 519.98px)" imagesrcset="{{ hero_p_srcset | escape }}" imagesizes="400px"><link rel="preload" as="image" fetchpriority="high" media="(min-width: 700px)" imagesrcset="{{ hero_d_srcset | escape }}" imagesizes="{{ hero_d_sizes }}"> lp-head-->
             <picture>
-              <source media="(min-width: 700px)" sizes="(min-width: 1000px) 50vw, 100vw" srcset="{{ hero_d_srcset }}">
-              <source media="(min-device-width: 520px)" sizes="100vw" srcset="{{ hero_m_srcset }}">
-              {{ hero_m | image_url: width: 800 | image_tag: preload: true, loading: 'eager', fetchpriority: 'high', widths: '50,400,480,560,640,720,800', sizes: '(min-device-width: 520px) 1px, 400px', class: 'lp-hh__img' }}
+              <source media="(min-width: 700px)" sizes="{{ hero_d_sizes }}" srcset="{{ hero_d_srcset | escape }}">
+              <source media="(min-device-width: 520px)" sizes="100vw" srcset="{{ hero_m_srcset | escape }}">
+              {{ hero_m | image_url: width: 800 | image_tag: loading: 'eager', fetchpriority: 'high', srcset: hero_p_srcset, sizes: '400px', class: 'lp-hh__img' }}
             </picture>
           {%- else -%}
             {{ section.settings.image | image_url: width: 1400 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 1000px) 50vw, (min-resolution: 3dppx) 67vw, 100vw', widths: '400,480,560,640,720,800,900,1000,1100,1200,1320,1400', class: 'lp-hh__img' }}

@@ -1,8 +1,8 @@
 """Which homepage hero files does Chrome fetch, when, and how sharp is the result, on phones, a fold-out, a tablet and
-desktop (fresh profile each). The hero is announced in a Link header (D-083); a wrong `sizes` there fetches a second
-file without anything looking broken (L-077). Read-only.
+desktop (fresh profile each). The hero is preloaded from <head> (D-085); a preload whose srcset, sizes or media differs
+from the picture's fetches a second file without anything looking broken (L-077). Read-only.
 
-PASS for a set-up means: one real hero file (the 50px hint file does not count) and at least 1.9x the slot on a phone.
+PASS for a set-up means: one hero file and at least 1.9x the slot on a phone.
 
 Usage: uv run --no-project --with playwright python tools/perf/hero_requests.py URL
        A draft is checked with URL?preview_theme_id=<id>. Set LP_CHROME if system Chrome is not installed."""

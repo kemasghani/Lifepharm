@@ -555,7 +555,8 @@
       "evidence": [
         "master cec6ecc, f6dd534, c0bf7ad, c5125ef",
         "2026-11-24 `tools/seo/seo_check.py` on the drafts, 13 to 14 pages each: US 91 to 97, UK 91 to 95, Europe 91 to 97 of 100; schema 100, on-page 97 to 99",
-        "The UK run of the final check had lab LCP above 4 s on three pages during a network failure on the test machine; earlier UK runs were under 1.2 s"
+        "The UK run of the final check had lab LCP above 4 s on three pages during a network failure on the test machine; earlier UK runs were under 1.2 s",
+        "2026-11-25 staging homepage: meta description present (D-087); it was the one failing Lighthouse SEO audit (92)"
       ],
       "notes": "D-080, L-074. Open: TD-035 (hreflang, reviews page, long titles)."
     },
@@ -582,9 +583,11 @@
         "Lighthouse 12.8.2 mobile, US draft, before D-082: performance 39 / 49, accessibility 89, best practices 75, SEO 85 / 92",
         "2026-11-25 staging homepage, Lighthouse 13.6 mobile, five runs each: median LCP 3415 ms to 3032 ms, score 91 and 90 (ranges 85 to 92 and 87 to 94, so no real change in score), CLS 0, TBT about 100 ms",
         "2026-11-25 staging: each of eight device set-ups fetches one hero file; phones get the 800px file (2.1x to 2.5x), others spend 2 KB on the hint; DOM 2323 to 1600 elements; country switch to Canada works on desktop and phone, no JS errors",
-        "2026-11-25 the user's PageSpeed run (mobile 68, desktop 97): FCP 2.5 s, LCP 7.4 s, TBT 70 ms, CLS 0; observed first paint 2.4 s, unexplained (TD-039)"
+        "2026-11-25 the user's PageSpeed run (mobile 68, desktop 97): FCP 2.5 s, LCP 7.4 s, TBT 70 ms, CLS 0; observed first paint 2.4 s, unexplained (TD-039)",
+        "2026-11-25 second PageSpeed run by the developer after D-083/D-084: mobile 90 (FCP 1.4 s, LCP 3.6 s, TBT 0, CLS 0), observed first paint 0.3 s, hero painted at 0.5 s",
+        "2026-11-25 staging after D-085/D-086: `hero_requests.py` passes on eight set-ups with one high-priority file each and no decoy; the referral search dialog opens styled and on top at 390 and 1440 with its block in the footer group"
       ],
-      "notes": "D-081 to D-084, L-073, L-075, L-077, L-078. Open: PageSpeed has to be re-run by hand (TD-039); product pages and the three drafts are not re-measured (TD-037); what remains is app weight (TD-036, TD-041); News is TD-038.",
+      "notes": "D-081 to D-086, L-073, L-075, L-077 to L-079. Open: product pages and the three drafts are not re-measured (TD-037); what remains is app weight (TD-036, TD-041); TD-039 did not recur; News is TD-038.",
       "blocker": "None in the theme. A fresh PageSpeed run by the developer, then the app decisions in TD-036."
     },
     {

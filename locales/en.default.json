@@ -456,6 +456,9 @@
     "buy": {
       "not_sold_separately": "Not Sold Separately"
     },
+    "seo": {
+      "collection_description": "Shop {{ title }} from LifePharm, with a 60-day money-back guarantee on every order."
+    },
     "pay": {
       "hsa_fsa": "Pay with HSA/FSA via Truemed"
     },

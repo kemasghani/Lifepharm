@@ -62,7 +62,8 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
     {%- comment -%}LP: a collection with no description of its own gets one line made of real facts; a description longer than a search result shows is cut at a word.{%- endcomment -%}
     {%- liquid
       assign lp_meta_description = page_description
-      if lp_seo_description != blank and page_description.size < 50
+      assign lp_page_description_size = page_description | size
+      if lp_seo_description != blank and lp_page_description_size < 50
         assign lp_meta_description = lp_seo_description
       endif
       if lp_meta_description == blank and request.page_type == 'collection'

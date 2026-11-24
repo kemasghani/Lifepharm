@@ -23,7 +23,7 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
       assign lp_seo_title = ''
       assign lp_seo_description = ''
       assign lp_seo_alias = ''
-      if request.page_type == 'page' and page_title == page.title
+      if request.page_type == 'page'
         case template.suffix
           when 'science'
             assign lp_seo_title = 'lp.seo.pages.science.title' | t
@@ -47,6 +47,10 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
             assign lp_seo_title = 'lp.seo.pages.reviews.title' | t
             assign lp_seo_description = 'lp.seo.pages.reviews.description' | t
         endcase
+        # a title the merchant has already written out in full stays
+        if page_title.size >= 30
+          assign lp_seo_title = ''
+        endif
       endif
       # Our Studies shows the Science page (the two were merged); it names Science as the original.
       if request.page_type == 'page' and template.suffix == 'our-studies'

@@ -229,17 +229,18 @@
     syncPrice();
   }
   // Stamped keeps a hidden product thumbnail on every review, with the address saved by whichever store took the
-  // review (another store's CDN, or none). Point it at this store's own product image.
+  // review (another store's CDN, or none). It is never shown, so it gets an empty picture: nothing is fetched,
+  // from this store or any other.
   const ownReviewThumbs = () => {
     const source = document.querySelector('[data-lp-product-image]');
     const widget = document.getElementById('stamped-main-widget');
     if (!source || !widget) return;
-    const own = new URL(source.dataset.lpProductImage, location.href).href;
+    const own = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
     const fix = () => widget.querySelectorAll('.stamped-review-product img').forEach((img) => {
       const attr = img.getAttribute('src') || '';
       let host = '';
       try { host = attr ? new URL(attr, location.href).hostname : ''; } catch (e) {}
-      if (host === location.hostname && /\.(png|jpe?g|webp|gif|avif)(\?|$)/i.test(attr)) return;
+      if (attr === own) return;
       img.loading = 'lazy';
       img.src = own;
     });

@@ -89,7 +89,7 @@
             "group_text_color": "#15171b",
             "group_selected_text_color": "#15171b",
             "show_radio_selector": true,
-            "onetime_title": "One-time purchase",
+            "onetime_title": "One-Time Purchase",
             "subscription_title": "Subscribe & Save",
             "prepaid_title": "Prepaid",
             "discount_format": "percent",

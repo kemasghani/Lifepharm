@@ -3,7 +3,7 @@
     <div class="lp-guarantee__card{% if section.settings.image != blank %} lp-guarantee__card--media{% endif %}">
       {%- if section.settings.image != blank -%}
         <figure class="lp-guarantee__media" data-lp-reveal>
-          {{ section.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '500,700,900,1200,1600', sizes: '(min-width: 1000px) 45vw, 100vw', class: 'lp-guarantee__img' }}
+          {{ section.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '400,480,560,640,720,800,900,1000,1100,1200,1320,1440,1600', sizes: '(min-width: 1000px) 45vw, (min-resolution: 3dppx) 67vw, 100vw', class: 'lp-guarantee__img' }}
           {%- if section.settings.caption != blank -%}<figcaption class="lp-guarantee__caption">{{ section.settings.caption | escape }}</figcaption>{%- endif -%}
         </figure>
       {%- endif -%}

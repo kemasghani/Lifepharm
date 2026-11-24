@@ -1,7 +1,7 @@
 {%- comment -%}
   PDP summary under the rating: short lead + "Ideal for" benefits.
   Benefits come from metafield custom.value_1 (comma list). Each one gets the brand's orange circle icon
-  (assets/lp-benefit-*.png, cut from Dropbox ICONS 2024; brain, bone, sugar, hair, circulation, foot, handsfree,
+  (assets/lp-benefit-*.webp, 132px, cut from Dropbox ICONS 2024; brain, bone, sugar, hair, circulation, foot, handsfree,
   travel and face drawn in the same style because the set has none). All icons live in theme assets so every
   store gets them. Unmatched terms get the regenerate icon so the row stays even.
   When value_1 is empty or holds something else (Hydration and Diffuser keep wash steps there), a theme default
@@ -128,7 +128,7 @@
                 else
                   assign icon = 'regenerate'
                 endif
-                assign icon_file = 'lp-benefit-' | append: icon | append: '.png'
+                assign icon_file = 'lp-benefit-' | append: icon | append: '.webp'
               -%}
               <li class="lp-ideal__item">
                 <img src="{{ icon_file | asset_url }}" class="lp-ideal__icon" width="44" height="44" alt="" loading="eager" decoding="async">

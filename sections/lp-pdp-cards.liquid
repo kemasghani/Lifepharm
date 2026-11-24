@@ -38,7 +38,7 @@
         <li class="lp-cards__card" {{ block.shopify_attributes }}>
           {%- if style == 'image' and lp_img != blank -%}
             <div class="lp-cards__media">
-              {{ lp_img | image_url: width: 1000 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 30vw, 85vw', widths: '400,600,800,1000', alt: block.settings.title }}
+              {{ lp_img | image_url: width: 1000 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 30vw, (min-resolution: 3dppx) 57vw, 85vw', widths: '320,400,480,560,640,720,800,900,1000', alt: block.settings.title }}
             </div>
           {%- endif -%}
           <div class="lp-cards__body">

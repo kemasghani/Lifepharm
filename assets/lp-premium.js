@@ -400,6 +400,16 @@
   else initMobileMenu();
 
 
+  /* Country selector: its options (one per country the store sells to) wait in a <template> so they are not part of the
+     page until someone goes for the selector. The first touch, click or keyboard focus on its button puts the list in
+     place; the theme's listbox then sets itself up as it would have on page load. */
+  const fillCountryList = (event) => {
+    const button = event.target instanceof Element && event.target.closest('button[aria-controls^="popover-localization-form-country"]');
+    const popover = button && document.getElementById(button.getAttribute('aria-controls'));
+    popover?.querySelectorAll('template[data-lp-country-list]').forEach((list) => list.replaceWith(list.content));
+  };
+  ['pointerdown', 'touchstart', 'focusin', 'keydown', 'click'].forEach((type) => document.addEventListener(type, fillCountryList, { capture: true, passive: true }));
+
   const initProductTabs = () => document.querySelectorAll('[data-lp-tabs]').forEach((root) => {
     const tabs = [...root.querySelectorAll('[data-lp-tab]')];
     const cards = [...root.querySelectorAll('[data-collections]')];

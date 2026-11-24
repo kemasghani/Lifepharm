@@ -4,7 +4,7 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 
 ## Snapshot (overwrite each session)
 
-- **Active feature:** none in this repo. Off-repo: `int-002` lpsync (private marketing repo).
+- **Active feature:** none in this repo; `perf-001` is blocked on verification (TD-037). Off-repo: `int-002` lpsync (private marketing repo). Off-repo: `int-002` lpsync (private marketing repo).
 - **Theme state:** `staging` branch (from `us`): API-uploaded theme 193151959352 is **published on the staging store** (D-079), the only store where the redesign is live; `master` = UK draft 189821452674; `us`, `eu`, `uk` branches equal to master in design; US draft 193373995317, EU draft 168919728345; News redesign on `news` (unpublished 190930518311). Nothing published.
 - **Waiting on Letisha / owner:** owner fixes from the storefront QA (TD-023 to TD-031: the 0.00 jade roller, CELLNERGY WELLNESS 110V first on the UK and Europe, the UK footer Join Us link, which claims apply to skin care and devices, Stamped settings), apps Keep/Remove decisions (`apps-001`), News review (`news-001`), science hero artwork + video (`sci-002`), checkout extension deploy approval (`ref-002`), publish approval (`launch-001`), Impact 7.2.0 in a library (`ms-003`), which products Truemed accepts for the US HSA/FSA note (TD-016), Stamped review requests for the products with no reviews (TD-019), struck reference prices and the compare-at field (TD-022).
 - **Known risks:** see [tech-debt.md](tech-debt.md) (top: customer data in public CSVs).
@@ -21,6 +21,15 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 - Next: ...
 - Blockers: ...
 ```
+
+---
+
+## 2026-11-24 · seo-001, perf-001 · SEO check and fixes, lighter images, first Lighthouse batch
+- Done: (1) `tools/seo/seo_check.py`, an end-to-end SEO check for a draft or live theme (categories and weights from the claude-seo skill); theme fixes for titles, descriptions, canonical of Our Studies, product rating in JSON-LD and missing alt attributes. (2) Images: 3x screens ask for 2x pixels, finer width lists, one hero picture, no hover photos on touch screens, right-sized icons, Shopify's own country flags; `tools/qa/image_weight_check.py`. (3) First Lighthouse batch: price sync throttled, pinch zoom allowed, crawlable share links, country button label. Project skills added under `.claude/skills/`: `baoyu-compress-image`, `pagespeed-enhancer`.
+- Evidence: SEO score on the drafts US 91 to 97, UK 91 to 95, Europe 91 to 97; images on the US draft phone 9.5 MB to 6.1 MB and desktop 9.4 MB to 7.7 MB over eight pages; Lighthouse mobile before the last batch: performance 39 / 49, accessibility 89, best practices 75, SEO 85 / 92; ./init.sh --full READY (13 = baseline) after each batch.
+- Decisions: D-080 to D-082. Lessons: L-073 to L-075. Debt: TD-035 to TD-038.
+- Not verified: the last batch (master 1d1aaac; us d2ba73e, eu 13f7fcd, uk 01dc14d) was pushed after `./init.sh --full` but not checked on the drafts, because the storefronts stopped answering the test machine. Staging is one merge behind `us`.
+- Next: run the five checks and Lighthouse again (TD-037), then the app decisions that hold most of the speed (TD-036).
 
 ---
 

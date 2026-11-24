@@ -540,6 +540,49 @@
       "notes": "D-069 to D-074, L-068 to L-070. Owner and LifePharm items from the three QA reports: TD-023 to TD-031. No product data, menu or app setting was changed."
     },
     {
+      "id": "seo-001",
+      "area": "seo",
+      "title": "End-to-end SEO check and theme-side SEO fixes on the three drafts",
+      "status": "passing",
+      "stores": [
+        "uk",
+        "us",
+        "eu"
+      ],
+      "verification": [
+        "`tools/seo/seo_check.py us uk eu` reports no Critical or High finding caused by the theme"
+      ],
+      "evidence": [
+        "master cec6ecc, f6dd534, c0bf7ad, c5125ef",
+        "2026-11-24 `tools/seo/seo_check.py` on the drafts, 13 to 14 pages each: US 91 to 97, UK 91 to 95, Europe 91 to 97 of 100; schema 100, on-page 97 to 99",
+        "The UK run of the final check had lab LCP above 4 s on three pages during a network failure on the test machine; earlier UK runs were under 1.2 s"
+      ],
+      "notes": "D-080, L-074. Open: TD-035 (hreflang, reviews page, long titles)."
+    },
+    {
+      "id": "perf-001",
+      "area": "performance",
+      "title": "Light images and first Lighthouse batch",
+      "status": "blocked",
+      "stores": [
+        "uk",
+        "us",
+        "eu",
+        "staging"
+      ],
+      "verification": [
+        "`tools/qa/image_weight_check.py` budgets: phone 900 KB, desktop 1600 KB per page after a full scroll",
+        "Lighthouse mobile re-run after D-082"
+      ],
+      "evidence": [
+        "master f677859, 6f5cc08, 4e754a5, 1d1aaac",
+        "2026-11-24 US draft, eight pages after a full scroll: phone 9526 KB to 6106 KB, desktop 9434 KB to 7679 KB; two product pages still above the phone budget (1.1 MB), about a third of it third-party",
+        "Lighthouse 12.8.2 mobile, US draft, before D-082: performance 39 / 49, accessibility 89, best practices 75, SEO 85 / 92"
+      ],
+      "notes": "D-081, D-082, L-073, L-075. Not finished: D-082 is unverified and staging is behind (TD-037); third-party cost is TD-036; News is TD-038.",
+      "blocker": "Verification of the last batch: the storefronts stopped answering the test machine (TD-037). Then the app decisions in TD-036."
+    },
+    {
       "id": "ms-001",
       "area": "multi-store",
       "title": "Branch-per-store model, store-audit tools, US/EU drafts in sync with master",

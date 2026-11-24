@@ -55,6 +55,8 @@ Supported variables
         <p class="h5" slot="title">{{ 'general.localization.country' | t }}</p>
 
         {%- form 'localization', id: localization_form_id -%}
+          {%- comment -%}LP: a store sells to more than 200 countries, and this list can be on a page three times (header, menu, footer). It waits in a template, outside the page's DOM, and lp-premium.js puts it in place when the selector is first touched (D-084).{%- endcomment -%}
+          <template data-lp-country-list>
           <x-listbox class="popover-listbox popover-listbox--sm" role="listbox">
             {%- for country in localization.available_countries -%}
               <button type="submit" class="popover-listbox__option" name="country_code" role="option" value="{{ country.iso_code }}" {% if country.iso_code == localization.country.iso_code %}aria-selected="true"{% endif %}>
@@ -63,6 +65,7 @@ Supported variables
               </button>
             {%- endfor -%}
           </x-listbox>
+          </template>
         {%- endform -%}
       </x-popover>
     </div>

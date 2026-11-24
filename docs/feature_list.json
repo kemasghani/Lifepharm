@@ -556,7 +556,8 @@
         "master cec6ecc, f6dd534, c0bf7ad, c5125ef",
         "2026-11-24 `tools/seo/seo_check.py` on the drafts, 13 to 14 pages each: US 91 to 97, UK 91 to 95, Europe 91 to 97 of 100; schema 100, on-page 97 to 99",
         "The UK run of the final check had lab LCP above 4 s on three pages during a network failure on the test machine; earlier UK runs were under 1.2 s",
-        "2026-11-25 staging homepage: meta description present (D-087); it was the one failing Lighthouse SEO audit (92)"
+        "2026-11-25 staging homepage: meta description present (D-087); it was the one failing Lighthouse SEO audit (92)",
+        "2026-11-25 Lighthouse 13.6 on the staging homepage: SEO 100, no failing audit"
       ],
       "notes": "D-080, L-074. Open: TD-035 (hreflang, reviews page, long titles)."
     },
@@ -585,7 +586,8 @@
         "2026-11-25 staging: each of eight device set-ups fetches one hero file; phones get the 800px file (2.1x to 2.5x), others spend 2 KB on the hint; DOM 2323 to 1600 elements; country switch to Canada works on desktop and phone, no JS errors",
         "2026-11-25 the user's PageSpeed run (mobile 68, desktop 97): FCP 2.5 s, LCP 7.4 s, TBT 70 ms, CLS 0; observed first paint 2.4 s, unexplained (TD-039)",
         "2026-11-25 second PageSpeed run by the developer after D-083/D-084: mobile 90 (FCP 1.4 s, LCP 3.6 s, TBT 0, CLS 0), observed first paint 0.3 s, hero painted at 0.5 s",
-        "2026-11-25 staging after D-085/D-086: `hero_requests.py` passes on eight set-ups with one high-priority file each and no decoy; the referral search dialog opens styled and on top at 390 and 1440 with its block in the footer group"
+        "2026-11-25 staging after D-085/D-086: `hero_requests.py` passes on eight set-ups with one high-priority file each and no decoy; the referral search dialog opens styled and on top at 390 and 1440 with its block in the footer group",
+        "2026-11-25 staging homepage after D-085/D-086, Lighthouse 13.6 mobile, five runs: median score 90 to 98 (range 96 to 99), median LCP 3032 ms to 1963 ms, hero painted with the first paint (observed 0.6 s); phone menu referral entry opens the dialog; the UK, US and EU drafts hold the new files and the moved section (read back through the API)"
       ],
       "notes": "D-081 to D-086, L-073, L-075, L-077 to L-079. Open: product pages and the three drafts are not re-measured (TD-037); what remains is app weight (TD-036, TD-041); TD-039 did not recur; News is TD-038.",
       "blocker": "None in the theme. A fresh PageSpeed run by the developer, then the app decisions in TD-036."

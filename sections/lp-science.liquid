@@ -3,7 +3,7 @@
     <figure class="lp-science__figure">
       <div class="lp-science__media lp-media" data-lp-reveal>
         {%- if section.settings.image != blank -%}
-          {{ section.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 45vw, 100vw', widths: '600,900,1200,1600', class: 'lp-science__img', style: section.settings.image_position }}
+          {{ section.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 45vw, (min-resolution: 3dppx) 67vw, 100vw', widths: '480,560,640,720,800,900,1000,1100,1200,1320,1440,1600', class: 'lp-science__img', style: section.settings.image_position }}
         {%- else -%}
           {{ 'image' | placeholder_svg_tag: 'lp-science__img' }}
         {%- endif -%}

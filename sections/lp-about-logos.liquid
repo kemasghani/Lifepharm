@@ -7,7 +7,7 @@
           <li {{ block.shopify_attributes }}>
             {%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}" target="_blank" rel="noopener">{%- endif -%}
             {%- assign logo_alt = block.settings.logo.alt | default: block.settings.name -%}
-            {{ block.settings.logo | image_url: width: 320 | image_tag: loading: 'lazy', alt: logo_alt, class: 'lp-ab-logos__img' }}
+            {{ block.settings.logo | image_url: width: 160 | image_tag: loading: 'lazy', alt: logo_alt, class: 'lp-ab-logos__img', widths: '80,120,160', sizes: '48px' }}
             {%- if block.settings.link != blank -%}</a>{%- endif -%}
           </li>
         {%- endif -%}

@@ -34,7 +34,7 @@
           <a href="{{ url | default: routes.all_products_collection_url }}" class="lp-cats__link">
             <span class="lp-cats__media">
               {%- if img != blank -%}
-                {{ img | image_url: width: 400, height: 400, crop: 'center' | image_tag: loading: 'lazy', widths: '200,300,400', sizes: '(min-width: 1000px) 180px, 30vw', class: 'lp-cats__img', alt: '' }}
+                {{ img | image_url: width: 400, height: 400, crop: 'center' | image_tag: loading: 'lazy', widths: '200,300,400', sizes: '(min-width: 1000px) 180px, (min-resolution: 3dppx) 20vw, 30vw', class: 'lp-cats__img', alt: '' }}
               {%- else -%}
                 {{ 'collection-1' | placeholder_svg_tag: 'lp-cats__img' }}
               {%- endif -%}

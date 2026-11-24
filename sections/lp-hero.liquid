@@ -67,10 +67,10 @@
           {{ hero_video | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, controls: false, image_size: '1600x', class: 'lp-hero__video' }}
         {%- elsif section.settings.image != blank -%}
           {%- if section.settings.mobile_image != blank -%}
-            {{ section.settings.mobile_image | image_url: width: 1000 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '100vw', widths: '500,750,1000', class: 'lp-hero__img sm:hidden' }}
-            {{ section.settings.image | image_url: width: 1800 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 1000px) 55vw, 100vw', widths: '800,1200,1500,1800', class: 'lp-hero__img sm-max:hidden' }}
+            {{ section.settings.mobile_image | image_url: width: 1000 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-resolution: 3dppx) 67vw, 100vw', widths: '400,480,560,640,720,800,900,1000', class: 'lp-hero__img sm:hidden' }}
+            {{ section.settings.image | image_url: width: 1800 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 1000px) 55vw, (min-resolution: 3dppx) 67vw, 100vw', widths: '640,720,800,900,1000,1100,1200,1320,1440,1600,1800', class: 'lp-hero__img sm-max:hidden' }}
           {%- else -%}
-            {{ section.settings.image | image_url: width: 1800 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 1000px) 55vw, 100vw', widths: '600,900,1200,1500,1800', class: 'lp-hero__img' }}
+            {{ section.settings.image | image_url: width: 1800 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 1000px) 55vw, (min-resolution: 3dppx) 67vw, 100vw', widths: '480,560,640,720,800,900,1000,1100,1200,1320,1440,1600,1800', class: 'lp-hero__img' }}
           {%- endif -%}
         {%- else -%}
           {{ 'lifestyle-1' | placeholder_svg_tag: 'lp-hero__img lp-hero__placeholder' }}

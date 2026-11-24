@@ -1,6 +1,6 @@
 {
   "project": "LifePharm theme redesign (UK, US, EU) + News",
-  "last_updated": "2026-11-24",
+  "last_updated": "2026-11-25",
   "rules": {
     "single_active_feature": true,
     "passing_requires_evidence": true,
@@ -562,8 +562,8 @@
     {
       "id": "perf-001",
       "area": "performance",
-      "title": "Light images and first Lighthouse batch",
-      "status": "blocked",
+      "title": "Light images, Lighthouse batches and first-view speed",
+      "status": "in_progress",
       "stores": [
         "uk",
         "us",
@@ -572,15 +572,20 @@
       ],
       "verification": [
         "`tools/qa/image_weight_check.py` budgets: phone 900 KB, desktop 1600 KB per page after a full scroll",
-        "Lighthouse mobile re-run after D-082"
+        "Lighthouse mobile re-run after D-082",
+        "`tools/perf/lh_run.py` median of five mobile runs before and after a change",
+        "Hero request log on phone, fold-out, tablet and desktop: one hero file each"
       ],
       "evidence": [
         "master f677859, 6f5cc08, 4e754a5, 1d1aaac",
         "2026-11-24 US draft, eight pages after a full scroll: phone 9526 KB to 6106 KB, desktop 9434 KB to 7679 KB; two product pages still above the phone budget (1.1 MB), about a third of it third-party",
-        "Lighthouse 12.8.2 mobile, US draft, before D-082: performance 39 / 49, accessibility 89, best practices 75, SEO 85 / 92"
+        "Lighthouse 12.8.2 mobile, US draft, before D-082: performance 39 / 49, accessibility 89, best practices 75, SEO 85 / 92",
+        "2026-11-25 staging homepage, Lighthouse 13.6 mobile, five runs each: median LCP 3415 ms to 3032 ms, score 91 and 90 (ranges 85 to 92 and 87 to 94, so no real change in score), CLS 0, TBT about 100 ms",
+        "2026-11-25 staging: each of eight device set-ups fetches one hero file; phones get the 800px file (2.1x to 2.5x), others spend 2 KB on the hint; DOM 2323 to 1600 elements; country switch to Canada works on desktop and phone, no JS errors",
+        "2026-11-25 the user's PageSpeed run (mobile 68, desktop 97): FCP 2.5 s, LCP 7.4 s, TBT 70 ms, CLS 0; observed first paint 2.4 s, unexplained (TD-039)"
       ],
-      "notes": "D-081, D-082, L-073, L-075. Not finished: D-082 is unverified on every store, staging included (TD-037); third-party cost is TD-036; News is TD-038.",
-      "blocker": "Verification of the last batch: the storefronts stopped answering the test machine (TD-037). Then the app decisions in TD-036."
+      "notes": "D-081 to D-084, L-073, L-075, L-077, L-078. Open: PageSpeed has to be re-run by hand (TD-039); product pages and the three drafts are not re-measured (TD-037); what remains is app weight (TD-036, TD-041); News is TD-038.",
+      "blocker": "None in the theme. A fresh PageSpeed run by the developer, then the app decisions in TD-036."
     },
     {
       "id": "ms-001",

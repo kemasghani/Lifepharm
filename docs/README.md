@@ -53,5 +53,8 @@ The repository is the system of record. If a fact is not in here (or in CLAUDE.m
 | `./init.sh --full` | Plus the `shopify theme check` ratchet (~45 s). Run before every push |
 | `python3 tools/harness/theme_check_ratchet.py --update` | Accept the current theme-check state after reviewing it |
 | `tools/store-audit/*` | Store audit, Files sync, handle remap, branch sync, template port, Files upload/replace (see [knowledge/multi-store-ops.md](knowledge/multi-store-ops.md)) |
+| `python3 tools/perf/lh_run.py URL --runs 5` | Lighthouse mobile on this machine, each run and the median; compare medians, never single runs (L-078) |
+| `uv run --no-project --with playwright python tools/perf/psi_run.py --report <PageSpeed link>` | Read a PageSpeed report: what the score is made of, simulated and observed |
+| `uv run --no-project --with playwright python tools/perf/hero_requests.py URL` | One hero file per device, and how sharp (D-083, L-077) |
 
 Harness model: [walkinglabs/learn-harness-engineering](https://github.com/walkinglabs/learn-harness-engineering) (instructions, state, verification, scope, lifecycle).

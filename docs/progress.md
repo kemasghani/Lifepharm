@@ -4,7 +4,7 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 
 ## Snapshot (overwrite each session)
 
-- **Active feature:** none in this repo; `perf-001` is blocked on verification (TD-037). Off-repo: `int-002` lpsync (private marketing repo). Off-repo: `int-002` lpsync (private marketing repo).
+- **Active feature:** `perf-001` in progress: first-view speed is in (D-083, D-084); waiting for a hand-run PageSpeed report (TD-039). Off-repo: `int-002` lpsync (private marketing repo).
 - **Theme state:** `staging` branch (from `us`): API-uploaded theme 193151959352 is **published on the staging store** (D-079), the only store where the redesign is live; `master` = UK draft 189821452674; `us`, `eu`, `uk` branches equal to master in design; US draft 193373995317, EU draft 168919728345; News redesign on `news` (unpublished 190930518311). Nothing published.
 - **Waiting on Letisha / owner:** owner fixes from the storefront QA (TD-023 to TD-031: the 0.00 jade roller, CELLNERGY WELLNESS 110V first on the UK and Europe, the UK footer Join Us link, which claims apply to skin care and devices, Stamped settings), apps Keep/Remove decisions (`apps-001`), News review (`news-001`), science hero artwork + video (`sci-002`), checkout extension deploy approval (`ref-002`), publish approval (`launch-001`), Impact 7.2.0 in a library (`ms-003`), which products Truemed accepts for the US HSA/FSA note (TD-016), Stamped review requests for the products with no reviews (TD-019), struck reference prices and the compare-at field (TD-022).
 - **Known risks:** see [tech-debt.md](tech-debt.md) (top: customer data in public CSVs).
@@ -23,6 +23,13 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 ```
 
 ---
+
+## 2026-11-25 · perf-001 · Why PageSpeed mobile said 68, and the first-view fixes
+- Done: (1) read the developer's PageSpeed report from its raw data: mobile 68 is LCP 7.4 s (1 of 25 points), FCP 2.5 s, SI 5.6 s; TBT and CLS are full marks. (2) Layout: viewport first in `<head>`, no preload for the unused settings fonts, `custom.css` inline, Design Packs styles only where used. (3) Homepage hero: phone photo announced in the Link header with device-based sizes, three-step `<picture>`. (4) Country options wait in a template. (5) `tools/perf/`: `lh_run.py`, `psi_run.py`, `hero_requests.py`. Plan picker label "One-Time Purchase" in title case on all stores (0e7ae18).
+- Evidence: `./init.sh --full` passes (theme check 13 = baseline); staging homepage Lighthouse 13.6 mobile, medians of five: LCP 3415 to 3032 ms, score 91 and 90 (no real change); `hero_requests.py` one file per device on eight set-ups; DOM 2323 to 1600; country switch works at 390 and 1440, no JS errors, no horizontal scroll.
+- Decisions: D-083, D-084. Lessons: L-077, L-078. Debt: TD-039 to TD-041, TD-037 updated.
+- Next: the developer runs PageSpeed again on staging (it refuses this network) and sends the link; read it with `psi_run.py --report`. Then product pages and the three drafts (TD-037).
+- Blockers: PageSpeed quota on this network; the late first paint in the first report is unexplained (TD-039).
 
 ## 2026-11-24 · seo-001, perf-001 · SEO check and fixes, lighter images, first Lighthouse batch
 - Done: (1) `tools/seo/seo_check.py`, an end-to-end SEO check for a draft or live theme (categories and weights from the claude-seo skill); theme fixes for titles, descriptions, canonical of Our Studies, product rating in JSON-LD and missing alt attributes. (2) Images: 3x screens ask for 2x pixels, finer width lists, one hero picture, no hover photos on touch screens, right-sized icons, Shopify's own country flags; `tools/qa/image_weight_check.py`. (3) First Lighthouse batch: price sync throttled, pinch zoom allowed, crawlable share links, country button label. Project skills added under `.claude/skills/`: `baoyu-compress-image`, `pagespeed-enhancer`.

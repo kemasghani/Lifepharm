@@ -13,3 +13,6 @@ __pycache__/
 
 # SEO check reports
 tools/seo/reports/
+
+# Page speed reports
+tools/perf/reports/

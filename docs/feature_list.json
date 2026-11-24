@@ -594,7 +594,7 @@
     {
       "id": "ms-004",
       "area": "multi-store",
-      "title": "Staging store: branch `staging` from `us`, unpublished theme, menu and Files in place",
+      "title": "Staging store: branch `staging` from `us`, redesign theme published on staging, menu and Files in place",
       "status": "awaiting_client",
       "stores": [
         "staging"
@@ -607,9 +607,10 @@
         "origin/staging d45edb6",
         "Theme 193151959352 on staging: 420 of 426 files",
         "2026-11-24 audit.py --store staging: image 397 ok, video 4 ok, menu 6 ok, collection 4 ok, page 8 ok; 3 products and 19 apps not in the store",
-        "sync_files.py --from us --to staging: 66 Files copied"
+        "sync_files.py --from us --to staging: 66 Files copied",
+        "2026-11-24 themePublish on lifepharm-staging: theme 193151959352 role MAIN; \"LifePharm 1.1\" 185720635704 now unpublished"
       ],
-      "notes": "D-077, L-072, TD-032, TD-033. Not checked on screen: the staging storefront is password-protected. Waiting for the developer to connect GitHub."
+      "notes": "D-077, D-079, L-072, TD-032, TD-033. Not checked on screen: the staging storefront is password-protected. Waiting for the developer to look at it and to connect GitHub."
     },
     {
       "id": "launch-001",

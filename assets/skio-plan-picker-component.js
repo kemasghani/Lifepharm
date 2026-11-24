@@ -896,7 +896,7 @@ position: relative;
                     <div class="group-title-container">
                       ${this.options?.layout == 'horizontal' ? '' : this.options?.show_radio_selector ? this.radioTemplate() : ''}
 
-                      <div class="group-title">${this.options?.onetime_title ? this.options?.onetime_title : 'One time purchase'}</div>
+                      <div class="group-title">${this.options?.onetime_title ? this.options?.onetime_title : 'One-Time Purchase'}</div>
                     </div>
                     <div class="skio-price" aria-live="polite">
                       ${this.options?.show_compare_price && this.lpReference() > this.selectedVariant.price

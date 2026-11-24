@@ -14,6 +14,10 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
     {%- comment -%}charset and viewport come first, before the app snippets (the consent rules alone are 67 KB). The browser needs the viewport to choose the right file for a preloaded image; when it was further down, phones were treated as a 980px screen.{%- endcomment -%}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height">
+    {%- comment -%}A section whose image is the largest thing in the first view leaves its preload links between two markers (see sections/lp-home-hero.liquid). They are printed here, before the app snippets, so the browser starts that download first. The layout cannot read a section's settings, which is why the section hands them over this way.{%- endcomment -%}
+    {%- if content_for_layout contains '<!--lp-head ' -%}
+      {{ content_for_layout | split: '<!--lp-head ' | last | split: ' lp-head-->' | first }}
+    {%- endif %}
     {% render 'skio-head' %}
 	{% render 'pandectes-rules' %}
     <meta name="theme-color" content="{{ settings.header_background }}">
@@ -60,7 +64,7 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
     -%}
     <title>{% if lp_seo_title != blank %}{{ lp_seo_title }}{% elsif page_title == blank %}{{ shop.name }}{% else %}{{ page_title }}{% if current_page != 1 %} &ndash; {{ 'general.page' | t: page: current_page }}{% endif %}{% if page_title.size < 52 %}{% unless page_title contains 'LifePharm' %} | LifePharm{% if request.page_type == 'collection' and page_title.size < 30 %} Official Store{% endif %}{% endunless %}{% endif %}{% endif %}</title>
 
-    {%- comment -%}LP: a collection with no description of its own gets one line made of real facts; a description longer than a search result shows is cut at a word.{%- endcomment -%}
+    {%- comment -%}LP: a collection or a homepage with no description of its own gets one line made of real facts; a description longer than a search result shows is cut at a word.{%- endcomment -%}
     {%- liquid
       assign lp_meta_description = page_description
       assign lp_page_description_size = page_description | size
@@ -70,10 +74,15 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
       if lp_meta_description == blank and request.page_type == 'collection'
         assign lp_meta_description = 'lp.seo.collection_description' | t: title: collection.title
       endif
+      # the homepage description is a store setting (Online Store > Preferences); a store that has none gets the written one
+      if lp_meta_description == blank and request.page_type == 'index'
+        assign lp_meta_description = 'lp.seo.home_description' | t
+      endif
       assign lp_meta_description = lp_meta_description | strip_html | strip_newlines | strip | truncatewords: 26
     -%}
     {%- if lp_meta_description != blank -%}
-      <meta name="description" content="{{ lp_meta_description | escape }}">
+      {%- comment -%}escape_once: a written description comes out of the t filter with its apostrophe already encoded; escape would encode it a second time.{%- endcomment -%}
+      <meta name="description" content="{{ lp_meta_description | escape_once }}">
     {%- endif -%}
 
     <link rel="canonical" href="{{ lp_seo_alias | default: canonical_url }}">

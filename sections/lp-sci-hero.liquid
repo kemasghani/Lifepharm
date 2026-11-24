@@ -2,7 +2,7 @@
 <section class="lp-sci-hero" aria-labelledby="lp-sci-hero-{{ section.id }}">
   <div class="lp-sci-hero__stage">
     {%- if section.settings.image != blank -%}
-      {{ section.settings.image | image_url: width: 1800 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 1000px) 62vw, 100vw', widths: '600,900,1200,1500,1800', class: 'lp-sci-hero__img', alt: section.settings.image.alt | default: section.settings.image_alt }}
+      {{ section.settings.image | image_url: width: 1800 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 1000px) 62vw, (min-resolution: 3dppx) 67vw, 100vw', widths: '480,560,640,720,800,900,1000,1100,1200,1320,1440,1600,1800', class: 'lp-sci-hero__img', alt: section.settings.image.alt | default: section.settings.image_alt }}
     {%- endif -%}
     <div class="container lp-sci-hero__inner">
       <div class="lp-sci-hero__copy">

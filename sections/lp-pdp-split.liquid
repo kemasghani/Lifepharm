@@ -24,7 +24,7 @@
     <div class="lp-split__grid{% if lp_img == blank %} lp-split__grid--solo{% endif %}">
       {%- if lp_img != blank -%}
         <figure class="lp-split__media lp-split__media--{{ section.settings.image_fit }}" data-lp-reveal>
-          {{ lp_img | image_url: width: 1600 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 45vw, 100vw', widths: '600,800,1000,1200,1600', class: 'lp-split__img', alt: section.settings.caption }}
+          {{ lp_img | image_url: width: 1600 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 45vw, (min-resolution: 3dppx) 67vw, 100vw', widths: '480,560,640,720,800,900,1000,1100,1200,1320,1440,1600', class: 'lp-split__img', alt: section.settings.caption }}
           {%- if section.settings.caption != blank -%}<figcaption class="lp-split__caption">{{ section.settings.caption | escape }}</figcaption>{%- endif -%}
         </figure>
       {%- endif -%}

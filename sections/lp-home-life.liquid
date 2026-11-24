@@ -27,7 +27,7 @@
           <a href="{{ url | default: routes.all_products_collection_url }}" class="lp-life__card">
             <span class="lp-life__media">
               {%- if img != blank -%}
-                {{ img | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '300,450,600,800,1000,1200', sizes: '(min-width: 1200px) 230px, (min-width: 1000px) 22vw, (min-width: 700px) 30vw, 62vw', class: 'lp-life__img', alt: alt }}
+                {{ img | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '240,320,400,480,560,640,720,800,900,1000,1100,1200', sizes: '(min-width: 1200px) 230px, (min-width: 1000px) 22vw, (min-width: 700px) 30vw, (min-resolution: 3dppx) 42vw, 62vw', class: 'lp-life__img', alt: alt }}
               {%- else -%}
                 {{ 'lifestyle-1' | placeholder_svg_tag: 'lp-life__img' }}
               {%- endif -%}

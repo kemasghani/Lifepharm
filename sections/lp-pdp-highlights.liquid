@@ -20,7 +20,7 @@
     <div class="lp-hl__grid{% if bg_image == blank %} lp-hl__grid--solo{% endif %}">
       {%- if bg_image != blank -%}
         <div class="lp-hl__media" data-lp-reveal>
-          {{ bg_image | image_url: width: 1600 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 40vw, 100vw', widths: '600,800,1000,1200,1600', class: 'lp-hl__img', alt: '' }}
+          {{ bg_image | image_url: width: 1600 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 40vw, (min-resolution: 3dppx) 67vw, 100vw', widths: '480,560,640,720,800,900,1000,1100,1200,1320,1440,1600', class: 'lp-hl__img', alt: '' }}
         </div>
       {%- endif -%}
 

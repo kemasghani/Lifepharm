@@ -51,7 +51,7 @@
               <span class="lp-offer__flag lp-offer__flag--soft">{{ section.settings.free_label | escape }}</span>
             {%- endif -%}
             <div class="lp-offer__media">
-              {{ image | image_url: width: 600 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 25vw, 80vw', widths: '300,450,600', class: 'lp-offer__img' }}
+              {{ image | image_url: width: 600 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 25vw, (min-resolution: 3dppx) 54vw, 80vw', widths: '300,450,600', class: 'lp-offer__img' }}
             </div>
             <div class="lp-offer__body">
               <h3 class="lp-offer__name">{{ variant.title | escape }}</h3>

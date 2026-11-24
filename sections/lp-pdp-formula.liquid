@@ -48,7 +48,7 @@
         <div class="lp-fx__ring lp-fx__ring--inner" aria-hidden="true"></div>
         <div class="lp-fx__glow" aria-hidden="true"></div>
         {%- if visual != blank -%}
-          {{ visual | image_url: width: 1000 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 34vw, 70vw', widths: '400,600,800,1000', class: 'lp-fx__img', alt: '' }}
+          {{ visual | image_url: width: 1000 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 34vw, (min-resolution: 3dppx) 47vw, 70vw', widths: '320,400,480,560,640,720,800,900,1000', class: 'lp-fx__img', alt: '' }}
         {%- endif -%}
         {%- for t in ing_titles limit: 6 -%}
           {%- liquid

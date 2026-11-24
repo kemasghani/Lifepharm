@@ -2,7 +2,7 @@
   <div class="container lp-ab-story__grid">
     <figure class="lp-ab-story__portrait" data-lp-reveal>
       {%- if section.settings.image != blank -%}
-        {{ section.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '400,600,800,1000', sizes: '(min-width: 1000px) 384px, min(352px, 90vw)', class: 'lp-ab-story__img' }}
+        {{ section.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '320,400,480,560,640,720,800,900,1000', sizes: '(min-width: 1000px) 384px, min(352px, 90vw)', class: 'lp-ab-story__img' }}
       {%- else -%}
         {{ 'image' | placeholder_svg_tag: 'lp-ab-story__img' }}
       {%- endif -%}

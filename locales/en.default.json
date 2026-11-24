@@ -456,6 +456,35 @@
     "buy": {
       "not_sold_separately": "Not Sold Separately"
     },
+    "seo": {
+      "collection_description": "Shop {{ title }} from LifePharm, with a 60-day money-back guarantee on every order.",
+      "pages": {
+        "science": {
+          "title": "The Science Behind LAMININE | LifePharm",
+          "description": "How LAMININE supports the body's natural renewal: the ingredients, the research behind them and the published studies."
+        },
+        "company": {
+          "title": "About LifePharm: Our Story and Leadership",
+          "description": "Meet LifePharm: our history, our purpose and the family who lead the company."
+        },
+        "join_us": {
+          "title": "Join Us as an Independent Business Owner | LifePharm",
+          "description": "Become a LifePharm Independent Business Owner and share products you believe in with the people around you."
+        },
+        "contact": {
+          "title": "Contact LifePharm Customer Support",
+          "description": "Contact LifePharm customer support by phone, email or live chat, and find answers to common questions."
+        },
+        "faq": {
+          "title": "Customer Support FAQs | LifePharm",
+          "description": "Answers to common questions about LifePharm orders, delivery, subscriptions, returns and your account."
+        },
+        "reviews": {
+          "title": "Customer Reviews | LifePharm",
+          "description": "Read verified customer reviews of LAMININE and other LifePharm products."
+        }
+      }
+    },
     "pay": {
       "hsa_fsa": "Pay with HSA/FSA via Truemed"
     },

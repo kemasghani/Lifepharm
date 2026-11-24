@@ -9,7 +9,8 @@
         </div>
       {%- elsif section.settings.image != blank -%}
         <div class="lp-sci-in__media">
-          {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 44vw, 100vw', widths: '600,900,1200', class: 'lp-sci-in__img', alt: section.settings.image.alt | default: '' }}
+          {%- assign intro_alt = section.settings.image.alt | default: section.settings.heading | default: '' | strip_html -%}
+          {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 44vw, (min-resolution: 3dppx) 67vw, 100vw', widths: '480,560,640,720,800,900,1000,1100,1200', class: 'lp-sci-in__img', alt: intro_alt }}
         </div>
       {%- endif -%}
     </div>

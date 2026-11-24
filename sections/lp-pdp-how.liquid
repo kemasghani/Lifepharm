@@ -51,7 +51,7 @@
 
       {%- if side_image != blank -%}
         <div class="lp-how__media">
-          {{ side_image | image_url: width: 1400 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 45vw, 100vw', widths: '500,700,900,1100,1400', class: 'lp-how__img', alt: side_image.alt | default: product.title }}
+          {{ side_image | image_url: width: 1400 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 45vw, (min-resolution: 3dppx) 67vw, 100vw', widths: '400,480,560,640,720,800,900,1000,1100,1200,1320,1400', class: 'lp-how__img', alt: side_image.alt | default: product.title }}
         </div>
       {%- endif -%}
     </div>

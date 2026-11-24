@@ -22,7 +22,7 @@
           <li class="lp-pairs__card" style="--lp-accent: {{ block.settings.accent }}" {{ block.shopify_attributes }}>
             <a href="{{ product.url }}" class="lp-pairs__link">
               <div class="lp-pairs__media">
-                {{ product.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 30vw, 80vw', widths: '350,500,700', class: 'lp-pairs__img' }}
+                {{ product.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 30vw, (min-resolution: 3dppx) 54vw, 80vw', widths: '320,400,480,560,640,700', class: 'lp-pairs__img' }}
               </div>
               <div class="lp-pairs__body">
                 <h3 class="lp-pairs__name">{{ product.title | escape }}</h3>

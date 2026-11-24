@@ -29,15 +29,13 @@ Supported variables
     ----------------------------------------------------------------------------------------------
     {%- endcomment -%}
 
-    {%- if show_country_flag -%}
-      <link rel="stylesheet" href="{{ 'country-flags.css' | asset_url }}" media="print" onload="this.media='all'; this.onload = null">
-    {%- endif -%}
+    {%- comment -%}LP: flags are Shopify's own per-country SVGs, loaded lazily (the list's only when it opens). The old sprite cost about 150 KB on every page.{%- endcomment -%}
 
     <div class="relative">
       <button type="button" class="text-with-icon gap-2.5 group" aria-label="{{ 'general.localization.change_country_accessibility_text' | t | escape }}" aria-controls="{{ localization_popover_id }}" aria-expanded="false">
         <div class="h-stack gap-2">
           {%- if show_country_flag -%}
-            <span class="country-flags country-flags--{{ localization.country.iso_code }}"></span>
+            {{ localization.country | image_url: width: 40 | image_tag: loading: 'lazy', class: 'lp-flag', alt: '', width: 20, height: 15 }}
           {%- endif -%}
 
           <span class="bold text-sm">
@@ -59,7 +57,7 @@ Supported variables
           <x-listbox class="popover-listbox popover-listbox--sm" role="listbox">
             {%- for country in localization.available_countries -%}
               <button type="submit" class="popover-listbox__option" name="country_code" role="option" value="{{ country.iso_code }}" {% if country.iso_code == localization.country.iso_code %}aria-selected="true"{% endif %}>
-                <span class="country-flags country-flags--{{ country.iso_code }}"></span>
+                {{ country | image_url: width: 40 | image_tag: loading: 'lazy', class: 'lp-flag', alt: '', width: 20, height: 15 }}
                 <span>{{- country.name }} ({{ country.currency.iso_code }} {% if country.currency.symbol %}{{ country.currency.symbol }}{%- endif -%})</span>
               </button>
             {%- endfor -%}

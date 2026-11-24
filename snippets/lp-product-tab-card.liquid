@@ -16,7 +16,7 @@
 <li class="lp-pt__card" data-collections="{{ handles }}"{% if extra %} data-lp-extra hidden{% endif %}>
   <a class="lp-pt__media" href="{{ product.url }}" tabindex="-1" aria-hidden="true">
     {%- if product.featured_media -%}
-      {{ product.featured_media | image_url: width: 600 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 22vw, 60vw', widths: '300,400,500,600', alt: '' }}
+      {{ product.featured_media | image_url: width: 600 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 22vw, (min-resolution: 3dppx) 40vw, 60vw', widths: '300,400,500,600', alt: '' }}
     {%- endif -%}
   </a>
   <div class="lp-pt__body">

@@ -999,3 +999,6 @@ html:has(x-drawer[open], cart-drawer[open], dialog[open]) .product-quick-add:not
 
 /* ---------- Reviews page: the Stamped widget loads late; hold its space so the footer does not jump (CLS) ---------- */
 .lp-t-page-reviews #stamped-main-widget { min-height: 100vh; }
+
+/* ---------- Images: a touch screen has no hover, so the hover photo on product cards is never fetched there (lazy + not rendered) ---------- */
+@media (hover: none) { .product-card__image--secondary { display: none !important; } }

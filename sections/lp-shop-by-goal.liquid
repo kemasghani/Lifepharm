@@ -21,7 +21,7 @@
         <a href="{{ url }}" class="lp-goal lp-media" data-lp-reveal style="--lp-i: {{ forloop.index0 }}" {{ block.shopify_attributes }}>
           <div class="lp-goal__media{% if is_product_shot %} lp-goal__media--product{% endif %}">
             {%- if img != blank -%}
-              {{ img | image_url: width: 1200 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 33vw, 85vw', widths: '400,600,800,1000,1200', class: 'lp-goal__img' }}
+              {{ img | image_url: width: 1200 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 33vw, (min-resolution: 3dppx) 57vw, 85vw', widths: '320,400,480,560,640,720,800,900,1000,1100,1200', class: 'lp-goal__img' }}
             {%- else -%}
               {{ 'collection-1' | placeholder_svg_tag: 'lp-goal__img' }}
             {%- endif -%}

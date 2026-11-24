@@ -26,7 +26,7 @@
               {%- if block.settings.image != blank -%}
                 <div class="lp-sci-ch__media">
                   {%- assign chapter_alt = block.settings.image.alt | default: block.settings.title | default: '' | strip_html -%}
-                  {{ block.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 1px, 100vw', widths: '500,800,1000', class: 'lp-sci-ch__img', alt: chapter_alt }}
+                  {{ block.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 1px, (min-resolution: 3dppx) 67vw, 100vw', widths: '400,480,560,640,720,800,900,1000', class: 'lp-sci-ch__img', alt: chapter_alt }}
                 </div>
               {%- endif -%}
               <h3 class="lp-sci-ch__item-title">{{ block.settings.title | escape }}</h3>

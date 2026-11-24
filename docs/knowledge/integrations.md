@@ -20,7 +20,10 @@ Business rules and system boundaries verified on the stores. Access details (hos
 - Enroller precedence in the connector: cart attribute `Referral`, then landing `?ref=`, then the store default.
 - `referrer_webalias`, `referrer_name`, `ReferralSessionId` are display only.
 - **Commission credit follows the customer's enroller.** The order's referral counts only when the Exigo customer is created; existing customers stay with their enroller even when the referral changed in checkout. Hence D-055 (L-042).
-- Teqnavi's stated rule "move existing customers off the default enroller" is contradicted by four real orders.
+- Teqnavi's rule "move existing customers off the default enroller" did not fire on four real orders. Teqnavi explained why on 2026-11-25: the connector's configured default enroller is the CorporateShopifyRetail account, while those customers sit under the RetailDirect account, which it treats as a real enroller. Only the web alias `retaildirect` counts as "no referral" today; `CorpOrphan` (the Europe embed default) is not a web alias in Exigo, so it is read as a real referral, the `?ref=` fallback is skipped and the customer lands under CorporateShopifyRetail.
+  - **Fix Teqnavi proposed (not live yet, waiting for our confirmation):** customers under RetailDirect or CorporateShopifyRetail count as unplaced; `retaildirect`, `CorpOrphan` and `CorporateShopifyRetail` count as "no referral" (case-insensitive), so `?ref=` still applies; a customer is never moved under themselves.
+  - **What it means for the referral dialog:** once the fix is live, an existing customer who is still unplaced is moved when their order carries a real referral. D-055 hides the dialog from every logged-in Exigo customer, which will then be too strict for unplaced ones. Do not change the theme until Teqnavi confirms the fix is deployed and says what `Exigo.Referral` holds.
+  - `Exigo.Referral` is written on all three stores; Europe and the UK only lack the metafield definition, so it shows under unstructured metafields.
 - US and EU live themes run the Teqnavi Sync Engine and Enrollment Handler embeds; the UK live theme has neither and writes only `Referral`. Keep these embeds on every branch sync (L-008).
 
 ### Storefront middleware

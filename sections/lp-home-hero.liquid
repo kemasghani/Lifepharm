@@ -21,11 +21,62 @@
       <div class="lp-hh__frame">
         {%- if section.settings.image != blank -%}
           {%- if section.settings.mobile_image != blank -%}
-            {%- comment -%}One picture element: the browser downloads the phone photo or the desktop photo, never both.{%- endcomment -%}
+            {%- comment -%}
+              One picture element: the browser downloads the phone photo or the desktop photo, never both.
+                1st source  viewport 700px and up: the desktop photo.
+                2nd source  a narrower viewport on a large device (fold-out phone, tablet in split view, small desktop window): the phone photo up to 1400px.
+                img         phones: the phone photo up to 800px, which is 2x or more on every phone (the widest slot is 390px).
+
+              preload: true on the img also announces the phone photo in a Link header, so on a phone the download starts when the
+              response headers arrive, not when the parser reaches this tag behind half of the HTML. What shapes it (measured on the
+              staging store, L-077):
+                - A Link header cannot carry a media condition, and Chrome reads it before the phone viewport applies (the phone still
+                  counts as 980px wide), so vw and min-width pick the wrong file. The sizes use only what is known at that moment:
+                  the device width.
+                - Shopify sends the header only for the srcset it builds itself (widths), not for a custom srcset.
+                - A device that will not use the img (520px device width and up) resolves the hint to 1px: it fetches the 50px file,
+                  about 2 KB, and nothing else. The img itself never meets that rule, because the 2nd source takes those devices.
+              On a phone the hint and the img are the same tag with the same sizes and srcset, so one file is fetched once.
+            {%- endcomment -%}
+            {%- liquid
+              assign hero_m = section.settings.mobile_image
+              assign hero_d = section.settings.image
+
+              assign hero_m_srcset = ''
+              assign hero_m_ladder = '400,480,560,640,720,800,1000,1200,1400' | split: ','
+              for w in hero_m_ladder
+                assign hero_w = w | plus: 0
+                if hero_w > hero_m.width
+                  break
+                endif
+                assign hero_m_srcset = hero_m | image_url: width: hero_w | append: ' ' | append: hero_w | append: 'w, ' | prepend: hero_m_srcset
+              endfor
+              assign hero_m_srcset = hero_m_srcset | strip | remove_last: ','
+
+              comment
+                Desktop photo: the ladder stops at the file's own width, and that width is the last candidate, so a large screen gets
+                every pixel the upload has and no candidate claims more pixels than the file holds.
+              endcomment
+              assign hero_d_srcset = ''
+              assign hero_d_top = 0
+              assign hero_d_ladder = '600,720,800,900,1000,1100,1200,1320,1400,1600,1800,2000' | split: ','
+              for w in hero_d_ladder
+                assign hero_w = w | plus: 0
+                if hero_w > hero_d.width
+                  break
+                endif
+                assign hero_d_top = hero_w
+                assign hero_d_srcset = hero_d | image_url: width: hero_w | append: ' ' | append: hero_w | append: 'w, ' | prepend: hero_d_srcset
+              endfor
+              if hero_d_top < hero_d.width and hero_d.width <= 2400
+                assign hero_d_srcset = hero_d | image_url: width: hero_d.width | append: ' ' | append: hero_d.width | append: 'w, ' | prepend: hero_d_srcset
+              endif
+              assign hero_d_srcset = hero_d_srcset | strip | remove_last: ','
+            -%}
             <picture>
-              {%- assign hero_widths = '600,720,800,900,1000,1100,1200,1320,1400' | split: ',' -%}
-              <source media="(min-width: 700px)" sizes="(min-width: 1000px) 50vw, 100vw" srcset="{% for w in hero_widths %}{% assign hero_w = w | plus: 0 %}{{ section.settings.image | image_url: width: hero_w }} {{ hero_w }}w{% unless forloop.last %}, {% endunless %}{% endfor %}">
-              {{ section.settings.mobile_image | image_url: width: 1400 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-resolution: 3dppx) 67vw, 100vw', widths: '400,480,560,640,720,800,900,1000,1200,1400', class: 'lp-hh__img' }}
+              <source media="(min-width: 700px)" sizes="(min-width: 1000px) 50vw, 100vw" srcset="{{ hero_d_srcset }}">
+              <source media="(min-device-width: 520px)" sizes="100vw" srcset="{{ hero_m_srcset }}">
+              {{ hero_m | image_url: width: 800 | image_tag: preload: true, loading: 'eager', fetchpriority: 'high', widths: '50,400,480,560,640,720,800', sizes: '(min-device-width: 520px) 1px, 400px', class: 'lp-hh__img' }}
             </picture>
           {%- else -%}
             {{ section.settings.image | image_url: width: 1400 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 1000px) 50vw, (min-resolution: 3dppx) 67vw, 100vw', widths: '400,480,560,640,720,800,900,1000,1100,1200,1320,1400', class: 'lp-hh__img' }}

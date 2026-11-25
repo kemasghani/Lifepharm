@@ -757,7 +757,8 @@
             "text_color": "#181818",
             "text_gradient": "",
             "button_background": "",
-            "button_text_color": ""
+            "button_text_color": "",
+            "custom_liquid": "<h2 style= \"text-align: left;\"><span style= \"color: #FF8F00;\"> Regenerative</span><br>Benefits</h2>"
           }
         },
         "image_4PHNF4": {
@@ -779,7 +780,8 @@
             "text_color": "#181818",
             "text_gradient": "",
             "button_background": "",
-            "button_text_color": ""
+            "button_text_color": "",
+            "custom_liquid": "<h2 style= \"text-align: left;\"><span style= \"color: #FF8F00;\"> Regenerative</span><br>Ingredients</h2>"
           }
         }
       },

@@ -78,7 +78,7 @@
             <picture>
               <source media="(min-width: 700px)" sizes="{{ hero_d_sizes }}" srcset="{{ hero_d_srcset | escape }}">
               <source media="(min-device-width: 520px)" sizes="100vw" srcset="{{ hero_m_srcset | escape }}">
-              {{ hero_m | image_url: width: 800 | image_tag: loading: 'eager', fetchpriority: 'high', srcset: hero_p_srcset, sizes: '400px', class: 'lp-hh__img' }}
+              {{ hero_m | image_url: width: 800 | image_tag: loading: 'eager', decoding: 'sync', fetchpriority: 'high', srcset: hero_p_srcset, sizes: '400px', class: 'lp-hh__img' }}
             </picture>
           {%- else -%}
             {{ section.settings.image | image_url: width: 1400 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 1000px) 50vw, (min-resolution: 3dppx) 67vw, 100vw', widths: '400,480,560,640,720,800,900,1000,1100,1200,1320,1400', class: 'lp-hh__img' }}

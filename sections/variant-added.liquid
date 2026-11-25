@@ -40,14 +40,6 @@ by the theme and is not meant to be included directly into a page.
       {%- endunless -%}
     </div>
   </div>
-
-  <form action="{{ routes.cart_url }}" method="post" class="buy-buttons buy-buttons--compact">
-    {%- assign view_cart_label = 'cart.general.view_cart' | t -%}
-    {%- assign checkout_label = 'cart.general.checkout' | t -%}
-
-    {%- render 'button', href: routes.cart_url, secondary: true, content: view_cart_label -%}
-    {%- render 'button', type: 'submit', name: 'checkout', content: checkout_label -%}
-  </form>
 </div>
 
 {% schema %}

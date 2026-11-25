@@ -942,8 +942,8 @@ position: relative;
                       </div>
 
                       <div class="skio-price" aria-live="polite">
-                        ${this.options?.show_compare_price && this.selectedVariant.price > this.price(group.selected_selling_plan, false)
-                          ? html`<s aria-hidden="true">${this.money(this.selectedVariant.price)}</s>`
+                        ${this.options?.show_compare_price && this.lpStrikePrice() > this.price(group.selected_selling_plan, false)
+                          ? html`<s aria-hidden="true">${this.money(this.lpStrikePrice())}</s>`
                           : ''}
                         ${this.price(group.selected_selling_plan)}
                       </div>
@@ -1354,8 +1354,7 @@ position: relative;
    * LifePharm: the reference price of the selected variant, in cents, or 0. It is the same number the size card's
    * Save badge and the Add to Cart button use (snippets/lp-variant-reference.liquid, passed in data-lp-reference):
    * the compare-at price when the merchant set one, otherwise the same quantity at the single-bottle price.
-   * The one-time row strikes this price. A subscription row strikes the one-time price, which is what its
-   * own "Save" label is measured against.
+   * Both rows strike this price (D-091). See lpStrikePrice for a size without a reference.
    */
   lpReference() {
     const variant = this.selectedVariant
@@ -1369,6 +1368,11 @@ position: relative;
       }
     }
     return Number(this._lpReference[variant.id]) || 0
+  }
+
+  /** LifePharm: what a subscription row strikes: the reference price, or the one-time price when there is none. */
+  lpStrikePrice() {
+    return Math.max(this.lpReference(), this.selectedVariant?.price || 0)
   }
 
   updateExternalPrice() {

@@ -1,0 +1,587 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "stamped_product_reviews_ugc_star_rating_badge_8VPpGa": {
+          "type": "shopify://apps/stamped-reviews/blocks/star-rating-badge/a103faaf-2125-4b0e-89fa-de5149736723",
+          "settings": {
+            "use_metafields": false,
+            "sku_tagtype": "handle",
+            "is_featured_product": false,
+            "featured_product_handle": ""
+          },
+          "disabled": true
+        },
+        "liquid_6MPLpe": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{% render 'embedded-clinicianschoice' %}"
+          }
+        },
+        "price_8BcN9i": {
+          "type": "price",
+          "disabled": true,
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "lp_card",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "payment_terms": {
+          "type": "payment_terms",
+          "settings": {}
+        },
+        "skio_plan_picker_bNeDtW": {
+          "type": "skio-plan-picker",
+          "settings": {
+            "form_id": "product-form-{{ product.id }}-{{ section.id }}",
+            "external_price_selector": ".price-item--regular",
+            "show_details": false,
+            "show_without_subscription": false,
+            "show_compare_price": true,
+            "legend_content": "Select subscription plan",
+            "show_legend": false,
+            "layout": "vertical",
+            "dropdownPosition": "inside",
+            "additional_frequency_label": "",
+            "start_onetime": true,
+            "onetime_first": false,
+            "group_border_radius": 8,
+            "group_border_width": 1,
+            "group_border_color": "#000000",
+            "group_border_selected_color": "#000000",
+            "group_background_color": "rgba(0,0,0,0)",
+            "selected_group_background_color": "rgba(0,0,0,0)",
+            "group_text_color": "#000000",
+            "group_selected_text_color": "#000000",
+            "show_radio_selector": true,
+            "onetime_title": "One-Time",
+            "subscription_title": "Subscribe & Save",
+            "prepaid_title": "Prepaid",
+            "discount_format": "percent",
+            "discount_style": "bubble",
+            "discount_text": "Save up to [discount]",
+            "discount_color": "#ff8f00",
+            "discount_text_color": "#ffffff",
+            "additional_subscription_content": "<p>Save [discount], skip or cancel any time</p>",
+            "selector_type": "button",
+            "button_plan_selector_width": 100,
+            "default_subscription": "",
+            "future_price_adjustments_text": "<small>Then [discount] off after the [order_count_ordinal] order</small>",
+            "element_name": "skio-plan-picker",
+            "product_handle": "",
+            "combine_groups": false,
+            "combined_group_name": "Subscription"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {},
+          "disabled": true
+        },
+        "text_VjR6WU": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "{{ product.metafields.custom.product_description | metafield_tag }}"
+          }
+        },
+        "description": {
+          "type": "description",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "collapse_content": true
+          }
+        },
+        "collapsible_text_DKpjzh": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "page": "",
+            "title": "Benefits",
+            "content": "{{ product.metafields.custom.text_benefits | metafield_tag }}"
+          }
+        },
+        "collapsible_text_KbRjKK": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "page": "",
+            "title": "Ingredients",
+            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}"
+          }
+        },
+        "collapsible_text_QcYtDR": {
+          "type": "collapsible_text",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "Studies",
+            "content": "{{ product.metafields.custom.studies | metafield_tag }}",
+            "page": ""
+          }
+        },
+        "collapsible_text_PR3cy8": {
+          "type": "collapsible_text",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "Who is {{ product.title }} for?",
+            "content": "<p>{{ product.metafields.custom.value_1 | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_PDdyLw": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "page": "",
+            "title": "How to Replace",
+            "lp_how_steps": false,
+            "content": "<ol><li>Remove the old diffuser from the base of your bottle.</li><li>Rinse the new diffuser under running water for 30 seconds.</li><li>Insert it securely into the base and tighten.</li><li>Fill with filtered or purified water, wait 15 minutes, and enjoy.</li></ol><p>Rinse the diffuser under running water after each refill. Hand wash the bottle only, never in the dishwasher.</p>"
+          }
+        },
+        "collapsible_text_kaarby": {
+          "type": "collapsible_text",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "Product Specification Manual",
+            "content": "{{ product.metafields.custom.cellnery_wellness_manual_warranty | metafield_tag }}",
+            "page": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "rgba(0,0,0,0)",
+            "atc_button_text_color": "rgba(0,0,0,0)",
+            "payment_button_background": "#ff8f00",
+            "payment_button_text_color": "#ffffff"
+          }
+        },
+        "offer_DWbnz9": {
+          "type": "offer",
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/60_day_money_back_guarantee.png",
+            "icon_width": 100,
+            "title": "LIFEPHARM GUARANTEE",
+            "content": "<p>Try it, and if it doesn’t work, it’s on us! Our hassle-free return policy offers a 100% money back guarantee within 60 days of delivery.</p>",
+            "background": "#f9f9f9",
+            "text_color": "#181818"
+          }
+        },
+        "tolstoy_shoppable_video_quiz_stories_block_8Q3CqK": {
+          "type": "shopify://apps/tolstoy-ads-image-video/blocks/stories-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "settings": {
+            "publishId": "3ew6rhswme0cg"
+          }
+        },
+        "associated_products_mWz6hB": {
+          "type": "associated_products",
+          "disabled": true,
+          "settings": {
+            "title": "Goes well with",
+            "stack_products": true,
+            "products_count": 3,
+            "background": "",
+            "text_color": ""
+          }
+        },
+        "offer_aJbbCW": {
+          "type": "offer",
+          "disabled": true,
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-chat",
+            "icon_width": 24,
+            "title": "Speak to our customer support",
+            "content": "<p>Have a question for us? <a href=\"/pages/contact\" title=\"Contact\">Click here</a></p>",
+            "background": "#f9f9f9",
+            "text_color": "#181818"
+          }
+        },
+        "lp_rating": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{% render 'lp-rating-row', product: product %}"
+          }
+        },
+        "lp_price": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{%- assign lp_v = product.selected_or_first_available_variant -%}{%- assign lp_base = lp_v.compare_at_price | default: lp_v.price -%}<div class=\"lp-pdp-price\" aria-live=\"polite\"><span class=\"lp-pdp-price__now price-item--regular\">{{ lp_v.price | money }}</span><s class=\"lp-pdp-price__was\" data-base=\"{{ lp_base | money_without_currency }}\" {% unless lp_v.compare_at_price > lp_v.price %}hidden{% endunless %}>{{ lp_base | money }}</s><span class=\"lp-pdp-price__tag\" hidden></span></div>"
+          },
+          "disabled": true
+        },
+        "lp_summary": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{% render 'lp-pdp-summary', product: product %}"
+          }
+        },
+        "collapsible_text_XwdWte": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "page": "",
+            "title": "60-Day Money-Back Guarantee",
+            "content": "<p>All of our products come with a 60-Day Money-Back Guarantee. </p><p>Try it, and if it doesn’t work, it's on us! Our hassle-free <a href=\"/policies/refund-policy\" title=\"Refund policy\">return policy</a> offers a 100% money-back guarantee within 60 days of delivery.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "lp_rating",
+        "lp_summary",
+        "variant_picker",
+        "lp_price",
+        "stamped_product_reviews_ugc_star_rating_badge_8VPpGa",
+        "price_8BcN9i",
+        "skio_plan_picker_bNeDtW",
+        "quantity_selector",
+        "text_VjR6WU",
+        "description",
+        "collapsible_text_QcYtDR",
+        "collapsible_text_PR3cy8",
+        "collapsible_text_kaarby",
+        "buy_buttons",
+        "payment_terms",
+        "liquid_6MPLpe",
+        "collapsible_text_DKpjzh",
+        "collapsible_text_KbRjKK",
+        "collapsible_text_PDdyLw",
+        "collapsible_text_XwdWte",
+        "offer_DWbnz9",
+        "tolstoy_shoppable_video_quiz_stories_block_8Q3CqK",
+        "associated_products_mWz6hB",
+        "offer_aJbbCW"
+      ],
+      "custom_css": [
+        "@media screen and (min-width: 700px) {.product-gallery__thumbnail-list {grid-auto-columns: 110px; }}",
+        ".product-gallery__thumbnail {border-width: 1px; border-color: #c1c1c1; border-radius: 16px; padding: 10px 10px 5px 10px;}",
+        "@media screen and (min-width: 700px) {.product-gallery__thumbnail-list {grid-auto-columns: 110px; justify-content: center; }}",
+        ".product-gallery__thumbnail-list-wrapper {color: #f7941c;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "show_fixed_add_to_cart": true,
+        "desktop_media_width": 55,
+        "desktop_media_layout": "carousel_thumbnails_bottom",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "thumbnails",
+        "enable_video_autoplay": false,
+        "enable_video_looping": true,
+        "enable_image_zoom": false,
+        "max_image_zoom_level": 2,
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "lp_overview": {
+      "type": "lp-pdp-overview",
+      "settings": {
+        "image": "shopify://shop_images/lp-pdp-diffuser-hero.jpg",
+        "image_fit": "cover",
+        "caption": "Cellnergy Mineral Activation Diffuser",
+        "media_position": "start",
+        "eyebrow": "Why Replace It",
+        "heading": "Keep Every Sip at Its Best",
+        "text": "<p>Your Cellnergy Hydration System depends on one thing: fresh minerals. Over time the diffuser’s output declines and your water slowly returns to ordinary.</p><p>A fresh Mineral Activation Diffuser restores hydrogen output, alkaline balance and water structuring within 15 minutes of your first fill.</p>",
+        "chips_label": "",
+        "chips": "",
+        "note_label": "Fits:",
+        "note": "Cellnergy Hydration System"
+      },
+      "blocks": {
+        "stat_1": {
+          "type": "stat",
+          "settings": {
+            "value": "15 min",
+            "label": "Back to full performance"
+          }
+        },
+        "stat_2": {
+          "type": "stat",
+          "settings": {
+            "value": "3",
+            "label": "Mineral technologies"
+          }
+        },
+        "stat_3": {
+          "type": "stat",
+          "settings": {
+            "value": "2 months",
+            "label": "Of daily use"
+          }
+        }
+      },
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "stat_3"
+      ]
+    },
+    "lp_tech": {
+      "type": "lp-pdp-cards",
+      "settings": {
+        "style": "icon",
+        "columns": 3,
+        "background": "none",
+        "eyebrow": "The Minerals",
+        "heading": "Three Technologies, Restored in 15 Minutes",
+        "text": "<p>The same mineral blend as your original diffuser, active from the first fill. No break-in period.</p>",
+        "disclaimer": ""
+      },
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "icon": "bolt",
+            "label": "Hydrogen",
+            "title": "Active Hydrogen Minerals",
+            "text": "<p>Restore molecular hydrogen output, with antioxidant support from your very first sip.*</p>"
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "icon": "drop",
+            "label": "Alkaline",
+            "title": "Alkaline Mineral Blend",
+            "text": "<p>Re-establishes a higher alkaline pH on the first fill, for smoother-tasting water.</p>"
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "icon": "cell",
+            "label": "Structuring",
+            "title": "Terahertz-Compatible Minerals",
+            "text": "<p>Restore the mineral and frequency synergy your bottle was designed for.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3"
+      ]
+    },
+    "lp_compare": {
+      "type": "lp-pdp-cards",
+      "settings": {
+        "style": "icon",
+        "columns": 2,
+        "background": "sand",
+        "eyebrow": "The Difference",
+        "heading": "Fresh Diffuser vs. Depleted Diffuser",
+        "text": "",
+        "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
+      },
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "icon": "check",
+            "title": "With a Fresh Diffuser",
+            "text": "<p>Full hydrogen output from the first fill. Alkaline balance restored straight away. Water structuring back at its best, so your supplements and daily habits get the hydration support they were designed for.*</p>"
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "icon": "refresh",
+            "title": "With a Depleted Diffuser",
+            "text": "<p>Hydrogen output drops close to zero and the pH drifts back to neutral. Structuring fades, and you are left with ordinary water from a premium bottle.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2"
+      ]
+    },
+    "lp_timeline": {
+      "type": "lp-pdp-timeline",
+      "settings": {
+        "eyebrow": "What to Expect",
+        "heading": "The Life of a Diffuser",
+        "subheading": "Here’s what happens to your water over time, and when to swap.",
+        "next_label": "What comes next"
+      },
+      "blocks": {
+        "phase_1": {
+          "type": "phase",
+          "settings": {
+            "image": "shopify://shop_images/lp-tl-diffuser-1.jpg",
+            "label": "Day 1",
+            "title": "Full Performance Restored",
+            "text": "<p>Fresh minerals are active within 15 minutes. Hydrogen output, alkaline balance and water structuring are all back.</p>"
+          }
+        },
+        "phase_2": {
+          "type": "phase",
+          "settings": {
+            "image": "shopify://shop_images/lp-tl-diffuser-2.jpg",
+            "label": "Months 1 to 2",
+            "title": "Peak Hydration",
+            "text": "<p>Every sip delivers hydrogen-rich, alkaline, structured water to support your daily routine.*</p>"
+          }
+        },
+        "phase_3": {
+          "type": "phase",
+          "settings": {
+            "image": "shopify://shop_images/lp-tl-diffuser-3.jpg",
+            "label": "Month 3",
+            "title": "Output Begins to Decline",
+            "text": "<p>Performance drops gradually and quietly: hydrogen falls and the pH drifts. Most people do not notice for weeks.</p>"
+          }
+        },
+        "phase_4": {
+          "type": "phase",
+          "settings": {
+            "image": "shopify://shop_images/lp-tl-diffuser-4.jpg",
+            "label": "Replace now",
+            "title": "Back to Full Performance",
+            "text": "<p>Swap the diffuser and fill the bottle. Fifteen minutes later, your water is working as designed again.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "phase_1",
+        "phase_2",
+        "phase_3",
+        "phase_4"
+      ]
+    },
+    "lp_faq": {
+      "type": "lp-pdp-faq",
+      "settings": {
+        "heading": "Still Deciding? Start Here.",
+        "button_label": "",
+        "contact_label": "Contact Us",
+        "q_who": "",
+        "q_how": "",
+        "q_when": ""
+      },
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "question": "How Often Should I Replace It?",
+            "answer": "<p>About every 2 months of daily use, when mineral output starts to decline.</p>"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "question": "What Happens If I Don’t Replace It?",
+            "answer": "<p>The minerals do not expire dangerously; they simply stop conditioning. Your water gradually returns to that of a regular bottle until you fit a fresh diffuser.</p>"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "question": "Which Bottle Does It Fit?",
+            "answer": "<p>The Cellnergy Hydration System.</p>"
+          }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {
+            "question": "What If It Isn’t Right for Me?",
+            "answer": "<p>Then you don’t pay for it. Every LifePharm product comes with a 60-day money-back guarantee. Let us know within 60 days of delivery and we’ll refund you in full.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4"
+      ]
+    },
+    "17128952497cac699c": {
+      "type": "apps",
+      "blocks": {
+        "stamped_product_reviews_ugc_main_widget_q7NdzJ": {
+          "type": "shopify://apps/stamped-reviews/blocks/main-widget/a103faaf-2125-4b0e-89fa-de5149736723",
+          "settings": {
+            "animation": true,
+            "tags_exclude": "",
+            "tags_include": "",
+            "search": "",
+            "linkify": true,
+            "use_metafields": false,
+            "sku_tagtype": "handle"
+          }
+        }
+      },
+      "block_order": [
+        "stamped_product_reviews_ugc_main_widget_q7NdzJ"
+      ],
+      "custom_css": [],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "lp_overview",
+    "lp_tech",
+    "lp_compare",
+    "lp_timeline",
+    "lp_faq",
+    "17128952497cac699c"
+  ]
+}

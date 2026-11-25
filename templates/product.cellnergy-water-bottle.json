@@ -1,0 +1,553 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "stamped_product_reviews_ugc_star_rating_badge_8VPpGa": {
+          "type": "shopify://apps/stamped-reviews/blocks/star-rating-badge/a103faaf-2125-4b0e-89fa-de5149736723",
+          "settings": {
+            "use_metafields": false,
+            "sku_tagtype": "handle",
+            "is_featured_product": false,
+            "featured_product_handle": ""
+          },
+          "disabled": true
+        },
+        "liquid_zVwUQ4": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{% render 'embedded-clinicianschoice' %}"
+          }
+        },
+        "price_i3a8A7": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          },
+          "disabled": true
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "lp_card",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "payment_terms": {
+          "type": "payment_terms",
+          "settings": {}
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {},
+          "disabled": true
+        },
+        "text_qpwKPK": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p><em><strong>PLEASE NOTE:</strong></em><em> This product is currently only available in Hungary, Romania and Slovakia.</em></p>"
+          }
+        },
+        "text_VjR6WU": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "{{ product.metafields.custom.product_description | metafield_tag }}"
+          }
+        },
+        "description": {
+          "type": "description",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "collapse_content": true
+          }
+        },
+        "collapsible_text_XwdWte": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "page": "",
+            "title": "60-Day Money-Back Guarantee",
+            "content": "<p>All of our products come with a 60-Day Money-Back Guarantee. </p><p>Try it, and if it doesn’t work, it's on us! Our hassle-free <a href=\"/policies/refund-policy\" title=\"Refund policy\">return policy</a> offers a 100% money-back guarantee within 60 days of delivery.</p>"
+          }
+        },
+        "collapsible_text_DKpjzh": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "page": "",
+            "title": "Benefits",
+            "content": "{{ product.metafields.custom.text_benefits | metafield_tag }}"
+          }
+        },
+        "collapsible_text_KbRjKK": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "page": "",
+            "title": "Ingredients",
+            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}"
+          }
+        },
+        "collapsible_text_QcYtDR": {
+          "type": "collapsible_text",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "Studies",
+            "content": "{{ product.metafields.custom.studies | metafield_tag }}",
+            "page": ""
+          }
+        },
+        "collapsible_text_PR3cy8": {
+          "type": "collapsible_text",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "Who is {{ product.title }} for?",
+            "content": "<p>{{ product.metafields.custom.value_1 | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "collapsible_text_PDdyLw": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "page": "",
+            "title": "How to Use",
+            "lp_how_steps": false,
+            "content": "<ol><li>Fill the bottle with filtered or purified drinking water.</li><li>Leave it for about 15 minutes while the minerals condition the water.</li><li>Drink throughout the day as part of your hydration routine.</li></ol><p>Before first use: wash the bottle 2–3 times with mild dish soap, rinse the diffuser, then fill, shake and empty until the water runs clear.</p><p>Replace the Mineral Activation Diffuser about every 2 months for the best performance.</p>"
+          }
+        },
+        "collapsible_text_kaarby": {
+          "type": "collapsible_text",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "Product Specification Manual",
+            "content": "{{ product.metafields.custom.cellnery_wellness_manual_warranty | metafield_tag }}",
+            "page": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "rgba(0,0,0,0)",
+            "atc_button_text_color": "rgba(0,0,0,0)",
+            "payment_button_background": "#ff8f00",
+            "payment_button_text_color": "#ffffff"
+          }
+        },
+        "offer_DWbnz9": {
+          "type": "offer",
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/60_day_money_back_guarantee.png",
+            "icon_width": 100,
+            "title": "LIFEPHARM GUARANTEE",
+            "content": "<p>Try it, and if it doesn’t work, it’s on us! Our hassle-free return policy offers a 100% money back guarantee within 60 days of delivery.</p>",
+            "background": "#f9f9f9",
+            "text_color": "#181818"
+          }
+        },
+        "tolstoy_shoppable_video_quiz_stories_block_8Q3CqK": {
+          "type": "shopify://apps/tolstoy-ads-image-video/blocks/stories-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "settings": {
+            "publishId": "3ew6rhswme0cg"
+          }
+        },
+        "associated_products_mWz6hB": {
+          "type": "associated_products",
+          "disabled": true,
+          "settings": {
+            "title": "Goes well with",
+            "stack_products": true,
+            "products_count": 3,
+            "background": "",
+            "text_color": ""
+          }
+        },
+        "offer_aJbbCW": {
+          "type": "offer",
+          "disabled": true,
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-chat",
+            "icon_width": 24,
+            "title": "Speak to our customer support",
+            "content": "<p>Have a question for us? <a href=\"/pages/contact\" title=\"Contact\">Click here</a></p>",
+            "background": "#f9f9f9",
+            "text_color": "#181818"
+          }
+        },
+        "lp_rating": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{% render 'lp-rating-row', product: product %}"
+          }
+        },
+        "lp_summary": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{% render 'lp-pdp-summary', product: product %}"
+          }
+        },
+        "lp_price": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{%- assign lp_v = product.selected_or_first_available_variant -%}{%- assign lp_base = lp_v.compare_at_price | default: lp_v.price -%}<div class=\"lp-pdp-price\" aria-live=\"polite\"><span class=\"lp-pdp-price__now price-item--regular\">{{ lp_v.price | money }}</span><s class=\"lp-pdp-price__was\" data-base=\"{{ lp_base | money_without_currency }}\" {% unless lp_v.compare_at_price > lp_v.price %}hidden{% endunless %}>{{ lp_base | money }}</s><span class=\"lp-pdp-price__tag\" hidden></span></div>"
+          },
+          "disabled": true
+        },
+        "lp_specs": {
+          "type": "collapsible_text",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "page": "",
+            "title": "Specifications",
+            "content": "<ul><li><strong>Care:</strong> Hand wash only and air-dry with the lid open. Do not microwave, freeze or fill with boiling liquids.</li><li><strong>Temperature:</strong> Cold and warm water up to 60°C / 140°F</li><li><strong>Material:</strong> BPA-free, medical-grade Tritan™</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "lp_rating",
+        "lp_summary",
+        "variant_picker",
+        "lp_price",
+        "stamped_product_reviews_ugc_star_rating_badge_8VPpGa",
+        "price_i3a8A7",
+        "quantity_selector",
+        "text_qpwKPK",
+        "text_VjR6WU",
+        "description",
+        "collapsible_text_QcYtDR",
+        "collapsible_text_PR3cy8",
+        "collapsible_text_kaarby",
+        "buy_buttons",
+        "payment_terms",
+        "liquid_zVwUQ4",
+        "collapsible_text_DKpjzh",
+        "collapsible_text_KbRjKK",
+        "collapsible_text_PDdyLw",
+        "lp_specs",
+        "collapsible_text_XwdWte",
+        "offer_DWbnz9",
+        "tolstoy_shoppable_video_quiz_stories_block_8Q3CqK",
+        "associated_products_mWz6hB",
+        "offer_aJbbCW"
+      ],
+      "custom_css": [
+        "@media screen and (min-width: 700px) {.product-gallery__thumbnail-list {grid-auto-columns: 110px; }}",
+        ".product-gallery__thumbnail {border-width: 1px; border-color: #c1c1c1; border-radius: 16px; padding: 10px 10px 5px 10px;}",
+        "@media screen and (min-width: 700px) {.product-gallery__thumbnail-list {grid-auto-columns: 110px; justify-content: center; }}",
+        ".product-gallery__thumbnail-list-wrapper {color: #f7941c;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "show_fixed_add_to_cart": true,
+        "desktop_media_width": 55,
+        "desktop_media_layout": "carousel_thumbnails_bottom",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "thumbnails",
+        "enable_video_autoplay": false,
+        "enable_video_looping": true,
+        "enable_image_zoom": false,
+        "max_image_zoom_level": 2,
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "lp_overview": {
+      "type": "lp-pdp-overview",
+      "settings": {
+        "media_index": 2,
+        "image_fit": "contain",
+        "caption": "Cellnergy Hydration System",
+        "media_position": "start",
+        "eyebrow": "Why Cellnergy Hydration",
+        "heading": "Regeneration Begins With Water",
+        "text": "<p>Your body depends on water every day. The Cellnergy Hydration System makes that daily habit work harder, combining four water-conditioning technologies in one reusable bottle.</p><p>Fill it with filtered water, wait about 15 minutes, and drink through the day. No powders, mixing, batteries or charging.</p>",
+        "chips_label": "In every refill",
+        "chips": "Hydrogen-rich water, Alkaline conditioning, Trace minerals, A smoother taste, No electricity",
+        "note_label": "",
+        "note": ""
+      },
+      "blocks": {
+        "stat_1": {
+          "type": "stat",
+          "settings": {
+            "value": "4",
+            "label": "Technologies"
+          }
+        },
+        "stat_2": {
+          "type": "stat",
+          "settings": {
+            "value": "pH 8–9.5",
+            "label": "Alkaline water"
+          }
+        },
+        "stat_3": {
+          "type": "stat",
+          "settings": {
+            "value": "1.1 mg/L",
+            "label": "Dissolved hydrogen"
+          }
+        },
+        "stat_4": {
+          "type": "stat",
+          "settings": {
+            "value": "15 min",
+            "label": "To condition"
+          }
+        }
+      },
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "stat_3",
+        "stat_4"
+      ]
+    },
+    "lp_tech": {
+      "type": "lp-pdp-cards",
+      "settings": {
+        "style": "number",
+        "columns": 4,
+        "background": "sand",
+        "eyebrow": "The Technology",
+        "heading": "Four Technologies, One Bottle",
+        "text": "<p>One 15-minute conditioning process. No electricity required.</p>",
+        "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
+      },
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "title": "Mineral Activation",
+            "text": "<p>A replaceable Mineral Activation Diffuser holds essential trace minerals that condition your water as it rests in the bottle.</p>"
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "title": "Alkaline Conditioning",
+            "text": "<p>Helps raise your water to a pH of about 8 to 9.5, depending on the water you start with, for a smooth taste.</p>"
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "title": "Molecular Hydrogen",
+            "text": "<p>1.1 mg/L (1,100 ppb) of dissolved hydrogen after 15 minutes, independently measured by H2 Analytics (2026). More than twice the 0.5 mg/L industry threshold.*</p>"
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "title": "Far-Infrared and Terahertz",
+            "text": "<p>Far-infrared mineral media and terahertz-frequency technology add a further layer to the non-powered conditioning system.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4"
+      ]
+    },
+    "lp_timeline": {
+      "type": "lp-pdp-timeline",
+      "settings": {
+        "eyebrow": "What to Expect",
+        "heading": "Benefits That Build Over Time",
+        "subheading": "Drink from it daily and the difference builds. Here’s what to look for, and when.",
+        "next_label": "What comes next"
+      },
+      "blocks": {
+        "phase_1": {
+          "type": "phase",
+          "settings": {
+            "mf_image": "phase_4_image,image_benefits",
+            "label": "Day 1",
+            "title": "A Noticeably Different Sip",
+            "text": "<p>Most people notice a smoother, cleaner, lighter taste from the very first glass.*</p>"
+          }
+        },
+        "phase_2": {
+          "type": "phase",
+          "settings": {
+            "mf_image": "phase_1_image,image_benefits",
+            "label": "Week 1",
+            "title": "Feeling Genuinely Hydrated",
+            "text": "<p>Many people feel more refreshed and satisfied after drinking, with a lighter sensation that stays through the day.*</p>"
+          }
+        },
+        "phase_3": {
+          "type": "phase",
+          "settings": {
+            "mf_image": "phase_2_image,image_benefits",
+            "label": "Month 1",
+            "title": "Steadier Energy, Clearer Days",
+            "text": "<p>With daily use, steadier energy through the day becomes noticeable and the afternoon dip eases.*</p>"
+          }
+        },
+        "phase_4": {
+          "type": "phase",
+          "settings": {
+            "mf_image": "phase_3_image,image_benefits",
+            "label": "Month 2 and beyond",
+            "title": "A Foundation for Everything Else",
+            "text": "<p>Many people report quicker recovery after exercise, clearer focus and healthier-looking skin, as hydration supports the rest of their routine.*</p>"
+          }
+        }
+      },
+      "block_order": [
+        "phase_1",
+        "phase_2",
+        "phase_3",
+        "phase_4"
+      ]
+    },
+    "lp_faq": {
+      "type": "lp-pdp-faq",
+      "settings": {
+        "heading": "Still Deciding? Start Here.",
+        "button_label": "View All FAQs",
+        "contact_label": "Contact Us",
+        "q_who": "",
+        "q_how": "",
+        "q_when": ""
+      },
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "question": "How Does It Work?",
+            "answer": "<p>A built-in mineral diffuser conditions your water with mineral alkalisation (pH 8 to 9.5), molecular hydrogen and terahertz-frequency restructuring. Fill it with filtered water, wait 15 minutes, and it is ready to drink.*</p>"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "question": "What Water Should I Use?",
+            "answer": "<p>Filtered or purified water. It lets the technologies work best and gives the cleanest taste.</p>"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "question": "Does Alkaline Water Change My Body’s pH?",
+            "answer": "<p>No. Your body tightly regulates its blood pH. Alkaline water is not intended to change it; it is designed to support everyday hydration.</p>"
+          }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {
+            "question": "Is the Bottle Safe?",
+            "answer": "<p>Yes. It is made from BPA-free, medical-grade Tritan™ and suits cold and warm water up to 60°C / 140°F. It is not suitable for boiling or hot liquids.</p>"
+          }
+        },
+        "item_5": {
+          "type": "item",
+          "settings": {
+            "question": "Do I Need to Replace the Diffuser?",
+            "answer": "<p>Yes, about every 2 months of daily use. After that the mineral output declines and the water gradually returns to ordinary. Replacement diffusers are sold separately.</p>"
+          }
+        },
+        "item_6": {
+          "type": "item",
+          "settings": {
+            "question": "What If It Isn’t Right for Me?",
+            "answer": "<p>Then you don’t pay for it. Every LifePharm product comes with a 60-day money-back guarantee. Let us know within 60 days of delivery and we’ll refund you in full.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4",
+        "item_5",
+        "item_6"
+      ]
+    },
+    "apps_UhARyj": {
+      "type": "apps",
+      "blocks": {
+        "stamped_reviews_main_widget_mFDmzg": {
+          "type": "shopify://apps/stamped-reviews/blocks/main-widget/a103faaf-2125-4b0e-89fa-de5149736723",
+          "settings": {
+            "animation": true,
+            "tags_exclude": "",
+            "tags_include": "",
+            "search": "",
+            "linkify": true,
+            "use_metafields": false,
+            "sku_tagtype": "handle"
+          }
+        }
+      },
+      "block_order": [
+        "stamped_reviews_main_widget_mFDmzg"
+      ],
+      "custom_css": [],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "lp_overview",
+    "lp_tech",
+    "lp_timeline",
+    "lp_faq",
+    "apps_UhARyj"
+  ]
+}

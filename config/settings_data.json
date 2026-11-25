@@ -79,11 +79,6 @@
         "disabled": false,
         "settings": {}
       },
-      "1232542678405107163": {
-        "type": "shopify://apps/instafeed/blocks/head-block/c447db20-095d-4a10-9725-b5977662c9d5",
-        "disabled": false,
-        "settings": {}
-      },
       "4705145147225299685": {
         "type": "shopify://apps/tolstoy-shoppable-video-ugc/blocks/widget-block/06fa8282-42ff-403e-b67c-1936776aed11",
         "disabled": false,
@@ -115,8 +110,69 @@
           "cards_border_color": "rgba(0,0,0,0)"
         }
       },
+      "17790009454750450185": {
+        "type": "shopify://apps/nofraud-fraud-protection/blocks/nf_device/5c2706cf-d458-49c5-a6fa-4fb6b79ce2b4",
+        "disabled": false,
+        "settings": {}
+      },
+      "1232542678405107163": {
+        "type": "shopify://apps/instafeed/blocks/head-block/c447db20-095d-4a10-9725-b5977662c9d5",
+        "disabled": false,
+        "settings": {}
+      },
+      "855628211100114053": {
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {}
+      },
+      "14549625726302301791": {
+        "type": "shopify://apps/stamped-loyalty-referrals/blocks/referral-modal/93b8fd18-14d4-464f-a49a-0093afb7e10a",
+        "disabled": true,
+        "settings": {
+          "frequency": "none",
+          "background_image_url": "",
+          "style_color_background": "",
+          "style_color_button": "",
+          "style_color_link": "",
+          "subtitle": "",
+          "title": "",
+          "description": "",
+          "button_text": "",
+          "subtitle_two": "",
+          "text_disclaimer": "",
+          "text_share_manual": "",
+          "button_text_send": ""
+        }
+      },
+      "471852632697159186": {
+        "type": "shopify://apps/stamped-loyalty-referrals/blocks/rewards-launcher/93b8fd18-14d4-464f-a49a-0093afb7e10a",
+        "disabled": false,
+        "settings": {}
+      },
       "6770548097779500122": {
         "type": "shopify://apps/koala-free-gift/blocks/gifts-embed/baf92dc5-8ffa-40c0-967e-57b74cddc9e3",
+        "disabled": false,
+        "settings": {}
+      },
+      "13786924369225772985": {
+        "type": "shopify://apps/c-hub-customer-accounts/blocks/accounts-everywhere/0fb3ba0b-4c65-4919-a85a-48bc2d368e9c",
+        "disabled": false,
+        "settings": {}
+      },
+      "3838990611052461119": {
+        "type": "shopify://apps/c-hub-customer-accounts/blocks/app-embed/0fb3ba0b-4c65-4919-a85a-48bc2d368e9c",
+        "disabled": true,
+        "settings": {
+          "account_primary_page": "",
+          "main_element": "",
+          "custom_element": "",
+          "page_element": "",
+          "proxy_element": "",
+          "mount_json_code": ""
+        }
+      },
+      "back-in-stock-restock-alerts-4bb73be2-b7c2-4870-949f-c528145452a3": {
+        "type": "shopify://apps/back-in-stock-restock-alerts/blocks/main/4bb73be2-b7c2-4870-949f-c528145452a3",
         "disabled": false,
         "settings": {}
       },
@@ -124,6 +180,14 @@
         "type": "shopify://apps/design-packs/blocks/design_packs/1efa8e58-6fa1-4c9a-9c0a-e71446c20785",
         "disabled": false,
         "settings": {}
+      },
+      "18228966181090706294": {
+        "type": "shopify://apps/selleasy/blocks/app-embed/790c1a03-a71f-4bc1-9869-00dad526d3c2",
+        "disabled": false,
+        "settings": {
+          "storefrontAccessToken": "",
+          "scriptInitMode": "immediate"
+        }
       },
       "6444166244322975299": {
         "type": "shopify://apps/teqnavi-lifepharm/blocks/sync-engine/019bc71e-c7cd-732d-b07b-3ca8ead35448",
@@ -174,6 +238,16 @@
           "cart_attr_key_2": "",
           "cart_attr_value_2": ""
         }
+      },
+      "2200952712151285029": {
+        "type": "shopify://apps/microsoft-clarity/blocks/brandAgents_js/31c3d126-8116-4b4a-8ba1-baeda7c4aeea",
+        "disabled": false,
+        "settings": {}
+      },
+      "2567389343055140935": {
+        "type": "shopify://apps/microsoft-clarity/blocks/clarity_js/31c3d126-8116-4b4a-8ba1-baeda7c4aeea",
+        "disabled": false,
+        "settings": {}
       }
     },
     "product_card_background": "#ffffff",

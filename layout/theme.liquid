@@ -32,6 +32,7 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
     {%- endif %}
     {% render 'skio-head' %}
 	{% render 'pandectes-rules' %}
+    {%- if shop.id == 88501289269 or shop.id == 69939265753 -%}<meta name="google-site-verification" content="FhbwC9f_PrVfp9Jx9FMxa_obewPdYoMULhRjl4yrNh0">{%- endif %}
     <meta name="theme-color" content="{{ settings.header_background }}">
 
     {%- comment -%}LP: a title that does not already name the brand gets it as a suffix ("Science | LifePharm"), so no page shows a one-word title in search results.{%- endcomment -%}
@@ -355,7 +356,12 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
     </main>
     {% render 'lp-referral-nudge' %}
     <!-- Stamped -->
-    <script>function myInit(){ StampedFn.init({ apiKey: '9ad7ae72-fc06-4606-9d55-3fe5a0e312d5', sId: '301382' }); }</script>
+    {%- comment -%}Each store has its own Stamped account, as on its live theme: the UK one, and one shared by the US and Europe (D-096).{%- endcomment -%}
+    {%- if shop.id == 79076655396 -%}
+      <script>function myInit(){ StampedFn.init({ apiKey: '9ad7ae72-fc06-4606-9d55-3fe5a0e312d5', sId: '301382' }); }</script>
+    {%- else -%}
+      <script>function myInit(){ StampedFn.init({ apiKey: '6009ba3b-05fe-4b7b-9e14-4662bbc7c953', sId: '337645' }); }</script>
+    {%- endif -%}
     {%- comment -%}LP: third-party widgets that are not needed for the first view (Stamped reviews, the Clinicians' Choice badge) start once the page is parsed and its first image has loaded, on the first touch, or after 4 seconds at the latest (D-090). Referral, Exigo and subscription scripts are not delayed.{%- endcomment -%}
     <script>
       (function () {

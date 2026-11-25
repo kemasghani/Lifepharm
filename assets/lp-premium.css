@@ -53,7 +53,7 @@ p, .prose p { text-wrap: pretty; }
   text-transform: uppercase;
   color: rgb(var(--lp-amber));
 }
-.text-subdued { color: rgb(var(--text-color) / .68); }
+.text-subdued { color: rgb(var(--text-color) / .8); }
 .rich-text h2 span[style*="FF8F00"], .rich-text h2 span[style*="ff8f00"],
 h2 span[style*="#FF8F00"] { color: rgb(var(--lp-amber)) !important; font-style: normal; }
 :is(h1, h2, h3, h4, h5, h6, .h0, .h1, .h2, .h3, .h4, .h5, .h6, .heading) :is(em, i) { font-style: normal; font-family: inherit; font-weight: inherit; letter-spacing: inherit; }
@@ -1014,3 +1014,7 @@ html:has(x-drawer[open], cart-drawer[open], dialog[open]) .product-quick-add:not
 dialog:modal { overscroll-behavior: contain; }
 dialog::backdrop { overflow: hidden; overscroll-behavior: contain; }
 [data-lp-scrolls]:focus-visible { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 2px; }
+/* Quick add: the close button is a full touch target (44px) in the same corner. */
+.quick-buy-drawer::part(close-button) { place-items: center; width: 44px; height: 44px; margin-block: -10px 0; margin-inline-end: -10px; }
+/* Field labels: the theme's half-transparent label is 3.4:1; this is above 4.5:1 on white and on sand. */
+.floating-label { opacity: .8; }

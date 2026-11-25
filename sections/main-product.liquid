@@ -68,7 +68,7 @@
     if (!extras) return;
     const info = extras.closest('.product').querySelector('.product-info');
     if (!info) return;
-    const ids = [...info.querySelectorAll('.product-info__block-item')].filter((el) => el.querySelector('#frontrow-badge iframe') || el.dataset.blockType === 'associated-products').map((el) => el.dataset.blockId);
+    const ids = [...info.querySelectorAll('.product-info__block-item')].filter((el) => el.querySelector('#frontrow-badge :is(iframe, template)') || el.dataset.blockType === 'associated-products').map((el) => el.dataset.blockId);
     if (!ids.length) return;
     const product = extras.closest('.product');
     const find = (id) => product.querySelector('.product-info__block-item[data-block-id="' + id + '"]');
@@ -89,9 +89,9 @@
     let frame = 0;
     const update = () => {
       frame = 0;
+      if (!mq.matches) { cols.forEach((col) => col.style.removeProperty('--lp-sticky-top')); return; }
       const headerOffset = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--sticky-area-height')) || 0) + 20;
       cols.forEach((col) => {
-        if (!mq.matches) { col.style.removeProperty('--lp-sticky-top'); return; }
         const fit = window.innerHeight - col.offsetHeight - 24;
         col.style.setProperty('--lp-sticky-top', Math.min(headerOffset, fit) + 'px');
       });

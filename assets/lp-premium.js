@@ -107,13 +107,16 @@
           const target = parseFloat(el.dataset.lpCount);
           const decimals = (el.dataset.lpCount.split('.')[1] || '').length;
           if (reduceMotion || Number.isNaN(target)) return;
-          const start = performance.now();
           const duration = 1600;
+          // Time runs from the first frame: a frame's time can be older than performance.now(), which made the count negative.
+          let start = null;
           const tick = (now) => {
-            const t = Math.min(1, (now - start) / duration);
+            if (start === null) start = now;
+            const t = Math.min(1, Math.max(0, (now - start) / duration));
             const eased = 1 - Math.pow(1 - t, 4);
             el.textContent = decimals ? (target * eased).toFixed(decimals) : formatter.format(Math.round(target * eased));
             if (t < 1) requestAnimationFrame(tick);
+            else if (el.dataset.lpLive) el.textContent = el.dataset.lpLive;
           };
           requestAnimationFrame(tick);
         });
@@ -1071,5 +1074,46 @@
     if (!dialog || !dialog.querySelector('[data-lp-box-nav]')) return;
     event.preventDefault();
     show(dialog.closest('[data-lp-box]'), Number(dialog.dataset.index) + (event.key === 'ArrowRight' ? 1 : -1));
+  });
+})();
+
+/* Home product cards and the [reviews] numbers follow the live Stamped badge, as Shop All and the product page do (D-092).
+   Each card holds a hidden badge; Stamped fills it after the first view. */
+(() => {
+  const cards = [...document.querySelectorAll('.lp-pt__card .stamped-product-reviews-badge')];
+  if (!cards.length) return;
+  const apply = (badge) => {
+    const caption = badge.querySelector('.stamped-badge-caption[data-reviews]');
+    const row = badge.parentElement.querySelector('[data-lp-rating]');
+    if (!caption || !row) return;
+    const count = Number(caption.dataset.reviews) || 0;
+    row.hidden = count === 0;
+    if (count > 0) {
+      row.querySelector('[data-lp-rating-value]').textContent = Number(caption.dataset.rating).toFixed(1);
+      row.querySelector('[data-lp-rating-count]').textContent = count === 1 ? row.dataset.one : row.dataset.many.replace('[n]', count.toLocaleString(document.documentElement.lang || 'en'));
+    }
+    const shown = Math.floor(count / 10) * 10;
+    if (badge.dataset.productSku !== 'laminine' || !shown) return;
+    document.querySelectorAll('[data-lp-reviews]').forEach((el) => {
+      const text = shown.toLocaleString(document.documentElement.lang || 'en');
+      if (el.dataset.lpCount) { el.dataset.lpCount = shown; el.dataset.lpLive = text; }
+      el.textContent = text;
+    });
+  };
+  const observer = new MutationObserver((changes) => new Set(changes.map((change) => change.target.closest('.stamped-product-reviews-badge')).filter(Boolean)).forEach(apply));
+  cards.forEach((badge) => { observer.observe(badge, { childList: true, subtree: true }); apply(badge); });
+})();
+
+/* The Exigo storefront script adds ?ref=... to every link. On an email or phone link it becomes part of the address, so it comes off again (D-092). */
+(() => {
+  const clean = (link) => {
+    const href = link.getAttribute('href') || '';
+    const tidy = href.replace(/([?&])(?:ref=[^&#]*(?:&|$))+/gi, '$1').replace(/[?&]+$/, '');
+    if (tidy !== href) link.setAttribute('href', tidy);
+  };
+  const observer = new MutationObserver((changes) => changes.forEach((change) => clean(change.target)));
+  document.querySelectorAll('a[href^="mailto:" i], a[href^="tel:" i], a[href^="sms:" i]').forEach((link) => {
+    clean(link);
+    observer.observe(link, { attributes: true, attributeFilter: ['href'] });
   });
 })();

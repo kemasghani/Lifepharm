@@ -24,6 +24,12 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 
 ---
 
+## 2026-11-26 · qa-letisha · Pre-launch list, UK products, Modern Web Guidance
+- Done: D-091 (subscription strikes the reference price, quick add without buttons), D-092 (Letisha's list), D-093 (UK products), D-094 (modern web audit).
+- Evidence: `pdp_price_consistency_check.py` PASS on US (LAMIDERM APEX, LAMININE) and UK (LAMIDERM APEX, Diffuser) drafts at 1440 and 390; quick add drawer checked on US and UK drafts at both widths; staging checked at both widths (home counts 980 everywhere, no negative counter, zero-price and packs out of listings, policies 200, unpublished pages 404, contact links clean, no JS errors, no sideways scroll); UK live Shop All lists 14 products; `./init.sh --full` 0 fail, theme check 13 = baseline; live themes unchanged (18 and 19 Nov).
+- Not checked: Europe draft (429) for price and for quick add at 1440; Safari fallback for light dismiss (no WebKit here).
+- Next: owner's yes for TD-043; Letisha on IBO packs, Gut Defense UK price and SKU, TD-042.
+
 ## 2026-11-25 · perf-001 · Widgets after the first view; the late paint is not ours alone
 - Done: D-090; TD-039 controls (Horizon 16 of 16, app embeds off 6 of 21, settings restored and compared equal); four experiment files deleted from the staging theme after the developer's yes.
 - Evidence: in feature_list perf-001; `./init.sh --full` passes; live UK, US and EU themes unchanged.

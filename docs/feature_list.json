@@ -788,6 +788,25 @@
       ],
       "evidence": [],
       "notes": "Off-repo. Pointer only: docs/knowledge/off-repo-projects.md."
+    },
+    {
+      "id": "qa-letisha",
+      "area": "qa",
+      "title": "Letisha's pre-launch list (2026-11-26)",
+      "status": "in_progress",
+      "stores": [
+        "us",
+        "eu",
+        "uk"
+      ],
+      "verification": [
+        "Each item checked on staging at 390 and 1440",
+        "Live data items approved by the owner and repeated per store"
+      ],
+      "evidence": [
+        "Staging: all items verified 2026-11-26 (docs/progress.md); theme changes on all branches"
+      ],
+      "notes": "Open: live store data (TD-043), IBO packs decision, Gut Defense System on the UK, orange text contrast (TD-042)."
     }
   ]
 }

@@ -1,8 +1,9 @@
 {% doc %}
   Outputs "hidden" when a product must not be listed (search, collections, home cards) and nothing otherwise (D-092, D-095):
   1. a product priced at zero, which is not sold on its own (D-070);
-  2. an IBO pack (product type Packs), unless the shopper is signed in as an IBO. Exigo customer types 2 and 3 are IBOs,
-     the same test the Exigo storefront script uses; type 1 is a retail customer.
+  2. an IBO pack (product type Packs), unless the shopper is signed in as an IBO. An IBO is Exigo customer type 3 (customer
+     metafield Exigo.CustomerTypeId, written by the Exigo connector). A customer whose type is not written yet counts as an
+     IBO by the customer tag IBO. Type 2 is not an IBO (D-097), whatever the tag says.
   layout/theme.liquid uses rule 2 to show "Product Not Found" on a pack's own address. The enrolment pages are not affected.
 
   @param {product} product - The product to check
@@ -15,7 +16,13 @@
     echo 'hidden'
   elsif product.type == 'Packs'
     assign exigo_type = customer.metafields.Exigo.CustomerTypeId.value | default: customer.metafields.Exigo.CustomerTypeId | append: '' | strip
-    unless exigo_type == '2' or exigo_type == '3'
+    assign is_ibo = false
+    if exigo_type == '3'
+      assign is_ibo = true
+    elsif exigo_type == blank and customer.tags contains 'IBO'
+      assign is_ibo = true
+    endif
+    unless is_ibo
       echo 'hidden'
     endunless
   endif

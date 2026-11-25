@@ -3,7 +3,8 @@ For every size card: select it, then compare the card's "Save" badge with the Ad
 (struck price minus price must equal the badge; no badge means no struck price), with the plan picker's
 One-time row (same struck price) and with the sticky bar (same price per unit as the size card, or "In stock"
 when the size is not sold by the unit). Then, where the page has a Subscribe & Save option, select it and
-check the button and the subscription row both strike the one-time price.
+check the button and the subscription row strike the same price as the One-time row (D-091), or the one-time
+price when the size has no reference price.
 Output: one line per size and a screenshot of the buy box for the last size.
 
 Usage: uv run --no-project --with playwright python tools/qa/pdp_price_consistency_check.py <outdir> <base_url> <theme_id> <handle> ...
@@ -42,7 +43,7 @@ async def main():
                         await info.locator('.lp-vcard').nth(i).scroll_into_view_if_needed(); await info.locator('.lp-vcard').nth(i).click(); await page.wait_for_timeout(2600)
                     picker = info.locator('skio-plan-picker')
                     if await picker.count():
-                        try: await picker.get_by_text(re.compile('One-time'), exact=False).first.click(timeout=4000); await page.wait_for_timeout(1500)
+                        try: await picker.get_by_text(re.compile('One-time', re.I), exact=False).first.click(timeout=4000); await page.wait_for_timeout(1500)
                         except Exception: pass
                     st = await page.evaluate(STATE)
                     diff = round((st['was'] or st['now']) - st['now'], 2)
@@ -57,8 +58,8 @@ async def main():
                             await picker.get_by_text(re.compile('Subscribe'), exact=False).first.click(timeout=4000); await page.wait_for_timeout(1800)
                             sp = await page.evaluate(STATE); sub = next((r for r in (sp['rows'] or []) if r['selected']), None)
                             plan = {'now': sp['now'], 'was': sp['was'], 'oneTime': sp['oneTime'], 'row': [sub['struck'], sub['price']] if sub else None}
-                            if sp['now'] and sp['oneTime'] and sp['now'] < sp['oneTime'] - 0.001: good = good and sp['was'] == sp['oneTime'] and bool(sub) and sub['struck'] == sp['oneTime'] and sub['price'] == sp['now']
-                            await picker.get_by_text(re.compile('One-time'), exact=False).first.click(timeout=4000); await page.wait_for_timeout(1500)
+                            if sp['now'] and sp['oneTime'] and sp['now'] < sp['oneTime'] - 0.001: strike = st['was'] or sp['oneTime']; good = good and sp['was'] == strike and bool(sub) and sub['struck'] == strike and sub['price'] == sp['now']
+                            await picker.get_by_text(re.compile('One-time', re.I), exact=False).first.click(timeout=4000); await page.wait_for_timeout(1500)
                             back = await page.evaluate(STATE); good = good and back['was'] == st['was'] and back['now'] == st['now']
                         except Exception as e: plan = {'note': 'no plan option: ' + str(e)[:50]}
                     ok = ok and bool(good)

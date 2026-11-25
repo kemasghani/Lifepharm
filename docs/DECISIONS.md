@@ -89,3 +89,4 @@ Standing rules that follow from these decisions live in [CLAUDE.md](../CLAUDE.md
 - **D-061** · 2026-11-16 · One Microsoft Clarity project per store, all linked to GA4. · developer · Same URL paths across stores; per-store consent.
 - **D-062** · 2026-11-18 · Klaviyo routing by store, not language: US store to Klaviyo US; UK and EU stores to Klaviyo Europe. · developer
 - **D-063** · 2026-11-20 · WhatsApp moves to Klaviyo; HubSpot V5 workflows are only the reference spec (not running). · Letisha
+- **D-088** · 2026-11-25 · Referral credit after Teqnavi's connector fix: the past stays as it is and it is corrected going forward. Orders already placed by customers who sat under a default account are not re-credited to the referring IBO. · Letisha · Her answer to the question of past orders. Still open: whether the 65 past customers on Teqnavi's list are moved now or only when they next order through a referral link (the fix moves them then).

@@ -24,12 +24,21 @@ IGNORED_CHECKS = {"MatchingTranslations"}
 
 
 def current() -> Counter:
-    out = subprocess.run(
+    # the checker reads every JSON file under the theme, git-ignored reports included, and needs the larger heap
+    env = {**os.environ, "NODE_OPTIONS": (os.environ.get("NODE_OPTIONS", "") + " --max-old-space-size=8192").strip()}
+    run = subprocess.run(
         ["shopify", "theme", "check", "--output", "json", "--path", ROOT],
-        capture_output=True, text=True,
-    ).stdout
-    start = out.find("[")
-    data = json.loads(out[start:]) if start >= 0 else []
+        capture_output=True, text=True, env=env,
+    )
+    start = run.stdout.find("[")
+    if start < 0:
+        # exit 0 with no output means no offences; a crash must not read as "0 errors" (L-081)
+        if run.returncode != 0:
+            print(f"  FAIL  theme check did not run (exit {run.returncode}): {run.stderr.strip()[-160:]}")
+            sys.exit(1)
+        data = []
+    else:
+        data = json.loads(run.stdout[start:])
     counts: Counter = Counter()
     for f in data:
         rel = os.path.relpath(f["path"], ROOT) if os.path.isabs(f["path"]) else f["path"]

@@ -47,3 +47,9 @@ Business rules and system boundaries verified on the stores. Access details (hos
 - **GA4:** one property for US, UK, EU and News via the Google & YouTube app (D-060). Split stores with the Hostname dimension. Never add gtag/GTM to the theme. Compare GA4 purchases only with `web` orders. Plan and open items: [../exec-plans/active/workflow_ga4_multistore.md](../exec-plans/active/workflow_ga4_multistore.md).
 - **Clarity:** one project per store, all linked to GA4, installed through the Clarity Shopify app (D-061). The app sends Shopify Customer Privacy consent.
 - Search Console domain property verified; sitemaps for all four storefronts submitted.
+
+### Who is an IBO (checked 2026-11-26, counts only)
+
+- Customer metafield `Exigo.CustomerTypeId`, written by the Exigo connector: 3 is an IBO. Of the IBOs (type 3) with orders that were checked, it appears about 12 seconds after the first order for most (US 8 of 11, Europe 7 of 10); a few had it before the order.
+- Customer tag `IBO`: on the US it matches type 3 (17 of 17 recent type 3 customers have it). On Europe and the UK it also sits on many type 2 customers. Shopify does not record who adds a customer tag, and no event shows it, so its source is not known.
+- The theme uses the type (D-097), not the tag.

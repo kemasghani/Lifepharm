@@ -27,8 +27,9 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 ## 2026-11-26 · qa-letisha · Pre-launch list, UK products, Modern Web Guidance
 - Done: D-091 (subscription strikes the reference price, quick add without buttons), D-092 (Letisha's list), D-093 (UK products), D-094 (modern web audit).
 - Evidence: `pdp_price_consistency_check.py` PASS on US (LAMIDERM APEX, LAMININE) and UK (LAMIDERM APEX, Diffuser) drafts at 1440 and 390; quick add drawer checked on US and UK drafts at both widths; staging checked at both widths (home counts 980 everywhere, no negative counter, zero-price and packs out of listings, policies 200, unpublished pages 404, contact links clean, no JS errors, no sideways scroll); UK live Shop All lists 14 products; `./init.sh --full` 0 fail, theme check 13 = baseline; live themes unchanged (18 and 19 Nov).
-- Not checked: Europe draft (429) for price and for quick add at 1440; Safari fallback for light dismiss (no WebKit here).
+- Not checked: Europe draft quick add at 1440 (429); Safari fallback for light dismiss (no WebKit here).
 - Added the same day: D-095, checked as a guest on staging and the US draft at 1440 and 390 (five packs not found; LAMININE, starter kit and the two enrolment pages fine). A signed-in IBO was not tested (needs a real IBO login).
+- Added the same day: D-096 (apps as on live; every app host seen on live home, LAMININE and cart pages is seen on the draft: US 16, Europe 14, UK 8; no JS errors, no sideways scroll at 1440 and 390), D-097, filter button script error fixed, Europe price check PASS, Europe quick add checked at 390 only (429 at 1440).
 - Next: owner's yes for TD-043; Letisha on IBO packs, Gut Defense UK price and SKU, TD-042.
 
 ## 2026-11-25 · perf-001 · Widgets after the first view; the late paint is not ours alone

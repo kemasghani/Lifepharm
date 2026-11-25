@@ -71,6 +71,8 @@ Add new lessons at the end of their section with the next free number.
 - **L-082** · 2026-11-26 · Homepage counters showed "-2,635 days": the count-up used performance.now() as its start while requestAnimationFrame passes the frame's own time, which can be older when a tab was held back, so the elapsed time was negative → take the start from the first frame and clamp at 0. · `assets/lp-premium.js`
 - **L-083** · 2026-11-26 · Removing the last buttons of a drawer also removed its only visible way out: the theme hides the header, and the close button with it, when the header slot is empty → after taking controls out of a drawer, check the close button and the focus. Check: `tools/qa/quick_add_drawer_check.py`. · this file
 - **L-084** · 2026-11-26 · Stamped matches a badge by product id, so staging (new ids) shows lower counts than the real stores for some products; compare stores on their own badges, never staging against live. · this file
+- **L-085** · 2026-11-26 · The US and Europe drafts ran without Klaviyo, Clarity, NoFraud, Selleasy, UpPromote and others, with the UK's Stamped account and consent rules, and US product pages without the IBO price → branches were built from the UK theme and only the Teqnavi embeds were restored (L-008 again) → run `tools/store-audit/app_parity.py` after every branch port. Check: that script (exit 1 on a gap).
+- **L-086** · 2026-11-26 · "IBO" was taken from a storefront script that treats types 2 and 3 alike for referral links; counting real customers showed type 2 is not IBO on the US → check a business rule against the data before it gates anything. · this file
 
 ## E. Data, integrations and tooling
 

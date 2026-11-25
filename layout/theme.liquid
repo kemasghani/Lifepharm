@@ -7,6 +7,18 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
 ------------------------------------------------------------------------------------------------------------------------
 {%- endcomment -%}
 
+{%- comment -%}LP: an IBO pack's own address shows "Product Not Found" to anyone who is not signed in as an IBO (D-095). The theme editor still shows it. The enrolment pages sell the packs from their own sections and are not affected.{%- endcomment -%}
+{%- liquid
+  assign lp_locked = false
+  if request.page_type == 'product' and request.design_mode == false and product.type == 'Packs'
+    capture lp_hidden
+      render 'lp-search-hidden', product: product
+    endcapture
+    if lp_hidden != blank
+      assign lp_locked = true
+    endif
+  endif
+-%}
 <!doctype html>
 
 <html lang="{{ request.locale.iso_code }}" dir="{% render 'direction' %}">
@@ -15,7 +27,7 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height">
     {%- comment -%}A section whose image is the largest thing in the first view leaves its preload links between two markers (see sections/lp-home-hero.liquid). They are printed here, before the app snippets, so the browser starts that download first. The layout cannot read a section's settings, which is why the section hands them over this way.{%- endcomment -%}
-    {%- if content_for_layout contains '<!--lp-head ' -%}
+    {%- if lp_locked == false and content_for_layout contains '<!--lp-head ' -%}
       {{ content_for_layout | split: '<!--lp-head ' | last | split: ' lp-head-->' | first }}
     {%- endif %}
     {% render 'skio-head' %}
@@ -61,6 +73,9 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
       if request.page_type == 'page' and template.suffix == 'our-studies'
         assign lp_seo_alias = shop.url | append: routes.root_url | append: 'pages/science' | replace: '//pages', '/pages'
       endif
+      if lp_locked
+        assign lp_seo_title = 'lp.locked.title' | t | append: ' | LifePharm'
+      endif
     -%}
     <title>{% if lp_seo_title != blank %}{{ lp_seo_title }}{% elsif page_title == blank %}{{ shop.name }}{% else %}{{ page_title }}{% if current_page != 1 %} &ndash; {{ 'general.page' | t: page: current_page }}{% endif %}{% if page_title.size < 52 %}{% unless page_title contains 'LifePharm' %} | LifePharm{% if request.page_type == 'collection' and page_title.size < 30 %} Official Store{% endif %}{% endunless %}{% endif %}{% endif %}</title>
 
@@ -80,13 +95,13 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
       endif
       assign lp_meta_description = lp_meta_description | strip_html | strip_newlines | strip | truncatewords: 26
     -%}
-    {%- if lp_meta_description != blank -%}
+    {%- if lp_meta_description != blank and lp_locked == false -%}
       {%- comment -%}escape_once: a written description comes out of the t filter with its apostrophe already encoded; escape would encode it a second time.{%- endcomment -%}
       <meta name="description" content="{{ lp_meta_description | escape_once }}">
     {%- endif -%}
 
     <link rel="canonical" href="{{ lp_seo_alias | default: canonical_url }}">
-    {%- if request.page_type == 'product' and product.price_max == 0 -%}<meta name="robots" content="noindex">{%- endif -%}
+    {%- if lp_locked or request.page_type == 'product' and product.price_max == 0 -%}<meta name="robots" content="noindex">{%- endif -%}
 
     {%- if settings.favicon -%}
       <link rel="shortcut icon" href="{{ settings.favicon | image_url: width: 96 }}">
@@ -101,8 +116,10 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
 
     {%- comment -%}The fonts chosen in the theme settings are not preloaded: every text uses the self-hosted Playfair Display and Metropolis below, so preloading the settings fonts only took bandwidth from the first image.{%- endcomment -%}
 
-    {%- render 'social-meta-tags' -%}
-    {%- render 'microdata-schema' -%}
+    {%- unless lp_locked -%}
+      {%- render 'social-meta-tags' -%}
+      {%- render 'microdata-schema' -%}
+    {%- endunless -%}
     {%- render 'css-variables' -%}
     {%- render 'js-variables' -%}
 
@@ -314,7 +331,19 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
     {%- endif -%}
 
     <main role="main" id="main" class="anchor">
-      {{ content_for_layout }}
+      {%- if lp_locked -%}
+        <div class="shopify-section shopify-section--404">
+          <div class="not-found">
+            <div class="prose text-center">
+              <h1 class="h4">{{ 'lp.locked.title' | t }}</h1>
+              {%- capture lp_locked_button -%}{{ '404.general.continue_shopping' | t }}{%- endcapture -%}
+              {%- render 'button', content: lp_locked_button, href: routes.all_products_collection_url, size: 'xl' -%}
+            </div>
+          </div>
+        </div>
+      {%- else -%}
+        {{ content_for_layout }}
+      {%- endif -%}
 
       {%- comment -%}
       IMPLEMENTATION NOTE: due to the very complex logic of margin/padding collapsing in Impact, the footer group is

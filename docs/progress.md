@@ -30,7 +30,8 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 - Not checked: Europe draft quick add at 1440 (429); Safari fallback for light dismiss (no WebKit here).
 - Added the same day: D-095, checked as a guest on staging and the US draft at 1440 and 390 (five packs not found; LAMININE, starter kit and the two enrolment pages fine). A signed-in IBO was not tested (needs a real IBO login).
 - Added the same day: D-096 (apps as on live; every app host seen on live home, LAMININE and cart pages is seen on the draft: US 16, Europe 14, UK 8; no JS errors, no sideways scroll at 1440 and 390), D-097, filter button script error fixed, Europe price check PASS, Europe quick add checked at 390 only (429 at 1440).
-- Next: owner's yes for TD-043; Letisha on IBO packs, Gut Defense UK price and SKU, TD-042.
+- Added the same day: D-098, live data clean-up, checked on the three storefronts (zero-price products and 18 or so pages 404, Join Us 200, enrol page 200, Contact and FAQs 200).
+- Next: TD-043 leftovers; Letisha on IBO packs, Gut Defense UK price and SKU, TD-042.
 
 ## 2026-11-25 · perf-001 · Widgets after the first view; the late paint is not ours alone
 - Done: D-090; TD-039 controls (Horizon 16 of 16, app embeds off 6 of 21, settings restored and compared equal); four experiment files deleted from the staging theme after the developer's yes.

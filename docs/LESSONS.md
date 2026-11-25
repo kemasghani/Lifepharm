@@ -73,6 +73,7 @@ Add new lessons at the end of their section with the next free number.
 - **L-084** · 2026-11-26 · Stamped matches a badge by product id, so staging (new ids) shows lower counts than the real stores for some products; compare stores on their own badges, never staging against live. · this file
 - **L-085** · 2026-11-26 · The US and Europe drafts ran without Klaviyo, Clarity, NoFraud, Selleasy, UpPromote and others, with the UK's Stamped account and consent rules, and US product pages without the IBO price → branches were built from the UK theme and only the Teqnavi embeds were restored (L-008 again) → run `tools/store-audit/app_parity.py` after every branch port. Check: that script (exit 1 on a gap).
 - **L-086** · 2026-11-26 · "IBO" was taken from a storefront script that treats types 2 and 3 alike for referral links; counting real customers showed type 2 is not IBO on the US → check a business rule against the data before it gates anything. · this file
+- **L-087** · 2026-11-26 · The US Earn page lost its text: the live theme's section had an extra setting the redesign's section lacks, and Shopify silently drops values for settings a schema does not declare; also, GitHub sync only re-reads files that changed, so fixing the schema alone did not bring the values back → when a section's schema changes, check `lost_settings.py` and touch the templates that hold the values. Check: `tools/store-audit/lost_settings.py`. · this file
 
 ## E. Data, integrations and tooling
 

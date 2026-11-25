@@ -15,7 +15,8 @@
   assign handles = product.collections | map: 'handle' | join: ' '
   assign summary = product.metafields.custom.product_short_summary.value | default: product.description | strip_html | truncatewords: 16
 -%}
-{%- if product.price_max > 0 -%}
+{%- capture lp_hidden -%}{%- render 'lp-search-hidden', product: product -%}{%- endcapture -%}
+{%- if lp_hidden == blank -%}
 <li class="lp-pt__card" data-collections="{{ handles }}"{% if extra %} data-lp-extra hidden{% endif %}>
   <a class="lp-pt__media" href="{{ product.url }}" tabindex="-1" aria-hidden="true">
     {%- if product.featured_media -%}

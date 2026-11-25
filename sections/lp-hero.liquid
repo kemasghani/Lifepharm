@@ -33,7 +33,7 @@
 
       {%- liquid
         capture lp_reviews
-          render 'lp-review-count'
+          render 'lp-review-count', live: true
         endcapture
         assign rating_text = section.settings.rating_text | replace: '[reviews]', lp_reviews
         if section.settings.rating_text contains '[reviews]' and lp_reviews == blank

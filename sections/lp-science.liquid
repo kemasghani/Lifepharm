@@ -20,7 +20,9 @@
         <dl class="lp-science__stats">
           {%- for block in section.blocks -%}
             {%- assign value = block.settings.value | strip -%}
+            {%- assign is_reviews = false -%}
             {%- if value == '[reviews]' -%}
+              {%- assign is_reviews = true -%}
               {%- capture value -%}{%- render 'lp-review-count' -%}{%- endcapture -%}
               {%- if value == blank -%}{%- continue -%}{%- endif -%}
             {%- endif -%}
@@ -29,7 +31,7 @@
             <div class="lp-stat" {{ block.shopify_attributes }}>
               <dt class="lp-stat__value">
                 {%- if numeric_check == numeric and numeric != '' -%}
-                  <span data-lp-count="{{ value | remove: ',' }}">{{ value }}</span>
+                  <span data-lp-count="{{ value | remove: ',' }}"{% if is_reviews %} data-lp-reviews{% endif %}>{{ value }}</span>
                 {%- else -%}
                   <span>{{ value | escape }}</span>
                 {%- endif -%}

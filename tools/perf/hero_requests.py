@@ -4,11 +4,16 @@ from the picture's fetches a second file without anything looking broken (L-077)
 
 PASS for a set-up means: one hero file and at least 1.9x the slot on a phone.
 
-Usage: uv run --no-project --with playwright python tools/perf/hero_requests.py URL
+Usage: uv run --no-project --with playwright python tools/perf/hero_requests.py URL [CSS selector of the image] [drawn share]
+       The selector defaults to the homepage hero (.lp-hh__img); for a product page use
+       '.product-gallery__media img[fetchpriority="high"]' and 0.76 as the drawn share when the first image is a packshot
+       (it is drawn at 76% of its frame). The same file at well under the chosen width (thumbnails) is not counted.
        A draft is checked with URL?preview_theme_id=<id>. Set LP_CHROME if system Chrome is not installed."""
 import asyncio, json, os, sys
 from playwright.async_api import async_playwright
 URL = sys.argv[1] if len(sys.argv) > 1 else sys.exit(__doc__)
+SEL = sys.argv[2] if len(sys.argv) > 2 else '.lp-hh__img'
+SHARE = float(sys.argv[3]) if len(sys.argv) > 3 else 1.0
 LAUNCH = {'executable_path': os.environ['LP_CHROME']} if os.environ.get('LP_CHROME') else {'channel': 'chrome'}
 FAILED = []
 AND = 'Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36'
@@ -34,18 +39,20 @@ async def main():
             cdp.on('Network.responseReceivedEarlyHints', lambda e: hints.append(len(json.dumps(e.get('headers', {})))))
             await page.goto(URL, wait_until='load', timeout=90000); await page.wait_for_timeout(2500)
             t0 = min(r['start'] for r in seen.values())
-            info = await page.evaluate("""() => { const i = document.querySelector('.lp-hh__img'); const e = performance.getEntriesByType('resource').filter(r => /lp-home-hero/.test(r.name)).map(r => [r.name.split('/').pop().replace(/\\?v=\\d+/, ''), Math.round(r.startTime), Math.round(r.responseEnd), r.transferSize, r.initiatorType]);
+            info = await page.evaluate("""(sel) => { const i = document.querySelector(sel); const e = performance.getEntriesByType('resource').filter(r => /lp-home-hero/.test(r.name)).map(r => [r.name.split('/').pop().replace(/\\?v=\\d+/, ''), Math.round(r.startTime), Math.round(r.responseEnd), r.transferSize, r.initiatorType]);
               const lcp = performance.getEntriesByType('largest-contentful-paint').pop(); const nav = performance.getEntriesByType('navigation')[0];
-              return { current: i.currentSrc.split('/').pop().replace(/\\?v=\\d+/, ''), natural: i.naturalWidth, shown: Math.round(i.getBoundingClientRect().width), entries: e, ttfb: Math.round(nav.responseStart), fcp: Math.round(performance.getEntriesByName('first-contentful-paint')[0]?.startTime || 0) } }""")
+              return { current: i.currentSrc.split('/').pop().replace(/\\?v=\\d+/, ''), natural: i.naturalWidth, shown: Math.round(i.getBoundingClientRect().width), entries: e, ttfb: Math.round(nav.responseStart), fcp: Math.round(performance.getEntriesByName('first-contentful-paint')[0]?.startTime || 0) } }""", SEL)
             real = int(info['current'].split('width=')[-1]) if 'width=' in info['current'] else 0
             files = [r for r in seen.values() if 'lp-home-hero' in r['url'] or info['current'].split('&')[0] in r['url']]
-            big = [r for r in files if not r['url'].endswith('width=50')]
-            ok = len(big) == 1 and (not mobile or vp['width'] >= 520 or real / max(1, info['shown']) >= 1.9)
+            def width(r):
+                w = r['url'].split('width=')[-1].split('&')[0]; return int(w) if w.isdigit() else 9999
+            big = [r for r in files if width(r) > real * 0.7]
+            ok = len(big) == 1 and (not mobile or vp['width'] >= 520 or real / max(1, info['shown'] * SHARE) >= 1.85)
             if not ok: FAILED.append(name)
-            print(f"{'PASS' if ok else 'FAIL'} {name} | TTFB {info['ttfb']} ms | FCP {info['fcp']} ms | img uses {info['current'].replace('lp-home-hero-', '')} for a {info['shown']}px slot = {round(real / max(1, info['shown']), 2)}x")
+            print(f"{'PASS' if ok else 'FAIL'} {name} | TTFB {info['ttfb']} ms | FCP {info['fcp']} ms | img uses {info['current'].replace('lp-home-hero-', '')[-48:]} for a {round(info['shown'] * SHARE)}px picture = {round(real / max(1, info['shown'] * SHARE), 2)}x")
             for r in sorted(files, key=lambda r: r['start']):
                 if True:
-                    print(f"     {round((r['start'] - t0) * 1000):5} -> {round((r.get('end', r['start']) - t0) * 1000):5} ms  {round((r.get('bytes') or 0) / 1024, 1):5} KB  {r.get('prio'):6} {r['url'].split('/')[-1].split('?')[0].replace('lp-home-hero-', '')[:22]} {r['url'].split('width=')[-1]}w")
+                    print(f"     {round((r['start'] - t0) * 1000):5} -> {round((r.get('end', r['start']) - t0) * 1000):5} ms  {round((r.get('bytes') or 0) / 1024, 1):5} KB  {r.get('prio'):6} {r['url'].split('/')[-1].split('?')[0].replace('lp-home-hero-', '')[-48:][:22]} {r['url'].split('width=')[-1]}w")
             
             await b.close()
 asyncio.run(main())

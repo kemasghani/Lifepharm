@@ -24,6 +24,13 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 
 ---
 
+## 2026-11-25 · perf-001 · Product page 60 on PageSpeed mobile: the same lab stall, plus real image fixes
+- Done: read both reports the developer saved (product page 60, homepage 91). The 60 is TD-039 again: first paint 2.12 s after the last render-blocking file, constant to 2 ms across three slow runs, mobile only (desktop 0 of 5). Product page: first gallery image preloaded from `<head>`, packshot and timeline `sizes` corrected (D-089). `hero_requests.py` takes a selector and a drawn share.
+- Evidence: `./init.sh --full` passes; `hero_requests.py` on the staging product page passes on eight set-ups; local Lighthouse mobile on the product page 87 and 89 with a reused profile.
+- Decisions: D-088 (Letisha: past referral orders are not re-credited), D-089. Debt: TD-039 rewritten with the new facts.
+- Next: PageSpeed API key, then compare staging with the live US store and with theme copies (TD-039).
+- Blockers: as before.
+
 ## 2026-11-25 · perf-001 · The developer's third PageSpeed run fell back to 69: same late first paint as the first report
 - Done: read the report (FCP 2.5 s, LCP 6.8 s, TBT 0; observed first paint 2.4 s). It is the pattern of the first report, so not caused by D-085/D-086. Tried to reproduce it on software rendering, a slowed and saturated machine, and a GitHub runner (`.github/workflows/lighthouse-lab.yml`, new): never seen. `psi_run.py --api` added for a PageSpeed API key.
 - Evidence: three PageSpeed reports saved in `tools/perf/reports/`; runner medians on staging: new headless 89.5 (eight runs), old headless shell 80.5 (ten runs). The laptop median of 98 is not what a datacentre machine gives; the honest range for the page as it is now is high 80s to about 90 when the lab paints on time.

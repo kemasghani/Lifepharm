@@ -140,6 +140,8 @@ LIQUID
               </p>
             {%- endif -%}
 
+            {%- comment -%}LP: free HTML some US pages use for their headings (a setting the US live theme added; D-100){%- endcomment -%}
+            {{- block.settings.custom_liquid -}}
             {{- block.settings.content -}}
 
             {%- if block.settings.link_text != blank -%}
@@ -574,6 +576,12 @@ LIQUID
           "id": "title",
           "label": "Heading",
           "default": "Heading"
+        },
+        {
+          "type": "liquid",
+          "id": "custom_liquid",
+          "label": "Custom HTML",
+          "info": "Shown above the content. Leave empty unless the text needs its own markup."
         },
         {
           "type": "richtext",
@@ -1023,6 +1031,12 @@ LIQUID
           "id": "title",
           "label": "Heading",
           "default": "Heading"
+        },
+        {
+          "type": "liquid",
+          "id": "custom_liquid",
+          "label": "Custom HTML",
+          "info": "Shown above the content. Leave empty unless the text needs its own markup."
         },
         {
           "type": "richtext",

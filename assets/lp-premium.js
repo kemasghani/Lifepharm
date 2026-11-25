@@ -1066,7 +1066,7 @@
     if (!dialog) return;
     const nav = event.target.closest('[data-lp-box-nav]');
     if (nav) return show(dialog.closest('[data-lp-box]'), Number(dialog.dataset.index) + Number(nav.dataset.lpBoxNav));
-    if (event.target === dialog || event.target.closest('[data-lp-box-close]')) dialog.close();
+    if (event.target.closest('[data-lp-box-close]')) dialog.close();
   });
   document.addEventListener('keydown', (event) => {
     if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
@@ -1116,4 +1116,41 @@
     clean(link);
     observer.observe(link, { attributes: true, attributeFilter: ['href'] });
   });
+})();
+
+/* Quick add: the confirmation replaces the form that held the focus, so the focus moves to the drawer's close button. */
+document.addEventListener('variant:add', (event) => {
+  const drawer = event.target.closest?.('quick-buy-drawer');
+  if (!drawer) return;
+  setTimeout(() => [...drawer.shadowRoot.querySelectorAll('[part~="close-button"], [part~="outside-close-button"]')].find((button) => button.getClientRects().length)?.focus({ preventScroll: true }), 600);
+}, true);
+
+/* Light dismiss for <dialog closedby="any"> where the attribute is not supported (Safari). Press and release must both be
+   outside the box, so selecting text past the edge does not close it. */
+if (!('closedBy' in HTMLDialogElement.prototype)) {
+  const outside = (event, dialog) => {
+    const box = dialog.getBoundingClientRect();
+    return event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom;
+  };
+  let pressed = null;
+  document.addEventListener('pointerdown', (event) => {
+    const dialog = event.target.closest?.('dialog[closedby="any"][open]');
+    pressed = dialog && outside(event, dialog) ? dialog : null;
+  });
+  document.addEventListener('pointerup', (event) => {
+    if (pressed && pressed.open && outside(event, pressed)) pressed.close();
+    pressed = null;
+  });
+}
+
+/* Rows that scroll sideways are reachable by keyboard: a focusable row only while it really overflows and holds nothing focusable. */
+(() => {
+  const rows = [...document.querySelectorAll('.lp-hh__chips, .lp-press__list, .lp-steps__list, .lp-ideal__list, media-carousel')];
+  if (!rows.length || !('ResizeObserver' in window)) return;
+  const observer = new ResizeObserver((entries) => entries.forEach(({ target }) => {
+    const scrolls = target.scrollWidth > target.clientWidth + 1;
+    if (scrolls && !target.querySelector('a[href], button, input, [tabindex="0"]')) { target.tabIndex = 0; target.dataset.lpScrolls = ''; }
+    else if ('lpScrolls' in target.dataset) { target.removeAttribute('tabindex'); delete target.dataset.lpScrolls; }
+  }));
+  rows.forEach((row) => observer.observe(row));
 })();

@@ -162,7 +162,8 @@
                           {%- assign product_results = search.results | where: 'object_type', 'product' -%}
 
                           {%- for item in product_results -%}
-                            {%- if item.object_type == 'product' -%}
+                            {%- capture lp_hidden -%}{%- render 'lp-search-hidden', product: item -%}{%- endcapture -%}
+                            {%- if item.object_type == 'product' and lp_hidden == blank -%}
                               {%- render 'product-card', product: item, stacked: true, position: forloop.index, show_badges: true -%}
                             {%- endif -%}
                           {%- endfor -%}

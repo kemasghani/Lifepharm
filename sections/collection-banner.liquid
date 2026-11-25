@@ -7,7 +7,8 @@
 {%- capture collection_header -%}
   {%- if section.settings.show_collection_title -%}
     <h1 class="{{ section.settings.collection_title_size }}" {% if settings.heading_apparition != 'none' and show_image %}reveal-on-scroll="true"{% endif %}>
-      {%- render 'styled-text', content: collection.title, apparition_effect: true -%}
+      {%- comment -%}LP: no line-split effect here: it repeats the title in a shadow root, which some readers count twice, and headings are not animated.{%- endcomment -%}
+      {%- render 'styled-text', content: collection.title -%}
     </h1>
   {%- endif -%}
 

@@ -492,6 +492,9 @@
     "box": {
       "view": "View photo: {{ item }}"
     },
+    "locked": {
+      "title": "Product Not Found"
+    },
     "proof": {
       "included": "Includes {{ product }} ({{ count }} reviews)",
       "rating": "Rated {{ rating }} out of 5",

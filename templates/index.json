@@ -320,7 +320,7 @@
         "liquid_EEHxxN": {
           "type": "liquid",
           "settings": {
-            "liquid": "{%- assign lp_rv = all_products['laminine'].metafields.stamped.reviews_count.value | default: all_products['laminine'].metafields.stamped.reviews_count | plus: 0 | divided_by: 10 | times: 10 -%}<p class=\"lp-eyebrow\">{% if lp_rv > 0 %}{{ lp_rv }}+ verified LAMININE reviews{% else %}Verified reviews{% endif %}</p><h2>Hear it from <em>our customers</em></h2>"
+            "liquid": "{%- assign lp_rv = all_products['laminine'].metafields.stamped.reviews_count.value | default: all_products['laminine'].metafields.stamped.reviews_count | plus: 0 | divided_by: 10 | times: 10 -%}<p class=\"lp-eyebrow\">{% if lp_rv > 0 %}<span data-lp-reviews>{{ lp_rv }}</span>+ verified LAMININE reviews{% else %}Verified reviews{% endif %}</p><h2>Hear it from <em>our customers</em></h2>"
           }
         }
       },

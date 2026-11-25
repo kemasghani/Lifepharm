@@ -40,7 +40,7 @@
       {%- endfor -%}
     </ul>
   </div>
-  <dialog class="lp-ab-bio" data-lp-bio-dialog aria-labelledby="lp-ab-bio-title-{{ section.id }}">
+  <dialog class="lp-ab-bio" closedby="any" data-lp-bio-dialog aria-labelledby="lp-ab-bio-title-{{ section.id }}">
     <button type="button" class="lp-ab-bio__close" data-lp-bio-close aria-label="{{ 'general.accessibility.close' | t | escape }}"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M1 1l10 10M11 1 1 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
     <div data-lp-bio-body></div>
   </dialog>
@@ -58,7 +58,7 @@
           dialog.showModal();
           return;
         }
-        if (e.target.closest('[data-lp-bio-close]') || e.target === dialog) dialog.close();
+        if (e.target.closest('[data-lp-bio-close]')) dialog.close();
       });
     })();
   </script>

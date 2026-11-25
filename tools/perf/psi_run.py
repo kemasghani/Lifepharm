@@ -7,9 +7,9 @@ something on the page, a late simulated one at weight on the network.
 
 Usage: uv run --no-project --with playwright python tools/perf/psi_run.py URL [URL ...] [--desktop] [--runs N] [--out DIR]
        An existing report can be read with --report https://pagespeed.web.dev/analysis/...
-       With a Google API key (PSI_API_KEY in the environment or in .env; the PageSpeed Insights API is free) add --api:
+       With a Google API key (PSI_API_KEY or GOOGLE_CONSOLE_API, in the environment or in .env; the PageSpeed Insights API is free) add --api:
        it calls the API instead of the page, needs no browser (plain python3) and is not held back by the anonymous quota.
-       --api prints how many runs had a late first paint (TD-039).
+       --api prints how many runs had a late first paint (TD-039); --brief gives one line per run.
        Set LP_CHROME if system Chrome is not installed. The address is sent to Google, so only use public pages.
        When PageSpeed answers "Unable to resolve" for an address that does open, its anonymous quota for this network
        is used up: run it by hand in a browser and read that report with --report, or use lh_run.py."""
@@ -43,30 +43,41 @@ async def read(page, address, wait):
 
 
 def api_key():
-    key = os.environ.get('PSI_API_KEY')
+    names = ('PSI_API_KEY', 'GOOGLE_CONSOLE_API')
+    key = next((os.environ[n] for n in names if os.environ.get(n)), None)
     env = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '.env')
     if not key and os.path.exists(env):
         for line in open(env, encoding='utf-8'):
-            if line.strip().startswith('PSI_API_KEY='): key = line.split('=', 1)[1].strip().strip('"\'')
+            name, _, value = line.strip().partition('=')
+            if name in names and value.strip(): key = value.strip().strip('"\'')
     return key
 
 
 def run_api():
     import urllib.request
     key = api_key()
-    if not key: sys.exit('PSI_API_KEY is not set (environment or .env)')
+    if not key: sys.exit('PSI_API_KEY / GOOGLE_CONSOLE_API is not set (environment or .env)')
     os.makedirs(OUT, exist_ok=True); late = total = 0
     for target in URLS:
         for i in range(RUNS):
-            q = urllib.parse.urlencode([('url', target), ('strategy', FORM), ('category', 'performance'), ('key', key)])
+            # the API hands back a cached result for about half a minute: a throwaway query parameter makes every run a new one
+            fresh = target + ('&' if '?' in target else '?') + f'psi={int(time.time() * 1000)}{os.getpid() % 1000}{i}'
+            q = urllib.parse.urlencode([('url', fresh), ('strategy', FORM), ('category', 'performance'), ('key', key)])
             try:
                 lh = json.load(urllib.request.urlopen('https://www.googleapis.com/pagespeedonline/v5/runPagespeed?' + q, timeout=180))
             except Exception as error:
-                print(f"== {target}\n   FAILED    {str(error)[:200]}"); continue
+                detail = ''
+                try: detail = json.loads(error.read()).get('error', {}).get('message', '')[:220]
+                except Exception: pass
+                print(f"== {target}\n   FAILED    {str(error)[:80]} {detail}".replace(key, '<key>')); continue
             m = lh['lighthouseResult']['audits']['metrics']['details']['items'][0]; total += 1; late += m.get('observedFirstPaint', 0) > 1500
             name = re.sub(r'[^a-z0-9]+', '-', target.lower()).strip('-')[-70:]
             path = os.path.join(OUT, f"psi-{name}-{FORM}-{time.strftime('%Y%m%d-%H%M%S')}.json"); json.dump(lh, open(path, 'w'))
-            print(f"== {target} (run {i + 1})\n{summary(lh)}\n   saved     {path}"); time.sleep(3)
+            if '--brief' in ARGS:
+                a = lh['lighthouseResult']['audits']; print(f"   {target[:60]:60} score {round(lh['lighthouseResult']['categories']['performance']['score'] * 100):3} · FCP {a['first-contentful-paint']['displayValue']} · LCP {a['largest-contentful-paint']['displayValue']} · TBT {a['total-blocking-time']['displayValue']} · first paint seen at {round(m.get('observedFirstPaint', 0)):5} ms{'  <-- LATE' if m.get('observedFirstPaint', 0) > 1500 else ''}", flush=True)
+            else:
+                print(f"== {target} (run {i + 1})\n{summary(lh)}\n   saved     {path}")
+            time.sleep(2)
     print(f'LATE FIRST PAINT (observed after 1.5 s): {late} of {total} runs')
 
 

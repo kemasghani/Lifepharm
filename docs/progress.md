@@ -24,6 +24,12 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 
 ---
 
+## 2026-11-25 · perf-001 · PageSpeed API key: how often the late first paint happens, and where
+- Done: `psi_run.py --api --brief` (reads `GOOGLE_CONSOLE_API` or `PSI_API_KEY` from `.env`; unique address per run, because the API returns cached results). Controls and four elimination tests on staging: results in TD-039.
+- Correction: the product page is also slow without the stall. Its four prompt API runs scored 76 to 86 (median 83.5, LCP 4.1 to 4.8 s); the earlier note that the 60 was only the stall, and the local 87 and 89, were too kind. "Mobile only" rests on five desktop runs.
+- Note: the `content-visibility` experiment was briefly in the published staging stylesheet; it was taken out and read back identical to master.
+- Next: product page weight; app embeds and a stock Impact copy as the next TD-039 tests; delete the experiment files on staging after a yes.
+
 ## 2026-11-25 · perf-001 · Product page 60 on PageSpeed mobile: the same lab stall, plus real image fixes
 - Done: read both reports the developer saved (product page 60, homepage 91). The 60 is TD-039 again: first paint 2.12 s after the last render-blocking file, constant to 2 ms across three slow runs, mobile only (desktop 0 of 5). Product page: first gallery image preloaded from `<head>`, packshot and timeline `sizes` corrected (D-089). `hero_requests.py` takes a selector and a drawn share.
 - Evidence: `./init.sh --full` passes; `hero_requests.py` on the staging product page passes on eight set-ups; local Lighthouse mobile on the product page 87 and 89 with a reused profile.

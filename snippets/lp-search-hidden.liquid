@@ -1,11 +1,11 @@
 {% doc %}
-  Outputs "hidden" when a product must not be listed in search, and nothing otherwise (D-092):
+  Outputs "hidden" when a product must not be listed (search, collections, home cards) and nothing otherwise (D-092, D-095):
   1. a product priced at zero, which is not sold on its own (D-070);
   2. an IBO pack (product type Packs), unless the shopper is signed in as an IBO. Exigo customer types 2 and 3 are IBOs,
      the same test the Exigo storefront script uses; type 1 is a retail customer.
-  The product's own address keeps working: the IBO collection and the enrolment links use it.
+  layout/theme.liquid uses rule 2 to show "Product Not Found" on a pack's own address. The enrolment pages are not affected.
 
-  @param {product} product - The product in the search results
+  @param {product} product - The product to check
 
   @example
   {% capture lp_hidden %}{% render 'lp-search-hidden', product: item %}{% endcapture %}

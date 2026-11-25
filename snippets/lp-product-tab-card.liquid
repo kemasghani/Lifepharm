@@ -1,5 +1,7 @@
 {% doc %}
-  Product card for the home page product tabs.
+  Product card for the home page product tabs. A product priced at zero is not sold on its own and gets no card (D-070).
+  The rating is rendered from the Stamped metafields, then lp-premium.js replaces it with the count of the hidden live
+  badge, the one Shop All and the product page show, so the three always agree (D-092).
 
   @param {product} product - The product to show
   @param {string} add_label - Label of the add to cart button
@@ -13,6 +15,7 @@
   assign handles = product.collections | map: 'handle' | join: ' '
   assign summary = product.metafields.custom.product_short_summary.value | default: product.description | strip_html | truncatewords: 16
 -%}
+{%- if product.price_max > 0 -%}
 <li class="lp-pt__card" data-collections="{{ handles }}"{% if extra %} data-lp-extra hidden{% endif %}>
   <a class="lp-pt__media" href="{{ product.url }}" tabindex="-1" aria-hidden="true">
     {%- if product.featured_media -%}
@@ -20,14 +23,14 @@
     {%- endif -%}
   </a>
   <div class="lp-pt__body">
-    {%- if product.metafields.reviews.rating.value != blank -%}
-      {%- assign r_value = product.metafields.reviews.rating.value.rating | round: 1 -%}
-      <p class="lp-pt__rating">
-        <span class="lp-pt__star" aria-hidden="true">★</span>
-        <span>{{ r_value }} / {{ product.metafields.reviews.rating.value.scale_max | round: 1 }}</span>
-        {%- if product.metafields.reviews.rating_count.value > 0 -%}<span class="lp-pt__count">· {{ 'product.rating_count' | t: count: product.metafields.reviews.rating_count.value }}</span>{%- endif -%}
-      </p>
-    {%- endif -%}
+    {%- assign r_count = product.metafields.reviews.rating_count.value | plus: 0 -%}
+    {%- assign r_value = product.metafields.reviews.rating.value.rating | round: 1 -%}
+    <p class="lp-pt__rating" data-lp-rating data-one="{{ 'product.rating_count' | t: count: 1 | escape }}" data-many="{{ 'product.rating_count' | t: count: 999 | replace: '999', '[n]' | escape }}"{% if r_count == 0 %} hidden{% endif %}>
+      <span class="lp-pt__star" aria-hidden="true">★</span>
+      <span><span data-lp-rating-value>{{ r_value }}</span> / 5.0</span>
+      <span class="lp-pt__count">· <span data-lp-rating-count>{{ 'product.rating_count' | t: count: r_count }}</span></span>
+    </p>
+    <span class="stamped-product-reviews-badge" data-id="{{ product.id }}" data-product-sku="{{ product.handle }}" data-product-title="{{ product.title | escape }}" data-product-type="{{ product.type | escape }}" hidden></span>
     <h3 class="lp-pt__name"><a href="{{ product.url }}">{{ product.title | escape }}</a></h3>
     {%- if summary != blank -%}<p class="lp-pt__text">{{ summary }}</p>{%- endif -%}
     <p class="lp-pt__price">
@@ -44,3 +47,4 @@
     {%- endif -%}
   </div>
 </li>
+{%- endif -%}

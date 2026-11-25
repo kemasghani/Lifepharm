@@ -5,6 +5,7 @@
   store shows the same one.
 
   @param {string} [handle] - Handle of the product to count, "laminine" when left out
+  @param {boolean} [live] - Wrap the number so lp-premium.js can bring it level with the live badge (D-092)
 
   @example
   {% capture lp_reviews %}{% render 'lp-review-count' %}{% endcapture %}
@@ -15,7 +16,9 @@
   assign source = all_products[source_handle]
   assign total = source.metafields.stamped.reviews_count.value | default: source.metafields.stamped.reviews_count | plus: 0
   assign shown = total | divided_by: 10 | times: 10
-  if shown > 0
+  if shown > 0 and live
+    echo '<span data-lp-reviews>' | append: shown | append: '</span>'
+  elsif shown > 0
     echo shown
   endif
 -%}

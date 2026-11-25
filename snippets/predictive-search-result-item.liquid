@@ -17,6 +17,8 @@ Supported variables
 {%- case type -%}
   {%- when 'product' -%}
     {%- assign product = item -%}
+    {%- capture lp_hidden -%}{%- render 'lp-search-hidden', product: product -%}{%- endcapture -%}
+    {%- if lp_hidden == blank -%}
 
     <a href="{{ product.url }}" data-instant class="predictive-search-result group">
       {%- if product.featured_media -%}
@@ -37,6 +39,7 @@ Supported variables
         </div>
       </div>
     </a>
+    {%- endif -%}
 
   {%- when 'query' -%}
     {%- assign query = item -%}

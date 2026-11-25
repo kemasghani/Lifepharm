@@ -98,6 +98,23 @@ only way to do it on Shopify right now.
               {%- capture sizes -%}(max-width: 740px) calc(100vw - 40px), (max-width: 999px) calc(100vw - 64px), {% if forloop.first or media_attached_to_variant contains media.src %}min(1200px, 60vw){% else %}min(580px, 30vw){% endif %}{%- endcapture -%}
           {%- endcase -%}
 
+          {%- comment -%}LP: a packshot (PNG) is drawn smaller than its frame (12% padding on phones, lp-premium.css), so it asks for fewer pixels; a 3x phone asks for 2x of them (D-081).{%- endcomment -%}
+          {%- if media.media_type == 'image' and media.preview_image.src contains '.png' -%}
+            {%- assign sizes = sizes | replace: '(max-width: 740px) calc(100vw - 40px)', '(max-width: 740px) and (min-resolution: 3dppx) calc((100vw - 40px) * 0.51), (max-width: 740px) calc((100vw - 40px) * 0.76)' | replace: '(max-width: 999px) calc(100vw - 64px)', '(max-width: 999px) calc((100vw - 64px) * 0.76)' -%}
+          {%- endif -%}
+
+          {%- comment -%}LP: the first image is the largest thing in the first view. Its preload link is left between the lp-head markers and layout/theme.liquid prints it at the top of <head> (D-085). The srcset is taken from the same image_tag call snippets/media.liquid makes (same widths list), so the preloaded file is the file the gallery shows.{%- endcomment -%}
+          {%- if default_media == media and media.media_type == 'image' -%}
+            {%- capture lp_gallery_tag -%}{{ media | image_url: width: media.preview_image.width | image_tag: sizes: sizes, widths: '200,300,400,500,600,700,800,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200' }}{%- endcapture -%}
+            {%- assign lp_gallery_srcset = lp_gallery_tag | split: 'srcset="' | last | split: '"' | first -%}
+            {%- if lp_gallery_tag contains 'srcset="' -%}
+              {%- comment -%}image_tag's own preload argument is not used: its Link header cannot carry fetchpriority and is read before a phone's viewport applies (L-077).{%- endcomment -%}
+              {% # theme-check-disable AssetPreload %}
+              {{- '<!--lp-head ' -}}<link rel="preload" as="image" fetchpriority="high" imagesrcset="{{ lp_gallery_srcset }}" imagesizes="{{ sizes }}">{{- ' lp-head-->' -}}
+              {% # theme-check-enable AssetPreload %}
+            {%- endif -%}
+          {%- endif -%}
+
           <div class="product-gallery__media {% if media.alt contains '@expand' %}product-gallery__media--expand{% endif %}{% if media.media_type == 'image' and media.preview_image.src contains '.png' %} lp-gm--pack{% endif %} {% if section.settings.mobile_carousel_control != 'free_scroll' %}snap-center{% endif %}" data-media-type="{{ media.media_type }}" data-media-id="{{ media.id }}" {% if filtered_indexes contains media.position %}hidden{% endif %}>
             {%- if default_media == media -%}
               {%- assign preload = true -%}

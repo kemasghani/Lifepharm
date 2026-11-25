@@ -1009,3 +1009,8 @@ html:has(x-drawer[open], cart-drawer[open], dialog[open]) .product-quick-add:not
 
 /* ---------- Pinch zoom is allowed again (no maximum-scale); 16px form text stops iOS zooming in on focus ---------- */
 @media (hover: none) and (max-width: 999px) { input:not([type="checkbox"]):not([type="radio"]), select, textarea { font-size: max(16px, 1em); } }
+
+/* Dialogs: scrolling inside one, or over its backdrop, does not move the page behind it. The backdrop must be a scroll container for this to apply. */
+dialog:modal { overscroll-behavior: contain; }
+dialog::backdrop { overflow: hidden; overscroll-behavior: contain; }
+[data-lp-scrolls]:focus-visible { outline: 2px solid rgb(var(--lp-amber-deep)); outline-offset: 2px; }

@@ -67,7 +67,7 @@
   <div class="lp-box" data-lp-box>
     <ul class="lp-box__list" role="list">{{ box_rows }}</ul>
     {%- if box_photos > 0 -%}
-      <dialog class="lp-box-dialog" data-lp-box-dialog aria-label="{{ block.settings.title | escape }}">
+      <dialog class="lp-box-dialog" closedby="any" data-lp-box-dialog aria-label="{{ block.settings.title | escape }}">
         <div class="lp-box-dialog__inner">
           <button type="button" class="lp-box-dialog__close" data-lp-box-close aria-label="{{ 'general.accessibility.close' | t | escape }}"></button>
           <figure class="lp-box-dialog__figure">

@@ -589,7 +589,8 @@
         "2026-11-25 staging after D-085/D-086: `hero_requests.py` passes on eight set-ups with one high-priority file each and no decoy; the referral search dialog opens styled and on top at 390 and 1440 with its block in the footer group",
         "2026-11-25 staging homepage after D-085/D-086, Lighthouse 13.6 mobile, five runs: median score 90 to 98 (range 96 to 99), median LCP 3032 ms to 1963 ms, hero painted with the first paint (observed 0.6 s); phone menu referral entry opens the dialog; the UK, US and EU drafts hold the new files and the moved section (read back through the API)",
         "2026-11-25 PageSpeed by the developer: staging product page mobile 60 (observed first paint 2.4 s, TD-039), homepage mobile 91; desktop 96 to 100 in all five reports",
-        "2026-11-25 staging product page after D-089: `hero_requests.py` with the gallery selector passes on eight set-ups (one first image each, 1.9x to 3x of the drawn picture); local Lighthouse mobile on the product page 87 and 89"
+        "2026-11-25 staging product page after D-089: `hero_requests.py` with the gallery selector passes on eight set-ups (one first image each, 1.9x to 3x of the drawn picture); local Lighthouse mobile on the product page 87 and 89",
+        "2026-11-25 D-090 on staging and the UK, US and EU drafts: badge, review count, 11 reviews and embedded badge shown at 390 and 1440 (EU product page at 1440 not seen, 429), no JS errors, no horizontal scroll; variant change keeps both badges. PageSpeed API, final runs: homepage prompt 91 (9 of 13), product page prompt 85 (5 of 12). Live themes last updated 18 and 19 November"
       ],
       "notes": "D-081 to D-089, L-073, L-075, L-077 to L-079. Open: product pages and the three drafts are not re-measured (TD-037); what remains is app weight (TD-036, TD-041); TD-039 did not recur; News is TD-038.",
       "blocker": "None in the theme. A fresh PageSpeed run by the developer, then the app decisions in TD-036."

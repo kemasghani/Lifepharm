@@ -24,6 +24,12 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 
 ---
 
+## 2026-11-25 · perf-001 · Widgets after the first view; the late paint is not ours alone
+- Done: D-090; TD-039 controls (Horizon 16 of 16, app embeds off 6 of 21, settings restored and compared equal); four experiment files deleted from the staging theme after the developer's yes.
+- Evidence: in feature_list perf-001; `./init.sh --full` passes; live UK, US and EU themes unchanged.
+- Decisions: D-090. Lessons: L-080. Debt: TD-039 rewritten.
+- Next: app decisions (TD-036, TD-041) are what is left for the product page score.
+
 ## 2026-11-25 · perf-001 · PageSpeed API key: how often the late first paint happens, and where
 - Done: `psi_run.py --api --brief` (reads `GOOGLE_CONSOLE_API` or `PSI_API_KEY` from `.env`; unique address per run, because the API returns cached results). Controls and four elimination tests on staging: results in TD-039.
 - Correction: the product page is also slow without the stall. Its four prompt API runs scored 76 to 86 (median 83.5, LCP 4.1 to 4.8 s); the earlier note that the 60 was only the stall, and the local 87 and 89, were too kind. "Mobile only" rests on five desktop runs.

@@ -73,6 +73,12 @@
           "settings": {
             "liquid": "{% render 'lp-pdp-summary', product: product %}"
           }
+        },
+        "teqnavi_ibo_price": {
+          "type": "shopify://apps/teqnavi-lifepharm/blocks/ibo-price/019bc71e-c7cd-732d-b07b-3ca8ead35448",
+          "settings": {
+            "label": "Your IBO price"
+          }
         }
       },
       "block_order": [
@@ -80,6 +86,7 @@
         "badges",
         "lp_rating",
         "lp_summary",
+        "teqnavi_ibo_price",
         "variant_picker",
         "price",
         "separator",

@@ -325,6 +325,46 @@
           "settings": {
             "liquid": "{% render 'lp-rating-row', product: product %}"
           }
+        },
+        "teqnavi_ibo_price": {
+          "type": "shopify://apps/teqnavi-lifepharm/blocks/ibo-price/019bc71e-c7cd-732d-b07b-3ca8ead35448",
+          "settings": {
+            "label": "Your IBO price"
+          }
+        },
+        "afterpay_on_site_messaging_payments_messaging_wmQJCC": {
+          "type": "shopify://apps/afterpay-on-site-messaging/blocks/payments-messaging/f45a5524-d177-4475-bf59-281efd2215a8",
+          "settings": {
+            "text_align": "inherit",
+            "margin_top": 16,
+            "margin_bottom": 16,
+            "color": "",
+            "size": "md",
+            "intro_text": "or",
+            "show_interest_free": true,
+            "payment_amount_is_bold": true,
+            "show_with": true,
+            "logo_type": "badge",
+            "logo_theme": "black-on-mint",
+            "modal_link_style": "circled-info-icon",
+            "modal_theme": "mint",
+            "breakpoint": 749,
+            "text_align_mobile": "inherit",
+            "margin_top_mobile": 16,
+            "margin_bottom_mobile": 16,
+            "show_lower_limit": true,
+            "show_upper_limit": true,
+            "show_if_outside_limits": true,
+            "product": "{{product}}"
+          }
+        },
+        "easyflow_app_block_gr8LEC": {
+          "type": "shopify://apps/easyflow/blocks/app-block/83d04f43-e63e-4a8d-82b9-e4f0b41ef22f",
+          "settings": {}
+        },
+        "selleasy_lb_upsell_widget_bac_wjnxim": {
+          "type": "shopify://apps/selleasy/blocks/lb-upsell-widget-bac/790c1a03-a71f-4bc1-9869-00dad526d3c2",
+          "settings": {}
         }
       },
       "block_order": [
@@ -333,6 +373,7 @@
         "badges",
         "lp_rating",
         "lp_summary",
+        "teqnavi_ibo_price",
         "variant_picker",
         "price",
         "separator",
@@ -345,8 +386,10 @@
         "collapsible_text_QcYtDR",
         "collapsible_text_PR3cy8",
         "collapsible_text_kaarby",
+        "easyflow_app_block_gr8LEC",
         "buy_buttons",
         "payment_terms",
+        "afterpay_on_site_messaging_payments_messaging_wmQJCC",
         "liquid_Nwwi64",
         "collapsible_text_DKpjzh",
         "collapsible_text_KbRjKK",
@@ -359,7 +402,8 @@
         "associated_products_mWz6hB",
         "offer_UnQirT",
         "offer_aJbbCW",
-        "offer_DWbnz9"
+        "offer_DWbnz9",
+        "selleasy_lb_upsell_widget_bac_wjnxim"
       ],
       "custom_css": [
         "/2.price-list--lg {font-size: large;}",

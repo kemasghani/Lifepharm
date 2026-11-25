@@ -378,6 +378,42 @@
             "liquid": "{%- assign lp_v = product.selected_or_first_available_variant -%}{%- assign lp_base = lp_v.compare_at_price | default: lp_v.price -%}<div class=\"lp-pdp-price\" aria-live=\"polite\"><span class=\"lp-pdp-price__now price-item--regular\">{{ lp_v.price | money }}</span><s class=\"lp-pdp-price__was\" data-base=\"{{ lp_base | money_without_currency }}\" {% unless lp_v.compare_at_price > lp_v.price %}hidden{% endunless %}>{{ lp_base | money }}</s><span class=\"lp-pdp-price__tag\" hidden></span></div>"
           },
           "disabled": true
+        },
+        "teqnavi_ibo_price": {
+          "type": "shopify://apps/teqnavi-lifepharm/blocks/ibo-price/019bc71e-c7cd-732d-b07b-3ca8ead35448",
+          "settings": {
+            "label": "Your IBO price"
+          }
+        },
+        "afterpay_on_site_messaging_payments_messaging_fUNYJy": {
+          "type": "shopify://apps/afterpay-on-site-messaging/blocks/payments-messaging/f45a5524-d177-4475-bf59-281efd2215a8",
+          "settings": {
+            "text_align": "inherit",
+            "margin_top": 16,
+            "margin_bottom": 16,
+            "color": "",
+            "size": "md",
+            "intro_text": "or",
+            "show_interest_free": true,
+            "payment_amount_is_bold": true,
+            "show_with": true,
+            "logo_type": "badge",
+            "logo_theme": "black-on-mint",
+            "modal_link_style": "circled-info-icon",
+            "modal_theme": "mint",
+            "breakpoint": 749,
+            "text_align_mobile": "inherit",
+            "margin_top_mobile": 16,
+            "margin_bottom_mobile": 16,
+            "show_lower_limit": true,
+            "show_upper_limit": true,
+            "show_if_outside_limits": true,
+            "product": "{{product}}"
+          }
+        },
+        "selleasy_lb_upsell_widget_bl_maGXUd": {
+          "type": "shopify://apps/selleasy/blocks/lb-upsell-widget-bl/790c1a03-a71f-4bc1-9869-00dad526d3c2",
+          "settings": {}
         }
       },
       "block_order": [
@@ -386,6 +422,7 @@
         "badges",
         "lp_rating",
         "lp_summary",
+        "teqnavi_ibo_price",
         "variant_picker",
         "separator",
         "stamped_product_reviews_ugc_star_rating_badge_8VPpGa",
@@ -401,6 +438,7 @@
         "collapsible_text_kaarby",
         "buy_buttons",
         "payment_terms",
+        "afterpay_on_site_messaging_payments_messaging_fUNYJy",
         "liquid_qwAJrd",
         "collapsible_text_DKpjzh",
         "collapsible_text_KbRjKK",
@@ -416,7 +454,8 @@
         "offer_fyPJkC",
         "offer_RKp8dy",
         "offer_nqXekx",
-        "offer_DWbnz9"
+        "offer_DWbnz9",
+        "selleasy_lb_upsell_widget_bl_maGXUd"
       ],
       "custom_css": [
         ":/2.price-list--lg {font-size: large;}",

@@ -2164,11 +2164,14 @@ var FacetApplyButton = class extends HTMLButtonElement {
   constructor() {
     super();
     this.addEventListener("click", this._closeDrawer);
-    this.form.addEventListener("change", this._updateCount.bind(this));
+    this._updateCountListener = this._updateCount.bind(this);
     this.filterCountElement = document.createElement("span");
     this.appendChild(this.filterCountElement);
   }
   connectedCallback() {
+    // LP: a copy made by Weglot (cloneNode) has no form until it is in the page, so the form is read here
+    if (!this.form) return;
+    this.form.addEventListener("change", this._updateCountListener);
     this._updateCount();
   }
   _updateCount() {

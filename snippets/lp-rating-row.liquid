@@ -70,7 +70,7 @@
       assign proof_kind = 'included'
       assign lead_fill = lead_rating | times: 20 | round
       assign lead_shown = lead_rating | round: 2
-    elsif proof_total >= 100
+    elsif proof_total >= 100 and product.price_max > 0
       assign proof_kind = 'brand'
       assign proof_step = 50
       if proof_total >= 1000

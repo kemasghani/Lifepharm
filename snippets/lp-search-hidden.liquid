@@ -1,0 +1,22 @@
+{% doc %}
+  Outputs "hidden" when a product must not be listed in search, and nothing otherwise (D-092):
+  1. a product priced at zero, which is not sold on its own (D-070);
+  2. an IBO pack (product type Packs), unless the shopper is signed in as an IBO. Exigo customer types 2 and 3 are IBOs,
+     the same test the Exigo storefront script uses; type 1 is a retail customer.
+  The product's own address keeps working: the IBO collection and the enrolment links use it.
+
+  @param {product} product - The product in the search results
+
+  @example
+  {% capture lp_hidden %}{% render 'lp-search-hidden', product: item %}{% endcapture %}
+{% enddoc %}
+{%- liquid
+  if product.price_max == 0 and product.gift_card? == false
+    echo 'hidden'
+  elsif product.type == 'Packs'
+    assign exigo_type = customer.metafields.Exigo.CustomerTypeId.value | default: customer.metafields.Exigo.CustomerTypeId | append: '' | strip
+    unless exigo_type == '2' or exigo_type == '3'
+      echo 'hidden'
+    endunless
+  endif
+-%}

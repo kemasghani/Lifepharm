@@ -47,7 +47,7 @@
         <li class="lp-tl__card" {{ block.shopify_attributes }}>
           {%- if lp_img != blank -%}
             <div class="lp-tl__card-media">
-              {{ lp_img | image_url: width: 1000 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 30vw, (min-resolution: 3dppx) 67vw, 100vw', widths: '320,400,480,560,640,720,800,900,1000', alt: block.settings.label }}
+              {{ lp_img | image_url: width: 1000 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 30vw, (min-resolution: 3dppx) calc((100vw - 40px) * 0.67), calc(100vw - 40px)', widths: '320,400,480,560,640,720,800,900,1000', alt: block.settings.label }}
             </div>
           {%- endif -%}
           <div class="lp-tl__card-body">
@@ -89,7 +89,7 @@
         <li class="lp-tl__card">
           {%- if p_image != blank -%}
             <div class="lp-tl__card-media">
-              {{ p_image | image_url: width: 1000 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 30vw, (min-resolution: 3dppx) 67vw, 100vw', widths: '320,400,480,560,640,720,800,900,1000', alt: '' }}
+              {{ p_image | image_url: width: 1000 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 30vw, (min-resolution: 3dppx) calc((100vw - 40px) * 0.67), calc(100vw - 40px)', widths: '320,400,480,560,640,720,800,900,1000', alt: '' }}
             </div>
           {%- endif -%}
           <div class="lp-tl__card-body">

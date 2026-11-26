@@ -37,6 +37,7 @@
     "primary_button_text_color": "#1f1e20",
     "secondary_button_background": "#ff8f00",
     "secondary_button_text_color": "#1f1e20",
+    "product_card_background": "#ffffff",
     "product_card_text_color": "#414042",
     "product_rating_color": "#ff8f00",
     "product_on_sale_accent": "#b4321f",
@@ -52,6 +53,7 @@
     "text_font_letter_spacing": 0,
     "currency_code_enabled": false,
     "zoom_image_on_hover": true,
+    "stagger_products_apparition": true,
     "reduce_drawer_animation": false,
     "heading_apparition": "split_clip",
     "color_swatch_style": "rectangle",
@@ -69,6 +71,20 @@
     "social_facebook": "https://www.facebook.com/LifePharmOfficial",
     "social_instagram": "https://www.instagram.com/lifepharm",
     "social_whatsapp": "https://api.whatsapp.com/send/?phone=905446677907&text&type=phone_number&app_absent=0",
+    "lp_hsa_mode": "only",
+    "lp_hsa_products": [
+      "cellnergy-diffuser-replacement",
+      "cellnergy-hydration-system",
+      "brain-regeneration-pack",
+      "laminine-activation",
+      "powerhouse",
+      "recharge-renew-regenerate",
+      "stamina-power-pack",
+      "immune-120-count",
+      "lamiderm-apex-smart-serum-ibo",
+      "enrollment-kit"
+    ],
+    "lp_hsa_icon": "shopify://shop_images/Truemed-icon.png",
     "favicon": "shopify://shop_images/LifePharm_-_Favicon.png",
     "checkout_accent_color": "#ff8f00",
     "checkout_button_color": "#ff8f00",
@@ -79,11 +95,6 @@
         "disabled": false,
         "settings": {}
       },
-      "1232542678405107163": {
-        "type": "shopify://apps/instafeed/blocks/head-block/c447db20-095d-4a10-9725-b5977662c9d5",
-        "disabled": false,
-        "settings": {}
-      },
       "4705145147225299685": {
         "type": "shopify://apps/tolstoy-shoppable-video-ugc/blocks/widget-block/06fa8282-42ff-403e-b67c-1936776aed11",
         "disabled": false,
@@ -91,11 +102,6 @@
       },
       "10864971697205422121": {
         "type": "shopify://apps/gorgias-live-chat-helpdesk/blocks/gorgias/a66db725-7b96-4e3f-916e-6c8e6f87aaaa",
-        "disabled": false,
-        "settings": {}
-      },
-      "15351435345818755577": {
-        "type": "shopify://apps/pandectes-gdpr-compliance/blocks/banner/58c0baa2-6cc1-480c-9ea6-38d6d559556a",
         "disabled": false,
         "settings": {}
       },
@@ -115,14 +121,85 @@
           "cards_border_color": "rgba(0,0,0,0)"
         }
       },
-      "6770548097779500122": {
-        "type": "shopify://apps/koala-free-gift/blocks/gifts-embed/baf92dc5-8ffa-40c0-967e-57b74cddc9e3",
+      "17790009454750450185": {
+        "type": "shopify://apps/nofraud-fraud-protection/blocks/nf_device/5c2706cf-d458-49c5-a6fa-4fb6b79ce2b4",
         "disabled": false,
+        "settings": {}
+      },
+      "1232542678405107163": {
+        "type": "shopify://apps/instafeed/blocks/head-block/c447db20-095d-4a10-9725-b5977662c9d5",
+        "disabled": false,
+        "settings": {}
+      },
+      "14549625726302301791": {
+        "type": "shopify://apps/stamped-loyalty-referrals/blocks/referral-modal/93b8fd18-14d4-464f-a49a-0093afb7e10a",
+        "disabled": true,
+        "settings": {
+          "frequency": "none",
+          "background_image_url": "",
+          "style_color_background": "",
+          "style_color_button": "",
+          "style_color_link": "",
+          "subtitle": "",
+          "title": "",
+          "description": "",
+          "button_text": "",
+          "subtitle_two": "",
+          "text_disclaimer": "",
+          "text_share_manual": "",
+          "button_text_send": ""
+        }
+      },
+      "13786924369225772985": {
+        "type": "shopify://apps/c-hub-customer-accounts/blocks/accounts-everywhere/0fb3ba0b-4c65-4919-a85a-48bc2d368e9c",
+        "disabled": false,
+        "settings": {}
+      },
+      "32420460079641543000": {
+        "type": "shopify://apps/gdpr-cookie-consent/blocks/banner/58c0baa2-6cc1-480c-9ea6-38d6d559556a",
+        "disabled": false,
+        "settings": {}
+      },
+      "855628211100114053": {
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {}
+      },
+      "5644523865317795868": {
+        "type": "shopify://apps/toki-loyalty/blocks/embed-wallet-v2/22635295-e17c-4ef6-b61c-f95d0a982eaf",
+        "disabled": true,
+        "settings": {
+          "designId": ""
+        }
+      },
+      "6279071938380501511": {
+        "type": "shopify://apps/powerful-form-builder/blocks/app-embed/e4bcb1eb-35b2-42e6-bc37-bfe0e1542c9d",
+        "disabled": false,
+        "settings": {}
+      },
+      "1996061711396120121": {
+        "type": "shopify://apps/uppromote-affiliate/blocks/message-bar/64c32457-930d-4cb9-9641-e24c0d9cf1f4",
+        "disabled": true,
+        "settings": {}
+      },
+      "9005256451184024879": {
+        "type": "shopify://apps/uppromote-affiliate/blocks/customer-referral/64c32457-930d-4cb9-9641-e24c0d9cf1f4",
+        "disabled": true,
         "settings": {}
       },
       "13416097264177121472": {
         "type": "shopify://apps/design-packs/blocks/design_packs/1efa8e58-6fa1-4c9a-9c0a-e71446c20785",
         "disabled": false,
+        "settings": {}
+      },
+      "316487575649303945": {
+        "type": "shopify://apps/easify-options/blocks/app-embed-block/d2288b18-c1ba-42f5-b3b3-26c75c8820bf",
+        "disabled": false,
+        "settings": {}
+      },
+      "2497517740430320072": {
+        "type": "shopify://apps/easyflow/blocks/app-embed/83d04f43-e63e-4a8d-82b9-e4f0b41ef22f",
+        "disabled": true,
         "settings": {}
       },
       "6444166244322975299": {
@@ -174,24 +251,31 @@
           "cart_attr_key_2": "",
           "cart_attr_value_2": ""
         }
+      },
+      "2567389343055140935": {
+        "type": "shopify://apps/microsoft-clarity/blocks/clarity_js/31c3d126-8116-4b4a-8ba1-baeda7c4aeea",
+        "disabled": false,
+        "settings": {}
+      },
+      "3138269044488530766": {
+        "type": "shopify://apps/uppromote-affiliate/blocks/core-script/64c32457-930d-4cb9-9641-e24c0d9cf1f4",
+        "disabled": false,
+        "settings": {}
+      },
+      "471852632697159186": {
+        "type": "shopify://apps/stamped-loyalty-referrals/blocks/rewards-launcher/93b8fd18-14d4-464f-a49a-0093afb7e10a",
+        "disabled": true,
+        "settings": {}
+      },
+      "18228966181090706294": {
+        "type": "shopify://apps/selleasy/blocks/app-embed/790c1a03-a71f-4bc1-9869-00dad526d3c2",
+        "disabled": true,
+        "settings": {
+          "storefrontAccessToken": "",
+          "scriptInitMode": "immediate"
+        }
       }
-    },
-    "product_card_background": "#ffffff",
-    "stagger_products_apparition": true,
-    "lp_hsa_mode": "only",
-    "lp_hsa_products": [
-      "cellnergy-diffuser-replacement",
-      "cellnergy-hydration-system",
-      "brain-regeneration-pack",
-      "laminine-activation",
-      "powerhouse",
-      "recharge-renew-regenerate",
-      "stamina-power-pack",
-      "immune-120-count",
-      "lamiderm-apex-smart-serum-ibo",
-      "enrollment-kit"
-    ],
-    "lp_hsa_icon": "shopify://shop_images/Truemed-icon.png"
+    }
   },
   "presets": {
     "Impact": {
@@ -301,7 +385,7 @@
       ".break-all {overflow-wrap: normal !important;}",
       " /* ---- HOME PAGE ---- */ /* Home Page - Media with text */@media screen and (min-width: 700px) {.content-over-media > :not(img, video, iframe, svg, video-media, picture) {max-width: 550px; position: relative; text-align: center; margin-right: 50px; }}",
       " /* press quote */@media screen and (min-width: 700px) {.press {max-width: 580px; margin-left: 54%; }}",
-      ".prose h4:not(.h0,.h1,.h2,.h3,.h4,.h5,.h6) {font-family: 'Lato';}"
+      ".prose h4:not(.h0, .h1, .h2, .h3, .h4, .h5, .h6) {font-family: \"Lato\";}"
     ]
   }
 }

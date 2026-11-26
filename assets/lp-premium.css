@@ -1018,3 +1018,4 @@ dialog::backdrop { overflow: hidden; overscroll-behavior: contain; }
 .quick-buy-drawer::part(close-button) { place-items: center; width: 44px; height: 44px; margin-block: -10px 0; margin-inline-end: -10px; }
 /* Field labels: the theme's half-transparent label is 3.4:1; this is above 4.5:1 on white and on sand. */
 .floating-label { opacity: .8; }
+

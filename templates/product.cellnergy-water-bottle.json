@@ -261,7 +261,8 @@
         },
         "selleasy_lb_upsell_widget_bac_wjnxim": {
           "type": "shopify://apps/selleasy/blocks/lb-upsell-widget-bac/790c1a03-a71f-4bc1-9869-00dad526d3c2",
-          "settings": {}
+          "settings": {},
+          "disabled": true
         },
         "selleasy_lb_upsell_widget_bl_B6H7nE": {
           "type": "shopify://apps/selleasy/blocks/lb-upsell-widget-bl/790c1a03-a71f-4bc1-9869-00dad526d3c2",

@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -170,7 +179,7 @@
           }
         },
         "tolstoy_shoppable_video_ugc_stories_block_hnKrMy": {
-          "type": "shopify://apps/tolstoy-ads-image-video/blocks/stories-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "type": "shopify://apps/tolstoy/blocks/stories-block/06fa8282-42ff-403e-b67c-1936776aed11",
           "settings": {
             "publishId": "3ew6rhswme0cg"
           }
@@ -255,6 +264,38 @@
             "title": "Specifications",
             "content": "<ul><li><strong>Certifications:</strong> Patent-pending, CE, UL, ISO 9001, ISO 14001, PSE, RoHS, FCC</li><li><strong>Warranty:</strong> One year from the date of purchase</li></ul>"
           }
+        },
+        "afterpay_on_site_messaging_payments_messaging_CUJ3C9": {
+          "type": "shopify://apps/afterpay-on-site-messaging/blocks/payments-messaging/f45a5524-d177-4475-bf59-281efd2215a8",
+          "settings": {
+            "text_align": "inherit",
+            "margin_top": 16,
+            "margin_bottom": 16,
+            "color": "",
+            "size": "md",
+            "intro_text": "or",
+            "show_interest_free": true,
+            "payment_amount_is_bold": true,
+            "show_with": true,
+            "logo_type": "badge",
+            "logo_theme": "black-on-mint",
+            "modal_link_style": "circled-info-icon",
+            "modal_theme": "mint",
+            "breakpoint": 749,
+            "text_align_mobile": "inherit",
+            "margin_top_mobile": 16,
+            "margin_bottom_mobile": 16,
+            "show_lower_limit": true,
+            "show_upper_limit": true,
+            "show_if_outside_limits": true,
+            "product": "{{product}}"
+          }
+        },
+        "teqnavi_ibo_price": {
+          "type": "shopify://apps/teqnavi-lifepharm/blocks/ibo-price/019bc71e-c7cd-732d-b07b-3ca8ead35448",
+          "settings": {
+            "label": "Your IBO price"
+          }
         }
       },
       "block_order": [
@@ -262,6 +303,7 @@
         "badges",
         "lp_rating",
         "lp_summary",
+        "teqnavi_ibo_price",
         "variant_picker",
         "lp_price",
         "price",
@@ -275,6 +317,7 @@
         "collapsible_text_kaarby",
         "buy_buttons",
         "payment_terms",
+        "afterpay_on_site_messaging_payments_messaging_CUJ3C9",
         "liquid_FCeMyQ",
         "collapsible_text_DKpjzh",
         "collapsible_text_KbRjKK",

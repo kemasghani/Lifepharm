@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -73,6 +82,12 @@
           "settings": {
             "liquid": "{% render 'lp-pdp-summary', product: product %}"
           }
+        },
+        "teqnavi_ibo_price": {
+          "type": "shopify://apps/teqnavi-lifepharm/blocks/ibo-price/019bc71e-c7cd-732d-b07b-3ca8ead35448",
+          "settings": {
+            "label": "Your IBO price"
+          }
         }
       },
       "block_order": [
@@ -80,6 +95,7 @@
         "badges",
         "lp_rating",
         "lp_summary",
+        "teqnavi_ibo_price",
         "variant_picker",
         "price",
         "separator",

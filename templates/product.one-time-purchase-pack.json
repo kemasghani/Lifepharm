@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -15,15 +24,15 @@
         },
         "price": {
           "type": "price",
+          "disabled": true,
           "settings": {
             "show_taxes_notice": false
-          },
-          "disabled": true
+          }
         },
         "separator": {
           "type": "separator",
-          "settings": {},
-          "disabled": true
+          "disabled": true,
+          "settings": {}
         },
         "stamped_product_reviews_ugc_star_rating_badge_8VPpGa": {
           "type": "shopify://apps/stamped-reviews/blocks/star-rating-badge/a103faaf-2125-4b0e-89fa-de5149736723",
@@ -66,8 +75,8 @@
         },
         "quantity_selector": {
           "type": "quantity_selector",
-          "settings": {},
-          "disabled": true
+          "disabled": true,
+          "settings": {}
         },
         "text_VjR6WU": {
           "type": "text",
@@ -81,9 +90,9 @@
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "page": "",
             "title": "60-Day Money-Back Guarantee",
-            "content": "<p>All of our products come with a 60-Day Money-Back Guarantee. </p><p>Try it, and if it doesn’t work, it's on us! Our hassle-free <a href=\"/policies/refund-policy\" title=\"Refund policy\">return policy</a> offers a 100% money-back guarantee within 60 days of delivery.</p>"
+            "content": "<p>All of our products come with a 60-Day Money-Back Guarantee. </p><p>Try it, and if it doesn’t work, it's on us! Our hassle-free <a href=\"/policies/refund-policy\" title=\"Refund policy\">return policy</a> offers a 100% money-back guarantee within 60 days of delivery.</p>",
+            "page": ""
           }
         },
         "collapsible_text_DKpjzh": {
@@ -91,9 +100,9 @@
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "page": "",
             "title": "Benefits",
-            "content": "{{ product.metafields.custom.text_benefits | metafield_tag }}"
+            "content": "{{ product.metafields.custom.text_benefits | metafield_tag }}",
+            "page": ""
           }
         },
         "collapsible_text_KbRjKK": {
@@ -101,9 +110,9 @@
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "page": "",
             "title": "Ingredients",
-            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}"
+            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}",
+            "page": ""
           }
         },
         "collapsible_text_QcYtDR": {
@@ -133,9 +142,9 @@
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "page": "",
             "title": "How to Use",
             "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>",
+            "page": "",
             "lp_how_steps": true
           }
         },
@@ -169,7 +178,7 @@
           }
         },
         "tolstoy_shoppable_video_ugc_stories_block_hnKrMy": {
-          "type": "shopify://apps/tolstoy-ads-image-video/blocks/stories-block/06fa8282-42ff-403e-b67c-1936776aed11",
+          "type": "shopify://apps/tolstoy/blocks/stories-block/06fa8282-42ff-403e-b67c-1936776aed11",
           "disabled": true,
           "settings": {
             "publishId": "3ew6rhswme0cg"
@@ -239,6 +248,38 @@
           "settings": {
             "liquid": "{% render 'lp-pdp-summary', product: product %}"
           }
+        },
+        "teqnavi_ibo_price": {
+          "type": "shopify://apps/teqnavi-lifepharm/blocks/ibo-price/019bc71e-c7cd-732d-b07b-3ca8ead35448",
+          "settings": {
+            "label": "Your IBO price"
+          }
+        },
+        "afterpay_on_site_messaging_payments_messaging_cDWymc": {
+          "type": "shopify://apps/afterpay-on-site-messaging/blocks/payments-messaging/f45a5524-d177-4475-bf59-281efd2215a8",
+          "settings": {
+            "text_align": "inherit",
+            "margin_top": 16,
+            "margin_bottom": 16,
+            "color": "",
+            "size": "md",
+            "intro_text": "or",
+            "show_interest_free": true,
+            "payment_amount_is_bold": true,
+            "show_with": true,
+            "logo_type": "badge",
+            "logo_theme": "black-on-mint",
+            "modal_link_style": "circled-info-icon",
+            "modal_theme": "mint",
+            "breakpoint": 749,
+            "text_align_mobile": "inherit",
+            "margin_top_mobile": 16,
+            "margin_bottom_mobile": 16,
+            "show_lower_limit": true,
+            "show_upper_limit": true,
+            "show_if_outside_limits": true,
+            "product": "{{product}}"
+          }
         }
       },
       "block_order": [
@@ -246,6 +287,7 @@
         "badges",
         "lp_rating",
         "lp_summary",
+        "teqnavi_ibo_price",
         "variant_picker",
         "price",
         "separator",
@@ -258,6 +300,7 @@
         "collapsible_text_kaarby",
         "buy_buttons",
         "payment_terms",
+        "afterpay_on_site_messaging_payments_messaging_cDWymc",
         "liquid_ThJHnj",
         "collapsible_text_DKpjzh",
         "collapsible_text_KbRjKK",

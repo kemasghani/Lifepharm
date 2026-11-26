@@ -58,7 +58,8 @@ Supported variables
     {%- comment -%}
       LP: the struck price is the variant's reference price, the same number the size card's Save badge uses
       (snippets/lp-variant-reference.liquid), for the one-time price and for a subscription plan alike (D-091).
-      data-price is the one-time price: lp-premium.js uses it to tell whether a plan is selected.
+      data-price is the one-time price: lp-premium.js uses it to tell whether a plan is selected. With no saving the <s>
+      stays empty (lp-premium.js writes its text when a plan applies), so the page text never reads "$29.00 $29.00".
     {%- endcomment -%}
     {%- capture lp_reference -%}{%- render 'lp-variant-reference', variant: lp_v -%}{%- endcapture -%}
     {%- assign lp_reference = lp_reference | plus: 0 -%}
@@ -71,7 +72,7 @@ Supported variables
           <span class="lp-atc__sep" aria-hidden="true"></span>
           <span class="lp-pdp-price lp-pdp-price--atc">
             <span class="lp-pdp-price__now price-item--regular">{{ lp_v.price | money }}</span>
-            <s class="lp-pdp-price__was" data-base="{{ lp_base | money_without_currency }}" data-base-text="{{ lp_base | money | strip_html | escape }}" data-price="{{ lp_v.price | money_without_currency }}" {% unless lp_base > lp_v.price %}hidden{% endunless %}>{{ lp_base | money }}</s>
+            <s class="lp-pdp-price__was" data-base="{{ lp_base | money_without_currency }}" data-base-text="{{ lp_base | money | strip_html | escape }}" data-price="{{ lp_v.price | money_without_currency }}" {% unless lp_base > lp_v.price %}hidden{% endunless %}>{% if lp_base > lp_v.price %}{{ lp_base | money }}{% endif %}</s>
             <span class="lp-pdp-price__tag" hidden></span>
           </span>
         {%- endif -%}

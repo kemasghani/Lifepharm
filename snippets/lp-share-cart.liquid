@@ -123,20 +123,30 @@
       }
     };
 
-    const open = () => {
+    // The cart drawer's focus trap treats any tap outside its own element as "outside" and closes itself
+    // (on touch it also swallows the tap). Opened from the drawer, the dialog therefore lives inside it,
+    // and goes back to <body> when it closes, before the drawer re-renders its children.
+    const home = dialog.parentNode;
+    dialog.addEventListener('close', () => { if (dialog.parentNode !== home) home.appendChild(dialog); });
+    const open = (trigger) => {
       copyButton.querySelector('[data-label-default]').textContent = {{ 'lp.share.copy' | t | json }};
-      if (!dialog.open) dialog.showModal();
+      const drawer = trigger && trigger.closest('cart-drawer');
+      if (!dialog.open) {
+        if (drawer) drawer.appendChild(dialog);
+        else if (dialog.parentNode !== home) home.appendChild(dialog);
+        dialog.showModal();
+      }
       createLink();
     };
     const close = () => dialog.open && dialog.close();
 
     document.addEventListener('click', (event) => {
       const trigger = event.target.closest('.share-cart-link');
-      if (trigger) { event.preventDefault(); open(); return; }
+      if (trigger) { event.preventDefault(); open(trigger); return; }
       if (event.target.closest('[data-lp-share-close]')) close();
     });
     document.addEventListener('keydown', (event) => {
-      if ((event.key === 'Enter' || event.key === ' ') && event.target.matches && event.target.matches('.share-cart-link')) { event.preventDefault(); open(); }
+      if ((event.key === 'Enter' || event.key === ' ') && event.target.matches && event.target.matches('.share-cart-link')) { event.preventDefault(); open(event.target); }
     });
     nets.forEach((a) => a.addEventListener('click', (event) => { if (a.getAttribute('aria-disabled') === 'true') event.preventDefault(); }));
 

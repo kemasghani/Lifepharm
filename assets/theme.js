@@ -3267,7 +3267,7 @@ onRerender_fn = function(event) {
   if (focusedElement.id) {
     const element = document.getElementById(focusedElement.id);
     if (this.contains(element)) {
-      element.focus();
+      element.focus({ preventScroll: true });
     }
   }
 };

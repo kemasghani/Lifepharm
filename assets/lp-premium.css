@@ -1019,17 +1019,3 @@ dialog::backdrop { overflow: hidden; overscroll-behavior: contain; }
 /* Field labels: the theme's half-transparent label is 3.4:1; this is above 4.5:1 on white and on sand. */
 .floating-label { opacity: .8; }
 
-/* Selleasy (bundle on product pages, add-ons in the cart): the app writes inline styles, so these need !important.
-   Cream panel, ink text, the brand's orange button with dark text, orange ticks; the app keeps its layout (D-102). */
-lb-upsell-widget .lb-bundle-cont, lb-upsell-widget .lb-addon-cont { background: rgb(var(--lp-sand)) !important; border-radius: 16px !important; padding: 20px !important; }
-lb-upsell-widget .lb-bundle-title, lb-upsell-widget .lb-addon-title { color: rgb(var(--lp-ink)) !important; font-size: 1.125rem !important; font-weight: 600 !important; }
-lb-upsell-widget .lb-bundle-subTitle, lb-upsell-widget .lb-addon-subTitle { color: rgb(var(--lp-muted)) !important; font-size: .9375rem !important; line-height: 1.5; }
-lb-upsell-widget .lb-button { min-height: 44px; display: flex !important; align-items: center; justify-content: center; background: rgb(var(--lp-amber)) !important; color: #1f1e20 !important; border-radius: var(--rounded-button, 999px) !important; font-weight: 600 !important; letter-spacing: .02em; cursor: pointer; transition: filter 160ms ease-out; }
-@media (hover: hover) { lb-upsell-widget .lb-button:hover { filter: brightness(.95); } }
-lb-upsell-widget .lb-custom-checkbox.lb-checked { background: rgb(var(--lp-amber)) !important; border-color: rgb(var(--lp-amber)) !important; }
-lb-upsell-widget .lb-custom-checkbox.lb-checked svg, lb-upsell-widget .lb-checkbox-check { color: #1f1e20; stroke: #1f1e20; }
-lb-upsell-widget .lb-qty-picker, lb-upsell-widget .lb-variant-picker { background-color: #fff !important; border-color: rgb(var(--lp-ink) / .14) !important; border-radius: 10px !important; }
-lb-upsell-widget .lb-product-card .lb-card-image-cont, lb-upsell-widget .lb-long-card { border-radius: 12px; }
-/* On phones the bundle sits in the buy box (moved there by lp-premium.js), so it gets the buy box's spacing. */
-.lp-bundle-slot lb-upsell-widget .lb-bundle-cont { margin: 0 !important; }
-

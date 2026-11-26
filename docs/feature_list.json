@@ -403,7 +403,7 @@
       "id": "co-002",
       "area": "content",
       "title": "Company page: new purpose and five core values (Letisha, 2026-11-26)",
-      "status": "in_progress",
+      "status": "passing",
       "stores": [
         "uk",
         "us",
@@ -413,8 +413,13 @@
         "Hero shows the new purpose; credo and BIIG are gone; five numbered values",
         "Default checks"
       ],
-      "evidence": [],
-      "notes": ""
+      "evidence": [
+        "45831dc",
+        "0b8cb91",
+        "us 40ffd2c, eu 1f081c9, uk 1b001a1, staging cc05817 + theme upload",
+        "2026-11-26: UK, US and Europe drafts and staging at 1440 and 390: five values 01 to 05, no credo or BIIG text, no sideways scroll; ./init.sh --full READY"
+      ],
+      "notes": "Heading \"How We Work\" and the intro line are ours; the homepage mission line still uses the old wording (ask Letisha)."
     },
     {
       "id": "coll-001",

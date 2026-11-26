@@ -24,6 +24,12 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 
 ---
 
+## 2026-11-26 · co-002 · Company page: new purpose and five core values
+
+- Done (D-109): the hero title is the new purpose; one "How We Work" section with five numbered values replaces the credo and BIIG sections; `lp-about-credo.liquid` deleted. Letisha's request.
+- Evidence: master 45831dc and 0b8cb91; us 40ffd2c, eu 1f081c9, uk 1b001a1, staging cc05817 plus theme upload. `./init.sh --full` READY. Checked on the UK, US and Europe drafts and on staging at 1440 and 390: five values, no credo or BIIG text, no sideways scroll. The only page error seen was Stamped's `e is not a function` on the US draft (L-033).
+- Next: ask Letisha whether the homepage mission line ("make optimal well-being inclusive for all") should follow the new purpose.
+
 ## 2026-11-26 · qa-letisha · Staging clicked through as a shopper (390 and 1440)
 
 - Journey: home, Shop Best Sellers, country switch to US, quick add, PDP sizes and plans, cart drawer (qty, Share), checkout referral dialog, enroller search, checkout page (not submitted), menu, Join Us, search, sign-in sheet.

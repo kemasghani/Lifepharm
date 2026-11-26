@@ -623,13 +623,24 @@
       const attempt = video.play();
       if (attempt && attempt.catch) attempt.catch(() => {});
     };
+    /* The cart drawer's focus trap closes the drawer on any tap outside its own element and, on touch, swallows that
+       tap. So while the drawer is open the dialog lives inside it, and it goes home when it closes; the app's enroller
+       search sits outside the drawer, so the drawer is closed before that search opens. */
+    const home = dialog.parentNode;
+    const cartDrawer = () => document.getElementById('cart-drawer');
+    dialog.addEventListener('close', () => { if (dialog.parentNode !== home) home.appendChild(dialog); });
     const show = (state) => {
       const name = referrer();
       const done = state === 'done' && !!name;
       dialog.classList.toggle('is-done', done);
       if (nameEl.textContent !== name) nameEl.textContent = name;
       dialog.setAttribute('aria-labelledby', done ? '' : 'lp-refq-title');
-      if (!dialog.open) { dialog.showModal(); playArt(); }
+      if (!dialog.open) {
+        const cart = cartDrawer();
+        if (cart && cart.hasAttribute('open')) cart.appendChild(dialog);
+        else if (dialog.parentNode !== home) home.appendChild(dialog);
+        dialog.showModal(); playArt();
+      }
     };
     const remember = () => { if (checkbox.checked) setNever(); };
     const continueCheckout = () => {
@@ -690,6 +701,8 @@
       setResume({ t: Date.now(), dialog: !!backToDialog, before });
       const returnState = dialog.classList.contains('is-done') ? 'done' : 'ask';
       if (dialog.open) dialog.close();
+      const cart = cartDrawer();
+      if (cart && cart.hasAttribute('open') && cart.hide) cart.hide();
       clearInterval(watching);
       let seenOpen = false;
       const started = Date.now();

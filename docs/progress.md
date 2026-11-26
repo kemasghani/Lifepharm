@@ -10,12 +10,6 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 - **Known risks:** see [tech-debt.md](tech-debt.md) (top: customer data in public CSVs).
 - **Next suggested step:** pick one `not_started` or newly requested item; run `./init.sh` first.
 
-## 2026-11-26 · qa-letisha · Staging clicked through as a shopper (390 and 1440)
-
-- Journey: home, Shop Best Sellers, country switch to US, quick add, PDP sizes and plans, cart drawer (qty, Share), checkout referral dialog, enroller search, checkout page (not submitted), menu, Join Us, search, sign-in sheet.
-- Fixed (D-106, L-088): page jump on size change; Share and referral dialogs swallowed the first tap and closed the drawer on touch; search count included hidden results. Re-verified by tapping on staging, and with a mouse at 1440. Pushed to master, us, eu, uk and staging.
-- Seen, not changed: Stamped `getappkey` 404 on the staging store only; pre-ticked "Email me with news and offers" in Shopify's sign-in sheet (admin setting, matters for UK/EU); long country list without search; review count wraps under the stars on mobile cards; low-contrast orange text ("Added to your cart!", inactive search tab).
-
 ## Entry template
 
 ```
@@ -29,6 +23,12 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 ```
 
 ---
+
+## 2026-11-26 · qa-letisha · Staging clicked through as a shopper (390 and 1440)
+
+- Journey: home, Shop Best Sellers, country switch to US, quick add, PDP sizes and plans, cart drawer (qty, Share), checkout referral dialog, enroller search, checkout page (not submitted), menu, Join Us, search, sign-in sheet.
+- Fixed (D-106, L-088): page jump on size change; Share and referral dialogs swallowed the first tap and closed the drawer on touch; search count included hidden results. Re-verified by tapping on staging, and with a mouse at 1440. Pushed to master, us, eu, uk and staging.
+- Seen, not changed: Stamped `getappkey` 404 on the staging store only; pre-ticked "Email me with news and offers" in Shopify's sign-in sheet (admin setting, matters for UK/EU); long country list without search; review count wraps under the stars on mobile cards; low-contrast orange text ("Added to your cart!", inactive search tab).
 
 ## 2026-11-26 · qa-letisha · Pre-launch list, UK products, Modern Web Guidance
 - Done: D-091 (subscription strikes the reference price, quick add without buttons), D-092 (Letisha's list), D-093 (UK products), D-094 (modern web audit).

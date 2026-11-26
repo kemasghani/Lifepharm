@@ -413,6 +413,114 @@
   };
   ['pointerdown', 'touchstart', 'focusin', 'keydown', 'click'].forEach((type) => document.addEventListener(type, fillCountryList, { capture: true, passive: true }));
 
+  /* Country search (D-107): filters the list as the shopper types. A word in the query must start a word of the
+     country's name, its ISO code or a common alias, so "us" finds the United States and not Australia or Cyprus.
+     An exact code or alias goes first. Enter picks the first match; arrow keys move between the matches only (the
+     theme's listbox would otherwise step onto hidden options); Escape clears the field before it closes the list. */
+  const COUNTRY_ALIASES = {
+    GB: 'uk united kingdom great britain britain england scotland wales northern ireland', US: 'usa america united states of america',
+    AE: 'uae emirates', NL: 'holland', KR: 'south korea korea', CZ: 'czech republic', TR: 'turkey turkiye', CI: 'ivory coast',
+    VN: 'vietnam viet nam', RU: 'russia', DE: 'germany deutschland', ES: 'spain espana', CH: 'switzerland schweiz', HK: 'hong kong'
+  };
+  const fold = (s) => (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+  const countryParts = (search) => {
+    const form = search.closest('form');
+    const popover = search.closest('x-popover');
+    return {
+      input: search.querySelector('input'),
+      clear: search.querySelector('[data-lp-country-clear]'),
+      empty: search.querySelector('[data-lp-country-empty]'),
+      status: search.querySelector('[data-lp-country-status]'),
+      list: form && form.querySelector('.popover-listbox'),
+      options: form ? [...form.querySelectorAll('.popover-listbox [role="option"]')] : [],
+      body: popover && popover.shadowRoot && popover.shadowRoot.querySelector('[part="body"]')
+    };
+  };
+  const countryIndex = new WeakMap();
+  const optionWords = (option) => {
+    if (!countryIndex.has(option)) {
+      const code = (option.value || '').toUpperCase();
+      const name = fold((option.textContent || '').replace(/\(.*\)\s*$/, ''));
+      countryIndex.set(option, { code: code.toLowerCase(), words: `${name} ${code.toLowerCase()} ${fold(COUNTRY_ALIASES[code])}`.split(' '), alias: fold(COUNTRY_ALIASES[code]) });
+    }
+    return countryIndex.get(option);
+  };
+  const statusTimers = new WeakMap();
+  const filterCountries = (search) => {
+    const p = countryParts(search);
+    if (!p.input || !p.list) return;
+    const query = fold(p.input.value);
+    const terms = query ? query.split(' ') : [];
+    let shown = 0;
+    p.options.forEach((option) => {
+      const entry = optionWords(option);
+      const match = terms.every((t) => entry.words.some((w) => w.startsWith(t)));
+      option.hidden = !match;
+      // An exact code ("gb") or alias ("uk") rises to the top of the matches
+      option.style.order = query && (entry.code === query || (` ${entry.alias} `).includes(` ${query} `)) ? '-1' : '';
+      if (match) shown += 1;
+    });
+    p.clear.hidden = !p.input.value;
+    p.empty.hidden = shown > 0;
+    if (!shown) p.empty.textContent = p.empty.dataset.template.replace('[terms]', p.input.value.trim());
+    if (p.body) p.body.scrollTop = 0;
+    clearTimeout(statusTimers.get(search));
+    statusTimers.set(search, setTimeout(() => {
+      p.status.textContent = !query ? '' : !shown ? p.empty.textContent : (shown === 1 ? p.status.dataset.one : p.status.dataset.other.replace('[count]', shown));
+    }, 400));
+  };
+  const visibleCountries = (search) => countryParts(search).options.filter((o) => !o.hidden).sort((a, b) => (Number(a.style.order) || 0) - (Number(b.style.order) || 0));
+  document.addEventListener('input', (event) => {
+    const search = event.target.closest && event.target.closest('[data-lp-country-search]');
+    if (search) filterCountries(search);
+  });
+  document.addEventListener('click', (event) => {
+    const clear = event.target.closest && event.target.closest('[data-lp-country-clear]');
+    if (clear) {
+      const search = clear.closest('[data-lp-country-search]');
+      const p = countryParts(search);
+      p.input.value = '';
+      filterCountries(search);
+      p.input.focus();
+      return;
+    }
+    // A fresh list each time the selector opens
+    const trigger = event.target.closest && event.target.closest('button[aria-controls^="popover-localization-form-country"]');
+    const search = trigger && document.getElementById(trigger.getAttribute('aria-controls'))?.querySelector('[data-lp-country-search]');
+    if (search && countryParts(search).input.value) { countryParts(search).input.value = ''; filterCountries(search); }
+    // With a mouse, typing should filter straight away (touch keeps the keyboard closed until the field is tapped)
+    if (search && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      setTimeout(() => { const input = countryParts(search).input; if (input && input.offsetParent && document.activeElement !== input) input.focus({ preventScroll: true }); }, 120);
+    }
+  });
+  document.addEventListener('keydown', (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    const search = target.matches('[data-lp-country-search] input') ? target.closest('[data-lp-country-search]')
+      : target.matches('.popover-listbox [role="option"]') ? target.closest('form')?.querySelector('[data-lp-country-search]') : null;
+    if (!search) return;
+    const p = countryParts(search);
+    const items = visibleCountries(search);
+    if (target === p.input) {
+      if (event.key === 'Enter') { event.preventDefault(); if (items[0]) items[0].click(); }
+      else if (event.key === 'ArrowDown' && items[0]) { event.preventDefault(); items[0].focus(); }
+      else if (event.key === 'Escape' && p.input.value) { event.preventDefault(); event.stopPropagation(); p.input.value = ''; filterCountries(search); }
+      return;
+    }
+    const i = items.indexOf(target);
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault(); event.stopPropagation();
+      const next = event.key === 'ArrowDown' ? items[i + 1] : items[i - 1];
+      (next || (event.key === 'ArrowUp' ? p.input : null))?.focus();
+    } else if (event.key.length === 1 && !event.ctrlKey && !event.metaKey && !event.altKey && /\S/.test(event.key)) {
+      // Typing on the list starts a search
+      event.preventDefault();
+      p.input.value += event.key;
+      p.input.focus();
+      filterCountries(search);
+    }
+  }, true);
+
   const initProductTabs = () => document.querySelectorAll('[data-lp-tabs]').forEach((root) => {
     const tabs = [...root.querySelectorAll('[data-lp-tab]')];
     const cards = [...root.querySelectorAll('[data-collections]')];

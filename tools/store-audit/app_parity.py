@@ -15,6 +15,7 @@ LIVE = {'uk': 188195209602, 'us': 190368612661, 'eu': 152722014425}
 REPLACED = {'stamped-reviews/blocks/star-rating-badge': 'snippets/lp-rating-row', 'stamped-reviews/blocks/carousel': 'home review section',
             'instafeed/blocks/app-block': 'removed from the homepage design', 'teqnavi-lifepharm/blocks/referral-banner': 'moved to the footer group (D-086)'}
 UNINSTALLED = {'triplewhale/blocks/triple_pixel_snippet'}
+OFF = ('selleasy/',)   # switched off on the drafts by the developer (D-102)
 UPSELL = 'selleasy/blocks/lb-upsell'
 Q = 'query($i:ID!,$c:String,$f:[String!]){theme(id:$i){files(first:50,after:$c,filenames:$f){pageInfo{hasNextPage endCursor} nodes{filename body{... on OnlineStoreThemeFileBodyText{content} ... on OnlineStoreThemeFileBodyUrl{url}}}}}}'
 
@@ -72,7 +73,7 @@ def run(store, write):
     read = lambda f: subprocess.run(['git', '-C', str(REPO), 'show', f"origin/{'master' if store == 'uk' else store}:{f}"], capture_output=True, text=True).stdout
     gaps = 0
     head, draft = split(read('config/settings_data.json')); _, lv = split(live['config/settings_data.json'])
-    want = {k: b for k, b in embeds(lv).items() if is_app(b['type']) and name(b['type']) not in UNINSTALLED}
+    want = {k: b for k, b in embeds(lv).items() if is_app(b['type']) and name(b['type']) not in UNINSTALLED and not name(b['type']).startswith(OFF)}
     live_name = {uuid(b['type']) + name(b['type']).split('/')[-1]: name(b['type']) for b in want.values()}   # an app can change its handle (Pandectes was gdpr-cookie-consent)
     have = {live_name.get(uuid(b['type']) + name(b['type']).split('/')[-1], name(b['type'])): b for b in embeds(draft).values() if is_app(b['type'])}
     state = lambda b: 'none' if b is None else 'off' if b.get('disabled') else 'on'
@@ -93,7 +94,7 @@ def run(store, write):
         changed = False
         for sid, bid, block in list(app_blocks(l)):
             n = name(block['type'])
-            if n in REPLACED or n in UNINSTALLED: continue
+            if n in REPLACED or n in UNINSTALLED or n.startswith(OFF): continue
             same = [b for _, _, b in app_blocks(d) if uuid(b['type']) == uuid(block['type']) and name(b['type']).split('/')[-1] == n.split('/')[-1]]
             if any(b['type'] == block['type'] for b in same): continue
             if same:

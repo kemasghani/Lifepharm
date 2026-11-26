@@ -20,6 +20,9 @@ The repo is the system of record; the map is `docs/README.md`. The GitHub repo i
 - `.env` holds an admin token for the **US** store. It is read-only for reference and never committed.
 - Shopify work: use the `shopify-plugin:*` skills and validate against the live schema (see the global CLAUDE.md).
 - After changes: run `./init.sh --full` (theme guard + theme-check ratchet), push, then verify on the draft preview at 390px and 1440px. Check for no horizontal scroll and no JS errors.
+- **Every change goes to every branch, in the same session** (owner's rule, 2026-11-26): `master` (UK draft), `us`, `eu`, `uk` and `staging` (the staging theme by API upload, then the `staging` branch merged from `us`). `news` is a separate theme: port only files that exist there. A change is not done until all of them carry it.
+  - Before copying a file across, compare it with each branch (`git diff --stat origin/master origin/<branch> -- <file>`). Equal files are copied from master; files with store-specific content (`config/settings_data.json`, product and page templates, app snippets) get the same edit merged in, never overwritten.
+  - An intended difference between stores is recorded in `docs/DECISIONS.md`. Data changes in the admin (menus, alt text, redirects) are applied to every store the change concerns, staging included.
 
 ## 2. Brand guideline (LifePharm Quick Style Guide 2024)
 

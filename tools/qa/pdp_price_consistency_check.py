@@ -34,6 +34,8 @@ async def main():
         browser = await p.chromium.launch(headless=True, **LAUNCH)
         for name, vp in (('1440', {'width': 1440, 'height': 900}), ('390', {'width': 390, 'height': 844})):
             ctx = await browser.new_context(viewport=vp, user_agent=UA, device_scale_factor=2); page = await ctx.new_page()
+            # Marketing pop-ups (Klaviyo) cover the buy box once the live apps run on the draft; hide them for the test only.
+            await ctx.add_init_script("document.addEventListener('DOMContentLoaded',()=>{const s=document.createElement('style');s.textContent='div.needsclick[role=dialog],div[class*=kl-private-reset-css][role=dialog],.klaviyo-form[role=dialog]{display:none!important}';document.head.append(s)})")
             await page.goto(f'{BASE}/?preview_theme_id={TID}', wait_until='domcontentloaded')
             for handle in sys.argv[4:]:
                 await page.goto(f'{BASE}/products/{handle}', wait_until='domcontentloaded'); await page.wait_for_timeout(4500)

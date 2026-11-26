@@ -24,25 +24,25 @@
         },
         "price": {
           "type": "price",
+          "disabled": true,
           "settings": {
             "show_taxes_notice": false
-          },
-          "disabled": true
+          }
         },
         "separator": {
           "type": "separator",
-          "settings": {},
-          "disabled": true
+          "disabled": true,
+          "settings": {}
         },
         "stamped_product_reviews_ugc_star_rating_badge_8VPpGa": {
           "type": "shopify://apps/stamped-reviews/blocks/star-rating-badge/a103faaf-2125-4b0e-89fa-de5149736723",
+          "disabled": true,
           "settings": {
             "use_metafields": false,
             "sku_tagtype": "handle",
             "is_featured_product": false,
             "featured_product_handle": ""
-          },
-          "disabled": true
+          }
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -62,8 +62,8 @@
         },
         "quantity_selector": {
           "type": "quantity_selector",
-          "settings": {},
-          "disabled": true
+          "disabled": true,
+          "settings": {}
         },
         "text_VjR6WU": {
           "type": "text",
@@ -86,9 +86,9 @@
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "page": "",
             "title": "60-Day Money-Back Guarantee",
-            "content": "<p>All of our products come with a 60-Day Money-Back Guarantee. </p><p>Try it, and if it doesn’t work, it's on us! Our hassle-free <a href=\"/policies/refund-policy\" title=\"Refund policy\">return policy</a> offers a 100% money-back guarantee within 60 days of delivery.</p>"
+            "content": "<p>All of our products come with a 60-Day Money-Back Guarantee. </p><p>Try it, and if it doesn’t work, it's on us! Our hassle-free <a href=\"/policies/refund-policy\" title=\"Refund policy\">return policy</a> offers a 100% money-back guarantee within 60 days of delivery.</p>",
+            "page": ""
           }
         },
         "collapsible_text_DKpjzh": {
@@ -96,9 +96,9 @@
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "page": "",
             "title": "Benefits",
-            "content": "{{ product.metafields.custom.text_benefits | metafield_tag }}"
+            "content": "{{ product.metafields.custom.text_benefits | metafield_tag }}",
+            "page": ""
           }
         },
         "collapsible_text_KbRjKK": {
@@ -106,9 +106,9 @@
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "page": "",
             "title": "Ingredients",
-            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}"
+            "content": "{{ product.metafields.custom.ingredients | metafield_tag }}",
+            "page": ""
           }
         },
         "collapsible_text_QcYtDR": {
@@ -138,9 +138,9 @@
           "settings": {
             "icon": "none",
             "icon_width": 20,
-            "page": "",
             "title": "How to Use",
             "content": "<p>{{ product.metafields.custom.value_2 | metafield_tag }}</p>",
+            "page": "",
             "lp_how_steps": true
           }
         },
@@ -616,7 +616,6 @@
             "subheading": "",
             "title": "Get the Benefit",
             "content": "{{ product.metafields.custom.text_benefits | metafield_tag }}",
-            "custom_liquid": "<p>Add text</p>",
             "link_text": "",
             "link_url": "",
             "background": "#f9f9f9",
@@ -639,7 +638,6 @@
             "subheading": "",
             "title": "{{ product.metafields.custom.header_7.value }}",
             "content": "{{ product.metafields.custom.text_ingredients | metafield_tag }}",
-            "custom_liquid": "<p>Add text</p>",
             "link_text": "",
             "link_url": "",
             "background": "#f9f9f9",

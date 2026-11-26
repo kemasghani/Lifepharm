@@ -26,8 +26,9 @@
 {% stylesheet %}
 .lp-ab-hero { padding-block: clamp(2.5rem, 6vw, 5.5rem) var(--lp-section-gap); background: rgb(var(--lp-ivory)); }
 .lp-ab-hero__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
-.lp-ab-hero__copy { display: grid; gap: 1.25rem; max-width: 34rem; }
-.lp-ab-hero__title { margin: 0; text-wrap: balance; }
+.lp-ab-hero__copy { display: grid; gap: 1.25rem; max-width: 36rem; }
+/* LP: the title is the purpose statement, a full sentence, so it is set smaller than a short h1 (D-109) */
+.lp-ab-hero .lp-ab-hero__title { margin: 0; font-size: clamp(1.75rem, 1.2rem + 1.9vw, 2.75rem); text-wrap: balance; }
 .lp-ab-hero__title em { font-style: normal; color: rgb(var(--lp-amber)); }
 .lp-ab-hero__text { font-size: clamp(1rem, 1.2vw, 1.125rem); line-height: 1.65; color: rgb(var(--lp-muted)); }
 .lp-ab-hero__text p { margin: 0; }
@@ -51,7 +52,7 @@
   "class": "lp-ab-section",
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our Purpose" },
-    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Making Optimal Well-Being <em>Attainable for All</em></p>" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>To Give People Worldwide the Science and System to <em>Regenerate Their Health and Build Lasting Income</em></p>" },
     { "type": "richtext", "id": "text", "label": "Text" },
     { "type": "image_picker", "id": "image", "label": "Image" },
     { "type": "text", "id": "image_alt", "label": "Image alt text" }

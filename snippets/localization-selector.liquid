@@ -51,10 +51,27 @@ Supported variables
         {%- render 'icon' with 'chevron-bottom' -%}
       </button>
 
-      <x-popover id="{{ localization_popover_id }}" initial-focus="[aria-selected='true']" anchor-horizontal="{{ popover_horizontal_position }}" anchor-vertical="{{ popover_vertical_position }}" class="popover">
+      {%- comment -%}LP: with a mouse the search field takes focus, so typing filters at once; the theme applies initial-focus only on fine pointers, so phones do not pop up the keyboard (D-107){%- endcomment -%}
+      <x-popover id="{{ localization_popover_id }}" initial-focus="{% if localization.available_countries.size > 8 %}[data-lp-country-search] input{% else %}[aria-selected='true']{% endif %}" anchor-horizontal="{{ popover_horizontal_position }}" anchor-vertical="{{ popover_vertical_position }}" class="popover">
         <p class="h5" slot="title">{{ 'general.localization.country' | t }}</p>
 
         {%- form 'localization', id: localization_form_id -%}
+          {%- comment -%}LP: a filter above a long list (D-107). The field has no name, so it is never submitted; lp-premium.js filters the options as the shopper types.{%- endcomment -%}
+          {%- if localization.available_countries.size > 8 -%}
+            {%- capture lp_search_id -%}{{ localization_form_id }}-search{%- endcapture -%}
+            <search class="lp-country-search" data-lp-country-search>
+              <label class="sr-only" for="{{ lp_search_id }}">{{ 'lp.country.label' | t }}</label>
+              <div class="lp-country-search__field">
+                {%- render 'icon' with 'search', width: 18, height: 18, stroke_width: 1.6, class: 'lp-country-search__icon' -%}
+                <input id="{{ lp_search_id }}" class="lp-country-search__input" type="search" placeholder="{{ 'lp.country.placeholder' | t | escape }}" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" enterkeyhint="search" aria-describedby="{{ lp_search_id }}-status">
+                <button type="button" class="lp-country-search__clear" data-lp-country-clear aria-label="{{ 'lp.country.clear' | t | escape }}" hidden>
+                  {%- render 'icon' with 'delete', width: 10, height: 10, stroke_width: 1.6 -%}
+                </button>
+              </div>
+              <p class="lp-country-search__empty" data-lp-country-empty data-template="{{ 'lp.country.empty' | t | escape }}" hidden></p>
+              <p class="sr-only" id="{{ lp_search_id }}-status" role="status" data-lp-country-status data-one="{{ 'lp.country.count.one' | t | escape }}" data-other="{{ 'lp.country.count.other' | t | escape }}"></p>
+            </search>
+          {%- endif -%}
           {%- comment -%}LP: a store sells to more than 200 countries, and this list can be on a page three times (header, menu, footer). It waits in a template, outside the page's DOM, and lp-premium.js puts it in place when the selector is first touched (D-084).{%- endcomment -%}
           <template data-lp-country-list>
           <x-listbox class="popover-listbox popover-listbox--sm" role="listbox">

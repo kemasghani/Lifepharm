@@ -539,6 +539,16 @@
       "retry": "Try Again",
       "on": "Share on"
     },
+    "country": {
+      "label": "Search countries",
+      "placeholder": "Search for a country",
+      "clear": "Clear search",
+      "empty": "No country matches “[terms]”. Try its English name or code, such as US or GB.",
+      "count": {
+        "one": "1 country",
+        "other": "[count] countries"
+      }
+    },
     "referral": {
       "eyebrow": "Before You Check Out",
       "title": "Were You Referred by Someone?",

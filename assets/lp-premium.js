@@ -1154,3 +1154,28 @@ if (!('closedBy' in HTMLDialogElement.prototype)) {
   }));
   rows.forEach((row) => observer.observe(row));
 })();
+
+/* Selleasy places its bundle under the product photos. On a phone that is above the product name, so there it moves into
+   the buy box, after the payment lines (D-102). moveBefore keeps the widget's state where the browser has it. */
+(() => {
+  const phone = window.matchMedia('(max-width: 699px)');
+  const place = () => {
+    if (!phone.matches) return;
+    document.querySelectorAll('.product-gallery lb-upsell-widget, product-gallery lb-upsell-widget').forEach((widget) => {
+      const info = widget.closest('.product')?.querySelector('.product-info');
+      if (!info) return;
+      const lines = [...info.querySelectorAll('.product-info__block-item')].filter((item) => item.querySelector('square-placement, afterpay-placement, shopify-payment-terms') || item.dataset.blockType === 'payment-terms');
+      const after = lines.pop() || info.querySelector('[data-block-type="buy-buttons"]');
+      if (!after) return;
+      let slot = info.querySelector('.lp-bundle-slot');
+      if (!slot) { slot = document.createElement('div'); slot.className = 'product-info__block-item lp-bundle-slot'; after.after(slot); }
+      if (typeof slot.moveBefore === 'function') slot.moveBefore(widget, null); else slot.appendChild(widget);
+    });
+  };
+  const main = document.getElementById('main');
+  if (!main) return;
+  let queued = false;
+  new MutationObserver(() => { if (queued) return; queued = true; requestAnimationFrame(() => { queued = false; place(); }); }).observe(main, { childList: true, subtree: true });
+  place();
+})();
+

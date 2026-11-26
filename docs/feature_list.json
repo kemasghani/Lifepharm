@@ -400,6 +400,23 @@
       "notes": "Timeline icons were cut from a mockup; replace with originals if Letisha sends the XD files."
     },
     {
+      "id": "co-002",
+      "area": "content",
+      "title": "Company page: new purpose and five core values (Letisha, 2026-11-26)",
+      "status": "in_progress",
+      "stores": [
+        "uk",
+        "us",
+        "eu"
+      ],
+      "verification": [
+        "Hero shows the new purpose; credo and BIIG are gone; five numbered values",
+        "Default checks"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
       "id": "coll-001",
       "area": "collection",
       "title": "Collection banner and product-card hover photos",

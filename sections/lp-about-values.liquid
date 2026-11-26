@@ -1,3 +1,4 @@
+{%- comment -%}LP: the company's core values as numbered rows: number, name, one line of meaning (D-109). Text only, so no scroll reveal.{%- endcomment -%}
 <section class="lp-ab-values" aria-labelledby="lp-ab-values-{{ section.id }}">
   <div class="container">
     <header class="lp-ab-head">
@@ -5,10 +6,10 @@
       <h2 id="lp-ab-values-{{ section.id }}" class="h1">{{ section.settings.heading }}</h2>
       {%- if section.settings.text != blank -%}<div class="lp-ab-head__text">{{ section.settings.text }}</div>{%- endif -%}
     </header>
-    <ol class="lp-ab-values__list" role="list" data-lp-reveal>
+    <ol class="lp-ab-values__list" role="list">
       {%- for block in section.blocks -%}
         <li class="lp-ab-values__item" {{ block.shopify_attributes }}>
-          <span class="lp-ab-values__letter" aria-hidden="true">{{ block.settings.title | slice: 0 }}</span>
+          <span class="lp-ab-values__num" aria-hidden="true">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
           <h3 class="lp-ab-values__title">{{ block.settings.title | escape }}</h3>
           <div class="lp-ab-values__text">{{ block.settings.text }}</div>
         </li>
@@ -18,23 +19,17 @@
 </section>
 
 {% stylesheet %}
-.lp-ab-values { padding-block: var(--lp-section-gap); background: #fff; }
-.lp-ab-values__list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--lp-hairline); }
-.lp-ab-values__item { display: grid; align-content: start; gap: .75rem; padding: clamp(1.5rem, 2.5vw, 2.25rem) clamp(1rem, 2vw, 1.75rem) 0; border-inline-start: 1px solid var(--lp-hairline); }
-.lp-ab-values__item:first-child { border-inline-start: 0; padding-inline-start: 0; }
-.lp-ab-values__letter { font-family: var(--lp-serif); font-weight: 400; font-size: clamp(3.5rem, 6vw, 5rem); line-height: .9; color: rgb(var(--lp-amber)); }
-.lp-ab-values__title { margin: 0; font-size: 1.125rem; font-weight: 600; color: rgb(var(--lp-ink)); }
-.lp-ab-values__text { font-size: .9375rem; line-height: 1.65; color: rgb(var(--lp-muted)); }
+.lp-ab-values { padding-block: var(--lp-section-gap); background: rgb(var(--lp-sand)); }
+.lp-ab-values__list { max-width: 68rem; margin: 0 auto; padding: 0; list-style: none; border-bottom: 1px solid rgb(var(--lp-ink) / .12); }
+.lp-ab-values__item { display: grid; grid-template-columns: 5rem minmax(0, 1fr) minmax(0, 1.7fr); column-gap: clamp(1.25rem, 3vw, 3rem); align-items: baseline; padding-block: clamp(1.5rem, 2.4vw, 2.125rem); border-top: 1px solid rgb(var(--lp-ink) / .12); }
+.lp-ab-values__num { font-family: var(--lp-serif); font-weight: 400; font-size: clamp(1.75rem, 2.6vw, 2.25rem); line-height: 1; font-variant-numeric: lining-nums; color: rgb(var(--lp-amber)); }
+.lp-ab-values__title { margin: 0; font-size: clamp(1.25rem, 1.7vw, 1.5rem); font-weight: 600; line-height: 1.25; color: rgb(var(--lp-ink)); }
+.lp-ab-values__text { font-size: 1.125rem; line-height: 1.55; color: rgb(var(--lp-muted)); text-wrap: balance; }
 .lp-ab-values__text p { margin: 0; }
-@media (max-width: 899px) {
-  .lp-ab-values__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .lp-ab-values__item:nth-child(odd) { border-inline-start: 0; padding-inline-start: 0; }
-  .lp-ab-values__item:nth-child(n+3) { border-top: 1px solid var(--lp-hairline); margin-top: 1.5rem; }
-}
-@media (max-width: 520px) {
-  .lp-ab-values__list { grid-template-columns: 1fr; }
-  .lp-ab-values__item { border-inline-start: 0; padding-inline: 0; }
-  .lp-ab-values__item + .lp-ab-values__item { border-top: 1px solid var(--lp-hairline); margin-top: 1.5rem; }
+@media (max-width: 767px) {
+  .lp-ab-values__item { grid-template-columns: 2.75rem minmax(0, 1fr); column-gap: 1rem; row-gap: .375rem; padding-block: 1.375rem; }
+  .lp-ab-values__num { grid-row: span 2; font-size: 1.5rem; line-height: 1.3; }
+  .lp-ab-values__text { grid-column: 2; font-size: 1rem; text-wrap: pretty; }
 }
 {% endstylesheet %}
 
@@ -43,12 +38,12 @@
   "name": "LP About: values",
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our Core Values" },
-    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>We Think <em>BIIG</em></p>" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>How We <em>Work</em></p>" },
     { "type": "richtext", "id": "text", "label": "Text" }
   ],
   "blocks": [
     { "type": "value", "name": "Value", "limit": 6, "settings": [
-      { "type": "text", "id": "title", "label": "Title", "default": "Balance" },
+      { "type": "text", "id": "title", "label": "Title", "default": "Objective First" },
       { "type": "richtext", "id": "text", "label": "Text" }
     ] }
   ],

@@ -4,7 +4,7 @@
       "type": "lp-about-hero",
       "settings": {
         "eyebrow": "Our Purpose",
-        "heading": "<p>Making Optimal Well-Being <em>Attainable for All</em></p>",
+        "heading": "<p>To Give People Worldwide the Science and System to <em>Regenerate Their Health and Build Lasting Income</em></p>",
         "text": "<p>LifePharm was founded on a simple belief: health and wealth go hand in hand. We pair science-led wellness with an opportunity anyone can build on.</p>",
         "image": "shopify://shop_images/lifepharm_couple_0bf82ad4-a026-484f-8c2f-6a6b858348ae.jpg",
         "image_alt": "A smiling couple enjoying time outdoors"
@@ -50,79 +50,47 @@
         "quote_author": "Wicky Suyanto, CEO and Founder"
       }
     },
-    "about_credo": {
-      "type": "lp-about-credo",
-      "settings": {
-        "eyebrow": "What We Stand For",
-        "heading": "<p>Our <em>Credo</em></p>",
-        "text": "<p>Three commitments that guide how we work, and who we work for.</p>"
-      },
-      "blocks": {
-        "b0": {
-          "type": "item",
-          "settings": {
-            "icon": "shopify://shop_images/Group_1529.png",
-            "title": "For Employees",
-            "text": "<p>We commit to creating autonomous, diverse work environments worldwide, fostering a sense of purpose and mastery. We respect and support our employees’ health, well-being and personal responsibilities, striving to develop leaders and maintain equal opportunities.</p>"
-          }
-        },
-        "b1": {
-          "type": "item",
-          "settings": {
-            "icon": "shopify://shop_images/Group-1.png",
-            "title": "For Independent Business Owners and Customers",
-            "text": "<p>We prioritise the trust of our Independent Business Owners and their customers, focusing on integrity in physical and financial health. Our goal is to deliver exceptional value and experiences, using advanced technology for research in longevity and well-being. We support our business owners with opportunities and education for sustainable income.</p>"
-          }
-        },
-        "b2": {
-          "type": "item",
-          "settings": {
-            "icon": "shopify://shop_images/Group.png",
-            "title": "For Communities",
-            "text": "<p>We dedicate ourselves to enhancing the communities where we operate, aiming to improve health, longevity and entrepreneurial opportunities. As responsible citizens, we support local charities, care for the environment and strive to leave a positive impact on our surroundings.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "b0",
-        "b1",
-        "b2"
-      ]
-    },
     "about_values": {
       "type": "lp-about-values",
       "settings": {
         "eyebrow": "Our Core Values",
-        "heading": "<p>We Think <em>BIIG</em></p>",
-        "text": "<p>Balance, Integrity, Innovation and Growth sit at the centre of every action we take and every decision we make.</p>"
+        "heading": "<p>How We <em>Work</em></p>",
+        "text": "<p>Five values guide every decision we make.</p>"
       },
       "blocks": {
         "b0": {
           "type": "value",
           "settings": {
-            "title": "Balance",
-            "text": "<p>Finding a middle ground between the company’s and the customer’s needs: putting yourself in the customer’s shoes while doing what is best for the company.</p>"
+            "title": "Objective First",
+            "text": "<p>Define the win, with a number, before we act.</p>"
           }
         },
         "b1": {
           "type": "value",
           "settings": {
-            "title": "Integrity",
-            "text": "<p>Being honest and trustworthy in everything we do, from the quality of the products we create to the commissions we pay out and the decisions we make.</p>"
+            "title": "Own It Fully",
+            "text": "<p>Take accountability and drive solutions, no excuses.</p>"
           }
         },
         "b2": {
           "type": "value",
           "settings": {
-            "title": "Innovation",
-            "text": "<p>Delivering results beyond expectations for customers, managers and stakeholders, by thinking outside the box to create new ideas and simplify what exists.</p>"
+            "title": "Always Be Improving",
+            "text": "<p>Get a little better every week: you, and the way we work.</p>"
           }
         },
         "b3": {
           "type": "value",
           "settings": {
-            "title": "Growth",
-            "text": "<p>Identifying, focusing and engaging on the strengths of our people and products. By combining our strengths, we accelerate the growth of the company.</p>"
+            "title": "Augment with AI",
+            "text": "<p>Use AI to raise quality, speed and insight, responsibly.</p>"
+          }
+        },
+        "b4": {
+          "type": "value",
+          "settings": {
+            "title": "Go Beyond",
+            "text": "<p>See every decision through the customer’s eyes, and give more than they asked for.</p>"
           }
         }
       },
@@ -130,7 +98,8 @@
         "b0",
         "b1",
         "b2",
-        "b3"
+        "b3",
+        "b4"
       ]
     },
     "lp_history": {
@@ -452,7 +421,6 @@
   "order": [
     "about_hero",
     "about_story",
-    "about_credo",
     "about_values",
     "lp_history",
     "about_team",

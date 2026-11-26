@@ -65,9 +65,24 @@
   }
 </style>
 
+{%- comment -%}
+  The count leaves out results the cards hide (lp-search-hidden: $0 items, and IBO packs for non-IBOs), so it matches
+  what the shopper sees. search.results outside paginate covers the first 50 results, more than this store returns.
+{%- endcomment -%}
+{%- assign lp_hidden_count = 0 -%}
+{%- if search.performed -%}
+  {%- for item in search.results -%}
+    {%- if item.object_type == 'product' -%}
+      {%- capture lp_hidden -%}{%- render 'lp-search-hidden', product: item -%}{%- endcapture -%}
+      {%- if lp_hidden != blank -%}{%- assign lp_hidden_count = lp_hidden_count | plus: 1 -%}{%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+{%- assign lp_results_count = search.results_count | minus: lp_hidden_count | at_least: 0 -%}
+
 {%- if search.performed and search.results_count > 0 or active_filters.size > 0 -%}
   <div class="search-banner v-stack gap-6 sm:gap-8 bg-secondary">
-    <h1 class="h2 text-center">{{- 'search.results_count' | t: count: search.results_count, terms: search.terms -}}</h1>
+    <h1 class="h2 text-center">{{- 'search.results_count' | t: count: lp_results_count, terms: search.terms -}}</h1>
     {{- search_form -}}
 
     <x-tabs class="nav-categories h-stack justify-center" external-panels>
@@ -78,7 +93,7 @@
       {%- for search_type in search.types reversed -%}
         <button slot="title" class="link-reversed subheading" aria-selected="{{ forloop.first }}" controlled-panel="main-search-results-{{ search_type }}">
           {%- assign translation_key = 'search.general.' | append: search_type | append: 's' -%}
-          {{- translation_key | t }} {% if search.types.size == 1 %}({{ search.results_count }}){% endif %}
+          {{- translation_key | t }} {% if search.types.size == 1 %}({{ lp_results_count }}){% endif %}
         </button>
       {%- endfor -%}
     </x-tabs>
@@ -135,7 +150,7 @@
                 {%- endif -%}
 
                 <div class="collection__results">
-                  {%- if search.results_count == 0 -%}
+                  {%- if search.results_count == 0 or lp_results_count == 0 -%}
                     <div class="empty-state">
                       <div class="empty-state__icon-wrapper">
                         {%- render 'icon' with 'picto-stop', width: 32, height: 32, stroke_width: 1 -%}

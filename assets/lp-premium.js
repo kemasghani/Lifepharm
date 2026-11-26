@@ -1104,18 +1104,37 @@
   cards.forEach((badge) => { observer.observe(badge, { childList: true, subtree: true }); apply(badge); });
 })();
 
-/* The Exigo storefront script adds ?ref=... to every link. On an email or phone link it becomes part of the address, so it comes off again (D-092). */
+/* The Exigo storefront script adds ?ref=<webalias> to every link (D-092, D-103). The referral is kept where it means something:
+   this store, the other LifePharm stores and the IBO back office. It comes off email, phone and outside links (social, help
+   centre, share buttons), and a ref placed after a # moves in front of it, where the page can read it. Which webalias is
+   written stays the Exigo script's choice. */
 (() => {
+  const keep = (host) => host === location.hostname || /^(shop|uk|europe|news)\.lifepharm\.com$/.test(host) || /(^|\.)mylifepharm(office)?\.com$/.test(host);
+  const strip = (href) => href.replace(/([?&])(?:ref=[^&#]*(?:&|$))+/gi, '$1').replace(/[?&]+(?=#|$)/, '');
   const clean = (link) => {
     const href = link.getAttribute('href') || '';
-    const tidy = href.replace(/([?&])(?:ref=[^&#]*(?:&|$))+/gi, '$1').replace(/[?&]+$/, '');
+    if (!/ref=/i.test(href)) return;
+    let tidy = href;
+    if (/^(mailto|tel|sms):/i.test(href)) tidy = strip(href);
+    else {
+      let url;
+      try { url = new URL(href, location.href); } catch (e) { return; }
+      if (!/^https?:$/.test(url.protocol)) return;
+      const hashRef = href.match(/#[^#]*?[?&](ref=[^&#]*)/i);
+      if (!keep(url.hostname)) tidy = strip(href);
+      else if (hashRef) {
+        const [base, hash] = [href.slice(0, href.indexOf('#')), href.slice(href.indexOf('#'))];
+        tidy = base + (base.includes('?') ? '&' : '?') + hashRef[1] + strip(hash);
+      }
+    }
     if (tidy !== href) link.setAttribute('href', tidy);
   };
-  const observer = new MutationObserver((changes) => changes.forEach((change) => clean(change.target)));
-  document.querySelectorAll('a[href^="mailto:" i], a[href^="tel:" i], a[href^="sms:" i]').forEach((link) => {
-    clean(link);
-    observer.observe(link, { attributes: true, attributeFilter: ['href'] });
-  });
+  const all = (root) => root.querySelectorAll && root.querySelectorAll('a[href]').forEach(clean);
+  all(document);
+  new MutationObserver((changes) => changes.forEach((change) => {
+    if (change.type === 'attributes') { if (change.target.matches?.('a[href]')) clean(change.target); }
+    else change.addedNodes.forEach((node) => { if (node.nodeType === 1) { if (node.matches('a[href]')) clean(node); all(node); } });
+  })).observe(document.documentElement, { subtree: true, childList: true, attributes: true, attributeFilter: ['href'] });
 })();
 
 /* Quick add: the confirmation replaces the form that held the focus, so the focus moves to the drawer's close button. */

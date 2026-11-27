@@ -541,7 +541,7 @@
     {
       "id": "chk-001",
       "area": "checkout",
-      "title": "Checkout trust block: guarantee, subscription, secure payment, support",
+      "title": "Checkout trust blocks: \"Order with confidence\" (list) and \"Rating and guarantee\" (short strip)",
       "status": "blocked",
       "blocker": "App version developer-lifepharm-2 is released (2026-11-28) and holds the block. Left: owner approval to place the block in each store's checkout editor (changes the live checkout); staging first",
       "stores": [
@@ -552,11 +552,13 @@
       "verification": [
         "Strict typecheck and the Shopify extension validator (done)",
         "Block visible in a staging checkout with a one-time cart and a subscription cart, phone and desktop",
-        "Support email set per store"
+        "Support email set per store",
+        "Rating line appears in a staging checkout with LAMININE in the cart (metafields readable without a definition?)"
       ],
       "evidence": [
         "Project ~/Documents/lifepharm-checkout-referral, extensions/trust-block (outside this repo); D-110",
-        "Deployed 2026-11-28 as app version developer-lifepharm-2 (shopify app deploy --allow-updates); Admin API still answers on all four stores"
+        "Deployed 2026-11-28 as app version developer-lifepharm-2 (shopify app deploy --allow-updates); Admin API still answers on all four stores",
+        "2026-11-28: \"Rating and guarantee\" added, app version developer-lifepharm-3; reviewer photos in Files on all four stores load from each store domain (HTTP 200); D-111"
       ]
     },
     {

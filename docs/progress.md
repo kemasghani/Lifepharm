@@ -31,6 +31,7 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 - Next: a person links the app and deploys; preview on staging with a one-time and a subscription cart; set the support email per store; EU store first.
 - Added the same day: linked and deployed with an app automation token the owner created (service account, app development on this app only). App version `developer-lifepharm-2` is released with both blocks ("Referred by", "Order with confidence"). Nothing shows in any checkout until a block is placed in the checkout editor.
 - Added the same day (D-111): a short strip, "Rating and guarantee" (live Stamped rating, three real LAMININE reviewers, guarantee), app version `developer-lifepharm-3`. Reviewer photos uploaded to Files on all four stores. Open check: the rating needs checkout to read the `stamped` product metafields, which have no definition; confirm on staging.
+- Added the same day (D-112): the developer saw no rating or photos in the US checkout editor. Cause: the editor's sample cart is Gut Defense System, which has 0 Stamped reviews on the US store (LAMININE: 4.85 from 980), so the line was rightly left out. Editor-only sample data added for the rating and the subscription line; released as `developer-lifepharm-4`. Still open: a real LAMININE checkout must confirm that checkout passes the `stamped` metafields (still no definition on the US store).
 - Blockers: owner approval to place the block; staging first.
 
 ## 2026-11-26 · co-002 · Company page: new purpose and five core values

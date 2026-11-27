@@ -523,7 +523,7 @@
       "area": "referral",
       "title": "Checkout UI extension showing the referrer in checkout and thank-you",
       "status": "blocked",
-      "blocker": "Needs a person to run `shopify app config link` + `shopify app deploy` on the Developer Lifepharm app, and owner approval before placing the block (changes the live checkout)",
+      "blocker": "App version developer-lifepharm-2 is released (2026-11-28) and holds the block. Left: owner approval to place the block in each store's checkout editor (changes the live checkout); staging first",
       "stores": [
         "uk",
         "us",
@@ -534,7 +534,8 @@
         "Block visible in a test checkout"
       ],
       "evidence": [
-        "Project ~/Documents/lifepharm-checkout-referral (outside this repo)"
+        "Project ~/Documents/lifepharm-checkout-referral (outside this repo)",
+        "Deployed 2026-11-28 as app version developer-lifepharm-2 (shopify app deploy --allow-updates); Admin API still answers on all four stores"
       ]
     },
     {
@@ -542,7 +543,7 @@
       "area": "checkout",
       "title": "Checkout trust block: guarantee, subscription, secure payment, support",
       "status": "blocked",
-      "blocker": "Needs a person to run `shopify app config link` + `shopify app deploy` on the Developer Lifepharm app, and owner approval before placing the block (changes the live checkout)",
+      "blocker": "App version developer-lifepharm-2 is released (2026-11-28) and holds the block. Left: owner approval to place the block in each store's checkout editor (changes the live checkout); staging first",
       "stores": [
         "uk",
         "us",
@@ -554,7 +555,8 @@
         "Support email set per store"
       ],
       "evidence": [
-        "Project ~/Documents/lifepharm-checkout-referral, extensions/trust-block (outside this repo); D-110"
+        "Project ~/Documents/lifepharm-checkout-referral, extensions/trust-block (outside this repo); D-110",
+        "Deployed 2026-11-28 as app version developer-lifepharm-2 (shopify app deploy --allow-updates); Admin API still answers on all four stores"
       ]
     },
     {

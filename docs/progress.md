@@ -29,7 +29,8 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 - Done (D-110): "Order with confidence" checkout UI extension in `~/Documents/lifepharm-checkout-referral/extensions/trust-block`, next to the referral block. Design record and rollout plan in that project's `docs/trust-block.md`.
 - Evidence: strict TypeScript against `@shopify/ui-extensions` 2026.10.0, Shopify extension validator passed for `purchase.checkout.block.render` (API 2026-04 and 2026-07), production bundle builds (about 9 KB gzipped). Not seen in a real checkout yet.
 - Next: a person links the app and deploys; preview on staging with a one-time and a subscription cart; set the support email per store; EU store first.
-- Blockers: Partner login for `shopify app config link`; owner approval to place the block.
+- Added the same day: linked and deployed with an app automation token the owner created (service account, app development on this app only). App version `developer-lifepharm-2` is released with both blocks ("Referred by", "Order with confidence"). Nothing shows in any checkout until a block is placed in the checkout editor.
+- Blockers: owner approval to place the block; staging first.
 
 ## 2026-11-26 · co-002 · Company page: new purpose and five core values
 

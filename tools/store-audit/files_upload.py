@@ -7,6 +7,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from shopify import gql
 STORE=os.environ.get('STORE','uk')
 paths=sys.argv[1:]
+MIME={'png':'image/png','webp':'image/webp','gif':'image/gif'}
+def mime(p): return MIME.get(p.rsplit('.',1)[-1].lower(),'image/jpeg')
 # skip existing
 names=[os.path.basename(p) for p in paths]
 q=' OR '.join(f'filename:{n.rsplit(".",1)[0]}*' for n in names)
@@ -14,7 +16,7 @@ ex=gql(STORE,'query($q:String){files(first:50,query:$q){nodes{... on MediaImage{
 existing={n['image']['url'].split('/')[-1].split('?')[0] for n in ex['data']['files']['nodes'] if n.get('image')}
 print('existing:',existing)
 todo=[p for p in paths if os.path.basename(p) not in existing]
-inp=[{'filename':os.path.basename(p),'mimeType':'image/jpeg','resource':'IMAGE','httpMethod':'POST','fileSize':str(os.path.getsize(p))} for p in todo]
+inp=[{'filename':os.path.basename(p),'mimeType':mime(p),'resource':'IMAGE','httpMethod':'POST','fileSize':str(os.path.getsize(p))} for p in todo]
 if not inp: sys.exit()
 r=gql(STORE,'mutation($i:[StagedUploadInput!]!){stagedUploadsCreate(input:$i){stagedTargets{url resourceUrl parameters{name value}} userErrors{field message}}}',{'i':inp})
 targets=r['data']['stagedUploadsCreate']['stagedTargets']
@@ -23,7 +25,7 @@ for p,t in zip(todo,targets):
     b='----lp'+uuid.uuid4().hex; body=b''
     for prm in t['parameters']:
         body+=f'--{b}\r\nContent-Disposition: form-data; name="{prm["name"]}"\r\n\r\n{prm["value"]}\r\n'.encode()
-    body+=f'--{b}\r\nContent-Disposition: form-data; name="file"; filename="{os.path.basename(p)}"\r\nContent-Type: image/jpeg\r\n\r\n'.encode()+open(p,'rb').read()+f'\r\n--{b}--\r\n'.encode()
+    body+=f'--{b}\r\nContent-Disposition: form-data; name="file"; filename="{os.path.basename(p)}"\r\nContent-Type: {mime(p)}\r\n\r\n'.encode()+open(p,'rb').read()+f'\r\n--{b}--\r\n'.encode()
     req=urllib.request.Request(t['url'],body,{'Content-Type':f'multipart/form-data; boundary={b}'})
     print(os.path.basename(p),'upload',urllib.request.urlopen(req,timeout=120).status)
     res.append(t['resourceUrl'])

@@ -538,6 +538,26 @@
       ]
     },
     {
+      "id": "chk-001",
+      "area": "checkout",
+      "title": "Checkout trust block: guarantee, subscription, secure payment, support",
+      "status": "blocked",
+      "blocker": "Needs a person to run `shopify app config link` + `shopify app deploy` on the Developer Lifepharm app, and owner approval before placing the block (changes the live checkout)",
+      "stores": [
+        "uk",
+        "us",
+        "eu"
+      ],
+      "verification": [
+        "Strict typecheck and the Shopify extension validator (done)",
+        "Block visible in a staging checkout with a one-time cart and a subscription cart, phone and desktop",
+        "Support email set per store"
+      ],
+      "evidence": [
+        "Project ~/Documents/lifepharm-checkout-referral, extensions/trust-block (outside this repo); D-110"
+      ]
+    },
+    {
       "id": "qa-001",
       "area": "qa",
       "title": "Storefront QA on the US, UK and Europe drafts: each market's own delivery line, claims only where they apply, no sale of a product with no price, one live review number, one price per unit, own-store review thumbnails, page h1",

@@ -2,7 +2,9 @@
 
 Reads Stamped's per-product metafields (stamped.reviews_average, stamped.reviews_count) on every ACTIVE
 product of a store, and writes one weighted summary to the shop as the app-owned JSON metafield
-`$app:reviews` / `summary`: {"average": 4.862, "count": 1112, "products": 13, "updated_at": "..."}.
+`$app:reviews` / `summary`: {"average": 4.862, "count": 1111, "products": 12, "customers": 1110, "updated_at": "..."}.
+`customers` is the number of customers with at least one order in that Shopify store (developer's choice,
+2026-11-28, D-115): imported accounts that never ordered here are not counted.
 Only ACTIVE products count, so unlisted copies that share a product's reviews (the staging "IBO
 Auto-Delivery" products) are not counted twice. Stamped has no store-wide total of its own, and checkout
 extensions cannot read product metafields beyond the cart, so this summary is what the block shows.
@@ -47,7 +49,9 @@ def summary(store):
         if not page['pageInfo']['hasNextPage']:
             break
         after = page['pageInfo']['endCursor']
+    buyers = gql(store, '{ c: customerSegmentMembers(first: 1, query: "number_of_orders > 0") { totalCount } }')
     return {
+        'customers': int(buyers['data']['c']['totalCount']),
         'average': round(weighted / total, 3) if total else 0,
         'count': int(total),
         'products': products,
@@ -60,7 +64,7 @@ def main():
     write = '--write' in sys.argv
     for store in args or ['us', 'uk', 'eu', 'staging']:
         s = summary(store)
-        line = f"{store}: {s['average']} from {s['count']} reviews over {s['products']} products"
+        line = f"{store}: {s['average']} from {s['count']} reviews over {s['products']} products, {s['customers']} customers"
         if not write:
             print(line, '(dry run)')
             continue

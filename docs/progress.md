@@ -34,6 +34,7 @@ Session-to-session continuity. **Read the snapshot and the top entry at the star
 - Added the same day (D-112): the developer saw no rating or photos in the US checkout editor. Cause: the editor's sample cart is Gut Defense System, which has 0 Stamped reviews on the US store (LAMININE: 4.85 from 980), so the line was rightly left out. Editor-only sample data added for the rating and the subscription line; released as `developer-lifepharm-4`. Still open: a real LAMININE checkout must confirm that checkout passes the `stamped` metafields (still no definition on the US store).
 - Added the same day (D-113): orange stars, ringed photo stack and "Loved by 980 customers"; images uploaded to Files on the four stores (`files_upload.py` now sends PNGs as PNG); released as `developer-lifepharm-5`.
 - Added the same day (D-114): the rating is now each store's total over all products (shop metafield written by `tools/store-audit/reviews_summary.py`), and the strip can sit below the header; released as `developer-lifepharm-7`. Re-run the summary daily (TD-043).
+- Added the same day (D-115): reviewer photos removed (Letisha), "Trusted by {count} customers" from each store's buyers, editable; released as `developer-lifepharm-8`.
 - Blockers: owner approval to place the block; staging first.
 
 ## 2026-11-26 · co-002 · Company page: new purpose and five core values
